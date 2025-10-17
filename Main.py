@@ -20,6 +20,10 @@ SUPPORTED_LOCALES = {
     "en": "English",
 }
 
+PREFERENCE_LABELS = {
+    "default_num_questions": "Questions par quiz (par défaut)",
+}
+
 
 def _init_session_state() -> None:
     st.session_state.setdefault("user", None)
@@ -154,7 +158,14 @@ def _render_account_panel() -> None:
     if not settings:
         st.info("Aucune préférence enregistrée pour le moment.")
     else:
-        st.json(settings)
+        rows = []
+        for key, value in settings.items():
+            label = PREFERENCE_LABELS.get(key, key)
+            display_value = value
+            if value.isdigit():
+                display_value = int(value)
+            rows.append({"Préférence": label, "Valeur": display_value})
+        st.table(rows)
 
     if st.button("Se déconnecter", type="secondary"):
         _handle_logout()
