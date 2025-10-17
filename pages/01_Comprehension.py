@@ -7,7 +7,12 @@ from typing import Dict, List, Optional
 
 import streamlit as st
 
-from repo import get_entries, list_quizzes
+from repo import (
+    get_entries,
+    get_user_settings,
+    list_quizzes,
+    set_user_setting,
+)
 from seed import ensure_seeded
 from utils.ui import trigger_rerun
 
@@ -80,10 +85,10 @@ def evaluate_answer(choice: str) -> None:
     st.session_state["last_choice"] = choice
     if is_correct:
         st.session_state["score"] += 1
-        st.session_state["feedback"] = "✅ Bonne réponse !"
+        st.session_state["feedback"] = "Bonne réponse !"
     else:
         st.session_state["feedback"] = (
-            f"❌ Mauvaise réponse. La bonne traduction est **{question['correct']}**."
+            f"Mauvaise réponse. La bonne traduction est **{question['correct']}**."
         )
 
     st.session_state["history"].append(
@@ -170,6 +175,12 @@ def render_quiz() -> None:
 def main() -> None:
     st.set_page_config(page_title="Compréhension écrite", page_icon="🧠", layout="centered")
     ensure_seeded()
+    st.session_state.setdefault("user", None)
+    st.session_state.setdefault("user_settings", {})
+
+    user = st.session_state.get("user")
+    if user and not st.session_state["user_settings"]:
+        st.session_state["user_settings"] = get_user_settings(user["id"])
 
     st.title("Compréhension écrite — Quiz de vocabulaire")
     st.write(
@@ -191,6 +202,11 @@ def main() -> None:
 
     st.sidebar.header("Paramètres")
     st.sidebar.write("Configurez votre session d'entraînement.")
+    if user:
+        st.sidebar.success(f"Connecté en tant que {user['email']}")
+    else:
+        st.sidebar.info("Mode invité : connectez-vous depuis l'accueil pour sauvegarder vos préférences.")
+
     selected_quiz_key = st.sidebar.selectbox(
         "Choisir un quiz",
         options=quiz_keys,
@@ -210,6 +226,14 @@ def main() -> None:
 
     max_questions = len(vocab)
     default_num = st.session_state.get("num_questions", min(10, max_questions))
+    if user:
+        stored_default = st.session_state["user_settings"].get("default_num_questions")
+        if stored_default:
+            try:
+                default_num = int(stored_default)
+            except ValueError:
+                default_num = st.session_state.get("num_questions", min(10, max_questions))
+
     default_num = max(1, min(default_num, max_questions))
     num_questions = st.sidebar.slider(
         "Nombre de questions",
@@ -218,6 +242,11 @@ def main() -> None:
         value=default_num,
     )
     st.session_state["num_questions"] = num_questions
+    if user:
+        stored_value = st.session_state["user_settings"].get("default_num_questions")
+        if stored_value != str(num_questions):
+            set_user_setting(user["id"], "default_num_questions", str(num_questions))
+            st.session_state["user_settings"]["default_num_questions"] = str(num_questions)
 
     quiz_changed = st.session_state.get("selected_quiz") != selected_quiz_key
     if "questions" not in st.session_state or quiz_changed:
