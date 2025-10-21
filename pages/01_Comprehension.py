@@ -7,14 +7,10 @@ from typing import Dict, List, Optional
 
 import streamlit as st
 
-from repo import (
-    get_entries,
-    get_user_settings,
-    list_quizzes,
-    set_user_setting,
-)
+from repo import get_entries, list_quizzes, set_user_setting
 from seed import ensure_seeded
-from utils.ui import trigger_rerun
+from utils.auth_ui import ensure_user_settings_loaded, init_auth_state, show_auth_notice
+from utils.ui import render_top_nav, trigger_rerun
 
 
 def build_question_pool(
@@ -173,24 +169,27 @@ def render_quiz() -> None:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Compréhension écrite", page_icon="🧠", layout="centered")
+    st.set_page_config(page_title="Comprehension ecrite", page_icon="??", layout="wide")
     ensure_seeded()
-    st.session_state.setdefault("user", None)
-    st.session_state.setdefault("user_settings", {})
+    init_auth_state()
+    ensure_user_settings_loaded()
 
-    user = st.session_state.get("user")
-    if user and not st.session_state["user_settings"]:
-        st.session_state["user_settings"] = get_user_settings(user["id"])
+    render_top_nav("comprehension")
+    show_auth_notice()
 
-    st.title("Compréhension écrite — Quiz de vocabulaire")
-    st.write(
-        "Entraînez-vous sur les listes officielles HSK en choisissant votre niveau, le nombre de questions "
-        "et le mode d'entraînement. D'autres exercices de compréhension seront ajoutés prochainement."
+    st.markdown(
+        """
+        <div class="page-intro">
+            <h1>Comprehension ecrite</h1>
+            <p>Testez votre vocabulaire HSK et suivez vos progres question apres question.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     quizzes = list_quizzes()
     if not quizzes:
-        st.error("Aucun quiz disponible. Vérifiez l'initialisation de la base de données.")
+        st.error("Aucun quiz disponible. Verifiez l'initialisation de la base de donnees.")
         return
 
     quiz_lookup = {quiz["key"]: quiz for quiz in quizzes}
@@ -200,28 +199,29 @@ def main() -> None:
     if default_quiz_key not in quiz_lookup:
         default_quiz_key = quiz_keys[0]
 
-    st.sidebar.header("Paramètres")
-    st.sidebar.write("Configurez votre session d'entraînement.")
+    user = st.session_state.get("user")
+    st.markdown("### Configurez votre session")
     if user:
-        st.sidebar.success(f"Connecté en tant que {user['email']}")
+        st.caption(f"Connecte en tant que {user['email']}. Vos preferences seront memorisees.")
     else:
-        st.sidebar.info("Mode invité : connectez-vous depuis l'accueil pour sauvegarder vos préférences.")
+        st.info("Astuce: connectez-vous depuis la rubrique Compte pour conserver vos reglages favoris.")
 
-    selected_quiz_key = st.sidebar.selectbox(
-        "Choisir un quiz",
-        options=quiz_keys,
-        index=quiz_keys.index(default_quiz_key),
-        format_func=lambda key: quiz_lookup[key]["title"],
-    )
-    selected_meta = quiz_lookup[selected_quiz_key]
-    st.session_state["quiz_meta"] = selected_meta
-
-    if selected_meta.get("description"):
-        st.sidebar.caption(selected_meta["description"])
+    config_cols = st.columns([2, 1])
+    with config_cols[0]:
+        selected_quiz_key = st.selectbox(
+            "Choisir un quiz",
+            options=quiz_keys,
+            index=quiz_keys.index(default_quiz_key),
+            format_func=lambda key: quiz_lookup[key]["title"],
+        )
+        selected_meta = quiz_lookup[selected_quiz_key]
+        st.session_state["quiz_meta"] = selected_meta
+        if selected_meta.get("description"):
+            st.caption(selected_meta["description"])
 
     vocab = get_entries(selected_quiz_key)
     if not vocab:
-        st.warning("Aucune donnée disponible pour ce quiz pour le moment.")
+        st.warning("Aucune donnee disponible pour ce quiz pour le moment.")
         return
 
     max_questions = len(vocab)
@@ -235,12 +235,15 @@ def main() -> None:
                 default_num = st.session_state.get("num_questions", min(10, max_questions))
 
     default_num = max(1, min(default_num, max_questions))
-    num_questions = st.sidebar.slider(
-        "Nombre de questions",
-        min_value=1,
-        max_value=max_questions,
-        value=default_num,
-    )
+
+    with config_cols[1]:
+        num_questions = st.slider(
+            "Nombre de questions",
+            min_value=1,
+            max_value=max_questions,
+            value=default_num,
+        )
+
     st.session_state["num_questions"] = num_questions
     if user:
         stored_value = st.session_state["user_settings"].get("default_num_questions")
@@ -255,21 +258,30 @@ def main() -> None:
             trigger_rerun()
             return
 
-    if st.sidebar.button("Lancer un nouveau quiz"):
-        seed_value = random.randint(0, 10_000)
-        reset_quiz(selected_quiz_key, num_questions, seed=seed_value)
-        trigger_rerun()
-        return
-
     total_questions = len(st.session_state.get("questions", []))
-    st.sidebar.metric("Score", f"{st.session_state.get('score', 0)} / {total_questions}")
+    current_score = st.session_state.get("score", 0)
+    current_idx = st.session_state.get("current_idx", 0)
 
+    stats_cols = st.columns([1, 1, 1])
+    stats_cols[0].metric("Score", f"{current_score} / {total_questions}")
+    stats_cols[1].metric(
+        "Question",
+        f"{min(current_idx + 1, total_questions) if total_questions else 0} / {total_questions}",
+    )
+    with stats_cols[2]:
+        if st.button("Nouvelle serie", use_container_width=True):
+            seed_value = random.randint(0, 10_000)
+            reset_quiz(selected_quiz_key, num_questions, seed=seed_value)
+            trigger_rerun()
+            return
+
+    st.divider()
     st.subheader(selected_meta["title"])
     if selected_meta.get("description"):
         st.caption(selected_meta["description"])
 
     if not st.session_state.get("questions"):
-        st.info("Veuillez ajouter des entrées de vocabulaire pour ce quiz.")
+        st.info("Veuillez ajouter des entrees de vocabulaire pour ce quiz.")
         return
 
     if st.session_state["current_idx"] >= len(st.session_state["questions"]):
