@@ -46,7 +46,10 @@ def inject_global_styles() -> None:
                 background: var(--ht-gradient);
             }
 
-            section[data-testid="stSidebar"] {
+            section[data-testid="stSidebar"],
+            div[data-testid="stSidebarNav"],
+            button[title="Menu"],
+            button[aria-label="Menu"] {
                 display: none !important;
             }
 
@@ -82,20 +85,8 @@ def inject_global_styles() -> None:
                 justify-content: flex-start;
             }
 
-            .block-container > div:first-child > div[data-testid="column"]:nth-child(2) {
-                justify-content: center;
-            }
-
             .block-container > div:first-child > div[data-testid="column"]:last-child {
                 justify-content: flex-end;
-            }
-
-            .ht-brand {
-                font-size: 1.05rem;
-                text-transform: uppercase;
-                letter-spacing: 0.16em;
-                font-weight: 700;
-                color: var(--ht-neutral);
             }
 
             div[data-testid="stPageLink"] {
@@ -239,7 +230,7 @@ def render_top_nav(active_page: TopNavPage) -> None:
     """Display a sticky, minimal top navigation bar."""
     inject_global_styles()
 
-    nav_cols = st.columns([1, 3, 1])
+    nav_cols = st.columns([1, 1])
     with nav_cols[0]:
         st.page_link(
             "Main.py",
@@ -249,9 +240,6 @@ def render_top_nav(active_page: TopNavPage) -> None:
         )
 
     with nav_cols[1]:
-        st.markdown('<div class="ht-brand">HSK Trainer</div>', unsafe_allow_html=True)
-
-    with nav_cols[2]:
         st.page_link(
             "pages/Account.py",
             label="👤 Compte",
