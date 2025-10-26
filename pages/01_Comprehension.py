@@ -5,7 +5,7 @@ from __future__ import annotations
 import random
 import re
 import unicodedata
-from typing import Dict, List, Literal, Optional, Tuple
+from typing import Dict, List, Literal, Optional, Tuple, cast
 
 import streamlit as st
 
@@ -21,6 +21,8 @@ QuestionType = Literal[
     "hanzi_to_translation_mcq",
 ]
 
+PinyinVariant = Literal["with_tones", "without_tones"]
+
 QUESTION_TYPE_LABELS: Dict[QuestionType, str] = {
     "hanzi_to_translation_input": "Voir caractères → écrire traduction",
     "hanzi_to_pinyin_input": "Voir caractères → écrire pinyin",
@@ -29,6 +31,12 @@ QUESTION_TYPE_LABELS: Dict[QuestionType, str] = {
 }
 
 DEFAULT_QUESTION_TYPE: QuestionType = "hanzi_to_translation_mcq"
+DEFAULT_PINYIN_VARIANT: PinyinVariant = "with_tones"
+
+PINYIN_VARIANT_LABELS: Dict[PinyinVariant, str] = {
+    "without_tones": "Sans tons (tons ignorés)",
+    "with_tones": "Avec tons (ton à choisir)",
+}
 
 PINYIN_SYLLABLE_RE = re.compile(r"(?iu)[a-züv\u00c0-\u024f]+[1-5]?")
 NON_WORD_PATTERN = re.compile(r"[^a-z0-9]+")
@@ -91,6 +99,16 @@ PINYIN_DIACRITIC_MAP: Dict[str, Tuple[str, int]] = {
     "ḿ": ("m", 2),
     "ṁ": ("m", 2),
 }
+
+
+TONE_LABELS: Dict[int, str] = {
+    0: "Ton neutre (0)",
+    1: "Ton 1",
+    2: "Ton 2",
+    3: "Ton 3",
+    4: "Ton 4",
+}
+TONE_OPTIONS: List[int] = list(TONE_LABELS.keys())
 
 
 def split_alt_translations(value: str) -> List[str]:
@@ -182,6 +200,128 @@ def normalize_pinyin_value(value: str) -> Tuple[Tuple[str, int], ...]:
     return tuple(tokens)
 
 
+def _ensure_score_banner_style() -> None:
+    """Inject CSS once for the live score banner."""
+    if st.session_state.get("_score_banner_css_injected"):
+        return
+
+    st.markdown(
+        """
+        <style>
+        .live-score-banner {
+            background: linear-gradient(135deg, #0f172a, #172554);
+            border-radius: 14px;
+            padding: 1.25rem;
+            color: #f8fafc;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+        }
+        .live-score-banner__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .live-score-banner__value {
+            font-size: 1.1rem;
+        }
+        .live-score-banner__track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            margin-bottom: 0.35rem;
+        }
+        .live-score-banner__fill {
+            height: 100%;
+            border-radius: 999px;
+            background: #38bdf8;
+        }
+        .live-score-banner__hint {
+            font-size: 0.85rem;
+            color: rgba(248, 250, 252, 0.85);
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.session_state["_score_banner_css_injected"] = True
+
+
+def render_live_score_banner() -> None:
+    """Display a live percentage banner for correct answers."""
+    _ensure_score_banner_style()
+    history = st.session_state.get("history") or []
+    answered = len(history)
+    score = st.session_state.get("score", 0)
+    percentage = round((score / answered) * 100) if answered else 0
+    detail = (
+        f"{score} bonne(s) réponse(s) sur {answered} tentative(s) validées."
+        if answered
+        else "Répondez à une question pour voir votre score en temps réel."
+    )
+    st.markdown(
+        f"""
+        <div class="live-score-banner">
+            <div class="live-score-banner__row">
+                <span>Score en temps réel</span>
+                <span class="live-score-banner__value">{percentage}% de bonnes réponses</span>
+            </div>
+            <div class="live-score-banner__track">
+                <div class="live-score-banner__fill" style="width: {percentage}%"></div>
+            </div>
+            <div class="live-score-banner__hint">{detail}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def strip_pinyin_tones(tokens: Tuple[Tuple[str, int], ...]) -> Tuple[str, ...]:
+    """Return the syllable sequence without tone information."""
+    return tuple(base for base, _ in tokens)
+
+
+def build_structured_pinyin_submission(
+    syllables: List[str], tones: List[int]
+) -> Tuple[str, bool]:
+    """Combine syllable inputs and tone selections into a single answer string."""
+    missing = any(not syllable.strip() for syllable in syllables)
+    parts = []
+    for syllable, tone in zip(syllables, tones):
+        base = syllable.strip()
+        if not base:
+            continue
+        suffix = "" if tone == 0 else str(tone)
+        parts.append(f"{base}{suffix}")
+    return " ".join(parts).strip(), missing
+
+
+def get_question_pinyin_tokens(question: Dict[str, object]) -> Tuple[Tuple[str, int], ...]:
+    """Fetch normalized pinyin tokens from a question definition."""
+    raw_tokens = question.get("normalized_pinyin")
+    if isinstance(raw_tokens, tuple):
+        return cast(Tuple[Tuple[str, int], ...], raw_tokens)
+    raw_value = str(question.get("pinyin", ""))
+    return normalize_pinyin_value(raw_value)
+
+
+def format_tone_choice(option: int) -> str:
+    """Return the human-readable label for a tone selector."""
+    return TONE_LABELS.get(option, f"Ton {option}")
+
+
+def clear_pinyin_variant_inputs(question_index: int, syllable_count: int) -> None:
+    """Clear stored syllable and tone inputs for a question index."""
+    total = max(1, syllable_count)
+    for idx in range(total):
+        st.session_state.pop(f"pinyin_syllable_{question_index}_{idx}", None)
+        st.session_state.pop(f"pinyin_tone_{question_index}_{idx}", None)
+
+
 def build_question_pool(
     vocab: List[Dict[str, str]],
     num_questions: int,
@@ -254,6 +394,12 @@ def reset_quiz(
     quiz_key: str, num_questions: int, question_type: QuestionType, seed: Optional[int] = None
 ) -> None:
     """Initialize session state for a new quiz."""
+    for key in list(st.session_state.keys()):
+        if key.startswith("hint_shown_") or key.startswith("pinyin_syllable_") or key.startswith(
+            "pinyin_tone_"
+        ):
+            st.session_state.pop(key)
+
     vocab = get_entries(quiz_key)
     st.session_state["vocab"] = vocab
     st.session_state["selected_quiz"] = quiz_key
@@ -308,11 +454,17 @@ def evaluate_answer(submission: Optional[str]) -> None:
                 feedback = f"Mauvaise réponse. Traduction attendue : **{correct_display}**."
 
     elif question_type == "hanzi_to_pinyin_input":
+        variant: PinyinVariant = st.session_state.get("pinyin_variant", DEFAULT_PINYIN_VARIANT)
         normalized_input = normalize_pinyin_value(user_answer)
-        expected = question.get("normalized_pinyin", tuple())
-        is_correct = bool(normalized_input) and normalized_input == expected
+        expected = get_question_pinyin_tokens(question)
+        if variant == "without_tones":
+            is_correct = bool(normalized_input) and strip_pinyin_tones(normalized_input) == strip_pinyin_tones(
+                expected
+            )
+        else:
+            is_correct = bool(normalized_input) and normalized_input == expected
         if is_correct:
-            feedback = "Bonne réponse !"
+            feedback = "Bonne r?ponse !"
         else:
             feedback = f"Pinyin attendu : **{correct_display}**."
 
@@ -399,31 +551,25 @@ def render_quiz() -> None:
 
     if not st.session_state["answered"]:
         form_key = f"quiz_form_{idx}"
+        missing_syllables = False
+        choice: Optional[str] = None
         with st.form(key=form_key):
             if question_type in {"hanzi_to_translation_mcq", "translation_to_hanzi_mcq"}:
                 label = (
                     "Choisissez la traduction correcte :"
                     if question_type == "hanzi_to_translation_mcq"
-                    else "Choisissez le caractère correct :"
+                    else "Choisissez le caract?re correct :"
                 )
                 choice = st.selectbox(
                     label,
                     question.get("choices", []),
                     index=None,
-                    placeholder="Sélectionnez une réponse",
+                    placeholder="S?lectionnez une r?ponse",
                     key=f"choice_select_{idx}",
                 )
-            else:
-                label = (
-                    "Entrez la traduction en français"
-                    if question_type == "hanzi_to_translation_input"
-                    else "Entrez le pinyin avec ton"
-                )
-                placeholder = (
-                    "Ex. : aimer / apprécier"
-                    if question_type == "hanzi_to_translation_input"
-                    else "Ex. : ni3 hao3 ou nǐ hǎo"
-                )
+            elif question_type == "hanzi_to_translation_input":
+                label = "Entrez la traduction en fran?ais"
+                placeholder = "Ex. : aimer / appr?cier"
                 input_key = f"text_answer_{idx}"
                 choice = st.text_input(
                     label,
@@ -431,21 +577,71 @@ def render_quiz() -> None:
                     key=input_key,
                     placeholder=placeholder,
                 )
-            submitted = st.form_submit_button("Valider la réponse")
+            else:
+                pinyin_variant: PinyinVariant = st.session_state.get(
+                    "pinyin_variant", DEFAULT_PINYIN_VARIANT
+                )
+                if pinyin_variant == "without_tones":
+                    label = "Entrez le pinyin (tons ignor?s)"
+                    placeholder = "Ex. : ni hao"
+                    input_key = f"text_answer_{idx}"
+                    choice = st.text_input(
+                        label,
+                        value=st.session_state.get(input_key, ""),
+                        key=input_key,
+                        placeholder=placeholder,
+                    )
+                else:
+                    tokens = get_question_pinyin_tokens(question)
+                    syllable_count = max(1, len(tokens))
+                    st.caption("Saisissez chaque syllabe et choisissez son ton.")
+                    syllable_inputs: List[str] = []
+                    tone_inputs: List[int] = []
+                    for syllable_idx in range(syllable_count):
+                        cols = st.columns([3, 1])
+                        placeholder_value = (
+                            tokens[syllable_idx][0] if syllable_idx < len(tokens) else ""
+                        )
+                        syllable_inputs.append(
+                            cols[0].text_input(
+                                f"Syllabe {syllable_idx + 1}",
+                                key=f"pinyin_syllable_{idx}_{syllable_idx}",
+                                placeholder=placeholder_value or f"Syllabe {syllable_idx + 1}",
+                            )
+                        )
+                        tone_inputs.append(
+                            cols[1].selectbox(
+                                f"Ton {syllable_idx + 1}",
+                                options=TONE_OPTIONS,
+                                format_func=format_tone_choice,
+                                key=f"pinyin_tone_{idx}_{syllable_idx}",
+                            )
+                        )
+                    choice, missing_syllables = build_structured_pinyin_submission(
+                        syllable_inputs, tone_inputs
+                    )
+            submitted = st.form_submit_button("Valider la r?ponse")
 
         if submitted:
-            if choice is None or (isinstance(choice, str) and not choice.strip()):
-                st.warning("Saisissez votre réponse avant de valider.")
+            if (
+                question_type == "hanzi_to_pinyin_input"
+                and st.session_state.get("pinyin_variant", DEFAULT_PINYIN_VARIANT) == "with_tones"
+                and missing_syllables
+            ):
+                st.warning("Renseignez toutes les syllabes et leurs tons avant de valider.")
+            elif choice is None or (isinstance(choice, str) and not choice.strip()):
+                st.warning("Saisissez votre r?ponse avant de valider.")
             else:
                 evaluate_answer(choice if choice is not None else "")
                 trigger_rerun()
+
     else:
         st.info(st.session_state["feedback"])
         correct_answer = question.get("correct", "")
         if question_type == "hanzi_to_pinyin_input":
             st.write(f"Pinyin correct : **{correct_answer}**")
         elif question_type == "translation_to_hanzi_mcq":
-            st.write(f"Caractère correct : **{correct_answer}**")
+            st.write(f"Caract?re correct : **{correct_answer}**")
         else:
             st.write(f"Traduction correcte : **{correct_answer}**")
 
@@ -456,7 +652,11 @@ def render_quiz() -> None:
             st.session_state["feedback"] = ""
             st.session_state.pop(f"text_answer_{idx}", None)
             st.session_state.pop(f"choice_select_{idx}", None)
+            st.session_state.pop(f"hint_shown_{idx}", None)
+            token_count = len(get_question_pinyin_tokens(question))
+            clear_pinyin_variant_inputs(idx, token_count)
             trigger_rerun()
+
 
 
 def main() -> None:
@@ -464,6 +664,7 @@ def main() -> None:
     ensure_seeded()
     init_auth_state()
     ensure_user_settings_loaded()
+    st.session_state.setdefault("pinyin_variant", DEFAULT_PINYIN_VARIANT)
 
     render_top_nav("comprehension")
     show_auth_notice()
@@ -477,6 +678,8 @@ def main() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+    render_live_score_banner()
 
     quizzes = list_quizzes()
     if not quizzes:
@@ -521,6 +724,21 @@ def main() -> None:
             index=question_type_options.index(previous_question_type),
             format_func=lambda key: QUESTION_TYPE_LABELS[key],
         )
+        current_variant: PinyinVariant = st.session_state.get("pinyin_variant", DEFAULT_PINYIN_VARIANT)
+        if question_type == "hanzi_to_pinyin_input":
+            variant_options = list(PINYIN_VARIANT_LABELS.keys())
+            if current_variant not in variant_options:
+                current_variant = DEFAULT_PINYIN_VARIANT
+            selected_variant = st.radio(
+                "Variante pinyin",
+                options=variant_options,
+                index=variant_options.index(current_variant),
+                format_func=lambda key: PINYIN_VARIANT_LABELS[key],
+                horizontal=True,
+            )
+            st.session_state["pinyin_variant"] = selected_variant
+        else:
+            st.session_state.setdefault("pinyin_variant", DEFAULT_PINYIN_VARIANT)
 
     vocab = get_entries(selected_quiz_key)
     if not vocab:
