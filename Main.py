@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Tuple
+from typing import Callable, List, Optional, Tuple
 
 import streamlit as st
+from streamlit.components.v1 import html as components_html
 
 from seed import ensure_seeded
 from utils.auth_ui import init_auth_state, show_auth_notice
@@ -23,6 +24,47 @@ FEATURES: List[Feature] = [
 def _ensure_ui_state() -> None:
     init_auth_state()
     st.session_state.setdefault("show_training_modal", False)
+
+
+def _set_modal_dom_state(active: bool) -> None:
+    """Toggle DOM classes that emulate a modal when the native API is unavailable."""
+    flag = "true" if active else "false"
+    components_html(
+        f"""
+        <script>
+        const doc = window.parent?.document;
+        if (!doc) {{
+            return;
+        }}
+        const body = doc.body;
+        if (body) {{
+            body.classList.remove('ht-modal-open');
+            if ({flag}) {{
+                body.classList.add('ht-modal-open');
+            }}
+        }}
+
+        doc.querySelectorAll('.ht-modal-fallback').forEach((el) => el.classList.remove('ht-modal-fallback'));
+        doc.querySelectorAll('.ht-modal-card').forEach((el) => el.classList.remove('ht-modal-card'));
+
+        if (!({flag})) {{
+            return;
+        }}
+
+        const blocks = doc.querySelectorAll('section.main .block-container > div[data-testid="stVerticalBlock"]');
+        if (!blocks.length) {{
+            return;
+        }}
+        const target = blocks[blocks.length - 1];
+        target.classList.add('ht-modal-fallback');
+        const inner = target.querySelector('div[data-testid="stVerticalBlock"]');
+        if (inner) {{
+            inner.classList.add('ht-modal-card');
+        }}
+        </script>
+        """,
+        height=0,
+    )
 
 
 def _render_hero() -> None:
@@ -65,44 +107,62 @@ def _render_features() -> None:
         )
 
 
+
+def _render_training_modal_body(
+    close_button_full_width: bool,
+    on_close: Optional[Callable[[], None]] = None,
+) -> None:
+    st.write(
+        "Selectionnez l'axe qui correspond a votre objectif du moment. Vous pourrez changer a tout moment."
+    )
+    option_cols = st.columns(2)
+    with option_cols[0]:
+        st.page_link(
+            "pages/01_Comprehension.py",
+            label="[CE] Comprehension ecrite",
+            help="Quiz vocabulaire et comprehension rapide.",
+        )
+    with option_cols[1]:
+        st.page_link(
+            "pages/02_Expression.py",
+            label="[EE] Expression ecrite",
+            help="Travaillez vos productions redactionnelles.",
+        )
+
+    st.divider()
+    close_kwargs = {"type": "secondary"}
+    if close_button_full_width:
+        close_kwargs["use_container_width"] = True
+    if st.button("Fermer", **close_kwargs):
+        if on_close:
+            on_close()
+        st.session_state["show_training_modal"] = False
+        trigger_rerun()
+
+
 def _render_training_modal() -> None:
     if not st.session_state.get("show_training_modal"):
+        _set_modal_dom_state(False)
         return
 
     modal = getattr(st, "modal", None)
     if callable(modal):
-        context_manager = modal("Choisissez votre parcours d'entrainement", key="training_modal")
-    else:
-        context_manager = st.container(border=True)
+        _set_modal_dom_state(False)
+        with modal("Choisissez votre parcours d'entrainement", key="training_modal"):
+            _render_training_modal_body(close_button_full_width=True)
+        return
 
-    with context_manager:
-        if not callable(modal):
+    fallback_shell = st.container()
+    with fallback_shell:
+        card = st.container()
+        with card:
             st.subheader("Choisissez votre parcours d'entrainement")
-
-        st.write(
-            "Selectionnez l'axe qui correspond a votre objectif du moment. Vous pourrez changer a tout moment."
-        )
-        option_cols = st.columns(2)
-        with option_cols[0]:
-            st.page_link(
-                "pages/01_Comprehension.py",
-                label="📘 Comprehension ecrite",
-                help="Quiz vocabulaire et comprehension rapide.",
-            )
-        with option_cols[1]:
-            st.page_link(
-                "pages/02_Expression.py",
-                label="✍️ Expression ecrite",
-                help="Travaillez vos productions redactionnelles.",
+            _render_training_modal_body(
+                close_button_full_width=True,
+                on_close=lambda: _set_modal_dom_state(False),
             )
 
-        st.divider()
-        close_kwargs = {"type": "secondary"}
-        if not callable(modal):
-            close_kwargs["use_container_width"] = True
-        if st.button("Fermer", **close_kwargs):
-            st.session_state["show_training_modal"] = False
-            trigger_rerun()
+    _set_modal_dom_state(True)
 
 
 def main() -> None:
@@ -120,3 +180,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

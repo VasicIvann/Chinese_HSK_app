@@ -231,7 +231,7 @@ def _ensure_score_banner_style() -> None:
             width: 100%;
             height: 10px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(148, 163, 184, 0.28);
             overflow: hidden;
             margin-bottom: 0.35rem;
         }
