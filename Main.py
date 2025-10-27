@@ -112,32 +112,29 @@ def _render_training_modal_body(
     close_button_full_width: bool,
     on_close: Optional[Callable[[], None]] = None,
 ) -> None:
-    st.write(
-        "Selectionnez l'axe qui correspond a votre objectif du moment. Vous pourrez changer a tout moment."
-    )
-    option_cols = st.columns(2)
+    st.write("Choisissez l'etape suivante pour poursuivre votre entrainement.")
+    option_cols = st.columns(3)
     with option_cols[0]:
         st.page_link(
             "pages/01_Comprehension.py",
-            label="[CE] Comprehension ecrite",
+            label="Comprehension ecrite",
             help="Quiz vocabulaire et comprehension rapide.",
         )
     with option_cols[1]:
         st.page_link(
             "pages/02_Expression.py",
-            label="[EE] Expression ecrite",
+            label="Expression ecrite",
             help="Travaillez vos productions redactionnelles.",
         )
-
-    st.divider()
-    close_kwargs = {"type": "secondary"}
-    if close_button_full_width:
-        close_kwargs["use_container_width"] = True
-    if st.button("Fermer", **close_kwargs):
-        if on_close:
-            on_close()
-        st.session_state["show_training_modal"] = False
-        trigger_rerun()
+    with option_cols[2]:
+        button_kwargs = {"type": "secondary"}
+        if close_button_full_width:
+            button_kwargs["use_container_width"] = True
+        if st.button("Accueil", **button_kwargs):
+            if on_close:
+                on_close()
+            st.session_state["show_training_modal"] = False
+            trigger_rerun()
 
 
 def _render_training_modal() -> None:
@@ -171,6 +168,11 @@ def main() -> None:
     _ensure_ui_state()
 
     render_top_nav("home")
+
+    if st.session_state.get("show_training_modal"):
+        _render_training_modal()
+        return
+
     show_auth_notice()
 
     _render_hero()
@@ -180,4 +182,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 

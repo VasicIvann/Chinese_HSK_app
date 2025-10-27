@@ -124,6 +124,10 @@ def inject_global_styles() -> None:
                 padding: 0.45rem 1.25rem;
             }
 
+            body.ht-modal-open .block-container > div:first-child {
+                display: none;
+            }
+
             .block-container > div:first-child > div[data-testid="column"] {
                 display: flex;
                 align-items: center;
