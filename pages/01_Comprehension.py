@@ -464,7 +464,7 @@ def evaluate_answer(submission: Optional[str]) -> None:
         else:
             is_correct = bool(normalized_input) and normalized_input == expected
         if is_correct:
-            feedback = "Bonne r?ponse !"
+            feedback = "Bonne réponse !"
         else:
             feedback = f"Pinyin attendu : **{correct_display}**."
 
@@ -538,16 +538,35 @@ def render_quiz() -> None:
     st.progress((idx + 1) / total)
 
     question_type: QuestionType = question.get("type", DEFAULT_QUESTION_TYPE)  # type: ignore[arg-type]
+    hint_key = f"hint_shown_{idx}"
+    hint_entries: List[Tuple[str, str]] = []
 
     if question_type == "translation_to_hanzi_mcq":
         st.markdown(f"### {question['translation']}")
-        st.caption(f"Indice pinyin : {question['pinyin']}")
+        pinyin_hint = question.get("pinyin")
+        if pinyin_hint:
+            hint_entries.append(("Indice pinyin", str(pinyin_hint)))
     else:
         st.markdown(f"### {question['hanzi']}")
         if question_type == "hanzi_to_pinyin_input":
-            st.caption(f"Traduction : {question['translation']}")
+            translation_hint = question.get("translation")
+            if translation_hint:
+                hint_entries.append(("Traduction", str(translation_hint)))
         else:
-            st.caption(f"Pinyin : {question['pinyin']}")
+            pinyin_hint = question.get("pinyin")
+            if pinyin_hint:
+                hint_entries.append(("Pinyin", str(pinyin_hint)))
+
+    if hint_entries:
+        if st.session_state.get(hint_key):
+            for label, value in hint_entries:
+                st.caption(f"{label} : {value}")
+        else:
+            if st.button("Révéler les indices", key=f"reveal_hint_{idx}"):
+                st.session_state[hint_key] = True
+                trigger_rerun()
+            else:
+                st.caption('Indices masqués. Cliquez sur "Révéler les indices" si besoin.')
 
     if not st.session_state["answered"]:
         form_key = f"quiz_form_{idx}"
@@ -558,18 +577,18 @@ def render_quiz() -> None:
                 label = (
                     "Choisissez la traduction correcte :"
                     if question_type == "hanzi_to_translation_mcq"
-                    else "Choisissez le caract?re correct :"
+                    else "Choisissez le caractère correct :"
                 )
                 choice = st.selectbox(
                     label,
                     question.get("choices", []),
                     index=None,
-                    placeholder="S?lectionnez une r?ponse",
+                    placeholder="Sélectionnez une réponse",
                     key=f"choice_select_{idx}",
                 )
             elif question_type == "hanzi_to_translation_input":
-                label = "Entrez la traduction en fran?ais"
-                placeholder = "Ex. : aimer / appr?cier"
+                label = "Entrez la traduction en français"
+                placeholder = "Ex. : aimer / apprécier"
                 input_key = f"text_answer_{idx}"
                 choice = st.text_input(
                     label,
@@ -582,7 +601,7 @@ def render_quiz() -> None:
                     "pinyin_variant", DEFAULT_PINYIN_VARIANT
                 )
                 if pinyin_variant == "without_tones":
-                    label = "Entrez le pinyin (tons ignor?s)"
+                    label = "Entrez le pinyin (tons ignorés)"
                     placeholder = "Ex. : ni hao"
                     input_key = f"text_answer_{idx}"
                     choice = st.text_input(
@@ -620,7 +639,7 @@ def render_quiz() -> None:
                     choice, missing_syllables = build_structured_pinyin_submission(
                         syllable_inputs, tone_inputs
                     )
-            submitted = st.form_submit_button("Valider la r?ponse")
+            submitted = st.form_submit_button("Valider la réponse")
 
         if submitted:
             if (
@@ -630,7 +649,7 @@ def render_quiz() -> None:
             ):
                 st.warning("Renseignez toutes les syllabes et leurs tons avant de valider.")
             elif choice is None or (isinstance(choice, str) and not choice.strip()):
-                st.warning("Saisissez votre r?ponse avant de valider.")
+                st.warning("Saisissez votre réponse avant de valider.")
             else:
                 evaluate_answer(choice if choice is not None else "")
                 trigger_rerun()
@@ -641,7 +660,7 @@ def render_quiz() -> None:
         if question_type == "hanzi_to_pinyin_input":
             st.write(f"Pinyin correct : **{correct_answer}**")
         elif question_type == "translation_to_hanzi_mcq":
-            st.write(f"Caract?re correct : **{correct_answer}**")
+            st.write(f"Caractère correct : **{correct_answer}**")
         else:
             st.write(f"Traduction correcte : **{correct_answer}**")
 
