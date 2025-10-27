@@ -89,6 +89,7 @@ def _render_hero() -> None:
     )
     if cta_clicked:
         st.session_state["show_training_modal"] = True
+        trigger_rerun()
 
 
 def _render_features() -> None:
