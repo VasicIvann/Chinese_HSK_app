@@ -102,11 +102,11 @@ PINYIN_DIACRITIC_MAP: Dict[str, Tuple[str, int]] = {
 
 
 TONE_LABELS: Dict[int, str] = {
-    0: "Ton neutre (0)",
-    1: "Ton 1",
-    2: "Ton 2",
-    3: "Ton 3",
-    4: "Ton 4",
+    0: "Ton neutre",
+    1: "Ton 1 : _",
+    2: "Ton 2 : ´",
+    3: "Ton 3 : v",
+    4: "Ton 4 : `",
 }
 TONE_OPTIONS: List[int] = list(TONE_LABELS.keys())
 
@@ -618,14 +618,11 @@ def render_quiz() -> None:
                     tone_inputs: List[int] = []
                     for syllable_idx in range(syllable_count):
                         cols = st.columns([3, 1])
-                        placeholder_value = (
-                            tokens[syllable_idx][0] if syllable_idx < len(tokens) else ""
-                        )
                         syllable_inputs.append(
                             cols[0].text_input(
                                 f"Syllabe {syllable_idx + 1}",
                                 key=f"pinyin_syllable_{idx}_{syllable_idx}",
-                                placeholder=placeholder_value or f"Syllabe {syllable_idx + 1}",
+                                placeholder=f"Syllabe {syllable_idx + 1}",
                             )
                         )
                         tone_inputs.append(
