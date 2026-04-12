@@ -25,11 +25,18 @@ QUIZ_DEFINITIONS: List[Dict[str, str | int | None]] = [
         "description": "Vocabulaire officiel HSK niveau 2.",
         "level": 2,
     },
+    {
+        "key": "HSK3",
+        "title": "HSK 3",
+        "description": "Vocabulaire officiel HSK niveau 3.",
+        "level": 3,
+    },
 ]
 
 CSV_FILES = {
     "HSK1": DATA_DIR / "hsk1.csv",
     "HSK2": DATA_DIR / "hsk2.csv",
+    "HSK3": DATA_DIR / "hsk3.csv",
 }
 
 

@@ -9,7 +9,7 @@ from typing import Dict, List, Literal, Optional, Tuple, cast
 
 import streamlit as st
 
-from repo import get_entries, list_quizzes, set_user_setting
+from repo import get_due_entries, get_entries, list_quizzes, set_user_setting, upsert_user_vocab_mastery
 from seed import ensure_seeded
 from utils.auth_ui import ensure_user_settings_loaded, init_auth_state, show_auth_notice
 from utils.ui import render_top_nav, trigger_rerun
@@ -27,7 +27,7 @@ QUESTION_TYPE_LABELS: Dict[QuestionType, str] = {
     "hanzi_to_translation_input": "Voir caractères → écrire traduction",
     "hanzi_to_pinyin_input": "Voir caractères → écrire pinyin",
     "translation_to_hanzi_mcq": "Voir mot FR → sélectionner caractère",
-    "hanzi_to_translation_mcq": "Voir caractère → sélectionner traduction",
+    "hanzi_to_translation_mcq": "Voir caractère → auto-évaluer connaissance",
 }
 
 DEFAULT_QUESTION_TYPE: QuestionType = "hanzi_to_translation_mcq"
@@ -109,6 +109,13 @@ TONE_LABELS: Dict[int, str] = {
     4: "Ton 4 : `",
 }
 TONE_OPTIONS: List[int] = list(TONE_LABELS.keys())
+
+SELF_ASSESS_OPTIONS: List[str] = [
+    "je connais ce mot",
+    "juste",
+    "juste mais dur",
+    "faux",
+]
 
 
 def split_alt_translations(value: str) -> List[str]:
@@ -323,7 +330,7 @@ def clear_pinyin_variant_inputs(question_index: int, syllable_count: int) -> Non
 
 
 def build_question_pool(
-    vocab: List[Dict[str, str]],
+    vocab: List[Dict[str, object]],
     num_questions: int,
     question_type: QuestionType,
     num_choices: int = 4,
@@ -337,50 +344,42 @@ def build_question_pool(
     questions: List[Dict[str, object]] = []
     for entry in selected:
         question: Dict[str, object] = {
-            "hanzi": entry["hanzi"],
-            "pinyin": entry["pinyin"],
-            "translation": entry["translation"],
+            "id": entry.get("id"),
+            "hanzi": str(entry["hanzi"]),
+            "pinyin": str(entry["pinyin"]),
+            "translation": str(entry["translation"]),
             "alt_translations": entry.get("alt_translations", ""),
             "type": question_type,
         }
 
         if question_type == "hanzi_to_translation_input":
-            accepted = gather_translation_answers(entry)
+            accepted = gather_translation_answers(cast(Dict[str, str], entry))
             question["accepted_translations"] = {
                 normalize_text_answer(answer) for answer in accepted
             }
             question["accepted_answers_raw"] = accepted
-            question["correct"] = entry["translation"]
+            question["correct"] = str(entry["translation"])
 
         elif question_type == "hanzi_to_pinyin_input":
-            question["normalized_pinyin"] = normalize_pinyin_value(entry["pinyin"])
-            question["correct"] = entry["pinyin"]
+            question["normalized_pinyin"] = normalize_pinyin_value(str(entry["pinyin"]))
+            question["correct"] = str(entry["pinyin"])
 
         elif question_type == "translation_to_hanzi_mcq":
-            incorrect_pool = [item["hanzi"] for item in vocab if item["hanzi"] != entry["hanzi"]]
-            choice_count = min(num_choices - 1, len(incorrect_pool))
-            incorrect_choices = (
-                rng.sample(incorrect_pool, k=choice_count) if choice_count > 0 else []
-            )
-            choices = incorrect_choices + [entry["hanzi"]]
-            rng.shuffle(choices)
-            question["choices"] = choices
-            question["correct"] = entry["hanzi"]
-
-        elif question_type == "hanzi_to_translation_mcq":
             incorrect_pool = [
-                item["translation"]
-                for item in vocab
-                if item["translation"] != entry["translation"]
+                str(item["hanzi"]) for item in vocab if item["hanzi"] != entry["hanzi"]
             ]
             choice_count = min(num_choices - 1, len(incorrect_pool))
             incorrect_choices = (
                 rng.sample(incorrect_pool, k=choice_count) if choice_count > 0 else []
             )
-            choices = incorrect_choices + [entry["translation"]]
+            choices = incorrect_choices + [str(entry["hanzi"])]
             rng.shuffle(choices)
             question["choices"] = choices
-            question["correct"] = entry["translation"]
+            question["correct"] = str(entry["hanzi"])
+
+        elif question_type == "hanzi_to_translation_mcq":
+            # This mode is now self-assessment based. Translation can be revealed on demand.
+            question["correct"] = str(entry["translation"])
 
         else:
             raise ValueError(f"Unsupported question type: {question_type}")
@@ -395,12 +394,21 @@ def reset_quiz(
 ) -> None:
     """Initialize session state for a new quiz."""
     for key in list(st.session_state.keys()):
-        if key.startswith("hint_shown_") or key.startswith("pinyin_syllable_") or key.startswith(
+        if key.startswith("hint_shown_") or key.startswith("translation_shown_") or key.startswith("pinyin_syllable_") or key.startswith(
             "pinyin_tone_"
         ):
             st.session_state.pop(key)
 
-    vocab = get_entries(quiz_key)
+    user = st.session_state.get("user")
+    if user:
+        vocab = get_due_entries(
+            quiz_key=quiz_key,
+            user_id=int(user["id"]),
+            count=num_questions,
+            seed=seed,
+        )
+    else:
+        vocab = get_entries(quiz_key)
     st.session_state["vocab"] = vocab
     st.session_state["selected_quiz"] = quiz_key
     st.session_state["question_type"] = question_type
@@ -472,6 +480,28 @@ def evaluate_answer(submission: Optional[str]) -> None:
         is_correct = user_answer == correct_display
         feedback = "Bonne réponse !" if is_correct else f"Mauvaise réponse. Le caractère correct est **{correct_display}**."
 
+    elif question_type == "hanzi_to_translation_mcq":
+        normalized = user_answer.strip().lower()
+        is_correct = normalized in {"je connais ce mot", "juste", "juste mais dur"}
+        if normalized == "faux":
+            feedback = "Noté : mot non maîtrisé pour cette tentative."
+        elif normalized == "juste mais dur":
+            feedback = "Noté : réponse juste mais encore fragile."
+        elif normalized in {"je connais ce mot", "juste"}:
+            feedback = "Noté : mot maîtrisé pour cette tentative."
+        else:
+            feedback = "Sélectionnez une auto-évaluation valide."
+
+        # Persist mastery for authenticated users.
+        user = st.session_state.get("user")
+        entry_id = question.get("id")
+        if user and isinstance(entry_id, int) and normalized in SELF_ASSESS_OPTIONS:
+            try:
+                upsert_user_vocab_mastery(user_id=int(user["id"]), entry_id=entry_id, status=normalized)
+            except ValueError:
+                # Keep quiz flow resilient even if persistence fails for one row.
+                pass
+
     else:
         is_correct = user_answer == correct_display
         feedback = "Bonne réponse !" if is_correct else f"Mauvaise réponse. La bonne traduction est **{correct_display}**."
@@ -484,6 +514,7 @@ def evaluate_answer(submission: Optional[str]) -> None:
 
     st.session_state["history"].append(
         {
+            "entry_id": question.get("id"),
             "hanzi": question["hanzi"],
             "pinyin": question["pinyin"],
             "correct": question.get("correct"),
@@ -491,6 +522,7 @@ def evaluate_answer(submission: Optional[str]) -> None:
             "question_type": question_type,
             "user_choice": user_answer,
             "is_correct": is_correct,
+            "mastery_status": user_answer if question_type == "hanzi_to_translation_mcq" else "",
         }
     )
 
@@ -517,7 +549,7 @@ def render_summary() -> None:
                 "Type": QUESTION_TYPE_LABELS.get(question_type, question_type),
                 "Question": question_label or "",
                 "Pinyin": entry["pinyin"],
-                "Votre réponse": entry["user_choice"],
+                "Votre réponse": entry.get("mastery_status") or entry["user_choice"],
                 "Bonne réponse": entry["correct"],
                 "Résultat": status,
             }
@@ -539,15 +571,22 @@ def render_quiz() -> None:
 
     question_type: QuestionType = question.get("type", DEFAULT_QUESTION_TYPE)  # type: ignore[arg-type]
     hint_key = f"hint_shown_{idx}"
+    translation_key = f"translation_shown_{idx}"
     hint_entries: List[Tuple[str, str]] = []
 
     if question_type == "translation_to_hanzi_mcq":
-        st.markdown(f"### {question['translation']}")
+        st.markdown(
+            f'<div style="font-size: 2rem; text-align: center; margin: 2rem 0 2.5rem; font-weight: 600; color: #f8fafc; letter-spacing: 0.05em;">{question["translation"]}</div>',
+            unsafe_allow_html=True,
+        )
         pinyin_hint = question.get("pinyin")
         if pinyin_hint:
             hint_entries.append(("Indice pinyin", str(pinyin_hint)))
     else:
-        st.markdown(f"### {question['hanzi']}")
+        st.markdown(
+            f'<div style="font-size: 6rem; text-align: center; margin: 2rem 0 3rem; font-weight: bold; color: #f8fafc; font-family: serif; letter-spacing: 0.2em; line-height: 1.2;">{question["hanzi"]}</div>',
+            unsafe_allow_html=True,
+        )
         if question_type == "hanzi_to_pinyin_input":
             translation_hint = question.get("translation")
             if translation_hint:
@@ -557,7 +596,29 @@ def render_quiz() -> None:
             if pinyin_hint:
                 hint_entries.append(("Pinyin", str(pinyin_hint)))
 
-    if hint_entries:
+    if question_type == "hanzi_to_translation_mcq":
+        reveal_cols = st.columns(2)
+        with reveal_cols[0]:
+            if st.button("Voir indice", key=f"reveal_hint_{idx}"):
+                st.session_state[hint_key] = True
+                trigger_rerun()
+        with reveal_cols[1]:
+            if st.button("Voir traduction", key=f"reveal_translation_{idx}"):
+                st.session_state[translation_key] = True
+                trigger_rerun()
+
+        if st.session_state.get(hint_key):
+            for label, value in hint_entries:
+                st.caption(f"{label} : {value}")
+        else:
+            st.caption("Indice masqué.")
+
+        if st.session_state.get(translation_key):
+            st.caption(f"Traduction : {question.get('translation', '')}")
+        else:
+            st.caption("Traduction masquée.")
+
+    elif hint_entries:
         if st.session_state.get(hint_key):
             for label, value in hint_entries:
                 st.caption(f"{label} : {value}")
@@ -573,12 +634,15 @@ def render_quiz() -> None:
         missing_syllables = False
         choice: Optional[str] = None
         with st.form(key=form_key):
-            if question_type in {"hanzi_to_translation_mcq", "translation_to_hanzi_mcq"}:
-                label = (
-                    "Choisissez la traduction correcte :"
-                    if question_type == "hanzi_to_translation_mcq"
-                    else "Choisissez le caractère correct :"
+            if question_type == "hanzi_to_translation_mcq":
+                choice = st.radio(
+                    "Auto-évaluation",
+                    options=SELF_ASSESS_OPTIONS,
+                    index=None,
+                    key=f"self_assess_{idx}",
                 )
+            elif question_type == "translation_to_hanzi_mcq":
+                label = "Choisissez le caractère correct :"
                 choice = st.selectbox(
                     label,
                     question.get("choices", []),
@@ -658,6 +722,9 @@ def render_quiz() -> None:
             st.write(f"Pinyin correct : **{correct_answer}**")
         elif question_type == "translation_to_hanzi_mcq":
             st.write(f"Caractère correct : **{correct_answer}**")
+        elif question_type == "hanzi_to_translation_mcq":
+            st.write(f"Traduction : **{correct_answer}**")
+            st.write(f"Votre évaluation : **{st.session_state.get('last_choice', '')}**")
         else:
             st.write(f"Traduction correcte : **{correct_answer}**")
 
@@ -668,7 +735,9 @@ def render_quiz() -> None:
             st.session_state["feedback"] = ""
             st.session_state.pop(f"text_answer_{idx}", None)
             st.session_state.pop(f"choice_select_{idx}", None)
+            st.session_state.pop(f"self_assess_{idx}", None)
             st.session_state.pop(f"hint_shown_{idx}", None)
+            st.session_state.pop(f"translation_shown_{idx}", None)
             token_count = len(get_question_pinyin_tokens(question))
             clear_pinyin_variant_inputs(idx, token_count)
             trigger_rerun()

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 import random
 from typing import Dict, List, Optional
 
@@ -9,7 +10,7 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 
 from db import get_session, init_db
-from models import Entry, Quiz, User, UserSetting
+from models import Entry, Quiz, User, UserSetting, UserVocabMastery
 from utils.auth import hash_password, verify_password
 
 
@@ -52,7 +53,7 @@ def get_quiz_by_key(key: str) -> Optional[Dict[str, Optional[str]]]:
         }
 
 
-def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, str]]:
+def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, object]]:
     """Return all entries for the given quiz as plain dictionaries."""
     stmt = (
         select(Entry)
@@ -69,6 +70,8 @@ def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, str]]
         for entry in result.scalars():
             entries.append(
                 {
+                    "id": entry.id,
+                    "quiz_id": entry.quiz_id,
                     "hanzi": entry.hanzi,
                     "pinyin": entry.pinyin,
                     "translation": entry.translation,
@@ -81,7 +84,7 @@ def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, str]]
 
 def get_random_entries(
     quiz_key: str, count: int, *, seed: Optional[int] = None
-) -> List[Dict[str, str]]:
+) -> List[Dict[str, object]]:
     """Return a random sample of entries for the given quiz."""
     vocab = get_entries(quiz_key)
     if not vocab:
@@ -175,3 +178,144 @@ def update_user_locale(user_id: int, locale: str) -> None:
         user = session.get(User, user_id)
         if user:
             user.locale = locale
+
+
+# ---------------------------------------------------------------------------
+# User vocabulary mastery (step 2)
+
+MASTERY_STATUS_SCORES: Dict[str, float] = {
+    "je connais ce mot": 1.0,
+    "juste": 0.75,
+    "juste mais dur": 0.4,
+    "faux": 0.0,
+}
+
+
+def upsert_user_vocab_mastery(user_id: int, entry_id: int, status: str) -> Dict[str, object]:
+    """Insert or update a user's mastery status for one vocabulary entry."""
+    normalized_status = status.strip().lower()
+    if normalized_status not in MASTERY_STATUS_SCORES:
+        raise ValueError(f"Unsupported mastery status: {status}")
+
+    confidence = MASTERY_STATUS_SCORES[normalized_status]
+    now = datetime.utcnow()
+
+    with get_session() as session:
+        entry = session.get(Entry, entry_id)
+        if not entry:
+            raise ValueError(f"Unknown entry_id: {entry_id}")
+
+        stmt = select(UserVocabMastery).where(
+            UserVocabMastery.user_id == user_id,
+            UserVocabMastery.entry_id == entry_id,
+        )
+        record = session.execute(stmt).scalars().first()
+
+        if record:
+            record.status = normalized_status
+            record.confidence_score = confidence
+            record.last_seen_at = now
+            record.review_count = (record.review_count or 0) + 1
+        else:
+            record = UserVocabMastery(
+                user_id=user_id,
+                entry_id=entry_id,
+                status=normalized_status,
+                confidence_score=confidence,
+                review_count=1,
+                last_seen_at=now,
+            )
+            session.add(record)
+            session.flush()
+
+        return {
+            "id": record.id,
+            "user_id": record.user_id,
+            "entry_id": record.entry_id,
+            "status": record.status,
+            "confidence_score": record.confidence_score,
+            "review_count": record.review_count,
+            "last_seen_at": record.last_seen_at,
+        }
+
+
+def get_user_mastery_for_quiz(user_id: int, quiz_key: str) -> Dict[int, Dict[str, object]]:
+    """Return mastery rows for one user and one quiz, keyed by entry_id."""
+    stmt = (
+        select(UserVocabMastery)
+        .join(Entry, UserVocabMastery.entry_id == Entry.id)
+        .join(Quiz, Entry.quiz_id == Quiz.id)
+        .where(UserVocabMastery.user_id == user_id, Quiz.key == quiz_key)
+    )
+
+    with get_session() as session:
+        rows = session.execute(stmt).scalars().all()
+        return {
+            row.entry_id: {
+                "status": row.status,
+                "confidence_score": row.confidence_score,
+                "review_count": row.review_count,
+                "last_seen_at": row.last_seen_at,
+            }
+            for row in rows
+        }
+
+
+def get_due_entries(
+    quiz_key: str,
+    user_id: int,
+    count: int,
+    *,
+    seed: Optional[int] = None,
+) -> List[Dict[str, object]]:
+    """Return quiz entries prioritized by lower mastery confidence for a user."""
+    vocab = get_entries(quiz_key)
+    if not vocab:
+        return []
+
+    mastery = get_user_mastery_for_quiz(user_id, quiz_key)
+    rng = random.Random(seed)
+
+    def priority(entry: Dict[str, object]) -> float:
+        entry_id = int(entry.get("id", 0) or 0)
+        m = mastery.get(entry_id)
+        if not m:
+            # Unseen words should appear early.
+            return 1.5 + rng.random() * 0.05
+        confidence = float(m.get("confidence_score", 0.0) or 0.0)
+        reviews = int(m.get("review_count", 0) or 0)
+        return (1.0 - confidence) + max(0.0, 0.5 - (reviews * 0.05)) + rng.random() * 0.05
+
+    ranked = sorted(vocab, key=priority, reverse=True)
+    return ranked[: min(count, len(ranked))]
+
+
+def get_user_mastery_entries(user_id: int, quiz_key: Optional[str] = None) -> List[Dict[str, object]]:
+    """Return mastery rows enriched with entry and quiz metadata for dashboard views."""
+    stmt = (
+        select(UserVocabMastery, Entry, Quiz)
+        .join(Entry, UserVocabMastery.entry_id == Entry.id)
+        .join(Quiz, Entry.quiz_id == Quiz.id)
+        .where(UserVocabMastery.user_id == user_id)
+        .order_by(Quiz.level.asc(), Quiz.title.asc(), Entry.id.asc())
+    )
+    if quiz_key:
+        stmt = stmt.where(Quiz.key == quiz_key)
+
+    with get_session() as session:
+        rows = session.execute(stmt).all()
+        return [
+            {
+                "quiz_key": quiz.key,
+                "quiz_title": quiz.title,
+                "entry_id": entry.id,
+                "hanzi": entry.hanzi,
+                "pinyin": entry.pinyin,
+                "translation": entry.translation,
+                "status": mastery.status,
+                "confidence_score": mastery.confidence_score,
+                "review_count": mastery.review_count,
+                "last_seen_at": mastery.last_seen_at,
+            }
+            for mastery, entry, quiz in rows
+        ]
