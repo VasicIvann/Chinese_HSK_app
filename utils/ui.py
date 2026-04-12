@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Literal
 
 import streamlit as st
+from streamlit.errors import StreamlitPageNotFoundError
 from streamlit.components.v1 import html as components_html
 
 
@@ -403,19 +404,37 @@ def render_top_nav(active_page: TopNavPage) -> None:
     if active_page != "home":
         st.session_state["show_training_modal"] = False
 
+    def _safe_page_link(
+        candidates: list[str], label: str, help_text: str, disabled: bool
+    ) -> None:
+        """Try multiple page path casings to avoid Cloud/Linux path mismatches."""
+        if disabled:
+            st.page_link(candidates[0], label=label, help=help_text, disabled=True)
+            return
+
+        for page_path in candidates:
+            try:
+                st.page_link(page_path, label=label, help=help_text)
+                return
+            except StreamlitPageNotFoundError:
+                continue
+
+        # Last-resort fallback that keeps the UI usable without crashing the app.
+        st.button(label, help=help_text, disabled=True)
+
     nav_cols = st.columns([1, 1])
     with nav_cols[0]:
-        st.page_link(
-            "Main.py",
+        _safe_page_link(
+            candidates=["Main.py", "main.py", "./Main.py", "./main.py"],
             label="🏠 Accueil",
-            help="Retourner a la page d'accueil",
+            help_text="Retourner a la page d'accueil",
             disabled=active_page == "home",
         )
 
     with nav_cols[1]:
-        st.page_link(
-            "pages/Account.py",
+        _safe_page_link(
+            candidates=["pages/Account.py", "pages/account.py"],
             label="👤 Compte",
-            help="Gerer votre compte",
+            help_text="Gerer votre compte",
             disabled=active_page == "account",
         )
