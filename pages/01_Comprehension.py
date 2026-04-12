@@ -499,8 +499,8 @@ def evaluate_answer(submission: Optional[str]) -> None:
             try:
                 upsert_user_vocab_mastery(user_id=int(user["id"]), entry_id=entry_id, status=normalized)
             except ValueError:
-                # Keep quiz flow resilient even if persistence fails for one row.
-                pass
+                # Keep quiz flow resilient while making persistence issues visible.
+                feedback += " (Attention: score non enregistre pour cette tentative.)"
 
     else:
         is_correct = user_answer == correct_display
@@ -614,7 +614,20 @@ def render_quiz() -> None:
             st.caption("Indice masqué.")
 
         if st.session_state.get(translation_key):
-            st.caption(f"Traduction : {question.get('translation', '')}")
+            main_translation = str(question.get("translation", "")).strip()
+            alt_translations = split_alt_translations(str(question.get("alt_translations", "")))
+            normalized_main = normalize_text_answer(main_translation) if main_translation else ""
+            secondary_translations = [
+                alt for alt in alt_translations if normalize_text_answer(alt) != normalized_main
+            ]
+
+            st.markdown(f"Traduction principale : **{main_translation}**")
+            if secondary_translations:
+                st.markdown(
+                    "Traductions secondaires : " + "; ".join(secondary_translations)
+                )
+            else:
+                st.caption("Aucune traduction secondaire.")
         else:
             st.caption("Traduction masquée.")
 

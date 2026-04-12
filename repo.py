@@ -212,10 +212,14 @@ def upsert_user_vocab_mastery(user_id: int, entry_id: int, status: str) -> Dict[
         record = session.execute(stmt).scalars().first()
 
         if record:
+            previous_count = int(record.review_count or 0)
+            previous_avg = float(record.confidence_score or 0.0)
+            new_count = previous_count + 1
+            # Running average across all attempts for this word and user.
+            record.confidence_score = ((previous_avg * previous_count) + confidence) / new_count
+            record.review_count = new_count
             record.status = normalized_status
-            record.confidence_score = confidence
             record.last_seen_at = now
-            record.review_count = (record.review_count or 0) + 1
         else:
             record = UserVocabMastery(
                 user_id=user_id,
@@ -268,7 +272,12 @@ def get_due_entries(
     *,
     seed: Optional[int] = None,
 ) -> List[Dict[str, object]]:
-    """Return quiz entries prioritized by lower mastery confidence for a user."""
+    """Return quiz entries prioritized for revision and new exposure.
+
+    Mastered words (confidence >= 0.9) are excluded entirely.
+    Review-needed and unseen words dominate the selection.
+    Words in the "just" zone are included sparingly.
+    """
     vocab = get_entries(quiz_key)
     if not vocab:
         return []
@@ -276,18 +285,77 @@ def get_due_entries(
     mastery = get_user_mastery_for_quiz(user_id, quiz_key)
     rng = random.Random(seed)
 
-    def priority(entry: Dict[str, object]) -> float:
+    review_bucket: List[Dict[str, object]] = []
+    unseen_bucket: List[Dict[str, object]] = []
+    just_bucket: List[Dict[str, object]] = []
+
+    for entry in vocab:
         entry_id = int(entry.get("id", 0) or 0)
         m = mastery.get(entry_id)
         if not m:
-            # Unseen words should appear early.
-            return 1.5 + rng.random() * 0.05
-        confidence = float(m.get("confidence_score", 0.0) or 0.0)
-        reviews = int(m.get("review_count", 0) or 0)
-        return (1.0 - confidence) + max(0.0, 0.5 - (reviews * 0.05)) + rng.random() * 0.05
+            unseen_bucket.append(entry)
+            continue
 
-    ranked = sorted(vocab, key=priority, reverse=True)
-    return ranked[: min(count, len(ranked))]
+        confidence = float(m.get("confidence_score", 0.0) or 0.0)
+        if confidence >= 0.9:
+            continue
+        if confidence <= 0.5:
+            review_bucket.append(entry)
+        else:
+            just_bucket.append(entry)
+
+    def bucket_sort_key(entry: Dict[str, object], bucket_name: str) -> tuple:
+        entry_id = int(entry.get("id", 0) or 0)
+        m = mastery.get(entry_id)
+        confidence = float(m.get("confidence_score", 0.0) or 0.0) if m else 0.0
+        reviews = int(m.get("review_count", 0) or 0) if m else 0
+        noise = rng.random() * 0.01
+        if bucket_name == "review":
+            return (confidence, reviews, noise)
+        if bucket_name == "unseen":
+            return (noise,)
+        return (-confidence, reviews, noise)
+
+    review_bucket.sort(key=lambda entry: bucket_sort_key(entry, "review"))
+    unseen_bucket.sort(key=lambda entry: bucket_sort_key(entry, "unseen"))
+    just_bucket.sort(key=lambda entry: bucket_sort_key(entry, "just"))
+
+    desired_review = int(round(count * 0.45))
+    desired_unseen = int(round(count * 0.45))
+    desired_just = max(0, count - desired_review - desired_unseen)
+
+    selected: List[Dict[str, object]] = []
+
+    def take_from(bucket: List[Dict[str, object]], amount: int) -> None:
+        nonlocal selected
+        if amount <= 0 or not bucket:
+            return
+        take = min(amount, len(bucket))
+        selected.extend(bucket[:take])
+
+    take_from(review_bucket, desired_review)
+    take_from(unseen_bucket, desired_unseen)
+    take_from(just_bucket, desired_just)
+
+    # Redistribute any missing slots to the most important buckets first.
+    remaining = count - len(selected)
+    if remaining > 0:
+        remaining_sources = [review_bucket, unseen_bucket, just_bucket]
+        used_ids = {int(entry.get("id", 0) or 0) for entry in selected}
+        for bucket in remaining_sources:
+            for entry in bucket:
+                entry_id = int(entry.get("id", 0) or 0)
+                if entry_id in used_ids:
+                    continue
+                selected.append(entry)
+                used_ids.add(entry_id)
+                remaining -= 1
+                if remaining == 0:
+                    break
+            if remaining == 0:
+                break
+
+    return selected[: min(count, len(selected))]
 
 
 def get_user_mastery_entries(user_id: int, quiz_key: Optional[str] = None) -> List[Dict[str, object]]:
