@@ -35,6 +35,7 @@ class Quiz(Base):
     """Represents a quiz dataset (e.g., HSK1, HSK2)."""
 
     __tablename__ = "quizzes"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True, index=True)
     key = Column(String(50), unique=True, nullable=False)
@@ -55,6 +56,7 @@ class Entry(Base):
     """Represents a vocabulary entry belonging to a quiz."""
 
     __tablename__ = "entries"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True, index=True)
     quiz_id = Column(Integer, ForeignKey("quizzes.id", ondelete="CASCADE"), nullable=False)
@@ -79,6 +81,7 @@ class User(Base):
     """Registered user account."""
 
     __tablename__ = "users"
+    __table_args__ = {"extend_existing": True}
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String(255), unique=True, nullable=False, index=True)
@@ -107,7 +110,10 @@ class UserSetting(Base):
     """Key-value user preference storage."""
 
     __tablename__ = "user_settings"
-    __table_args__ = (UniqueConstraint("user_id", "key", name="uq_user_setting"),)
+    __table_args__ = (
+        UniqueConstraint("user_id", "key", name="uq_user_setting"),
+        {"extend_existing": True},
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
@@ -125,7 +131,10 @@ class UserVocabMastery(Base):
     """Per-user mastery state for a vocabulary entry."""
 
     __tablename__ = "user_vocab_mastery"
-    __table_args__ = (UniqueConstraint("user_id", "entry_id", name="uq_user_entry_mastery"),)
+    __table_args__ = (
+        UniqueConstraint("user_id", "entry_id", name="uq_user_entry_mastery"),
+        {"extend_existing": True},
+    )
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
