@@ -1,14 +1,14 @@
 # Chinese HSK App
 
-Application web d'entrainement au HSK (niveaux 1 et 2) construite avec Streamlit.
+Application web d'entrainement au HSK (niveaux 1, 2 et 3) construite avec Streamlit.
 
 ## 1) Stack technique
 
 - Frontend + app: Streamlit (multipages)
 - Backend applicatif: Python
-- Base de donnees: SQLite
+- Base de donnees: PostgreSQL (Neon recommande en production) avec fallback SQLite en local
 - ORM: SQLAlchemy
-- Donnees initiales: CSV (`data/hsk1.csv`, `data/hsk2.csv`)
+- Donnees initiales: CSV (`data/hsk1.csv`, `data/hsk2.csv`, `data/hsk3.csv`)
 - Authentification: hash de mot de passe PBKDF2 (implementation maison via `hashlib`)
 
 ## 2) Fonctionnalites principales
@@ -48,7 +48,7 @@ Depuis la racine du projet:
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install --upgrade pip
-pip install streamlit sqlalchemy
+pip install streamlit sqlalchemy "psycopg[binary]"
 ```
 
 ## 6) Lancer une version test en local
@@ -76,7 +76,7 @@ python -m scripts.reset_db
 
 ```bash
 pip install --upgrade pip
-pip install streamlit sqlalchemy
+pip install streamlit sqlalchemy "psycopg[binary]"
 ```
 
 2. Commande de demarrage (Start Command):
@@ -103,7 +103,38 @@ Notes:
 
 Notes importantes:
 - `Main.py` doit rester le point d'entree.
-- Comme la base utilise SQLite locale, les donnees utilisateur peuvent etre reinitialisees si l'environnement Cloud est recrée. Pour une persistence longue duree, il faudra plus tard migrer vers une base distante.
+- Pour une persistence durable, configurez Neon via le secret `HSK_DATABASE_URL`.
+
+### Option C: Migration complete vers Neon (recommande)
+
+1. Creer une base Neon (plan gratuit)
+- Aller sur https://neon.tech/
+- Creer un projet et copier la connection string PostgreSQL
+
+2. Configurer Streamlit Cloud
+- Ouvrir votre app > `Settings` > `Secrets`
+- Ajouter:
+
+```toml
+HSK_DATABASE_URL = "postgresql://USER:PASSWORD@HOST/DBNAME?sslmode=require"
+```
+
+- Sauvegarder les secrets
+
+3. Redepoyer
+- Streamlit redemarre automatiquement
+- Au premier lancement, l'app cree les tables puis seed les quiz depuis les CSV
+
+4. Verification
+- Ouvrir la page `Account`
+- Se connecter
+- Lancer un quiz et valider une reponse
+- Verifier que les scores de maitrise evoluent entre rechargements
+
+5. Local (optionnel) avec Neon
+- Copier `.streamlit/secrets.toml.example` vers `.streamlit/secrets.toml`
+- Renseigner `HSK_DATABASE_URL`
+- Lancer `streamlit run Main.py`
 
 ## 9) Modele de commande locale equivalent au deploiement
 
@@ -119,6 +150,7 @@ streamlit run Main.py --server.address 0.0.0.0 --server.port $env:PORT
 Le projet utilise actuellement ces dependances Python externes:
 - `streamlit`
 - `sqlalchemy`
+- `psycopg[binary]`
 
 Vous pouvez figer les versions si besoin:
 

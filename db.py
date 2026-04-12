@@ -28,6 +28,37 @@ DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 
+def _normalize_database_url(raw_url: str) -> str:
+    """Normalize DB URL for SQLAlchemy driver compatibility."""
+    url = raw_url.strip()
+    if url.startswith("postgresql://") and not url.startswith("postgresql+psycopg://"):
+        return "postgresql+psycopg://" + url[len("postgresql://") :]
+    if url.startswith("postgres://"):
+        return "postgresql+psycopg://" + url[len("postgres://") :]
+    return url
+
+
+def _get_external_database_url() -> str:
+    """Read DB URL from env or Streamlit secrets (for Cloud deployment)."""
+    env_candidates = ["HSK_DATABASE_URL", "DATABASE_URL"]
+    for key in env_candidates:
+        value = os.environ.get(key, "").strip()
+        if value:
+            return _normalize_database_url(value)
+
+    # Optional fallback for Streamlit secrets.
+    try:
+        import streamlit as st  # type: ignore
+
+        secret_value = str(st.secrets.get("HSK_DATABASE_URL", "")).strip()
+        if secret_value:
+            return _normalize_database_url(secret_value)
+    except Exception:
+        pass
+
+    return ""
+
+
 def _can_write_to(path: Path) -> bool:
     """Return True if the directory is writable."""
     try:
@@ -59,14 +90,23 @@ def _select_database_path() -> Path:
     return tmp_dir / "quizzes.sqlite3"
 
 
-DATABASE_PATH = _select_database_path()
-DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
-
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},
-    future=True,
-)
+EXTERNAL_DATABASE_URL = _get_external_database_url()
+if EXTERNAL_DATABASE_URL:
+    DATABASE_PATH = None
+    DATABASE_URL = EXTERNAL_DATABASE_URL
+    engine = create_engine(
+        DATABASE_URL,
+        future=True,
+        pool_pre_ping=True,
+    )
+else:
+    DATABASE_PATH = _select_database_path()
+    DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False},
+        future=True,
+    )
 
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 Base = declarative_base()
