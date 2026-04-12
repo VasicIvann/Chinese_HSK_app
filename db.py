@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
+import os
 from pathlib import Path
 import sys
+import tempfile
 from typing import Iterator
 
 from sqlalchemy import create_engine
@@ -25,7 +27,39 @@ elif __name__.endswith(".db"):
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-DATABASE_PATH = DATA_DIR / "quizzes.sqlite3"
+
+def _can_write_to(path: Path) -> bool:
+    """Return True if the directory is writable."""
+    try:
+        path.mkdir(parents=True, exist_ok=True)
+        test_file = path / ".write_test"
+        test_file.write_text("ok", encoding="utf-8")
+        test_file.unlink(missing_ok=True)
+        return True
+    except OSError:
+        return False
+
+
+def _select_database_path() -> Path:
+    """Choose a writable database location.
+
+    On Streamlit Community Cloud, source files under /mount/src are read-only.
+    Fall back to /tmp so writes (login/mastery updates) can succeed.
+    """
+    env_override = os.environ.get("HSK_DB_PATH", "").strip()
+    if env_override:
+        return Path(env_override)
+
+    default_path = DATA_DIR / "quizzes.sqlite3"
+    if _can_write_to(DATA_DIR):
+        return default_path
+
+    tmp_dir = Path(tempfile.gettempdir()) / "chinese_hsk_app_data"
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+    return tmp_dir / "quizzes.sqlite3"
+
+
+DATABASE_PATH = _select_database_path()
 DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
 
 engine = create_engine(
