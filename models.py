@@ -4,7 +4,17 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import (
+    Boolean,
+    Column,
+    DateTime,
+    Float,
+    ForeignKey,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import relationship
 
 from db import Base
@@ -46,6 +56,12 @@ class Entry(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     quiz = relationship("Quiz", back_populates="entries")
+    mastery_records = relationship(
+        "UserVocabMastery",
+        back_populates="entry",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )
 
 
 class User(Base):
@@ -68,6 +84,12 @@ class User(Base):
         cascade="all, delete-orphan",
         lazy="selectin",
     )
+    vocab_mastery = relationship(
+        "UserVocabMastery",
+        back_populates="user",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )
 
 
 class UserSetting(Base):
@@ -86,3 +108,25 @@ class UserSetting(Base):
     )
 
     user = relationship("User", back_populates="settings")
+
+
+class UserVocabMastery(Base):
+    """Per-user mastery state for a vocabulary entry."""
+
+    __tablename__ = "user_vocab_mastery"
+    __table_args__ = (UniqueConstraint("user_id", "entry_id", name="uq_user_entry_mastery"),)
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    entry_id = Column(Integer, ForeignKey("entries.id", ondelete="CASCADE"), nullable=False)
+    status = Column(String(32), nullable=False)
+    confidence_score = Column(Float, nullable=False, default=0.0)
+    review_count = Column(Integer, nullable=False, default=1)
+    last_seen_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
+    )
+
+    user = relationship("User", back_populates="vocab_mastery")
+    entry = relationship("Entry", back_populates="mastery_records")

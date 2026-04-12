@@ -353,6 +353,26 @@ def inject_global_styles() -> None:
                 border-color: rgba(148, 163, 184, 0.4);
                 background: rgba(15, 23, 42, 0.9);
             }
+
+            .quiz-hanzi {
+                font-size: 6rem;
+                text-align: center;
+                margin: 2rem 0 3rem;
+                font-weight: bold;
+                color: #f8fafc;
+                font-family: serif;
+                letter-spacing: 0.2em;
+                line-height: 1.2;
+            }
+
+            .quiz-french {
+                font-size: 2rem;
+                text-align: center;
+                margin: 2rem 0 2.5rem;
+                font-weight: 600;
+                color: #f8fafc;
+                letter-spacing: 0.05em;
+            }
         </style>
         """,
         unsafe_allow_html=True,
