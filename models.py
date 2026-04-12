@@ -17,7 +17,6 @@ from sqlalchemy import (
     Text,
     UniqueConstraint,
 )
-from sqlalchemy.orm import relationship
 
 from db import Base
 
@@ -47,11 +46,6 @@ class Quiz(Base):
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )
 
-    entries = relationship(
-        "Entry", back_populates="quiz", cascade="all, delete-orphan", lazy="selectin"
-    )
-
-
 class Entry(Base):
     """Represents a vocabulary entry belonging to a quiz."""
 
@@ -68,15 +62,6 @@ class Entry(Base):
     is_active = Column(Boolean, default=True, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
-    quiz = relationship("Quiz", back_populates="entries")
-    mastery_records = relationship(
-        "UserVocabMastery",
-        back_populates="entry",
-        cascade="all, delete-orphan",
-        lazy="selectin",
-    )
-
-
 class User(Base):
     """Registered user account."""
 
@@ -91,20 +76,6 @@ class User(Base):
     updated_at = Column(
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )
-
-    settings = relationship(
-        "UserSetting",
-        back_populates="user",
-        cascade="all, delete-orphan",
-        lazy="selectin",
-    )
-    vocab_mastery = relationship(
-        "UserVocabMastery",
-        back_populates="user",
-        cascade="all, delete-orphan",
-        lazy="selectin",
-    )
-
 
 class UserSetting(Base):
     """Key-value user preference storage."""
@@ -123,9 +94,6 @@ class UserSetting(Base):
     updated_at = Column(
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )
-
-    user = relationship("User", back_populates="settings")
-
 
 class UserVocabMastery(Base):
     """Per-user mastery state for a vocabulary entry."""
@@ -148,5 +116,3 @@ class UserVocabMastery(Base):
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )
 
-    user = relationship("User", back_populates="vocab_mastery")
-    entry = relationship("Entry", back_populates="mastery_records")
