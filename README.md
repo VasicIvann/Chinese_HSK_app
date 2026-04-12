@@ -92,10 +92,18 @@ Notes:
 ### Option B: Streamlit Community Cloud
 
 - Pousser le depot sur GitHub
-- Creer une app sur Streamlit Cloud en selectionnant:
+- Verifier que le depot contient bien un `requirements.txt` a la racine
+- Aller sur https://share.streamlit.io/ ou Streamlit Community Cloud
+- Creer une nouvelle app en selectionnant:
   - Repository: ce depot
+  - Branch: la branche principale (souvent `main`)
   - Main file path: `Main.py`
-- Streamlit Cloud lancera automatiquement l'app
+- Cliquer sur `Deploy`
+- Streamlit Cloud installera automatiquement les dependances puis lancera l'app
+
+Notes importantes:
+- `Main.py` doit rester le point d'entree.
+- Comme la base utilise SQLite locale, les donnees utilisateur peuvent etre reinitialisees si l'environnement Cloud est recrée. Pour une persistence longue duree, il faudra plus tard migrer vers une base distante.
 
 ## 9) Modele de commande locale equivalent au deploiement
 
