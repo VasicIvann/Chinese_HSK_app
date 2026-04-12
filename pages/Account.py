@@ -15,7 +15,10 @@ from utils.auth_ui import (
 from utils.ui import render_top_nav
 
 
-MASTERY_REVIEW_STATUS = {"faux", "juste mais dur"}
+REVIEW_MAX_CONFIDENCE = 0.5
+JUSTE_MIN_CONFIDENCE = 0.5
+JUSTE_MAX_CONFIDENCE = 0.9
+MASTERED_MIN_CONFIDENCE = 0.9
 
 
 def _render_mastery_dashboard() -> None:
@@ -45,13 +48,23 @@ def _render_mastery_dashboard() -> None:
         st.caption("Aucune donnee de maitrise pour le moment. Faites quelques questions d'abord.")
         return
 
-    mastered = [r for r in rows if str(r.get("status", "")) not in MASTERY_REVIEW_STATUS]
-    review = [r for r in rows if str(r.get("status", "")) in MASTERY_REVIEW_STATUS]
+    mastered = [
+        r for r in rows if float(r.get("confidence_score", 0.0) or 0.0) > MASTERED_MIN_CONFIDENCE
+    ]
+    juste = [
+        r
+        for r in rows
+        if JUSTE_MIN_CONFIDENCE < float(r.get("confidence_score", 0.0) or 0.0) < JUSTE_MAX_CONFIDENCE
+    ]
+    review = [
+        r for r in rows if float(r.get("confidence_score", 0.0) or 0.0) <= REVIEW_MAX_CONFIDENCE
+    ]
 
-    stats_cols = st.columns(3)
+    stats_cols = st.columns(4)
     stats_cols[0].metric("Total evalue", len(rows))
     stats_cols[1].metric("Maitrises", len(mastered))
-    stats_cols[2].metric("A revoir", len(review))
+    stats_cols[2].metric("Mots juste", len(juste))
+    stats_cols[3].metric("A revoir", len(review))
 
     def to_table(source: list[dict]) -> list[dict]:
         return [
@@ -68,7 +81,7 @@ def _render_mastery_dashboard() -> None:
             for r in source
         ]
 
-    tabs = st.tabs(["Mots maitrises", "Mots a revoir"])
+    tabs = st.tabs(["Mots maitrises", "Mots juste", "Mots a revoir"])
     with tabs[0]:
         if mastered:
             st.dataframe(to_table(mastered), use_container_width=True, hide_index=True)
@@ -76,6 +89,12 @@ def _render_mastery_dashboard() -> None:
             st.caption("Aucun mot maitrise selon les reponses actuelles.")
 
     with tabs[1]:
+        if juste:
+            st.dataframe(to_table(juste), use_container_width=True, hide_index=True)
+        else:
+            st.caption("Aucun mot dans la zone intermediaire (0.5 < confiance < 0.9).")
+
+    with tabs[2]:
         if review:
             st.dataframe(to_table(review), use_container_width=True, hide_index=True)
         else:
