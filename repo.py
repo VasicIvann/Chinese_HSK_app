@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from functools import lru_cache
 import random
 from typing import Dict, List, Optional
 
@@ -18,12 +19,13 @@ from utils.auth import hash_password, verify_password
 init_db()
 
 
-def list_quizzes() -> List[Dict[str, Optional[str]]]:
-    """Return all available quizzes ordered by level then title."""
+@lru_cache(maxsize=1)
+def _list_quizzes_cached() -> tuple[Dict[str, Optional[str]], ...]:
+    """Cached quiz list for static metadata reads."""
     stmt = select(Quiz).order_by(func.coalesce(Quiz.level, 9999), Quiz.title)
     with get_session() as session:
         result = session.execute(stmt)
-        quizzes = []
+        quizzes: List[Dict[str, Optional[str]]] = []
         for quiz in result.scalars():
             quizzes.append(
                 {
@@ -34,7 +36,12 @@ def list_quizzes() -> List[Dict[str, Optional[str]]]:
                     "level": quiz.level,
                 }
             )
-        return quizzes
+        return tuple(quizzes)
+
+
+def list_quizzes() -> List[Dict[str, Optional[str]]]:
+    """Return all available quizzes ordered by level then title."""
+    return [dict(item) for item in _list_quizzes_cached()]
 
 
 def get_quiz_by_key(key: str) -> Optional[Dict[str, Optional[str]]]:
@@ -53,8 +60,9 @@ def get_quiz_by_key(key: str) -> Optional[Dict[str, Optional[str]]]:
         }
 
 
-def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, object]]:
-    """Return all entries for the given quiz as plain dictionaries."""
+@lru_cache(maxsize=16)
+def _get_entries_cached(quiz_key: str, only_active: bool = True) -> tuple[Dict[str, object], ...]:
+    """Cached entry list per quiz for static vocabulary reads."""
     stmt = (
         select(Entry)
         .join(Quiz)
@@ -79,7 +87,12 @@ def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, objec
                     "tags": entry.tags or "",
                 }
             )
-        return entries
+        return tuple(entries)
+
+
+def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, object]]:
+    """Return all entries for the given quiz as plain dictionaries."""
+    return [dict(item) for item in _get_entries_cached(quiz_key, only_active)]
 
 
 def get_random_entries(

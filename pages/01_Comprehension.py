@@ -390,7 +390,11 @@ def build_question_pool(
 
 
 def reset_quiz(
-    quiz_key: str, num_questions: int, question_type: QuestionType, seed: Optional[int] = None
+    quiz_key: str,
+    num_questions: int,
+    question_type: QuestionType,
+    seed: Optional[int] = None,
+    preloaded_vocab: Optional[List[Dict[str, object]]] = None,
 ) -> None:
     """Initialize session state for a new quiz."""
     for key in list(st.session_state.keys()):
@@ -408,7 +412,7 @@ def reset_quiz(
             seed=seed,
         )
     else:
-        vocab = get_entries(quiz_key)
+        vocab = preloaded_vocab if preloaded_vocab is not None else get_entries(quiz_key)
     st.session_state["vocab"] = vocab
     st.session_state["selected_quiz"] = quiz_key
     st.session_state["question_type"] = question_type
@@ -601,11 +605,9 @@ def render_quiz() -> None:
         with reveal_cols[0]:
             if st.button("Voir indice", key=f"reveal_hint_{idx}"):
                 st.session_state[hint_key] = True
-                trigger_rerun()
         with reveal_cols[1]:
             if st.button("Voir traduction", key=f"reveal_translation_{idx}"):
                 st.session_state[translation_key] = True
-                trigger_rerun()
 
         if st.session_state.get(hint_key):
             for label, value in hint_entries:
@@ -632,15 +634,14 @@ def render_quiz() -> None:
             st.caption("Traduction masquée.")
 
     elif hint_entries:
+        if st.button("Révéler les indices", key=f"reveal_hint_{idx}"):
+            st.session_state[hint_key] = True
+
         if st.session_state.get(hint_key):
             for label, value in hint_entries:
                 st.caption(f"{label} : {value}")
         else:
-            if st.button("Révéler les indices", key=f"reveal_hint_{idx}"):
-                st.session_state[hint_key] = True
-                trigger_rerun()
-            else:
-                st.caption('Indices masqués. Cliquez sur "Révéler les indices" si besoin.')
+            st.caption('Indices masqués. Cliquez sur "Révéler les indices" si besoin.')
 
     if not st.session_state["answered"]:
         form_key = f"quiz_form_{idx}"
@@ -873,7 +874,12 @@ def main() -> None:
     quiz_changed = st.session_state.get("selected_quiz") != selected_quiz_key
     type_changed = question_type != previous_question_type
     if "questions" not in st.session_state or quiz_changed or type_changed:
-        reset_quiz(selected_quiz_key, num_questions, question_type)
+        reset_quiz(
+            selected_quiz_key,
+            num_questions,
+            question_type,
+            preloaded_vocab=vocab,
+        )
         if quiz_changed or type_changed:
             trigger_rerun()
             return
@@ -891,7 +897,13 @@ def main() -> None:
     with stats_cols[2]:
         if st.button("Nouvelle serie", use_container_width=True):
             seed_value = random.randint(0, 10_000)
-            reset_quiz(selected_quiz_key, num_questions, question_type, seed=seed_value)
+            reset_quiz(
+                selected_quiz_key,
+                num_questions,
+                question_type,
+                seed=seed_value,
+                preloaded_vocab=vocab,
+            )
             trigger_rerun()
             return
 
