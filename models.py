@@ -17,6 +17,7 @@ from sqlalchemy import (
     Text,
     UniqueConstraint,
 )
+from sqlalchemy.orm import clear_mappers
 
 from db import Base
 
@@ -28,6 +29,10 @@ if __name__ == "models":
     sys.modules.setdefault(f"{_PKG_NAME}.models", sys.modules[__name__])
 elif __name__.endswith(".models"):
     sys.modules.setdefault("models", sys.modules[__name__])
+
+# Streamlit reload/import path quirks can leave stale mapper state in-process.
+# Clearing mappers before class declarations prevents reverse_property conflicts.
+clear_mappers()
 
 
 class Quiz(Base):
