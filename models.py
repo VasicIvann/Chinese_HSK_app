@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from datetime import datetime
+from pathlib import Path
+import sys
 
 from sqlalchemy import (
     Boolean,
@@ -18,6 +20,15 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship
 
 from db import Base
+
+
+# See db.py note: keep one models module object even if imported with
+# different names (models vs chinese_hsk_app.models on Streamlit Cloud).
+_PKG_NAME = Path(__file__).resolve().parent.name
+if __name__ == "models":
+    sys.modules.setdefault(f"{_PKG_NAME}.models", sys.modules[__name__])
+elif __name__.endswith(".models"):
+    sys.modules.setdefault("models", sys.modules[__name__])
 
 
 class Quiz(Base):

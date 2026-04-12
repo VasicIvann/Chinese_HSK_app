@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 from pathlib import Path
+import sys
 from typing import Iterator
 
 from sqlalchemy import create_engine
@@ -11,6 +12,16 @@ from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
 
 BASE_DIR = Path(__file__).resolve().parent
+
+# Streamlit Cloud can import modules with either bare names (db/models)
+# or package names (e.g. chinese_hsk_app.db/models). Keep a single module
+# instance in sys.modules to avoid duplicate SQLAlchemy metadata declarations.
+_PKG_NAME = BASE_DIR.name
+if __name__ == "db":
+    sys.modules.setdefault(f"{_PKG_NAME}.db", sys.modules[__name__])
+elif __name__.endswith(".db"):
+    sys.modules.setdefault("db", sys.modules[__name__])
+
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
