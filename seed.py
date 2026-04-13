@@ -6,7 +6,7 @@ import csv
 from pathlib import Path
 from typing import Dict, Iterable, List
 
-from sqlalchemy import func, select
+from sqlalchemy import select
 
 from db import DATA_DIR, init_db, get_session
 from models import Entry, Quiz
@@ -48,24 +48,29 @@ def load_csv_entries(path: Path) -> Iterable[Dict[str, str]]:
     with path.open(encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
+            normalized_row = {
+                key.lstrip("\ufeff").strip(): (value or "")
+                for key, value in row.items()
+                if key is not None
+            }
             # Normalize keys and strip whitespace.
             yield {
-                "hanzi": row.get("hanzi", "").strip(),
-                "pinyin": row.get("pinyin", "").strip(),
-                "translation": row.get("translation", "").strip(),
-                "alt_translations": row.get("alt_translations", "").strip(),
-                "tags": row.get("tags", "").strip(),
+                "hanzi": normalized_row.get("hanzi", "").strip(),
+                "pinyin": normalized_row.get("pinyin", "").strip(),
+                "translation": normalized_row.get("translation", "").strip(),
+                "alt_translations": normalized_row.get("alt_translations", "").strip(),
+                "tags": normalized_row.get("tags", "").strip(),
             }
 
 
 def ensure_seeded() -> None:
-    """Create tables and seed initial data only if the database is empty."""
+    """Create tables and seed missing quizzes/entries idempotently."""
     init_db()
 
     with get_session() as session:
-        quiz_count = session.execute(select(func.count()).select_from(Quiz)).scalar_one()
-        if quiz_count:
-            return
+        existing_by_key = {
+            quiz.key: quiz for quiz in session.execute(select(Quiz)).scalars().all()
+        }
 
         for definition in QUIZ_DEFINITIONS:
             csv_path = CSV_FILES[definition["key"]]
@@ -78,14 +83,32 @@ def ensure_seeded() -> None:
                 print(f"No entries found in {csv_path}, skipping.")
                 continue
 
-            quiz = Quiz(
-                key=definition["key"],
-                title=definition["title"],
-                description=definition["description"],
-                level=definition["level"],
-            )
-            session.add(quiz)
-            session.flush()
+            quiz = existing_by_key.get(definition["key"])
+            if not quiz:
+                quiz = Quiz(
+                    key=definition["key"],
+                    title=definition["title"],
+                    description=definition["description"],
+                    level=definition["level"],
+                )
+                session.add(quiz)
+                session.flush()
+                existing_by_key[definition["key"]] = quiz
+            else:
+                # Keep metadata aligned if definitions evolve.
+                quiz.title = str(definition["title"])
+                quiz.description = (
+                    str(definition["description"])
+                    if definition["description"] is not None
+                    else None
+                )
+                quiz.level = int(definition["level"]) if definition["level"] is not None else None
+
+            has_entries = session.execute(
+                select(Entry.id).where(Entry.quiz_id == quiz.id).limit(1)
+            ).first()
+            if has_entries:
+                continue
 
             for entry in entries:
                 if not entry["hanzi"] or not entry["pinyin"] or not entry["translation"]:
