@@ -839,7 +839,12 @@ def main() -> None:
         else:
             st.session_state.setdefault("pinyin_variant", DEFAULT_PINYIN_VARIANT)
 
-    vocab = get_entries(selected_quiz_key)
+    cached_vocab_quiz_key = st.session_state.get("cached_vocab_quiz_key")
+    cached_vocab = st.session_state.get("cached_vocab")
+    if cached_vocab_quiz_key == selected_quiz_key and isinstance(cached_vocab, list) and cached_vocab:
+        vocab = cached_vocab
+    else:
+        vocab = get_entries(selected_quiz_key)
     if not vocab:
         repaired_count = reseed_quiz_data(selected_quiz_key)
         vocab = get_entries(selected_quiz_key)
@@ -848,6 +853,9 @@ def main() -> None:
         else:
             st.warning("Aucune donnee disponible pour ce quiz pour le moment.")
             return
+
+    st.session_state["cached_vocab_quiz_key"] = selected_quiz_key
+    st.session_state["cached_vocab"] = vocab
 
     max_questions = len(vocab)
     default_num = st.session_state.get("num_questions", min(10, max_questions))
