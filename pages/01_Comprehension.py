@@ -10,7 +10,7 @@ from typing import Dict, List, Literal, Optional, Tuple, cast
 import streamlit as st
 
 from repo import get_due_entries, get_entries, list_quizzes, set_user_setting, upsert_user_vocab_mastery
-from seed import ensure_seeded
+from seed import ensure_seeded, reseed_quiz_data
 from utils.auth_ui import ensure_user_settings_loaded, init_auth_state, show_auth_notice
 from utils.ui import render_top_nav, trigger_rerun
 
@@ -841,8 +841,13 @@ def main() -> None:
 
     vocab = get_entries(selected_quiz_key)
     if not vocab:
-        st.warning("Aucune donnee disponible pour ce quiz pour le moment.")
-        return
+        repaired_count = reseed_quiz_data(selected_quiz_key)
+        vocab = get_entries(selected_quiz_key)
+        if repaired_count > 0 and vocab:
+            st.info(f"Donnees du quiz {selected_quiz_key} reimporte(es) automatiquement ({repaired_count} mots).")
+        else:
+            st.warning("Aucune donnee disponible pour ce quiz pour le moment.")
+            return
 
     max_questions = len(vocab)
     default_num = st.session_state.get("num_questions", min(10, max_questions))

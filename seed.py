@@ -40,6 +40,69 @@ CSV_FILES = {
 }
 
 
+def reseed_quiz_data(quiz_key: str) -> int:
+    """Force rebuild one quiz's entries from its CSV file.
+
+    Returns the number of inserted rows.
+    """
+    init_db()
+    definition = next((item for item in QUIZ_DEFINITIONS if item["key"] == quiz_key), None)
+    if not definition:
+        return 0
+
+    csv_path = CSV_FILES.get(quiz_key)
+    if not csv_path:
+        return 0
+
+    try:
+        entries = list(load_csv_entries(csv_path))
+    except FileNotFoundError:
+        return 0
+
+    with get_session() as session:
+        quiz = session.execute(select(Quiz).where(Quiz.key == quiz_key)).scalars().first()
+        if not quiz:
+            quiz = Quiz(
+                key=definition["key"],
+                title=definition["title"],
+                description=definition["description"],
+                level=definition["level"],
+            )
+            session.add(quiz)
+            session.flush()
+        else:
+            quiz.title = str(definition["title"])
+            quiz.description = (
+                str(definition["description"])
+                if definition["description"] is not None
+                else None
+            )
+            quiz.level = int(definition["level"]) if definition["level"] is not None else None
+
+        existing_rows = session.execute(select(Entry).where(Entry.quiz_id == quiz.id)).scalars().all()
+        for row in existing_rows:
+            session.delete(row)
+
+        inserted = 0
+        for entry in entries:
+            if not entry["hanzi"] or not entry["pinyin"] or not entry["translation"]:
+                continue
+            session.add(
+                Entry(
+                    quiz_id=quiz.id,
+                    hanzi=entry["hanzi"],
+                    pinyin=entry["pinyin"],
+                    translation=entry["translation"],
+                    alt_translations=entry["alt_translations"] or None,
+                    tags=entry["tags"] or None,
+                    is_active=True,
+                )
+            )
+            inserted += 1
+
+        return inserted
+
+
 def load_csv_entries(path: Path) -> Iterable[Dict[str, str]]:
     """Yield entries from a CSV file."""
     if not path.exists():
