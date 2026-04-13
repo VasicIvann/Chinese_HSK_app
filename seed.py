@@ -83,6 +83,12 @@ def ensure_seeded() -> None:
                 print(f"No entries found in {csv_path}, skipping.")
                 continue
 
+            expected_count = sum(
+                1
+                for entry in entries
+                if entry["hanzi"] and entry["pinyin"] and entry["translation"]
+            )
+
             quiz = existing_by_key.get(definition["key"])
             if not quiz:
                 quiz = Quiz(
@@ -104,14 +110,24 @@ def ensure_seeded() -> None:
                 )
                 quiz.level = int(definition["level"]) if definition["level"] is not None else None
 
-            has_entries = session.execute(
-                select(Entry.id).where(Entry.quiz_id == quiz.id).limit(1)
-            ).first()
-            if has_entries:
+            existing_count = session.execute(
+                select(Entry).where(Entry.quiz_id == quiz.id)
+            ).scalars().all()
+            if len(existing_count) >= expected_count:
                 continue
 
             for entry in entries:
                 if not entry["hanzi"] or not entry["pinyin"] or not entry["translation"]:
+                    continue
+                duplicate = session.execute(
+                    select(Entry.id).where(
+                        Entry.quiz_id == quiz.id,
+                        Entry.hanzi == entry["hanzi"],
+                        Entry.pinyin == entry["pinyin"],
+                        Entry.translation == entry["translation"],
+                    ).limit(1)
+                ).first()
+                if duplicate:
                     continue
                 session.add(
                     Entry(

@@ -60,9 +60,8 @@ def get_quiz_by_key(key: str) -> Optional[Dict[str, Optional[str]]]:
         }
 
 
-@lru_cache(maxsize=16)
-def _get_entries_cached(quiz_key: str, only_active: bool = True) -> tuple[Dict[str, object], ...]:
-    """Cached entry list per quiz for static vocabulary reads."""
+def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, object]]:
+    """Return all entries for the given quiz as plain dictionaries."""
     stmt = (
         select(Entry)
         .join(Quiz)
@@ -87,12 +86,7 @@ def _get_entries_cached(quiz_key: str, only_active: bool = True) -> tuple[Dict[s
                     "tags": entry.tags or "",
                 }
             )
-        return tuple(entries)
-
-
-def get_entries(quiz_key: str, only_active: bool = True) -> List[Dict[str, object]]:
-    """Return all entries for the given quiz as plain dictionaries."""
-    return [dict(item) for item in _get_entries_cached(quiz_key, only_active)]
+        return entries
 
 
 def get_random_entries(
