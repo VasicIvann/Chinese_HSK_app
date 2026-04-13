@@ -40,6 +40,11 @@ CSV_FILES = {
 }
 
 
+def _normalize_column_name(raw_key: str) -> str:
+    """Normalize CSV headers across BOM and quoted variants."""
+    return raw_key.lstrip("\ufeff").strip().strip('"').strip("'").strip().lower()
+
+
 def reseed_quiz_data(quiz_key: str) -> int:
     """Force rebuild one quiz's entries from its CSV file.
 
@@ -112,7 +117,7 @@ def load_csv_entries(path: Path) -> Iterable[Dict[str, str]]:
         reader = csv.DictReader(handle)
         for row in reader:
             normalized_row = {
-                key.lstrip("\ufeff").strip(): (value or "")
+                _normalize_column_name(key): (value or "")
                 for key, value in row.items()
                 if key is not None
             }
