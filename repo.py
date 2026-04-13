@@ -328,7 +328,7 @@ def get_due_entries(
     just_bucket.sort(key=lambda entry: bucket_sort_key(entry, "just"))
 
     desired_review = int(round(count * 0.45))
-    desired_unseen = int(round(count * 0.45))
+    desired_unseen = int(round(count * 0.50))
     desired_just = max(0, count - desired_review - desired_unseen)
 
     selected: List[Dict[str, object]] = []
