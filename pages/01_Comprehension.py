@@ -531,6 +531,21 @@ def evaluate_answer(submission: Optional[str]) -> None:
     )
 
 
+def advance_to_next_question(question: Dict[str, object], idx: int) -> None:
+    """Move to the next question and clear per-question transient state."""
+    st.session_state["current_idx"] += 1
+    st.session_state["answered"] = False
+    st.session_state["last_choice"] = None
+    st.session_state["feedback"] = ""
+    st.session_state.pop(f"text_answer_{idx}", None)
+    st.session_state.pop(f"choice_select_{idx}", None)
+    st.session_state.pop(f"self_assess_{idx}", None)
+    st.session_state.pop(f"hint_shown_{idx}", None)
+    st.session_state.pop(f"translation_shown_{idx}", None)
+    token_count = len(get_question_pinyin_tokens(question))
+    clear_pinyin_variant_inputs(idx, token_count)
+
+
 def render_summary() -> None:
     """Display final quiz summary."""
     score = st.session_state.get("score", 0)
@@ -727,34 +742,13 @@ def render_quiz() -> None:
                 st.warning("Saisissez votre réponse avant de valider.")
             else:
                 evaluate_answer(choice if choice is not None else "")
+                advance_to_next_question(question, idx)
                 trigger_rerun()
 
     else:
-        st.info(st.session_state["feedback"])
-        correct_answer = question.get("correct", "")
-        if question_type == "hanzi_to_pinyin_input":
-            st.write(f"Pinyin correct : **{correct_answer}**")
-        elif question_type == "translation_to_hanzi_mcq":
-            st.write(f"Caractère correct : **{correct_answer}**")
-        elif question_type == "hanzi_to_translation_mcq":
-            st.write(f"Traduction : **{correct_answer}**")
-            st.write(f"Votre évaluation : **{st.session_state.get('last_choice', '')}**")
-        else:
-            st.write(f"Traduction correcte : **{correct_answer}**")
-
-        if st.button("Question suivante", key=f"next_button_{idx}"):
-            st.session_state["current_idx"] += 1
-            st.session_state["answered"] = False
-            st.session_state["last_choice"] = None
-            st.session_state["feedback"] = ""
-            st.session_state.pop(f"text_answer_{idx}", None)
-            st.session_state.pop(f"choice_select_{idx}", None)
-            st.session_state.pop(f"self_assess_{idx}", None)
-            st.session_state.pop(f"hint_shown_{idx}", None)
-            st.session_state.pop(f"translation_shown_{idx}", None)
-            token_count = len(get_question_pinyin_tokens(question))
-            clear_pinyin_variant_inputs(idx, token_count)
-            trigger_rerun()
+        # Legacy state safety: if an answered state is restored, continue automatically.
+        advance_to_next_question(question, idx)
+        trigger_rerun()
 
 
 
