@@ -637,6 +637,7 @@ def render_quiz() -> None:
             secondary_translations = [
                 alt for alt in alt_translations if normalize_text_answer(alt) != normalized_main
             ]
+            pinyin_hint = str(question.get("pinyin", "")).strip()
 
             st.markdown(f"Traduction principale : **{main_translation}**")
             if secondary_translations:
@@ -645,6 +646,9 @@ def render_quiz() -> None:
                 )
             else:
                 st.caption("Aucune traduction secondaire.")
+
+            if pinyin_hint:
+                st.markdown(f"Indice pinyin : **{pinyin_hint}**")
         else:
             st.caption("Traduction masquée.")
 
