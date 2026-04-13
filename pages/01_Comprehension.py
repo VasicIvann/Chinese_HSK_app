@@ -258,6 +258,36 @@ def _ensure_score_banner_style() -> None:
     st.session_state["_score_banner_css_injected"] = True
 
 
+def _ensure_quiz_button_style() -> None:
+    """Slightly enlarge quiz action buttons for faster interaction."""
+    if st.session_state.get("_quiz_button_css_injected"):
+        return
+
+    st.markdown(
+        """
+        <style>
+        /* Reveal buttons inside quiz cards. */
+        .stButton > button[kind="secondary"] {
+            min-height: 2.85rem;
+            padding: 0.55rem 1rem;
+            font-size: 1.02rem;
+            font-weight: 600;
+        }
+
+        /* Submit button for "Valider la réponse" in forms. */
+        .stForm button[kind="secondaryFormSubmit"] {
+            min-height: 2.95rem;
+            padding: 0.6rem 1.05rem;
+            font-size: 1.04rem;
+            font-weight: 650;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.session_state["_quiz_button_css_injected"] = True
+
+
 def render_live_score_banner() -> None:
     """Display a live percentage banner for correct answers."""
     _ensure_score_banner_style()
@@ -580,6 +610,7 @@ def render_summary() -> None:
 
 def render_quiz() -> None:
     """Render the quiz interface."""
+    _ensure_quiz_button_style()
     idx = st.session_state["current_idx"]
     questions = st.session_state["questions"]
     question = questions[idx]
