@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Palette "Cinabre / Encre / Papier"
+ *
+ * Light: papier crème, encre sumi, accents cinabre
+ * Dark : papier nuit, encre claire, accents cinabre brûlé
+ *
+ * Couleurs cinabre inspirées des sceaux 印章 chinois traditionnels.
+ */
+
+:root {
+  --background: oklch(0.985 0.005 80);
+  --foreground: oklch(0.18 0.015 60);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.015 60);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.015 60);
+
+  --primary: oklch(0.52 0.18 30);
+  --primary-foreground: oklch(0.99 0.005 80);
+
+  --secondary: oklch(0.94 0.012 70);
+  --secondary-foreground: oklch(0.25 0.015 60);
+
+  --muted: oklch(0.95 0.008 70);
+  --muted-foreground: oklch(0.5 0.02 60);
+
+  --accent: oklch(0.92 0.025 30);
+  --accent-foreground: oklch(0.3 0.08 30);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 80);
+
+  --border: oklch(0.88 0.01 60);
+  --input: oklch(0.92 0.008 60);
+  --ring: oklch(0.52 0.18 30);
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: oklch(0.16 0.01 50);
+  --foreground: oklch(0.92 0.005 80);
+
+  --card: oklch(0.2 0.012 50);
+  --card-foreground: oklch(0.92 0.005 80);
+
+  --popover: oklch(0.2 0.012 50);
+  --popover-foreground: oklch(0.92 0.005 80);
+
+  --primary: oklch(0.65 0.18 28);
+  --primary-foreground: oklch(0.16 0.01 50);
+
+  --secondary: oklch(0.26 0.012 50);
+  --secondary-foreground: oklch(0.92 0.005 80);
+
+  --muted: oklch(0.24 0.01 50);
+  --muted-foreground: oklch(0.7 0.012 70);
+
+  --accent: oklch(0.32 0.05 28);
+  --accent-foreground: oklch(0.88 0.025 30);
+
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 80);
+
+  --border: oklch(0.28 0.012 50);
+  --input: oklch(0.26 0.012 50);
+  --ring: oklch(0.65 0.18 28);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
+  --font-hanzi: var(--font-noto-sc);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hanzi {
+    font-family: var(--font-noto-sc), var(--font-inter), serif;
+    letter-spacing: 0.02em;
+  }
+}

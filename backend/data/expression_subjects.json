@@ -1,0 +1,44 @@
+{
+  "1": [
+    {"subject": "Présentez-vous : votre nom, votre âge et votre nationalité.", "keywords": ["我", "叫", "岁", "是"]},
+    {"subject": "Décrivez votre famille en quelques phrases (qui en fait partie).", "keywords": ["爸爸", "妈妈", "哥哥", "妹妹"]},
+    {"subject": "Quel est votre plat préféré ? Expliquez en une ou deux phrases.", "keywords": ["吃", "喜欢", "好吃", "米饭"]},
+    {"subject": "Dites quelle heure il est et ce que vous faites maintenant.", "keywords": ["现在", "点", "做", "看"]},
+    {"subject": "Parlez d'un ami : son nom et ce qu'il aime.", "keywords": ["朋友", "喜欢", "他", "她"]},
+    {"subject": "Décrivez le temps qu'il fait aujourd'hui.", "keywords": ["今天", "天气", "冷", "热"]},
+    {"subject": "Indiquez où vous habitez et avec qui.", "keywords": ["住", "在", "家", "和"]},
+    {"subject": "Citez trois choses que vous faites le matin.", "keywords": ["早上", "起床", "吃", "学习"]},
+    {"subject": "Combien coûte votre boisson préférée ? Précisez où vous l'achetez.", "keywords": ["买", "块", "钱", "商店"]},
+    {"subject": "Présentez votre école ou votre travail.", "keywords": ["学校", "学生", "老师", "工作"]},
+    {"subject": "Saluez quelqu'un et demandez-lui comment il va.", "keywords": ["你好", "怎么样", "好", "吗"]},
+    {"subject": "Donnez votre numéro de téléphone et une adresse simple.", "keywords": ["电话", "号码", "在", "路"]}
+  ],
+  "2": [
+    {"subject": "Racontez ce que vous avez fait le week-end dernier en quelques phrases.", "keywords": ["上周末", "去", "玩", "了"]},
+    {"subject": "Décrivez votre chambre : meubles, couleurs, objets préférés.", "keywords": ["房间", "桌子", "椅子", "颜色"]},
+    {"subject": "Expliquez pourquoi vous apprenez le chinois.", "keywords": ["学", "汉语", "因为", "想"]},
+    {"subject": "Présentez votre ville préférée et expliquez ce qu'on peut y faire.", "keywords": ["城市", "好玩", "可以", "看"]},
+    {"subject": "Donnez vos projets pour la semaine prochaine.", "keywords": ["下周", "打算", "去", "和"]},
+    {"subject": "Décrivez votre routine sportive ou un sport que vous aimez.", "keywords": ["运动", "踢球", "打", "喜欢"]},
+    {"subject": "Parlez d'un repas que vous avez préparé ou aimé récemment.", "keywords": ["菜", "做", "好吃", "请"]},
+    {"subject": "Racontez comment vous allez à l'école ou au travail.", "keywords": ["坐", "公共汽车", "地铁", "走"]},
+    {"subject": "Expliquez ce que vous achetez quand vous allez au marché.", "keywords": ["买", "市场", "便宜", "贵"]},
+    {"subject": "Donnez votre avis sur un film ou une série que vous avez vu.", "keywords": ["电影", "好看", "觉得", "故事"]},
+    {"subject": "Décrivez une journée pluvieuse idéale chez vous.", "keywords": ["下雨", "在家", "看书", "睡觉"]},
+    {"subject": "Présentez un cadeau que vous voulez offrir et à qui.", "keywords": ["送", "礼物", "给", "生日"]}
+  ],
+  "3": [
+    {"subject": "Racontez un voyage marquant : où, avec qui, ce que vous y avez fait.", "keywords": ["旅游", "一起", "玩", "记得"]},
+    {"subject": "Comparez la vie en ville et à la campagne selon vous.", "keywords": ["城市", "农村", "方便", "安静"]},
+    {"subject": "Décrivez une journée typique au travail ou à l'école avec vos émotions.", "keywords": ["上班", "同学", "辛苦", "开心"]},
+    {"subject": "Présentez un objet ou un livre qui compte beaucoup pour vous et pourquoi.", "keywords": ["重要", "因为", "记得", "送"]},
+    {"subject": "Donnez vos conseils à un ami qui veut apprendre votre langue maternelle.", "keywords": ["建议", "应该", "每天", "练习"]},
+    {"subject": "Racontez une fête traditionnelle de votre pays.", "keywords": ["节日", "家人", "一起", "习惯"]},
+    {"subject": "Expliquez comment vous gardez la forme : alimentation, sport, sommeil.", "keywords": ["健康", "运动", "习惯", "睡觉"]},
+    {"subject": "Décrivez un problème récent et comment vous l'avez résolu.", "keywords": ["问题", "办法", "解决", "后来"]},
+    {"subject": "Comparez vos goûts musicaux avec ceux d'un proche.", "keywords": ["音乐", "喜欢", "不同", "一样"]},
+    {"subject": "Présentez un projet futur (études, voyage, carrière) en justifiant vos choix.", "keywords": ["打算", "希望", "因为", "以后"]},
+    {"subject": "Racontez une rencontre qui vous a marqué.", "keywords": ["认识", "聊天", "感觉", "朋友"]},
+    {"subject": "Décrivez votre saison préférée et expliquez pourquoi.", "keywords": ["季节", "天气", "喜欢", "因为"]}
+  ]
+}
