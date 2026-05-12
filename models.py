@@ -9,6 +9,7 @@ import sys
 from sqlalchemy import (
     Boolean,
     Column,
+    Date,
     DateTime,
     Float,
     ForeignKey,
@@ -101,7 +102,7 @@ class UserSetting(Base):
     )
 
 class UserVocabMastery(Base):
-    """Per-user mastery state for a vocabulary entry."""
+    """Per-user mastery state for a vocabulary entry, with FSRS scheduling fields."""
 
     __tablename__ = "user_vocab_mastery"
     __table_args__ = (
@@ -112,6 +113,7 @@ class UserVocabMastery(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     entry_id = Column(Integer, ForeignKey("entries.id", ondelete="CASCADE"), nullable=False)
+    # Legacy fields kept for compatibility and dashboards.
     status = Column(String(32), nullable=False)
     confidence_score = Column(Float, nullable=False, default=0.0)
     review_count = Column(Integer, nullable=False, default=1)
@@ -120,4 +122,51 @@ class UserVocabMastery(Base):
     updated_at = Column(
         DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )
+    # FSRS state, persisted as serialized scheduler card.
+    fsrs_state = Column(Integer, nullable=True)
+    fsrs_step = Column(Integer, nullable=True)
+    fsrs_stability = Column(Float, nullable=True)
+    fsrs_difficulty = Column(Float, nullable=True)
+    fsrs_due_at = Column(DateTime, nullable=True, index=True)
+    fsrs_last_review_at = Column(DateTime, nullable=True)
+    fsrs_last_rating = Column(Integer, nullable=True)
 
+
+class ExpressionAttempt(Base):
+    """A single written-expression submission and its LLM correction."""
+
+    __tablename__ = "expression_attempts"
+    __table_args__ = {"extend_existing": True}
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    hsk_level = Column(Integer, nullable=False)
+    subject = Column(Text, nullable=False)
+    user_text = Column(Text, nullable=False)
+    correction_json = Column(Text, nullable=False)
+    score = Column(Integer, nullable=True)
+    tokens_input = Column(Integer, nullable=False, default=0)
+    tokens_output = Column(Integer, nullable=False, default=0)
+    model_id = Column(String(64), nullable=False, default="")
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
+
+class UserDailyUsage(Base):
+    """Aggregates per-user LLM usage for daily quota enforcement."""
+
+    __tablename__ = "user_daily_usage"
+    __table_args__ = (
+        UniqueConstraint("user_id", "usage_date", "kind", name="uq_user_daily_usage"),
+        {"extend_existing": True},
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    usage_date = Column(Date, nullable=False)
+    kind = Column(String(32), nullable=False)
+    count = Column(Integer, nullable=False, default=0)
+    tokens_input = Column(Integer, nullable=False, default=0)
+    tokens_output = Column(Integer, nullable=False, default=0)
+    updated_at = Column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
+    )

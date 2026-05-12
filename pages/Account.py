@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import streamlit as st
 
-from repo import get_user_mastery_entries, list_quizzes
+from repo import get_user_mastery_entries, list_expression_attempts, list_quizzes
 from seed import ensure_seeded
+from srs import get_due_count
 from utils.auth_ui import (
     ensure_user_settings_loaded,
     init_auth_state,
@@ -60,11 +61,16 @@ def _render_mastery_dashboard() -> None:
         r for r in rows if float(r.get("confidence_score", 0.0) or 0.0) <= REVIEW_MAX_CONFIDENCE
     ]
 
-    stats_cols = st.columns(4)
+    summary = get_due_count(
+        int(user["id"]), None if selected_quiz == "ALL" else selected_quiz
+    )
+    stats_cols = st.columns(6)
     stats_cols[0].metric("Total evalue", len(rows))
     stats_cols[1].metric("Maitrises", len(mastered))
     stats_cols[2].metric("Mots juste", len(juste))
     stats_cols[3].metric("A revoir", len(review))
+    stats_cols[4].metric("Dues SRS", summary.get("due", 0))
+    stats_cols[5].metric("Nouveaux", summary.get("new", 0))
 
     def to_table(source: list[dict]) -> list[dict]:
         return [
@@ -75,7 +81,9 @@ def _render_mastery_dashboard() -> None:
                 "Traduction": r.get("translation"),
                 "Statut": r.get("status"),
                 "Confiance": round(float(r.get("confidence_score", 0.0)), 2),
+                "Stabilite (j)": round(float(r.get("stability_days") or 0.0), 2),
                 "Revisions": r.get("review_count"),
+                "Prochaine": str(r.get("next_review_at") or "")[:19].replace("T", " "),
                 "Derniere vue": str(r.get("last_seen_at", ""))[:19].replace("T", " "),
             }
             for r in source
@@ -125,6 +133,36 @@ def main() -> None:
 
     st.markdown("### Mots maitrises / a revoir")
     _render_mastery_dashboard()
+
+    st.markdown("### Productions ecrites recentes")
+    _render_expression_history()
+
+
+def _render_expression_history() -> None:
+    user = st.session_state.get("user")
+    if not user:
+        return
+    attempts = list_expression_attempts(int(user["id"]), limit=15)
+    if not attempts:
+        st.caption("Aucune production écrite enregistrée. Rendez-vous sur la page Expression écrite.")
+        return
+
+    rows = []
+    for attempt in attempts:
+        rows.append(
+            {
+                "Date": str(attempt.get("created_at", ""))[:19].replace("T", " "),
+                "Niveau": f"HSK{attempt.get('hsk_level')}",
+                "Score": attempt.get("score") or "?",
+                "Sujet": (attempt.get("subject") or "")[:80],
+                "Erreurs": len((attempt.get("correction") or {}).get("errors") or []),
+                "Tokens": (
+                    int(attempt.get("tokens_input") or 0)
+                    + int(attempt.get("tokens_output") or 0)
+                ),
+            }
+        )
+    st.dataframe(rows, use_container_width=True, hide_index=True)
 
 
 if __name__ == "__main__":

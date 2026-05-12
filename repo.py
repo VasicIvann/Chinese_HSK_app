@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from functools import lru_cache
+import json
 import random
 from typing import Dict, List, Optional
 
@@ -11,7 +12,15 @@ from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 
 from db import get_session, init_db
-from models import Entry, Quiz, User, UserSetting, UserVocabMastery
+from models import (
+    Entry,
+    ExpressionAttempt,
+    Quiz,
+    User,
+    UserDailyUsage,
+    UserSetting,
+    UserVocabMastery,
+)
 from utils.auth import hash_password, verify_password
 
 
@@ -188,66 +197,22 @@ def update_user_locale(user_id: int, locale: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# User vocabulary mastery (step 2)
+# User vocabulary mastery (FSRS-backed)
 
+# Kept for legacy UI labels mapping confidence ranges.
 MASTERY_STATUS_SCORES: Dict[str, float] = {
     "je connais ce mot": 1.0,
     "juste": 0.75,
-    "juste mais dur": 0.4,
+    "difficile": 0.4,
     "faux": 0.0,
 }
 
 
 def upsert_user_vocab_mastery(user_id: int, entry_id: int, status: str) -> Dict[str, object]:
-    """Insert or update a user's mastery status for one vocabulary entry."""
-    normalized_status = status.strip().lower()
-    if normalized_status not in MASTERY_STATUS_SCORES:
-        raise ValueError(f"Unsupported mastery status: {status}")
+    """Insert/update mastery for one entry. Delegates scheduling to FSRS."""
+    from srs import rate_entry  # local import to avoid circular deps
 
-    confidence = MASTERY_STATUS_SCORES[normalized_status]
-    now = datetime.utcnow()
-
-    with get_session() as session:
-        entry = session.get(Entry, entry_id)
-        if not entry:
-            raise ValueError(f"Unknown entry_id: {entry_id}")
-
-        stmt = select(UserVocabMastery).where(
-            UserVocabMastery.user_id == user_id,
-            UserVocabMastery.entry_id == entry_id,
-        )
-        record = session.execute(stmt).scalars().first()
-
-        if record:
-            previous_count = int(record.review_count or 0)
-            previous_avg = float(record.confidence_score or 0.0)
-            new_count = previous_count + 1
-            # Running average across all attempts for this word and user.
-            record.confidence_score = ((previous_avg * previous_count) + confidence) / new_count
-            record.review_count = new_count
-            record.status = normalized_status
-            record.last_seen_at = now
-        else:
-            record = UserVocabMastery(
-                user_id=user_id,
-                entry_id=entry_id,
-                status=normalized_status,
-                confidence_score=confidence,
-                review_count=1,
-                last_seen_at=now,
-            )
-            session.add(record)
-            session.flush()
-
-        return {
-            "id": record.id,
-            "user_id": record.user_id,
-            "entry_id": record.entry_id,
-            "status": record.status,
-            "confidence_score": record.confidence_score,
-            "review_count": record.review_count,
-            "last_seen_at": record.last_seen_at,
-        }
+    return rate_entry(user_id=user_id, entry_id=entry_id, status=status)
 
 
 def get_user_mastery_for_quiz(user_id: int, quiz_key: str) -> Dict[int, Dict[str, object]]:
@@ -278,91 +243,24 @@ def get_due_entries(
     count: int,
     *,
     seed: Optional[int] = None,
+    new_ratio: float = 0.30,
 ) -> List[Dict[str, object]]:
-    """Return quiz entries prioritized for revision and new exposure.
+    """Return quiz entries prioritized by FSRS due dates.
 
-    Mastered words (confidence >= 0.9) are excluded entirely.
-    Review-needed and unseen words dominate the selection.
-    Words in the "just" zone are included sparingly.
+    Delegates to `srs.select_due_entries`. `new_ratio` is the share of the
+    session reserved for cards the user has never seen; the rest is filled with
+    cards whose FSRS due date has passed (oldest-overdue first), and finally
+    with upcoming cards if more slots remain.
     """
-    vocab = get_entries(quiz_key)
-    if not vocab:
-        return []
+    from srs import select_due_entries  # local import to avoid circular deps
 
-    mastery = get_user_mastery_for_quiz(user_id, quiz_key)
-    rng = random.Random(seed)
-
-    review_bucket: List[Dict[str, object]] = []
-    unseen_bucket: List[Dict[str, object]] = []
-    just_bucket: List[Dict[str, object]] = []
-
-    for entry in vocab:
-        entry_id = int(entry.get("id", 0) or 0)
-        m = mastery.get(entry_id)
-        if not m:
-            unseen_bucket.append(entry)
-            continue
-
-        confidence = float(m.get("confidence_score", 0.0) or 0.0)
-        if confidence >= 0.9:
-            continue
-        if confidence <= 0.5:
-            review_bucket.append(entry)
-        else:
-            just_bucket.append(entry)
-
-    def bucket_sort_key(entry: Dict[str, object], bucket_name: str) -> tuple:
-        entry_id = int(entry.get("id", 0) or 0)
-        m = mastery.get(entry_id)
-        confidence = float(m.get("confidence_score", 0.0) or 0.0) if m else 0.0
-        reviews = int(m.get("review_count", 0) or 0) if m else 0
-        noise = rng.random() * 0.01
-        if bucket_name == "review":
-            return (confidence, reviews, noise)
-        if bucket_name == "unseen":
-            return (noise,)
-        return (-confidence, reviews, noise)
-
-    review_bucket.sort(key=lambda entry: bucket_sort_key(entry, "review"))
-    unseen_bucket.sort(key=lambda entry: bucket_sort_key(entry, "unseen"))
-    just_bucket.sort(key=lambda entry: bucket_sort_key(entry, "just"))
-
-    desired_review = int(round(count * 0.45))
-    desired_unseen = int(round(count * 0.50))
-    desired_just = max(0, count - desired_review - desired_unseen)
-
-    selected: List[Dict[str, object]] = []
-
-    def take_from(bucket: List[Dict[str, object]], amount: int) -> None:
-        nonlocal selected
-        if amount <= 0 or not bucket:
-            return
-        take = min(amount, len(bucket))
-        selected.extend(bucket[:take])
-
-    take_from(review_bucket, desired_review)
-    take_from(unseen_bucket, desired_unseen)
-    take_from(just_bucket, desired_just)
-
-    # Redistribute any missing slots to the most important buckets first.
-    remaining = count - len(selected)
-    if remaining > 0:
-        remaining_sources = [review_bucket, unseen_bucket, just_bucket]
-        used_ids = {int(entry.get("id", 0) or 0) for entry in selected}
-        for bucket in remaining_sources:
-            for entry in bucket:
-                entry_id = int(entry.get("id", 0) or 0)
-                if entry_id in used_ids:
-                    continue
-                selected.append(entry)
-                used_ids.add(entry_id)
-                remaining -= 1
-                if remaining == 0:
-                    break
-            if remaining == 0:
-                break
-
-    return selected[: min(count, len(selected))]
+    return select_due_entries(
+        quiz_key=quiz_key,
+        user_id=user_id,
+        count=count,
+        new_ratio=new_ratio,
+        seed=seed,
+    )
 
 
 def get_user_mastery_entries(user_id: int, quiz_key: Optional[str] = None) -> List[Dict[str, object]]:
@@ -391,6 +289,159 @@ def get_user_mastery_entries(user_id: int, quiz_key: Optional[str] = None) -> Li
                 "confidence_score": mastery.confidence_score,
                 "review_count": mastery.review_count,
                 "last_seen_at": mastery.last_seen_at,
+                "next_review_at": mastery.fsrs_due_at,
+                "stability_days": mastery.fsrs_stability,
+                "last_rating": mastery.fsrs_last_rating,
             }
             for mastery, entry, quiz in rows
         ]
+
+
+# ---------------------------------------------------------------------------
+# Expression écrite — attempts + daily quota
+
+
+def find_entry_ids_by_hanzi(hanzi_terms: List[str]) -> Dict[str, int]:
+    """Resolve hanzi strings to entry_ids (first match wins per hanzi)."""
+    cleaned = [term.strip() for term in hanzi_terms if term and term.strip()]
+    if not cleaned:
+        return {}
+
+    stmt = select(Entry.id, Entry.hanzi).where(Entry.hanzi.in_(cleaned))
+    with get_session() as session:
+        rows = session.execute(stmt).all()
+        mapping: Dict[str, int] = {}
+        for entry_id, hanzi in rows:
+            mapping.setdefault(hanzi, entry_id)
+        return mapping
+
+
+def record_expression_attempt(
+    *,
+    user_id: int,
+    hsk_level: int,
+    subject: str,
+    user_text: str,
+    correction: Dict[str, object],
+    score: Optional[int],
+    tokens_input: int,
+    tokens_output: int,
+    model_id: str,
+) -> int:
+    """Persist a single expression attempt + its correction."""
+    payload = json.dumps(correction, ensure_ascii=False)
+    with get_session() as session:
+        attempt = ExpressionAttempt(
+            user_id=user_id,
+            hsk_level=hsk_level,
+            subject=subject,
+            user_text=user_text,
+            correction_json=payload,
+            score=score,
+            tokens_input=tokens_input,
+            tokens_output=tokens_output,
+            model_id=model_id,
+        )
+        session.add(attempt)
+        session.flush()
+        return int(attempt.id)
+
+
+def list_expression_attempts(user_id: int, limit: int = 20) -> List[Dict[str, object]]:
+    """Return the most recent expression attempts for a user."""
+    stmt = (
+        select(ExpressionAttempt)
+        .where(ExpressionAttempt.user_id == user_id)
+        .order_by(ExpressionAttempt.created_at.desc())
+        .limit(limit)
+    )
+    with get_session() as session:
+        rows = session.execute(stmt).scalars().all()
+        results: List[Dict[str, object]] = []
+        for row in rows:
+            try:
+                correction = json.loads(row.correction_json)
+            except (TypeError, ValueError):
+                correction = {}
+            results.append(
+                {
+                    "id": row.id,
+                    "hsk_level": row.hsk_level,
+                    "subject": row.subject,
+                    "user_text": row.user_text,
+                    "correction": correction,
+                    "score": row.score,
+                    "tokens_input": row.tokens_input,
+                    "tokens_output": row.tokens_output,
+                    "model_id": row.model_id,
+                    "created_at": row.created_at,
+                }
+            )
+        return results
+
+
+def get_or_create_daily_usage(user_id: int, kind: str) -> Dict[str, int]:
+    """Return today's usage row for a (user, kind), creating it if missing."""
+    today = date.today()
+    with get_session() as session:
+        stmt = select(UserDailyUsage).where(
+            UserDailyUsage.user_id == user_id,
+            UserDailyUsage.usage_date == today,
+            UserDailyUsage.kind == kind,
+        )
+        row = session.execute(stmt).scalars().first()
+        if row is None:
+            row = UserDailyUsage(
+                user_id=user_id,
+                usage_date=today,
+                kind=kind,
+                count=0,
+                tokens_input=0,
+                tokens_output=0,
+            )
+            session.add(row)
+            session.flush()
+        return {
+            "count": int(row.count or 0),
+            "tokens_input": int(row.tokens_input or 0),
+            "tokens_output": int(row.tokens_output or 0),
+        }
+
+
+def increment_daily_usage(
+    user_id: int,
+    kind: str,
+    *,
+    count_delta: int = 1,
+    tokens_input_delta: int = 0,
+    tokens_output_delta: int = 0,
+) -> Dict[str, int]:
+    """Atomically increment a daily usage row."""
+    today = date.today()
+    with get_session() as session:
+        stmt = select(UserDailyUsage).where(
+            UserDailyUsage.user_id == user_id,
+            UserDailyUsage.usage_date == today,
+            UserDailyUsage.kind == kind,
+        )
+        row = session.execute(stmt).scalars().first()
+        if row is None:
+            row = UserDailyUsage(
+                user_id=user_id,
+                usage_date=today,
+                kind=kind,
+                count=count_delta,
+                tokens_input=tokens_input_delta,
+                tokens_output=tokens_output_delta,
+            )
+            session.add(row)
+        else:
+            row.count = int(row.count or 0) + count_delta
+            row.tokens_input = int(row.tokens_input or 0) + tokens_input_delta
+            row.tokens_output = int(row.tokens_output or 0) + tokens_output_delta
+        session.flush()
+        return {
+            "count": int(row.count or 0),
+            "tokens_input": int(row.tokens_input or 0),
+            "tokens_output": int(row.tokens_output or 0),
+        }

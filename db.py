@@ -113,10 +113,48 @@ Base = declarative_base()
 
 
 def init_db() -> None:
-    """Create all database tables."""
+    """Create all database tables and apply lightweight column migrations."""
     import models  # noqa: F401  # Ensure models are registered with metadata
 
     Base.metadata.create_all(bind=engine)
+    _apply_lightweight_migrations()
+
+
+def _apply_lightweight_migrations() -> None:
+    """Add new columns to existing tables when they are missing.
+
+    Streamlit Cloud and existing local DBs may carry an older schema. We do not
+    rely on Alembic yet — each new column has its presence checked first and
+    is added with ALTER TABLE only when needed.
+    """
+    from sqlalchemy import inspect, text
+
+    inspector = inspect(engine)
+    existing_tables = set(inspector.get_table_names())
+
+    additions = {
+        "user_vocab_mastery": [
+            ("fsrs_state", "INTEGER"),
+            ("fsrs_step", "INTEGER"),
+            ("fsrs_stability", "FLOAT"),
+            ("fsrs_difficulty", "FLOAT"),
+            ("fsrs_due_at", "TIMESTAMP"),
+            ("fsrs_last_review_at", "TIMESTAMP"),
+            ("fsrs_last_rating", "INTEGER"),
+        ],
+    }
+
+    with engine.begin() as connection:
+        for table_name, columns in additions.items():
+            if table_name not in existing_tables:
+                continue
+            current = {col["name"] for col in inspector.get_columns(table_name)}
+            for column_name, column_type in columns:
+                if column_name in current:
+                    continue
+                connection.execute(
+                    text(f'ALTER TABLE {table_name} ADD COLUMN {column_name} {column_type}')
+                )
 
 
 @contextmanager

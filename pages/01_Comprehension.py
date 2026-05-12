@@ -11,6 +11,7 @@ import streamlit as st
 
 from repo import get_due_entries, get_entries, list_quizzes, set_user_setting, upsert_user_vocab_mastery
 from seed import ensure_seeded, reseed_quiz_data
+from srs import format_next_review, get_due_count
 from utils.auth_ui import ensure_user_settings_loaded, init_auth_state, show_auth_notice
 from utils.ui import render_top_nav, trigger_rerun
 
@@ -111,11 +112,18 @@ TONE_LABELS: Dict[int, str] = {
 TONE_OPTIONS: List[int] = list(TONE_LABELS.keys())
 
 SELF_ASSESS_OPTIONS: List[str] = [
-    "je connais ce mot",
-    "juste",
-    "juste mais dur",
     "faux",
+    "difficile",
+    "juste",
+    "je connais ce mot",
 ]
+
+SELF_ASSESS_LABELS: Dict[str, str] = {
+    "faux": "Faux",
+    "difficile": "Difficile",
+    "juste": "Juste",
+    "je connais ce mot": "Je connais ce mot",
+}
 
 
 def split_alt_translations(value: str) -> List[str]:
@@ -516,13 +524,15 @@ def evaluate_answer(submission: Optional[str]) -> None:
 
     elif question_type == "hanzi_to_translation_mcq":
         normalized = user_answer.strip().lower()
-        is_correct = normalized in {"je connais ce mot", "juste", "juste mais dur"}
+        is_correct = normalized in {"je connais ce mot", "juste"}
         if normalized == "faux":
-            feedback = "Noté : mot non maîtrisé pour cette tentative."
-        elif normalized == "juste mais dur":
-            feedback = "Noté : réponse juste mais encore fragile."
-        elif normalized in {"je connais ce mot", "juste"}:
-            feedback = "Noté : mot maîtrisé pour cette tentative."
+            feedback = "Noté : mot à revoir rapidement."
+        elif normalized == "difficile":
+            feedback = "Noté : réponse correcte mais encore fragile."
+        elif normalized == "juste":
+            feedback = "Noté : mot bien maîtrisé pour cette tentative."
+        elif normalized == "je connais ce mot":
+            feedback = "Noté : mot très solide, intervalle de révision allongé."
         else:
             feedback = "Sélectionnez une auto-évaluation valide."
 
@@ -531,10 +541,15 @@ def evaluate_answer(submission: Optional[str]) -> None:
         entry_id = question.get("id")
         if user and isinstance(entry_id, int) and normalized in SELF_ASSESS_OPTIONS:
             try:
-                upsert_user_vocab_mastery(user_id=int(user["id"]), entry_id=entry_id, status=normalized)
+                srs_result = upsert_user_vocab_mastery(
+                    user_id=int(user["id"]), entry_id=entry_id, status=normalized
+                )
+                hint = format_next_review(srs_result)
+                if hint:
+                    feedback += f" ({hint})"
             except ValueError:
                 # Keep quiz flow resilient while making persistence issues visible.
-                feedback += " (Attention: score non enregistre pour cette tentative.)"
+                feedback += " (Attention : score non enregistré pour cette tentative.)"
 
     else:
         is_correct = user_answer == correct_display
@@ -704,6 +719,8 @@ def render_quiz() -> None:
                     options=SELF_ASSESS_OPTIONS,
                     index=None,
                     key=f"self_assess_{idx}",
+                    format_func=lambda key: SELF_ASSESS_LABELS.get(key, key),
+                    horizontal=True,
                 )
             elif question_type == "translation_to_hanzi_mcq":
                 label = "Choisissez le caractère correct :"
@@ -825,6 +842,15 @@ def main() -> None:
     st.markdown("### Configurez votre session")
     if user:
         st.caption(f"Connecte en tant que {user['email']}. Vos preferences seront memorisees.")
+        try:
+            summary = get_due_count(int(user["id"]))
+            st.caption(
+                f"📊 Cartes à réviser maintenant : **{summary['due']}** · "
+                f"Nouveaux mots disponibles : **{summary['new']}** · "
+                f"À venir : **{summary['upcoming']}**"
+            )
+        except Exception:
+            pass
     else:
         st.info("Astuce: connectez-vous depuis la rubrique Compte pour conserver vos reglages favoris.")
 

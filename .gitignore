@@ -1,2 +1,15 @@
 .venv/
+.venv_old/
 __pycache__/
+
+# Secrets — never commit
+.streamlit/secrets.toml
+*.env
+.env
+
+# Local Claude Code config
+.claude/
+
+# OS / editor
+.DS_Store
+Thumbs.db
