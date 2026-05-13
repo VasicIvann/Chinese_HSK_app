@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "hsk-api"
 version = "0.1.0"
@@ -5,7 +9,7 @@ description = "FastAPI backend for the Chinese HSK Trainer app (FSRS scheduling 
 readme = "README.md"
 requires-python = ">=3.12"
 authors = [{ name = "Ivann Vasic" }]
-license = { text = "MIT" }
+license = "MIT"
 
 dependencies = [
     "fastapi>=0.115",
@@ -28,6 +32,13 @@ dev = [
     "httpx>=0.27",
     "ruff>=0.4",
 ]
+
+[tool.setuptools]
+# Tell setuptools exactly which top-level packages to ship. The repo also has
+# `alembic/`, `data/`, `tests/` at the root of `backend/` which are NOT Python
+# packages we want bundled into the installed distribution.
+packages = ["app"]
+include-package-data = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
