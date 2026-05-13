@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Lightbulb } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { RatingButtons } from "@/components/quiz/rating-buttons";
@@ -18,12 +18,14 @@ type Props = {
 };
 
 export function QuizQuestion({ entry, mode, onRate }: Props) {
+  const [pinyinHintVisible, setPinyinHintVisible] = useState(false);
   const [hintVisible, setHintVisible] = useState(false);
   const [pinyinInput, setPinyinInput] = useState("");
   const [pinyinChecked, setPinyinChecked] = useState<null | { correct: boolean; value: string }>(null);
 
   // Reset transient state when the question changes.
   useEffect(() => {
+    setPinyinHintVisible(false);
     setHintVisible(false);
     setPinyinInput("");
     setPinyinChecked(null);
@@ -42,6 +44,9 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
       onRate(rating);
     }
   };
+
+  // In auto-assess mode, "show full solution" implies pinyin is also revealed.
+  const showPinyin = pinyinHintVisible || hintVisible;
 
   return (
     <AnimatePresence mode="wait">
@@ -103,26 +108,64 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
         )}
 
         <div className="flex flex-col items-center gap-3">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setHintVisible((v) => !v)}
-            className="text-muted-foreground"
-          >
-            {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
-            {hintVisible ? "Masquer la solution" : "Afficher la solution"}
-          </Button>
-          {hintVisible && (
-            <div className="text-center">
-              <p className="text-lg font-medium">{entry.pinyin}</p>
-              <p className="text-base text-muted-foreground">{entry.translation}</p>
-              {entry.alt_translations && (
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {entry.alt_translations}
-                </p>
-              )}
+          {mode === "auto-assess" ? (
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setPinyinHintVisible((v) => !v)}
+                disabled={hintVisible}
+                className="text-muted-foreground"
+              >
+                <Lightbulb className="mr-1 h-4 w-4" />
+                {pinyinHintVisible || hintVisible ? "Pinyin affiché" : "Indice pinyin"}
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setHintVisible((v) => !v)}
+                className="text-muted-foreground"
+              >
+                {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
+                {hintVisible ? "Masquer la solution" : "Afficher la solution"}
+              </Button>
             </div>
+          ) : (
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setHintVisible((v) => !v)}
+              className="text-muted-foreground"
+            >
+              {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
+              {hintVisible ? "Masquer la solution" : "Afficher la solution"}
+            </Button>
+          )}
+
+          {(showPinyin || hintVisible) && (
+            <motion.div
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.15 }}
+              className="text-center"
+            >
+              {showPinyin && (
+                <p className="text-lg font-medium">{entry.pinyin}</p>
+              )}
+              {hintVisible && (
+                <>
+                  <p className="text-base text-muted-foreground">{entry.translation}</p>
+                  {entry.alt_translations && (
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {entry.alt_translations}
+                    </p>
+                  )}
+                </>
+              )}
+            </motion.div>
           )}
         </div>
 

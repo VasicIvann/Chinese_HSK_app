@@ -7,6 +7,7 @@ import { ActivityHeatmap } from "@/components/charts/activity-heatmap";
 import { MasteryDonut } from "@/components/charts/mastery-donut";
 import { TrendChart } from "@/components/charts/trend-chart";
 import { AttemptsList } from "@/components/expression/attempts-list";
+import { MasterySections } from "@/components/mastery/mastery-sections";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getAccountOverview } from "@/lib/api/endpoints";
@@ -146,6 +147,8 @@ export default function AccountPage() {
           </CardContent>
         </Card>
       </div>
+
+      <MasterySections />
 
       <AttemptsList limit={50} />
     </div>

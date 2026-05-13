@@ -48,9 +48,13 @@ $env:HSK_DATABASE_URL = "postgresql+psycopg://...neon..."
 
 ### 1.4 Vérifier
 
-Une fois le build vert, ouvre `https://hsk-api.onrender.com/healthz` → `{"status":"ok"}`.
+⚠️ Render ajoute un suffixe aléatoire à ton URL : c'est `https://hsk-api-<RAND>.onrender.com` et non `hsk-api.onrender.com` (qui est probablement déjà pris par quelqu'un d'autre).
 
-Et `https://hsk-api.onrender.com/docs` → Swagger UI complète.
+Récupère la vraie URL dans le dashboard Render → service `hsk-api` → "Available at your primary URL https://..." en haut.
+
+Une fois le build vert, ouvre cette URL + `/healthz` → `{"status":"ok"}`.
+
+Et `+ /docs` → Swagger UI complète.
 
 ### 1.5 Keep-warm (cron-job.org)
 
@@ -59,7 +63,7 @@ Le free tier de Render endort le service après 15 min sans requête. Pour le ga
 1. Crée un compte sur [cron-job.org](https://cron-job.org) (gratuit, sans carte)
 2. **Create cronjob** :
    - Title: `HSK API keep-warm`
-   - URL: `https://hsk-api.onrender.com/healthz`
+   - URL: `https://hsk-api-XXXX.onrender.com/healthz`
    - Schedule: every 10 minutes
    - Method: GET
 3. Save. Le service ne dormira plus.
@@ -82,7 +86,7 @@ Avant de déployer, dans **Environment Variables** :
 
 | Clé | Valeur |
 |---|---|
-| `NEXT_PUBLIC_API_URL` | `https://hsk-api.onrender.com` (URL Render exacte) |
+| `NEXT_PUBLIC_API_URL` | `https://hsk-api-XXXX.onrender.com` (URL Render exacte) |
 
 ### 2.3 Déployer
 
