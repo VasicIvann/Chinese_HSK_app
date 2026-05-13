@@ -1,0 +1,27 @@
+{
+  "name": "HSK Trainer",
+  "short_name": "HSK Trainer",
+  "description": "Entraînement HSK avec SRS et correction d'expression écrite par IA.",
+  "start_url": "/comprehension",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1d1a18",
+  "theme_color": "#c8362f",
+  "lang": "fr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

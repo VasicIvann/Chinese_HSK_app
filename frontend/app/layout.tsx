@@ -30,6 +30,11 @@ export const metadata: Metadata = {
     "Entraînement HSK personnel avec SRS et correction d'expression écrite par IA.",
   applicationName: "HSK Trainer",
   appleWebApp: { capable: true, statusBarStyle: "default", title: "HSK Trainer" },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export const viewport: Viewport = {

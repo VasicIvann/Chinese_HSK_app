@@ -5,6 +5,7 @@
 
 import { apiRequest, apiUrl } from "@/lib/api/client";
 import type {
+  AccountOverview,
   DueEntry,
   EntryPublic,
   ExpressionAttemptItem,
@@ -116,4 +117,10 @@ export function getQuota() {
 
 export function expressionCorrectUrl() {
   return apiUrl("/v1/expression/correct");
+}
+
+// Account
+
+export function getAccountOverview() {
+  return apiRequest<AccountOverview>("/v1/account/overview");
 }

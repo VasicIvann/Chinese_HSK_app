@@ -1,0 +1,34 @@
+# Render infrastructure-as-code for the FastAPI backend.
+# Deploy by creating a new Blueprint in Render that points at this repo.
+# Set the secret env vars in the Render dashboard before the first deploy.
+
+services:
+  - type: web
+    name: hsk-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    region: frankfurt
+    branch: main
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -e .
+    startCommand: |
+      uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Secrets — set values in the Render dashboard (sync=false keeps them server-side).
+      - key: HSK_DATABASE_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: HSK_CLAUDE_MODEL
+        value: claude-haiku-4-5-20251001
+      - key: CORS_ORIGINS
+        sync: false
+      - key: ALLOWED_REGISTRATION_EMAILS
+        sync: false

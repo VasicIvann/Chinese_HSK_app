@@ -149,3 +149,44 @@ export type QuotaResponse = {
   correction: QuotaStatus;
   subject_generation: QuotaStatus;
 };
+
+// Account dashboard
+
+export type MasteryDistribution = {
+  mastered: number;
+  learning: number;
+  new: number;
+  total_entries: number;
+};
+
+export type ActivityCell = {
+  date: string; // YYYY-MM-DD
+  count: number;
+};
+
+export type QuizDailyPoint = {
+  date: string;
+  avg_rating: number;
+  count: number;
+};
+
+export type ExpressionScorePoint = {
+  date: string; // ISO datetime
+  score: number;
+};
+
+export type ProfileSummary = {
+  email: string;
+  locale: string;
+  joined_at: string;
+  total_reviews: number;
+  total_expressions: number;
+};
+
+export type AccountOverview = {
+  profile: ProfileSummary;
+  mastery: MasteryDistribution;
+  activity_heatmap: ActivityCell[];
+  quiz_progression: QuizDailyPoint[];
+  expression_progression: ExpressionScorePoint[];
+};
