@@ -1,144 +1,134 @@
-# Déploiement — HSK Trainer
+# Deployment
 
-Cible : backend FastAPI sur **Render free tier**, frontend Next.js sur **Vercel Hobby**, DB **Neon Postgres**, keep-warm via **cron-job.org**. Coût total : **0 €** (hors crédits API Anthropic).
+Target topology: FastAPI backend on **Render** (free tier), Next.js frontend on **Vercel** (Hobby), database on **Neon Postgres**, kept warm via **cron-job.org**. Recurring cost ≈ **€0** (excluding Anthropic API credits).
 
-## Prérequis
+## Prerequisites
 
-- Repo Github à jour (`git push origin main`)
-- Compte Neon (DB déjà créée pour l'app Streamlit, on réutilise)
-- Compte Anthropic Console avec une clé API valide et quelques crédits
-- Comptes (gratuits) : [Render](https://render.com), [Vercel](https://vercel.com), [cron-job.org](https://cron-job.org)
+- GitHub repo pushed (`git push origin main`)
+- A Neon Postgres project (free tier)
+- An Anthropic Console account with a valid API key and some credits
+- Free accounts: [Render](https://render.com), [Vercel](https://vercel.com), [cron-job.org](https://cron-job.org)
 
 ---
 
 ## 1. Backend — Render
 
-### 1.1 Créer le service
+### 1.1 Create the service
 
-1. Dashboard Render → **New** → **Blueprint**
-2. Connecte ton repo GitHub `VasicIvann/Chinese_HSK_app`, branche `main`
-3. Render détecte `render.yaml` à la racine et propose `hsk-api`
-4. Clique **Apply** → le service est créé mais pas encore démarré (env vars manquantes)
+1. Render dashboard → **New** → **Blueprint**
+2. Connect this GitHub repo, branch `main`
+3. Render detects `render.yaml` at the root and proposes the `hsk-api` service
+4. Click **Apply** → the service is created but won't start until env vars are set
 
-### 1.2 Configurer les secrets
+### 1.2 Configure secrets
 
-Dans le service `hsk-api` → onglet **Environment** → ajoute :
+In the `hsk-api` service → **Environment** tab → add:
 
-| Clé | Valeur |
+| Key | Value |
 |---|---|
-| `HSK_DATABASE_URL` | URL Neon Postgres (la même que `.streamlit/secrets.toml`) |
-| `JWT_SECRET_KEY` | 64 caractères aléatoires : `python -c "import secrets; print(secrets.token_urlsafe(64))"` |
-| `ANTHROPIC_API_KEY` | Clé API Anthropic (la nouvelle clé que tu as régénérée) |
-| `CORS_ORIGINS` | `https://hsk-trainer.vercel.app` (mets l'URL Vercel exacte une fois le frontend déployé) |
-| `ALLOWED_REGISTRATION_EMAILS` | `ivannvasic05@gmail.com` (pour empêcher d'autres inscriptions et économiser tes tokens) |
+| `HSK_DATABASE_URL` | Neon Postgres connection string |
+| `JWT_SECRET_KEY` | 64 random chars: `python -c "import secrets; print(secrets.token_urlsafe(64))"` |
+| `ANTHROPIC_API_KEY` | Anthropic API key |
+| `CORS_ORIGINS` | `<YOUR_VERCEL_URL>` (set the exact Vercel URL once the frontend is deployed) |
+| `ALLOWED_REGISTRATION_EMAILS` | `<YOUR_EMAIL>` — invite-only mode, blocks other sign-ups to protect API spend |
 
-Save changes → Render relance le build.
+Save changes → Render rebuilds.
 
-### 1.3 Migration DB
+### 1.3 Database migration
 
-Première fois sur Neon, depuis ton terminal local (Python avec psycopg installé) :
+On a **fresh** database, the schema is created by Alembic:
 
-```powershell
+```bash
 cd backend
-$env:HSK_DATABASE_URL = "postgresql+psycopg://...neon..."
-..\.venv\Scripts\python.exe -m alembic stamp head
+export HSK_DATABASE_URL="postgresql+psycopg://<USER>:<PASSWORD>@<HOST>/<DB>?sslmode=require"
+alembic upgrade head
 ```
 
-`stamp head` dit à Alembic que ton schéma Neon est déjà au niveau de `0001_baseline` (les tables existent déjà depuis Streamlit). Les futures migrations partiront de là.
+If the database **already contains the schema** (e.g. migrated from a previous app sharing the same DB), stamp it instead so Alembic records the baseline without re-running DDL:
 
-### 1.4 Vérifier
+```bash
+alembic stamp head
+```
 
-⚠️ Render ajoute un suffixe aléatoire à ton URL : c'est `https://hsk-api-<RAND>.onrender.com` et non `hsk-api.onrender.com` (qui est probablement déjà pris par quelqu'un d'autre).
+### 1.4 Verify
 
-Récupère la vraie URL dans le dashboard Render → service `hsk-api` → "Available at your primary URL https://..." en haut.
+Render assigns a URL with a random suffix: `https://hsk-api-<RANDOM>.onrender.com` (not `hsk-api.onrender.com`, which is likely taken). Find the exact URL in the Render dashboard → `hsk-api` service → "Available at your primary URL …".
 
-Une fois le build vert, ouvre cette URL + `/healthz` → `{"status":"ok"}`.
+Once the build is green:
 
-Et `+ /docs` → Swagger UI complète.
+- `<RENDER_URL>/healthz` → `{"status":"ok"}`
+- `<RENDER_URL>/docs` → full Swagger UI
 
 ### 1.5 Keep-warm (cron-job.org)
 
-Le free tier de Render endort le service après 15 min sans requête. Pour le garder éveillé 24/7 :
+Render's free tier sleeps the service after 15 min of inactivity. To keep it awake 24/7:
 
-1. Crée un compte sur [cron-job.org](https://cron-job.org) (gratuit, sans carte)
-2. **Create cronjob** :
-   - Title: `HSK API keep-warm`
-   - URL: `https://hsk-api-XXXX.onrender.com/healthz`
+1. Create an account on [cron-job.org](https://cron-job.org) (free, no card)
+2. **Create cronjob**:
+   - URL: `<RENDER_URL>/healthz`
    - Schedule: every 10 minutes
    - Method: GET
-3. Save. Le service ne dormira plus.
+3. Save.
 
 ---
 
 ## 2. Frontend — Vercel
 
-### 2.1 Importer le projet
+### 2.1 Import the project
 
-1. Dashboard Vercel → **Add New** → **Project**
-2. Sélectionne le repo `Chinese_HSK_app`
-3. Vercel détecte Next.js automatiquement
-4. **Root directory** : `frontend`
-5. Build settings : laisser auto (Next.js preset)
+1. Vercel dashboard → **Add New** → **Project**
+2. Select this repo
+3. Vercel auto-detects Next.js
+4. **Root directory**: `frontend`
+5. Leave build settings on the Next.js preset
 
-### 2.2 Variables d'environnement
+### 2.2 Environment variables
 
-Avant de déployer, dans **Environment Variables** :
+Before deploying, in **Environment Variables**:
 
-| Clé | Valeur |
+| Key | Value |
 |---|---|
-| `NEXT_PUBLIC_API_URL` | `https://hsk-api-XXXX.onrender.com` (URL Render exacte) |
+| `NEXT_PUBLIC_API_URL` | `<RENDER_URL>` (exact backend URL, no trailing path) |
 
-### 2.3 Déployer
+### 2.3 Deploy
 
-Clique **Deploy**. Au bout de 1-2 min, ton frontend est en ligne sur `https://hsk-trainer.vercel.app` (le slug dépend du nom de ton projet).
+Click **Deploy**. After 1–2 min the frontend is live at `<YOUR_VERCEL_URL>`.
 
-### 2.4 Mise à jour CORS
+### 2.4 Update CORS
 
-Reviens sur Render → service `hsk-api` → Environment → mets à jour `CORS_ORIGINS` avec l'URL Vercel exacte. Save → Render relance.
-
----
-
-## 3. Tester en prod
-
-1. Ouvre l'URL Vercel
-2. Connecte-toi avec ton compte Neon existant
-3. Lance une session HSK1 → tu retrouves tes données SRS
-4. Va sur Account → tu vois ton dashboard avec les graphes
-5. Sur ton téléphone, ouvre la même URL → "Ajouter à l'écran d'accueil" via Safari/Chrome
-   → l'app s'ouvre en plein écran grâce au manifest PWA
+Back on Render → `hsk-api` → Environment → set `CORS_ORIGINS` to the exact Vercel URL. Save → Render redeploys.
 
 ---
 
-## 4. Déploiements suivants
+## 3. Smoke test in production
 
-Push sur `main` → **les deux** plateformes redéploient automatiquement :
-- Vercel : ~1 min, ZDT
-- Render : ~3 min, downtime de ~30s pendant le swap
-
-GitHub Actions exécute aussi les tests à chaque push/PR (voir `.github/workflows/tests.yml`).
+1. Open the Vercel URL
+2. Create an account / sign in
+3. Run an HSK1 quiz session
+4. Open the Account dashboard → charts render
+5. On a phone, open the same URL → "Add to home screen" → the PWA opens full-screen
 
 ---
 
-## 5. Coûts mensuels attendus
+## 4. Subsequent deployments
 
-| Service | Coût |
+Push to `main` → **both** platforms auto-deploy:
+
+- Vercel: ~1 min, zero-downtime
+- Render: ~3 min, ~30 s swap downtime
+
+GitHub Actions also runs the test suites on every push/PR (`.github/workflows/tests.yml`).
+
+---
+
+## 5. Expected monthly cost
+
+| Service | Cost |
 |---|---|
-| Render free | 0 € (750 h/mois, keep-warm OK) |
-| Vercel Hobby | 0 € (100 GB bandwidth/mois) |
-| Neon free | 0 € (0.5 GB storage, auto-suspend OK) |
-| cron-job.org | 0 € (5 jobs gratuits) |
-| Anthropic Haiku 4.5 | ~0.003 $ / correction (≈ 90 ¢ / mois si 1 correction/jour) |
+| Render free | €0 (750 h/month, keep-warm OK) |
+| Vercel Hobby | €0 (100 GB bandwidth/month) |
+| Neon free | €0 (0.5 GB storage, auto-suspend OK) |
+| cron-job.org | €0 |
+| Anthropic Haiku 4.5 | ≈ $0.003 / correction (prompt caching enabled) |
 
-**Total : moins de 1 $/mois si tu utilises l'expression écrite quotidiennement.**
-
----
-
-## 6. Migration depuis Streamlit Cloud
-
-Quand tu es confiant que la nouvelle app fonctionne :
-
-1. Sur `hskapp.streamlit.app` → Settings → Delete app (ou Pause)
-2. Garde la branche Streamlit du repo intacte si tu veux y revenir
-3. Mets à jour les bookmarks de tes navigateurs vers l'URL Vercel
-
-Tes données Neon (compte, FSRS, expression attempts) sont partagées entre les deux apps tant qu'elles tournent en parallèle. Aucun risque de perte.
+**Total: under $1/month with daily written-expression usage.**

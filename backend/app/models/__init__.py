@@ -1,8 +1,9 @@
 """SQLAlchemy ORM models.
 
-The schema mirrors what was created by the Streamlit app's `models.py` and the
-lightweight migrations in `db.py`. Alembic baseline (`0001_baseline`) describes
-the same tables so a stamp-head on an existing Neon DB is a no-op.
+The Alembic baseline (`0001_baseline`) describes exactly these tables. On a
+fresh database run `alembic upgrade head`; on a database that already has the
+schema run `alembic stamp head` so the baseline is recorded without re-running
+the DDL.
 """
 
 from app.models.expression import ExpressionAttempt, UserDailyUsage

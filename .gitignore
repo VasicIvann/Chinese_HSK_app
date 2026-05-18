@@ -1,11 +1,22 @@
+# Python
 .venv/
 .venv_old/
 __pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
 
-# Secrets — never commit
-.streamlit/secrets.toml
+# Local SQLite databases
+*.sqlite3
+*.db
+
+# Secrets / env — never commit
 *.env
 .env
+.env.*
+!.env.example
+!.env.local.example
 
 # Local Claude Code config
 .claude/

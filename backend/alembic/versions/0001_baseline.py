@@ -1,9 +1,9 @@
-"""Baseline schema: mirrors the tables already created by the Streamlit app.
+"""Baseline schema.
 
 When applied to a fresh DB, this migration creates every table from scratch.
-When applied to an existing Neon DB (with tables already populated by Streamlit),
-run `alembic stamp head` instead so this migration is recorded as applied
-without re-running CREATE TABLE statements.
+When applied to a DB that already has the schema, run `alembic stamp head`
+instead so this revision is recorded as applied without re-running the
+CREATE TABLE statements.
 
 Revision ID: 0001_baseline
 Revises:

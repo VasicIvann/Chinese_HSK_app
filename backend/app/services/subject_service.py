@@ -18,12 +18,7 @@ _DEFAULT_FILENAME = "expression_subjects.json"
 
 
 def _candidate_paths() -> list[Path]:
-    """Resolution order for the subjects JSON.
-
-    Honour the env var first, then look in `backend/data/` (the deployed layout),
-    then fall back to the repo-root `data/` (used during local development when
-    Streamlit still owns the source-of-truth file).
-    """
+    """Resolution order for the subjects JSON: env override, then `backend/data/`."""
     paths: list[Path] = []
     env_path = os.environ.get("HSK_SUBJECTS_FILE", "").strip()
     if env_path:
@@ -31,7 +26,6 @@ def _candidate_paths() -> list[Path]:
 
     backend_dir = Path(__file__).resolve().parent.parent.parent
     paths.append(backend_dir / "data" / _DEFAULT_FILENAME)
-    paths.append(backend_dir.parent / "data" / _DEFAULT_FILENAME)
     return paths
 
 

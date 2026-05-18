@@ -29,7 +29,7 @@ def _derive_key(password: str, salt: bytes) -> bytes:
 
 
 def hash_password(password: str) -> str:
-    """Return a salted PBKDF2 hash. Compatible with the Streamlit app's hashes."""
+    """Return a salted PBKDF2-HMAC-SHA256 hash, encoded as `salt_b64:key_b64`."""
     salt = os.urandom(PBKDF_SALT_LENGTH)
     key = _derive_key(password, salt)
     return f"{base64.b64encode(salt).decode()}:{base64.b64encode(key).decode()}"

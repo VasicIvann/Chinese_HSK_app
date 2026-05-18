@@ -1,54 +1,63 @@
 # HSK API
 
-FastAPI backend for the Chinese HSK Trainer app. Provides authenticated REST endpoints for vocabulary quizzes, FSRS-driven spaced repetition, and Claude-powered expression écrite correction.
+FastAPI backend for the HSK Trainer. Authenticated REST endpoints for vocabulary
+quizzes, FSRS-driven spaced repetition, and Claude-powered written-expression
+grading.
 
 ## Stack
 
 - FastAPI + Pydantic v2
 - SQLAlchemy 2.x + Alembic migrations
-- Postgres (Neon) in production, SQLite for tests
-- JWT auth (Authorization: Bearer)
-- Anthropic Claude Haiku 4.5 for expression écrite correction
+- Postgres in production, SQLite in tests
+- Stateless JWT auth (`Authorization: Bearer`)
+- Anthropic Claude Haiku 4.5 (prompt caching + SSE streaming)
 
 ## Local setup
 
-```powershell
-# From repo root
-.\.venv\Scripts\Activate.ps1
+```bash
 cd backend
-cp .env.example .env  # fill HSK_DATABASE_URL, JWT_SECRET_KEY, ANTHROPIC_API_KEY
-
-# Apply migrations
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
+pip install -e ".[dev]"
+cp .env.example .env                                 # HSK_DATABASE_URL, JWT_SECRET_KEY, ANTHROPIC_API_KEY
 alembic upgrade head
-
-# Run the dev server
 uvicorn app.main:app --reload --port 8000
 ```
 
-OpenAPI docs: http://localhost:8000/docs
+OpenAPI docs: <http://localhost:8000/docs>
 
 ## Tests
 
-```powershell
+```bash
 pytest
 ```
 
-Tests use a temporary SQLite DB and never touch the production Neon instance.
+Tests run against a temporary SQLite database and mock the Anthropic client —
+no network calls, no production data touched.
 
-## Deploy on Render free tier
+## Deploy on Render
 
 1. New Web Service → connect this repo → root directory `backend/`
 2. Build command: `pip install -e .`
 3. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-4. Env vars: copy from `.env.example`
-5. Set up a cron-job.org ping on `GET /healthz` every 10 min to prevent sleep
+4. Env vars: copy the keys from `.env.example`
+5. Add a cron-job.org GET ping on `/healthz` every 10 min to prevent free-tier sleep
+
+See [../DEPLOYMENT.md](../DEPLOYMENT.md) for the full guide.
 
 ## Alembic baseline
 
-The initial migration `0001_baseline` describes the schema that already exists in the Neon database (created by the Streamlit app via lightweight `ALTER TABLE`). The first time you connect Alembic to a non-empty production DB, run:
+`0001_baseline` describes the full schema. On a fresh database, `alembic upgrade
+head` creates every table. If you connect Alembic to a database that **already**
+has the schema, stamp it instead so the baseline is recorded without re-running
+the DDL:
 
-```powershell
+```bash
 alembic stamp head
 ```
 
-This marks the DB as already at the current revision without re-running CREATE TABLE statements. Future schema changes will use proper `alembic revision --autogenerate` + `alembic upgrade head`.
+Future schema changes use `alembic revision --autogenerate` + `alembic upgrade head`.
+
+## `data/`
+
+`hsk1.csv` / `hsk2.csv` / `hsk3.csv` are the source HSK 1–3 vocabulary datasets.
+`expression_subjects.json` is the curated pool of writing prompts per level.
