@@ -1,0 +1,623 @@
+% =============================================================================
+%  HSK Trainer — Technical Project Report
+%
+%  Engine: XeLaTeX (required — uses fontspec + xeCJK for Chinese glyphs).
+%  Fonts:  TeX Gyre Pagella/Heros + Fandol Song (all bundled with TeX Live /
+%          Overleaf, no system font install needed).
+%
+%  Compile:  xelatex report.tex  (run twice for the table of contents)
+%  Overleaf: set the compiler to XeLaTeX in Menu > Settings.
+% =============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric}
+
+% ---- Fonts ------------------------------------------------------------------
+% Latin Modern ships with every TeX distribution (no package install needed),
+% so the report compiles out of the box locally and on Overleaf. For a more
+% distinctive look on Overleaf you may swap these for "TeX Gyre Pagella" /
+% "TeX Gyre Heros" (both available there).
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[Scale=0.92]
+% Fandol Song is the standard CJK font bundled with TeX Live / MiKTeX. Swap for
+% "Noto Serif CJK SC", "SimSun" (Windows) or "Songti SC" (macOS) if preferred.
+\setCJKmainfont{FandolSong-Regular.otf}[BoldFont=FandolSong-Bold.otf]
+\newcommand{\han}[1]{{#1}}
+
+% ---- Palette (matches the app: cinnabar / ink / paper) ----------------------
+\definecolor{cinnabar}{HTML}{C8362F}
+\definecolor{ink}{HTML}{1D1A18}
+\definecolor{paper}{HTML}{FBF8F3}
+\definecolor{slate}{HTML}{5B5550}
+\definecolor{codebg}{HTML}{F4F1EC}
+\definecolor{kw}{HTML}{C8362F}
+\definecolor{cmt}{HTML}{8A8178}
+\definecolor{str}{HTML}{2F6F4E}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=cinnabar,
+  urlcolor=cinnabar,
+  citecolor=cinnabar,
+  pdftitle={HSK Trainer — Technical Project Report},
+  pdfauthor={Ivann Vasic}
+}
+
+% ---- Section styling --------------------------------------------------------
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{ink}}
+  {\thesection}{0.6em}
+  {}[{\color{cinnabar}\titlerule[1.2pt]}]
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{cinnabar}}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.7em}
+
+% ---- Headers / footers ------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[L]{\sffamily\footnotesize\color{slate}HSK Trainer}
+\fancyfoot[C]{\sffamily\footnotesize\color{slate}Technical Project Report}
+\fancyfoot[R]{\sffamily\footnotesize\color{slate}\thepage}
+
+% ---- Code listing styles ----------------------------------------------------
+\lstdefinestyle{base}{
+  backgroundcolor=\color{codebg},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{kw}\bfseries,
+  commentstyle=\color{cmt}\itshape,
+  stringstyle=\color{str},
+  numbers=left,
+  numberstyle=\tiny\color{slate},
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=leftline,
+  framerule=2pt,
+  rulecolor=\color{cinnabar},
+  xleftmargin=14pt,
+  framexleftmargin=10pt,
+  aboveskip=10pt,belowskip=6pt,
+  columns=fullflexible,
+}
+\lstdefinelanguage{TypeScriptX}{
+  keywords={const,let,function,return,async,await,export,import,from,type,interface,if,else,for,while,new,class,extends,useState,useCallback,void,true,false,null},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[b]`,
+}
+\lstset{style=base}
+
+% ---- Callout box for architecture decisions ---------------------------------
+\newtcolorbox{decision}[1]{
+  enhanced, breakable,
+  colback=paper, colframe=cinnabar,
+  boxrule=0.6pt, arc=2pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  fonttitle=\sffamily\bfseries\color{ink},
+  title={#1}
+}
+
+\setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=3pt}
+\captionsetup{font=small,labelfont={sf,bf,color=cinnabar}}
+
+\renewcommand{\contentsname}{\sffamily Contents}
+
+% =============================================================================
+\begin{document}
+
+% ---- Title page -------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[ink] (current page.north west) rectangle ([yshift=-5.2cm]current page.north east);
+  \node[anchor=north east,xshift=-1.6cm,yshift=-0.7cm,scale=4.4,
+        text=cinnabar] at (current page.north east) {\han{学}};
+  \fill[cinnabar] ([yshift=-5.2cm]current page.north west)
+        rectangle ([yshift=-5.35cm]current page.north east);
+\end{tikzpicture}
+
+\vspace*{1.1cm}
+\noindent{\sffamily\small\color{paper}\hspace{0.2cm}A FULL-STACK LANGUAGE-LEARNING PLATFORM}
+
+\vspace{5.4cm}
+\noindent{\sffamily\Huge\bfseries\color{ink}HSK Trainer}\\[0.35cm]
+{\sffamily\large\color{slate}Spaced repetition (FSRS) and LLM-powered\\
+written-expression grading for the Chinese HSK exams}
+
+\vfill
+\noindent
+\begin{tabular}{@{}ll@{}}
+  {\sffamily\bfseries\color{ink}Author} & Ivann Vasic \\[3pt]
+  {\sffamily\bfseries\color{ink}Stack}  & FastAPI \;\textperiodcentered\; Next.js \;\textperiodcentered\; Postgres \;\textperiodcentered\; Anthropic Claude \\[3pt]
+  {\sffamily\bfseries\color{ink}Type}   & Technical project report \\
+\end{tabular}
+
+\vspace{0.6cm}
+\noindent{\color{cinnabar}\rule{\linewidth}{1.2pt}}
+\end{titlepage}
+
+% ---- Abstract + TOC ---------------------------------------------------------
+\section*{\sffamily Abstract}
+\noindent
+HSK Trainer is a web application that helps learners prepare for the official
+\emph{HSK} Chinese proficiency exams. It pairs a modern spaced-repetition
+scheduler (FSRS) for vocabulary review with an LLM grader that returns
+structured, actionable corrections on free-form written production. This report
+describes the system's purpose, its decoupled architecture, the engineering
+decisions behind it, and how it is tested and deployed at near-zero cost. The
+project began as a single Streamlit prototype and was deliberately rebuilt as a
+typed FastAPI service with a separate Next.js front end to demonstrate
+production-oriented software, data, and AI-integration practices.
+
+\vspace{0.8em}
+{\small\tableofcontents}
+\thispagestyle{fancy}
+\newpage
+
+% =============================================================================
+\section{Introduction and Motivation}
+
+Preparing for the HSK exams requires two distinct skills: \emph{recognising}
+vocabulary quickly and \emph{producing} correct written Chinese. Generic
+flashcard apps address the first poorly (fixed intervals, no production
+practice) and the second not at all.
+
+HSK Trainer was built to solve a concrete personal need --- a genuinely useful
+study tool --- while simultaneously serving as an engineering portfolio piece.
+That dual purpose shaped every decision: features were only kept if they passed
+the ``would I use this every day?'' test, and the architecture was chosen to
+make production practices visible (typed APIs, migrations, streaming LLM
+integration, CI, infrastructure-as-code).
+
+The application targets HSK levels 1--3 (roughly 600 words). Two capabilities
+form its core:
+
+\begin{itemize}
+  \item \textbf{Comprehension review} --- an FSRS scheduler selects the words
+        a learner is about to forget, mixing in new vocabulary, and adapts to
+        self-assessed recall.
+  \item \textbf{Written-expression grading} --- the learner writes a short text
+        in Chinese on a chosen topic; Anthropic Claude streams back a
+        structured correction (score, corrected version, pinyin, translation, a
+        typed list of mistakes, strengths, and a next-step recommendation).
+\end{itemize}
+
+A closing feedback loop ties the two together: vocabulary that Claude flags as
+misused is automatically pushed back into the FSRS review queue.
+
+% =============================================================================
+\section{System Overview}
+
+From the user's perspective the application exposes four areas: a landing/auth
+flow, a comprehension quiz, a written-expression workspace, and a personal
+dashboard.
+
+\begin{itemize}
+  \item \textbf{Comprehension quiz} --- two modes (self-assessment and pinyin
+        input), keyboard shortcuts (1--4 for the FSRS ratings), progressive
+        hints (pinyin first, then full solution), and instant card transitions.
+  \item \textbf{Written expression} --- pick a curated subject, have Claude
+        generate one, or write your own; submit Chinese text and watch the
+        correction stream in token by token.
+  \item \textbf{Dashboard} --- a mastery-distribution chart, a 90-day activity
+        heatmap, quiz and expression progression curves, and browsable lists of
+        \emph{mastered}, \emph{known}, and \emph{to-review} words.
+  \item \textbf{Cross-device} --- stateless JWT auth and a shared Postgres
+        database mean the same account works on a laptop and a phone; the front
+        end is installable as a PWA.
+\end{itemize}
+
+% =============================================================================
+\section{Architecture}
+
+The system is a \textbf{monorepo} with two independently deployable services
+that communicate over HTTPS using JSON and, for the grading endpoint, a
+Server-Sent-Events (SSE) stream.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\small,
+  box/.style={rectangle,rounded corners=3pt,draw=ink,line width=0.7pt,
+    fill=paper,minimum width=4.3cm,minimum height=1.9cm,align=center},
+  db/.style={cylinder,shape border rotate=90,aspect=0.32,draw=ink,
+    line width=0.7pt,fill=paper,minimum width=2.6cm,minimum height=2.0cm,
+    align=center},
+  arr/.style={-{Stealth[length=3mm]},line width=0.8pt,color=cinnabar}
+]
+  \node[box] (fe) {\textbf{Next.js 16} (Vercel)\\[2pt]
+    \scriptsize App Router \textperiodcentered\ React 19\\
+    \scriptsize TanStack Query\\ \scriptsize Optimistic quiz UI};
+  \node[box,right=3.4cm of fe] (be) {\textbf{FastAPI} (Render)\\[2pt]
+    \scriptsize Pydantic v2 \textperiodcentered\ SQLAlchemy 2\\
+    \scriptsize JWT \textperiodcentered\ FSRS scheduler\\
+    \scriptsize Claude (prompt cache)};
+  \node[db,below=2.0cm of be] (pg) {\textbf{Postgres}\\\scriptsize (Neon)};
+
+  \draw[arr] ([yshift=4pt]fe.east) -- node[above,font=\scriptsize\sffamily]
+    {HTTPS / JSON} node[below,font=\scriptsize\sffamily]{Bearer JWT}
+    ([yshift=4pt]be.west);
+  \draw[arr] ([yshift=-4pt]be.west) -- node[below,font=\scriptsize\sffamily,
+    yshift=-10pt]{SSE \texttt{text/event-stream}} ([yshift=-4pt]fe.east);
+  \draw[arr] (be.south) -- node[right,font=\scriptsize\sffamily]
+    {SQLAlchemy} (pg.north);
+\end{tikzpicture}
+\caption{High-level service topology. The front end and back end deploy
+independently; the database is shared.}
+\end{figure}
+
+\noindent The repository layout reflects this separation:
+
+\begin{lstlisting}[language=,numbers=none]
+backend/    FastAPI service (Python 3.12)
+  app/api/v1/      auth, quizzes, srs, mastery, expression, account
+  app/services/    srs_service, llm_service, expression_service, ...
+  app/models/      SQLAlchemy ORM
+  app/schemas/     Pydantic v2 request/response models
+  alembic/         migrations (0001 baseline)
+  data/            HSK1-3 vocabulary CSVs + curated writing subjects
+  tests/           pytest (Anthropic mocked)
+frontend/   Next.js 16 app (TypeScript)
+  app/             routes (landing, auth, comprehension, expression, account)
+  components/      quiz, expression, charts, mastery, ui primitives
+  lib/             typed API client, auth context, SSE consumer, hooks
+  tests/           Vitest unit tests
+\end{lstlisting}
+
+\subsection{Request lifecycle}
+
+Every authenticated request carries a JSON Web Token in an
+\texttt{Authorization: Bearer} header. A reusable FastAPI dependency decodes
+and validates it, resolves the user, and --- on quota-bearing endpoints ---
+enforces a per-user daily limit before the handler runs.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  stage/.style={rectangle,rounded corners=2pt,draw=ink,line width=0.6pt,
+    fill=paper,minimum height=1.0cm,minimum width=2.55cm,align=center},
+  arr/.style={-{Stealth[length=2.4mm]},line width=0.7pt,color=cinnabar}
+]
+  \node[stage] (a) {Client\\\scriptsize+ Bearer JWT};
+  \node[stage,right=0.9cm of a] (b) {CORS +\\route match};
+  \node[stage,right=0.9cm of b] (c) {Decode JWT\\resolve user};
+  \node[stage,right=0.9cm of c] (d) {Quota\\dependency};
+  \node[stage,right=0.9cm of d] (e) {Handler\\+ service};
+  \draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d);
+  \draw[arr] (d)--(e);
+  \draw[arr] (e.south) .. controls +(0,-0.7) and +(0,-0.7) ..
+    node[below,font=\scriptsize]{JSON or SSE response} (a.south);
+\end{tikzpicture}
+\caption{Request pipeline. Auth and quota are dependencies, so handlers stay
+free of cross-cutting concerns.}
+\end{figure}
+
+% =============================================================================
+\section{Technology Stack}
+
+\begin{table}[h]
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Layer} & \textbf{Choice} & \textbf{Rationale} \\
+\midrule
+API            & FastAPI + Pydantic v2 & Typed I/O, auto OpenAPI, async SSE \\
+ORM            & SQLAlchemy 2.x        & Mature, explicit, Postgres + SQLite \\
+Migrations     & Alembic               & Versioned schema, baseline stamping \\
+Auth           & JWT (HS256) + PBKDF2  & Stateless, no session store \\
+Scheduler      & FSRS (py-fsrs)        & ML-based, outperforms SM-2 \\
+LLM            & Claude Haiku 4.5      & Cheap, fast, prompt-cache friendly \\
+Front end      & Next.js 16 / React 19 & App Router, RSC, mature ecosystem \\
+Server state   & TanStack Query        & Caching, retries, optimistic updates \\
+Styling        & Tailwind v4           & CSS-first tokens, fast iteration \\
+Forms          & react-hook-form + zod & Typed validation shared with API types \\
+Database       & Postgres (Neon)       & Free tier, autoscaling, branching \\
+CI             & GitHub Actions        & pytest + Vitest + production build \\
+\bottomrule
+\end{tabular}
+\caption{Stack and the reasoning behind each layer.}
+\end{table}
+
+% =============================================================================
+\section{Backend Design}
+
+\subsection{API surface}
+
+The API is versioned under \texttt{/v1} and fully described by an
+auto-generated OpenAPI document (Swagger UI at \texttt{/docs}). The endpoint
+groups are:
+
+\begin{itemize}
+  \item \texttt{auth} --- register, login, me
+  \item \texttt{quizzes} --- catalogue and entries
+  \item \texttt{srs} --- rate, due, stats
+  \item \texttt{mastery} --- per-word state
+  \item \texttt{expression} --- subjects, generate, correct, attempts, quota
+  \item \texttt{account/overview} --- dashboard aggregates
+\end{itemize}
+
+\noindent plus an unauthenticated \texttt{/healthz} liveness probe used by the
+keep-warm cron.
+
+\subsection{Spaced repetition service}
+
+The scheduler is isolated behind a service module. The public API speaks the
+standard SRS rating vocabulary (\texttt{again}/\texttt{hard}/\texttt{good}/%
+\texttt{easy}); internally that maps to FSRS \texttt{Rating} values, and the
+FSRS card state is serialised onto the mastery row so scheduling survives across
+sessions.
+
+\begin{lstlisting}[language=Python,caption={FSRS rating, simplified --- the
+scheduler owns interval/stability, the row is just persistence.}]
+def rate_entry(db, *, user_id, entry_id, rating: RatingEnum) -> MasterySnapshot:
+    record = _get_or_create_mastery(db, user_id, entry_id)
+    card = _build_card_from_record(record)            # rebuild FSRS state
+    new_card, _ = _SCHEDULER.review_card(
+        card, _RATING_TO_FSRS[rating], review_datetime=datetime.now(timezone.utc)
+    )
+    _write_card_into_record(record, new_card, rating)  # stability, due, ...
+    return MasterySnapshot(entry_id=record.entry_id,
+                           next_review_at=record.fsrs_due_at,
+                           stability_days=record.fsrs_stability)
+\end{lstlisting}
+
+\subsection{LLM integration: prompt caching and streaming}
+
+Two properties make the Claude integration production-grade. First, the system
+prompt is wrapped in an ephemeral cache block, so repeated corrections within
+the cache window pay only the cheap cache-read price rather than re-billing the
+full instruction every call.
+
+\begin{lstlisting}[language=Python,caption={Prompt caching --- the static
+grading rubric is cached; only the learner's text varies.}]
+message = client.messages.create(
+    model=get_model_id(), max_tokens=1200,
+    system=[{"type": "text", "text": CORRECTION_SYSTEM_PROMPT,
+             "cache_control": {"type": "ephemeral"}}],
+    messages=[{"role": "user", "content": user_payload}],
+)
+\end{lstlisting}
+
+Second, the correction endpoint streams the model output to the browser as
+typed SSE events. The generator opens its own database session so it can
+persist the attempt and re-queue misused vocabulary \emph{after} the stream
+completes, without holding a request-scoped transaction open for the whole
+response.
+
+\begin{lstlisting}[language=Python,caption={SSE generator, simplified ---
+events: \texttt{start}, \texttt{partial*}, \texttt{complete},
+\texttt{persisted} (or \texttt{error}).}]
+def _stream_correction_response(*, user_id, level, subject, user_text):
+    db = SessionLocal()
+    try:
+        for event in llm_service.stream_correction(user_text, level=level,
+                                                   subject=subject):
+            yield _sse(event.type, event.data)         # start / partial / complete
+        attempt = expression_service.record_attempt(db, ...)
+        relearned = queue_entries_for_relearn(db, user_id, misused_entry_ids)
+        db.commit()
+        yield _sse("persisted",
+                   {"attempt_id": attempt.id, "relearned_count": relearned})
+    finally:
+        db.close()
+\end{lstlisting}
+
+\subsection{Data layer and migrations}
+
+The schema is described by an Alembic baseline migration. Because the project
+migrated from an earlier app that already owned a populated production database,
+the deployment procedure \emph{stamps} that database at the baseline revision
+(recording it as applied without re-running DDL) rather than recreating tables
+--- a small but important detail for zero-downtime evolution. Tests run against
+a throwaway SQLite database and never touch production.
+
+% =============================================================================
+\section{Frontend Design}
+
+The front end is a Next.js App Router application. Auth state lives in a React
+context backed by \texttt{localStorage}; server state (quizzes, due cards,
+mastery, quota) is cached by TanStack Query. A small typed \texttt{fetch}
+wrapper attaches the Bearer token and mirrors the backend's Pydantic schemas.
+
+\subsection{Optimistic UI: the latency win}
+
+The single most impactful UX decision. In the original Streamlit prototype,
+every interaction triggered a full server rerun, so the gap between answering a
+card and seeing the next one was 2--5 seconds. The rewritten quiz prefetches
+the whole session, advances the local index \emph{immediately} on a rating, and
+fires the persistence request in the background with retry.
+
+\begin{lstlisting}[language=TypeScriptX,caption={Optimistic advance --- the
+next card renders before the network call resolves.}]
+const recordRating = useCallback((rating: RatingEnum, meta?) => {
+  setState(prev => ({
+    ...prev,
+    currentIndex: prev.currentIndex + 1,            // advance now
+    history: [...prev.history, { entry: prev.questions[prev.currentIndex],
+                                 rating, ...meta }],
+  }));
+}, []);
+// the page then fires postRate() via a background mutation (retry x2)
+\end{lstlisting}
+
+The perceived transition dropped from seconds to well under 50\,ms, with
+persistence failures surfaced non-blockingly through a toast.
+
+\subsection{Consuming the SSE stream}
+
+The browser's native \texttt{EventSource} cannot send an
+\texttt{Authorization} header, so the front end reads the stream manually with
+\texttt{fetch} and a \texttt{ReadableStream} parser.
+
+\begin{lstlisting}[language=TypeScriptX,caption={Custom SSE reader --- handles
+auth headers, which native EventSource cannot.}]
+const reader = response.body.getReader();
+const decoder = new TextDecoder();
+let buffer = "";
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  buffer += decoder.decode(value, { stream: true });
+  let i; while ((i = buffer.indexOf("\n\n")) !== -1) {
+    const block = buffer.slice(0, i); buffer = buffer.slice(i + 2);
+    handlers.onEvent(parseSseBlock(block));         // {event, data}
+  }
+}
+\end{lstlisting}
+
+While Claude streams, the UI shows an ``analysing'' indicator with a live token
+counter; on the \texttt{complete} event it swaps to the fully structured
+correction with an animated reveal. The visual identity (a cinnabar/ink/paper
+palette inspired by Chinese seal art, with \han{学} as the mark) carries
+through to a PWA manifest so the app installs to a phone home screen.
+
+% =============================================================================
+\section{Architecture Decisions and Trade-offs}
+
+Every significant choice was made explicitly. The most consequential are
+recorded below with the alternative that was rejected and why.
+
+\begin{decision}{FSRS over SM-2 or a hand-rolled heuristic}
+The original prototype used a fixed-ratio bucket heuristic (45\,\% review /
+50\,\% new). FSRS models per-card stability and difficulty and schedules each
+review just before predicted forgetting, which is the entire point of spaced
+repetition. SM-2 (classic Anki) was the simpler alternative but is empirically
+weaker; a bespoke algorithm would have been unjustifiable reinvention. FSRS is
+isolated behind a service boundary so it can be tuned or swapped without
+touching the API.
+\end{decision}
+
+\begin{decision}{Optimistic UI over server-driven rendering}
+Keeping the quiz server-authoritative (the Streamlit model) was simplest but
+produced the 2--5\,s stall that motivated the rewrite. Prefetching the session
+and advancing client-side trades a small amount of state-reconciliation
+complexity for an order-of-magnitude better perceived latency --- the correct
+trade for a drilling interaction repeated hundreds of times per session.
+\end{decision}
+
+\begin{decision}{Keep a Python backend; do not rewrite in TypeScript}
+A single Next.js full-stack app (API routes) would have removed a service and a
+deployment. It was rejected to preserve the Python data/AI stack (SQLAlchemy,
+Alembic, the FSRS library, the Anthropic SDK) --- the part of the project most
+relevant to its goals --- and to keep a clean, independently testable API
+boundary.
+\end{decision}
+
+\begin{decision}{Render free tier + keep-warm cron over serverless}
+Free serverless (e.g. rewriting the backend for an edge runtime) avoids cold
+starts but would have meant porting the entire Python service. Instead the
+FastAPI app runs on Render's free tier and a 10-minute cron ping to
+\texttt{/healthz} prevents the idle spin-down. Same zero cost, no rewrite, and
+the spin-down behaviour is documented rather than hidden.
+\end{decision}
+
+\begin{decision}{JWT in localStorage with a Bearer header}
+An \texttt{httpOnly} cookie is the stricter choice against XSS but adds
+cross-site cookie and CSRF complexity between a Vercel front end and a Render
+API. For a single-user study tool the localStorage + Bearer approach is a
+deliberate, scoped simplification, isolated in one auth module so it can be
+hardened later without touching call sites.
+\end{decision}
+
+\begin{decision}{Typed SSE events over raw text or no streaming}
+A non-streamed response was simplest but loses the real-time feedback that
+makes a multi-second LLM call feel responsive. Streaming raw text would have
+pushed JSON parsing into the UI. Typed events (\texttt{start} /
+\texttt{partial} / \texttt{complete} / \texttt{persisted}) keep the transport
+self-describing and let the client switch cleanly from a progress state to the
+structured result.
+\end{decision}
+
+% =============================================================================
+\section{Testing and Continuous Integration}
+
+The backend has a pytest suite that runs entirely offline: the Anthropic client
+is replaced by a fake that mimics both the one-shot \texttt{messages.create}
+call and the streaming context manager, so subject generation, the full SSE
+correction flow, quota enforcement, and the SRS re-queue loop are all covered
+without a network or a paid API call. The front end has Vitest unit tests for
+the pure logic (notably the tone-stripping pinyin comparator). Together the
+suites total 42 tests.
+
+GitHub Actions runs both suites plus a production Next.js build on every push
+and pull request, so a type error or a broken test is caught before it can be
+deployed. A subtle bug surfaced and fixed this way --- a SQLite write lock when
+the SSE generator opened a second session while a request-scoped transaction
+was still open --- is exactly the class of issue an offline integration test is
+meant to catch.
+
+% =============================================================================
+\section{Deployment}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\scriptsize,
+  node distance=0.7cm,
+  svc/.style={rectangle,rounded corners=3pt,draw=ink,line width=0.6pt,
+    fill=paper,minimum width=3.2cm,minimum height=1.5cm,align=center},
+  ext/.style={rectangle,rounded corners=3pt,draw=slate,line width=0.6pt,
+    fill=codebg,minimum width=2.7cm,minimum height=1.0cm,align=center},
+  arr/.style={-{Stealth[length=2.4mm]},line width=0.7pt,color=cinnabar}
+]
+  \node[svc] (vercel) {\textbf{Vercel}\\\scriptsize Next.js (Hobby)};
+  \node[svc,right=2.4cm of vercel] (render) {\textbf{Render}\\\scriptsize FastAPI (free)};
+  \node[ext,below=1.0cm of render] (neon) {Neon Postgres};
+  \node[ext,above=0.9cm of render] (cron) {cron-job.org\\\scriptsize ping /healthz 10\,min};
+  \node[ext,right=1.9cm of render] (claude) {Anthropic API};
+  \draw[arr] (vercel)--(render);
+  \draw[arr] (render)--(neon);
+  \draw[arr] (cron)--(render);
+  \draw[arr] (render)--(claude);
+\end{tikzpicture}
+\caption{Deployment topology. Every component runs on a free tier; the cron
+ping keeps the free Render instance from sleeping.}
+\end{figure}
+
+\noindent The entire production stack runs at a recurring cost of
+approximately \textbf{\texteuro0}. The only variable cost is Anthropic usage:
+with prompt caching, a written-expression correction costs on the order of
+\$0.003. Infrastructure is declared as code in \texttt{render.yaml}, and both
+platforms redeploy automatically on a push to \texttt{main}.
+
+% =============================================================================
+\section{Conclusion}
+
+HSK Trainer demonstrates a complete path from a quick prototype to a
+production-shaped application: a typed, versioned API; a migrated and
+version-controlled data layer; a streaming LLM integration with cost controls;
+an optimistic, mobile-first front end; an offline test suite with CI; and
+zero-cost infrastructure-as-code. The guiding constraint --- that it had to be
+a tool worth using daily \emph{and} a credible engineering artefact --- pushed
+the design toward explicit, defensible trade-offs rather than defaults. The
+result is a focused application whose every layer can be explained and
+justified.
+
+\vspace{1.2em}
+\noindent{\color{cinnabar}\rule{\linewidth}{1pt}}\\[2pt]
+{\sffamily\footnotesize\color{slate}Ivann Vasic \;\textendash\; HSK Trainer \;\textendash\;
+FastAPI \textperiodcentered\ Next.js \textperiodcentered\ Postgres \textperiodcentered\ Anthropic Claude}
+
+\end{document}
