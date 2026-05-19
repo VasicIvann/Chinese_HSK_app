@@ -6,21 +6,40 @@ engineering decisions, deployment).
 ## Compiling
 
 The report **must** be compiled with **XeLaTeX** (it uses `fontspec` + `xeCJK`
-to render Chinese characters). All fonts are bundled with TeX Live full and
-Overleaf — no system font installation is required.
+to render Chinese characters — it will fail with pdfLaTeX). All fonts are
+bundled with TeX Live / MiKTeX / Overleaf — no system font install is required.
 
-### Overleaf (easiest)
+The engine is selected **automatically** by two mechanisms already in the repo,
+so you normally don't have to configure anything:
 
-1. Upload `report.tex`.
-2. Menu → Settings → **Compiler: XeLaTeX**.
-3. Recompile (run twice so the table of contents resolves).
+- `% !TEX program = xelatex` magic comment on line 1 of `report.tex`
+  (read by VS Code LaTeX Workshop, TeXShop, TeXworks…)
+- `latexmkrc` (`$pdf_mode = 5`) — read by `latexmk` locally **and on Overleaf**
 
-### Local
+### Overleaf
+
+Upload the whole `report/` folder (so `latexmkrc` is included). It builds with
+XeLaTeX automatically. If you ever see a pdfLaTeX error, also set
+Menu → Settings → **Compiler: XeLaTeX** as a fallback.
+
+### Local — VS Code (LaTeX Workshop)
+
+Just open `report.tex` and build. The magic comment + `latexmkrc` route it to
+XeLaTeX. If a previous pdfLaTeX attempt left the build stuck, clean once:
 
 ```bash
 cd report
-xelatex report.tex
-xelatex report.tex   # second pass for the table of contents
+latexmk -C        # remove stale aux files from the failed pdflatex run
+latexmk           # rebuilds with XeLaTeX via latexmkrc
+```
+
+### Local — command line
+
+```bash
+cd report
+latexmk report.tex          # uses latexmkrc → XeLaTeX, handles the 2 passes
+# or, manually:
+xelatex report.tex && xelatex report.tex
 ```
 
 Output: `report.pdf`.

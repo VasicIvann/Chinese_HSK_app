@@ -1,0 +1,7 @@
+# Force XeLaTeX (the report uses fontspec + xeCJK and will NOT build with
+# pdfLaTeX). latexmk reads this file automatically — locally and on Overleaf —
+# so no manual compiler setting is required.
+#
+# $pdf_mode = 5  ->  build the PDF with xelatex
+$pdf_mode = 5;
+$xelatex = 'xelatex -interaction=nonstopmode -synctex=1 %O %S';
