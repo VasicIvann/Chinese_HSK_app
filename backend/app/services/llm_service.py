@@ -72,6 +72,20 @@ Règles essentielles :
 - Réponds UNIQUEMENT avec le JSON. Aucun commentaire, aucun balisage Markdown, aucun préfixe."""
 
 
+EXAMPLE_SYSTEM_PROMPT = """Tu es un professeur de chinois mandarin qui aide des apprenants francophones à préparer les examens HSK officiels.
+
+On te donne un mot de vocabulaire et le niveau HSK de l'apprenant. Tu écris UNE phrase d'exemple courte et naturelle qui utilise ce mot, puis tu expliques le mot. Règles :
+- La phrase est simple, courante, du type qu'on trouve dans les manuels et examens HSK de ce niveau : vocabulaire et grammaire du niveau indiqué (ou inférieur) uniquement.
+- La phrase fait au plus 20 caractères chinois et contient le mot exact demandé.
+- Le pinyin est écrit avec les tons en diacritiques.
+- `meaning_in_sentence` : en une phrase courte en français, le sens et le rôle du mot dans CETTE phrase.
+- `general_meaning` : en une ou deux phrases courtes en français, le sens général du mot et son usage typique au niveau HSK indiqué.
+- Si on te donne des phrases déjà utilisées, écris une phrase différente.
+- Tu réponds uniquement en JSON valide au format strict :
+{"sentence": "<phrase en hanzi>", "pinyin": "<pinyin de la phrase>", "translation": "<traduction française>", "meaning_in_sentence": "<...>", "general_meaning": "<...>"}
+- N'ajoute AUCUN texte avant ou après le JSON."""
+
+
 _HANZI_RE = re.compile(r"[一-鿿]")
 
 
@@ -174,6 +188,69 @@ def generate_subject(level: int, theme: Optional[str] = None) -> tuple[dict[str,
     return payload, usage
 
 
+EXAMPLE_FIELDS = ("sentence", "pinyin", "translation", "meaning_in_sentence", "general_meaning")
+
+
+def generate_example(
+    *,
+    hanzi: str,
+    pinyin: str,
+    translation: str,
+    level: Optional[int],
+    avoid_sentences: Optional[list[str]] = None,
+) -> tuple[dict[str, str], LLMUsage]:
+    """Ask Claude for one short example sentence using `hanzi`, with explanations.
+
+    Returns a dict with exactly the keys in EXAMPLE_FIELDS (missing ones are "").
+    Raises RuntimeError on API failure or when no usable sentence comes back.
+    """
+    client = _get_client()
+    level_text = f"HSK {level}" if level else "débutant"
+    user_msg = (
+        f"Mot : {hanzi} ({pinyin}) — traduction : {translation}\n"
+        f"Niveau de l'apprenant : {level_text}\n"
+    )
+    previous = [s for s in (avoid_sentences or []) if s.strip()][:10]
+    if previous:
+        user_msg += "Phrases déjà utilisées (à ne pas répéter) :\n"
+        user_msg += "\n".join(f"- {s}" for s in previous) + "\n"
+    user_msg += "Génère un exemple."
+
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=400,
+            system=[
+                {
+                    "type": "text",
+                    "text": EXAMPLE_SYSTEM_PROMPT,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[{"role": "user", "content": user_msg}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+
+    raw_text = "".join(
+        block.text for block in message.content if getattr(block, "type", None) == "text"
+    )
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Le modèle n'a pas renvoyé d'exemple exploitable.") from exc
+
+    example = {key: str(payload.get(key, "") or "").strip() for key in EXAMPLE_FIELDS}
+    if not example["sentence"]:
+        raise RuntimeError("Le modèle n'a pas renvoyé d'exemple exploitable.")
+
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return example, usage
+
+
 def stream_correction(
     user_text: str, *, level: int, subject: str
 ) -> Iterator[StreamEvent]:
@@ -261,6 +338,8 @@ def stream_correction(
 
 __all__ = [
     "CORRECTION_SYSTEM_PROMPT",
+    "EXAMPLE_FIELDS",
+    "EXAMPLE_SYSTEM_PROMPT",
     "LEVEL_LENGTH_GUIDANCE",
     "LEVEL_MAX_CHARS",
     "LLMNotConfiguredError",
@@ -269,6 +348,7 @@ __all__ = [
     "SUBJECT_SYSTEM_PROMPT",
     "contains_chinese",
     "enforce_length",
+    "generate_example",
     "generate_subject",
     "get_model_id",
     "is_configured",

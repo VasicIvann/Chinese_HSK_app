@@ -190,3 +190,20 @@ export type AccountOverview = {
   quiz_progression: QuizDailyPoint[];
   expression_progression: ExpressionScorePoint[];
 };
+
+export type WordExampleItem = {
+  id: number;
+  entry_id: number;
+  hsk_level: number | null;
+  sentence: string;
+  pinyin: string;
+  translation: string;
+  meaning_in_sentence: string;
+  general_meaning: string;
+  created_at: string;
+};
+
+export type ExampleGenerateResponse = {
+  example: WordExampleItem;
+  quota_remaining: number;
+};

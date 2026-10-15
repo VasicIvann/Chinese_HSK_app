@@ -13,8 +13,10 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -e .
+    # Apply pending Alembic migrations before serving. If a migration fails the
+    # new instance never starts and Render keeps the previous deploy live.
     startCommand: |
-      uvicorn app.main:app --host 0.0.0.0 --port $PORT
+      alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /healthz
     envVars:
       - key: PYTHON_VERSION

@@ -8,6 +8,7 @@ import type {
   AccountOverview,
   DueEntry,
   EntryPublic,
+  ExampleGenerateResponse,
   ExpressionAttemptItem,
   LoginRequest,
   MasteryItem,
@@ -21,6 +22,7 @@ import type {
   SubjectItem,
   TokenResponse,
   UserPublic,
+  WordExampleItem,
 } from "@/lib/api/types";
 
 // Auth
@@ -117,6 +119,19 @@ export function getQuota() {
 
 export function expressionCorrectUrl() {
   return apiUrl("/v1/expression/correct");
+}
+
+// Vocabulary examples
+
+export function getWordExamples(entryId: number) {
+  return apiRequest<WordExampleItem[]>(`/v1/examples?entry_id=${entryId}`);
+}
+
+export function postGenerateExample(entryId: number) {
+  return apiRequest<ExampleGenerateResponse>("/v1/examples", {
+    method: "POST",
+    body: { entry_id: entryId },
+  });
 }
 
 // Account

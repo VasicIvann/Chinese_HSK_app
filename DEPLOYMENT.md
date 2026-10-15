@@ -117,6 +117,8 @@ Push to `main` → **both** platforms auto-deploy:
 - Vercel: ~1 min, zero-downtime
 - Render: ~3 min, ~30 s swap downtime
 
+Database migrations run automatically: the Render start command is `alembic upgrade head && uvicorn ...`, so a new migration is applied before the new instance serves traffic. If it fails, the deploy fails and the previous version stays live — check the deploy logs.
+
 GitHub Actions also runs the test suites on every push/PR (`.github/workflows/tests.yml`).
 
 ---

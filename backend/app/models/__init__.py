@@ -6,6 +6,7 @@ schema run `alembic stamp head` so the baseline is recorded without re-running
 the DDL.
 """
 
+from app.models.example import WordExample
 from app.models.expression import ExpressionAttempt, UserDailyUsage
 from app.models.mastery import UserVocabMastery
 from app.models.quiz import Entry, Quiz
@@ -19,4 +20,5 @@ __all__ = [
     "UserDailyUsage",
     "UserSetting",
     "UserVocabMastery",
+    "WordExample",
 ]

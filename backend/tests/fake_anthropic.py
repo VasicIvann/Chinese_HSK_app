@@ -62,7 +62,15 @@ class FakeMessages:
         *,
         subject_response: dict[str, Any] | None = None,
         correction_response: dict[str, Any] | None = None,
+        example_response: dict[str, Any] | None = None,
     ) -> None:
+        self.example_response = example_response or {
+            "sentence": "我爱我的家。",
+            "pinyin": "wǒ ài wǒ de jiā.",
+            "translation": "J'aime ma famille.",
+            "meaning_in_sentence": "爱 exprime ici l'affection pour sa famille.",
+            "general_meaning": "爱 signifie aimer ; très courant dès le HSK 1.",
+        }
         self.subject_response = subject_response or {
             "subject": "Décrivez votre week-end idéal.",
             "keywords": ["周末", "去", "玩", "和"],
@@ -82,7 +90,11 @@ class FakeMessages:
 
     def create(self, **kwargs: Any) -> FakeMessage:
         self.create_calls.append(kwargs)
-        text = json.dumps(self.subject_response, ensure_ascii=False)
+        system_text = "".join(block.get("text", "") for block in kwargs.get("system", []))
+        response = (
+            self.example_response if "phrase d'exemple" in system_text else self.subject_response
+        )
+        text = json.dumps(response, ensure_ascii=False)
         return FakeMessage(content=[FakeTextBlock(text=text)])
 
     def stream(self, **kwargs: Any) -> FakeStream:
@@ -97,10 +109,12 @@ class FakeAnthropic:
         *,
         subject_response: dict[str, Any] | None = None,
         correction_response: dict[str, Any] | None = None,
+        example_response: dict[str, Any] | None = None,
     ) -> None:
         self.messages = FakeMessages(
             subject_response=subject_response,
             correction_response=correction_response,
+            example_response=example_response,
         )
 
 

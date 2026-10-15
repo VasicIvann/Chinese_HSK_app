@@ -9,4 +9,4 @@ Base = declarative_base()
 
 def register_models() -> None:
     """Force-import all model modules so Alembic sees every table."""
-    from app.models import expression, mastery, quiz, user  # noqa: F401
+    from app.models import example, expression, mastery, quiz, user  # noqa: F401

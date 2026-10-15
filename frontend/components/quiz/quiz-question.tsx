@@ -5,6 +5,7 @@ import { Eye, EyeOff, Lightbulb } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { RatingButtons } from "@/components/quiz/rating-buttons";
+import { WordExamples } from "@/components/quiz/word-examples";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { DueEntry, RatingEnum } from "@/lib/api/types";
@@ -175,6 +176,8 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
           </p>
           <RatingButtons onRate={handleAutoRate} />
         </div>
+
+        <WordExamples key={entry.id} entry={entry} />
       </motion.div>
     </AnimatePresence>
   );

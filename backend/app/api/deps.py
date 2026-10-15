@@ -19,6 +19,7 @@ bearer_scheme = HTTPBearer(auto_error=True)
 DAILY_QUOTAS: dict[str, int] = {
     "expression_correction": 20,
     "subject_generation": 50,
+    "example_generation": 100,
 }
 
 
