@@ -80,9 +80,14 @@ On te donne un mot de vocabulaire et le niveau HSK de l'apprenant. Tu écris UNE
 - Le pinyin est écrit avec les tons en diacritiques.
 - `meaning_in_sentence` : en une phrase courte en français, le sens et le rôle du mot dans CETTE phrase.
 - `general_meaning` : en une ou deux phrases courtes en français, le sens général du mot et son usage typique au niveau HSK indiqué.
+- `decomposition` : un mini paragraphe en français (3 phrases maximum) qui décompose le mot :
+  - pour chaque caractère, ses composants utiles (clé/radical 部首 et autres parties) avec leur rôle : sens ou son. Ignore les composants qui n'aident pas à comprendre ou retenir le caractère.
+  - si le mot a deux caractères ou plus : le sens de chaque caractère pris seul, puis pourquoi leur combinaison donne le sens du mot.
+  - si le mot n'a qu'un caractère : uniquement ses composants.
+  Écris chaque caractère ou composant en hanzi suivi de son sens entre parenthèses, par exemple « 女 (femme) ». N'invente pas d'étymologie : si l'origine d'un composant est incertaine, n'en parle pas.
 - Si on te donne des phrases déjà utilisées, écris une phrase différente.
 - Tu réponds uniquement en JSON valide au format strict :
-{"sentence": "<phrase en hanzi>", "pinyin": "<pinyin de la phrase>", "translation": "<traduction française>", "meaning_in_sentence": "<...>", "general_meaning": "<...>"}
+{"sentence": "<phrase en hanzi>", "pinyin": "<pinyin de la phrase>", "translation": "<traduction française>", "meaning_in_sentence": "<...>", "general_meaning": "<...>", "decomposition": "<...>"}
 - N'ajoute AUCUN texte avant ou après le JSON."""
 
 
@@ -188,7 +193,14 @@ def generate_subject(level: int, theme: Optional[str] = None) -> tuple[dict[str,
     return payload, usage
 
 
-EXAMPLE_FIELDS = ("sentence", "pinyin", "translation", "meaning_in_sentence", "general_meaning")
+EXAMPLE_FIELDS = (
+    "sentence",
+    "pinyin",
+    "translation",
+    "meaning_in_sentence",
+    "general_meaning",
+    "decomposition",
+)
 
 
 def generate_example(
@@ -219,7 +231,7 @@ def generate_example(
     try:
         message = client.messages.create(
             model=get_model_id(),
-            max_tokens=400,
+            max_tokens=700,
             system=[
                 {
                     "type": "text",

@@ -200,6 +200,8 @@ export type WordExampleItem = {
   translation: string;
   meaning_in_sentence: string;
   general_meaning: string;
+  /** Empty for examples generated before this field existed. */
+  decomposition: string;
   created_at: string;
 };
 

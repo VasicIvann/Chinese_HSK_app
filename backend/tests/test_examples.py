@@ -65,6 +65,7 @@ def test_generate_saves_and_lists_example(
     assert body["example"]["entry_id"] == entry_id
     assert body["example"]["hsk_level"] == 1
     assert body["example"]["general_meaning"]
+    assert body["example"]["decomposition"].startswith("爱 contient 心")
     assert body["quota_remaining"] == 99
 
     # The prompt carries the word and its HSK level.
@@ -138,3 +139,25 @@ def test_subject_generation_still_uses_subject_response(
     )
     assert res.status_code == 200
     assert res.json()["subject"] == "Décrivez votre week-end idéal."
+
+
+def test_missing_decomposition_is_saved_as_empty_string(
+    client: TestClient, seed_quizzes, fake_anthropic
+) -> None:
+    """An answer without the new field still produces a valid example."""
+    token = _register(client, "ex-nodecomp@example.com")
+    entry_id = _entry_id(client, token)
+    response = dict(fake_anthropic.messages.example_response)
+    response.pop("decomposition")
+    fake_anthropic.messages.example_response = response
+
+    res = client.post("/v1/examples", json={"entry_id": entry_id}, headers=_auth(token))
+    assert res.status_code == 201
+    assert res.json()["example"]["decomposition"] == ""
+
+
+def test_prompt_asks_for_decomposition() -> None:
+    from app.services import llm_service
+
+    assert "decomposition" in llm_service.EXAMPLE_FIELDS
+    assert "decomposition" in llm_service.EXAMPLE_SYSTEM_PROMPT

@@ -22,6 +22,7 @@ class WordExampleItem(BaseModel):
     translation: str = ""
     meaning_in_sentence: str = ""
     general_meaning: str = ""
+    decomposition: str = ""
     created_at: datetime
 
 

@@ -35,7 +35,7 @@ export function ExampleCard({ example, word }: { example: WordExampleItem; word:
       </p>
       {example.pinyin && <p className="mt-1 text-sm text-muted-foreground">{example.pinyin}</p>}
       {example.translation && <p className="mt-1 text-sm italic">{example.translation}</p>}
-      {(example.meaning_in_sentence || example.general_meaning) && (
+      {(example.meaning_in_sentence || example.general_meaning || example.decomposition) && (
         <div className="mt-3 space-y-1.5 border-t border-border pt-3 text-sm">
           {example.meaning_in_sentence && (
             <p>
@@ -49,6 +49,12 @@ export function ExampleCard({ example, word }: { example: WordExampleItem; word:
                 En général{example.hsk_level ? ` (HSK ${example.hsk_level})` : ""} :{" "}
               </span>
               {example.general_meaning}
+            </p>
+          )}
+          {example.decomposition && (
+            <p>
+              <span className="font-medium">Décomposition : </span>
+              {example.decomposition}
             </p>
           )}
         </div>

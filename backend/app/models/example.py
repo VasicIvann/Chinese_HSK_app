@@ -25,6 +25,7 @@ class WordExample(Base):
     translation = Column(Text, nullable=False, default="")
     meaning_in_sentence = Column(Text, nullable=False, default="")
     general_meaning = Column(Text, nullable=False, default="")
+    decomposition = Column(Text, nullable=False, default="")
     tokens_input = Column(Integer, nullable=False, default=0)
     tokens_output = Column(Integer, nullable=False, default=0)
     model_id = Column(String(64), nullable=False, default="")

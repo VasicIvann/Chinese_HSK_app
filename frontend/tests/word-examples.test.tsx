@@ -33,6 +33,7 @@ function example(id: number, sentence: string): WordExampleItem {
     translation: "traduction",
     meaning_in_sentence: "sens ici",
     general_meaning: "sens général",
+    decomposition: "",
     created_at: "2026-10-15T00:00:00Z",
   };
 }
@@ -72,6 +73,8 @@ describe("WordExamples", () => {
     fireEvent.click(screen.getByRole("button", { name: /générer un exemple/i }));
 
     expect(await screen.findByText("sens général")).toBeInTheDocument();
+    // No "Décomposition" label for an example that has none.
+    expect(screen.queryByText(/Décomposition/)).toBeNull();
     expect(postGenerateExample).toHaveBeenCalledWith(7);
     expect(screen.getByText("书很好。", { exact: false })).toBeInTheDocument();
     // The older example stays hidden until the history is opened.
@@ -79,6 +82,19 @@ describe("WordExamples", () => {
 
     fireEvent.click(history);
     expect(screen.getByText("我有一", { exact: false })).toBeInTheDocument();
+  });
+
+  it("shows the decomposition paragraph when the example has one", async () => {
+    getWordExamples.mockResolvedValue([]);
+    postGenerateExample.mockResolvedValue({
+      example: { ...example(3, "这本书很好。"), decomposition: "本 vient de 木 (arbre)." },
+      quota_remaining: 97,
+    });
+    renderWidget();
+
+    fireEvent.click(await screen.findByRole("button", { name: /générer un exemple/i }));
+    expect(await screen.findByText(/Décomposition/)).toBeInTheDocument();
+    expect(screen.getByText("本 vient de 木 (arbre).")).toBeInTheDocument();
   });
 
   it("shows the API error message when generation fails", async () => {

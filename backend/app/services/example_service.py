@@ -53,6 +53,7 @@ def save_example(
         translation=example.get("translation", ""),
         meaning_in_sentence=example.get("meaning_in_sentence", ""),
         general_meaning=example.get("general_meaning", ""),
+        decomposition=example.get("decomposition", ""),
         tokens_input=tokens_input,
         tokens_output=tokens_output,
         model_id=model_id[:64],

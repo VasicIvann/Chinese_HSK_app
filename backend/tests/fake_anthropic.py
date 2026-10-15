@@ -70,6 +70,7 @@ class FakeMessages:
             "translation": "J'aime ma famille.",
             "meaning_in_sentence": "爱 exprime ici l'affection pour sa famille.",
             "general_meaning": "爱 signifie aimer ; très courant dès le HSK 1.",
+            "decomposition": "爱 contient 心 (cœur), qui porte l'idée d'affection.",
         }
         self.subject_response = subject_response or {
             "subject": "Décrivez votre week-end idéal.",
