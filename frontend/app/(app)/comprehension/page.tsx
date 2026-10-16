@@ -6,21 +6,17 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
 import { QuizQuestion } from "@/components/quiz/quiz-question";
-import { QuizSetup } from "@/components/quiz/quiz-setup";
+import { QuizSetup, type QuizStartParams } from "@/components/quiz/quiz-setup";
 import { QuizSummary } from "@/components/quiz/quiz-summary";
 import { Button } from "@/components/ui/button";
 import { ApiError } from "@/lib/api/client";
 import { getDueEntries, postRate } from "@/lib/api/endpoints";
 import type { DueEntry, MasterySnapshotResponse, RatingEnum } from "@/lib/api/types";
-import { useQuizSession, type QuizMode } from "@/lib/hooks/use-quiz-session";
+import { useQuizSession } from "@/lib/hooks/use-quiz-session";
 
 type Phase = "setup" | "loading" | "running" | "summary";
 
-type SessionConfig = {
-  quiz: string;
-  count: number;
-  mode: QuizMode;
-};
+type SessionConfig = QuizStartParams;
 
 export default function ComprehensionPage() {
   const [phase, setPhase] = useState<Phase>("setup");
@@ -55,9 +51,13 @@ export default function ComprehensionPage() {
     async (cfg: SessionConfig) => {
       setPhase("loading");
       try {
-        const entries = await getDueEntries(cfg.quiz, cfg.count);
+        const entries = await getDueEntries(cfg.quizzes, cfg.count, { onlyNew: cfg.onlyNew });
         if (entries.length === 0) {
-          toast.info("Aucune carte à étudier pour ce quiz.");
+          toast.info(
+            cfg.onlyNew
+              ? "Aucun nouveau mot dans ces niveaux : tu les as tous déjà vus."
+              : "Aucune carte à étudier pour ces niveaux."
+          );
           setPhase("setup");
           return;
         }
@@ -107,7 +107,8 @@ export default function ComprehensionPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
-          {config?.quiz} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
+          {config?.quizzes.join(" + ")}
+          {config?.onlyNew ? " · Nouveaux" : ""} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
           {session.state.questions.length}
         </p>
         <Button variant="ghost" size="sm" onClick={handleRestart}>

@@ -61,16 +61,20 @@ export function getQuizEntries(quizKey: string) {
 
 // SRS
 
+/** Max questions per session accepted by the backend. */
+export const MAX_SESSION_SIZE = 2000;
+
 export function getDueEntries(
-  quiz: string,
+  quizzes: string[],
   count: number = 10,
-  newRatio: number = 0.3
+  options: { newRatio?: number; onlyNew?: boolean } = {}
 ) {
-  const params = new URLSearchParams({
-    quiz,
-    count: String(count),
-    new_ratio: String(newRatio),
-  });
+  const { newRatio = 0.3, onlyNew = false } = options;
+  const params = new URLSearchParams();
+  quizzes.forEach((q) => params.append("quiz", q));
+  params.set("count", String(count));
+  params.set("new_ratio", String(newRatio));
+  if (onlyNew) params.set("only_new", "true");
   return apiRequest<DueEntry[]>(`/v1/srs/due?${params.toString()}`);
 }
 
@@ -81,9 +85,11 @@ export function postRate(body: RateRequest) {
   });
 }
 
-export function getStats(quiz?: string) {
-  const qs = quiz ? `?quiz=${encodeURIComponent(quiz)}` : "";
-  return apiRequest<StatsResponse>(`/v1/srs/stats${qs}`);
+export function getStats(quizzes: string[] = []) {
+  const params = new URLSearchParams();
+  quizzes.forEach((q) => params.append("quiz", q));
+  const qs = params.toString();
+  return apiRequest<StatsResponse>(`/v1/srs/stats${qs ? `?${qs}` : ""}`);
 }
 
 // Mastery
