@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { History, Loader2, Sparkles } from "lucide-react";
 import { Fragment, useState } from "react";
 
+import { ListenButton } from "@/components/listen-button";
 import { Button } from "@/components/ui/button";
 import { ApiError } from "@/lib/api/client";
 import { getWordExamples, postGenerateExample } from "@/lib/api/endpoints";
@@ -30,9 +31,12 @@ function HighlightedSentence({ sentence, word }: { sentence: string; word: strin
 export function ExampleCard({ example, word }: { example: WordExampleItem; word: string }) {
   return (
     <div className="rounded-lg border border-border bg-card p-4 text-left">
-      <p className="hanzi text-xl leading-relaxed">
-        <HighlightedSentence sentence={example.sentence} word={word} />
-      </p>
+      <div className="flex items-start justify-between gap-2">
+        <p className="hanzi text-xl leading-relaxed">
+          <HighlightedSentence sentence={example.sentence} word={word} />
+        </p>
+        <ListenButton text={example.sentence} rate={0.9} className="-mr-2 -mt-1 shrink-0" />
+      </div>
       {example.pinyin && <p className="mt-1 text-sm text-muted-foreground">{example.pinyin}</p>}
       {example.translation && <p className="mt-1 text-sm italic">{example.translation}</p>}
       {(example.meaning_in_sentence || example.general_meaning || example.decomposition) && (

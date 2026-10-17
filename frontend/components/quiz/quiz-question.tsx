@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Eye, EyeOff, Lightbulb } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { ListenButton } from "@/components/listen-button";
 import { RatingButtons } from "@/components/quiz/rating-buttons";
 import { WordExamples } from "@/components/quiz/word-examples";
 import { Button } from "@/components/ui/button";
@@ -111,6 +112,7 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
         <div className="flex flex-col items-center gap-3">
           {mode === "auto-assess" ? (
             <div className="flex flex-wrap items-center justify-center gap-2">
+              <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />
               <Button
                 type="button"
                 variant="ghost"
@@ -134,16 +136,19 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
               </Button>
             </div>
           ) : (
-            <Button
-              type="button"
-              variant="ghost"
-              size="sm"
-              onClick={() => setHintVisible((v) => !v)}
-              className="text-muted-foreground"
-            >
-              {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
-              {hintVisible ? "Masquer la solution" : "Afficher la solution"}
-            </Button>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setHintVisible((v) => !v)}
+                className="text-muted-foreground"
+              >
+                {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
+                {hintVisible ? "Masquer la solution" : "Afficher la solution"}
+              </Button>
+            </div>
           )}
 
           {(showPinyin || hintVisible) && (
