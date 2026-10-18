@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from zoneinfo import ZoneInfo
+
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
+from app.core.timezone import get_user_timezone
 from app.db.session import get_db
 from app.models import User
 from app.schemas.account import AccountOverview
@@ -25,6 +28,7 @@ def get_account_overview(
     trend_days: int = Query(30, ge=7, le=365),
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
+    tz: ZoneInfo = Depends(get_user_timezone),
 ) -> AccountOverview:
-    payload = get_overview(db, user, heatmap_days=heatmap_days, trend_days=trend_days)
+    payload = get_overview(db, user, heatmap_days=heatmap_days, trend_days=trend_days, tz=tz)
     return AccountOverview.model_validate(payload)

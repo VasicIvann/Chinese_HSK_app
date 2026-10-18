@@ -186,12 +186,54 @@ export type ProfileSummary = {
   total_expressions: number;
 };
 
+export type LevelProgress = {
+  quiz_key: string;
+  title: string;
+  level: number | null;
+  total: number;
+  mastered: number;
+  learning: number;
+  new: number;
+};
+
+export type StreakSummary = {
+  current: number;
+  best: number;
+  studied_today: boolean;
+};
+
+export type SuccessRate = {
+  /** 0..1, null without reviews in the window. */
+  last_7_days: number | null;
+  last_30_days: number | null;
+  reviews_7_days: number;
+  reviews_30_days: number;
+  daily: { date: string; rate: number | null; count: number }[];
+  /** First day recorded in the review history. */
+  tracking_since: string | null;
+};
+
+export type UpcomingReviews = {
+  due_now: number;
+  /** Includes overdue. */
+  due_today: number;
+  due_tomorrow: number;
+  /** Cumulative over 7 days, includes overdue. */
+  due_next_7_days: number;
+  /** Day 0 includes overdue. */
+  forecast: { date: string; count: number }[];
+};
+
 export type AccountOverview = {
   profile: ProfileSummary;
   mastery: MasteryDistribution;
   activity_heatmap: ActivityCell[];
   quiz_progression: QuizDailyPoint[];
   expression_progression: ExpressionScorePoint[];
+  level_progress: LevelProgress[];
+  streak: StreakSummary;
+  success_rate: SuccessRate;
+  upcoming: UpcomingReviews;
 };
 
 export type WordExampleItem = {

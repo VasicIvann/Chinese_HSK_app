@@ -38,9 +38,57 @@ class ProfileSummary(BaseModel):
     total_expressions: int
 
 
+class LevelProgress(BaseModel):
+    quiz_key: str
+    title: str
+    level: int | None = None
+    total: int
+    mastered: int
+    learning: int
+    new: int
+
+
+class StreakSummary(BaseModel):
+    current: int  # consecutive days ending today (or yesterday if not studied yet today)
+    best: int
+    studied_today: bool
+
+
+class SuccessDailyPoint(BaseModel):
+    date: date
+    rate: float | None  # 0..1
+    count: int
+
+
+class SuccessRate(BaseModel):
+    last_7_days: float | None  # 0..1, None without reviews
+    last_30_days: float | None
+    reviews_7_days: int
+    reviews_30_days: int
+    daily: list[SuccessDailyPoint]
+    tracking_since: date | None  # first day recorded in the review history
+
+
+class ForecastDay(BaseModel):
+    date: date
+    count: int
+
+
+class UpcomingReviews(BaseModel):
+    due_now: int
+    due_today: int  # includes overdue
+    due_tomorrow: int
+    due_next_7_days: int  # cumulative, includes overdue
+    forecast: list[ForecastDay]  # day 0 includes overdue
+
+
 class AccountOverview(BaseModel):
     profile: ProfileSummary
     mastery: MasteryDistribution
     activity_heatmap: list[ActivityCell]
     quiz_progression: list[QuizDailyPoint]
     expression_progression: list[ExpressionScorePoint]
+    level_progress: list[LevelProgress]
+    streak: StreakSummary
+    success_rate: SuccessRate
+    upcoming: UpcomingReviews

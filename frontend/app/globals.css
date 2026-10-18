@@ -42,6 +42,10 @@
   --ring: oklch(0.52 0.18 30);
 
   --radius: 0.75rem;
+  /* Mastery states: one-hue ordinal ramp (validated: new < learning < mastered). */
+  --mastery-new: #e49d8a;
+  --mastery-learning: #d8644f;
+  --mastery-mastered: #ba2d1f;
 }
 
 .dark {
@@ -72,6 +76,9 @@
   --border: oklch(0.28 0.012 50);
   --input: oklch(0.26 0.012 50);
   --ring: oklch(0.65 0.18 28);
+  --mastery-new: #843d30;
+  --mastery-learning: #c04e3e;
+  --mastery-mastered: #f17264;
 }
 
 @theme inline {
