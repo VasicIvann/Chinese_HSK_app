@@ -44,4 +44,18 @@ def test_get_entries_unknown_quiz_returns_404(client: TestClient, seed_quizzes: 
 def test_healthz_does_not_require_auth(client: TestClient) -> None:
     res = client.get("/healthz")
     assert res.status_code == 200
-    assert res.json() == {"status": "ok"}
+    assert res.json() == {"status": "ok", "db": "ok"}
+
+
+def test_healthz_stays_200_when_the_database_is_down(client: TestClient, monkeypatch) -> None:
+    """Render uses /healthz as its health check: a DB hiccup must not fail it."""
+    import app.main as main
+
+    class BrokenEngine:
+        def connect(self):
+            raise RuntimeError("db down")
+
+    monkeypatch.setattr(main, "engine", BrokenEngine())
+    res = client.get("/healthz")
+    assert res.status_code == 200
+    assert res.json() == {"status": "ok", "db": "error"}

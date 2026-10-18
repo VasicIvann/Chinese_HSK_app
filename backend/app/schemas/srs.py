@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -12,6 +13,9 @@ from app.services.srs_service import RatingEnum
 class RateRequest(BaseModel):
     entry_id: int = Field(ge=1)
     rating: RatingEnum
+    # Optional context stored in the review history.
+    mode: Literal["auto-assess", "pinyin-input"] | None = None
+    elapsed_ms: int | None = Field(default=None, ge=0)
 
 
 class MasterySnapshotResponse(BaseModel):

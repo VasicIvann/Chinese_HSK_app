@@ -28,7 +28,14 @@ def post_rate(
 ) -> MasterySnapshotResponse:
     try:
         snapshot = rate_entry(
-            db, user_id=user.id, entry_id=payload.entry_id, rating=payload.rating
+            db,
+            user_id=user.id,
+            entry_id=payload.entry_id,
+            rating=payload.rating,
+            record_log=True,
+            mode=payload.mode,
+            # Cap at 10 min: a card left open while away is not study time.
+            elapsed_ms=min(payload.elapsed_ms, 600_000) if payload.elapsed_ms is not None else None,
         )
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc

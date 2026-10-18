@@ -2,7 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { QuizQuestion } from "@/components/quiz/quiz-question";
@@ -18,6 +18,13 @@ type Phase = "setup" | "loading" | "running" | "summary";
 
 type SessionConfig = QuizStartParams;
 
+type RateVars = {
+  entryId: number;
+  rating: RatingEnum;
+  mode?: SessionConfig["mode"];
+  elapsedMs?: number;
+};
+
 export default function ComprehensionPage() {
   const [phase, setPhase] = useState<Phase>("setup");
   const [config, setConfig] = useState<SessionConfig | null>(null);
@@ -27,8 +34,8 @@ export default function ComprehensionPage() {
   const session = useQuizSession(questions);
 
   const rateMutation = useMutation({
-    mutationFn: ({ entryId, rating }: { entryId: number; rating: RatingEnum }) =>
-      postRate({ entry_id: entryId, rating }),
+    mutationFn: ({ entryId, rating, mode, elapsedMs }: RateVars) =>
+      postRate({ entry_id: entryId, rating, mode, elapsed_ms: elapsedMs }),
     onSuccess: (snapshot: MasterySnapshotResponse) => {
       session.attachSnapshot(snapshot.entry_id, {
         nextReviewAt: snapshot.next_review_at,
@@ -37,6 +44,7 @@ export default function ComprehensionPage() {
       // Invalidate cached stats so the next setup screen shows fresh counts.
       queryClient.invalidateQueries({ queryKey: ["srs-stats"] });
       queryClient.invalidateQueries({ queryKey: ["mastery"] });
+      queryClient.invalidateQueries({ queryKey: ["account-overview"] });
     },
     onError: (error: unknown) => {
       const detail = error instanceof ApiError ? error.detail : "Erreur réseau";
@@ -74,18 +82,30 @@ export default function ComprehensionPage() {
     [session]
   );
 
+  // When the current card appeared, to record the time spent on it.
+  const shownAt = useRef<number>(0);
+  const currentEntryId = session.currentEntry?.id;
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [currentEntryId]);
+
   const handleRate = useCallback(
     (rating: RatingEnum, meta?: { userInput?: string; inputCorrect?: boolean }) => {
       const entry = session.currentEntry;
       if (!entry) return;
       session.recordRating(rating, meta);
-      rateMutation.mutate({ entryId: entry.id, rating });
+      rateMutation.mutate({
+        entryId: entry.id,
+        rating,
+        mode: config?.mode,
+        elapsedMs: shownAt.current ? Math.max(0, Date.now() - shownAt.current) : undefined,
+      });
       // Once the last question is answered, switch to summary.
       if (session.state.currentIndex + 1 >= session.state.questions.length) {
         setPhase("summary");
       }
     },
-    [session, rateMutation]
+    [session, rateMutation, config]
   );
 
   const handleRestart = useCallback(() => {

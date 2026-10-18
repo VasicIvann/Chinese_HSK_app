@@ -23,6 +23,8 @@ dependencies = [
     "email-validator>=2.0",
     "fsrs>=6.0,<7.0",
     "anthropic>=0.40",
+    # IANA time zone data for zoneinfo, in case the host image has none.
+    "tzdata>=2024.1",
 ]
 
 [project.optional-dependencies]

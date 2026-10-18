@@ -16,7 +16,7 @@ from fsrs import Card, Rating, Scheduler, State
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Entry, Quiz, UserVocabMastery
+from app.models import Entry, Quiz, ReviewLog, UserVocabMastery
 
 
 class RatingEnum(str, Enum):
@@ -95,10 +95,19 @@ class MasterySnapshot(dict):
 
 
 def rate_entry(
-    db: Session, *, user_id: int, entry_id: int, rating: RatingEnum
+    db: Session,
+    *,
+    user_id: int,
+    entry_id: int,
+    rating: RatingEnum,
+    record_log: bool = False,
+    mode: Optional[str] = None,
+    elapsed_ms: Optional[int] = None,
 ) -> MasterySnapshot:
     """Apply a user rating to an entry using FSRS scheduling.
 
+    With `record_log`, also appends a row to the review history (quiz answers);
+    internal re-queues (Expression flow) leave it off so they don't count as reviews.
     Returns a dict snapshot suitable for direct JSON serialization.
     """
     rating_value = _RATING_TO_FSRS[rating]
@@ -117,6 +126,10 @@ def rate_entry(
         UserVocabMastery.entry_id == entry_id,
     )
     record = db.execute(stmt).scalars().first()
+    was_new = _is_new(record)
+    was_due = (
+        not was_new and record.fsrs_due_at is not None and record.fsrs_due_at <= now_naive
+    )
 
     if record is None:
         record = UserVocabMastery(
@@ -141,6 +154,20 @@ def rate_entry(
     record.review_count = new_count
     record.status = legacy_status
     record.last_seen_at = now_naive
+
+    if record_log:
+        db.add(
+            ReviewLog(
+                user_id=user_id,
+                entry_id=entry_id,
+                rating=rating_value,
+                was_new=was_new,
+                was_due=was_due,
+                mode=mode,
+                elapsed_ms=elapsed_ms,
+                reviewed_at=now_naive,
+            )
+        )
 
     db.flush()
 
