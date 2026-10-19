@@ -1,0 +1,125 @@
+{
+  "_source": "Structure of the papers. HSK 3.0: 《新版HSK（1-6级）考试结构与样题示例》, 汉考国际, published 2025-12, in force 2026-07. HSK 2.0: official 2012 sample papers (样卷) for HSK 1-3. Pictures of the real papers are replaced by French descriptions of the scene.",
+  "3.0": {
+    "1": {
+      "listening": [
+        {"part": "L1", "numbers": "1-5", "type": "pic_choice", "count": 5, "pinyin": false,
+         "title": "Écoute la phrase, choisis l'image qui correspond",
+         "how": "Une phrase courte (ex. « 三个苹果 »). Trois images A, B, C : une seule correspond."},
+        {"part": "L2", "numbers": "6-10", "type": "pic_answer", "count": 5, "pinyin": false,
+         "title": "Écoute la question, choisis la bonne réponse",
+         "how": "Une question (ex. « 今天天气怎么样？ »). Trois images : choisis celle qui y répond."},
+        {"part": "L3", "numbers": "11-15", "type": "word_match", "count": 5, "pinyin": true,
+         "title": "Écoute le dialogue, choisis le mot que tu entends",
+         "how": "Cinq petits dialogues et six mots A–F (avec pinyin). Pour chaque dialogue, choisis le mot qu'il contient ; un mot ne sert pas."},
+        {"part": "L4", "numbers": "16-20", "type": "short_mcq", "count": 5, "pinyin": true,
+         "title": "Écoute, puis réponds à la question",
+         "how": "Une phrase ou un petit texte, puis une question. Trois réponses A, B, C (avec pinyin)."}
+      ],
+      "writing": []
+    },
+    "2": {
+      "listening": [
+        {"part": "L1", "numbers": "1-5", "type": "pic_choice", "count": 5, "pinyin": false,
+         "title": "Écoute la phrase, choisis l'image qui correspond",
+         "how": "Une phrase (ex. « 我每天坐公交车去上班。 »). Trois images A, B, C."},
+        {"part": "L2", "numbers": "6-15", "type": "pic_match", "count": 10, "pinyin": false,
+         "title": "Écoute le dialogue, associe-le à une image",
+         "how": "Deux séries de cinq dialogues, chacune avec six images A–F : une image par dialogue, une image ne sert pas."},
+        {"part": "L3", "numbers": "16-25", "type": "short_mcq", "count": 10, "pinyin": true,
+         "title": "Écoute le dialogue et la question, choisis la réponse",
+         "how": "Deux répliques, puis « 问：… ». Trois réponses A, B, C (avec pinyin)."}
+      ],
+      "writing": [
+        {"part": "W1", "numbers": "51-55", "type": "unavailable", "count": 5, "pinyin": false,
+         "title": "Première partie (questions 51–55)",
+         "how": "Le document officiel montre seulement six choix A–F sans texte (des images) : la consigne exacte n'est pas publiée en texte, donc cette partie n'est pas reproduite pour ne pas inventer un faux format."},
+        {"part": "W2", "numbers": "56-60", "type": "char_pinyin", "count": 5, "pinyin": true,
+         "title": "Écris le caractère qui manque",
+         "how": "Une phrase avec un trou dont le pinyin est donné (ex. « 你想喝（chá）还是喝咖啡？ » → 茶). Écris le caractère."}
+      ]
+    },
+    "3": {
+      "listening": [
+        {"part": "L1", "numbers": "1-10", "type": "pic_match", "count": 10, "pinyin": false,
+         "title": "Écoute le dialogue, associe-le à une image",
+         "how": "Deux séries de cinq dialogues, chacune avec six images A–F ; une image ne sert pas."},
+        {"part": "L2", "numbers": "11-20", "type": "mix", "count": 10, "pinyin": false,
+         "mix": [{"type": "short_mcq", "count": 5}, {"type": "long_mcq", "count": 5}],
+         "title": "Écoute le dialogue et la question, choisis la réponse",
+         "how": "Questions 11–15 : dialogues courts ; 16–20 : dialogues plus longs. Trois réponses A, B, C, sans pinyin."},
+        {"part": "L3", "numbers": "21-30", "type": "passage_mcq", "count": 10, "pinyin": false,
+         "title": "Écoute le petit texte et la question, choisis la réponse",
+         "how": "Une seule personne parle (quelques phrases), puis une question. Trois réponses A, B, C."}
+      ],
+      "writing": [
+        {"part": "W1", "numbers": "61-65", "type": "char_pinyin", "count": 5, "pinyin": false,
+         "title": "Écris le caractère d'après le pinyin",
+         "how": "Une phrase avec un trou ; seul le pinyin du trou est donné (ex. « 咱们（yě）打出租车吧。 » → 也)."},
+        {"part": "W2", "numbers": "66-70", "type": "make_sentence", "count": 5, "pinyin": false,
+         "title": "Écris une phrase avec le mot donné",
+         "how": "Un mot imposé (ex. 羽毛球) : écris une phrase correcte qui l'utilise. Claude corrige ta phrase."}
+      ]
+    }
+  },
+  "2.0": {
+    "1": {
+      "listening": [
+        {"part": "L1", "numbers": "1-5", "type": "pic_judge", "count": 5, "pinyin": true,
+         "title": "Écoute, l'image correspond-elle ? (✓ / ✗)",
+         "how": "Un mot ou une expression courte et une image : dis si elle correspond."},
+        {"part": "L2", "numbers": "6-10", "type": "pic_choice", "count": 5, "pinyin": true,
+         "title": "Écoute la phrase, choisis l'image",
+         "how": "Une phrase et trois images A, B, C."},
+        {"part": "L3", "numbers": "11-15", "type": "pic_match", "count": 5, "pinyin": true,
+         "title": "Écoute le dialogue, associe-le à une image",
+         "how": "Cinq petits dialogues et six images A–F ; une image ne sert pas."},
+        {"part": "L4", "numbers": "16-20", "type": "short_mcq", "count": 5, "pinyin": true,
+         "title": "Écoute la phrase et la question, choisis la réponse",
+         "how": "Une phrase puis « 问：… ». Trois réponses A, B, C (avec pinyin)."}
+      ],
+      "writing": []
+    },
+    "2": {
+      "listening": [
+        {"part": "L1", "numbers": "1-10", "type": "pic_judge", "count": 10, "pinyin": true,
+         "title": "Écoute la phrase, l'image correspond-elle ? (✓ / ✗)",
+         "how": "Une phrase et une image : dis si elles correspondent."},
+        {"part": "L2", "numbers": "11-20", "type": "pic_match", "count": 10, "pinyin": true,
+         "title": "Écoute le dialogue, associe-le à une image",
+         "how": "Deux séries de cinq dialogues, chacune avec six images A–F."},
+        {"part": "L3", "numbers": "21-30", "type": "short_mcq", "count": 10, "pinyin": true,
+         "title": "Écoute le dialogue et la question, choisis la réponse",
+         "how": "Deux répliques, puis « 问：… ». Trois réponses A, B, C."},
+        {"part": "L4", "numbers": "31-35", "type": "long_mcq", "count": 5, "pinyin": true,
+         "title": "Écoute le dialogue plus long, choisis la réponse",
+         "how": "Quatre ou cinq répliques, puis une question. Trois réponses A, B, C."}
+      ],
+      "writing": []
+    },
+    "3": {
+      "listening": [
+        {"part": "L1", "numbers": "1-10", "type": "pic_match", "count": 10, "pinyin": false,
+         "title": "Écoute le dialogue, associe-le à une image",
+         "how": "Deux séries de cinq dialogues, chacune avec six images A–F."},
+        {"part": "L2", "numbers": "11-20", "type": "passage_judge", "count": 10, "pinyin": false,
+         "title": "Écoute, la phrase ★ est-elle vraie ? (✓ / ✗)",
+         "how": "Une personne dit une ou deux phrases ; décide si la phrase marquée ★ est vraie d'après ce que tu as entendu."},
+        {"part": "L3", "numbers": "21-30", "type": "short_mcq", "count": 10, "pinyin": false,
+         "title": "Écoute le dialogue et la question, choisis la réponse",
+         "how": "Deux répliques, puis « 问：… ». Trois réponses A, B, C."},
+        {"part": "L4", "numbers": "31-40", "type": "long_mcq", "count": 10, "pinyin": false,
+         "title": "Écoute le dialogue plus long, choisis la réponse",
+         "how": "Quatre ou cinq répliques, puis une question. Trois réponses A, B, C."}
+      ],
+      "writing": [
+        {"part": "W1", "numbers": "71-75", "type": "reorder", "count": 5, "pinyin": false,
+         "title": "Remets les mots dans l'ordre (完成句子)",
+         "how": "Quelques mots en désordre (ex. 小船 上 一 河 条 有) : écris la phrase complète (河上有一条小船。)."},
+        {"part": "W2", "numbers": "76-80", "type": "char_pinyin", "count": 5, "pinyin": false,
+         "title": "Écris le caractère d'après le pinyin",
+         "how": "Une phrase avec un trou ; le pinyin du trou est donné (ex. « 没（guān）系，别难过 » → 关)."}
+      ]
+    }
+  }
+}

@@ -12,6 +12,9 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/comprehension", label: "Compréhension" },
+  { href: "/listening", label: "Écoute" },
+  { href: "/writing", label: "Écriture HSK" },
+  { href: "/grammar", label: "Grammaire" },
   { href: "/expression", label: "Expression" },
   { href: "/account", label: "Compte" },
 ];
@@ -40,7 +43,7 @@ export function TopNav() {
         </Link>
 
         {isAuthenticated && (
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {NAV_LINKS.map((link) => {
               const active = pathname?.startsWith(link.href);
               return (
@@ -65,7 +68,7 @@ export function TopNav() {
           <ThemeToggle />
           {isAuthenticated ? (
             <>
-              <span className="hidden text-sm text-muted-foreground md:inline">
+              <span className="hidden text-sm text-muted-foreground xl:inline">
                 {user?.email}
               </span>
               <Button
@@ -73,7 +76,7 @@ export function TopNav() {
                 size="icon"
                 aria-label="Se déconnecter"
                 onClick={handleSignOut}
-                className="hidden md:inline-flex"
+                className="hidden lg:inline-flex"
               >
                 <LogOut className="h-5 w-5" />
               </Button>
@@ -82,7 +85,7 @@ export function TopNav() {
                 size="icon"
                 aria-label="Menu"
                 onClick={() => setMobileOpen((v) => !v)}
-                className="md:hidden"
+                className="lg:hidden"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
@@ -101,7 +104,7 @@ export function TopNav() {
       </div>
 
       {isAuthenticated && mobileOpen && (
-        <nav className="border-t border-border bg-background md:hidden">
+        <nav className="border-t border-border bg-background lg:hidden">
           <ul className="flex flex-col p-2">
             {NAV_LINKS.map((link) => {
               const active = pathname?.startsWith(link.href);

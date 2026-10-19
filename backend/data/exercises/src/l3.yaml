@@ -1,0 +1,1218 @@
+# HSK 3 — questions written for this app, in the format of the official papers.
+# pic_match, short_mcq, long_mcq and char_pinyin are used by both versions;
+# passage_judge and reorder only by HSK 2.0; passage_mcq and make_sentence only by HSK 3.0.
+# The build script shuffles the options: the right answer is written first here.
+# Append new items at the end (ids are numbered by position).
+
+pic_match:
+  - options:
+      - Un homme qui cherche quelque chose dans son sac devant une porte
+      - Une femme qui prend des photos d'un paysage
+      - Deux personnes qui font du sport dans un parc
+      - Un garçon qui fait ses devoirs, aidé par sa mère
+      - Un homme qui fait la vaisselle
+      - Une femme qui range des vêtements dans une valise
+    items:
+      - audio: |-
+          女：你在找什么？
+          男：我的护照，我不记得放在哪儿了。
+        fr: "— Qu'est-ce que tu cherches ? — Mon passeport, je ne sais plus où je l'ai mis."
+        answer: A
+      - audio: |-
+          女：这儿真漂亮，我要多照几张照片。
+          男：好，我在这儿等你。
+        fr: "— C'est vraiment beau ici, je vais prendre quelques photos de plus. — D'accord, je t'attends ici."
+        answer: B
+      - audio: |-
+          女：周末你一般做什么？
+          男：我经常和朋友一起去公园锻炼身体。
+        fr: "— Que fais-tu en général le week-end ? — Je vais souvent faire du sport au parc avec des amis."
+        answer: C
+      - audio: |-
+          男：妈妈，这个题我不会做。
+          女：没关系，我们一起看看。
+        fr: "— Maman, je n'arrive pas à faire cet exercice. — Ce n'est pas grave, regardons-le ensemble."
+        answer: D
+      - audio: |-
+          女：箱子里的衣服太多了，放不下了。
+          男：那就少带几件吧。
+        fr: "— Il y a trop de vêtements dans la valise, ça ne rentre plus. — Alors emporte-en moins."
+        answer: F
+  - options:
+      - Un homme qui attend devant un ascenseur
+      - Une femme qui paie un chauffeur de taxi
+      - Un enfant qui pleure, sa mère le console
+      - Un homme qui accueille une nouvelle collègue au bureau
+      - Un homme qui arrose des fleurs dans son jardin
+      - Un homme en costume qui regarde sa montre sous la pluie
+    items:
+      - audio: |-
+          男：电梯坏了吗？
+          女：是的，我们只能走上去了。
+        fr: "— L'ascenseur est en panne ? — Oui, il va falloir monter à pied."
+        answer: A
+      - audio: |-
+          女：给你五十。
+          男：找您十八块。
+        fr: "— Voici cinquante yuans. — Je vous rends dix-huit yuans."
+        answer: B
+      - audio: |-
+          女：别哭了，孩子，妈妈在这儿呢。
+          男：我找不到我的小狗了。
+        fr: "— Ne pleure plus, mon enfant, maman est là. — Je ne trouve plus mon petit chien."
+        answer: C
+      - audio: |-
+          男：欢迎你来我们公司！
+          女：谢谢经理，我会努力工作的。
+        fr: "— Bienvenue dans notre entreprise ! — Merci, monsieur le directeur, je vais travailler dur."
+        answer: D
+      - audio: |-
+          女：这些花真漂亮，是你种的吗？
+          男：是的，我每天都照顾它们。
+        fr: "— Ces fleurs sont magnifiques, c'est toi qui les as plantées ? — Oui, je m'en occupe tous les jours."
+        answer: E
+  - options:
+      - Une étudiante qui rend des livres à la bibliothèque
+      - Un homme qui regarde le menu dans un restaurant
+      - Une femme qui a de la fièvre, couchée dans son lit
+      - Deux amis qui regardent un match à la télévision
+      - Un homme qui fait le ménage dans sa chambre
+      - Une fille qui fait du vélo
+    items:
+      - audio: |-
+          女：这几本书我看完了，现在还给你们。
+          男：好的，请放在这儿。
+        fr: "— J'ai fini ces livres, je vous les rends. — Très bien, posez-les ici."
+        answer: A
+      - audio: |-
+          男：请问，有菜单吗？
+          女：有，您看一下。
+        fr: "— Excusez-moi, vous avez une carte ? — Oui, tenez."
+        answer: B
+      - audio: |-
+          女：我好像发烧了。
+          男：那你今天别去上班了，在家休息吧。
+        fr: "— J'ai l'impression d'avoir de la fièvre. — Alors ne va pas travailler aujourd'hui, repose-toi à la maison."
+        answer: C
+      - audio: |-
+          男：比赛开始了，快来看！
+          女：来了来了，现在几比几？
+        fr: "— Le match a commencé, viens vite ! — J'arrive, j'arrive ! C'est combien à combien ?"
+        answer: D
+      - audio: |-
+          女：你的房间真干净！
+          男：我昨天打扫了一下午。
+        fr: "— Ta chambre est vraiment propre ! — J'ai fait le ménage tout l'après-midi hier."
+        answer: E
+  - options:
+      - Une hôtesse qui parle à un passager dans un avion
+      - Une femme qui écrit au tableau devant des élèves
+      - Un couple qui choisit un réfrigérateur dans un magasin
+      - Un garçon qui joue à un jeu vidéo
+      - Une grand-mère qui raconte une histoire à des enfants
+      - Une femme qui essaie une jupe devant un miroir
+    items:
+      - audio: |-
+          男：这个冰箱怎么样？
+          女：太大了，家里放不下。
+        fr: "— Que penses-tu de ce frigo ? — Il est trop grand, il ne rentrera pas chez nous."
+        answer: C
+      - audio: |-
+          女：别玩游戏了，快去写作业！
+          男：再玩五分钟就去。
+        fr: "— Arrête de jouer, va vite faire tes devoirs ! — Encore cinq minutes et j'y vais."
+        answer: D
+      - audio: |-
+          男：奶奶，再讲一个故事吧！
+          女：好，这是最后一个。
+        fr: "— Mamie, raconte encore une histoire ! — D'accord, mais c'est la dernière."
+        answer: E
+      - audio: |-
+          女：这条裙子我穿着怎么样？
+          男：很漂亮，就买这条吧。
+        fr: "— Comment me va cette jupe ? — Très bien, prends celle-là."
+        answer: F
+      - audio: |-
+          女：先生，飞机马上就要起飞了，请关上手机。
+          男：好的。
+        fr: "— Monsieur, l'avion va décoller, veuillez éteindre votre téléphone. — D'accord."
+        answer: A
+  - options:
+      - Une femme qui demande son chemin, un plan à la main
+      - Un homme qui offre un gâteau à une collègue
+      - Un médecin qui examine la jambe d'une patiente
+      - Un homme qui court sous la pluie sans parapluie
+      - Deux personnes qui font la queue à la banque
+      - Une femme qui donne à manger à un petit chat
+    items:
+      - audio: |-
+          女：请问，去图书馆怎么走？
+          男：你看地图，就在银行的东边。
+        fr: "— Excusez-moi, comment va-t-on à la bibliothèque ? — Regardez le plan, c'est juste à l'est de la banque."
+        answer: A
+      - audio: |-
+          男：今天是你的生日，这是我们给你买的蛋糕。
+          女：太谢谢你们了！
+        fr: "— C'est ton anniversaire aujourd'hui, voici le gâteau qu'on t'a acheté. — Merci beaucoup !"
+        answer: B
+      - audio: |-
+          女：医生，我的腿很疼。
+          男：我检查一下。
+        fr: "— Docteur, j'ai très mal à la jambe. — Je vais regarder."
+        answer: C
+      - audio: |-
+          男：怎么突然下雨了？我没带伞！
+          女：快跑吧，前面有一个超市。
+        fr: "— Pourquoi il se met à pleuvoir d'un coup ? Je n'ai pas de parapluie ! — Cours, il y a un supermarché devant."
+        answer: D
+      - audio: |-
+          女：这只小猫饿了，我给它一点儿吃的。
+          男：它真可爱。
+        fr: "— Ce petit chat a faim, je vais lui donner un peu à manger. — Il est vraiment mignon."
+        answer: F
+  - options:
+      - Un homme qui lave sa voiture
+      - Une femme qui fait connaissance avec son nouveau voisin dans l'escalier
+      - Un groupe d'amis arrivé au sommet d'une montagne
+      - Une étudiante qui sort d'un examen de mathématiques
+      - Un homme qui achète un billet de train au guichet
+      - Une femme chez le coiffeur
+    items:
+      - audio: |-
+          男：你好，我是新搬来的，住在你楼上。
+          女：你好，欢迎欢迎！
+        fr: "— Bonjour, je viens d'emménager, j'habite au-dessus de chez vous. — Bonjour, bienvenue !"
+        answer: B
+      - audio: |-
+          男：这次数学考试难吗？
+          女：不太难，我觉得我考得还可以。
+        fr: "— L'examen de maths était difficile ? — Pas trop, je pense m'en être pas mal sortie."
+        answer: D
+      - audio: |-
+          男：我们终于爬到山上了！
+          女：太累了，我们休息一下吧。
+        fr: "— On est enfin arrivés en haut de la montagne ! — Je suis épuisée, faisons une pause."
+        answer: C
+      - audio: |-
+          男：请问，还有明天早上的火车票吗？
+          女：有，八点的，您要几张？
+        fr: "— Excusez-moi, il reste des billets de train pour demain matin ? — Oui, à huit heures, combien en voulez-vous ?"
+        answer: E
+      - audio: |-
+          男：天气这么好，我去洗一下车。
+          女：好，洗完了我们出去玩儿。
+        fr: "— Il fait si beau, je vais laver la voiture. — D'accord, une fois que c'est fait, on sort se promener."
+        answer: A
+
+passage_judge:
+  - audio: 为了身体健康，我每天早上都去公园跑步。
+    fr: Pour être en bonne santé, je vais courir au parc tous les matins.
+    statement: 他每天晚上跑步。
+    sfr: Il court tous les soirs.
+    answer: false
+  - audio: 我们公司离我家很近，我每天走路去上班，只要十分钟。
+    fr: Mon entreprise est tout près de chez moi, j'y vais à pied tous les jours, il ne faut que dix minutes.
+    statement: 他家离公司不远。
+    sfr: Il habite près de son entreprise.
+    answer: true
+  - audio: 今天的会议很重要，经理让大家都早点儿来。
+    fr: La réunion d'aujourd'hui est très importante, le directeur a demandé à tout le monde de venir un peu plus tôt.
+    statement: 今天的会议不太重要。
+    sfr: La réunion d'aujourd'hui n'est pas très importante.
+    answer: false
+  - audio: 我妹妹特别喜欢小动物，她家里有两只猫和一只狗。
+    fr: Ma petite sœur adore les petits animaux, elle a deux chats et un chien chez elle.
+    statement: 他妹妹家里有三只动物。
+    sfr: Sa petite sœur a trois animaux chez elle.
+    answer: true
+  - audio: 这家饭馆的菜很好吃，也不贵，所以每天来这儿吃饭的人很多。
+    fr: Les plats de ce restaurant sont très bons et pas chers, c'est pourquoi il y a beaucoup de monde tous les jours.
+    statement: 这家饭馆的菜很贵。
+    sfr: Les plats de ce restaurant sont très chers.
+    answer: false
+  - audio: 我上个月去了一次北方，那里比南方冷多了。
+    fr: Le mois dernier, je suis allé dans le Nord, il y fait bien plus froid que dans le Sud.
+    statement: 北方比南方冷。
+    sfr: Il fait plus froid dans le Nord que dans le Sud.
+    answer: true
+  - audio: 小王感冒了，今天没来上课。
+    fr: Xiao Wang a attrapé un rhume, il n'est pas venu en cours aujourd'hui.
+    statement: 小王今天去上课了。
+    sfr: Xiao Wang est allé en cours aujourd'hui.
+    answer: false
+  - audio: 先生，您的护照忘在这儿了，请拿好。
+    fr: Monsieur, vous avez oublié votre passeport ici, prenez-le bien.
+    statement: 那位先生忘了拿护照。
+    sfr: Ce monsieur a oublié de prendre son passeport.
+    answer: true
+  - audio: 我以前不喜欢吃香蕉，但是现在我每天都吃一个。
+    fr: Avant, je n'aimais pas les bananes, mais maintenant j'en mange une tous les jours.
+    statement: 他现在每天都吃香蕉。
+    sfr: Maintenant, il mange une banane tous les jours.
+    answer: true
+  - audio: 这个城市的地铁很方便，去哪儿都很快。
+    fr: Le métro de cette ville est très pratique, on va vite partout.
+    statement: 在这个城市坐地铁很不方便。
+    sfr: Dans cette ville, prendre le métro n'est pas pratique du tout.
+    answer: false
+  - audio: 我和丈夫是在大学认识的，我们已经结婚十年了。
+    fr: Mon mari et moi nous sommes rencontrés à l'université, nous sommes mariés depuis dix ans.
+    statement: 他们结婚十年了。
+    sfr: Ils sont mariés depuis dix ans.
+    answer: true
+  - audio: 这次数学考试我只考了六十分，我要更努力地学习。
+    fr: À cet examen de maths, je n'ai eu que soixante points, je dois travailler encore plus dur.
+    statement: 他这次考得很好。
+    sfr: Il a très bien réussi cette fois.
+    answer: false
+  - audio: 外面刮风了，你出去的时候多穿件衣服。
+    fr: Il y a du vent dehors, mets un vêtement de plus quand tu sors.
+    statement: 现在外面在刮风。
+    sfr: En ce moment, il y a du vent dehors.
+    answer: true
+  - audio: 我的电脑坏了，我想明天拿去检查一下。
+    fr: Mon ordinateur est en panne, je vais le faire vérifier demain.
+    statement: 他的电脑有问题。
+    sfr: Son ordinateur a un problème.
+    answer: true
+  - audio: 王老师上课很认真，同学们都很喜欢他。
+    fr: Le professeur Wang fait cours très sérieusement, tous les élèves l'aiment beaucoup.
+    statement: 同学们不喜欢王老师。
+    sfr: Les élèves n'aiment pas le professeur Wang.
+    answer: false
+  - audio: 这个周末我打算在家休息，哪儿也不去。
+    fr: Ce week-end, je compte me reposer à la maison, je n'irai nulle part.
+    statement: 他周末要出去玩儿。
+    sfr: Il va sortir s'amuser ce week-end.
+    answer: false
+  - audio: 我已经习惯了这里的天气，夏天不太热，冬天也不太冷。
+    fr: "Je me suis habitué au climat d'ici : l'été n'est pas trop chaud et l'hiver pas trop froid."
+    statement: 他还不习惯这里的天气。
+    sfr: Il n'est pas encore habitué au climat d'ici.
+    answer: false
+  - audio: 请大家注意，我们的飞机还有二十分钟就要起飞了。
+    fr: Votre attention s'il vous plaît, notre avion décolle dans vingt minutes.
+    statement: 飞机马上就要起飞了。
+    sfr: L'avion va bientôt décoller.
+    answer: true
+  - audio: 我的邻居是一位老奶奶，她对我非常热情。
+    fr: Ma voisine est une vieille dame, elle est très chaleureuse avec moi.
+    statement: 他的邻居很年轻。
+    sfr: Son voisin est très jeune.
+    answer: false
+  - audio: 去年我去中国留学，在那儿学了一年汉语。
+    fr: L'année dernière, je suis parti étudier en Chine, j'y ai appris le chinois pendant un an.
+    statement: 他在中国学习过汉语。
+    sfr: Il a déjà étudié le chinois en Chine.
+    answer: true
+  - audio: 我很少看电视，我更喜欢看书和听音乐。
+    fr: Je regarde rarement la télévision, je préfère lire et écouter de la musique.
+    statement: 他非常喜欢看电视。
+    sfr: Il adore regarder la télévision.
+    answer: false
+  - audio: 这件衬衫很好看，可是太大了，有没有小一点儿的？
+    fr: Cette chemise est jolie, mais elle est trop grande, vous en avez une un peu plus petite ?
+    statement: 他想要小一点儿的衬衫。
+    sfr: Il veut une chemise un peu plus petite.
+    answer: true
+  - audio: 今天是星期天，银行不开门，你明天再去吧。
+    fr: Aujourd'hui, c'est dimanche, la banque est fermée, vas-y demain.
+    statement: 银行今天不开门。
+    sfr: La banque est fermée aujourd'hui.
+    answer: true
+  - audio: 我们坐了八个小时的船才到那个小城市。
+    fr: Nous avons pris le bateau pendant huit heures avant d'arriver dans cette petite ville.
+    statement: 他们是坐飞机去的。
+    sfr: Ils y sont allés en avion.
+    answer: false
+  - audio: 我女儿今年上三年级，她最喜欢的是体育课。
+    fr: Ma fille est en troisième année cette année, son cours préféré, c'est le sport.
+    statement: 他女儿喜欢上体育课。
+    sfr: Sa fille aime le cours de sport.
+    answer: true
+
+short_mcq:
+  - audio: |-
+      男：喂，你好，请问张经理在吗？
+      女：他正在开会，您一个小时以后再打来吧。
+    q: 张经理现在在做什么？
+    fr: "— Allô, bonjour, le directeur Zhang est-il là ? — Il est en réunion, rappelez dans une heure."
+    qfr: Que fait le directeur Zhang en ce moment ?
+    options: [开会, 打电话, 休息]
+    ofr: [il est en réunion, il téléphone, il se repose]
+    answer: A
+  - audio: |-
+      女：你的自行车呢？
+      男：借给我同事了，他明天还我。
+    q: 自行车现在在哪儿？
+    fr: "— Où est ton vélo ? — Je l'ai prêté à un collègue, il me le rend demain."
+    qfr: Où est le vélo en ce moment ?
+    options: [同事那儿, 他家里, 商店]
+    ofr: [chez son collègue, chez lui, au magasin]
+    answer: A
+  - audio: |-
+      男：这个周末我们去爬山吧。
+      女：我也很想去，可是周末我要照顾奶奶。
+    q: 女的周末要做什么？
+    fr: "— Allons faire de la montagne ce week-end. — J'aimerais bien, mais ce week-end je dois m'occuper de ma grand-mère."
+    qfr: Que doit faire la femme ce week-end ?
+    options: [照顾奶奶, 爬山, 上班]
+    ofr: [s'occuper de sa grand-mère, faire de la montagne, travailler]
+    answer: A
+  - audio: |-
+      女：你怎么一直在打电话？
+      男：我的信用卡找不到了，我在问银行。
+    q: 男的什么找不到了？
+    fr: "— Pourquoi tu es tout le temps au téléphone ? — Je ne trouve plus ma carte bancaire, j'appelle la banque."
+    qfr: Qu'est-ce que l'homme ne trouve plus ?
+    options: [信用卡, 手机, 护照]
+    ofr: [sa carte bancaire, son téléphone, son passeport]
+    answer: A
+  - audio: |-
+      男：你看起来很累。
+      女：是啊，我昨天晚上一点才睡。
+    q: 女的为什么很累？
+    fr: "— Tu as l'air très fatiguée. — Oui, je ne me suis couchée qu'à une heure du matin."
+    qfr: Pourquoi la femme est-elle fatiguée ?
+    options: [睡得太晚, 工作太多, 生病了]
+    ofr: [elle s'est couchée trop tard, elle a trop de travail, elle est malade]
+    answer: A
+  - audio: |-
+      女：这条裤子有点儿长，有短一点儿的吗？
+      男：有，您等一下，我去给您拿。
+    q: 女的觉得裤子怎么样？
+    fr: "— Ce pantalon est un peu long, vous en avez un plus court ? — Oui, attendez un instant, je vais vous le chercher."
+    qfr: Que pense la femme du pantalon ?
+    options: [有点儿长, 太短了, 颜色不好]
+    ofr: [un peu long, trop court, la couleur ne va pas]
+    answer: A
+  - audio: |-
+      男：你会骑自行车吗？
+      女：会，我小时候就学会了。
+    q: 女的什么时候学会骑自行车的？
+    fr: "— Tu sais faire du vélo ? — Oui, j'ai appris quand j'étais petite."
+    qfr: Quand la femme a-t-elle appris à faire du vélo ?
+    options: [小时候, 去年, 上大学的时候]
+    ofr: [quand elle était petite, l'année dernière, à l'université]
+    answer: A
+  - audio: |-
+      女：你明天几点的飞机？
+      男：上午十点的，但是我八点就要到机场。
+    q: 男的几点要到机场？
+    fr: "— Ton avion est à quelle heure demain ? — À dix heures, mais je dois être à l'aéroport à huit heures."
+    qfr: À quelle heure l'homme doit-il être à l'aéroport ?
+    options: [八点, 十点, 十二点]
+    ofr: [à huit heures, à dix heures, à midi]
+    answer: A
+  - audio: |-
+      男：我们一起打车去吧？
+      女：不用了，这儿离地铁站很近，坐地铁更快。
+    q: 女的想怎么去？
+    fr: "— On prend un taxi ensemble ? — Pas besoin, la station de métro est tout près, c'est plus rapide en métro."
+    qfr: Comment la femme veut-elle y aller ?
+    options: [坐地铁, 打车, 走路]
+    ofr: [en métro, en taxi, à pied]
+    answer: A
+  - audio: |-
+      女：你的汉语水平提高得真快！
+      男：谢谢，我经常和中国朋友聊天。
+    q: 男的为什么汉语提高得快？
+    fr: "— Ton niveau de chinois progresse vraiment vite ! — Merci, je discute souvent avec des amis chinois."
+    qfr: Pourquoi son chinois progresse-t-il vite ?
+    options: [经常和中国朋友聊天, 每天上课, 看中国电影]
+    ofr: [il discute souvent avec des amis chinois, il a cours tous les jours, il regarde des films chinois]
+    answer: A
+  - audio: |-
+      男：这个菜有点儿甜。
+      女：我觉得很好吃啊。
+    q: 男的觉得这个菜怎么样？
+    fr: "— Ce plat est un peu sucré. — Moi, je le trouve très bon."
+    qfr: Que pense l'homme de ce plat ?
+    options: [有点儿甜, 很好吃, 不新鲜]
+    ofr: [un peu sucré, très bon, pas frais]
+    answer: A
+  - audio: |-
+      女：电影几点开始？
+      男：七点半，我们还有二十分钟。
+    q: 现在可能几点？
+    fr: "— Le film commence à quelle heure ? — À sept heures et demie, il nous reste vingt minutes."
+    qfr: Quelle heure est-il probablement ?
+    options: [七点十分, 七点半, 七点五十]
+    ofr: [sept heures dix, sept heures et demie, huit heures moins dix]
+    answer: A
+  - audio: |-
+      男：你认识那个穿蓝裙子的女孩儿吗？
+      女：认识，她是我的邻居。
+    q: 那个女孩儿是谁？
+    fr: "— Tu connais la fille en jupe bleue ? — Oui, c'est ma voisine."
+    qfr: Qui est cette fille ?
+    options: [她的邻居, 她的同学, 她的妹妹]
+    ofr: [sa voisine, sa camarade de classe, sa petite sœur]
+    answer: A
+  - audio: |-
+      女：你搬家了？
+      男：对，新家离公司近多了。
+    q: 男的的新家怎么样？
+    fr: "— Tu as déménagé ? — Oui, mon nouveau logement est bien plus près du bureau."
+    qfr: Comment est son nouveau logement ?
+    options: [离公司近, 很大, 很便宜]
+    ofr: [près du bureau, très grand, très bon marché]
+    answer: A
+  - audio: |-
+      男：你哭什么？
+      女：这个电影太让人难过了。
+    q: 女的为什么哭？
+    fr: "— Pourquoi tu pleures ? — Ce film est vraiment trop triste."
+    qfr: Pourquoi la femme pleure-t-elle ?
+    options: [电影让人难过, 她生病了, 考试没考好]
+    ofr: [le film est triste, elle est malade, elle a raté un examen]
+    answer: A
+  - audio: |-
+      女：你怎么还没走？
+      男：外面雨太大了，我等一会儿再走。
+    q: 男的为什么还没走？
+    fr: "— Pourquoi tu n'es pas encore parti ? — Il pleut trop fort dehors, j'attends un peu avant de partir."
+    qfr: Pourquoi l'homme n'est-il pas encore parti ?
+    options: [雨太大, 工作没做完, 等朋友]
+    ofr: [il pleut trop fort, il n'a pas fini son travail, il attend un ami]
+    answer: A
+  - audio: |-
+      男：你知道附近哪儿有银行吗？
+      女：往前走，在超市旁边。
+    q: 男的要去哪儿？
+    fr: "— Tu sais où il y a une banque près d'ici ? — Va tout droit, c'est à côté du supermarché."
+    qfr: Où l'homme veut-il aller ?
+    options: [银行, 超市, 医院]
+    ofr: [à la banque, au supermarché, à l'hôpital]
+    answer: A
+  - audio: |-
+      女：你的手机怎么关机了？
+      男：没电了，我昨天忘记了。
+    q: 男的手机怎么了？
+    fr: "— Pourquoi ton téléphone est éteint ? — Il n'a plus de batterie, j'ai oublié hier."
+    qfr: Qu'est-il arrivé au téléphone de l'homme ?
+    options: [没电了, 坏了, 被借走了]
+    ofr: [il n'a plus de batterie, il est en panne, quelqu'un l'a emprunté]
+    answer: A
+  - audio: |-
+      男：这个箱子我一个人拿不动。
+      女：我来帮你。
+    q: 女的要做什么？
+    fr: "— Je n'arrive pas à porter cette valise tout seul. — Je vais t'aider."
+    qfr: Que va faire la femme ?
+    options: [帮男的拿箱子, 买箱子, 打开箱子]
+    ofr: [l'aider à porter la valise, acheter une valise, ouvrir la valise]
+    answer: A
+  - audio: |-
+      女：明天的会议几点开始？
+      男：九点，你别迟到。
+    q: 明天的会议几点开始？
+    fr: "— La réunion de demain commence à quelle heure ? — À neuf heures, ne sois pas en retard."
+    qfr: À quelle heure commence la réunion de demain ?
+    options: [九点, 八点, 十点]
+    ofr: [à neuf heures, à huit heures, à dix heures]
+    answer: A
+  - audio: |-
+      男：你喜欢什么季节？
+      女：秋天，不冷也不热。
+    q: 女的喜欢什么季节？
+    fr: "— Quelle saison aimes-tu ? — L'automne : il ne fait ni froid ni chaud."
+    qfr: Quelle saison la femme aime-t-elle ?
+    options: [秋天, 春天, 夏天]
+    ofr: [l'automne, le printemps, l'été]
+    answer: A
+  - audio: |-
+      女：你今天怎么这么高兴？
+      男：我的成绩出来了，比上次好多了。
+    q: 男的为什么高兴？
+    fr: "— Pourquoi tu es si content aujourd'hui ? — Mes résultats sont sortis, ils sont bien meilleurs que la dernière fois."
+    qfr: Pourquoi l'homme est-il content ?
+    options: [成绩提高了, 要去旅游, 找到工作了]
+    ofr: [ses résultats se sont améliorés, il part en voyage, il a trouvé du travail]
+    answer: A
+  - audio: |-
+      男：你把我的笔记本放哪儿了？
+      女：在你的书包里。
+    q: 笔记本在哪儿？
+    fr: "— Où as-tu mis mon cahier ? — Dans ton cartable."
+    qfr: Où est le cahier ?
+    options: [书包里, 桌子上, 床上]
+    ofr: [dans le cartable, sur la table, sur le lit]
+    answer: A
+  - audio: |-
+      女：小李，你的中文说得这么好，在中国住了很多年吧？
+      男：没有，我才来了一年。
+    q: 小李在中国住了多长时间？
+    fr: "— Xiao Li, tu parles si bien chinois, tu as dû vivre en Chine pendant des années ? — Non, je ne suis là que depuis un an."
+    qfr: Depuis combien de temps Xiao Li vit-il en Chine ?
+    options: [一年, 两年, 很多年]
+    ofr: [un an, deux ans, de nombreuses années]
+    answer: A
+  - audio: |-
+      男：外面太冷了，我不想出去。
+      女：那我们在家看电影吧。
+    q: 他们可能会做什么？
+    fr: "— Il fait trop froid dehors, je n'ai pas envie de sortir. — Alors regardons un film à la maison."
+    qfr: Que vont-ils probablement faire ?
+    options: [在家看电影, 出去玩儿, 去公园]
+    ofr: [regarder un film à la maison, sortir s'amuser, aller au parc]
+    answer: A
+  - audio: |-
+      女：你在找什么？
+      男：我的护照，明天就要用了。
+    q: 男的在找什么？
+    fr: "— Qu'est-ce que tu cherches ? — Mon passeport, j'en ai besoin dès demain."
+    qfr: Que cherche l'homme ?
+    options: [护照, 手机, 信用卡]
+    ofr: [son passeport, son téléphone, sa carte bancaire]
+    answer: A
+  - audio: |-
+      男：你觉得这个城市怎么样？
+      女：很漂亮，就是夏天太热了。
+    q: 女的觉得这个城市的夏天怎么样？
+    fr: "— Comment trouves-tu cette ville ? — Très belle, seulement l'été est trop chaud."
+    qfr: Que pense la femme de l'été dans cette ville ?
+    options: [太热了, 很舒服, 常常下雨]
+    ofr: [trop chaud, très agréable, il pleut souvent]
+    answer: A
+  - audio: |-
+      女：你周末一般做什么？
+      男：我一般在家打扫房间、洗衣服。
+    q: 男的周末一般做什么？
+    fr: "— Que fais-tu en général le week-end ? — En général, je fais le ménage et la lessive à la maison."
+    qfr: Que fait l'homme en général le week-end ?
+    options: [打扫房间, 去爬山, 去图书馆]
+    ofr: [le ménage, de la montagne, il va à la bibliothèque]
+    answer: A
+  - audio: |-
+      男：图书馆几点关门？
+      女：晚上十点，但是周末九点就关门了。
+    q: 周末图书馆几点关门？
+    fr: "— À quelle heure ferme la bibliothèque ? — À dix heures du soir, mais le week-end elle ferme dès neuf heures."
+    qfr: À quelle heure ferme la bibliothèque le week-end ?
+    options: [九点, 十点, 十一点]
+    ofr: [à neuf heures, à dix heures, à onze heures]
+    answer: A
+  - audio: |-
+      女：你妹妹长得真像你。
+      男：很多人都这么说。
+    q: 女的觉得男的和妹妹怎么样？
+    fr: "— Ta petite sœur te ressemble vraiment. — Beaucoup de gens le disent."
+    qfr: Que pense la femme de l'homme et de sa sœur ?
+    options: [长得很像, 都很高, 都很聪明]
+    ofr: [ils se ressemblent beaucoup, ils sont tous les deux grands, ils sont tous les deux intelligents]
+    answer: A
+
+long_mcq:
+  - audio: |-
+      女：你好，我想借这本书。
+      男：可以，你要借多长时间？
+      女：两个星期可以吗？
+      男：没问题，但是最多只能借一个月。
+    q: 这本书最多能借多长时间？
+    fr: "— Bonjour, je voudrais emprunter ce livre. — Bien sûr, pour combien de temps ? — Deux semaines, c'est possible ? — Pas de problème, mais on ne peut pas l'emprunter plus d'un mois."
+    qfr: Pendant combien de temps au maximum peut-on emprunter ce livre ?
+    options: [一个月, 两个星期, 一个星期]
+    ofr: [un mois, deux semaines, une semaine]
+    answer: A
+  - audio: |-
+      男：你怎么来晚了？
+      女：路上车太多了。
+      男：你为什么不坐地铁？
+      女：我家附近没有地铁站。
+    q: 女的为什么来晚了？
+    fr: "— Pourquoi tu arrives en retard ? — Il y avait trop de voitures sur la route. — Pourquoi tu ne prends pas le métro ? — Il n'y a pas de station près de chez moi."
+    qfr: Pourquoi la femme est-elle en retard ?
+    options: [路上车很多, 起床晚了, 走错路了]
+    ofr: [il y avait beaucoup de circulation, elle s'est levée tard, elle s'est trompée de chemin]
+    answer: A
+  - audio: |-
+      女：这个周末你有什么打算？
+      男：我想去看看我爷爷奶奶。
+      女：他们住在哪儿？
+      男：住在城市南边的一个小地方，开车要两个小时。
+    q: 男的周末要去做什么？
+    fr: "— Qu'as-tu prévu ce week-end ? — Je voudrais aller voir mes grands-parents. — Où habitent-ils ? — Dans un petit endroit au sud de la ville, à deux heures de voiture."
+    qfr: Que va faire l'homme ce week-end ?
+    options: [看爷爷奶奶, 学开车, 去南方旅游]
+    ofr: [voir ses grands-parents, apprendre à conduire, voyager dans le Sud]
+    answer: A
+  - audio: |-
+      男：你学汉语多长时间了？
+      女：差不多一年了。
+      男：你觉得难吗？
+      女：说不难，写字比较难。
+    q: 女的觉得什么比较难？
+    fr: "— Depuis combien de temps apprends-tu le chinois ? — Presque un an. — Tu trouves ça difficile ? — Parler, non, mais écrire les caractères, c'est assez difficile."
+    qfr: Qu'est-ce que la femme trouve assez difficile ?
+    options: [写字, 说汉语, 听汉语]
+    ofr: [écrire les caractères, parler chinois, comprendre le chinois oral]
+    answer: A
+  - audio: |-
+      女：先生，您想吃点儿什么？
+      男：有什么好吃的？
+      女：我们这儿的鱼很有名。
+      男：好，那就来一条鱼吧。
+    q: 他们最可能在哪儿？
+    fr: "— Monsieur, que désirez-vous manger ? — Qu'est-ce qui est bon ? — Notre poisson est très réputé. — Bien, alors un poisson."
+    qfr: Où sont-ils le plus probablement ?
+    options: [饭店, 商店, 医院]
+    ofr: [au restaurant, dans un magasin, à l'hôpital]
+    answer: A
+  - audio: |-
+      男：喂，你到机场了吗？
+      女：到了，可是飞机十点才能起飞。
+      男：那你先在机场吃点儿东西吧。
+      女：好的。
+    q: 飞机几点起飞？
+    fr: "— Allô, tu es arrivée à l'aéroport ? — Oui, mais l'avion ne pourra décoller qu'à dix heures. — Alors mange quelque chose à l'aéroport en attendant. — D'accord."
+    qfr: À quelle heure l'avion décolle-t-il ?
+    options: [十点, 九点, 十一点]
+    ofr: [à dix heures, à neuf heures, à onze heures]
+    answer: A
+  - audio: |-
+      女：你看，这是我新买的裙子，漂亮吗？
+      男：很漂亮，多少钱？
+      女：三百多块。
+      男：有点儿贵，不过颜色很好看。
+    q: 男的觉得裙子怎么样？
+    fr: "— Regarde, c'est la jupe que je viens d'acheter, elle est jolie ? — Très jolie, elle a coûté combien ? — Un peu plus de trois cents yuans. — Un peu chère, mais la couleur est très belle."
+    qfr: Que pense l'homme de la jupe ?
+    options: [颜色好看, 太便宜了, 太短了]
+    ofr: [la couleur est belle, elle est trop bon marché, elle est trop courte]
+    answer: A
+  - audio: |-
+      男：明天你去小王家吗？他过生日。
+      女：去，你呢？
+      男：我也去，我们一起去吧。
+      女：好，我们给他买个蛋糕吧。
+    q: 他们明天要去哪儿？
+    fr: "— Tu vas chez Xiao Wang demain ? C'est son anniversaire. — Oui, et toi ? — Moi aussi, allons-y ensemble. — D'accord, achetons-lui un gâteau."
+    qfr: Où vont-ils demain ?
+    options: [小王家, 蛋糕店, 公司]
+    ofr: [chez Xiao Wang, à la pâtisserie, au bureau]
+    answer: A
+  - audio: |-
+      女：你最近怎么瘦了？
+      男：我每天下班以后都去锻炼身体。
+      女：每天去多长时间？
+      男：一个小时。
+    q: 男的为什么瘦了？
+    fr: "— Pourquoi tu as maigri ces derniers temps ? — Je fais du sport tous les jours après le travail. — Combien de temps par jour ? — Une heure."
+    qfr: Pourquoi l'homme a-t-il maigri ?
+    options: [每天锻炼, 工作太忙, 生病了]
+    ofr: [il fait du sport tous les jours, il a trop de travail, il est malade]
+    answer: A
+  - audio: |-
+      男：这儿的环境真不错。
+      女：是啊，又安静又干净。
+      男：房子多少钱一个月？
+      女：两千五。
+    q: 男的觉得这儿怎么样？
+    fr: "— L'environnement est vraiment agréable ici. — Oui, c'est calme et propre. — Le logement coûte combien par mois ? — Deux mille cinq cents."
+    qfr: Que pense l'homme de cet endroit ?
+    options: [环境不错, 不太安静, 太贵了]
+    ofr: [l'environnement est agréable, ce n'est pas très calme, c'est trop cher]
+    answer: A
+  - audio: |-
+      女：明天就要考试了，你复习好了吗？
+      男：还没有，数学还有很多题不会。
+      女：我数学还可以，我帮你吧。
+      男：太好了，谢谢你！
+    q: 女的要做什么？
+    fr: "— L'examen est demain, tu as fini de réviser ? — Pas encore, il y a plein d'exercices de maths que je ne sais pas faire. — Je me débrouille en maths, je vais t'aider. — Génial, merci !"
+    qfr: Que va faire la femme ?
+    options: [帮男的复习数学, 和男的一起考试, 借给男的书]
+    ofr: [l'aider à réviser les maths, passer l'examen avec lui, lui prêter des livres]
+    answer: A
+  - audio: |-
+      男：你的行李箱真大！
+      女：是啊，我要去南方玩儿一个月。
+      男：一个月？那么长时间！
+      女：对，我请了一个月的假。
+    q: 女的要去南方多长时间？
+    fr: "— Ta valise est vraiment grande ! — Oui, je pars un mois dans le Sud. — Un mois ? Si longtemps ! — Oui, j'ai pris un mois de congé."
+    qfr: Combien de temps la femme part-elle dans le Sud ?
+    options: [一个月, 一个星期, 两个月]
+    ofr: [un mois, une semaine, deux mois]
+    answer: A
+  - audio: |-
+      女：你女儿几年级了？
+      男：三年级了，她学习特别认真。
+      女：她喜欢什么课？
+      男：她最喜欢音乐课。
+    q: 他女儿最喜欢什么课？
+    fr: "— Ta fille est en quelle année ? — En troisième année, elle travaille très sérieusement. — Quel cours préfère-t-elle ? — La musique."
+    qfr: Quel est le cours préféré de sa fille ?
+    options: [音乐课, 数学课, 体育课]
+    ofr: [la musique, les maths, le sport]
+    answer: A
+  - audio: |-
+      男：你怎么不吃了？
+      女：我已经吃饱了。
+      男：再吃一点儿吧，你今天没吃早饭。
+      女：真的吃不下了。
+    q: 女的为什么不吃了？
+    fr: "— Pourquoi tu ne manges plus ? — J'ai déjà assez mangé. — Mange encore un peu, tu n'as pas pris de petit-déjeuner aujourd'hui. — Vraiment, je ne peux plus rien avaler."
+    qfr: Pourquoi la femme ne mange-t-elle plus ?
+    options: [吃饱了, 不好吃, 生病了]
+    ofr: [elle n'a plus faim, ce n'est pas bon, elle est malade]
+    answer: A
+  - audio: |-
+      女：你这次去中国，去了哪些地方？
+      男：我去了三个城市。
+      女：哪个城市你最喜欢？
+      男：我最喜欢最后去的那个，那儿的人非常热情。
+    q: 男的去了几个城市？
+    fr: "— Pendant ce voyage en Chine, où es-tu allé ? — Dans trois villes. — Laquelle as-tu préférée ? — La dernière, les gens y sont très chaleureux."
+    qfr: Combien de villes l'homme a-t-il visitées ?
+    options: [三个, 两个, 四个]
+    ofr: [trois, deux, quatre]
+    answer: A
+  - audio: |-
+      男：请问，这件衬衫有大一点儿的吗？
+      女：有，您穿多大的？
+      男：我也不太清楚。
+      女：您先试试这件吧。
+    q: 男的想要什么样的衬衫？
+    fr: "— Excusez-moi, vous avez cette chemise en plus grand ? — Oui, quelle taille faites-vous ? — Je ne sais pas trop. — Essayez d'abord celle-ci."
+    qfr: Quelle chemise l'homme veut-il ?
+    options: [大一点儿的, 便宜一点儿的, 新一点儿的]
+    ofr: [une un peu plus grande, une un peu moins chère, une plus neuve]
+    answer: A
+  - audio: |-
+      女：你在中国习惯吗？
+      男：以前不太习惯，现在好多了。
+      女：你最不习惯什么？
+      男：天气，这儿冬天太冷了。
+    q: 男的最不习惯什么？
+    fr: "— Tu t'es habitué à la Chine ? — Au début pas trop, maintenant ça va beaucoup mieux. — Qu'est-ce qui est le plus difficile ? — Le climat, l'hiver ici est trop froid."
+    qfr: À quoi l'homme a-t-il le plus de mal à s'habituer ?
+    options: [天气, 吃的, 说汉语]
+    ofr: [au climat, à la nourriture, à parler chinois]
+    answer: A
+  - audio: |-
+      男：我的手机找不到了，你给我打个电话吧。
+      女：好，你听，在你的书包里。
+      男：太好了，谢谢！
+      女：不客气。
+    q: 男的手机在哪儿？
+    fr: "— Je ne trouve plus mon téléphone, appelle-moi s'il te plaît. — D'accord, écoute : il est dans ton cartable. — Super, merci ! — De rien."
+    qfr: Où est le téléphone de l'homme ?
+    options: [书包里, 桌子上, 女的那儿]
+    ofr: [dans son cartable, sur la table, chez la femme]
+    answer: A
+  - audio: |-
+      女：你的腿怎么了？
+      男：昨天踢足球，现在还很疼。
+      女：去医院检查一下吧。
+      男：好，我下午就去。
+    q: 男的下午要去哪儿？
+    fr: "— Qu'est-ce que tu as à la jambe ? — J'ai joué au foot hier, elle me fait encore très mal. — Va te faire examiner à l'hôpital. — D'accord, j'y vais cet après-midi."
+    qfr: Où l'homme va-t-il cet après-midi ?
+    options: [医院, 学校, 公司]
+    ofr: [à l'hôpital, à l'école, au bureau]
+    answer: A
+  - audio: |-
+      男：你认识新来的经理吗？
+      女：认识，他以前是我的同事。
+      男：他这个人怎么样？
+      女：工作很认真，也很关心别人。
+    q: 女的觉得新经理怎么样？
+    fr: "— Tu connais le nouveau directeur ? — Oui, c'était mon collègue avant. — Il est comment ? — Très sérieux dans son travail, et attentionné envers les autres."
+    qfr: Que pense la femme du nouveau directeur ?
+    options: [很认真, 不太热情, 很年轻]
+    ofr: [très sérieux, pas très chaleureux, très jeune]
+    answer: A
+  - audio: |-
+      女：今天我们去哪儿吃饭？
+      男：去学校旁边那家新开的饭馆吧。
+      女：那儿的菜好吃吗？
+      男：听同学说很不错。
+    q: 男的为什么想去那家饭馆？
+    fr: "— Où va-t-on manger aujourd'hui ? — Dans le nouveau restaurant à côté de l'école. — C'est bon là-bas ? — D'après des camarades, c'est très bien."
+    qfr: Pourquoi l'homme veut-il aller dans ce restaurant ?
+    options: [同学说不错, 离家近, 很便宜]
+    ofr: [ses camarades disent que c'est bien, c'est près de chez lui, c'est très bon marché]
+    answer: A
+  - audio: |-
+      男：你每天几点下班？
+      女：一般是六点，但是最近工作多，常常八点才下班。
+      男：那你要注意身体。
+      女：谢谢，我会的。
+    q: 女的最近一般几点下班？
+    fr: "— À quelle heure finis-tu le travail ? — En général à six heures, mais ces temps-ci j'ai beaucoup de travail, je finis souvent à huit heures. — Alors fais attention à ta santé. — Merci, promis."
+    qfr: À quelle heure finit-elle le travail ces temps-ci ?
+    options: [八点, 六点, 七点]
+    ofr: [à huit heures, à six heures, à sept heures]
+    answer: A
+  - audio: |-
+      女：我想送我妈妈一个生日礼物，你觉得送什么好？
+      男：送花吧。
+      女：她不太喜欢花。
+      男：那就送她一件衣服吧。
+    q: 女的想给谁买礼物？
+    fr: "— Je voudrais offrir un cadeau d'anniversaire à ma mère, qu'est-ce que je pourrais lui offrir ? — Des fleurs. — Elle n'aime pas trop les fleurs. — Alors un vêtement."
+    qfr: À qui la femme veut-elle offrir un cadeau ?
+    options: [她妈妈, 她奶奶, 她朋友]
+    ofr: [à sa mère, à sa grand-mère, à une amie]
+    answer: A
+  - audio: |-
+      男：你打算什么时候结婚？
+      女：明年春天。
+      男：在哪儿结婚？
+      女：还没决定，可能在南方。
+    q: 女的打算什么时候结婚？
+    fr: "— Quand comptes-tu te marier ? — Au printemps prochain. — Où ça ? — Ce n'est pas encore décidé, peut-être dans le Sud."
+    qfr: Quand la femme compte-t-elle se marier ?
+    options: [明年春天, 今年秋天, 还没决定]
+    ofr: [au printemps prochain, cet automne, ce n'est pas décidé]
+    answer: A
+  - audio: |-
+      女：你听，外面的声音是什么？
+      男：好像是下雨了。
+      女：不是，是有人在唱歌。
+      男：这么晚了还唱歌！
+    q: 外面的声音是什么？
+    fr: "— Écoute, c'est quoi ce bruit dehors ? — On dirait qu'il pleut. — Non, c'est quelqu'un qui chante. — Chanter à une heure pareille !"
+    qfr: Qu'est-ce que le bruit dehors ?
+    options: [有人唱歌, 下雨, 刮风]
+    ofr: [quelqu'un chante, il pleut, il y a du vent]
+    answer: A
+
+passage_mcq:
+  - audio: 我老家在北方，冬天很冷，但是夏天很凉快，所以很多人夏天来这儿玩儿。
+    q: 他老家夏天怎么样？
+    fr: "Ma ville natale est dans le Nord : l'hiver est très froid, mais l'été est frais, c'est pourquoi beaucoup de gens viennent ici en été."
+    qfr: Comment est l'été dans sa ville natale ?
+    options: [很凉快, 很热, 常常下雨]
+    ofr: [frais, très chaud, il pleut souvent]
+    answer: A
+  - audio: 同学们，明天我们去动物园，早上八点在学校门口见面，大家别迟到。
+    q: 他们明天几点见面？
+    fr: Les enfants, demain nous allons au zoo, rendez-vous à huit heures devant l'école, ne soyez pas en retard.
+    qfr: À quelle heure se retrouvent-ils demain ?
+    options: [八点, 九点, 七点]
+    ofr: [à huit heures, à neuf heures, à sept heures]
+    answer: A
+  - audio: 我每天坐地铁上班，虽然路上要一个小时，但是我可以在地铁上看书，所以我不觉得累。
+    q: 他在地铁上做什么？
+    fr: Je vais au travail en métro tous les jours ; même si le trajet dure une heure, je peux lire dans le métro, donc je ne trouve pas ça fatigant.
+    qfr: Que fait-il dans le métro ?
+    options: [看书, 睡觉, 打电话]
+    ofr: [il lit, il dort, il téléphone]
+    answer: A
+  - audio: 我们家有四口人：爸爸、妈妈、哥哥和我。哥哥在银行工作，我还是大学生。
+    q: 说话人现在做什么？
+    fr: "Nous sommes quatre dans ma famille : papa, maman, mon grand frère et moi. Mon frère travaille dans une banque, moi je suis encore étudiant."
+    qfr: Que fait la personne qui parle ?
+    options: [上大学, 在银行工作, 做老师]
+    ofr: [elle est à l'université, elle travaille dans une banque, elle est professeure]
+    answer: A
+  - audio: 很多人喜欢在网上买东西，因为又方便又便宜。但是我更喜欢去商店，因为可以先试一下。
+    q: 说话人为什么喜欢去商店买东西？
+    fr: Beaucoup de gens aiment acheter en ligne, parce que c'est pratique et pas cher. Mais moi, je préfère aller en magasin, parce qu'on peut essayer avant.
+    qfr: Pourquoi la personne préfère-t-elle acheter en magasin ?
+    options: [可以先试, 更便宜, 更方便]
+    ofr: [on peut essayer avant, c'est moins cher, c'est plus pratique]
+    answer: A
+  - audio: 我的同事小王非常喜欢运动，他每个周末都去打网球，有时候还去游泳。
+    q: 小王周末一般做什么？
+    fr: "Mon collègue Xiao Wang adore le sport : tous les week-ends il joue au tennis, et parfois il va aussi nager."
+    qfr: Que fait Xiao Wang en général le week-end ?
+    options: [打网球, 爬山, 踢足球]
+    ofr: [il joue au tennis, il fait de la montagne, il joue au football]
+    answer: A
+  - audio: 欢迎大家来到我们的城市。今天上午我们先去公园，中午在附近吃饭，下午去图书馆。
+    q: 他们中午做什么？
+    fr: Bienvenue à tous dans notre ville. Ce matin, nous allons d'abord au parc, à midi nous mangeons dans le quartier, et l'après-midi nous allons à la bibliothèque.
+    qfr: Que font-ils à midi ?
+    options: [吃饭, 去公园, 去图书馆]
+    ofr: [ils mangent, ils vont au parc, ils vont à la bibliothèque]
+    answer: A
+  - audio: 以前我不太会做饭。来中国以后，我每天自己做饭，现在已经做得很好了。
+    q: 说话人现在做饭做得怎么样？
+    fr: Avant, je ne savais pas vraiment cuisiner. Depuis que je suis en Chine, je cuisine moi-même tous les jours, et maintenant je cuisine très bien.
+    qfr: Comment la personne cuisine-t-elle maintenant ?
+    options: [很好, 不太好, 不会做]
+    ofr: [très bien, pas très bien, elle ne sait pas cuisiner]
+    answer: A
+  - audio: 这家店的面条很有名，每天中午都有很多人在门口等。我觉得等半个小时也没关系，因为真的很好吃。
+    q: 这家店为什么人多？
+    fr: Les nouilles de ce restaurant sont très célèbres, il y a beaucoup de monde qui attend devant tous les midis. Attendre une demi-heure ne me dérange pas, c'est vraiment délicieux.
+    qfr: Pourquoi y a-t-il beaucoup de monde dans ce restaurant ?
+    options: [面条很有名, 很便宜, 离公司近]
+    ofr: [ses nouilles sont célèbres, c'est très bon marché, c'est près du bureau]
+    answer: A
+  - audio: 我女儿今年六岁，她特别喜欢画画儿，每天放学回家都要画一个小时。
+    q: 女儿每天放学以后做什么？
+    fr: "Ma fille a six ans, elle adore dessiner : tous les jours en rentrant de l'école, elle dessine pendant une heure."
+    qfr: Que fait sa fille tous les jours après l'école ?
+    options: [画画儿, 唱歌, 看电视]
+    ofr: [elle dessine, elle chante, elle regarde la télé]
+    answer: A
+  - audio: 明天会下大雨，而且会很冷，大家出门的时候别忘了带伞，多穿点儿衣服。
+    q: 明天天气怎么样？
+    fr: Demain, il va beaucoup pleuvoir et il fera froid ; en sortant, n'oubliez pas votre parapluie et couvrez-vous bien.
+    qfr: Quel temps fera-t-il demain ?
+    options: [下大雨, 晴天, 很热]
+    ofr: [forte pluie, beau temps, très chaud]
+    answer: A
+  - audio: 我在这家公司工作三年了。同事们对我都很好，工作也很有意思，所以我不想换工作。
+    q: 说话人为什么不想换工作？
+    fr: Je travaille dans cette entreprise depuis trois ans. Mes collègues sont tous très gentils avec moi et le travail est intéressant, donc je ne veux pas changer de travail.
+    qfr: Pourquoi la personne ne veut-elle pas changer de travail ?
+    options: [同事都很好, 公司很大, 离家很近]
+    ofr: [ses collègues sont très gentils, l'entreprise est grande, c'est près de chez elle]
+    answer: A
+  - audio: 我上个月搬家了。新家离公司很远，但是房子比以前大，旁边还有一个大公园。
+    q: 新家怎么样？
+    fr: J'ai déménagé le mois dernier. Le nouveau logement est loin du bureau, mais il est plus grand qu'avant, et il y a un grand parc à côté.
+    qfr: Comment est le nouveau logement ?
+    options: [比以前大, 离公司很近, 很便宜]
+    ofr: [plus grand qu'avant, tout près du bureau, très bon marché]
+    answer: A
+  - audio: 今天是我和我爱人结婚十年的日子，我们打算晚上去一家很有名的饭馆吃饭。
+    q: 他们为什么晚上去饭馆？
+    fr: Aujourd'hui, cela fait dix ans que mon conjoint et moi sommes mariés, nous comptons dîner ce soir dans un restaurant très réputé.
+    qfr: Pourquoi vont-ils au restaurant ce soir ?
+    options: [结婚十年, 过生日, 朋友请客]
+    ofr: [ils fêtent leurs dix ans de mariage, c'est un anniversaire, un ami les invite]
+    answer: A
+  - audio: 学习一种语言，最重要的是多听多说。不要害怕说错，说错了也没关系。
+    q: 说话人觉得学语言最重要的是什么？
+    fr: Pour apprendre une langue, le plus important est d'écouter et de parler beaucoup. N'ayez pas peur de faire des erreurs, ce n'est pas grave.
+    qfr: Selon la personne, qu'est-ce qui est le plus important pour apprendre une langue ?
+    options: [多听多说, 多写汉字, 多看书]
+    ofr: [écouter et parler beaucoup, écrire beaucoup de caractères, lire beaucoup]
+    answer: A
+  - audio: 我的手机用了五年了，常常没电，所以我打算这个周末去买一个新的。
+    q: 说话人周末打算做什么？
+    fr: J'ai mon téléphone depuis cinq ans, il n'a souvent plus de batterie, alors je compte en acheter un nouveau ce week-end.
+    qfr: Que compte faire la personne ce week-end ?
+    options: [买新手机, 去旅游, 找工作]
+    ofr: [acheter un nouveau téléphone, partir en voyage, chercher du travail]
+    answer: A
+  - audio: 我小时候身体不太好，经常生病。后来我开始每天跑步，现在身体好多了。
+    q: 说话人的身体为什么好多了？
+    fr: Petit, j'avais une santé fragile, j'étais souvent malade. Ensuite j'ai commencé à courir tous les jours, et maintenant je vais beaucoup mieux.
+    qfr: Pourquoi la personne est-elle en bien meilleure santé ?
+    options: [每天跑步, 吃药, 多休息]
+    ofr: [elle court tous les jours, elle prend des médicaments, elle se repose davantage]
+    answer: A
+  - audio: 这个图书馆的书很多，环境也很安静，所以周末的时候很多学生来这儿学习。
+    q: 学生们为什么来这个图书馆？
+    fr: Cette bibliothèque a beaucoup de livres et l'ambiance est très calme, c'est pourquoi beaucoup d'étudiants viennent y travailler le week-end.
+    qfr: Pourquoi les étudiants viennent-ils dans cette bibliothèque ?
+    options: [书多，也很安静, 离家很近, 可以上网]
+    ofr: [beaucoup de livres et du calme, c'est près de chez eux, on peut aller sur Internet]
+    answer: A
+  - audio: 我爷爷今年八十岁了，可是他身体很健康，每天早上都去公园锻炼，还常常帮奶奶做饭。
+    q: 关于爷爷，可以知道什么？
+    fr: "Mon grand-père a quatre-vingts ans, mais il est en très bonne santé : il fait de l'exercice au parc tous les matins et aide souvent ma grand-mère à cuisiner."
+    qfr: Que sait-on du grand-père ?
+    options: [身体很好, 不会做饭, 很少出门]
+    ofr: [il est en bonne santé, il ne sait pas cuisiner, il sort rarement]
+    answer: A
+  - audio: 现在越来越多的年轻人喜欢点外卖，因为工作太忙了，没有时间做饭。
+    q: 年轻人为什么喜欢点外卖？
+    fr: De plus en plus de jeunes aiment se faire livrer des repas, parce qu'ils ont trop de travail et pas le temps de cuisiner.
+    qfr: Pourquoi les jeunes aiment-ils se faire livrer ?
+    options: [没有时间做饭, 外卖很好吃, 外卖很便宜]
+    ofr: [ils n'ont pas le temps de cuisiner, c'est très bon, c'est très bon marché]
+    answer: A
+  - audio: 我们学校每年秋天都有运动会，今年我参加了跑步比赛，得了第二名。
+    q: 说话人在比赛中怎么样？
+    fr: Notre école organise une fête du sport chaque automne ; cette année, j'ai participé à la course et je suis arrivé deuxième.
+    qfr: Comment la personne s'est-elle classée ?
+    options: [第二名, 第一名, 没参加]
+    ofr: [deuxième, premier, elle n'a pas participé]
+    answer: A
+  - audio: 我住的小区很漂亮，有很多树和花，晚上很多老人在里面跳舞。
+    q: 晚上小区里的老人做什么？
+    fr: La résidence où j'habite est très belle, il y a beaucoup d'arbres et de fleurs, et le soir beaucoup de personnes âgées y dansent.
+    qfr: Que font les personnes âgées le soir dans la résidence ?
+    options: [跳舞, 唱歌, 打球]
+    ofr: [elles dansent, elles chantent, elles jouent au ballon]
+    answer: A
+  - audio: 我是去年来中国留学的，刚来的时候一句汉语也不会说，现在我已经可以和中国朋友聊天儿了。
+    q: 说话人刚来中国的时候怎么样？
+    fr: Je suis venu étudier en Chine l'année dernière ; en arrivant, je ne savais pas dire une phrase de chinois, maintenant je peux déjà discuter avec des amis chinois.
+    qfr: Comment était la personne à son arrivée en Chine ?
+    options: [不会说汉语, 很会说汉语, 没有朋友]
+    ofr: [elle ne parlait pas chinois, elle parlait très bien chinois, elle n'avait pas d'amis]
+    answer: A
+  - audio: 这个电影我看过两遍了，故事很有意思，我还想再看一遍。
+    q: 说话人看过几遍这个电影？
+    fr: J'ai déjà vu ce film deux fois, l'histoire est très intéressante, j'ai envie de le revoir encore une fois.
+    qfr: Combien de fois la personne a-t-elle vu ce film ?
+    options: [两遍, 一遍, 三遍]
+    ofr: [deux fois, une fois, trois fois]
+    answer: A
+  - audio: 坐高铁去那个城市只要两个小时，比坐飞机还方便，所以我一般坐高铁去。
+    q: 说话人一般怎么去那个城市？
+    fr: En TGV, on rejoint cette ville en deux heures seulement, c'est encore plus pratique que l'avion, donc en général j'y vais en TGV.
+    qfr: Comment la personne va-t-elle en général dans cette ville ?
+    options: [坐高铁, 坐飞机, 开车]
+    ofr: [en train à grande vitesse, en avion, en voiture]
+    answer: A
+
+reorder:
+  - words: 一张 桌子上 地图 有
+    answer: 桌子上有一张地图。
+    fr: Il y a une carte sur la table.
+  - words: 把 关上 门 请
+    answer: 请把门关上。
+    fr: Ferme la porte, s'il te plaît.
+  - words: 比 哥哥 我 高
+    answer: 哥哥比我高。
+    alt: [我比哥哥高。]
+    fr: Mon grand frère est plus grand que moi.
+  - words: 已经 了 完成 作业 我
+    answer: 我已经完成作业了。
+    alt: [作业我已经完成了。]
+    fr: J'ai déjà fini mes devoirs.
+  - words: 去过 中国 你 吗
+    answer: 你去过中国吗？
+    fr: Es-tu déjà allé en Chine ?
+  - words: 越来越 冷 天气 了
+    answer: 天气越来越冷了。
+    fr: Il fait de plus en plus froid.
+  - words: 被 弟弟 我的 蛋糕 吃了
+    answer: 我的蛋糕被弟弟吃了。
+    fr: Mon gâteau a été mangé par mon petit frère.
+  - words: 打扫 得 干净 很 房间
+    answer: 房间打扫得很干净。
+    fr: La chambre a été très bien nettoyée.
+  - words: 一边 一边 唱歌 他 跳舞
+    answer: 他一边唱歌一边跳舞。
+    alt: [他一边跳舞一边唱歌。]
+    fr: Il chante tout en dansant.
+  - words: 对 感兴趣 历史 很 我
+    answer: 我对历史很感兴趣。
+    fr: Je m'intéresse beaucoup à l'histoire.
+  - words: 放在 把 我 冰箱里 牛奶
+    answer: 我把牛奶放在冰箱里。
+    fr: J'ai mis le lait dans le frigo.
+  - words: 只有 男学生 我们班 一个
+    answer: 我们班只有一个男学生。
+    fr: Dans notre classe, il n'y a qu'un seul garçon.
+  - words: 准备 了 吗 明天的考试 你 好
+    answer: 明天的考试你准备好了吗？
+    alt: [你准备好明天的考试了吗？]
+    fr: Tu es prêt pour l'examen de demain ?
+  - words: 地铁站 附近 吗 有 这儿
+    answer: 这儿附近有地铁站吗？
+    fr: Y a-t-il une station de métro près d'ici ?
+  - words: 让 很 故事 这个 我 难过
+    answer: 这个故事让我很难过。
+    fr: Cette histoire me rend très triste.
+
+char_pinyin:
+  - sentence: 我（jué）得这个问题很简单。
+    answer: 觉
+    fr: Je trouve que cette question est très simple.
+  - sentence: 我们明天一起去爬（shān），好吗？
+    answer: 山
+    fr: Si on allait faire de la montagne ensemble demain ?
+  - sentence: 你（zuì）近工作忙吗？
+    answer: 最
+    fr: Tu es occupé au travail ces temps-ci ?
+  - sentence: 她每天都（kāi）车去上班。
+    answer: 开
+    fr: Elle va au travail en voiture tous les jours.
+  - sentence: 这个问题太（nán）了，我不会。
+    answer: 难
+    fr: Cette question est trop difficile, je ne sais pas y répondre.
+  - sentence: 我的生日是十二（yuè）八号。
+    answer: 月
+    fr: Mon anniversaire est le 8 décembre.
+  - sentence: 请你（guān）上门。
+    answer: 关
+    fr: Ferme la porte, s'il te plaît.
+  - sentence: 你喜欢喝（kā）啡吗？
+    answer: 咖
+    fr: Tu aimes le café ?
+  - sentence: 他（gāng）才给你打电话了。
+    answer: 刚
+    fr: Il vient de t'appeler.
+  - sentence: 我们（xiān）吃饭，然后去看电影。
+    answer: 先
+    fr: On mange d'abord, puis on va voir un film.
+  - sentence: 这件事情我已经忘（jì）了。
+    answer: 记
+    fr: J'ai déjà oublié cette histoire.
+  - sentence: 冬天来了，天气越来越（lěng）。
+    answer: 冷
+    fr: L'hiver est arrivé, il fait de plus en plus froid.
+  - sentence: 他的汉语（shuǐ）平提高得很快。
+    answer: 水
+    fr: Son niveau de chinois progresse très vite.
+  - sentence: 我在（tú）书馆看书。
+    answer: 图
+    fr: Je lis à la bibliothèque.
+  - sentence: 明天你（néng）来参加会议吗？
+    answer: 能
+    fr: Peux-tu venir à la réunion demain ?
+  - sentence: 你的房间真（gān）净！
+    answer: 干
+    fr: Ta chambre est vraiment propre !
+  - sentence: 我（xiǎng）去中国留学。
+    answer: 想
+    fr: Je voudrais aller étudier en Chine.
+  - sentence: 爸爸每天都看（xīn）闻。
+    answer: 新
+    fr: Papa regarde les informations tous les jours.
+  - sentence: 别着（jí），我们还有时间。
+    answer: 急
+    fr: Pas de panique, nous avons encore le temps.
+  - sentence: 这家商店的东西很（pián）宜。
+    answer: 便
+    fr: Les articles de ce magasin sont très bon marché.
+
+make_sentence:
+  - word: 经常
+    reference: 我经常和朋友一起去爬山。
+    fr: Je fais souvent de la montagne avec des amis.
+  - word: 打算
+    reference: 这个周末你打算做什么？
+    fr: Qu'as-tu prévu de faire ce week-end ?
+  - word: 突然
+    reference: 外面突然下雨了。
+    fr: Il s'est soudain mis à pleuvoir dehors.
+  - word: 习惯
+    reference: 我已经习惯了这里的天气。
+    fr: Je me suis déjà habitué au climat d'ici.
+  - word: 一边
+    reference: 他一边吃饭一边看电视。
+    fr: Il mange en regardant la télévision.
+  - word: 被
+    reference: 我的自行车被朋友借走了。
+    fr: Mon vélo a été emprunté par un ami.
+  - word: 害怕
+    reference: 我妹妹很害怕狗。
+    fr: Ma petite sœur a très peur des chiens.
+  - word: 地图
+    reference: 我们看一下地图吧。
+    fr: Regardons le plan.
+  - word: 越来越
+    reference: 天气越来越热了。
+    fr: Il fait de plus en plus chaud.
+  - word: 担心
+    reference: 别担心，我马上就到。
+    fr: Ne t'inquiète pas, j'arrive tout de suite.
+  - word: 礼物
+    reference: 这是我送给你的生日礼物。
+    fr: C'est le cadeau d'anniversaire que je t'offre.
+  - word: 帮助
+    reference: 谢谢你的帮助。
+    fr: Merci pour ton aide.
+  - word: 安静
+    reference: 图书馆里很安静。
+    fr: Il fait très calme dans la bibliothèque.
+  - word: 终于
+    reference: 我终于找到工作了。
+    fr: J'ai enfin trouvé du travail.
+  - word: 照顾
+    reference: 妈妈在医院照顾奶奶。
+    fr: Maman s'occupe de grand-mère à l'hôpital.

@@ -20,6 +20,8 @@ DAILY_QUOTAS: dict[str, int] = {
     "expression_correction": 20,
     "subject_generation": 50,
     "example_generation": 100,
+    "exercise_generation": 20,
+    "exercise_check": 100,
 }
 
 

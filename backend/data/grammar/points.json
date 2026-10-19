@@ -1,0 +1,7864 @@
+{
+ "points": [
+  {
+   "id": "1-01",
+   "code": "一01",
+   "level": 1,
+   "no": 1,
+   "item": "词类",
+   "category": "名词",
+   "detail": "方位名词",
+   "content": "上、下、里、外、前、后、左、右、东、南、西、北；上边、下边、 里边、外边、前边、后边、左边、右边、东边、南边、西边、北边",
+   "title": "Les mots de position : 上、下、里、外、前、后…",
+   "explanation": "Pour dire où se trouve quelque chose, le chinois place le mot de position APRÈS le nom : 桌子上 = « sur la table » (mot à mot « table-dessus »).\nLes formes courtes (上、里…) s'accrochent à un nom ; les formes en 边 (上边、里边、左边…) peuvent aussi s'employer seules : 他在外边。\nAvec 在 : 在 + lieu + mot de position.",
+   "pattern": "在 + nom + 上/下/里/外/前/后…    ·    nom + 左边/右边/东边…",
+   "examples": [
+    {
+     "zh": "书在桌子上。",
+     "fr": "Le livre est sur la table."
+    },
+    {
+     "zh": "猫在椅子下边。",
+     "fr": "Le chat est sous la chaise."
+    },
+    {
+     "zh": "学校在医院的东边。",
+     "fr": "L'école est à l'est de l'hôpital."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你的手机在书包（　）。",
+     "options": [
+      "里",
+      "里面的",
+      "中"
+     ],
+     "answer": 0,
+     "why": "« Dans le cartable » : 书包里. Le mot de position se met après le nom."
+    },
+    {
+     "q": "他在哪儿？—— 他在（　）。",
+     "options": [
+      "外",
+      "上",
+      "外边"
+     ],
+     "answer": 2,
+     "why": "Employée seule (sans nom devant), la forme longue en 边 est nécessaire."
+    }
+   ]
+  },
+  {
+   "id": "1-02",
+   "code": "一02",
+   "level": 1,
+   "no": 2,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "会、能",
+   "title": "会 et 能 : savoir / pouvoir",
+   "explanation": "会 = savoir faire, après un apprentissage (une langue, nager, conduire). 能 = être capable ou avoir la possibilité de faire, selon les circonstances.\nLes deux se placent devant le verbe ; à la forme négative : 不会、不能.",
+   "pattern": "sujet + 会 / 能 + verbe",
+   "examples": [
+    {
+     "zh": "我会说汉语。",
+     "fr": "Je sais parler chinois."
+    },
+    {
+     "zh": "明天我不能来。",
+     "fr": "Demain je ne pourrai pas venir."
+    },
+    {
+     "zh": "你会做饭吗？",
+     "fr": "Tu sais cuisiner ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我（　）游泳，我学了两年了。",
+     "options": [
+      "会",
+      "能",
+      "想"
+     ],
+     "answer": 0,
+     "why": "Nager est une compétence apprise → 会."
+    },
+    {
+     "q": "我今天很忙，不（　）去看电影。",
+     "options": [
+      "是",
+      "能",
+      "会"
+     ],
+     "answer": 1,
+     "why": "Il s'agit d'une possibilité (je n'ai pas le temps), pas d'un savoir-faire → 不能."
+    }
+   ]
+  },
+  {
+   "id": "1-03",
+   "code": "一03",
+   "level": 1,
+   "no": 3,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "想、要",
+   "title": "想 et 要 : vouloir",
+   "explanation": "想 + verbe = avoir envie de, penser faire (souhait). 要 + verbe = vouloir, avoir l'intention ferme de, et aussi « devoir ».\nÀ la négation, on dit plutôt 不想 (« je n'ai pas envie »). 不要 signifie « ne… pas ! » (interdiction).",
+   "pattern": "sujet + 想 / 要 + verbe (+ complément)",
+   "examples": [
+    {
+     "zh": "我想喝茶。",
+     "fr": "J'ai envie de boire du thé."
+    },
+    {
+     "zh": "我要去商店买东西。",
+     "fr": "Je vais (je veux) aller au magasin faire des courses."
+    },
+    {
+     "zh": "我不想看电视。",
+     "fr": "Je n'ai pas envie de regarder la télé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "今天太累了，我不（　）出去。",
+     "options": [
+      "想",
+      "要",
+      "会"
+     ],
+     "answer": 0,
+     "why": "« Je n'ai pas envie de sortir » : 不想. 不要 serait une interdiction."
+    },
+    {
+     "q": "你（　）喝什么？—— 我要一杯水。",
+     "options": [
+      "要",
+      "会",
+      "能"
+     ],
+     "answer": 0,
+     "why": "Pour commander ou demander ce qu'on veut, on emploie 要."
+    }
+   ]
+  },
+  {
+   "id": "1-04",
+   "code": "一04",
+   "level": 1,
+   "no": 4,
+   "item": "词类",
+   "category": "代词",
+   "detail": "疑问代词",
+   "content": "多、多少、几、哪、哪儿、哪里、哪些、什么、谁、怎么",
+   "title": "Les mots interrogatifs : 谁、什么、哪儿、几、多少…",
+   "explanation": "En chinois, le mot interrogatif reste À LA PLACE de l'information demandée : on ne change pas l'ordre des mots.\n你是谁？(Tu es qui ?) · 你去哪儿？(Tu vas où ?) · 几 pour un petit nombre (moins de 10 en général), 多少 pour un nombre quelconque.\nUne phrase avec un mot interrogatif ne prend PAS 吗.",
+   "pattern": "他是谁？ · 这是什么？ · 你去哪儿？ · 几个？ · 多少钱？ · 怎么去？",
+   "examples": [
+    {
+     "zh": "你叫什么名字？",
+     "fr": "Comment t'appelles-tu ?"
+    },
+    {
+     "zh": "你家有几口人？",
+     "fr": "Combien êtes-vous dans ta famille ?"
+    },
+    {
+     "zh": "这个苹果多少钱？",
+     "fr": "Combien coûte cette pomme ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你去（　）？—— 我去学校。",
+     "options": [
+      "什么",
+      "谁",
+      "哪儿"
+     ],
+     "answer": 2,
+     "why": "La réponse est un lieu → 哪儿."
+    },
+    {
+     "q": "你是哪国人？",
+     "options": [
+      "我是法国人。",
+      "我是哪国人。",
+      "我是法国人吗？"
+     ],
+     "answer": 0,
+     "why": "On répond en remplaçant le mot interrogatif par l'information ; pas de 吗."
+    }
+   ]
+  },
+  {
+   "id": "1-05",
+   "code": "一05",
+   "level": 1,
+   "no": 5,
+   "item": "词类",
+   "category": "代词",
+   "detail": "人称代词",
+   "content": "我、你、您、他、她、我们、你们、他们、她们",
+   "title": "Les pronoms personnels",
+   "explanation": "我 je · 你 tu · 您 vous (politesse) · 他 il · 她 elle. Le pluriel se forme avec 们 : 我们、你们、他们、她们. 您 n'a pas de pluriel en 们.\nLes pronoms ne changent pas de forme : 我 est à la fois « je », « me », « moi ».",
+   "pattern": "我 / 你 / 您 / 他 / 她 + 们",
+   "examples": [
+    {
+     "zh": "我们是学生。",
+     "fr": "Nous sommes étudiants."
+    },
+    {
+     "zh": "老师，您好！",
+     "fr": "Bonjour, professeur !"
+    },
+    {
+     "zh": "他喜欢她。",
+     "fr": "Il l'aime bien (elle)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "王老师，（　）好！",
+     "options": [
+      "您",
+      "你们",
+      "他"
+     ],
+     "answer": 0,
+     "why": "On salue un professeur poliment avec 您."
+    },
+    {
+     "q": "我和小明都是学生，（　）在一个学校。",
+     "options": [
+      "他们",
+      "你们",
+      "我们"
+     ],
+     "answer": 2,
+     "why": "« Xiao Ming et moi » = nous → 我们."
+    }
+   ]
+  },
+  {
+   "id": "1-06",
+   "code": "一06",
+   "level": 1,
+   "no": 6,
+   "item": "词类",
+   "category": "代词",
+   "detail": "指示代词",
+   "content": "这、那、这儿、那儿、这里、那里、这些、那些、别的、有的",
+   "title": "Les démonstratifs : 这、那、这儿、那儿…",
+   "explanation": "这 = ce…-ci (proche), 那 = ce…-là (loin). Devant un nom, on ajoute en général un spécificatif : 这个人、那本书.\n这儿 / 这里 = ici ; 那儿 / 那里 = là-bas. 这些 / 那些 = ces… (pluriel). 别的 = autre(s) ; 有的 = certains.",
+   "pattern": "这 / 那 + (nombre) + spécificatif + nom",
+   "examples": [
+    {
+     "zh": "这个人是我的老师。",
+     "fr": "Cette personne est mon professeur."
+    },
+    {
+     "zh": "那些书是谁的？",
+     "fr": "À qui sont ces livres-là ?"
+    },
+    {
+     "zh": "我们在这儿等你。",
+     "fr": "Nous t'attendons ici."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）本书是我的。",
+     "options": [
+      "这里",
+      "这儿",
+      "这"
+     ],
+     "answer": 2,
+     "why": "Devant spécificatif + nom (本书), on emploie 这. 这儿 signifie « ici »."
+    },
+    {
+     "q": "我的家在（　），很近。",
+     "options": [
+      "这儿",
+      "这",
+      "这个"
+     ],
+     "answer": 0,
+     "why": "« Ici » = 这儿 / 这里."
+    }
+   ]
+  },
+  {
+   "id": "1-07",
+   "code": "一07",
+   "level": 1,
+   "no": 7,
+   "item": "词类",
+   "category": "数词",
+   "detail": "",
+   "content": "一、二/两、三、四、五、六、七、八、九、零；十、百；半",
+   "title": "Les nombres : 一 à 百, 二 et 两, 半",
+   "explanation": "Les nombres se construisent comme des multiplications et additions : 十一 (11), 二十 (20), 二十五 (25), 一百 (100).\n二 sert pour compter et dans les nombres (第二、十二) ; devant un spécificatif, on dit 两 : 两个人、两本书.\n半 = demi : 半个小时 (une demi-heure), 三点半 (trois heures et demie).",
+   "pattern": "两 + spécificatif + nom  ·  nombre + 点 + 半",
+   "examples": [
+    {
+     "zh": "我有两个弟弟。",
+     "fr": "J'ai deux petits frères."
+    },
+    {
+     "zh": "现在是十二点半。",
+     "fr": "Il est midi et demi."
+    },
+    {
+     "zh": "我们班有二十八个学生。",
+     "fr": "Notre classe compte vingt-huit élèves."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我买了（　）个苹果。",
+     "options": [
+      "两",
+      "二",
+      "第二"
+     ],
+     "answer": 0,
+     "why": "Devant un spécificatif (个), « deux » se dit 两."
+    },
+    {
+     "q": "一个小时的一半是多少分钟？",
+     "options": [
+      "五十分钟",
+      "三十分钟",
+      "二十分钟"
+     ],
+     "answer": 1,
+     "why": "半个小时 = trente minutes."
+    }
+   ]
+  },
+  {
+   "id": "1-08",
+   "code": "一08",
+   "level": 1,
+   "no": 8,
+   "item": "词类",
+   "category": "量词",
+   "detail": "名量词",
+   "content": "杯、本、个、家、间、口、块、页",
+   "title": "Les spécificatifs (量词) : 个、本、杯、块…",
+   "explanation": "Entre un nombre (ou 这 / 那) et un nom, le chinois met obligatoirement un spécificatif : 一个人, 三本书.\n个 est le plus général ; 本 pour les livres, 杯 pour une tasse / un verre de…, 家 pour les entreprises et magasins, 口 pour les membres d'une famille, 块 pour les morceaux et l'argent (yuan), 页 pour les pages.",
+   "pattern": "nombre + spécificatif + nom",
+   "examples": [
+    {
+     "zh": "我想喝一杯茶。",
+     "fr": "Je voudrais boire une tasse de thé."
+    },
+    {
+     "zh": "我家有四口人。",
+     "fr": "Nous sommes quatre dans ma famille."
+    },
+    {
+     "zh": "这本书三十块钱。",
+     "fr": "Ce livre coûte trente yuans."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我昨天看了一（　）书。",
+     "options": [
+      "口",
+      "本",
+      "杯"
+     ],
+     "answer": 1,
+     "why": "本 est le spécificatif des livres."
+    },
+    {
+     "q": "你家有几（　）人？",
+     "options": [
+      "本",
+      "口",
+      "块"
+     ],
+     "answer": 1,
+     "why": "Pour compter les membres d'une famille : 口."
+    }
+   ]
+  },
+  {
+   "id": "1-09",
+   "code": "一09",
+   "level": 1,
+   "no": 9,
+   "item": "词类",
+   "category": "副词",
+   "detail": "程度副词",
+   "content": "非常、很、太、真、最",
+   "title": "Les adverbes de degré : 很、太、非常、真、最",
+   "explanation": "Ils se placent devant un adjectif ou un verbe de sentiment. 很 = très (souvent presque neutre devant un adjectif) ; 非常 = extrêmement ; 真 = vraiment ; 最 = le plus.\n太 = trop, souvent avec 了 à la fin : 太贵了 ! Et 不太 = pas très.",
+   "pattern": "很 / 非常 / 真 / 最 + adjectif   ·   太 + adjectif + 了",
+   "examples": [
+    {
+     "zh": "今天很热。",
+     "fr": "Il fait très chaud aujourd'hui."
+    },
+    {
+     "zh": "这件衣服太贵了！",
+     "fr": "Ce vêtement est trop cher !"
+    },
+    {
+     "zh": "我最喜欢吃饺子。",
+     "fr": "Ce que je préfère, ce sont les jiaozi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这个菜（　）好吃了！",
+     "options": [
+      "最",
+      "很",
+      "太"
+     ],
+     "answer": 2,
+     "why": "La structure 太……了 exprime « trop / tellement… ! »."
+    },
+    {
+     "q": "在我们家，我哥哥（　）高。",
+     "options": [
+      "真",
+      "最",
+      "太"
+     ],
+     "answer": 1,
+     "why": "Comparaison avec tous les autres → le plus grand : 最."
+    }
+   ]
+  },
+  {
+   "id": "1-10",
+   "code": "一10",
+   "level": 1,
+   "no": 10,
+   "item": "词类",
+   "category": "副词",
+   "detail": "范围、协同副词",
+   "content": "都1、一块儿、一起",
+   "title": "都、一起、一块儿 : tous / ensemble",
+   "explanation": "都 = tous, tout ; il se place APRÈS le sujet (qui est pluriel) et devant le verbe : 我们都是学生.\n一起 / 一块儿 = ensemble ; souvent avec 跟 / 和 : 我跟他一起去.",
+   "pattern": "sujet pluriel + 都 + verbe  ·  A + 跟/和 + B + 一起 + verbe",
+   "examples": [
+    {
+     "zh": "我们都喜欢喝茶。",
+     "fr": "Nous aimons tous le thé."
+    },
+    {
+     "zh": "明天我们一起去吧。",
+     "fr": "Allons-y ensemble demain."
+    },
+    {
+     "zh": "他和朋友一块儿吃饭。",
+     "fr": "Il mange avec un ami."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他们（　）是中国人。",
+     "options": [
+      "很",
+      "都",
+      "一起"
+     ],
+     "answer": 1,
+     "why": "« Ils sont TOUS chinois » : 都 après le sujet pluriel."
+    },
+    {
+     "q": "我和妈妈（　）去商店。",
+     "options": [
+      "都",
+      "再",
+      "一起"
+     ],
+     "answer": 2,
+     "why": "« Avec maman, ensemble » : 和……一起."
+    }
+   ]
+  },
+  {
+   "id": "1-11",
+   "code": "一11",
+   "level": 1,
+   "no": 11,
+   "item": "词类",
+   "category": "副词",
+   "detail": "时间副词",
+   "content": "马上、先、有时、在、正、正在",
+   "title": "Adverbes de temps : 马上、先、有时、在、正、正在",
+   "explanation": "马上 = tout de suite · 先 = d'abord · 有时 = parfois. 在 / 正 / 正在 + verbe = être en train de (voir aussi le point sur l'aspect progressif).\nCes adverbes se mettent après le sujet, devant le verbe.",
+   "pattern": "sujet + 马上 / 先 / 有时 / 正在 + verbe",
+   "examples": [
+    {
+     "zh": "你等一下，我马上来。",
+     "fr": "Attends un peu, j'arrive tout de suite."
+    },
+    {
+     "zh": "我们先吃饭，再去看电影。",
+     "fr": "Mangeons d'abord, puis allons voir un film."
+    },
+    {
+     "zh": "他正在打电话。",
+     "fr": "Il est en train de téléphoner."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "别急，我（　）就到。",
+     "options": [
+      "马上",
+      "有时",
+      "先"
+     ],
+     "answer": 0,
+     "why": "« J'arrive tout de suite » : 马上."
+    },
+    {
+     "q": "妈妈（　）做饭，你别去厨房。",
+     "options": [
+      "正在",
+      "马上",
+      "有时"
+     ],
+     "answer": 0,
+     "why": "L'action est en cours → 正在."
+    }
+   ]
+  },
+  {
+   "id": "1-12",
+   "code": "一12",
+   "level": 1,
+   "no": 12,
+   "item": "词类",
+   "category": "副词",
+   "detail": "频率、重复副词",
+   "content": "常、常常、再1",
+   "title": "Fréquence et répétition : 常、常常、再",
+   "explanation": "常 / 常常 = souvent ; négation : 不常. 再 = de nouveau, encore une fois, pour une action FUTURE (再见 = au revoir, « se revoir »).",
+   "pattern": "sujet + 常常 + verbe  ·  再 + verbe (futur)",
+   "examples": [
+    {
+     "zh": "我常常去那家饭店。",
+     "fr": "Je vais souvent dans ce restaurant."
+    },
+    {
+     "zh": "请再说一遍。",
+     "fr": "Répétez une fois, s'il vous plaît."
+    },
+    {
+     "zh": "明天再来吧。",
+     "fr": "Reviens demain."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这个电影很好看，我想（　）看一次。",
+     "options": [
+      "先",
+      "常常",
+      "再"
+     ],
+     "answer": 2,
+     "why": "Une répétition à venir → 再."
+    },
+    {
+     "q": "他（　）来我家玩儿，我们是好朋友。",
+     "options": [
+      "再",
+      "马上",
+      "常常"
+     ],
+     "answer": 2,
+     "why": "Une habitude → 常常."
+    }
+   ]
+  },
+  {
+   "id": "1-13",
+   "code": "一13",
+   "level": 1,
+   "no": 13,
+   "item": "词类",
+   "category": "副词",
+   "detail": "关联副词",
+   "content": "还1、也",
+   "title": "也 et 还 : aussi, encore",
+   "explanation": "也 = aussi ; il se place après le sujet, devant le verbe (jamais en fin de phrase) : 我也是学生.\n还 = encore, en plus ; il ajoute une information : 我买了苹果，还买了香蕉.",
+   "pattern": "sujet + 也 + verbe  ·  ……，还 + verbe",
+   "examples": [
+    {
+     "zh": "他是老师，我也是老师。",
+     "fr": "Il est professeur, moi aussi."
+    },
+    {
+     "zh": "我会说汉语，还会说英语。",
+     "fr": "Je parle chinois, et aussi anglais."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你喝茶，我（　）喝茶。",
+     "options": [
+      "还",
+      "也",
+      "都"
+     ],
+     "answer": 1,
+     "why": "« Moi aussi » : 也 juste avant le verbe."
+    },
+    {
+     "q": "Où placer 也 ? 我 ___ 喜欢 ___ 看书 ___。",
+     "options": [
+      "我喜欢也看书。",
+      "我喜欢看书也。",
+      "我也喜欢看书。"
+     ],
+     "answer": 2,
+     "why": "也 se met toujours devant le verbe."
+    }
+   ]
+  },
+  {
+   "id": "1-14",
+   "code": "一14",
+   "level": 1,
+   "no": 14,
+   "item": "词类",
+   "category": "副词",
+   "detail": "否定副词",
+   "content": "别、不、没、没有",
+   "title": "La négation : 不、没、没有、别",
+   "explanation": "不 nie le présent, le futur, les habitudes et les adjectifs : 我不去 · 他不高.\n没 / 没有 nie une action passée ou accomplie (« ne pas avoir fait ») et la possession : 我没去 · 我没有钱. Avec 没, on ne met pas 了.\n别 = « ne… pas ! » (interdiction, conseil) : 别说了！",
+   "pattern": "不 + verbe/adjectif  ·  没(有) + verbe  ·  别 + verbe",
+   "examples": [
+    {
+     "zh": "我明天不去学校。",
+     "fr": "Demain je ne vais pas à l'école."
+    },
+    {
+     "zh": "昨天我没去学校。",
+     "fr": "Hier je ne suis pas allé à l'école."
+    },
+    {
+     "zh": "别看电视了，快睡觉！",
+     "fr": "Arrête de regarder la télé, va vite dormir !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "昨天下雨，我（　）出去。",
+     "options": [
+      "别",
+      "没",
+      "不"
+     ],
+     "answer": 1,
+     "why": "Action passée qui n'a pas eu lieu → 没."
+    },
+    {
+     "q": "我（　）喜欢喝咖啡。",
+     "options": [
+      "别",
+      "没",
+      "不"
+     ],
+     "answer": 2,
+     "why": "Un goût, une habitude → 不."
+    }
+   ]
+  },
+  {
+   "id": "1-15",
+   "code": "一15",
+   "level": 1,
+   "no": 15,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出时间、处所",
+   "content": "从1",
+   "title": "从 : depuis, à partir de",
+   "explanation": "从 introduit le point de départ dans le temps ou l'espace ; souvent avec 到 (jusqu'à) : 从……到…….",
+   "pattern": "从 + lieu / moment (+ 到 + lieu / moment) + verbe",
+   "examples": [
+    {
+     "zh": "我从北京来。",
+     "fr": "Je viens de Pékin."
+    },
+    {
+     "zh": "我们从八点到十二点上课。",
+     "fr": "Nous avons cours de 8 h à midi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他（　）中国来，是中国人。",
+     "options": [
+      "在",
+      "从",
+      "跟"
+     ],
+     "answer": 1,
+     "why": "Le point de départ (« venir DE Chine ») : 从."
+    },
+    {
+     "q": "商店从九点（　）晚上十点开门。",
+     "options": [
+      "从",
+      "到",
+      "在"
+     ],
+     "answer": 1,
+     "why": "从……到…… = de… à…."
+    }
+   ]
+  },
+  {
+   "id": "1-16",
+   "code": "一16",
+   "level": 1,
+   "no": 16,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出时间、处所",
+   "content": "在",
+   "title": "在 : à, dans (lieu de l'action)",
+   "explanation": "在 + lieu se place DEVANT le verbe pour dire où se passe l'action : 我在学校学习. 在 peut aussi être le verbe principal : 他在家 (il est à la maison).",
+   "pattern": "sujet + 在 + lieu + verbe",
+   "examples": [
+    {
+     "zh": "我在医院工作。",
+     "fr": "Je travaille à l'hôpital."
+    },
+    {
+     "zh": "我们在饭店吃饭。",
+     "fr": "Nous mangeons au restaurant."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我在学校学习汉语。",
+      "我学习汉语在学校。",
+      "在学校我学习汉语在。"
+     ],
+     "answer": 0,
+     "why": "Le lieu (在 + lieu) se met avant le verbe."
+    }
+   ]
+  },
+  {
+   "id": "1-17",
+   "code": "一17",
+   "level": 1,
+   "no": 17,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "跟1、和1",
+   "title": "跟 / 和 : avec (préposition)",
+   "explanation": "跟 ou 和 + personne, devant le verbe : faire quelque chose avec quelqu'un. Souvent suivi de 一起.",
+   "pattern": "sujet + 跟 / 和 + personne + (一起) + verbe",
+   "examples": [
+    {
+     "zh": "我跟朋友一起去旅游。",
+     "fr": "Je pars en voyage avec un ami."
+    },
+    {
+     "zh": "你想和谁说话？",
+     "fr": "Avec qui veux-tu parler ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我想（　）你一起去。",
+     "options": [
+      "从",
+      "在",
+      "跟"
+     ],
+     "answer": 2,
+     "why": "« Avec toi » : 跟你."
+    }
+   ]
+  },
+  {
+   "id": "1-18",
+   "code": "一18",
+   "level": 1,
+   "no": 18,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "比",
+   "title": "比 : plus… que (comparaison simple)",
+   "explanation": "A 比 B + adjectif = A est plus … que B. On ne met PAS 很 / 非常 devant l'adjectif dans cette structure.\nVoir aussi le point « comparaison 1 ».",
+   "pattern": "A + 比 + B + adjectif",
+   "examples": [
+    {
+     "zh": "哥哥比我高。",
+     "fr": "Mon grand frère est plus grand que moi."
+    },
+    {
+     "zh": "今天比昨天冷。",
+     "fr": "Il fait plus froid qu'hier."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "这本书贵比那本书。",
+      "这本书比那本书贵。",
+      "这本书比那本书很贵。"
+     ],
+     "answer": 1,
+     "why": "Après 比 + B, l'adjectif est employé seul, sans 很."
+    }
+   ]
+  },
+  {
+   "id": "1-19",
+   "code": "一19",
+   "level": 1,
+   "no": 19,
+   "item": "词类",
+   "category": "连词",
+   "detail": "连接词或词组",
+   "content": "跟2、还是、和2",
+   "title": "Les conjonctions 和、跟、还是",
+   "explanation": "和 / 跟 relient deux noms : 我和你 (toi et moi) ; ils ne relient pas deux phrases.\n还是 = ou bien, dans une QUESTION de choix : 你喝茶还是喝咖啡？",
+   "pattern": "nom + 和 / 跟 + nom  ·  A 还是 B ？",
+   "examples": [
+    {
+     "zh": "我爸爸和我妈妈都是医生。",
+     "fr": "Mon père et ma mère sont tous deux médecins."
+    },
+    {
+     "zh": "你今天去还是明天去？",
+     "fr": "Tu y vas aujourd'hui ou demain ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你要米饭（　）面条？",
+     "options": [
+      "和",
+      "还是",
+      "跟"
+     ],
+     "answer": 1,
+     "why": "Question de choix → 还是."
+    },
+    {
+     "q": "我（　）他都是学生。",
+     "options": [
+      "也",
+      "还是",
+      "和"
+     ],
+     "answer": 2,
+     "why": "Relier deux noms (« lui et moi ») : 和."
+    }
+   ]
+  },
+  {
+   "id": "1-20",
+   "code": "一20",
+   "level": 1,
+   "no": 20,
+   "item": "词类",
+   "category": "助词",
+   "detail": "结构助词",
+   "content": "的1、地",
+   "title": "的 et 地 : particules de structure",
+   "explanation": "的 relie un déterminant à un nom : 我的书 (mon livre), 漂亮的衣服 (un joli vêtement). Entre un pronom et un proche, on l'omet souvent : 我妈妈.\n地 relie un adverbe (souvent un adjectif) à un verbe : 慢慢地走 (marcher lentement).",
+   "pattern": "déterminant + 的 + nom  ·  adjectif + 地 + verbe",
+   "examples": [
+    {
+     "zh": "这是我的手机。",
+     "fr": "C'est mon téléphone."
+    },
+    {
+     "zh": "他高兴地说：“谢谢！”",
+     "fr": "Il dit joyeusement : « Merci ! »"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这是老师（　）书。",
+     "options": [
+      "的",
+      "地",
+      "了"
+     ],
+     "answer": 0,
+     "why": "« Le livre DU professeur » : 的 devant le nom."
+    }
+   ]
+  },
+  {
+   "id": "1-21",
+   "code": "一21",
+   "level": 1,
+   "no": 21,
+   "item": "词类",
+   "category": "助词",
+   "detail": "动态助词",
+   "content": "了1",
+   "title": "了 (1) après le verbe : action accomplie",
+   "explanation": "了 juste après le verbe indique que l'action est accomplie : 我买了一本书. Il s'emploie surtout quand l'objet est précisé (nombre, spécificatif).\nNégation : 没 + verbe, SANS 了 : 我没买.",
+   "pattern": "verbe + 了 + (nombre + spécificatif) + objet",
+   "examples": [
+    {
+     "zh": "我昨天看了一个电影。",
+     "fr": "Hier j'ai vu un film."
+    },
+    {
+     "zh": "他喝了两杯水。",
+     "fr": "Il a bu deux verres d'eau."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « Je n'ai pas acheté » ?",
+     "options": [
+      "我没买了。",
+      "我没买。",
+      "我不买了。"
+     ],
+     "answer": 1,
+     "why": "Avec 没, on ne met jamais 了."
+    }
+   ]
+  },
+  {
+   "id": "1-22",
+   "code": "一22",
+   "level": 1,
+   "no": 22,
+   "item": "词类",
+   "category": "助词",
+   "detail": "语气助词",
+   "content": "吧1、了2、吗、呢",
+   "title": "Les particules finales : 吧、了、吗、呢",
+   "explanation": "吗 transforme une affirmation en question oui/non. 呢 : « et… ? » (你呢？) ou action en cours. 吧 : suggestion (我们走吧) ou supposition (你是学生吧？).\n了 en fin de phrase : changement de situation (下雨了 = il s'est mis à pleuvoir).",
+   "pattern": "phrase + 吗？ / 呢？ / 吧。 / 了。",
+   "examples": [
+    {
+     "zh": "你是老师吗？",
+     "fr": "Es-tu professeur ?"
+    },
+    {
+     "zh": "我很好，你呢？",
+     "fr": "Je vais bien, et toi ?"
+    },
+    {
+     "zh": "我们一起去吧！",
+     "fr": "Allons-y ensemble !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我喜欢喝茶，你（　）？",
+     "options": [
+      "吗",
+      "呢",
+      "吧"
+     ],
+     "answer": 1,
+     "why": "« Et toi ? » : 你呢 ?"
+    },
+    {
+     "q": "太晚了，我们回家（　）。",
+     "options": [
+      "呢",
+      "吧",
+      "吗"
+     ],
+     "answer": 1,
+     "why": "Une suggestion → 吧."
+    }
+   ]
+  },
+  {
+   "id": "1-23",
+   "code": "一23",
+   "level": 1,
+   "no": 23,
+   "item": "短语",
+   "category": "结构类型",
+   "detail": "其他结构类型",
+   "content": "数量短语",
+   "title": "Le groupe nombre + spécificatif",
+   "explanation": "Un nombre ne se met pas directement devant un nom : il faut un spécificatif. Le groupe « nombre + spécificatif » peut aussi s'employer seul quand le nom est connu : 我要两个.",
+   "pattern": "nombre + spécificatif (+ nom)",
+   "examples": [
+    {
+     "zh": "我要三个苹果。",
+     "fr": "Je voudrais trois pommes."
+    },
+    {
+     "zh": "苹果多少钱一个？",
+     "fr": "Combien coûte une pomme ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我有一个哥哥。",
+      "我有哥哥一个。",
+      "我有一哥哥。"
+     ],
+     "answer": 0,
+     "why": "Nombre + spécificatif + nom, dans cet ordre."
+    }
+   ]
+  },
+  {
+   "id": "1-24",
+   "code": "一24",
+   "level": 1,
+   "no": 24,
+   "item": "句子成分",
+   "category": "主语",
+   "detail": "",
+   "content": "名词、代词或名词性短语作主语",
+   "title": "Le sujet",
+   "explanation": "Le sujet vient en tête de phrase : un nom, un pronom ou un groupe nominal. Il peut être omis quand il est évident (réponses courtes, consignes).",
+   "pattern": "sujet + verbe (+ objet)",
+   "examples": [
+    {
+     "zh": "我是学生。",
+     "fr": "Je suis étudiant."
+    },
+    {
+     "zh": "我的妈妈是医生。",
+     "fr": "Ma mère est médecin."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans « 我的朋友喜欢唱歌。 », quel est le sujet ?",
+     "options": [
+      "我的朋友",
+      "唱歌",
+      "喜欢"
+     ],
+     "answer": 0,
+     "why": "Le sujet est le groupe nominal en tête : 我的朋友."
+    }
+   ]
+  },
+  {
+   "id": "1-25",
+   "code": "一25",
+   "level": 1,
+   "no": 25,
+   "item": "句子成分",
+   "category": "谓语",
+   "detail": "",
+   "content": "动词或动词性短语、形容词或形容词性短语作谓语",
+   "title": "Le prédicat : verbe ou adjectif",
+   "explanation": "Le cœur de la phrase est un verbe (我学习) ou un ADJECTIF employé seul, sans 是 : 我很忙 (je suis occupé). Devant l'adjectif, on met souvent 很.",
+   "pattern": "sujet + verbe  ·  sujet + (很) + adjectif",
+   "examples": [
+    {
+     "zh": "他很高。",
+     "fr": "Il est grand."
+    },
+    {
+     "zh": "我学习汉语。",
+     "fr": "J'étudie le chinois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « Je suis très occupé » ?",
+     "options": [
+      "我很忙。",
+      "我是很忙。",
+      "我是忙。"
+     ],
+     "answer": 0,
+     "why": "Un adjectif sert directement de prédicat, sans 是."
+    }
+   ]
+  },
+  {
+   "id": "1-26",
+   "code": "一26",
+   "level": 1,
+   "no": 26,
+   "item": "句子成分",
+   "category": "宾语",
+   "detail": "",
+   "content": "名词、代词或名词性短语作宾语",
+   "title": "L'objet (complément d'objet)",
+   "explanation": "L'objet se place APRÈS le verbe : 我喝茶 (je bois du thé). C'est un nom, un pronom ou un groupe nominal.",
+   "pattern": "sujet + verbe + objet",
+   "examples": [
+    {
+     "zh": "我喜欢你。",
+     "fr": "Je t'aime bien."
+    },
+    {
+     "zh": "他买了一本汉语书。",
+     "fr": "Il a acheté un livre de chinois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我看电视。",
+      "我电视看。",
+      "电视我看看。"
+     ],
+     "answer": 0,
+     "why": "Ordre normal : sujet + verbe + objet."
+    }
+   ]
+  },
+  {
+   "id": "1-27",
+   "code": "一27",
+   "level": 1,
+   "no": 27,
+   "item": "句子成分",
+   "category": "定语",
+   "detail": "",
+   "content": "名词性词语、形容词性词语、数量短语作定语",
+   "title": "Le déterminant (定语) devant le nom",
+   "explanation": "Tout ce qui précise un nom se met DEVANT lui, souvent avec 的 : un nom (妈妈的手机), un adjectif (漂亮的衣服), un groupe nombre + spécificatif (三本书).\nUn adjectif d'une syllabe peut se coller au nom sans 的 : 好人、新书.",
+   "pattern": "déterminant + (的) + nom",
+   "examples": [
+    {
+     "zh": "这是我朋友的电脑。",
+     "fr": "C'est l'ordinateur de mon ami."
+    },
+    {
+     "zh": "她买了一件漂亮的衣服。",
+     "fr": "Elle a acheté un joli vêtement."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « un livre très intéressant » ?",
+     "options": [
+      "一本书很有意思的",
+      "很有意思一本书",
+      "一本很有意思的书"
+     ],
+     "answer": 2,
+     "why": "Le déterminant (很有意思的) se place devant le nom."
+    }
+   ]
+  },
+  {
+   "id": "1-28",
+   "code": "一28",
+   "level": 1,
+   "no": 28,
+   "item": "句子成分",
+   "category": "状语",
+   "detail": "",
+   "content": "副词、形容词作状语； 表示时间、处所的词语作状语",
+   "title": "Le complément circonstanciel (状语) devant le verbe",
+   "explanation": "Les adverbes, les mots de temps et de lieu se placent devant le verbe (après le sujet) : 我明天在家休息.\nLe temps peut aussi venir en tête de phrase : 明天我在家休息. En revanche, jamais à la fin comme en français.",
+   "pattern": "sujet + temps + lieu + verbe   ou   temps + sujet + lieu + verbe",
+   "examples": [
+    {
+     "zh": "我每天早上七点起床。",
+     "fr": "Je me lève à sept heures tous les matins."
+    },
+    {
+     "zh": "他们在饭店吃饭。",
+     "fr": "Ils mangent au restaurant."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我看书在学校明天。",
+      "我在学校看书明天。",
+      "我明天在学校看书。"
+     ],
+     "answer": 2,
+     "why": "Temps puis lieu, AVANT le verbe."
+    }
+   ]
+  },
+  {
+   "id": "1-29",
+   "code": "一29",
+   "level": 1,
+   "no": 29,
+   "item": "句子的类型",
+   "category": "句型",
+   "detail": "单句",
+   "content": "主谓句1：动词谓语句",
+   "title": "Phrase à prédicat verbal",
+   "explanation": "La phrase la plus courante : sujet + verbe + (objet). Le verbe ne change jamais de forme (pas de conjugaison) : le temps est donné par les mots de temps et les particules.",
+   "pattern": "sujet + verbe + objet",
+   "examples": [
+    {
+     "zh": "我昨天去商店。",
+     "fr": "Hier, je suis allé au magasin."
+    },
+    {
+     "zh": "他明天去商店。",
+     "fr": "Demain, il ira au magasin."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans « 我明天去北京 », qu'est-ce qui indique le futur ?",
+     "options": [
+      "明天",
+      "去",
+      "我"
+     ],
+     "answer": 0,
+     "why": "Le verbe 去 ne change pas ; c'est le mot de temps 明天 qui situe l'action."
+    }
+   ]
+  },
+  {
+   "id": "1-30",
+   "code": "一30",
+   "level": 1,
+   "no": 30,
+   "item": "句子的类型",
+   "category": "句型",
+   "detail": "单句",
+   "content": "主谓句2：形容词谓语句",
+   "title": "Phrase à prédicat adjectival",
+   "explanation": "Un adjectif peut être le prédicat, sans 是 : 天气很好. Sans adverbe, l'adjectif seul exprime souvent une comparaison implicite (这个大，那个小) ; d'où le 很 « neutre ».",
+   "pattern": "sujet + 很 / 不 / 非常… + adjectif",
+   "examples": [
+    {
+     "zh": "这个苹果很大。",
+     "fr": "Cette pomme est grosse."
+    },
+    {
+     "zh": "今天不冷。",
+     "fr": "Il ne fait pas froid aujourd'hui."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "他的房间很干净。",
+      "他的房间是很干净。",
+      "他的房间是干净。"
+     ],
+     "answer": 0,
+     "why": "L'adjectif sert de prédicat sans 是."
+    }
+   ]
+  },
+  {
+   "id": "1-31",
+   "code": "一31",
+   "level": 1,
+   "no": 31,
+   "item": "句子的类型",
+   "category": "句型",
+   "detail": "单句",
+   "content": "非主谓句",
+   "title": "Phrase sans sujet",
+   "explanation": "Certaines phrases n'ont pas de sujet : météo et phénomènes (下雨了), consignes et souhaits (请坐、请进), interjections (谢谢！).",
+   "pattern": "verbe (+ objet)",
+   "examples": [
+    {
+     "zh": "下雪了。",
+     "fr": "Il neige."
+    },
+    {
+     "zh": "请喝茶。",
+     "fr": "Prenez du thé, je vous en prie."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « Il pleut » ?",
+     "options": [
+      "天下雨是。",
+      "下雨了。",
+      "它下雨。"
+     ],
+     "answer": 1,
+     "why": "La météo s'exprime sans sujet : 下雨了."
+    }
+   ]
+  },
+  {
+   "id": "1-32",
+   "code": "一32",
+   "level": 1,
+   "no": 32,
+   "item": "句子的类型",
+   "category": "句类",
+   "detail": "陈述句",
+   "content": "陈述句",
+   "title": "La phrase déclarative",
+   "explanation": "Elle affirme ou nie un fait et se termine par un point (。). Ordre de base : sujet + (temps / lieu) + verbe + objet.",
+   "pattern": "sujet + verbe + objet。",
+   "examples": [
+    {
+     "zh": "我是法国人。",
+     "fr": "Je suis français."
+    },
+    {
+     "zh": "他不喜欢喝咖啡。",
+     "fr": "Il n'aime pas le café."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est une phrase déclarative ?",
+     "options": [
+      "你叫什么名字？",
+      "请坐！",
+      "我叫大卫。"
+     ],
+     "answer": 2,
+     "why": "Elle énonce un fait et finit par un point."
+    }
+   ]
+  },
+  {
+   "id": "1-33",
+   "code": "一33",
+   "level": 1,
+   "no": 33,
+   "item": "句子的类型",
+   "category": "句类",
+   "detail": "疑问句",
+   "content": "（1）是非问句（2）特指问句（3）选择问句（4）正反问句",
+   "title": "Les quatre types de questions",
+   "explanation": "(1) Oui / non avec 吗 : 你是学生吗？ (2) Avec un mot interrogatif : 你去哪儿？ (3) Question de choix avec 还是 : 你去还是我去？ (4) Forme affirmative + négative : 你去不去？\nLes types (2), (3) et (4) ne prennent jamais 吗.",
+   "pattern": "……吗？ · 谁/什么/哪儿…？ · A还是B？ · V不V？",
+   "examples": [
+    {
+     "zh": "你喜欢喝茶吗？",
+     "fr": "Tu aimes le thé ?"
+    },
+    {
+     "zh": "你喝茶还是喝咖啡？",
+     "fr": "Tu bois du thé ou du café ?"
+    },
+    {
+     "zh": "你喝不喝茶？",
+     "fr": "Tu bois du thé ou pas ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle question est INCORRECTE ?",
+     "options": [
+      "你去不去吗？",
+      "你去吗？",
+      "你去不去？"
+     ],
+     "answer": 0,
+     "why": "La forme V不V est déjà une question : on n'ajoute pas 吗."
+    },
+    {
+     "q": "你是老师（　）学生？",
+     "options": [
+      "吗",
+      "呢",
+      "还是"
+     ],
+     "answer": 2,
+     "why": "Choix entre deux possibilités → 还是."
+    }
+   ]
+  },
+  {
+   "id": "1-34",
+   "code": "一34",
+   "level": 1,
+   "no": 34,
+   "item": "句子的类型",
+   "category": "句类",
+   "detail": "祈使句",
+   "content": "祈使句",
+   "title": "La phrase impérative",
+   "explanation": "Pour demander ou conseiller : 请 + verbe (poli) ; pour interdire : 别 / 不要 + verbe. On adoucit avec 吧 : 你来吧.",
+   "pattern": "请 + verbe  ·  别 / 不要 + verbe  ·  verbe + 吧",
+   "examples": [
+    {
+     "zh": "请进！",
+     "fr": "Entrez, je vous prie !"
+    },
+    {
+     "zh": "别说话！",
+     "fr": "Ne parle pas !"
+    },
+    {
+     "zh": "你休息一下吧。",
+     "fr": "Repose-toi un peu."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on poliment « Asseyez-vous » ?",
+     "options": [
+      "坐吗？",
+      "请坐。",
+      "别坐。"
+     ],
+     "answer": 1,
+     "why": "请 + verbe = invitation polie."
+    }
+   ]
+  },
+  {
+   "id": "1-35",
+   "code": "一35",
+   "level": 1,
+   "no": 35,
+   "item": "句子的类型",
+   "category": "句类",
+   "detail": "感叹句",
+   "content": "感叹句",
+   "title": "La phrase exclamative",
+   "explanation": "On exprime l'émotion avec 太……了、真…… ou 好…… et un point d'exclamation : 太好了！· 真漂亮！",
+   "pattern": "太 + adj. + 了！ · 真 + adj.！",
+   "examples": [
+    {
+     "zh": "太好了！",
+     "fr": "Super !"
+    },
+    {
+     "zh": "这儿真漂亮！",
+     "fr": "C'est vraiment beau ici !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est une exclamation ?",
+     "options": [
+      "这个菜不好吃。",
+      "这个菜好吃吗？",
+      "这个菜太好吃了！"
+     ],
+     "answer": 2,
+     "why": "太……了 avec « ! » exprime l'exclamation."
+    }
+   ]
+  },
+  {
+   "id": "1-36",
+   "code": "一36",
+   "level": 1,
+   "no": 36,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "“是”字句",
+   "content": "（1）表示等同或类属；（2）表示说明或特征；（3）表示存在",
+   "title": "La phrase avec 是",
+   "explanation": "是 relie deux noms : identité ou catégorie (他是老师), description (这本书是新的), ou existence dans un lieu (前边是学校 = devant, c'est l'école).\nNégation : 不是. On n'utilise pas 是 devant un adjectif seul.",
+   "pattern": "A + 是 + B  ·  lieu + 是 + nom",
+   "examples": [
+    {
+     "zh": "我是中国人。",
+     "fr": "Je suis chinois."
+    },
+    {
+     "zh": "学校旁边是医院。",
+     "fr": "À côté de l'école, il y a l'hôpital."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他（　）我的哥哥。",
+     "options": [
+      "很",
+      "在",
+      "是"
+     ],
+     "answer": 2,
+     "why": "Identité entre deux noms → 是."
+    }
+   ]
+  },
+  {
+   "id": "1-37",
+   "code": "一37",
+   "level": 1,
+   "no": 37,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "“有”字句",
+   "content": "“有”字句1：（1）表示领有；（2）表示存在",
+   "title": "La phrase avec 有 (1) : avoir, il y a",
+   "explanation": "有 = avoir (possession) : 我有一个妹妹 ; et « il y a » (existence) : 桌子上有一本书 (lieu + 有 + chose).\nNégation : 没有 (jamais 不有).",
+   "pattern": "A + 有 + B  ·  lieu + 有 + (nombre) + nom",
+   "examples": [
+    {
+     "zh": "我有两个姐姐。",
+     "fr": "J'ai deux grandes sœurs."
+    },
+    {
+     "zh": "教室里有很多学生。",
+     "fr": "Il y a beaucoup d'élèves dans la classe."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我（　）有钱。",
+     "options": [
+      "没",
+      "不",
+      "别"
+     ],
+     "answer": 0,
+     "why": "La négation de 有 est toujours 没有."
+    },
+    {
+     "q": "桌子上（　）一个杯子。",
+     "options": [
+      "是",
+      "在",
+      "有"
+     ],
+     "answer": 2,
+     "why": "« Il y a… sur la table » : lieu + 有."
+    }
+   ]
+  },
+  {
+   "id": "1-38",
+   "code": "一38",
+   "level": 1,
+   "no": 38,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "比较句",
+   "content": "比较句1：（1）A比B +形容词（2）A没有B +形容词",
+   "title": "Comparaison (1) : A 比 B + adj., A 没有 B + adj.",
+   "explanation": "A 比 B + adjectif = A est plus … que B. Pour dire « moins » : A 没有 B + adjectif (A n'est pas aussi … que B).",
+   "pattern": "A + 比 + B + adj.  ·  A + 没有 + B + adj.",
+   "examples": [
+    {
+     "zh": "我比我弟弟高。",
+     "fr": "Je suis plus grand que mon petit frère."
+    },
+    {
+     "zh": "今天没有昨天热。",
+     "fr": "Il fait moins chaud qu'hier."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dire « Le thé est moins cher que le café » ?",
+     "options": [
+      "茶不比咖啡贵很。",
+      "茶没有咖啡贵。",
+      "茶比咖啡不贵。"
+     ],
+     "answer": 1,
+     "why": "A 没有 B + adjectif = A est moins … que B."
+    }
+   ]
+  },
+  {
+   "id": "1-39",
+   "code": "一39",
+   "level": 1,
+   "no": 39,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "并列复句",
+   "content": "（1）不用关联词语 （2）用关联词语：一边……，一边……；……，也……",
+   "title": "Phrases coordonnées : 一边……一边……, ……也……",
+   "explanation": "Deux propositions juxtaposées, avec ou sans mot de liaison. 一边 + verbe 1，一边 + verbe 2 = faire deux choses en même temps. 也 relie deux faits semblables.",
+   "pattern": "一边 + V1，一边 + V2  ·  A……，B 也……",
+   "examples": [
+    {
+     "zh": "他一边吃饭，一边看电视。",
+     "fr": "Il mange en regardant la télé."
+    },
+    {
+     "zh": "我喜欢唱歌，我朋友也喜欢唱歌。",
+     "fr": "J'aime chanter, mon ami aussi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她一边听音乐，（　）做作业。",
+     "options": [
+      "一边",
+      "还是",
+      "也"
+     ],
+     "answer": 0,
+     "why": "一边……一边…… : deux actions simultanées."
+    }
+   ]
+  },
+  {
+   "id": "1-40",
+   "code": "一40",
+   "level": 1,
+   "no": 40,
+   "item": "动作的态",
+   "category": "动作的态",
+   "detail": "变化态",
+   "content": "用语气助词“了2”表示",
+   "title": "了 (2) en fin de phrase : changement",
+   "explanation": "了 à la fin de la phrase signale un changement ou une nouvelle situation : 下雨了 (il s'est mis à pleuvoir), 我二十岁了 (j'ai maintenant vingt ans), 我不去了 (finalement je n'y vais plus).",
+   "pattern": "phrase + 了",
+   "examples": [
+    {
+     "zh": "天冷了。",
+     "fr": "Il commence à faire froid."
+    },
+    {
+     "zh": "我饿了。",
+     "fr": "J'ai faim (maintenant)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "« Je n'y vais plus » (j'ai changé d'avis) :",
+     "options": [
+      "我不去。",
+      "我没去。",
+      "我不去了。"
+     ],
+     "answer": 2,
+     "why": "了 final marque le changement de décision."
+    }
+   ]
+  },
+  {
+   "id": "1-41",
+   "code": "一41",
+   "level": 1,
+   "no": 41,
+   "item": "动作的态",
+   "category": "动作的态",
+   "detail": "完成态",
+   "content": "用动态助词“了1”表示",
+   "title": "了 (1) : l'aspect accompli",
+   "explanation": "Verbe + 了 = l'action a été réalisée. Ce n'est pas un « passé » : 了 peut aussi s'employer pour une action future accomplie (明天下了课我去找你 = demain, après le cours…).\nNégation : 没 + verbe (sans 了).",
+   "pattern": "verbe + 了 (+ objet précisé)",
+   "examples": [
+    {
+     "zh": "我吃了早饭。",
+     "fr": "J'ai pris mon petit-déjeuner."
+    },
+    {
+     "zh": "他买了三个苹果。",
+     "fr": "Il a acheté trois pommes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你吃饭了吗？—— 还没（　）。",
+     "options": [
+      "吃",
+      "吃过了",
+      "吃了"
+     ],
+     "answer": 0,
+     "why": "Avec 没, le verbe est employé sans 了."
+    }
+   ]
+  },
+  {
+   "id": "1-42",
+   "code": "一42",
+   "level": 1,
+   "no": 42,
+   "item": "动作的态",
+   "category": "动作的态",
+   "detail": "进行态",
+   "content": "（1）……在/正在+动词 （2）……在/正/正在+动词……+呢 （3）……呢",
+   "title": "L'aspect progressif : 在 / 正在 + verbe (+ 呢)",
+   "explanation": "Pour une action en cours : 在 / 正 / 正在 + verbe, souvent renforcé par 呢 en fin de phrase. 呢 seul peut aussi suffire : 他看书呢.\nNégation : 没（在）+ verbe.",
+   "pattern": "(正)在 + verbe (+ 呢)  ·  verbe + objet + 呢",
+   "examples": [
+    {
+     "zh": "我在做饭呢。",
+     "fr": "Je suis en train de faire à manger."
+    },
+    {
+     "zh": "他正在睡觉。",
+     "fr": "Il est en train de dormir."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你在做什么呢？",
+     "options": [
+      "我看书在呢。",
+      "我在看书呢。",
+      "我看了书呢。"
+     ],
+     "answer": 1,
+     "why": "在 + verbe (+ 呢) décrit l'action en cours."
+    }
+   ]
+  },
+  {
+   "id": "1-43",
+   "code": "一43",
+   "level": 1,
+   "no": 43,
+   "item": "特殊表达法",
+   "category": "数的表示法",
+   "detail": "",
+   "content": "钱数表示法",
+   "title": "Dire un prix",
+   "explanation": "À l'oral : 块 (yuan), 毛 (dixième) ; à l'écrit : 元. On dit le prix puis souvent 钱 : 五块钱. Pour demander : 多少钱？",
+   "pattern": "nombre + 块 (+ 钱)  ·  ……多少钱？",
+   "examples": [
+    {
+     "zh": "这个杯子多少钱？—— 十五块。",
+     "fr": "Combien coûte cette tasse ? — Quinze yuans."
+    },
+    {
+     "zh": "一共一百元。",
+     "fr": "Cent yuans en tout."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment demander le prix ?",
+     "options": [
+      "这个多少钱？",
+      "这个钱多少？",
+      "这个几钱？"
+     ],
+     "answer": 0,
+     "why": "On demande 多少钱 ? 几 ne convient pas pour l'argent."
+    }
+   ]
+  },
+  {
+   "id": "1-44",
+   "code": "一44",
+   "level": 1,
+   "no": 44,
+   "item": "特殊表达法",
+   "category": "时间表示法",
+   "detail": "",
+   "content": "（1）年、月、日、星期表示法（2）钟点表示法",
+   "title": "Dates et heures",
+   "explanation": "Du plus grand au plus petit : année + mois + jour + jour de la semaine : 2026年12月13号，星期日. L'année se lit chiffre par chiffre : 二〇二六年.\nHeures : 点 (heure), 分 (minute), 半 (et demie), 刻 (quart) : 八点半、九点十分.",
+   "pattern": "……年……月……号/日，星期…  ·  ……点……分",
+   "examples": [
+    {
+     "zh": "今天是十月十九号，星期一。",
+     "fr": "Aujourd'hui, c'est lundi 19 octobre."
+    },
+    {
+     "zh": "我们下午三点半见。",
+     "fr": "On se voit à trois heures et demie de l'après-midi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « le 8 mars » ?",
+     "options": [
+      "三月八号",
+      "八号三月",
+      "八月三号"
+     ],
+     "answer": 0,
+     "why": "Le mois avant le jour : 三月八号."
+    },
+    {
+     "q": "现在几点？（9 h 30）",
+     "options": [
+      "九点半",
+      "半九点",
+      "九半点"
+     ],
+     "answer": 0,
+     "why": "« Neuf heures et demie » : 九点半."
+    }
+   ]
+  },
+  {
+   "id": "1-45",
+   "code": "一45",
+   "level": 1,
+   "no": 45,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“吗”提问",
+   "title": "Poser une question avec 吗",
+   "explanation": "On ajoute 吗 à la fin d'une phrase affirmative pour en faire une question fermée (oui / non). L'ordre des mots ne change pas.\nRéponse : on reprend le verbe (是 / 不是, 去 / 不去…).",
+   "pattern": "phrase affirmative + 吗？",
+   "examples": [
+    {
+     "zh": "你是学生吗？—— 是。",
+     "fr": "Es-tu étudiant ? — Oui."
+    },
+    {
+     "zh": "你喜欢吃饺子吗？—— 不喜欢。",
+     "fr": "Tu aimes les jiaozi ? — Non."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment répondre « oui » à 你明天去吗？",
+     "options": [
+      "对吗。",
+      "吗。",
+      "去。"
+     ],
+     "answer": 2,
+     "why": "On répond en reprenant le verbe de la question."
+    }
+   ]
+  },
+  {
+   "id": "1-46",
+   "code": "一46",
+   "level": 1,
+   "no": 46,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“多、多少、几、哪、哪儿、哪里、哪些、什么、谁、怎么”提问",
+   "title": "Questions avec 多、多少、几、哪、哪儿、什么、谁、怎么",
+   "explanation": "Le mot interrogatif prend la place de la réponse. 怎么 + verbe = comment (manière) : 怎么去？ 多 + adjectif = à quel point : 多大？(quel âge ?).",
+   "pattern": "多大 · 多少 · 几 · 哪个 · 哪儿 · 什么 · 谁 · 怎么 + verbe",
+   "examples": [
+    {
+     "zh": "你怎么去机场？—— 坐出租车。",
+     "fr": "Comment vas-tu à l'aéroport ? — En taxi."
+    },
+    {
+     "zh": "你女儿多大了？",
+     "fr": "Quel âge a ta fille ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）去学校？—— 我坐公交车去。",
+     "options": [
+      "什么",
+      "怎么",
+      "哪儿"
+     ],
+     "answer": 1,
+     "why": "La réponse indique la manière → 怎么 + verbe."
+    }
+   ]
+  },
+  {
+   "id": "1-47",
+   "code": "一47",
+   "level": 1,
+   "no": 47,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“还是”提问",
+   "title": "Questions avec 还是",
+   "explanation": "还是 propose un choix dans une question : A 还是 B ? Pas de 吗. Dans une phrase affirmative, « ou » se dit 或者 (niveau 2).",
+   "pattern": "A + 还是 + B ？",
+   "examples": [
+    {
+     "zh": "你喝茶还是喝水？",
+     "fr": "Tu bois du thé ou de l'eau ?"
+    },
+    {
+     "zh": "我们今天去还是明天去？",
+     "fr": "On y va aujourd'hui ou demain ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你是中国人（　）日本人？",
+     "options": [
+      "吗",
+      "还是",
+      "和"
+     ],
+     "answer": 1,
+     "why": "Question de choix → 还是."
+    }
+   ]
+  },
+  {
+   "id": "1-48",
+   "code": "一48",
+   "level": 1,
+   "no": 48,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用正反疑问形式提问",
+   "title": "Questions affirmatif + négatif (V不V)",
+   "explanation": "On répète le verbe ou l'adjectif sous ses formes affirmative et négative : 你去不去？· 好不好？ Pour un verbe à deux syllabes : 喜欢不喜欢 ou 喜不喜欢. Pas de 吗.\nAvec 有 : 有没有？",
+   "pattern": "V + 不 + V ？  ·  有没有……？",
+   "examples": [
+    {
+     "zh": "你明天来不来？",
+     "fr": "Tu viens demain ou pas ?"
+    },
+    {
+     "zh": "这儿有没有银行？",
+     "fr": "Est-ce qu'il y a une banque ici ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你有（　）有中文书？",
+     "options": [
+      "吗",
+      "不",
+      "没"
+     ],
+     "answer": 2,
+     "why": "La forme de 有 est 有没有."
+    },
+    {
+     "q": "Quelle question est correcte ?",
+     "options": [
+      "这个菜好吃吗不好吃？",
+      "这个菜好吃不好吃？",
+      "这个菜好吃不好吃吗？"
+     ],
+     "answer": 1,
+     "why": "La forme A不A ne prend pas 吗."
+    }
+   ]
+  },
+  {
+   "id": "2-01",
+   "code": "二01",
+   "level": 2,
+   "no": 49,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "（1）可能；（2）可以；（3）会",
+   "title": "可能、可以、会 : possibilité et permission",
+   "explanation": "可能 = il est possible que, peut-être (probabilité) : 他可能不来.\n可以 = pouvoir, avoir le droit, être permis : 我可以进来吗？\n会 peut aussi annoncer une probabilité future : 明天会下雨 (il va pleuvoir demain).",
+   "pattern": "可能 + verbe · 可以 + verbe · 会 + verbe (prévision)",
+   "examples": [
+    {
+     "zh": "这儿可以拍照吗？",
+     "fr": "On peut prendre des photos ici ?"
+    },
+    {
+     "zh": "他今天可能很忙。",
+     "fr": "Il est peut-être très occupé aujourd'hui."
+    },
+    {
+     "zh": "明天会下雪。",
+     "fr": "Il va neiger demain."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "老师，我（　）用一下你的笔吗？",
+     "options": [
+      "会",
+      "可以",
+      "可能"
+     ],
+     "answer": 1,
+     "why": "Demander une permission → 可以."
+    },
+    {
+     "q": "天这么黑，（　）要下雨了。",
+     "options": [
+      "可能",
+      "可以",
+      "能"
+     ],
+     "answer": 0,
+     "why": "Une probabilité → 可能."
+    }
+   ]
+  },
+  {
+   "id": "2-02",
+   "code": "二02",
+   "level": 2,
+   "no": 50,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "该、应该",
+   "title": "该 / 应该 : devoir (obligation morale)",
+   "explanation": "应该 (ou 该) + verbe = devoir, il faudrait : ce qu'il est normal ou conseillé de faire. Négation : 不应该.",
+   "pattern": "sujet + 应该 / 该 + verbe",
+   "examples": [
+    {
+     "zh": "你应该多休息。",
+     "fr": "Tu devrais te reposer davantage."
+    },
+    {
+     "zh": "我们不应该迟到。",
+     "fr": "Nous ne devrions pas être en retard."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你生病了，（　）去医院看看。",
+     "options": [
+      "可能",
+      "会",
+      "应该"
+     ],
+     "answer": 2,
+     "why": "Un conseil, ce qu'il faut faire → 应该."
+    }
+   ]
+  },
+  {
+   "id": "2-03",
+   "code": "二03",
+   "level": 2,
+   "no": 51,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "愿意",
+   "title": "愿意 : vouloir bien, être prêt à",
+   "explanation": "愿意 + verbe = accepter volontiers de, être disposé à. Plus « consentant » que 想 : 你愿意帮我吗？",
+   "pattern": "sujet + 愿意 + verbe",
+   "examples": [
+    {
+     "zh": "我很愿意帮助你。",
+     "fr": "Je veux bien t'aider."
+    },
+    {
+     "zh": "他不愿意去。",
+     "fr": "Il n'a pas envie d'y aller (il refuse)."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）跟我一起去吗？",
+     "options": [
+      "应该",
+      "可能",
+      "愿意"
+     ],
+     "answer": 2,
+     "why": "Demander si l'autre accepte de venir → 愿意."
+    }
+   ]
+  },
+  {
+   "id": "2-04",
+   "code": "二04",
+   "level": 2,
+   "no": 52,
+   "item": "词类",
+   "category": "动词",
+   "detail": "动词重叠",
+   "content": "动词重叠：AA、A一A、A了A、ABAB",
+   "title": "Le redoublement du verbe : AA, A一A, A了A, ABAB",
+   "explanation": "Répéter un verbe adoucit l'action : « un peu, un instant ». 看看 / 看一看 = jeter un œil. Au passé : 看了看. Verbe de deux syllabes : 休息休息, 介绍介绍.",
+   "pattern": "AA · A一A · A了A · ABAB",
+   "examples": [
+    {
+     "zh": "你尝尝这个菜。",
+     "fr": "Goûte donc ce plat."
+    },
+    {
+     "zh": "我们休息休息吧。",
+     "fr": "Reposons-nous un peu."
+    },
+    {
+     "zh": "他看了看手表。",
+     "fr": "Il a jeté un coup d'œil à sa montre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment redoubler 介绍 ?",
+     "options": [
+      "介绍一介绍",
+      "介绍介绍",
+      "介介绍绍"
+     ],
+     "answer": 1,
+     "why": "Un verbe de deux syllabes AB se redouble en ABAB."
+    },
+    {
+     "q": "你（　）这件衣服，很漂亮。",
+     "options": [
+      "试了试了",
+      "试试",
+      "试试试"
+     ],
+     "answer": 1,
+     "why": "Redoublement simple AA : 试试 = essaie donc."
+    }
+   ]
+  },
+  {
+   "id": "2-05",
+   "code": "二05",
+   "level": 2,
+   "no": 53,
+   "item": "词类",
+   "category": "代词",
+   "detail": "疑问代词",
+   "content": "多久、为什么、怎么样、怎样",
+   "title": "Interrogatifs : 多久、为什么、怎么样、怎样",
+   "explanation": "多久 = combien de temps · 为什么 = pourquoi · 怎么样 = comment est… ? / qu'en penses-tu ? · 怎样 = de quelle manière (plus écrit).",
+   "pattern": "……多久？ · 为什么……？ · ……怎么样？",
+   "examples": [
+    {
+     "zh": "你来中国多久了？",
+     "fr": "Depuis combien de temps es-tu en Chine ?"
+    },
+    {
+     "zh": "你为什么不去？",
+     "fr": "Pourquoi tu n'y vas pas ?"
+    },
+    {
+     "zh": "这个电影怎么样？",
+     "fr": "Comment est ce film ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）不吃饭？—— 因为我不饿。",
+     "options": [
+      "怎么样",
+      "为什么",
+      "多久"
+     ],
+     "answer": 1,
+     "why": "La réponse commence par 因为 → la question était 为什么."
+    },
+    {
+     "q": "今天天气（　）？—— 很好。",
+     "options": [
+      "怎么样",
+      "多久",
+      "为什么"
+     ],
+     "answer": 0,
+     "why": "Demander une appréciation → 怎么样."
+    }
+   ]
+  },
+  {
+   "id": "2-06",
+   "code": "二06",
+   "level": 2,
+   "no": 54,
+   "item": "词类",
+   "category": "代词",
+   "detail": "人称代词",
+   "content": "别人、大家、它、它们、咱、咱们、自己",
+   "title": "Pronoms : 别人、大家、它、咱们、自己",
+   "explanation": "别人 = les autres · 大家 = tout le monde · 它 / 它们 = il, ça (choses, animaux) · 咱们 = nous (en incluant celui à qui l'on parle) · 自己 = soi-même.",
+   "pattern": "大家 + 都…… · ……自己 + verbe",
+   "examples": [
+    {
+     "zh": "大家好！",
+     "fr": "Bonjour à tous !"
+    },
+    {
+     "zh": "咱们走吧。",
+     "fr": "Allons-y (toi et moi)."
+    },
+    {
+     "zh": "我自己做饭。",
+     "fr": "Je cuisine moi-même."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这只猫很可爱，我很喜欢（　）。",
+     "options": [
+      "他",
+      "她",
+      "它"
+     ],
+     "answer": 2,
+     "why": "Pour un animal ou une chose : 它."
+    },
+    {
+     "q": "这件事你（　）做，别让别人帮你。",
+     "options": [
+      "咱们",
+      "大家",
+      "自己"
+     ],
+     "answer": 2,
+     "why": "« Toi-même » : 自己."
+    }
+   ]
+  },
+  {
+   "id": "2-07",
+   "code": "二07",
+   "level": 2,
+   "no": 55,
+   "item": "词类",
+   "category": "代词",
+   "detail": "指示代词",
+   "content": "那么、那样、这么、这样",
+   "title": "这么、那么、这样、那样 : si, comme ça",
+   "explanation": "这么 / 那么 + adjectif = si, tellement : 这么贵！ 这样 / 那样 = de cette façon, comme ça : 别这样做.",
+   "pattern": "这么 / 那么 + adj. · 这样 / 那样 + verbe",
+   "examples": [
+    {
+     "zh": "今天怎么这么冷？",
+     "fr": "Pourquoi il fait si froid aujourd'hui ?"
+    },
+    {
+     "zh": "你应该这样写。",
+     "fr": "Tu devrais l'écrire comme ça."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你的汉语说得（　）好！",
+     "options": [
+      "这样",
+      "这些",
+      "这么"
+     ],
+     "answer": 2,
+     "why": "Devant un adjectif, « si / tellement » : 这么."
+    }
+   ]
+  },
+  {
+   "id": "2-08",
+   "code": "二08",
+   "level": 2,
+   "no": 56,
+   "item": "词类",
+   "category": "形容词",
+   "detail": "形容词重叠",
+   "content": "AA、AABB",
+   "title": "Le redoublement de l'adjectif : AA, AABB",
+   "explanation": "Répéter un adjectif le rend plus vivant ou plus intense : 大大的眼睛 (de grands yeux), 高高兴兴 (tout joyeux). On ne met pas 很 devant un adjectif redoublé.",
+   "pattern": "AA + 的 · AABB + 的 / 地",
+   "examples": [
+    {
+     "zh": "她有一双大大的眼睛。",
+     "fr": "Elle a de grands yeux."
+    },
+    {
+     "zh": "孩子们高高兴兴地回家了。",
+     "fr": "Les enfants sont rentrés tout joyeux."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment redoubler 干净 ?",
+     "options": [
+      "干净干净",
+      "干干净净",
+      "干干净"
+     ],
+     "answer": 1,
+     "why": "Un adjectif AB se redouble en AABB."
+    }
+   ]
+  },
+  {
+   "id": "2-09",
+   "code": "二09",
+   "level": 2,
+   "no": 57,
+   "item": "词类",
+   "category": "数词",
+   "detail": "",
+   "content": "千、万、亿",
+   "title": "Les grands nombres : 千、万、亿",
+   "explanation": "千 = mille, 万 = dix mille, 亿 = cent millions. Le chinois compte par groupes de 4 chiffres : 100 000 = 十万 (dix « dix-mille »), 1 000 000 = 一百万.",
+   "pattern": "两千 · 三万 · 十万 · 一百万 · 一亿",
+   "examples": [
+    {
+     "zh": "这个手机两千块。",
+     "fr": "Ce téléphone coûte deux mille yuans."
+    },
+    {
+     "zh": "这个城市有一千万人。",
+     "fr": "Cette ville compte dix millions d'habitants."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on 50 000 ?",
+     "options": [
+      "五千",
+      "五十千",
+      "五万"
+     ],
+     "answer": 2,
+     "why": "50 000 = cinq « 万 » (10 000)."
+    }
+   ]
+  },
+  {
+   "id": "2-10",
+   "code": "二10",
+   "level": 2,
+   "no": 58,
+   "item": "词类",
+   "category": "量词",
+   "detail": "名量词",
+   "content": "层、封、件、条、位",
+   "title": "Spécificatifs (2) : 层、封、件、条、位",
+   "explanation": "层 : étage · 封 : lettre · 件 : vêtement du haut, affaire (一件事) · 条 : objet long (pantalon, rue, poisson) · 位 : personne (poli).",
+   "pattern": "nombre + 层 / 封 / 件 / 条 / 位 + nom",
+   "examples": [
+    {
+     "zh": "我住在五层。",
+     "fr": "J'habite au cinquième étage."
+    },
+    {
+     "zh": "这位老师是我们的校长。",
+     "fr": "Ce professeur est notre directeur."
+    },
+    {
+     "zh": "我买了一条裤子。",
+     "fr": "J'ai acheté un pantalon."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "河里有一（　）鱼。",
+     "options": [
+      "位",
+      "条",
+      "件"
+     ],
+     "answer": 1,
+     "why": "Un poisson (objet long) : 条."
+    },
+    {
+     "q": "请问，您是哪（　）？",
+     "options": [
+      "件",
+      "个",
+      "位"
+     ],
+     "answer": 2,
+     "why": "Formule polie pour une personne : 哪位."
+    }
+   ]
+  },
+  {
+   "id": "2-11",
+   "code": "二11",
+   "level": 2,
+   "no": 59,
+   "item": "词类",
+   "category": "量词",
+   "detail": "动量词",
+   "content": "遍、次、场、回、下",
+   "title": "Spécificatifs verbaux : 遍、次、场、回、下",
+   "explanation": "Ils comptent le nombre de fois qu'une action se produit et se placent APRÈS le verbe : 去过两次 (y être allé deux fois). 遍 = du début à la fin ; 下 = un coup, un peu (等一下).",
+   "pattern": "verbe + nombre + 次 / 遍 / 回 / 下",
+   "examples": [
+    {
+     "zh": "我去过三次北京。",
+     "fr": "Je suis allé trois fois à Pékin."
+    },
+    {
+     "zh": "请你再说一遍。",
+     "fr": "Répète encore une fois, s'il te plaît."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这本书我看了两（　），很有意思。",
+     "options": [
+      "遍",
+      "位",
+      "本"
+     ],
+     "answer": 0,
+     "why": "Lire un livre en entier deux fois : 两遍."
+    }
+   ]
+  },
+  {
+   "id": "2-12",
+   "code": "二12",
+   "level": 2,
+   "no": 60,
+   "item": "词类",
+   "category": "量词",
+   "detail": "时量词",
+   "content": "分钟、年、天、周",
+   "title": "Durées : 分钟、年、天、周",
+   "explanation": "Ces mots expriment une durée ; on n'ajoute pas toujours de spécificatif : 三天, 两年, 一周 ; mais 一个小时, 两个月.",
+   "pattern": "nombre + 天 / 年 / 周 / 分钟 · nombre + 个 + 小时 / 月",
+   "examples": [
+    {
+     "zh": "我学了两年汉语。",
+     "fr": "J'ai étudié le chinois pendant deux ans."
+    },
+    {
+     "zh": "我们休息十分钟吧。",
+     "fr": "Faisons une pause de dix minutes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我在北京住了三（　）。",
+     "options": [
+      "个年",
+      "次年",
+      "年"
+     ],
+     "answer": 2,
+     "why": "年 se compte directement : 三年."
+    }
+   ]
+  },
+  {
+   "id": "2-13",
+   "code": "二13",
+   "level": 2,
+   "no": 61,
+   "item": "词类",
+   "category": "副词",
+   "detail": "程度副词",
+   "content": "多、多么、好、更、十分、特别、挺、有（一）点儿",
+   "title": "Degré (2) : 多、多么、好、更、十分、特别、挺、有点儿",
+   "explanation": "更 = encore plus · 特别 / 十分 = particulièrement · 挺……的 = assez, plutôt (oral) · 多（么）/ 好 + adj. ! = comme c'est… !\n有点儿 + adjectif = un peu (souvent négatif) : 有点儿贵 ; à ne pas confondre avec adjectif + 一点儿 (comparaison).",
+   "pattern": "更 / 特别 / 挺 + adj. · 有点儿 + adj.",
+   "examples": [
+    {
+     "zh": "今天有点儿冷。",
+     "fr": "Il fait un peu froid aujourd'hui."
+    },
+    {
+     "zh": "他挺好的。",
+     "fr": "Il est plutôt bien."
+    },
+    {
+     "zh": "这里的风景多么漂亮啊！",
+     "fr": "Comme le paysage est beau ici !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件衣服（　）贵，有便宜一点儿的吗？",
+     "options": [
+      "一点儿",
+      "有点儿",
+      "更"
+     ],
+     "answer": 1,
+     "why": "Devant un adjectif, « un peu (trop) » se dit 有点儿."
+    },
+    {
+     "q": "他很高，他哥哥（　）高。",
+     "options": [
+      "更",
+      "有点儿",
+      "挺"
+     ],
+     "answer": 0,
+     "why": "« Encore plus grand » : 更."
+    }
+   ]
+  },
+  {
+   "id": "2-14",
+   "code": "二14",
+   "level": 2,
+   "no": 62,
+   "item": "词类",
+   "category": "副词",
+   "detail": "范围、协同副词",
+   "content": "全、一共、只",
+   "title": "Portée : 全、一共、只",
+   "explanation": "全 = tout, entier (全家 = toute la famille) · 一共 = en tout, au total · 只 = seulement, ne… que.",
+   "pattern": "一共 + nombre · 只 + verbe · 全 + nom",
+   "examples": [
+    {
+     "zh": "一共多少钱？",
+     "fr": "Combien en tout ?"
+    },
+    {
+     "zh": "我只有一个妹妹。",
+     "fr": "Je n'ai qu'une petite sœur."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我们班（　）有二十个学生。",
+     "options": [
+      "一共",
+      "只要",
+      "全部的"
+     ],
+     "answer": 0,
+     "why": "Le total : 一共."
+    },
+    {
+     "q": "他（　）喝水，不喝茶。",
+     "options": [
+      "全",
+      "一共",
+      "只"
+     ],
+     "answer": 2,
+     "why": "« Il ne boit que de l'eau » : 只."
+    }
+   ]
+  },
+  {
+   "id": "2-15",
+   "code": "二15",
+   "level": 2,
+   "no": 63,
+   "item": "词类",
+   "category": "副词",
+   "detail": "时间副词",
+   "content": "刚、刚刚、还2、忽然、一直、已经",
+   "title": "Temps (2) : 刚、刚刚、还、忽然、一直、已经",
+   "explanation": "刚 / 刚刚 = venir de · 还 = encore, toujours · 忽然 = soudain · 一直 = sans arrêt, tout le temps · 已经……了 = déjà.",
+   "pattern": "已经 + verbe + 了 · 刚 + verbe · 一直 + verbe",
+   "examples": [
+    {
+     "zh": "我已经吃饭了。",
+     "fr": "J'ai déjà mangé."
+    },
+    {
+     "zh": "他刚走。",
+     "fr": "Il vient de partir."
+    },
+    {
+     "zh": "雨一直下。",
+     "fr": "Il pleut sans arrêt."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "电影（　）开始了，快进去吧！",
+     "options": [
+      "忽然",
+      "已经",
+      "一直"
+     ],
+     "answer": 1,
+     "why": "« Déjà commencé » : 已经……了."
+    }
+   ]
+  },
+  {
+   "id": "2-16",
+   "code": "二16",
+   "level": 2,
+   "no": 64,
+   "item": "词类",
+   "category": "副词",
+   "detail": "频率、重复副词",
+   "content": "重新、经常、老、老是、又",
+   "title": "Fréquence (2) : 重新、经常、老、老是、又",
+   "explanation": "经常 = souvent · 老 / 老是 = toujours (souvent avec reproche) · 又 = de nouveau, encore, pour une répétition DÉJÀ arrivée (passé) · 重新 = refaire depuis le début.\n又 (passé) s'oppose à 再 (futur).",
+   "pattern": "又 + verbe + 了 (déjà répété) · 重新 + verbe",
+   "examples": [
+    {
+     "zh": "他昨天来了，今天又来了。",
+     "fr": "Il est venu hier, et il est encore venu aujourd'hui."
+    },
+    {
+     "zh": "你写错了，重新写一遍吧。",
+     "fr": "Tu t'es trompé, réécris-le."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他昨天迟到了，今天（　）迟到了。",
+     "options": [
+      "又",
+      "再",
+      "重新"
+     ],
+     "answer": 0,
+     "why": "Une répétition qui a déjà eu lieu → 又."
+    }
+   ]
+  },
+  {
+   "id": "2-17",
+   "code": "二17",
+   "level": 2,
+   "no": 65,
+   "item": "词类",
+   "category": "副词",
+   "detail": "关联副词",
+   "content": "就1",
+   "title": "就 (1) : aussitôt, alors",
+   "explanation": "就 relie une condition ou un moment à sa conséquence immédiate : 我下了课就去 (j'y vais dès la fin du cours). Il se place devant le verbe.",
+   "pattern": "…… + 就 + verbe",
+   "examples": [
+    {
+     "zh": "他吃了饭就走了。",
+     "fr": "Il est parti aussitôt après avoir mangé."
+    },
+    {
+     "zh": "你不舒服就回家吧。",
+     "fr": "Si tu ne te sens pas bien, rentre donc."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我到了机场（　）给你打电话。",
+     "options": [
+      "就",
+      "都",
+      "才"
+     ],
+     "answer": 0,
+     "why": "« Dès que j'arrive, j'appelle » : 就."
+    }
+   ]
+  },
+  {
+   "id": "2-18",
+   "code": "二18",
+   "level": 2,
+   "no": 66,
+   "item": "词类",
+   "category": "副词",
+   "detail": "方式副词",
+   "content": "故意",
+   "title": "故意 : exprès",
+   "explanation": "故意 = exprès, intentionnellement ; il se place devant le verbe. Souvent à la négation pour s'excuser : 我不是故意的.",
+   "pattern": "sujet + 故意 + verbe",
+   "examples": [
+    {
+     "zh": "对不起，我不是故意的。",
+     "fr": "Pardon, je ne l'ai pas fait exprès."
+    },
+    {
+     "zh": "他故意不告诉我。",
+     "fr": "Il ne me l'a pas dit exprès."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我（　）不接他的电话，因为我生气了。",
+     "options": [
+      "一共",
+      "故意",
+      "已经"
+     ],
+     "answer": 1,
+     "why": "Une action volontaire → 故意."
+    }
+   ]
+  },
+  {
+   "id": "2-19",
+   "code": "二19",
+   "level": 2,
+   "no": 67,
+   "item": "词类",
+   "category": "副词",
+   "detail": "情态副词",
+   "content": "必须、差不多、好像、也许",
+   "title": "Modalité : 必须、差不多、好像、也许",
+   "explanation": "必须 = il faut absolument · 差不多 = presque, à peu près · 好像 = on dirait que, il semble · 也许 = peut-être.",
+   "pattern": "必须 / 好像 / 也许 + verbe · 差不多 + quantité",
+   "examples": [
+    {
+     "zh": "你必须早点儿来。",
+     "fr": "Tu dois absolument venir tôt."
+    },
+    {
+     "zh": "他好像生病了。",
+     "fr": "On dirait qu'il est malade."
+    },
+    {
+     "zh": "我们差不多到了。",
+     "fr": "Nous sommes presque arrivés."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "明天的考试很重要，你（　）参加。",
+     "options": [
+      "必须",
+      "也许",
+      "好像"
+     ],
+     "answer": 0,
+     "why": "Une obligation forte → 必须."
+    }
+   ]
+  },
+  {
+   "id": "2-20",
+   "code": "二20",
+   "level": 2,
+   "no": 68,
+   "item": "词类",
+   "category": "副词",
+   "detail": "语气副词",
+   "content": "才1、都2、就2、正好",
+   "title": "Nuance : 才 (1), 都 (2), 就 (2), 正好",
+   "explanation": "才 = seulement, pas avant (plus tard que prévu) : 他十点才来 · 就 = dès, déjà (plus tôt que prévu) : 他七点就来了.\n都……了 = déjà (étonnement) : 都十二点了 ! · 正好 = justement, pile.",
+   "pattern": "moment + 才 + verbe · moment + 就 + verbe + 了",
+   "examples": [
+    {
+     "zh": "我八点上课，他九点才来。",
+     "fr": "J'ai cours à 8 h, il n'est arrivé qu'à 9 h."
+    },
+    {
+     "zh": "你来得正好！",
+     "fr": "Tu tombes bien !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "电影七点开始，他七点半（　）到。",
+     "options": [
+      "就",
+      "都",
+      "才"
+     ],
+     "answer": 2,
+     "why": "En retard, plus tard que prévu → 才 (sans 了)."
+    },
+    {
+     "q": "他六点（　）起床了，比我早多了。",
+     "options": [
+      "正好",
+      "才",
+      "就"
+     ],
+     "answer": 2,
+     "why": "Plus tôt que prévu → 就……了."
+    }
+   ]
+  },
+  {
+   "id": "2-21",
+   "code": "二21",
+   "level": 2,
+   "no": 69,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出时间、处所",
+   "content": "当",
+   "title": "当 : quand, au moment où",
+   "explanation": "当……的时候 = au moment où… (registre un peu soutenu) ; la proposition se place en tête de phrase.",
+   "pattern": "当 + proposition + 的时候，……",
+   "examples": [
+    {
+     "zh": "当我到家的时候，妈妈已经睡了。",
+     "fr": "Quand je suis arrivé, maman dormait déjà."
+    },
+    {
+     "zh": "当我回到家的时候，已经十二点了。",
+     "fr": "Quand je suis rentré, il était déjà minuit."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）我看到他的时候，他正在打电话。",
+     "options": [
+      "从",
+      "当",
+      "往"
+     ],
+     "answer": 1,
+     "why": "当……的时候 = au moment où."
+    }
+   ]
+  },
+  {
+   "id": "2-22",
+   "code": "二22",
+   "level": 2,
+   "no": 70,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出方向、路径",
+   "content": "往",
+   "title": "往 : vers (direction)",
+   "explanation": "往 + direction / lieu + verbe de mouvement : 往前走 (avancez), 往左拐 (tournez à gauche).",
+   "pattern": "往 + 前 / 后 / 左 / 右 / lieu + verbe",
+   "examples": [
+    {
+     "zh": "一直往前走，就到了。",
+     "fr": "Allez tout droit, vous y êtes."
+    },
+    {
+     "zh": "往右边看！",
+     "fr": "Regarde à droite !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "银行怎么走？——（　）前走一百米就是。",
+     "options": [
+      "从",
+      "在",
+      "往"
+     ],
+     "answer": 2,
+     "why": "La direction du mouvement : 往."
+    }
+   ]
+  },
+  {
+   "id": "2-23",
+   "code": "二23",
+   "level": 2,
+   "no": 71,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出方向、路径",
+   "content": "向1",
+   "title": "向 (1) : vers (direction)",
+   "explanation": "向 + direction / lieu + verbe : même sens que 往, un peu plus écrit : 向东走 (aller vers l'est).",
+   "pattern": "向 + direction + verbe",
+   "examples": [
+    {
+     "zh": "请向左看。",
+     "fr": "Regardez à gauche, s'il vous plaît."
+    },
+    {
+     "zh": "他向我走过来。",
+     "fr": "Il est venu vers moi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "从这儿（　）东走十分钟就到了。",
+     "options": [
+      "在",
+      "向",
+      "给"
+     ],
+     "answer": 1,
+     "why": "La direction : 向 (ou 往)."
+    }
+   ]
+  },
+  {
+   "id": "2-24",
+   "code": "二24",
+   "level": 2,
+   "no": 72,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出方向、路径",
+   "content": "从2",
+   "title": "从 (2) : par, à travers (chemin)",
+   "explanation": "从 + lieu indique aussi par où l'on passe : 从这儿过去 (passer par ici), 从门口进来 (entrer par la porte).",
+   "pattern": "从 + lieu + verbe de mouvement",
+   "examples": [
+    {
+     "zh": "我们从这条路走吧。",
+     "fr": "Passons par cette rue."
+    },
+    {
+     "zh": "他从窗户看出去。",
+     "fr": "Il regarde par la fenêtre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你可以（　）这个门进去。",
+     "options": [
+      "往",
+      "对",
+      "从"
+     ],
+     "answer": 2,
+     "why": "« Par cette porte » : 从."
+    }
+   ]
+  },
+  {
+   "id": "2-25",
+   "code": "二25",
+   "level": 2,
+   "no": 73,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "对",
+   "title": "对 : envers, pour, à l'égard de",
+   "explanation": "对 + personne / chose + adjectif ou verbe : 他对我很好 (il est gentil avec moi), 运动对身体好 (le sport est bon pour la santé).",
+   "pattern": "A + 对 + B + adj. / verbe",
+   "examples": [
+    {
+     "zh": "老师对学生很热情。",
+     "fr": "Le professeur est chaleureux avec les élèves."
+    },
+    {
+     "zh": "抽烟对身体不好。",
+     "fr": "Fumer est mauvais pour la santé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "多喝水（　）身体好。",
+     "options": [
+      "对",
+      "离",
+      "给"
+     ],
+     "answer": 0,
+     "why": "« Bon pour la santé » : 对身体好."
+    }
+   ]
+  },
+  {
+   "id": "2-26",
+   "code": "二26",
+   "level": 2,
+   "no": 74,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "给",
+   "title": "给 : à, pour (bénéficiaire)",
+   "explanation": "给 + personne + verbe = faire quelque chose pour / à quelqu'un : 给妈妈打电话 (téléphoner à maman). 给 est aussi le verbe « donner ».",
+   "pattern": "给 + personne + verbe (+ objet)",
+   "examples": [
+    {
+     "zh": "我给你买了一个礼物。",
+     "fr": "Je t'ai acheté un cadeau."
+    },
+    {
+     "zh": "晚上给我打电话吧。",
+     "fr": "Appelle-moi ce soir."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我想（　）朋友写一封信。",
+     "options": [
+      "给",
+      "往",
+      "对"
+     ],
+     "answer": 0,
+     "why": "Écrire À quelqu'un : 给 + personne + 写."
+    }
+   ]
+  },
+  {
+   "id": "2-27",
+   "code": "二27",
+   "level": 2,
+   "no": 75,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "离",
+   "title": "离 : distance par rapport à",
+   "explanation": "A 离 B + 远 / 近 = A est loin / près de B. Aussi pour le temps : 离考试还有三天 (il reste trois jours avant l'examen).",
+   "pattern": "A + 离 + B + 远 / 近 · 离 + moment + 还有 + durée",
+   "examples": [
+    {
+     "zh": "我家离学校很近。",
+     "fr": "Ma maison est tout près de l'école."
+    },
+    {
+     "zh": "离春节还有一个月。",
+     "fr": "Il reste un mois avant le Nouvel An chinois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "机场（　）这儿远吗？",
+     "options": [
+      "对",
+      "离",
+      "从"
+     ],
+     "answer": 1,
+     "why": "La distance entre deux lieux : 离."
+    }
+   ]
+  },
+  {
+   "id": "2-28",
+   "code": "二28",
+   "level": 2,
+   "no": 76,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出目的、原因",
+   "content": "为1",
+   "title": "为 (1) : pour (but, cause)",
+   "explanation": "为 + personne / chose + verbe = pour, en raison de : 为你高兴 (content pour toi), 为这件事担心 (s'inquiéter à cause de ça).",
+   "pattern": "为 + nom + verbe / adj.",
+   "examples": [
+    {
+     "zh": "我真为你高兴！",
+     "fr": "Je suis vraiment content pour toi !"
+    },
+    {
+     "zh": "别为这件事难过了。",
+     "fr": "Ne sois plus triste à cause de ça."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你考得这么好，我们都（　）你高兴。",
+     "options": [
+      "往",
+      "为",
+      "离"
+     ],
+     "answer": 1,
+     "why": "« Content pour toi » : 为你高兴."
+    }
+   ]
+  },
+  {
+   "id": "2-29",
+   "code": "二29",
+   "level": 2,
+   "no": 77,
+   "item": "词类",
+   "category": "连词",
+   "detail": "连接词或词组",
+   "content": "或、或者",
+   "title": "或 / 或者 : ou (affirmation)",
+   "explanation": "或者 relie deux possibilités dans une phrase AFFIRMATIVE : 我明天或者后天去. Dans une question de choix, on emploie 还是.",
+   "pattern": "A + 或者 + B (phrase affirmative)",
+   "examples": [
+    {
+     "zh": "你可以坐地铁或者打车去。",
+     "fr": "Tu peux y aller en métro ou en taxi."
+    },
+    {
+     "zh": "周末我看书或者看电影。",
+     "fr": "Le week-end, je lis ou je regarde un film."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我想喝茶（　）咖啡，都可以。",
+     "options": [
+      "或者",
+      "和",
+      "还是"
+     ],
+     "answer": 0,
+     "why": "Phrase affirmative → 或者 (还是 serait une question)."
+    }
+   ]
+  },
+  {
+   "id": "2-30",
+   "code": "二30",
+   "level": 2,
+   "no": 78,
+   "item": "词类",
+   "category": "连词",
+   "detail": "连接分句或句子",
+   "content": "不过、但、但是、而且、那、如果、虽然、只要",
+   "title": "Conjonctions entre propositions : 但是、不过、而且、如果、虽然、只要…",
+   "explanation": "但是 / 但 / 不过 = mais · 而且 = de plus · 如果 = si · 虽然 = bien que · 只要 = du moment que · 那 = alors (dans ce cas).\nElles relient deux propositions ; les structures complètes sont vues dans les points sur les phrases complexes.",
+   "pattern": "虽然……，但是…… · 如果……，就…… · 只要……，就……",
+   "examples": [
+    {
+     "zh": "这件衣服很好看，但是太贵了。",
+     "fr": "Ce vêtement est joli, mais trop cher."
+    },
+    {
+     "zh": "如果明天下雨，我们就不去了。",
+     "fr": "S'il pleut demain, nous n'irons pas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他很聪明，（　）很努力。",
+     "options": [
+      "而且",
+      "如果",
+      "但是"
+     ],
+     "answer": 0,
+     "why": "On ajoute une qualité : « et en plus » → 而且."
+    }
+   ]
+  },
+  {
+   "id": "2-31",
+   "code": "二31",
+   "level": 2,
+   "no": 79,
+   "item": "词类",
+   "category": "助词",
+   "detail": "结构助词",
+   "content": "得",
+   "title": "得 : relier un verbe à son appréciation",
+   "explanation": "得 se place entre un verbe et un complément qui juge la manière ou le résultat : 他跑得很快 (il court vite).\nAvec un objet, on répète le verbe : 他说汉语说得很好 (ou 他汉语说得很好).",
+   "pattern": "verbe + 得 + (很) + adj. · (verbe) + objet + verbe + 得 + adj.",
+   "examples": [
+    {
+     "zh": "她唱得很好听。",
+     "fr": "Elle chante très bien."
+    },
+    {
+     "zh": "你说汉语说得真好！",
+     "fr": "Tu parles vraiment bien chinois !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他游泳游（　）很快。",
+     "options": [
+      "的",
+      "得",
+      "地"
+     ],
+     "answer": 1,
+     "why": "Verbe + 得 + appréciation."
+    }
+   ]
+  },
+  {
+   "id": "2-32",
+   "code": "二32",
+   "level": 2,
+   "no": 80,
+   "item": "词类",
+   "category": "助词",
+   "detail": "动态助词",
+   "content": "过",
+   "title": "过 : avoir déjà fait (expérience)",
+   "explanation": "Verbe + 过 = avoir déjà fait au moins une fois dans sa vie : 我去过中国. Négation : 没（有）+ verbe + 过 : 我没吃过饺子.",
+   "pattern": "verbe + 过 · 没 + verbe + 过",
+   "examples": [
+    {
+     "zh": "你去过上海吗？",
+     "fr": "Es-tu déjà allé à Shanghai ?"
+    },
+    {
+     "zh": "我没见过他。",
+     "fr": "Je ne l'ai jamais vu."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « Je n'ai jamais mangé de canard laqué » ?",
+     "options": [
+      "我没吃过烤鸭。",
+      "我没吃了烤鸭。",
+      "我不吃过烤鸭。"
+     ],
+     "answer": 0,
+     "why": "L'expérience niée : 没 + verbe + 过."
+    }
+   ]
+  },
+  {
+   "id": "2-33",
+   "code": "二33",
+   "level": 2,
+   "no": 81,
+   "item": "词类",
+   "category": "助词",
+   "detail": "",
+   "content": "着",
+   "title": "着 : état qui dure",
+   "explanation": "Verbe + 着 décrit un état ou une action qui se prolonge : 门开着 (la porte est ouverte), 他穿着红衣服 (il porte un vêtement rouge).",
+   "pattern": "verbe + 着 (+ objet)",
+   "examples": [
+    {
+     "zh": "她笑着说：“没关系。”",
+     "fr": "Elle dit en souriant : « Ce n'est pas grave. »"
+    },
+    {
+     "zh": "桌子上放着一本书。",
+     "fr": "Il y a un livre posé sur la table."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "教室的门开（　），里面有人吗？",
+     "options": [
+      "过",
+      "着",
+      "得"
+     ],
+     "answer": 1,
+     "why": "Un état qui dure (la porte reste ouverte) → 着."
+    }
+   ]
+  },
+  {
+   "id": "2-34",
+   "code": "二34",
+   "level": 2,
+   "no": 82,
+   "item": "词类",
+   "category": "助词",
+   "detail": "语气助词",
+   "content": "啊1、吧2、的2",
+   "title": "Particules : 啊、吧 (2)、的 (2)",
+   "explanation": "啊 en fin de phrase adoucit ou renforce (好啊！) · 吧 marque aussi une supposition : 你是新同学吧？ · 的 en fin de phrase affirme avec conviction : 我会来的 (je viendrai, c'est sûr).",
+   "pattern": "phrase + 啊 / 吧 / 的",
+   "examples": [
+    {
+     "zh": "今天天气真好啊！",
+     "fr": "Qu'il fait beau aujourd'hui !"
+    },
+    {
+     "zh": "你是王老师吧？",
+     "fr": "Vous êtes le professeur Wang, je suppose ?"
+    },
+    {
+     "zh": "别担心，他会来的。",
+     "fr": "Ne t'inquiète pas, il viendra."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你是法国人（　）？我猜的。",
+     "options": [
+      "吧",
+      "的",
+      "啊"
+     ],
+     "answer": 0,
+     "why": "Une supposition qu'on vérifie : 吧."
+    }
+   ]
+  },
+  {
+   "id": "2-35",
+   "code": "二35",
+   "level": 2,
+   "no": 83,
+   "item": "词类",
+   "category": "助词",
+   "detail": "其他助词",
+   "content": "的话、等",
+   "title": "的话、等 : si / etc.",
+   "explanation": "……的话 = si (à la fin de la condition) : 明天下雨的话，我们就不去了. 等 = etc., à la fin d'une énumération : 苹果、香蕉等.",
+   "pattern": "condition + 的话，…… · A、B、C 等",
+   "examples": [
+    {
+     "zh": "你有时间的话，来我家玩儿吧。",
+     "fr": "Si tu as le temps, viens chez moi."
+    },
+    {
+     "zh": "我买了苹果、西瓜等水果。",
+     "fr": "J'ai acheté des fruits : pommes, pastèque, etc."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你不舒服（　），就早点儿回家吧。",
+     "options": [
+      "等",
+      "吗",
+      "的话"
+     ],
+     "answer": 2,
+     "why": "« Si tu ne te sens pas bien » : ……的话."
+    }
+   ]
+  },
+  {
+   "id": "2-36",
+   "code": "二36",
+   "level": 2,
+   "no": 84,
+   "item": "词类",
+   "category": "叹词",
+   "detail": "",
+   "content": "喂",
+   "title": "喂 : allô",
+   "explanation": "喂 (wéi) sert à décrocher le téléphone, ou à interpeller quelqu'un (wèi, familier).",
+   "pattern": "喂，……",
+   "examples": [
+    {
+     "zh": "喂，你好！请问李老师在吗？",
+     "fr": "Allô, bonjour ! Le professeur Li est-il là ?"
+    },
+    {
+     "zh": "喂，小王，你在哪儿呢？",
+     "fr": "Allô, Xiao Wang, tu es où ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Que dit-on en décrochant le téléphone ?",
+     "options": [
+      "喂，你好。",
+      "不客气。",
+      "再见。"
+     ],
+     "answer": 0,
+     "why": "喂 est l'interjection du téléphone."
+    }
+   ]
+  },
+  {
+   "id": "2-37",
+   "code": "二37",
+   "level": 2,
+   "no": 85,
+   "item": "短语",
+   "category": "结构类型",
+   "detail": "基本结构类型",
+   "content": "基本结构类型：（1）联合短语（2）偏正短语（3）动宾短语（4）动补短语（5）主谓短语",
+   "title": "Les cinq structures de base des groupes de mots",
+   "explanation": "(1) Coordination : 老师和学生. (2) Déterminant + noyau : 新衣服、慢慢走. (3) Verbe + objet : 看书. (4) Verbe + complément : 洗干净、听懂. (5) Sujet + prédicat (dans une phrase plus grande) : 我知道他来了.",
+   "pattern": "A和B · 修饰+中心 · 动+宾 · 动+补 · 主+谓",
+   "examples": [
+    {
+     "zh": "我听懂了。",
+     "fr": "J'ai compris (en écoutant)."
+    },
+    {
+     "zh": "我知道他明天来。",
+     "fr": "Je sais qu'il vient demain."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 洗干净, que signifie 干净 ?",
+     "options": [
+      "le moment de l'action",
+      "le résultat de l'action (propre)",
+      "l'objet lavé"
+     ],
+     "answer": 1,
+     "why": "Verbe + complément de résultat : laver → propre."
+    }
+   ]
+  },
+  {
+   "id": "2-38",
+   "code": "二38",
+   "level": 2,
+   "no": 86,
+   "item": "短语",
+   "category": "结构类型",
+   "detail": "其他结构类型",
+   "content": "其他结构类型1：（1）“的”字短语（2）连谓短语",
+   "title": "Groupes en 的 et verbes en série",
+   "explanation": "(1) Groupe en 的 sans nom : 红的 (le rouge), 我的 (le mien), 卖菜的 (celui qui vend des légumes). (2) Verbes en série : deux actions du même sujet à la suite, sans mot de liaison : 去商店买东西.",
+   "pattern": "adj. / nom / verbe + 的 · V1 + (objet) + V2 + (objet)",
+   "examples": [
+    {
+     "zh": "这件不好看，我要那件红的。",
+     "fr": "Celui-ci n'est pas joli, je veux le rouge là-bas."
+    },
+    {
+     "zh": "他坐地铁去上班。",
+     "fr": "Il va travailler en métro."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这本书是谁（　）？—— 是我的。",
+     "options": [
+      "得",
+      "的",
+      "地"
+     ],
+     "answer": 1,
+     "why": "Groupe en 的 sans nom : 谁的 = à qui."
+    }
+   ]
+  },
+  {
+   "id": "2-39",
+   "code": "二39",
+   "level": 2,
+   "no": 87,
+   "item": "短语",
+   "category": "功能类型",
+   "detail": "",
+   "content": "名词性短语",
+   "title": "Groupes nominaux",
+   "explanation": "Un groupe dont le noyau est un nom fonctionne comme un nom : sujet ou objet. 我妈妈的朋友、一本很有意思的书.",
+   "pattern": "déterminants + nom",
+   "examples": [
+    {
+     "zh": "我妈妈的朋友是医生。",
+     "fr": "L'amie de ma mère est médecin."
+    },
+    {
+     "zh": "这是一个很漂亮的城市。",
+     "fr": "C'est une très belle ville."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quel est le noyau de 我新买的手机 ?",
+     "options": [
+      "新",
+      "买",
+      "手机"
+     ],
+     "answer": 2,
+     "why": "Le nom final (手机) est le noyau du groupe."
+    }
+   ]
+  },
+  {
+   "id": "2-40",
+   "code": "二40",
+   "level": 2,
+   "no": 88,
+   "item": "短语",
+   "category": "功能类型",
+   "detail": "",
+   "content": "动词性短语",
+   "title": "Groupes verbaux",
+   "explanation": "Un groupe dont le noyau est un verbe : 看电视、慢慢地说、说得很好. Il peut servir de prédicat ou même de sujet (voir niveau 3).",
+   "pattern": "(adverbe) + verbe + (objet / complément)",
+   "examples": [
+    {
+     "zh": "他每天早上跑步。",
+     "fr": "Il court tous les matins."
+    },
+    {
+     "zh": "她慢慢地走进了教室。",
+     "fr": "Elle est entrée lentement dans la salle de classe."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quel est le noyau de 认真地学习汉语 ?",
+     "options": [
+      "汉语",
+      "认真",
+      "学习"
+     ],
+     "answer": 2,
+     "why": "Le verbe 学习 est le noyau."
+    }
+   ]
+  },
+  {
+   "id": "2-41",
+   "code": "二41",
+   "level": 2,
+   "no": 89,
+   "item": "短语",
+   "category": "功能类型",
+   "detail": "",
+   "content": "形容词性短语",
+   "title": "Groupes adjectivaux",
+   "explanation": "Un groupe dont le noyau est un adjectif : 很高、非常漂亮、高兴得很. Il sert de prédicat ou de déterminant.",
+   "pattern": "adverbe de degré + adjectif",
+   "examples": [
+    {
+     "zh": "这个房间非常干净。",
+     "fr": "Cette chambre est extrêmement propre."
+    },
+    {
+     "zh": "今天的天气特别好。",
+     "fr": "Il fait particulièrement beau aujourd'hui."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 非常漂亮的衣服, quel groupe est adjectival ?",
+     "options": [
+      "衣服",
+      "非常漂亮",
+      "的衣服"
+     ],
+     "answer": 1,
+     "why": "Adverbe de degré + adjectif = groupe adjectival."
+    }
+   ]
+  },
+  {
+   "id": "2-42",
+   "code": "二42",
+   "level": 2,
+   "no": 90,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "不一会儿",
+   "title": "不一会儿 : peu après",
+   "explanation": "不一会儿 = au bout d'un petit moment, peu après. Il se place en tête de la proposition qui suit.",
+   "pattern": "……，不一会儿，……",
+   "examples": [
+    {
+     "zh": "他躺下，不一会儿就睡着了。",
+     "fr": "Il s'est allongé et s'est endormi peu après."
+    },
+    {
+     "zh": "我们等了不一会儿，车就来了。",
+     "fr": "Nous avons attendu un petit moment, puis le bus est arrivé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "天黑了，（　）就下起了雨。",
+     "options": [
+      "以前",
+      "不一会儿",
+      "一直"
+     ],
+     "answer": 1,
+     "why": "« Peu après » : 不一会儿."
+    }
+   ]
+  },
+  {
+   "id": "2-43",
+   "code": "二43",
+   "level": 2,
+   "no": 91,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "什么的",
+   "title": "什么的 : et cetera",
+   "explanation": "什么的 (oral) termine une énumération : 苹果、香蕉什么的 (des pommes, des bananes, ce genre de choses).",
+   "pattern": "A、B + 什么的",
+   "examples": [
+    {
+     "zh": "我喜欢唱歌、跳舞什么的。",
+     "fr": "J'aime chanter, danser, ce genre de choses."
+    },
+    {
+     "zh": "周末我常常洗衣服、打扫房间什么的。",
+     "fr": "Le week-end, je fais souvent la lessive, le ménage, ce genre de choses."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "桌子上有书、笔（　）。",
+     "options": [
+      "什么",
+      "的话",
+      "什么的"
+     ],
+     "answer": 2,
+     "why": "Énumération ouverte : ……什么的."
+    }
+   ]
+  },
+  {
+   "id": "2-44",
+   "code": "二44",
+   "level": 2,
+   "no": 92,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "越来越",
+   "title": "越来越 : de plus en plus",
+   "explanation": "越来越 + adjectif / verbe de sentiment = de plus en plus. On ne met pas 很 après : 越来越好. Souvent avec 了.",
+   "pattern": "越来越 + adj. (+ 了)",
+   "examples": [
+    {
+     "zh": "天气越来越冷了。",
+     "fr": "Il fait de plus en plus froid."
+    },
+    {
+     "zh": "我越来越喜欢中国菜了。",
+     "fr": "J'aime de plus en plus la cuisine chinoise."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "他的汉语越来越很好了。",
+      "他的汉语越来越好很。",
+      "他的汉语越来越好了。"
+     ],
+     "answer": 2,
+     "why": "Après 越来越, l'adjectif s'emploie sans 很."
+    }
+   ]
+  },
+  {
+   "id": "2-45",
+   "code": "二45",
+   "level": 2,
+   "no": 93,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "还是……吧",
+   "title": "还是……吧 : il vaut mieux",
+   "explanation": "还是 + verbe + 吧 = il vaut mieux, finalement mieux vaut : 太晚了，你还是回家吧.",
+   "pattern": "还是 + verbe + 吧",
+   "examples": [
+    {
+     "zh": "外面下雨，我们还是在家吧。",
+     "fr": "Il pleut dehors, restons plutôt à la maison."
+    },
+    {
+     "zh": "这件太贵了，你还是买那件吧。",
+     "fr": "Celui-ci est trop cher, prends plutôt celui-là."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你生病了，（　）去医院吧。",
+     "options": [
+      "或者",
+      "还是",
+      "已经"
+     ],
+     "answer": 1,
+     "why": "Un conseil « il vaut mieux » : 还是……吧."
+    }
+   ]
+  },
+  {
+   "id": "2-46",
+   "code": "二46",
+   "level": 2,
+   "no": 94,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "又……又……",
+   "title": "又……又…… : à la fois… et…",
+   "explanation": "又 + adj. 1 + 又 + adj. 2 = à la fois … et … (deux qualités de même sens positif ou négatif).",
+   "pattern": "又 + adj. / verbe + 又 + adj. / verbe",
+   "examples": [
+    {
+     "zh": "这个苹果又大又甜。",
+     "fr": "Cette pomme est grosse et sucrée."
+    },
+    {
+     "zh": "他又累又饿。",
+     "fr": "Il est fatigué et affamé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这家饭店的菜（　）便宜又好吃。",
+     "options": [
+      "又",
+      "还",
+      "也"
+     ],
+     "answer": 0,
+     "why": "又……又…… : deux qualités à la fois."
+    }
+   ]
+  },
+  {
+   "id": "2-47",
+   "code": "二47",
+   "level": 2,
+   "no": 95,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "（在）……以前/以后/前/后",
+   "title": "(在)……以前 / 以后 / 前 / 后 : avant / après",
+   "explanation": "Les mots de temps se placent APRÈS l'événement : 吃饭以前 (avant de manger), 下课以后 (après le cours), 三年前 (il y a trois ans).",
+   "pattern": "(在) + événement / durée + 以前 / 以后 / 前 / 后",
+   "examples": [
+    {
+     "zh": "睡觉以前别喝咖啡。",
+     "fr": "Ne bois pas de café avant de dormir."
+    },
+    {
+     "zh": "下课后我们去吃饭。",
+     "fr": "Après le cours, on va manger."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « après le travail » ?",
+     "options": [
+      "以后下班",
+      "以前下班",
+      "下班以后"
+     ],
+     "answer": 2,
+     "why": "L'événement vient d'abord, puis 以后."
+    }
+   ]
+  },
+  {
+   "id": "2-48",
+   "code": "二48",
+   "level": 2,
+   "no": 96,
+   "item": "句子成分",
+   "category": "谓语",
+   "detail": "",
+   "content": "名词、代词、数词、数量短语、名词性短语作谓语",
+   "title": "Prédicat nominal",
+   "explanation": "Pour l'âge, la date, le prix, l'origine, un nom ou un nombre peut servir directement de prédicat, sans 是 : 今天星期一 · 他二十岁 · 这个十块钱. À la négation, 是 revient : 今天不是星期一.",
+   "pattern": "sujet + nom / nombre (âge, date, prix)",
+   "examples": [
+    {
+     "zh": "我今年二十一岁。",
+     "fr": "J'ai vingt et un ans."
+    },
+    {
+     "zh": "明天十月二十号。",
+     "fr": "Demain, c'est le 20 octobre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment nie-t-on « 今天星期三 » ?",
+     "options": [
+      "今天不星期三。",
+      "今天没星期三。",
+      "今天不是星期三。"
+     ],
+     "answer": 2,
+     "why": "À la négation, 是 réapparaît : 不是."
+    }
+   ]
+  },
+  {
+   "id": "2-49",
+   "code": "二49",
+   "level": 2,
+   "no": 97,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "结果补语",
+   "content": "结果补语1：动词+错/懂/干净/好/会/清楚/完",
+   "title": "Complément de résultat (1) : 错、懂、干净、好、会、清楚、完",
+   "explanation": "Un verbe + un complément qui donne le résultat : 写错 (mal écrire), 听懂 (comprendre en écoutant), 做完 (finir). Négation : 没 + verbe + résultat : 我没听懂.",
+   "pattern": "verbe + 错 / 懂 / 完 / 好 / 清楚… · 没 + verbe + résultat",
+   "examples": [
+    {
+     "zh": "我写完作业了。",
+     "fr": "J'ai fini mes devoirs."
+    },
+    {
+     "zh": "对不起，我没听清楚。",
+     "fr": "Désolé, je n'ai pas bien entendu."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "老师说的话你听（　）了吗？",
+     "options": [
+      "懂",
+      "完全",
+      "好吃"
+     ],
+     "answer": 0,
+     "why": "« Comprendre en écoutant » : 听懂."
+    },
+    {
+     "q": "我没吃（　），还要吃一点儿。",
+     "options": [
+      "完",
+      "错",
+      "会"
+     ],
+     "answer": 0,
+     "why": "« Je n'ai pas fini de manger » : 没吃完."
+    }
+   ]
+  },
+  {
+   "id": "2-50",
+   "code": "二50",
+   "level": 2,
+   "no": 98,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "趋向补语",
+   "content": "趋向补语1 简单趋向补语的趋向意义用法： （1）动词+来/去（2）动词+上/下/进/出/起/过/回/开",
+   "title": "Complément de direction simple : 来 / 去, 上 / 下 / 进 / 出…",
+   "explanation": "来 = vers celui qui parle, 去 = en s'éloignant : 进来 (entrer ici), 出去 (sortir là-bas). 上 / 下 / 进 / 出 / 回 / 过 / 起 / 开 indiquent la direction : 站起 (se lever), 拿出 (sortir quelque chose).",
+   "pattern": "verbe + 来 / 去 · verbe + 上 / 下 / 进 / 出 / 回…",
+   "examples": [
+    {
+     "zh": "请进来！",
+     "fr": "Entrez (ici) !"
+    },
+    {
+     "zh": "他回家去了。",
+     "fr": "Il est rentré chez lui."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我在楼上，你上（　）吧！",
+     "options": [
+      "来",
+      "过",
+      "去"
+     ],
+     "answer": 0,
+     "why": "Je suis en haut : on monte VERS moi → 上来."
+    }
+   ]
+  },
+  {
+   "id": "2-51",
+   "code": "二51",
+   "level": 2,
+   "no": 99,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "状态补语",
+   "content": "状态补语1：动词+得+形容词性词语",
+   "title": "Complément d'état : verbe + 得 + adjectif",
+   "explanation": "Il décrit la manière ou le niveau d'une action habituelle ou réalisée : 他跑得很快. Négation : 跑得不快. Question : 跑得快不快？",
+   "pattern": "verbe + 得 + (很 / 不) + adj.",
+   "examples": [
+    {
+     "zh": "她汉字写得很漂亮。",
+     "fr": "Elle écrit très joliment les caractères."
+    },
+    {
+     "zh": "我昨天睡得不好。",
+     "fr": "J'ai mal dormi hier."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment nier « 他跑得快 » ?",
+     "options": [
+      "他不跑得快。",
+      "他跑得不快。",
+      "他没跑得快。"
+     ],
+     "answer": 1,
+     "why": "La négation porte sur l'adjectif : 得不快."
+    }
+   ]
+  },
+  {
+   "id": "2-52",
+   "code": "二52",
+   "level": 2,
+   "no": 100,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "数量补语",
+   "content": "数量补语1：动词+动量补语",
+   "title": "Nombre de fois : verbe + spécificatif verbal",
+   "explanation": "Le nombre de fois se place après le verbe : 去了三次、看了一遍. Si l'objet est un pronom, il passe avant : 我见过他一次.",
+   "pattern": "verbe + (了 / 过) + nombre + 次 / 遍",
+   "examples": [
+    {
+     "zh": "这个电影我看了两遍。",
+     "fr": "J'ai vu ce film deux fois."
+    },
+    {
+     "zh": "我去过一次上海。",
+     "fr": "Je suis allé une fois à Shanghai."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我去过北京两个次。",
+      "我去过两次北京。",
+      "我两次去过北京。"
+     ],
+     "answer": 1,
+     "why": "Verbe + 过 + nombre + 次 (+ objet)."
+    }
+   ]
+  },
+  {
+   "id": "2-53",
+   "code": "二53",
+   "level": 2,
+   "no": 101,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "数量补语",
+   "content": "数量补语2：形容词+数量补语",
+   "title": "Adjectif + quantité (différence)",
+   "explanation": "Après un adjectif, une quantité précise l'écart : 大两岁 (plus âgé de deux ans), 贵一点儿 (un peu plus cher).",
+   "pattern": "adjectif + nombre + spécificatif / 一点儿",
+   "examples": [
+    {
+     "zh": "我哥哥比我大三岁。",
+     "fr": "Mon grand frère a trois ans de plus que moi."
+    },
+    {
+     "zh": "这件衣服便宜一点儿。",
+     "fr": "Ce vêtement est un peu moins cher."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "有没有大（　）的？这件太小了。",
+     "options": [
+      "一点儿",
+      "非常",
+      "有点儿"
+     ],
+     "answer": 0,
+     "why": "Après l'adjectif, « un peu plus » : 大一点儿."
+    }
+   ]
+  },
+  {
+   "id": "2-54",
+   "code": "二54",
+   "level": 2,
+   "no": 102,
+   "item": "句子的类型",
+   "category": "句型",
+   "detail": "单句",
+   "content": "主谓句3：名词谓语句",
+   "title": "Phrase à prédicat nominal",
+   "explanation": "Rappel : pour la date, l'heure, l'âge, le prix, l'origine ou le temps qu'il fait, le prédicat peut être un nom ou un groupe nominal : 现在三点 · 他上海人.",
+   "pattern": "sujet + groupe nominal",
+   "examples": [
+    {
+     "zh": "现在八点半。",
+     "fr": "Il est huit heures et demie."
+    },
+    {
+     "zh": "苹果五块一斤。",
+     "fr": "Les pommes sont à cinq yuans la livre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "今天星期六。",
+      "今天是星期六的。",
+      "今天星期六是。"
+     ],
+     "answer": 0,
+     "why": "Prédicat nominal direct : 今天星期六 (ou 今天是星期六)."
+    }
+   ]
+  },
+  {
+   "id": "2-55",
+   "code": "二55",
+   "level": 2,
+   "no": 103,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "“有”字句",
+   "content": "“有”字句2：（1）表示评价、达到； （2）表示比较（见“比较句 2-（4）”）",
+   "title": "有 (2) : évaluation et comparaison",
+   "explanation": "有 + quantité = atteindre : 他有一米八 (il mesure 1,80 m). 有 sert aussi à comparer : A 有 B 这么 / 那么 + adj. (A est aussi … que B), surtout en question ou négation.",
+   "pattern": "A + 有 + quantité · A + 有 + B + 那么 + adj.",
+   "examples": [
+    {
+     "zh": "这条鱼有两斤。",
+     "fr": "Ce poisson pèse bien un kilo."
+    },
+    {
+     "zh": "我有我哥哥那么高。",
+     "fr": "Je suis aussi grand que mon grand frère."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你弟弟（　）你高吗？",
+     "options": [
+      "是",
+      "在",
+      "有"
+     ],
+     "answer": 2,
+     "why": "Comparaison « aussi grand que » : A 有 B 高."
+    }
+   ]
+  },
+  {
+   "id": "2-56",
+   "code": "二56",
+   "level": 2,
+   "no": 104,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "存现句",
+   "content": "存现句1：表示存在 （1）处所+是（+数量短语）+名词（见“‘是’字句（3）”） （2）处所+有+数量短语+名词（见“‘有’字句1-（2）”） （3）处所+动词+着（+数量短语）+名词",
+   "title": "Phrase d'existence (1) : lieu + 是 / 有 / verbe + 着 + chose",
+   "explanation": "Pour décrire ce qui se trouve quelque part, on commence par le lieu : 桌子上有一本书 · 前边是银行 · 墙上挂着一张画 (au mur est accroché un tableau).",
+   "pattern": "lieu + 有 / 是 / verbe + 着 + (nombre + spécificatif) + nom",
+   "examples": [
+    {
+     "zh": "门口站着一个人。",
+     "fr": "Il y a quelqu'un debout devant la porte."
+    },
+    {
+     "zh": "学校旁边是一个公园。",
+     "fr": "À côté de l'école, il y a un parc."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "床上（　）着一只猫。",
+     "options": [
+      "躺了",
+      "是",
+      "躺"
+     ],
+     "answer": 2,
+     "why": "Lieu + verbe + 着 + chose : décrit un état."
+    }
+   ]
+  },
+  {
+   "id": "2-57",
+   "code": "二57",
+   "level": 2,
+   "no": 105,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "连动句",
+   "content": "连动句1：表示前后动作先后发生",
+   "title": "Verbes en série (1) : actions successives",
+   "explanation": "Deux verbes à la suite avec le même sujet, dans l'ordre où les actions se passent : 他回家吃饭 (il rentre à la maison et mange).",
+   "pattern": "sujet + V1 (+ objet) + V2 (+ objet)",
+   "examples": [
+    {
+     "zh": "我下了课去图书馆。",
+     "fr": "Après le cours, je vais à la bibliothèque."
+    },
+    {
+     "zh": "他打开门走了出去。",
+     "fr": "Il a ouvert la porte et est sorti."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase suit l'ordre des actions ?",
+     "options": [
+      "他去商店买东西。",
+      "他买东西去商店了买。",
+      "他买东西去商店。"
+     ],
+     "answer": 0,
+     "why": "On va d'abord au magasin, puis on achète."
+    }
+   ]
+  },
+  {
+   "id": "2-58",
+   "code": "二58",
+   "level": 2,
+   "no": 106,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "比较句",
+   "content": "比较句2： （1）A比B +形容词+数量补语（2）A比B +更/还+形容词（3）A不如B（+形容词）（4）A有B（+这么/那么）+形容词",
+   "title": "Comparaison (2) : écart, 更, 不如, 有……这么",
+   "explanation": "(1) A 比 B + adj. + écart : 他比我大两岁. (2) A 比 B + 更 / 还 + adj. : encore plus. (3) A 不如 B (+ adj.) : A ne vaut pas B. (4) A 有 B (这么 / 那么) + adj. : aussi … que.",
+   "pattern": "A比B+adj.+écart · A比B+更+adj. · A不如B",
+   "examples": [
+    {
+     "zh": "今天比昨天还冷。",
+     "fr": "Il fait encore plus froid qu'hier."
+    },
+    {
+     "zh": "坐公交车不如坐地铁快。",
+     "fr": "Le bus est moins rapide que le métro."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他比我（　）高。",
+     "options": [
+      "非常",
+      "很",
+      "更"
+     ],
+     "answer": 2,
+     "why": "Avec 比, on renforce avec 更 / 还, jamais 很."
+    },
+    {
+     "q": "Comment dire « Mon chinois ne vaut pas le sien » ?",
+     "options": [
+      "我的汉语没比他。",
+      "我的汉语比他不。",
+      "我的汉语不如他。"
+     ],
+     "answer": 2,
+     "why": "A 不如 B = A ne vaut pas B."
+    }
+   ]
+  },
+  {
+   "id": "2-59",
+   "code": "二59",
+   "level": 2,
+   "no": 107,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "比较句",
+   "content": "比较句3：（1）A跟B一样/相同（2）A跟B一样+形容词",
+   "title": "Comparaison (3) : A 跟 B 一样",
+   "explanation": "A 跟 B 一样 = A est pareil que B. A 跟 B 一样 + adj. = A est aussi … que B. Négation : 不一样.",
+   "pattern": "A + 跟 + B + 一样 (+ adj.)",
+   "examples": [
+    {
+     "zh": "我的手机跟你的一样。",
+     "fr": "Mon téléphone est le même que le tien."
+    },
+    {
+     "zh": "他跟他哥哥一样高。",
+     "fr": "Il est aussi grand que son grand frère."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这两件衣服的颜色（　）。",
+     "options": [
+      "比",
+      "一样",
+      "更"
+     ],
+     "answer": 1,
+     "why": "« Identique » : 一样."
+    }
+   ]
+  },
+  {
+   "id": "2-60",
+   "code": "二60",
+   "level": 2,
+   "no": 108,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "“是……的”句",
+   "content": "“是……的”句1：强调时间、地点、方式、动作者",
+   "title": "是……的 (1) : insister sur quand, où, comment, qui",
+   "explanation": "Pour une action déjà passée, on met en relief une circonstance entre 是 et 的 : 我是昨天来的 (c'est HIER que je suis venu). 是 peut être omis ; jamais 的.",
+   "pattern": "sujet + (是) + temps / lieu / manière + verbe + 的",
+   "examples": [
+    {
+     "zh": "你是怎么来的？—— 我是坐飞机来的。",
+     "fr": "Comment es-tu venu ? — En avion."
+    },
+    {
+     "zh": "这本书是在哪儿买的？",
+     "fr": "Où as-tu acheté ce livre ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）什么时候到的？",
+     "options": [
+      "是",
+      "在",
+      "有"
+     ],
+     "answer": 0,
+     "why": "Mise en relief du moment : 是……的."
+    },
+    {
+     "q": "我是去年来中国（　）。",
+     "options": [
+      "了",
+      "的",
+      "过"
+     ],
+     "answer": 1,
+     "why": "La structure 是……的 se termine par 的."
+    }
+   ]
+  },
+  {
+   "id": "2-61",
+   "code": "二61",
+   "level": 2,
+   "no": 109,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "双宾语句",
+   "content": "（1）主语+动词+宾语1+宾语2 （2）主语+动词+给+宾语1+宾语2",
+   "title": "Double objet : donner quelque chose à quelqu'un",
+   "explanation": "Certains verbes (给、送、问、教、告诉…) prennent deux objets : personne puis chose : 他给我一本书 · 老师教我们汉语. Ou : verbe + 给 + personne + chose : 送给她一个礼物.",
+   "pattern": "verbe + personne + chose · verbe + 给 + personne + chose",
+   "examples": [
+    {
+     "zh": "我想问你一个问题。",
+     "fr": "Je voudrais te poser une question."
+    },
+    {
+     "zh": "他送给我一件礼物。",
+     "fr": "Il m'a offert un cadeau."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "王老师我们教汉语。",
+      "王老师教汉语我们。",
+      "王老师教我们汉语。"
+     ],
+     "answer": 2,
+     "why": "Personne d'abord, chose ensuite."
+    }
+   ]
+  },
+  {
+   "id": "2-62",
+   "code": "二62",
+   "level": 2,
+   "no": 110,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "承接复句",
+   "content": "（1）不用关联词语（2）用关联词语：先……，再/然后……",
+   "title": "Succession : 先……，再 / 然后……",
+   "explanation": "先 = d'abord ; 再 / 然后 = ensuite. Deux actions dans l'ordre : 我们先吃饭，再看电影.",
+   "pattern": "先 + V1，再 / 然后 + V2",
+   "examples": [
+    {
+     "zh": "你先洗手，再吃饭。",
+     "fr": "Lave-toi d'abord les mains, puis mange."
+    },
+    {
+     "zh": "我先去银行，然后去超市。",
+     "fr": "Je vais d'abord à la banque, ensuite au supermarché."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我们先坐地铁，（　）走路去。",
+     "options": [
+      "所以",
+      "然后",
+      "但是"
+     ],
+     "answer": 1,
+     "why": "« D'abord…, ensuite… » : 先……然后……"
+    }
+   ]
+  },
+  {
+   "id": "2-63",
+   "code": "二63",
+   "level": 2,
+   "no": 111,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "递进复句",
+   "content": "（1）不用关联词语（2）用关联词语：……，更/还……；不但……，而且……",
+   "title": "Gradation : 更 / 还, 不但……而且……",
+   "explanation": "不但……，而且…… = non seulement…, mais en plus… On ajoute une information plus forte.",
+   "pattern": "不但 + A，而且 + B",
+   "examples": [
+    {
+     "zh": "他不但会说汉语，而且说得很好。",
+     "fr": "Non seulement il parle chinois, mais il le parle très bien."
+    },
+    {
+     "zh": "这儿不但便宜，而且很干净。",
+     "fr": "Ici, c'est non seulement bon marché, mais aussi très propre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她不但漂亮，（　）很聪明。",
+     "options": [
+      "而且",
+      "所以",
+      "但是"
+     ],
+     "answer": 0,
+     "why": "不但……而且…… : non seulement… mais aussi."
+    }
+   ]
+  },
+  {
+   "id": "2-64",
+   "code": "二64",
+   "level": 2,
+   "no": 112,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "选择复句",
+   "content": "（1）不用关联词语（2）用关联词语：（是）……，还是……",
+   "title": "Choix : (是)……，还是……",
+   "explanation": "Pour proposer une alternative dans une question : 你是今天走，还是明天走？",
+   "pattern": "(是) + A，还是 + B ？",
+   "examples": [
+    {
+     "zh": "你是坐飞机去，还是坐火车去？",
+     "fr": "Tu y vas en avion ou en train ?"
+    },
+    {
+     "zh": "你想吃米饭，还是吃面条？",
+     "fr": "Tu veux manger du riz ou des nouilles ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你是喝茶，（　）喝咖啡？",
+     "options": [
+      "而且",
+      "还是",
+      "或者"
+     ],
+     "answer": 1,
+     "why": "Question de choix → 还是."
+    }
+   ]
+  },
+  {
+   "id": "2-65",
+   "code": "二65",
+   "level": 2,
+   "no": 113,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "转折复句",
+   "content": "（1）不用关联词语（2）用关联词语：虽然……，但是/可是……；……，不过……",
+   "title": "Opposition : 虽然……，但是 / 可是……",
+   "explanation": "虽然 = bien que ; la seconde proposition commence par 但是 / 可是 (les deux s'emploient ensemble, contrairement au français). Aussi : ……，不过…… (mais, plus doux).",
+   "pattern": "虽然 + A，但是 / 可是 + B",
+   "examples": [
+    {
+     "zh": "虽然下雨了，但是我们还是去了。",
+     "fr": "Bien qu'il ait plu, nous y sommes quand même allés."
+    },
+    {
+     "zh": "这个菜很好吃，不过有点儿贵。",
+     "fr": "Ce plat est très bon, mais un peu cher."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "虽然他很累，（　）他还在工作。",
+     "options": [
+      "而且",
+      "所以",
+      "但是"
+     ],
+     "answer": 2,
+     "why": "虽然…… se complète par 但是 / 可是."
+    }
+   ]
+  },
+  {
+   "id": "2-66",
+   "code": "二66",
+   "level": 2,
+   "no": 114,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "假设复句",
+   "content": "（1）不用关联词语（2）用关联词语：如果……，就……；……的话，就……",
+   "title": "Hypothèse : 如果……，就…… / ……的话，就……",
+   "explanation": "如果 = si ; la conséquence est souvent introduite par 就 (devant le verbe). ……的话 peut remplacer ou accompagner 如果.",
+   "pattern": "如果 + A，(主语) + 就 + B · A + 的话，就 + B",
+   "examples": [
+    {
+     "zh": "如果你不忙，就来我家吃饭吧。",
+     "fr": "Si tu n'es pas occupé, viens manger chez moi."
+    },
+    {
+     "zh": "明天下雨的话，我们就不去了。",
+     "fr": "S'il pleut demain, nous n'irons pas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "如果你有问题，（　）问老师。",
+     "options": [
+      "就",
+      "都",
+      "才"
+     ],
+     "answer": 0,
+     "why": "如果……就…… : si…, alors…."
+    }
+   ]
+  },
+  {
+   "id": "2-67",
+   "code": "二67",
+   "level": 2,
+   "no": 115,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "条件复句",
+   "content": "只要……，就……",
+   "title": "Condition suffisante : 只要……，就……",
+   "explanation": "只要 = il suffit que, du moment que ; 就 introduit le résultat : 只要努力，就能学好.",
+   "pattern": "只要 + condition，就 + résultat",
+   "examples": [
+    {
+     "zh": "只要你每天练习，就能说得很好。",
+     "fr": "Il suffit de pratiquer tous les jours pour bien parler."
+    },
+    {
+     "zh": "只要你喜欢，就送给你。",
+     "fr": "Du moment que ça te plaît, je te l'offre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）不下雨，我们就去爬山。",
+     "options": [
+      "虽然",
+      "因为",
+      "只要"
+     ],
+     "answer": 2,
+     "why": "« Du moment qu'il ne pleut pas » : 只要……就……"
+    }
+   ]
+  },
+  {
+   "id": "2-68",
+   "code": "二68",
+   "level": 2,
+   "no": 116,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "因果复句",
+   "content": "（1）不用关联词语（2）用关联词语：因为……，所以……",
+   "title": "Cause et conséquence : 因为……，所以……",
+   "explanation": "因为 = parce que ; 所以 = donc. En chinois, on emploie souvent les deux dans la même phrase.",
+   "pattern": "因为 + cause，所以 + conséquence",
+   "examples": [
+    {
+     "zh": "因为下雨，所以我没去。",
+     "fr": "Comme il pleuvait, je n'y suis pas allé."
+    },
+    {
+     "zh": "我今天很累，因为昨天睡得太晚了。",
+     "fr": "Je suis fatigué aujourd'hui, parce que je me suis couché trop tard hier."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "因为他生病了，（　）今天没来上课。",
+     "options": [
+      "而且",
+      "但是",
+      "所以"
+     ],
+     "answer": 2,
+     "why": "因为…… va avec 所以……"
+    }
+   ]
+  },
+  {
+   "id": "2-69",
+   "code": "二69",
+   "level": 2,
+   "no": 117,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "紧缩复句",
+   "content": "一……就……",
+   "title": "一……就…… : dès que",
+   "explanation": "一 + action 1 + 就 + action 2 = dès que A, B : 他一回家就睡觉. Aussi pour une habitude : 我一喝咖啡就睡不着.",
+   "pattern": "一 + V1，就 + V2",
+   "examples": [
+    {
+     "zh": "我一到家就给你打电话。",
+     "fr": "Je t'appelle dès que j'arrive à la maison."
+    },
+    {
+     "zh": "他一喝酒就脸红。",
+     "fr": "Dès qu'il boit de l'alcool, il rougit."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "老师一进教室，学生们（　）不说话了。",
+     "options": [
+      "都",
+      "就",
+      "才"
+     ],
+     "answer": 1,
+     "why": "一……就…… : dès que…"
+    }
+   ]
+  },
+  {
+   "id": "2-70",
+   "code": "二70",
+   "level": 2,
+   "no": 118,
+   "item": "动作的态",
+   "category": "动作的态",
+   "detail": "持续态",
+   "content": "动词+着 （1）表示状态的持续（2）表示动作的持续",
+   "title": "Verbe + 着 : état ou action qui se prolonge",
+   "explanation": "(1) État qui dure : 门开着 · 他穿着一件黑衣服. (2) Action qui continue, souvent comme manière d'une autre : 他笑着说 (il dit en souriant). Négation : 没 + verbe + 着.",
+   "pattern": "verbe + 着 · V1 + 着 + V2",
+   "examples": [
+    {
+     "zh": "外面下着雨。",
+     "fr": "Il pleut dehors."
+    },
+    {
+     "zh": "她听着音乐做作业。",
+     "fr": "Elle fait ses devoirs en écoutant de la musique."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他站（　）跟我说话。",
+     "options": [
+      "过",
+      "得",
+      "着"
+     ],
+     "answer": 2,
+     "why": "Manière dont se fait l'action (debout) : V + 着 + V2."
+    }
+   ]
+  },
+  {
+   "id": "2-71",
+   "code": "二71",
+   "level": 2,
+   "no": 119,
+   "item": "动作的态",
+   "category": "动作的态",
+   "detail": "经历态",
+   "content": "用动态助词“过”表示",
+   "title": "过 : l'expérience",
+   "explanation": "Verbe + 过 indique qu'on a déjà fait l'expérience au moins une fois : 我学过汉语. Question : ……过……吗？ / ……过没有？",
+   "pattern": "verbe + 过 (+ objet) · 没 + verbe + 过",
+   "examples": [
+    {
+     "zh": "你吃过中国菜吗？",
+     "fr": "Tu as déjà mangé de la cuisine chinoise ?"
+    },
+    {
+     "zh": "我从来没去过。",
+     "fr": "Je n'y suis jamais allé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我以前学（　）一点儿法语。",
+     "options": [
+      "过",
+      "得",
+      "着"
+     ],
+     "answer": 0,
+     "why": "Une expérience passée → 过."
+    }
+   ]
+  },
+  {
+   "id": "2-72",
+   "code": "二72",
+   "level": 2,
+   "no": 120,
+   "item": "特殊表达法",
+   "category": "数的表示法",
+   "detail": "",
+   "content": "序数表示法",
+   "title": "Les nombres ordinaux : 第……",
+   "explanation": "第 + nombre = ordinal : 第一 (premier), 第二次 (la deuxième fois), 第三天 (le troisième jour).",
+   "pattern": "第 + nombre (+ spécificatif + nom)",
+   "examples": [
+    {
+     "zh": "这是我第一次来中国。",
+     "fr": "C'est la première fois que je viens en Chine."
+    },
+    {
+     "zh": "他是第二个到的。",
+     "fr": "Il est arrivé le deuxième."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « la troisième leçon » ?",
+     "options": [
+      "三课第",
+      "第三课",
+      "三第课"
+     ],
+     "answer": 1,
+     "why": "第 + nombre + nom."
+    }
+   ]
+  },
+  {
+   "id": "2-73",
+   "code": "二73",
+   "level": 2,
+   "no": 121,
+   "item": "特殊表达法",
+   "category": "数的表示法",
+   "detail": "",
+   "content": "概数表示法1： （1）数词+多+量词（2）数词+量词+多",
+   "title": "Nombres approximatifs (1) : nombre + 多",
+   "explanation": "多 = « et quelques », « plus de ». Avec un nombre rond : 二十多个人 (une vingtaine de personnes). Avec un nombre simple et un spécificatif continu : 三个多小时 (plus de trois heures).",
+   "pattern": "nombre rond + 多 + spécificatif · nombre + spécificatif + 多",
+   "examples": [
+    {
+     "zh": "我们班有三十多个学生。",
+     "fr": "Notre classe compte une trentaine d'élèves."
+    },
+    {
+     "zh": "我等了一个多小时。",
+     "fr": "J'ai attendu plus d'une heure."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « plus de cent yuans » ?",
+     "options": [
+      "多一百块",
+      "一百多块",
+      "一百块多"
+     ],
+     "answer": 1,
+     "why": "Avec un nombre rond, 多 vient après le nombre : 一百多块."
+    }
+   ]
+  },
+  {
+   "id": "2-74",
+   "code": "二74",
+   "level": 2,
+   "no": 122,
+   "item": "强调的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“就”表示强调 ※“是……的”表示强调 (见【二60】“‘是......的’ 句1”和【四42 】“‘是......的’句2\")",
+   "title": "Insister avec 就",
+   "explanation": "就 met en relief : 就是他 (c'est justement lui), 我家就在这儿 (j'habite juste ici).",
+   "pattern": "就 + 是 / verbe",
+   "examples": [
+    {
+     "zh": "银行就在前边。",
+     "fr": "La banque est juste devant."
+    },
+    {
+     "zh": "我说的就是这本书。",
+     "fr": "C'est justement de ce livre que je parle."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你找王老师？我（　）是。",
+     "options": [
+      "才",
+      "都",
+      "就"
+     ],
+     "answer": 2,
+     "why": "« C'est justement moi » : 我就是."
+    }
+   ]
+  },
+  {
+   "id": "2-75",
+   "code": "二75",
+   "level": 2,
+   "no": 123,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“好吗/可以吗/行吗/怎么样”提问",
+   "title": "Proposer avec 好吗 / 可以吗 / 行吗 / 怎么样",
+   "explanation": "On fait une proposition, puis on demande l'accord de l'autre en fin de phrase : 我们明天去，好吗？",
+   "pattern": "proposition，好吗 / 可以吗 / 行吗 / 怎么样？",
+   "examples": [
+    {
+     "zh": "我们一起去吃饭，怎么样？",
+     "fr": "Si on allait manger ensemble ?"
+    },
+    {
+     "zh": "我用一下你的电脑，可以吗？",
+     "fr": "Je peux utiliser ton ordinateur un instant ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment proposer poliment d'ouvrir la fenêtre ?",
+     "options": [
+      "我开一下窗户，可以吗？",
+      "我开一下窗户，为什么？",
+      "我开一下窗户，什么？"
+     ],
+     "answer": 0,
+     "why": "Proposition + 可以吗 ?"
+    }
+   ]
+  },
+  {
+   "id": "2-76",
+   "code": "二76",
+   "level": 2,
+   "no": 124,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“什么时候、什么样、为什么、怎么样、怎样”提问",
+   "title": "Questions : 什么时候、什么样、为什么、怎么样、怎样",
+   "explanation": "什么时候 = quand · 什么样 = de quel genre · 为什么 = pourquoi · 怎么样 / 怎样 = comment (état, avis).",
+   "pattern": "什么时候 + verbe · 什么样的 + nom",
+   "examples": [
+    {
+     "zh": "你什么时候回国？",
+     "fr": "Quand rentres-tu dans ton pays ?"
+    },
+    {
+     "zh": "你喜欢什么样的电影？",
+     "fr": "Quel genre de films aimes-tu ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）去北京？—— 下个月。",
+     "options": [
+      "怎么样",
+      "什么样",
+      "什么时候"
+     ],
+     "answer": 2,
+     "why": "La réponse est un moment → 什么时候."
+    }
+   ]
+  },
+  {
+   "id": "2-77",
+   "code": "二77",
+   "level": 2,
+   "no": 125,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“呢”构成的省略式疑问句“代词/名词+呢？”提问",
+   "title": "Question elliptique : nom / pronom + 呢 ?",
+   "explanation": "呢 reprend une question déjà posée (你呢？= et toi ?) ou demande où est quelque chose : 我的手机呢？(où est mon téléphone ?).",
+   "pattern": "nom / pronom + 呢 ？",
+   "examples": [
+    {
+     "zh": "我是法国人，你呢？",
+     "fr": "Je suis français, et toi ?"
+    },
+    {
+     "zh": "妈妈呢？—— 她在厨房。",
+     "fr": "Où est maman ? — Dans la cuisine."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我的书（　）？我找不到了。",
+     "options": [
+      "吗",
+      "呢",
+      "吧"
+     ],
+     "answer": 1,
+     "why": "« Où est mon livre ? » : 我的书呢 ?"
+    }
+   ]
+  },
+  {
+   "id": "2-78",
+   "code": "二78",
+   "level": 2,
+   "no": 126,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“是不是”提问",
+   "title": "Questions avec 是不是",
+   "explanation": "是不是 demande une confirmation ; il se place devant le prédicat ou en fin de phrase : 你是不是生病了？/ 你生病了，是不是？",
+   "pattern": "sujet + 是不是 + prédicat ？ · phrase，是不是？",
+   "examples": [
+    {
+     "zh": "你是不是不舒服？",
+     "fr": "Tu ne te sens pas bien, c'est ça ?"
+    },
+    {
+     "zh": "明天考试，是不是？",
+     "fr": "Il y a un examen demain, c'est bien ça ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）不喜欢这个菜？",
+     "options": [
+      "是吗",
+      "吗",
+      "是不是"
+     ],
+     "answer": 2,
+     "why": "Demande de confirmation au milieu de la phrase : 是不是."
+    }
+   ]
+  },
+  {
+   "id": "2-79",
+   "code": "二79",
+   "level": 2,
+   "no": 127,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“吧”提问",
+   "title": "Questions avec 吧 (supposition)",
+   "explanation": "吧 en fin de phrase interroge en supposant déjà la réponse : 你是学生吧？(Tu es étudiant, non ?).",
+   "pattern": "supposition + 吧 ？",
+   "examples": [
+    {
+     "zh": "你累了吧？",
+     "fr": "Tu es fatigué, non ?"
+    },
+    {
+     "zh": "他还没来吧？",
+     "fr": "Il n'est pas encore arrivé, je suppose ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle question exprime une supposition ?",
+     "options": [
+      "你是新来的吗？",
+      "你是不是新来的吗？",
+      "你是新来的吧？"
+     ],
+     "answer": 2,
+     "why": "吧 indique qu'on pense déjà connaître la réponse."
+    }
+   ]
+  },
+  {
+   "id": "2-80",
+   "code": "二80",
+   "level": 2,
+   "no": 128,
+   "item": "口语格式",
+   "category": "",
+   "detail": "",
+   "content": "该……了",
+   "title": "该……了 : c'est l'heure de",
+   "explanation": "该 + verbe + 了 = il est temps de, c'est le moment de : 该睡觉了.",
+   "pattern": "(sujet) + 该 + verbe + 了",
+   "examples": [
+    {
+     "zh": "十二点了，该吃午饭了。",
+     "fr": "Il est midi, c'est l'heure de déjeuner."
+    },
+    {
+     "zh": "我该走了。",
+     "fr": "Je dois y aller."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "已经十一点了，你（　）睡觉了。",
+     "options": [
+      "就",
+      "该",
+      "才"
+     ],
+     "answer": 1,
+     "why": "« Il est temps de dormir » : 该……了."
+    }
+   ]
+  },
+  {
+   "id": "2-81",
+   "code": "二81",
+   "level": 2,
+   "no": 129,
+   "item": "口语格式",
+   "category": "",
+   "detail": "",
+   "content": "要/快要/就要……了",
+   "title": "要 / 快要 / 就要……了 : bientôt",
+   "explanation": "(快)要 + verbe + 了 = être sur le point de : 火车快要开了. Avec un moment précis, on emploie 就要……了 (pas 快要) : 明天就要考试了.",
+   "pattern": "快要 / 就要 / 要 + verbe + 了",
+   "examples": [
+    {
+     "zh": "快要下雨了，带上伞吧。",
+     "fr": "Il va bientôt pleuvoir, prends un parapluie."
+    },
+    {
+     "zh": "下个月他就要结婚了。",
+     "fr": "Il se marie le mois prochain."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "明天（　）放假了，我很高兴。",
+     "options": [
+      "就要",
+      "快要",
+      "才"
+     ],
+     "answer": 0,
+     "why": "Avec un moment précis (明天), on dit 就要……了."
+    }
+   ]
+  },
+  {
+   "id": "3-01",
+   "code": "三01",
+   "level": 3,
+   "no": 130,
+   "item": "语素",
+   "category": "前缀",
+   "detail": "",
+   "content": "第-、老-、小-",
+   "title": "Préfixes : 第-、老-、小-",
+   "explanation": "第 + nombre forme les ordinaux (第一). 老 / 小 + nom de famille servent d'appellations familières : 老王 (pour quelqu'un de plus âgé), 小李 (pour quelqu'un de plus jeune). 老 se retrouve aussi dans 老师、老虎.",
+   "pattern": "第 + nombre · 老 / 小 + nom de famille",
+   "examples": [
+    {
+     "zh": "老王，你今天怎么来这么早？",
+     "fr": "Lao Wang, pourquoi tu es venu si tôt aujourd'hui ?"
+    },
+    {
+     "zh": "小李是我们公司最年轻的同事。",
+     "fr": "Xiao Li est la plus jeune collègue de notre entreprise."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他比我小十岁，我叫他（　）张。",
+     "options": [
+      "小",
+      "第",
+      "老"
+     ],
+     "answer": 0,
+     "why": "Pour quelqu'un de plus jeune, on dit 小 + nom."
+    }
+   ]
+  },
+  {
+   "id": "3-02",
+   "code": "三02",
+   "level": 3,
+   "no": 131,
+   "item": "语素",
+   "category": "后缀",
+   "detail": "",
+   "content": "-儿、-家、-们、-头、-子",
+   "title": "Suffixes : -儿、-家、-们、-头、-子",
+   "explanation": "儿 (oral du Nord) : 一点儿、玩儿 · 家 = spécialiste : 画家 (peintre), 作家 · 们 = pluriel des personnes · 头 et 子 forment des noms : 石头 (pierre), 桌子、孩子.",
+   "pattern": "radical + 儿 / 家 / 们 / 头 / 子",
+   "examples": [
+    {
+     "zh": "他是一位有名的画家。",
+     "fr": "C'est un peintre célèbre."
+    },
+    {
+     "zh": "同学们，请安静！",
+     "fr": "Les élèves, silence s'il vous plaît !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他画画画得特别好，是一位画（　）。",
+     "options": [
+      "子",
+      "们",
+      "家"
+     ],
+     "answer": 2,
+     "why": "家 désigne le spécialiste d'un domaine."
+    }
+   ]
+  },
+  {
+   "id": "3-03",
+   "code": "三03",
+   "level": 3,
+   "no": 132,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "敢",
+   "title": "敢 : oser",
+   "explanation": "敢 + verbe = oser faire. Négation fréquente : 不敢 (ne pas oser).",
+   "pattern": "sujet + (不) 敢 + verbe",
+   "examples": [
+    {
+     "zh": "我不敢一个人晚上出去。",
+     "fr": "Je n'ose pas sortir seul le soir."
+    },
+    {
+     "zh": "你敢吃这么辣的菜吗？",
+     "fr": "Tu oses manger un plat aussi épicé ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她很怕狗，不（　）走近。",
+     "options": [
+      "会",
+      "敢",
+      "该"
+     ],
+     "answer": 1,
+     "why": "« Elle n'ose pas s'approcher » : 不敢."
+    }
+   ]
+  },
+  {
+   "id": "3-04",
+   "code": "三04",
+   "level": 3,
+   "no": 133,
+   "item": "词类",
+   "category": "动词",
+   "detail": "能愿动词",
+   "content": "需要",
+   "title": "需要 : avoir besoin de",
+   "explanation": "需要 + nom ou verbe = avoir besoin de, il faut : 我需要你的帮助 · 你需要休息. Négation : 不需要.",
+   "pattern": "需要 + nom / verbe",
+   "examples": [
+    {
+     "zh": "这件事需要两个人一起做。",
+     "fr": "Il faut être deux pour faire ça."
+    },
+    {
+     "zh": "你不需要带护照。",
+     "fr": "Tu n'as pas besoin d'emporter ton passeport."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你病了，（　）好好儿休息。",
+     "options": [
+      "愿意",
+      "敢",
+      "需要"
+     ],
+     "answer": 2,
+     "why": "Un besoin → 需要."
+    }
+   ]
+  },
+  {
+   "id": "3-05",
+   "code": "三05",
+   "level": 3,
+   "no": 134,
+   "item": "词类",
+   "category": "动词",
+   "detail": "离合词",
+   "content": "动宾式离合词：帮忙、点头、放假、干杯、见面、结婚、看病、睡觉、洗澡、理发、说话",
+   "title": "Verbes séparables verbe-objet : 帮忙、见面、睡觉、结婚…",
+   "explanation": "Ces verbes sont formés d'un verbe et d'un objet ; ils ne prennent pas d'objet direct. Ce qui s'ajoute se place AU MILIEU : 帮我的忙、见过一次面、睡了八个小时觉. La personne s'introduit avec 跟 / 和 : 跟他见面 (et non 见面他).",
+   "pattern": "跟 + personne + 见面 · 帮 + personne + 的忙 · V + 了 / 过 + durée + O",
+   "examples": [
+    {
+     "zh": "我明天跟朋友见面。",
+     "fr": "Demain, je vois un ami."
+    },
+    {
+     "zh": "你能帮我一个忙吗？",
+     "fr": "Tu peux me rendre un service ?"
+    },
+    {
+     "zh": "他们结婚三年了。",
+     "fr": "Ils sont mariés depuis trois ans."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我想跟他见面。",
+      "我想见面他。",
+      "我想见他面跟。"
+     ],
+     "answer": 0,
+     "why": "见面 ne prend pas d'objet : la personne vient avec 跟."
+    },
+    {
+     "q": "昨天我只睡了五个小时（　）。",
+     "options": [
+      "睡觉",
+      "觉",
+      "了"
+     ],
+     "answer": 1,
+     "why": "La durée se met entre 睡 et 觉 : 睡了五个小时觉."
+    }
+   ]
+  },
+  {
+   "id": "3-06",
+   "code": "三06",
+   "level": 3,
+   "no": 135,
+   "item": "词类",
+   "category": "动词",
+   "detail": "离合词",
+   "content": "动补式离合词：打开、看见、离开、完成",
+   "title": "Verbes séparables verbe-résultat : 打开、看见、离开、完成",
+   "explanation": "Verbe + résultat formant un mot ; on peut insérer 得 / 不 pour le potentiel : 看得见 (pouvoir voir), 打不开 (ne pas arriver à ouvrir).",
+   "pattern": "V + 得 / 不 + résultat",
+   "examples": [
+    {
+     "zh": "门打不开，你帮我看看。",
+     "fr": "La porte ne s'ouvre pas, regarde pour moi."
+    },
+    {
+     "zh": "你看得见前面的字吗？",
+     "fr": "Tu arrives à voir les caractères devant ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "字太小了，我看不（　）。",
+     "options": [
+      "见",
+      "完",
+      "开"
+     ],
+     "answer": 0,
+     "why": "« Je n'arrive pas à voir » : 看不见."
+    }
+   ]
+  },
+  {
+   "id": "3-07",
+   "code": "三07",
+   "level": 3,
+   "no": 136,
+   "item": "词类",
+   "category": "代词",
+   "detail": "疑问代词",
+   "content": "疑问代词的非疑问用法 （1）任指用法 ①疑问代词+都……②疑问代词……疑问代词……（2）不定指用法",
+   "title": "Emploi non interrogatif des mots interrogatifs",
+   "explanation": "(1) Sens universel : interrogatif + 都 / 也 : 谁都知道 (tout le monde sait), 什么都不想吃 (rien ne me fait envie). (2) Répété : 你想吃什么就吃什么 (mange ce que tu veux). (3) Sens indéfini : 我想吃点儿什么 (quelque chose).",
+   "pattern": "interrogatif + 都 / 也 · ……什么，就……什么",
+   "examples": [
+    {
+     "zh": "这个问题谁都会回答。",
+     "fr": "Tout le monde sait répondre à cette question."
+    },
+    {
+     "zh": "你想去哪儿，我们就去哪儿。",
+     "fr": "On va où tu veux."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我今天很累，哪儿（　）不想去。",
+     "options": [
+      "就",
+      "也",
+      "还"
+     ],
+     "answer": 1,
+     "why": "« Nulle part » : 哪儿也 / 都 + négation."
+    }
+   ]
+  },
+  {
+   "id": "3-08",
+   "code": "三08",
+   "level": 3,
+   "no": 137,
+   "item": "词类",
+   "category": "代词",
+   "detail": "指示代词",
+   "content": "各、各位、各种、每、任何",
+   "title": "各、各位、各种、每、任何",
+   "explanation": "各 = chaque, divers (各国) · 各位 = vous tous (poli) · 各种 = toutes sortes de · 每 + spécificatif = chaque (souvent avec 都) · 任何 = n'importe quel (souvent avec 都 / 也).",
+   "pattern": "每 + spécificatif + nom + 都 · 任何 + nom + 都 / 也",
+   "examples": [
+    {
+     "zh": "各位朋友，欢迎你们！",
+     "fr": "Chers amis, bienvenue à vous tous !"
+    },
+    {
+     "zh": "这里有各种水果。",
+     "fr": "Il y a toutes sortes de fruits ici."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）个学生都要参加考试。",
+     "options": [
+      "任何的",
+      "每",
+      "各种"
+     ],
+     "answer": 1,
+     "why": "« Chaque élève » : 每个学生 + 都."
+    }
+   ]
+  },
+  {
+   "id": "3-09",
+   "code": "三09",
+   "level": 3,
+   "no": 138,
+   "item": "词类",
+   "category": "量词",
+   "detail": "名量词",
+   "content": "把、行、架、群、束、双、台、张、支、只、种",
+   "title": "Spécificatifs (3) : 把、张、只、双、台、种…",
+   "explanation": "把 : objet à poignée (chaise, parapluie) · 张 : objet plat (table, papier, billet) · 只 : animal, une main / un pied · 双 : paire · 台 : machine · 种 : sorte · 支 : stylo · 群 : groupe · 束 : bouquet · 架 : avion · 行 : ligne.",
+   "pattern": "nombre + spécificatif + nom",
+   "examples": [
+    {
+     "zh": "我买了一双鞋。",
+     "fr": "J'ai acheté une paire de chaussures."
+    },
+    {
+     "zh": "桌子上有两张票。",
+     "fr": "Il y a deux billets sur la table."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "外面下雨，带一（　）伞吧。",
+     "options": [
+      "双",
+      "把",
+      "张"
+     ],
+     "answer": 1,
+     "why": "Un parapluie (objet à poignée) : 把."
+    },
+    {
+     "q": "他养了三（　）猫。",
+     "options": [
+      "条",
+      "只",
+      "台"
+     ],
+     "answer": 1,
+     "why": "Pour les animaux comme le chat : 只."
+    }
+   ]
+  },
+  {
+   "id": "3-10",
+   "code": "三10",
+   "level": 3,
+   "no": 139,
+   "item": "词类",
+   "category": "量词",
+   "detail": "动量词",
+   "content": "顿、口、眼",
+   "title": "Spécificatifs verbaux (2) : 顿、口、眼",
+   "explanation": "顿 : un repas, une réprimande (吃一顿饭) · 口 : une bouchée, une gorgée (喝一口水) · 眼 : un regard (看了一眼).",
+   "pattern": "verbe + nombre + 顿 / 口 / 眼",
+   "examples": [
+    {
+     "zh": "我们一起吃顿饭吧。",
+     "fr": "Prenons un repas ensemble."
+    },
+    {
+     "zh": "他看了我一眼。",
+     "fr": "Il m'a jeté un regard."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你尝一（　），很好吃。",
+     "options": [
+      "眼",
+      "顿",
+      "口"
+     ],
+     "answer": 2,
+     "why": "Goûter une bouchée : 一口."
+    }
+   ]
+  },
+  {
+   "id": "3-11",
+   "code": "三11",
+   "level": 3,
+   "no": 140,
+   "item": "词类",
+   "category": "量词",
+   "detail": "量词重叠",
+   "content": "量词重叠：AA",
+   "title": "Redoublement du spécificatif : AA",
+   "explanation": "Un spécificatif redoublé signifie « chaque, tous sans exception » : 个个 (chacun), 天天 (tous les jours), 件件 (chaque pièce). Souvent suivi de 都.",
+   "pattern": "spécificatif redoublé + 都",
+   "examples": [
+    {
+     "zh": "这些苹果个个都很甜。",
+     "fr": "Ces pommes sont toutes très sucrées."
+    },
+    {
+     "zh": "他天天都锻炼身体。",
+     "fr": "Il fait du sport tous les jours."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他们班的学生（　）都很努力。",
+     "options": [
+      "个每",
+      "各个个",
+      "个个"
+     ],
+     "answer": 2,
+     "why": "« Chacun » : spécificatif redoublé 个个."
+    }
+   ]
+  },
+  {
+   "id": "3-12",
+   "code": "三12",
+   "level": 3,
+   "no": 141,
+   "item": "词类",
+   "category": "副词",
+   "detail": "程度副词",
+   "content": "比较、更加、还3、相当",
+   "title": "Degré (3) : 比较、更加、还、相当",
+   "explanation": "比较 = assez, plutôt · 更加 = encore plus (écrit) · 还 = assez, passablement (还可以 = ça va) · 相当 = assez, considérablement.",
+   "pattern": "比较 / 相当 / 更加 + adj. · 还 + adj. (modéré)",
+   "examples": [
+    {
+     "zh": "今天比较冷。",
+     "fr": "Il fait plutôt froid aujourd'hui."
+    },
+    {
+     "zh": "这家店的菜还不错。",
+     "fr": "La cuisine de ce restaurant n'est pas mal."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这次考试（　）难，很多人没考好。",
+     "options": [
+      "比较不",
+      "还",
+      "相当"
+     ],
+     "answer": 2,
+     "why": "« Assez / considérablement difficile » : 相当难."
+    }
+   ]
+  },
+  {
+   "id": "3-13",
+   "code": "三13",
+   "level": 3,
+   "no": 142,
+   "item": "词类",
+   "category": "副词",
+   "detail": "范围、协同副词",
+   "content": "光、仅、仅仅、就3、至少",
+   "title": "Portée (2) : 光、仅、仅仅、就、至少",
+   "explanation": "光 / 仅 / 仅仅 / 就 = seulement (就 oral) : 就他一个人来了 · 至少 = au moins.",
+   "pattern": "光 / 仅仅 / 就 + verbe / nombre · 至少 + nombre",
+   "examples": [
+    {
+     "zh": "从这儿到机场至少要一个小时。",
+     "fr": "D'ici à l'aéroport, il faut au moins une heure."
+    },
+    {
+     "zh": "光看书不够，还要多练习。",
+     "fr": "Lire seulement ne suffit pas, il faut aussi pratiquer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件衣服（　）要三百块，太贵了。",
+     "options": [
+      "仅仅不",
+      "至少",
+      "光是了"
+     ],
+     "answer": 1,
+     "why": "« Au moins trois cents yuans » : 至少."
+    }
+   ]
+  },
+  {
+   "id": "3-14",
+   "code": "三14",
+   "level": 3,
+   "no": 143,
+   "item": "词类",
+   "category": "副词",
+   "detail": "时间副词",
+   "content": "本来、才2、曾经、从来、赶紧、赶快、立刻、连忙、始终、已、早已",
+   "title": "Temps (3) : 本来、才、曾经、从来、赶紧、立刻、终于…",
+   "explanation": "本来 = au départ · 才 = venir juste de · 曾经 = autrefois, avoir déjà · 从来 + négation = jamais · 赶紧 / 赶快 / 立刻 / 连忙 = vite, aussitôt · 始终 = du début à la fin · 早已 = depuis longtemps déjà.",
+   "pattern": "从来 + 不 / 没…… · 本来……，后来……",
+   "examples": [
+    {
+     "zh": "我本来想去，后来下雨了。",
+     "fr": "Au départ je voulais y aller, puis il s'est mis à pleuvoir."
+    },
+    {
+     "zh": "他从来不喝酒。",
+     "fr": "Il ne boit jamais d'alcool."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我（　）没去过那儿。",
+     "options": [
+      "本来",
+      "赶紧",
+      "从来"
+     ],
+     "answer": 2,
+     "why": "« Jamais » : 从来 + 没 / 不."
+    },
+    {
+     "q": "快下雨了，我们（　）回家吧。",
+     "options": [
+      "曾经",
+      "赶紧",
+      "始终"
+     ],
+     "answer": 1,
+     "why": "« Vite, sans tarder » : 赶紧."
+    }
+   ]
+  },
+  {
+   "id": "3-15",
+   "code": "三15",
+   "level": 3,
+   "no": 144,
+   "item": "词类",
+   "category": "副词",
+   "detail": "频率、重复副词",
+   "content": "通常、往往、总、总是",
+   "title": "Fréquence (3) : 通常、往往、总、总是",
+   "explanation": "通常 = habituellement · 往往 = souvent (pour une tendance constatée, dans des circonstances données) · 总 / 总是 = toujours.",
+   "pattern": "通常 / 往往 / 总是 + verbe",
+   "examples": [
+    {
+     "zh": "我通常七点起床。",
+     "fr": "D'habitude je me lève à sept heures."
+    },
+    {
+     "zh": "他总是迟到。",
+     "fr": "Il est toujours en retard."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他（　）忘记带钥匙，真让人头疼。",
+     "options": [
+      "通常不",
+      "总是",
+      "往往了"
+     ],
+     "answer": 1,
+     "why": "« Toujours » (avec reproche) : 总是."
+    }
+   ]
+  },
+  {
+   "id": "3-16",
+   "code": "三16",
+   "level": 3,
+   "no": 145,
+   "item": "词类",
+   "category": "副词",
+   "detail": "关联副词",
+   "content": "再2",
+   "title": "再 (2) : puis, ensuite (après une condition)",
+   "explanation": "再 indique qu'une action aura lieu APRÈS une autre (souvent future) : 吃了饭再走 (pars après avoir mangé), 等他来了再说 (on verra quand il sera là).",
+   "pattern": "V1 + (了) + ……，再 + V2",
+   "examples": [
+    {
+     "zh": "你先休息一下，再写作业。",
+     "fr": "Repose-toi d'abord un peu, ensuite fais tes devoirs."
+    },
+    {
+     "zh": "等雨停了再走吧。",
+     "fr": "Attends que la pluie s'arrête pour partir."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你想好了（　）回答。",
+     "options": [
+      "再",
+      "才是",
+      "又"
+     ],
+     "answer": 0,
+     "why": "Une action future après une autre → 再."
+    }
+   ]
+  },
+  {
+   "id": "3-17",
+   "code": "三17",
+   "level": 3,
+   "no": 146,
+   "item": "词类",
+   "category": "副词",
+   "detail": "方式副词",
+   "content": "互相、尽量、亲自、相互",
+   "title": "Manière : 互相、尽量、亲自、相互",
+   "explanation": "互相 / 相互 = mutuellement, l'un l'autre · 尽量 = autant que possible · 亲自 = en personne.",
+   "pattern": "互相 / 尽量 / 亲自 + verbe",
+   "examples": [
+    {
+     "zh": "同学们应该互相帮助。",
+     "fr": "Les camarades doivent s'entraider."
+    },
+    {
+     "zh": "我会尽量早点儿到。",
+     "fr": "J'essaierai d'arriver le plus tôt possible."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件事很重要，经理（　）来了。",
+     "options": [
+      "尽量",
+      "亲自",
+      "互相"
+     ],
+     "answer": 1,
+     "why": "« En personne » : 亲自."
+    }
+   ]
+  },
+  {
+   "id": "3-18",
+   "code": "三18",
+   "level": 3,
+   "no": 147,
+   "item": "词类",
+   "category": "副词",
+   "detail": "情态副词",
+   "content": "大概、恐怕",
+   "title": "大概、恐怕 : probablement, je crains que",
+   "explanation": "大概 = probablement, environ (estimation neutre) · 恐怕 = je crains que, il est probable que (estimation plutôt négative).",
+   "pattern": "大概 / 恐怕 + verbe / quantité",
+   "examples": [
+    {
+     "zh": "他大概八点到。",
+     "fr": "Il arrivera probablement vers huit heures."
+    },
+    {
+     "zh": "恐怕今天来不及了。",
+     "fr": "Je crains qu'on n'ait pas le temps aujourd'hui."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "雨这么大，比赛（　）不能进行了。",
+     "options": [
+      "大家",
+      "亲自",
+      "恐怕"
+     ],
+     "answer": 2,
+     "why": "Une crainte (estimation négative) : 恐怕."
+    }
+   ]
+  },
+  {
+   "id": "3-19",
+   "code": "三19",
+   "level": 3,
+   "no": 148,
+   "item": "词类",
+   "category": "副词",
+   "detail": "语气副词",
+   "content": "白、并1、当然、到底、反正、根本、果然、简直、绝对、难道、其实、千万、确实、只好、终于",
+   "title": "Adverbes de ton : 当然、到底、其实、终于、只好、千万…",
+   "explanation": "当然 = bien sûr · 到底 = enfin (question pressante) · 其实 = en fait · 终于 = enfin (après attente) · 只好 = n'avoir d'autre choix que · 千万 = surtout (ne pas) · 简直 = carrément · 确实 = vraiment · 难道 = se pourrait-il que · 白 = pour rien · 果然 = comme prévu · 根本 = absolument (pas) · 反正 = de toute façon · 绝对 = absolument.",
+   "pattern": "sujet + adverbe + verbe",
+   "examples": [
+    {
+     "zh": "我等了一个小时，他终于来了。",
+     "fr": "J'ai attendu une heure, il est enfin arrivé."
+    },
+    {
+     "zh": "没有车了，我们只好走路回家。",
+     "fr": "Il n'y avait plus de bus, nous avons dû rentrer à pied."
+    },
+    {
+     "zh": "你千万别告诉他。",
+     "fr": "Surtout, ne le lui dis pas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我找了很久，（　）找到了我的手机。",
+     "options": [
+      "终于",
+      "到底",
+      "千万"
+     ],
+     "answer": 0,
+     "why": "Après une longue recherche → 终于 (enfin)."
+    },
+    {
+     "q": "他看起来很年轻，（　）他已经五十岁了。",
+     "options": [
+      "当然",
+      "其实",
+      "只好"
+     ],
+     "answer": 1,
+     "why": "« En fait » (contraste avec l'apparence) : 其实."
+    }
+   ]
+  },
+  {
+   "id": "3-20",
+   "code": "三20",
+   "level": 3,
+   "no": 149,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出时间、处所",
+   "content": "由1",
+   "title": "由 (1) : à partir de, par",
+   "explanation": "由 = de, à partir de (registre écrit, proche de 从) : 由这儿出发 (partir d'ici).",
+   "pattern": "由 + lieu / moment + verbe",
+   "examples": [
+    {
+     "zh": "我们由北京出发。",
+     "fr": "Nous partons de Pékin."
+    },
+    {
+     "zh": "会议由九点开始。",
+     "fr": "La réunion commence à partir de neuf heures."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "火车（　）上海开往北京。",
+     "options": [
+      "对",
+      "为",
+      "由"
+     ],
+     "answer": 2,
+     "why": "Le point de départ (écrit) : 由."
+    }
+   ]
+  },
+  {
+   "id": "3-21",
+   "code": "三21",
+   "level": 3,
+   "no": 150,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出时间、处所",
+   "content": "自从",
+   "title": "自从 : depuis que",
+   "explanation": "自从 + moment / événement passé (+ 以后) = depuis que, à partir du moment où.",
+   "pattern": "自从 + événement + (以后)，……",
+   "examples": [
+    {
+     "zh": "自从来了中国，我每天都说汉语。",
+     "fr": "Depuis que je suis en Chine, je parle chinois tous les jours."
+    },
+    {
+     "zh": "自从他搬家以后，我们很少见面。",
+     "fr": "Depuis qu'il a déménagé, nous nous voyons rarement."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）开始跑步，他的身体越来越好了。",
+     "options": [
+      "除了",
+      "自从",
+      "为了"
+     ],
+     "answer": 1,
+     "why": "« Depuis qu'il court » : 自从……"
+    }
+   ]
+  },
+  {
+   "id": "3-22",
+   "code": "三22",
+   "level": 3,
+   "no": 151,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出方向、路径",
+   "content": "朝",
+   "title": "朝 : en direction de, face à",
+   "explanation": "朝 + direction / personne + verbe : orientation du mouvement ou du regard : 朝前看、朝我笑.",
+   "pattern": "朝 + direction + verbe",
+   "examples": [
+    {
+     "zh": "他朝我走过来。",
+     "fr": "Il s'est dirigé vers moi."
+    },
+    {
+     "zh": "我的房间朝南。",
+     "fr": "Ma chambre est orientée au sud."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她（　）我笑了笑。",
+     "options": [
+      "由",
+      "朝",
+      "被"
+     ],
+     "answer": 1,
+     "why": "Diriger son sourire vers quelqu'un : 朝."
+    }
+   ]
+  },
+  {
+   "id": "3-23",
+   "code": "三23",
+   "level": 3,
+   "no": 152,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "为2",
+   "title": "为 (2) : pour (au profit de)",
+   "explanation": "为 + personne + verbe = faire quelque chose pour quelqu'un, à son service : 为大家服务.",
+   "pattern": "为 + bénéficiaire + verbe",
+   "examples": [
+    {
+     "zh": "妈妈为我们做了很多事。",
+     "fr": "Maman a fait beaucoup de choses pour nous."
+    },
+    {
+     "zh": "我们为你准备了一个礼物。",
+     "fr": "Nous t'avons préparé un cadeau."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "老师每天都（　）学生们准备作业。",
+     "options": [
+      "由于",
+      "为",
+      "朝"
+     ],
+     "answer": 1,
+     "why": "Au profit de quelqu'un : 为."
+    }
+   ]
+  },
+  {
+   "id": "3-24",
+   "code": "三24",
+   "level": 3,
+   "no": 153,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出对象",
+   "content": "向2",
+   "title": "向 (2) : à, auprès de (destinataire)",
+   "explanation": "向 + personne + verbe : demander, apprendre, présenter quelque chose À quelqu'un : 向老师问问题、向他学习.",
+   "pattern": "向 + personne + 问 / 学习 / 介绍 / 借…",
+   "examples": [
+    {
+     "zh": "我们应该向他学习。",
+     "fr": "Nous devrions prendre exemple sur lui."
+    },
+    {
+     "zh": "我向朋友借了一本书。",
+     "fr": "J'ai emprunté un livre à un ami."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "有问题可以（　）老师问。",
+     "options": [
+      "向",
+      "朝着了",
+      "由"
+     ],
+     "answer": 0,
+     "why": "Demander À quelqu'un : 向 + personne + 问."
+    }
+   ]
+  },
+  {
+   "id": "3-25",
+   "code": "三25",
+   "level": 3,
+   "no": 154,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出目的、原因",
+   "content": "由于1、因为",
+   "title": "由于 / 因为 : à cause de, en raison de",
+   "explanation": "由于 / 因为 + nom (préposition) = à cause de : 由于天气的原因 (pour des raisons météo). 由于 est plus écrit.",
+   "pattern": "由于 / 因为 + nom / proposition，……",
+   "examples": [
+    {
+     "zh": "由于下雨，比赛推迟了。",
+     "fr": "En raison de la pluie, le match a été reporté."
+    },
+    {
+     "zh": "因为他的帮助，我很快就找到了工作。",
+     "fr": "Grâce à son aide, j'ai vite trouvé du travail."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）天气不好，飞机不能起飞。",
+     "options": [
+      "自从",
+      "为了",
+      "由于"
+     ],
+     "answer": 2,
+     "why": "La cause : 由于."
+    }
+   ]
+  },
+  {
+   "id": "3-26",
+   "code": "三26",
+   "level": 3,
+   "no": 155,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出目的、原因",
+   "content": "为了",
+   "title": "为了 : afin de, pour",
+   "explanation": "为了 + but, en tête de phrase : 为了学好汉语，他每天练习. À distinguer de 因为 (cause).",
+   "pattern": "为了 + but，sujet + action",
+   "examples": [
+    {
+     "zh": "为了身体健康，我每天跑步。",
+     "fr": "Pour être en bonne santé, je cours tous les jours."
+    },
+    {
+     "zh": "为了不迟到，他六点就起床了。",
+     "fr": "Pour ne pas être en retard, il s'est levé dès six heures."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）准备考试，她每天晚上都去图书馆。",
+     "options": [
+      "因为",
+      "为了",
+      "由于"
+     ],
+     "answer": 1,
+     "why": "Un but → 为了."
+    }
+   ]
+  },
+  {
+   "id": "3-27",
+   "code": "三27",
+   "level": 3,
+   "no": 156,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出施事、受事",
+   "content": "把、被、叫、让",
+   "title": "把、被、叫、让 : agent et patient",
+   "explanation": "把 + objet + verbe + complément : ce qu'on fait de l'objet (我把书放在桌子上). 被 / 叫 / 让 + agent + verbe : le passif (书被他拿走了). Voir aussi les points sur les phrases en 把 et le passif.",
+   "pattern": "S + 把 + O + V + autre · O + 被 / 叫 / 让 + agent + V + autre",
+   "examples": [
+    {
+     "zh": "我把作业写完了。",
+     "fr": "J'ai fini mes devoirs."
+    },
+    {
+     "zh": "我的自行车被人骑走了。",
+     "fr": "Mon vélo a été pris par quelqu'un."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "请（　）门关上。",
+     "options": [
+      "被",
+      "把",
+      "向"
+     ],
+     "answer": 1,
+     "why": "On agit sur l'objet (la porte) : 把 + 门 + 关上."
+    }
+   ]
+  },
+  {
+   "id": "3-28",
+   "code": "三28",
+   "level": 3,
+   "no": 157,
+   "item": "词类",
+   "category": "介词",
+   "detail": "表示排除",
+   "content": "除了",
+   "title": "除了 : excepté / en plus de",
+   "explanation": "除了……以外，都…… = à part…, tous… (exclusion). 除了……以外，还 / 也…… = en plus de…, aussi… (ajout).",
+   "pattern": "除了 + X + (以外)，都 / 还 / 也……",
+   "examples": [
+    {
+     "zh": "除了他以外，我们都去了。",
+     "fr": "À part lui, nous y sommes tous allés."
+    },
+    {
+     "zh": "除了汉语，我还学英语。",
+     "fr": "En plus du chinois, j'apprends aussi l'anglais."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "除了苹果，我（　）喜欢吃香蕉。",
+     "options": [
+      "都不",
+      "还",
+      "就"
+     ],
+     "answer": 1,
+     "why": "Ajout : 除了……还……"
+    }
+   ]
+  },
+  {
+   "id": "3-29",
+   "code": "三29",
+   "level": 3,
+   "no": 158,
+   "item": "词类",
+   "category": "介词",
+   "detail": "引出凭借、依据",
+   "content": "按、按照",
+   "title": "按 / 按照 : selon, d'après",
+   "explanation": "按照 + règle / plan + verbe = faire selon, conformément à : 按照老师说的做.",
+   "pattern": "按（照）+ nom + verbe",
+   "examples": [
+    {
+     "zh": "请按照顺序进来。",
+     "fr": "Entrez dans l'ordre, s'il vous plaît."
+    },
+    {
+     "zh": "我们按时间出发。",
+     "fr": "Nous partons à l'heure prévue."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）医生说的，每天吃三次药。",
+     "options": [
+      "按照",
+      "除了",
+      "由于"
+     ],
+     "answer": 0,
+     "why": "« Selon ce que dit le médecin » : 按照."
+    }
+   ]
+  },
+  {
+   "id": "3-30",
+   "code": "三30",
+   "level": 3,
+   "no": 159,
+   "item": "词类",
+   "category": "连词",
+   "detail": "连接分句或句子",
+   "content": "并且、不光、不仅、另外、要是、因此、由于2、只有",
+   "title": "Conjonctions (2) : 并且、不仅、另外、要是、因此、只有…",
+   "explanation": "并且 = et de plus · 不仅 / 不光 = non seulement · 另外 = par ailleurs · 要是 = si (oral) · 因此 = par conséquent · 由于 = étant donné que · 只有 = seulement si.",
+   "pattern": "不仅……，而且 / 还…… · 要是……，就…… · ……，因此……",
+   "examples": [
+    {
+     "zh": "要是明天不下雨，我们就去公园。",
+     "fr": "S'il ne pleut pas demain, on ira au parc."
+    },
+    {
+     "zh": "他很努力，因此成绩很好。",
+     "fr": "Il travaille dur, c'est pourquoi ses résultats sont bons."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他每天练习，（　）进步很快。",
+     "options": [
+      "要是",
+      "另外的",
+      "因此"
+     ],
+     "answer": 2,
+     "why": "Une conséquence → 因此."
+    }
+   ]
+  },
+  {
+   "id": "3-31",
+   "code": "三31",
+   "level": 3,
+   "no": 160,
+   "item": "词类",
+   "category": "拟声词",
+   "detail": "",
+   "content": "哈哈",
+   "title": "Onomatopée : 哈哈",
+   "explanation": "哈哈 imite le rire. Les onomatopées peuvent être employées seules ou avant un verbe : 他哈哈大笑.",
+   "pattern": "哈哈 + (地) + 笑",
+   "examples": [
+    {
+     "zh": "听了这个故事，大家都哈哈大笑。",
+     "fr": "En entendant cette histoire, tout le monde a éclaté de rire."
+    },
+    {
+     "zh": "哈哈，你说得真有意思！",
+     "fr": "Ha ha, c'est drôle ce que tu dis !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他听了以后（　）大笑。",
+     "options": [
+      "啊吧",
+      "喂",
+      "哈哈"
+     ],
+     "answer": 2,
+     "why": "L'onomatopée du rire : 哈哈."
+    }
+   ]
+  },
+  {
+   "id": "3-32",
+   "code": "三32",
+   "level": 3,
+   "no": 161,
+   "item": "短语",
+   "category": "结构类型",
+   "detail": "其他结构类型",
+   "content": "其他结构类型2：（1）介宾短语（2）方位短语（3）兼语短语（4）同位短语",
+   "title": "Groupes (2) : préposition + nom, position, pivot, apposition",
+   "explanation": "(1) Préposition + nom : 在学校、对他. (2) Groupe de position : 桌子上、三天以后. (3) Groupe pivot : 请他来 (le 他 est objet de 请 et sujet de 来). (4) Apposition : 我们大家、首都北京.",
+   "pattern": "介词 + 名 · 名 + 方位词 · V1 + O/S + V2",
+   "examples": [
+    {
+     "zh": "我请他明天来我家。",
+     "fr": "Je l'ai invité à venir chez moi demain."
+    },
+    {
+     "zh": "我们大家都同意。",
+     "fr": "Nous sommes tous d'accord."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 妈妈让我买菜, qui achète les légumes ?",
+     "options": [
+      "妈妈",
+      "我",
+      "妈妈和我"
+     ],
+     "answer": 1,
+     "why": "Structure pivot : 我 est l'objet de 让 et le sujet de 买."
+    }
+   ]
+  },
+  {
+   "id": "3-33",
+   "code": "三33",
+   "level": 3,
+   "no": 162,
+   "item": "短语",
+   "category": "结构类型",
+   "detail": "",
+   "content": "数量重叠：数词+量词+数词+量词",
+   "title": "Redoublement nombre + spécificatif : 一个一个",
+   "explanation": "一 + spécificatif + 一 + spécificatif = un par un : 一个一个地进来 (entrer un par un), 一天一天 (jour après jour).",
+   "pattern": "一 + spécificatif + 一 + spécificatif + (地) + verbe",
+   "examples": [
+    {
+     "zh": "请大家一个一个地说。",
+     "fr": "Parlez chacun votre tour, s'il vous plaît."
+    },
+    {
+     "zh": "天气一天一天地暖和起来了。",
+     "fr": "Il fait de plus en plus doux de jour en jour."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "学生们（　）地走进了教室。",
+     "options": [
+      "一个一个",
+      "一一个",
+      "个个一"
+     ],
+     "answer": 0,
+     "why": "« Un par un » : 一个一个."
+    }
+   ]
+  },
+  {
+   "id": "3-34",
+   "code": "三34",
+   "level": 3,
+   "no": 163,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "四字格",
+   "content": "不A不B",
+   "title": "不A不B : ni… ni… (juste milieu)",
+   "explanation": "不 + A + 不 + B, avec deux adjectifs contraires, signifie « ni trop… ni trop… », juste comme il faut : 不大不小、不冷不热.",
+   "pattern": "不 + adj. 1 + 不 + adj. 2 (contraires)",
+   "examples": [
+    {
+     "zh": "这件衣服不大不小，正合适。",
+     "fr": "Ce vêtement n'est ni trop grand ni trop petit, il est parfait."
+    },
+    {
+     "zh": "今天的天气不冷不热。",
+     "fr": "Aujourd'hui il ne fait ni froid ni chaud."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这个房间（　），我很喜欢。",
+     "options": [
+      "不大很小",
+      "不大不小",
+      "又不大小"
+     ],
+     "answer": 1,
+     "why": "« Ni trop grand ni trop petit » : 不大不小."
+    }
+   ]
+  },
+  {
+   "id": "3-35",
+   "code": "三35",
+   "level": 3,
+   "no": 164,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "看起来",
+   "title": "看起来 : avoir l'air",
+   "explanation": "看起来 = à le voir, il semble que : 他看起来很累 (il a l'air fatigué).",
+   "pattern": "sujet + 看起来 + adj. / proposition",
+   "examples": [
+    {
+     "zh": "这个菜看起来很好吃。",
+     "fr": "Ce plat a l'air délicieux."
+    },
+    {
+     "zh": "你看起来不太高兴。",
+     "fr": "Tu n'as pas l'air très content."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他（　）只有二十岁，其实已经三十了。",
+     "options": [
+      "看上来",
+      "看过去",
+      "看起来"
+     ],
+     "answer": 2,
+     "why": "« Il a l'air d'avoir vingt ans » : 看起来."
+    }
+   ]
+  },
+  {
+   "id": "3-36",
+   "code": "三36",
+   "level": 3,
+   "no": 165,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "看上去",
+   "title": "看上去 : sembler (à l'œil)",
+   "explanation": "看上去 = à première vue, d'apparence ; très proche de 看起来 mais limité à ce qu'on voit.",
+   "pattern": "sujet + 看上去 + adj.",
+   "examples": [
+    {
+     "zh": "她看上去很年轻。",
+     "fr": "Elle a l'air très jeune."
+    },
+    {
+     "zh": "这个箱子看上去很重。",
+     "fr": "Cette valise a l'air lourde."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件衣服（　）很贵，其实很便宜。",
+     "options": [
+      "看下去",
+      "看出来了",
+      "看上去"
+     ],
+     "answer": 2,
+     "why": "D'apparence → 看上去."
+    }
+   ]
+  },
+  {
+   "id": "3-37",
+   "code": "三37",
+   "level": 3,
+   "no": 166,
+   "item": "短语",
+   "category": "固定短语",
+   "detail": "其他",
+   "content": "有的是",
+   "title": "有的是 : il y en a plein",
+   "explanation": "有的是 + nom = avoir en abondance : 我有的是时间 (j'ai tout mon temps).",
+   "pattern": "sujet + 有的是 + nom",
+   "examples": [
+    {
+     "zh": "别着急，我们有的是时间。",
+     "fr": "Pas de panique, on a tout notre temps."
+    },
+    {
+     "zh": "这儿有的是饭馆。",
+     "fr": "Ici, les restaurants ne manquent pas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你想看书吗？我家（　）书。",
+     "options": [
+      "有的",
+      "是有的",
+      "有的是"
+     ],
+     "answer": 2,
+     "why": "« Plein de livres » : 有的是书."
+    }
+   ]
+  },
+  {
+   "id": "3-38",
+   "code": "三38",
+   "level": 3,
+   "no": 167,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "除了……（以外），……还/也/都……",
+   "title": "除了……（以外），……还 / 也 / 都……",
+   "explanation": "Avec 还 / 也 : ajout (en plus de) ; avec 都 : exclusion (à part, tous…).",
+   "pattern": "除了 + X + 以外，还 / 也 + … · 除了 + X + 以外，都 + …",
+   "examples": [
+    {
+     "zh": "除了小王以外，大家都来了。",
+     "fr": "À part Xiao Wang, tout le monde est venu."
+    },
+    {
+     "zh": "除了游泳，他也喜欢跑步。",
+     "fr": "En plus de la natation, il aime aussi la course."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "除了星期天，我每天（　）要上班。",
+     "options": [
+      "都",
+      "还",
+      "也不"
+     ],
+     "answer": 0,
+     "why": "Exclusion : à part le dimanche, tous les jours → 都."
+    }
+   ]
+  },
+  {
+   "id": "3-39",
+   "code": "三39",
+   "level": 3,
+   "no": 168,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "从……起",
+   "title": "从……起 : à partir de",
+   "explanation": "从 + moment + 起 = à partir de ce moment : 从明天起 (à partir de demain).",
+   "pattern": "从 + moment + 起，……",
+   "examples": [
+    {
+     "zh": "从下个月起，我要早点儿起床。",
+     "fr": "À partir du mois prochain, je vais me lever plus tôt."
+    },
+    {
+     "zh": "从今天起，我不喝咖啡了。",
+     "fr": "À partir d'aujourd'hui, je ne bois plus de café."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "从明天（　），商店九点开门。",
+     "options": [
+      "上",
+      "后来",
+      "起"
+     ],
+     "answer": 2,
+     "why": "« À partir de demain » : 从明天起."
+    }
+   ]
+  },
+  {
+   "id": "3-40",
+   "code": "三40",
+   "level": 3,
+   "no": 169,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "对……来说",
+   "title": "对……来说 : pour…, du point de vue de…",
+   "explanation": "对 + personne + 来说 = pour quelqu'un, de son point de vue : 对我来说，汉字很难.",
+   "pattern": "对 + personne + 来说，……",
+   "examples": [
+    {
+     "zh": "对我来说，学汉语很有意思。",
+     "fr": "Pour moi, apprendre le chinois est très intéressant."
+    },
+    {
+     "zh": "对孩子来说，这本书有点儿难。",
+     "fr": "Pour un enfant, ce livre est un peu difficile."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）外国人来说，汉字很难写。",
+     "options": [
+      "为",
+      "对",
+      "向"
+     ],
+     "answer": 1,
+     "why": "« Pour les étrangers » : 对……来说."
+    }
+   ]
+  },
+  {
+   "id": "3-41",
+   "code": "三41",
+   "level": 3,
+   "no": 170,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "一……也/都+不/没……",
+   "title": "一……也 / 都 + 不 / 没…… : pas un seul",
+   "explanation": "一 + spécificatif + nom + 也 / 都 + négation = pas un seul : 一个人也没有 (il n'y a personne), 一点儿也不累 (pas du tout fatigué).",
+   "pattern": "一 + spécificatif + (nom) + 也 / 都 + 不 / 没 + verbe",
+   "examples": [
+    {
+     "zh": "教室里一个人也没有。",
+     "fr": "Il n'y a personne dans la salle de classe."
+    },
+    {
+     "zh": "我一句汉语都不会说。",
+     "fr": "Je ne sais pas dire une seule phrase en chinois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "今天我一口饭（　）没吃。",
+     "options": [
+      "还是",
+      "也",
+      "就"
+     ],
+     "answer": 1,
+     "why": "« Pas une bouchée » : 一口饭也没吃."
+    }
+   ]
+  },
+  {
+   "id": "3-42",
+   "code": "三42",
+   "level": 3,
+   "no": 171,
+   "item": "固定格式",
+   "category": "",
+   "detail": "",
+   "content": "越……越……",
+   "title": "越……越…… : plus…, plus…",
+   "explanation": "越 + A + 越 + B = plus A, plus B : 越说越快 (il parle de plus en plus vite), 越看越喜欢.",
+   "pattern": "(sujet) + 越 + A，(sujet) + 越 + B",
+   "examples": [
+    {
+     "zh": "这个电影越看越有意思。",
+     "fr": "Plus on regarde ce film, plus il est intéressant."
+    },
+    {
+     "zh": "雨越下越大。",
+     "fr": "Il pleut de plus en plus fort."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "汉语（　）学越有意思。",
+     "options": [
+      "越",
+      "更",
+      "很"
+     ],
+     "answer": 0,
+     "why": "« Plus on l'apprend, plus c'est intéressant » : 越……越……"
+    }
+   ]
+  },
+  {
+   "id": "3-43",
+   "code": "三43",
+   "level": 3,
+   "no": 172,
+   "item": "句子成分",
+   "category": "主语",
+   "detail": "",
+   "content": "动词或动词性短语、形容词或形容词性短语作主语",
+   "title": "Verbe ou adjectif comme sujet",
+   "explanation": "Un verbe, un groupe verbal ou un adjectif peut être le sujet : 学习汉语很有意思 (apprendre le chinois est intéressant), 健康最重要.",
+   "pattern": "groupe verbal / adjectif + prédicat",
+   "examples": [
+    {
+     "zh": "运动对身体很好。",
+     "fr": "Faire du sport est très bon pour la santé."
+    },
+    {
+     "zh": "认真最重要。",
+     "fr": "Le sérieux est ce qu'il y a de plus important."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quel est le sujet de 每天跑步很累 ?",
+     "options": [
+      "很累",
+      "每天",
+      "每天跑步"
+     ],
+     "answer": 2,
+     "why": "Le groupe verbal 每天跑步 est sujet."
+    }
+   ]
+  },
+  {
+   "id": "3-44",
+   "code": "三44",
+   "level": 3,
+   "no": 173,
+   "item": "句子成分",
+   "category": "宾语",
+   "detail": "",
+   "content": "动词或动词性短语、形容词或形容词性短语和主谓短语作宾语",
+   "title": "Verbe, adjectif ou proposition comme objet",
+   "explanation": "Certains verbes (喜欢、觉得、知道、希望、开始…) prennent pour objet un verbe ou une proposition : 我喜欢游泳 · 我知道他明天来.",
+   "pattern": "喜欢 / 觉得 / 希望 / 知道 + verbe / proposition",
+   "examples": [
+    {
+     "zh": "我希望你早点儿回来。",
+     "fr": "J'espère que tu rentreras tôt."
+    },
+    {
+     "zh": "我觉得这个办法很好。",
+     "fr": "Je trouve que c'est une très bonne méthode."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 我希望明天不下雨, quel est l'objet de 希望 ?",
+     "options": [
+      "明天",
+      "明天不下雨",
+      "下雨"
+     ],
+     "answer": 1,
+     "why": "La proposition entière est l'objet du verbe 希望."
+    }
+   ]
+  },
+  {
+   "id": "3-45",
+   "code": "三45",
+   "level": 3,
+   "no": 174,
+   "item": "句子成分",
+   "category": "定语",
+   "detail": "",
+   "content": "动词或动词性短语、主谓短语作定语",
+   "title": "Verbe ou proposition comme déterminant",
+   "explanation": "Un verbe ou une proposition + 的 peut déterminer un nom : 我买的书 (le livre que j'ai acheté), 来的人 (les gens qui viennent). C'est l'équivalent de la relative française, placé AVANT le nom.",
+   "pattern": "verbe / proposition + 的 + nom",
+   "examples": [
+    {
+     "zh": "这是我昨天买的衣服。",
+     "fr": "C'est le vêtement que j'ai acheté hier."
+    },
+    {
+     "zh": "坐在前边的人是我哥哥。",
+     "fr": "La personne assise devant est mon grand frère."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment dit-on « le film que tu as vu » ?",
+     "options": [
+      "看你的电影",
+      "电影你看的",
+      "你看的电影"
+     ],
+     "answer": 2,
+     "why": "La « relative » (你看) + 的 se place devant le nom."
+    }
+   ]
+  },
+  {
+   "id": "3-46",
+   "code": "三46",
+   "level": 3,
+   "no": 175,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "结果补语",
+   "content": "结果补语2：动词+到/住/走",
+   "title": "Complément de résultat (2) : 到、住、走",
+   "explanation": "到 = atteindre le but (找到、买到、看到) · 住 = fixer (记住、拿住) · 走 = partir, emporter (拿走、带走).",
+   "pattern": "verbe + 到 / 住 / 走",
+   "examples": [
+    {
+     "zh": "我终于找到工作了。",
+     "fr": "J'ai enfin trouvé du travail."
+    },
+    {
+     "zh": "请记住我的电话号码。",
+     "fr": "Retiens bien mon numéro de téléphone."
+    },
+    {
+     "zh": "谁把我的书拿走了？",
+     "fr": "Qui a pris mon livre ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你要的书我买（　）了。",
+     "options": [
+      "开",
+      "到",
+      "住"
+     ],
+     "answer": 1,
+     "why": "Réussir à acheter : 买到."
+    },
+    {
+     "q": "这个词很重要，你要记（　）。",
+     "options": [
+      "到了",
+      "住",
+      "走"
+     ],
+     "answer": 1,
+     "why": "« Retenir » : 记住."
+    }
+   ]
+  },
+  {
+   "id": "3-47",
+   "code": "三47",
+   "level": 3,
+   "no": 176,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "趋向补语",
+   "content": "趋向补语2 复合趋向补语的趋向意义用法：动词+出来/出去/过来/过去/回来/回去/进来/进去/ 起来/上来/上去/下来/下去",
+   "title": "Complément de direction composé : 出来、回去、起来…",
+   "explanation": "Verbe + (上 / 下 / 进 / 出 / 回 / 过 / 起) + (来 / 去) : 走出来 (sortir en marchant vers ici), 跑回去 (repartir en courant), 站起来 (se lever). L'objet de lieu se place avant 来 / 去 : 走进教室来.",
+   "pattern": "verbe + 进 / 出 / 回 / 上 / 下 / 过 / 起 + 来 / 去",
+   "examples": [
+    {
+     "zh": "他从房间里走出来了。",
+     "fr": "Il est sorti de la chambre."
+    },
+    {
+     "zh": "老师进来了，大家站了起来。",
+     "fr": "Le professeur est entré, tout le monde s'est levé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你在楼下等我，我马上走（　）。",
+     "options": [
+      "下来",
+      "上去",
+      "进去"
+     ],
+     "answer": 0,
+     "why": "Je descends vers toi qui es en bas : 走下来."
+    }
+   ]
+  },
+  {
+   "id": "3-48",
+   "code": "三48",
+   "level": 3,
+   "no": 177,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "可能补语",
+   "content": "可能补语1：动词+得/不+动词/形容词；动词+得/不+了",
+   "title": "Complément potentiel (1) : V得 / 不 + résultat ; V得 / 不了",
+   "explanation": "得 / 不 inséré entre le verbe et son résultat dit si l'action est possible : 听得懂 (pouvoir comprendre), 买不到 (ne pas pouvoir trouver à acheter). V + 得了 / 不了 = pouvoir / ne pas pouvoir faire.",
+   "pattern": "V + 得 / 不 + résultat · V + 得了 / 不了",
+   "examples": [
+    {
+     "zh": "老师说得太快，我听不懂。",
+     "fr": "Le professeur parle trop vite, je ne comprends pas."
+    },
+    {
+     "zh": "这么多菜，我吃不了。",
+     "fr": "Tant de plats, je ne pourrai pas tout manger."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "黑板上的字你看（　）清楚吗？",
+     "options": [
+      "的",
+      "得",
+      "地"
+     ],
+     "answer": 1,
+     "why": "Potentiel : 看得清楚."
+    },
+    {
+     "q": "明天我有事，去（　）了。",
+     "options": [
+      "不",
+      "别",
+      "没"
+     ],
+     "answer": 0,
+     "why": "« Je ne pourrai pas y aller » : 去不了."
+    }
+   ]
+  },
+  {
+   "id": "3-49",
+   "code": "三49",
+   "level": 3,
+   "no": 178,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "程度补语",
+   "content": "程度补语1：形容词/心理动词+得很/极了/死了",
+   "title": "Complément de degré : 得很、极了、死了",
+   "explanation": "Après un adjectif ou un verbe de sentiment : 好得很 (très bien), 好极了 (extrêmement bien), 累死了 (mort de fatigue, oral).",
+   "pattern": "adj. + 得很 / 极了 / 死了",
+   "examples": [
+    {
+     "zh": "今天热死了！",
+     "fr": "Il fait une chaleur terrible aujourd'hui !"
+    },
+    {
+     "zh": "这个主意好极了。",
+     "fr": "Cette idée est excellente."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "听到这个消息，她高兴（　）了。",
+     "options": [
+      "很",
+      "非常",
+      "极"
+     ],
+     "answer": 2,
+     "why": "« Extrêmement contente » : 高兴极了."
+    }
+   ]
+  },
+  {
+   "id": "3-50",
+   "code": "三50",
+   "level": 3,
+   "no": 179,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "数量补语",
+   "content": "数量补语 3（动词+动量补语）：宾语和动量补语共现",
+   "title": "Nombre de fois (3) avec un objet",
+   "explanation": "Si l'objet est un nom de chose, le nombre de fois se met avant : 看了两遍电影 ; si c'est un pronom, après lui : 我找过他三次.",
+   "pattern": "V + 了/过 + nombre + 次 + nom · V + 了/过 + pronom + nombre + 次",
+   "examples": [
+    {
+     "zh": "我去过两次长城。",
+     "fr": "Je suis allé deux fois à la Grande Muraille."
+    },
+    {
+     "zh": "我给他打了三次电话。",
+     "fr": "Je l'ai appelé trois fois."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我一次见过他。",
+      "我见过他一次。",
+      "我见过一次他。"
+     ],
+     "answer": 1,
+     "why": "Avec un pronom, le nombre de fois se met après : 见过他一次."
+    }
+   ]
+  },
+  {
+   "id": "3-51",
+   "code": "三51",
+   "level": 3,
+   "no": 180,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "数量补语",
+   "content": "数量补语4（动词+时量补语）：表示动作持续的时间",
+   "title": "Durée de l'action : verbe + durée",
+   "explanation": "La durée se place après le verbe : 我学了两年汉语. Avec un objet, on répète le verbe : 我学汉语学了两年, ou durée + 的 + objet : 学了两年的汉语.",
+   "pattern": "V + 了 + durée (+ 的) + O · V + O + V + 了 + durée",
+   "examples": [
+    {
+     "zh": "我等了你半个小时。",
+     "fr": "Je t'ai attendu une demi-heure."
+    },
+    {
+     "zh": "他看电视看了三个小时。",
+     "fr": "Il a regardé la télé pendant trois heures."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我八个小时睡了。",
+      "我睡了八个小时。",
+      "我睡八个小时了了。"
+     ],
+     "answer": 1,
+     "why": "La durée se place après le verbe."
+    }
+   ]
+  },
+  {
+   "id": "3-52",
+   "code": "三52",
+   "level": 3,
+   "no": 181,
+   "item": "句子成分",
+   "category": "补语",
+   "detail": "数量补语",
+   "content": "数量补语5（动词+时量补语）：表示动作结束后到某个时间点的间隔时间",
+   "title": "Temps écoulé depuis une action : verbe + 了 + durée + 了",
+   "explanation": "Avec les verbes ponctuels (来、毕业、结婚…), la durée après le verbe indique le temps écoulé DEPUIS l'action : 他来中国三年了 (il est en Chine depuis trois ans).",
+   "pattern": "V (+ O) + durée + 了",
+   "examples": [
+    {
+     "zh": "我来北京两个月了。",
+     "fr": "Cela fait deux mois que je suis à Pékin."
+    },
+    {
+     "zh": "他们结婚十年了。",
+     "fr": "Ils sont mariés depuis dix ans."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他大学毕业已经五年（　）。",
+     "options": [
+      "着",
+      "了",
+      "过"
+     ],
+     "answer": 1,
+     "why": "Temps écoulé depuis : V + durée + 了."
+    }
+   ]
+  },
+  {
+   "id": "3-53",
+   "code": "三53",
+   "level": 3,
+   "no": 182,
+   "item": "句子的类型",
+   "category": "句型",
+   "detail": "单句",
+   "content": "主谓句4：主谓谓语句",
+   "title": "Phrase à prédicat sujet-prédicat",
+   "explanation": "Le prédicat est lui-même une petite phrase : 他身体很好 (lui, sa santé est bonne), 这本书内容很有意思.",
+   "pattern": "grand sujet + (petit sujet + prédicat)",
+   "examples": [
+    {
+     "zh": "我妈妈身体很健康。",
+     "fr": "Ma mère est en très bonne santé."
+    },
+    {
+     "zh": "这家饭店菜很好吃。",
+     "fr": "Dans ce restaurant, les plats sont délicieux."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 他工作很忙, quel est le prédicat ?",
+     "options": [
+      "他工作",
+      "很忙",
+      "工作很忙"
+     ],
+     "answer": 2,
+     "why": "Le prédicat est la petite phrase 工作很忙."
+    }
+   ]
+  },
+  {
+   "id": "3-54",
+   "code": "三54",
+   "level": 3,
+   "no": 183,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "“把”字句",
+   "content": "“把”字句1：表处置 （1）主语+把+宾语+动词+在/到+处所（2）主语+把+宾语1 +动词（+给）+宾语2（3）主语+把+宾语+动词+结果补语/趋向补语/状态补语",
+   "title": "La phrase en 把 (1) : agir sur l'objet",
+   "explanation": "S + 把 + objet défini + verbe + quelque chose : on dit ce qu'il advient de l'objet. Le verbe ne peut pas être seul : il faut un complément (lieu, résultat, direction, deuxième objet…). Négation et modaux AVANT 把 : 我没把书带来.",
+   "pattern": "S + 把 + O + V + 在 / 到 + lieu · S + 把 + O + V + 给 + qqn · S + 把 + O + V + résultat",
+   "examples": [
+    {
+     "zh": "请把书放在桌子上。",
+     "fr": "Pose le livre sur la table, s'il te plaît."
+    },
+    {
+     "zh": "我把钱给他了。",
+     "fr": "Je lui ai donné l'argent."
+    },
+    {
+     "zh": "他把房间打扫干净了。",
+     "fr": "Il a fait le ménage dans la chambre."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "我把作业做。",
+      "我做完把作业了。",
+      "我把作业做完了。"
+     ],
+     "answer": 2,
+     "why": "Après 把 + objet, le verbe a besoin d'un complément (完)."
+    },
+    {
+     "q": "Comment nier : « Je n'ai pas apporté le livre » ?",
+     "options": [
+      "我没把书带来。",
+      "我把书没带来。",
+      "我把书不带来。"
+     ],
+     "answer": 0,
+     "why": "La négation se place avant 把."
+    }
+   ]
+  },
+  {
+   "id": "3-55",
+   "code": "三55",
+   "level": 3,
+   "no": 184,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "被动句",
+   "content": "被动句1：主语+被/叫/让+宾语+动词+其他成分",
+   "title": "Le passif (1) : 被 / 叫 / 让",
+   "explanation": "Objet + 被 / 叫 / 让 + agent + verbe + complément : le sujet subit l'action, souvent désagréable. Avec 被, l'agent peut être omis (我的手机被偷了) ; avec 叫 / 让, il est obligatoire.",
+   "pattern": "O + 被 / 叫 / 让 + agent + V + autre",
+   "examples": [
+    {
+     "zh": "我的蛋糕被弟弟吃了。",
+     "fr": "Mon gâteau a été mangé par mon petit frère."
+    },
+    {
+     "zh": "衣服让雨打湿了。",
+     "fr": "Les vêtements ont été trempés par la pluie."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我的自行车（　）朋友借走了。",
+     "options": [
+      "向",
+      "被",
+      "把"
+     ],
+     "answer": 1,
+     "why": "Le sujet (le vélo) subit l'action → passif en 被."
+    }
+   ]
+  },
+  {
+   "id": "3-56",
+   "code": "三56",
+   "level": 3,
+   "no": 185,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "连动句",
+   "content": "连动句2： （1）前一动作是后一动作的方式（2）后一动作是前一动作的目的",
+   "title": "Verbes en série (2) : manière et but",
+   "explanation": "(1) Le premier verbe donne la manière : 坐飞机去 (y aller en avion). (2) Le second donne le but : 去商店买东西 (aller au magasin pour acheter).",
+   "pattern": "V1 (manière) + V2 · V1 + V2 (but)",
+   "examples": [
+    {
+     "zh": "我们打车去机场吧。",
+     "fr": "Allons à l'aéroport en taxi."
+    },
+    {
+     "zh": "他去银行取钱。",
+     "fr": "Il va à la banque pour retirer de l'argent."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase dit « Il va au parc pour courir » ?",
+     "options": [
+      "他去公园跑步。",
+      "他跑步去公园。",
+      "他公园跑步去。"
+     ],
+     "answer": 0,
+     "why": "Lieu de destination puis but : 去公园 + 跑步."
+    }
+   ]
+  },
+  {
+   "id": "3-57",
+   "code": "三57",
+   "level": 3,
+   "no": 186,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "兼语句",
+   "content": "兼语句1 表使令：主语+叫/派/请/让……+宾语1 +动词+宾语2",
+   "title": "Phrase pivot : faire faire (叫、让、请、派)",
+   "explanation": "S + 叫 / 让 / 请 / 派 + personne + verbe : la personne est à la fois objet du premier verbe et sujet du second : 妈妈让我买菜 (maman me fait acheter des légumes).",
+   "pattern": "S + 让 / 叫 / 请 / 派 + personne + V + O",
+   "examples": [
+    {
+     "zh": "老师让我们回答问题。",
+     "fr": "Le professeur nous a demandé de répondre aux questions."
+    },
+    {
+     "zh": "我想请你吃饭。",
+     "fr": "Je voudrais t'inviter à manger."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "医生（　）我多休息。",
+     "options": [
+      "让",
+      "被",
+      "把"
+     ],
+     "answer": 0,
+     "why": "« Le médecin me dit de me reposer » : 让 + personne + verbe."
+    }
+   ]
+  },
+  {
+   "id": "3-58",
+   "code": "三58",
+   "level": 3,
+   "no": 187,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "比较句",
+   "content": "比较句4： （1）A比B +动词+得+形容词 （2）A不比B +形容词 （3）A +动词+得+比+ B +形容词 （4）A比B +多/少/早/晚+动词+数量短语",
+   "title": "Comparaison (4) : avec 得, 不比, écart",
+   "explanation": "(1) A 比 B + V + 得 + adj. : 他比我跑得快. (2) A 不比 B + adj. : A n'est pas plus … que B (à peu près pareil). (3) A + V + 得 + 比 + B + adj. : 他跑得比我快. (4) A 比 B + 多 / 少 / 早 / 晚 + V + quantité : 他比我早来了十分钟.",
+   "pattern": "A比B+V得+adj. · A+V得+比B+adj. · A比B早/晚+V+quantité",
+   "examples": [
+    {
+     "zh": "他说汉语说得比我好。",
+     "fr": "Il parle chinois mieux que moi."
+    },
+    {
+     "zh": "我比他晚到了半个小时。",
+     "fr": "Je suis arrivé une demi-heure après lui."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "她比我跑快得。",
+      "她跑得比我快。",
+      "她跑比我得快。"
+     ],
+     "answer": 1,
+     "why": "V + 得 + 比 + B + adj."
+    }
+   ]
+  },
+  {
+   "id": "3-59",
+   "code": "三59",
+   "level": 3,
+   "no": 188,
+   "item": "句子的类型",
+   "category": "特殊句型",
+   "detail": "重动句",
+   "content": "主语+动词+宾语+动词+补语",
+   "title": "Répétition du verbe : S + V + O + V + complément",
+   "explanation": "Quand le verbe a un objet ET un complément (durée, degré…), on répète le verbe : 他看书看了一下午 · 她做饭做得很好.",
+   "pattern": "S + V + O + V + 得 / 了 + complément",
+   "examples": [
+    {
+     "zh": "他打球打得很好。",
+     "fr": "Il joue très bien au ballon."
+    },
+    {
+     "zh": "我写作业写了两个小时。",
+     "fr": "J'ai fait mes devoirs pendant deux heures."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Quelle phrase est correcte ?",
+     "options": [
+      "他唱歌唱得很好听。",
+      "他唱歌得很好听。",
+      "他唱得歌很好听。"
+     ],
+     "answer": 0,
+     "why": "Avec un objet, on répète le verbe avant 得."
+    }
+   ]
+  },
+  {
+   "id": "3-60",
+   "code": "三60",
+   "level": 3,
+   "no": 189,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "并列复句",
+   "content": "（也）……，也……",
+   "title": "Coordination : (也)……，也……",
+   "explanation": "也…… répété relie deux faits parallèles : 他也会唱歌，也会跳舞.",
+   "pattern": "(sujet) + 也……，也……",
+   "examples": [
+    {
+     "zh": "我也想去，他也想去。",
+     "fr": "Moi aussi je veux y aller, et lui aussi."
+    },
+    {
+     "zh": "这儿也有山，也有水。",
+     "fr": "Ici, il y a des montagnes et aussi de l'eau."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她会说汉语，（　）会说英语。",
+     "options": [
+      "也",
+      "就",
+      "才"
+     ],
+     "answer": 0,
+     "why": "Deux faits parallèles → 也."
+    }
+   ]
+  },
+  {
+   "id": "3-61",
+   "code": "三61",
+   "level": 3,
+   "no": 190,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "并列复句",
+   "content": "一会儿……，一会儿……",
+   "title": "一会儿……，一会儿…… : tantôt…, tantôt…",
+   "explanation": "Deux actions ou états qui alternent rapidement : 他一会儿看书，一会儿看手机.",
+   "pattern": "一会儿 + A，一会儿 + B",
+   "examples": [
+    {
+     "zh": "天气一会儿晴，一会儿下雨。",
+     "fr": "Le temps est tantôt ensoleillé, tantôt pluvieux."
+    },
+    {
+     "zh": "孩子一会儿哭，一会儿笑。",
+     "fr": "L'enfant pleure, puis rit."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他一会儿说要去，（　）说不去。",
+     "options": [
+      "一下",
+      "一会儿",
+      "一边"
+     ],
+     "answer": 1,
+     "why": "Alternance : 一会儿……一会儿……"
+    }
+   ]
+  },
+  {
+   "id": "3-62",
+   "code": "三62",
+   "level": 3,
+   "no": 191,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "并列复句",
+   "content": "一方面……，另一方面……",
+   "title": "一方面……，另一方面…… : d'une part…, d'autre part…",
+   "explanation": "Présente deux aspects d'une même question.",
+   "pattern": "一方面 + A，另一方面 + B",
+   "examples": [
+    {
+     "zh": "我来中国，一方面是学汉语，另一方面是了解中国文化。",
+     "fr": "Je suis venu en Chine d'une part pour apprendre le chinois, d'autre part pour connaître la culture chinoise."
+    },
+    {
+     "zh": "一方面工作很忙，另一方面我也想多陪家人。",
+     "fr": "D'un côté le travail est prenant, de l'autre je veux passer plus de temps en famille."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "一方面我想去，（　）我又没有时间。",
+     "options": [
+      "一边",
+      "另一方面",
+      "另外的"
+     ],
+     "answer": 1,
+     "why": "一方面…… se complète par 另一方面……"
+    }
+   ]
+  },
+  {
+   "id": "3-63",
+   "code": "三63",
+   "level": 3,
+   "no": 192,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "并列复句",
+   "content": "又……，又……",
+   "title": "又……，又…… : à la fois",
+   "explanation": "又 + A，又 + B relie deux actions ou caractéristiques simultanées : 他又会唱，又会跳.",
+   "pattern": "又 + A，又 + B",
+   "examples": [
+    {
+     "zh": "她又会做饭，又会画画儿。",
+     "fr": "Elle sait à la fois cuisiner et dessiner."
+    },
+    {
+     "zh": "这家饭馆又干净，又便宜。",
+     "fr": "Ce restaurant est à la fois propre et bon marché."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这个孩子又聪明，（　）可爱。",
+     "options": [
+      "也是",
+      "还是",
+      "又"
+     ],
+     "answer": 2,
+     "why": "又……又…… : à la fois…"
+    }
+   ]
+  },
+  {
+   "id": "3-64",
+   "code": "三64",
+   "level": 3,
+   "no": 193,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "承接复句",
+   "content": "首先……，然后……",
+   "title": "首先……，然后…… : d'abord…, ensuite…",
+   "explanation": "Pour ordonner des étapes : 首先 (tout d'abord), 然后 (ensuite), 最后 (enfin).",
+   "pattern": "首先 + A，然后 + B，最后 + C",
+   "examples": [
+    {
+     "zh": "首先洗手，然后吃饭。",
+     "fr": "D'abord on se lave les mains, ensuite on mange."
+    },
+    {
+     "zh": "首先我要谢谢大家，然后给大家介绍一下。",
+     "fr": "Tout d'abord je voudrais vous remercier, ensuite je vais faire les présentations."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "首先打开电脑，（　）输入密码。",
+     "options": [
+      "因为",
+      "然后",
+      "但是"
+     ],
+     "answer": 1,
+     "why": "Étape suivante → 然后."
+    }
+   ]
+  },
+  {
+   "id": "3-65",
+   "code": "三65",
+   "level": 3,
+   "no": 194,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "递进复句",
+   "content": "……，并且……",
+   "title": "……，并且…… : et de plus",
+   "explanation": "并且 ajoute une information au même niveau ou plus forte (registre un peu soutenu).",
+   "pattern": "A，并且 + B",
+   "examples": [
+    {
+     "zh": "他很聪明，并且很努力。",
+     "fr": "Il est intelligent, et de plus très travailleur."
+    },
+    {
+     "zh": "我们讨论了这个问题，并且做了决定。",
+     "fr": "Nous avons discuté de la question et pris une décision."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件衣服很漂亮，（　）不贵。",
+     "options": [
+      "但是",
+      "只有",
+      "并且"
+     ],
+     "answer": 2,
+     "why": "Ajout d'une qualité → 并且."
+    }
+   ]
+  },
+  {
+   "id": "3-66",
+   "code": "三66",
+   "level": 3,
+   "no": 195,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "递进复句",
+   "content": "不仅/不光……，还/而且……",
+   "title": "不仅 / 不光……，还 / 而且…… : non seulement…, mais aussi…",
+   "explanation": "Variante de 不但……而且…… : 不仅 / 不光 dans la première proposition, 还 / 而且 / 也 dans la seconde.",
+   "pattern": "不仅 / 不光 + A，还 / 而且 + B",
+   "examples": [
+    {
+     "zh": "他不仅会说汉语，还会写汉字。",
+     "fr": "Non seulement il parle chinois, mais il sait aussi écrire les caractères."
+    },
+    {
+     "zh": "这里不光风景美，而且人也很热情。",
+     "fr": "Ici, non seulement le paysage est beau, mais les gens sont aussi chaleureux."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她不仅学习好，（　）喜欢帮助别人。",
+     "options": [
+      "就是",
+      "但",
+      "还"
+     ],
+     "answer": 2,
+     "why": "不仅…… se complète par 还 / 而且."
+    }
+   ]
+  },
+  {
+   "id": "3-67",
+   "code": "三67",
+   "level": 3,
+   "no": 196,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "选择复句",
+   "content": "不是……，就是……",
+   "title": "不是……，就是…… : soit…, soit…",
+   "explanation": "L'une des deux possibilités est forcément vraie : 他不是在图书馆，就是在教室.",
+   "pattern": "不是 + A，就是 + B",
+   "examples": [
+    {
+     "zh": "周末我不是看书，就是看电影。",
+     "fr": "Le week-end, soit je lis, soit je regarde un film."
+    },
+    {
+     "zh": "这几天不是刮风，就是下雨。",
+     "fr": "Ces jours-ci, soit il y a du vent, soit il pleut."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "他不是在家，（　）在公司。",
+     "options": [
+      "还是",
+      "而是了",
+      "就是"
+     ],
+     "answer": 2,
+     "why": "« Soit…, soit… » : 不是……就是……"
+    }
+   ]
+  },
+  {
+   "id": "3-68",
+   "code": "三68",
+   "level": 3,
+   "no": 197,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "转折复句",
+   "content": "……X是X，就是/不过……",
+   "title": "……X 是 X，就是 / 不过…… : …, c'est vrai, mais…",
+   "explanation": "On reprend un adjectif ou un verbe pour concéder, puis on oppose : 好是好，就是太贵了 (c'est bien, mais trop cher).",
+   "pattern": "X + 是 + X，就是 / 不过 / 可是 + ……",
+   "examples": [
+    {
+     "zh": "这件衣服漂亮是漂亮，就是有点儿贵。",
+     "fr": "Ce vêtement est joli, certes, mais un peu cher."
+    },
+    {
+     "zh": "去是去，不过我要晚一点儿到。",
+     "fr": "Je viens, oui, mais j'arriverai un peu plus tard."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这个房子大是大，（　）离公司太远了。",
+     "options": [
+      "所以",
+      "就是",
+      "因为"
+     ],
+     "answer": 1,
+     "why": "Concession puis restriction : X是X，就是……"
+    }
+   ]
+  },
+  {
+   "id": "3-69",
+   "code": "三69",
+   "level": 3,
+   "no": 198,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "假设复句",
+   "content": "要是……，就……",
+   "title": "要是……，就…… : si (oral)",
+   "explanation": "要是 = si, plus oral que 如果 ; la conséquence avec 就.",
+   "pattern": "要是 + condition，(sujet) + 就 + conséquence",
+   "examples": [
+    {
+     "zh": "要是你明天有空，就来我家吧。",
+     "fr": "Si tu es libre demain, viens chez moi."
+    },
+    {
+     "zh": "要是下雨，我们就不去了。",
+     "fr": "S'il pleut, on n'y va pas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）你不喜欢，就别买了。",
+     "options": [
+      "因此",
+      "虽然",
+      "要是"
+     ],
+     "answer": 2,
+     "why": "Une condition (oral) → 要是."
+    }
+   ]
+  },
+  {
+   "id": "3-70",
+   "code": "三70",
+   "level": 3,
+   "no": 199,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "条件复句",
+   "content": "只有……，才……",
+   "title": "只有……，才…… : seulement si…",
+   "explanation": "Condition nécessaire et unique : 只有努力，才能成功 (ce n'est qu'en travaillant qu'on réussit). Ne pas confondre avec 只要……就…… (il suffit que).",
+   "pattern": "只有 + condition，才 + résultat",
+   "examples": [
+    {
+     "zh": "只有多练习，才能说好汉语。",
+     "fr": "Ce n'est qu'en pratiquant beaucoup qu'on parle bien chinois."
+    },
+    {
+     "zh": "只有你去，他才会去。",
+     "fr": "Il n'ira que si tu y vas."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "只有每天复习，（　）能记住这些生词。",
+     "options": [
+      "就",
+      "才",
+      "都"
+     ],
+     "answer": 1,
+     "why": "只有…… va avec 才……"
+    }
+   ]
+  },
+  {
+   "id": "3-71",
+   "code": "三71",
+   "level": 3,
+   "no": 200,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "因果复句",
+   "content": "（由于）……，所以/因此……",
+   "title": "(由于)……，所以 / 因此…… : cause et conséquence",
+   "explanation": "由于 (écrit) introduit la cause ; 所以 / 因此 la conséquence. 由于 se combine aussi bien avec 所以 qu'avec 因此 (因为 ne va pas avec 因此).",
+   "pattern": "由于 + cause，所以 / 因此 + conséquence",
+   "examples": [
+    {
+     "zh": "由于路上堵车，所以他迟到了。",
+     "fr": "À cause des embouteillages, il est arrivé en retard."
+    },
+    {
+     "zh": "他每天锻炼，因此身体很好。",
+     "fr": "Il fait du sport tous les jours, c'est pourquoi il est en bonne santé."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "由于天气不好，（　）比赛推迟了。",
+     "options": [
+      "所以",
+      "虽然",
+      "但是"
+     ],
+     "answer": 0,
+     "why": "由于…… va avec 所以 / 因此."
+    }
+   ]
+  },
+  {
+   "id": "3-72",
+   "code": "三72",
+   "level": 3,
+   "no": 201,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "目的复句",
+   "content": "为了……，……",
+   "title": "为了……，…… : afin de",
+   "explanation": "为了 + but en tête de phrase, puis l'action réalisée pour l'atteindre.",
+   "pattern": "为了 + but，sujet + action",
+   "examples": [
+    {
+     "zh": "为了学好汉语，他来到了中国。",
+     "fr": "Pour bien apprendre le chinois, il est venu en Chine."
+    },
+    {
+     "zh": "为了不迟到，我坐了出租车。",
+     "fr": "Pour ne pas être en retard, j'ai pris un taxi."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）身体健康，我每天都吃水果。",
+     "options": [
+      "只有",
+      "因为",
+      "为了"
+     ],
+     "answer": 2,
+     "why": "Un but → 为了."
+    }
+   ]
+  },
+  {
+   "id": "3-73",
+   "code": "三73",
+   "level": 3,
+   "no": 202,
+   "item": "句子的类型",
+   "category": "复句",
+   "detail": "紧缩复句",
+   "content": "……了……（就）……",
+   "title": "……了……（就）…… : dès que (résultat)",
+   "explanation": "V1 + 了 + (就) + V2 : la seconde action suit immédiatement la première : 他吃了饭就走了 · 我下了班就回家.",
+   "pattern": "V1 + 了 + O，(就) + V2",
+   "examples": [
+    {
+     "zh": "我到了机场就给你打电话。",
+     "fr": "Je t'appelle dès que j'arrive à l'aéroport."
+    },
+    {
+     "zh": "他下了课就去打球了。",
+     "fr": "Après le cours, il est aussitôt allé jouer au ballon."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你吃（　）药就睡觉吧。",
+     "options": [
+      "着",
+      "过",
+      "了"
+     ],
+     "answer": 2,
+     "why": "V1 + 了 + objet + 就 + V2."
+    }
+   ]
+  },
+  {
+   "id": "3-74",
+   "code": "三74",
+   "level": 3,
+   "no": 203,
+   "item": "特殊表达法",
+   "category": "数的表示法",
+   "detail": "",
+   "content": "概数表示法2： （1）用“大概、大约、几”表示概数（2）相邻数词连用表示概数（3）用“左右、前后”表示概数",
+   "title": "Nombres approximatifs (2) : 大概、左右、前后, nombres voisins",
+   "explanation": "大概 / 大约 + nombre = environ · nombre + 左右 = environ · moment + 前后 = aux alentours de (fête, date) · deux nombres voisins : 三四个 (trois ou quatre) · 几 = quelques : 几个人.",
+   "pattern": "大概 + nombre · nombre + 左右 · 三四个",
+   "examples": [
+    {
+     "zh": "我们大概十点到。",
+     "fr": "Nous arriverons vers dix heures."
+    },
+    {
+     "zh": "他四十岁左右。",
+     "fr": "Il a environ quarante ans."
+    },
+    {
+     "zh": "我等了五六分钟。",
+     "fr": "J'ai attendu cinq ou six minutes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "从这儿到学校要二十分钟（　）。",
+     "options": [
+      "大概",
+      "左右",
+      "几"
+     ],
+     "answer": 1,
+     "why": "Après le nombre, « environ » se dit 左右."
+    }
+   ]
+  },
+  {
+   "id": "3-75",
+   "code": "三75",
+   "level": 3,
+   "no": 204,
+   "item": "强调的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“一点儿也不……”表示强调",
+   "title": "一点儿也不…… : pas du tout",
+   "explanation": "一点儿也 / 都 + 不 / 没 + adjectif / verbe = pas du tout : 一点儿也不累.",
+   "pattern": "一点儿 + 也 / 都 + 不 / 没 + adj. / verbe",
+   "examples": [
+    {
+     "zh": "这个菜一点儿也不辣。",
+     "fr": "Ce plat n'est pas du tout épicé."
+    },
+    {
+     "zh": "我一点儿都不想去。",
+     "fr": "Je n'ai pas du tout envie d'y aller."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "今天一点儿（　）不冷。",
+     "options": [
+      "也",
+      "就",
+      "还要"
+     ],
+     "answer": 0,
+     "why": "« Pas du tout » : 一点儿也不……"
+    }
+   ]
+  },
+  {
+   "id": "3-76",
+   "code": "三76",
+   "level": 3,
+   "no": 205,
+   "item": "强调的方法",
+   "category": "",
+   "detail": "",
+   "content": "用反问句表示强调 反问句1：不是……吗？/难道……吗？",
+   "title": "Question rhétorique : 不是……吗？ / 难道……吗？",
+   "explanation": "La forme interrogative sert à affirmer avec force : 你不是说要来吗？(Tu n'avais pas dit que tu viendrais ? = tu l'avais dit !) · 难道你不知道吗？(Ne me dis pas que tu ne le sais pas !).",
+   "pattern": "不是……吗？ · 难道……吗？",
+   "examples": [
+    {
+     "zh": "你不是喜欢吃饺子吗？",
+     "fr": "Tu n'aimes pas les jiaozi ? (je croyais que si)"
+    },
+    {
+     "zh": "难道你忘了吗？",
+     "fr": "Ne me dis pas que tu as oublié !"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "你（　）去过北京吗？怎么说不知道？",
+     "options": [
+      "没是",
+      "是不",
+      "不是"
+     ],
+     "answer": 2,
+     "why": "Question rhétorique : 不是……吗 ?"
+    }
+   ]
+  },
+  {
+   "id": "3-77",
+   "code": "三77",
+   "level": 3,
+   "no": 206,
+   "item": "强调的方法",
+   "category": "",
+   "detail": "",
+   "content": "用“是”表示强调",
+   "title": "Mettre en relief avec 是",
+   "explanation": "是 accentué devant le prédicat confirme avec force : 他是很聪明 (il EST vraiment intelligent), 我是去过 (j'y suis bien allé).",
+   "pattern": "sujet + 是 (accentué) + prédicat",
+   "examples": [
+    {
+     "zh": "这个电影是很好看，你应该去看。",
+     "fr": "Ce film est vraiment bien, tu devrais aller le voir."
+    },
+    {
+     "zh": "我是不知道，不是不想告诉你。",
+     "fr": "Je ne le sais vraiment pas, ce n'est pas que je ne veuille pas te le dire."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dans 他是很努力, que fait 是 ?",
+     "options": [
+      "il renforce l'affirmation",
+      "il relie deux noms",
+      "il marque le passé"
+     ],
+     "answer": 0,
+     "why": "Devant un prédicat adjectival, 是 accentué insiste."
+    }
+   ]
+  },
+  {
+   "id": "3-78",
+   "code": "三78",
+   "level": 3,
+   "no": 207,
+   "item": "提问的方法",
+   "category": "",
+   "detail": "",
+   "content": "用疑问语调表示疑问",
+   "title": "La question par l'intonation",
+   "explanation": "À l'oral, une phrase affirmative prononcée avec une intonation montante devient une question (souvent pour s'étonner) : 你不去？",
+   "pattern": "phrase affirmative + ？ (intonation montante)",
+   "examples": [
+    {
+     "zh": "你明天走？",
+     "fr": "Tu pars demain ?"
+    },
+    {
+     "zh": "他是你哥哥？",
+     "fr": "C'est ton grand frère ?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Comment exprimer l'étonnement « Tu ne viens pas ?! » ?",
+     "options": [
+      "你不来吗吧。",
+      "你不来呢吗？",
+      "你不来？"
+     ],
+     "answer": 2,
+     "why": "L'intonation montante suffit à faire une question."
+    }
+   ]
+  },
+  {
+   "id": "3-79",
+   "code": "三79",
+   "level": 3,
+   "no": 208,
+   "item": "口语格式",
+   "category": "",
+   "detail": "",
+   "content": "都……了",
+   "title": "都……了 : déjà… (insistance)",
+   "explanation": "都 + moment / quantité + 了 souligne que c'est déjà beaucoup ou déjà tard : 都十二点了，快睡吧 !",
+   "pattern": "都 + moment / quantité + 了",
+   "examples": [
+    {
+     "zh": "都十点了，他怎么还没来？",
+     "fr": "Il est déjà dix heures, pourquoi n'est-il pas encore là ?"
+    },
+    {
+     "zh": "你都二十岁了，应该自己做饭了。",
+     "fr": "Tu as déjà vingt ans, tu devrais cuisiner toi-même."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）八点了，你还不起床！",
+     "options": [
+      "都",
+      "就",
+      "才"
+     ],
+     "answer": 0,
+     "why": "Insistance sur l'heure tardive : 都……了."
+    }
+   ]
+  },
+  {
+   "id": "3-80",
+   "code": "三80",
+   "level": 3,
+   "no": 209,
+   "item": "口语格式",
+   "category": "",
+   "detail": "",
+   "content": "X就X（点儿）吧",
+   "title": "X 就 X（点儿）吧 : tant pis, va pour",
+   "explanation": "On accepte une situation pas idéale : 贵就贵点儿吧 (c'est un peu cher, tant pis), 走就走吧 (bon, partons).",
+   "pattern": "X + 就 + X + (点儿) + 吧",
+   "examples": [
+    {
+     "zh": "远就远点儿吧，房子大就行。",
+     "fr": "Tant pis si c'est un peu loin, du moment que c'est grand."
+    },
+    {
+     "zh": "买就买吧，反正不贵。",
+     "fr": "Bon, achetons-le, de toute façon ce n'est pas cher."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "这件衣服有点儿大，大（　）大点儿吧。",
+     "options": [
+      "就",
+      "才",
+      "是"
+     ],
+     "answer": 0,
+     "why": "Acceptation : X就X吧."
+    }
+   ]
+  },
+  {
+   "id": "3-81",
+   "code": "三81",
+   "level": 3,
+   "no": 210,
+   "item": "口语格式",
+   "category": "",
+   "detail": "",
+   "content": "X什么（啊）",
+   "title": "X 什么（啊） : pourquoi donc… (reproche)",
+   "explanation": "Verbe / adjectif + 什么 (+ 啊) exprime le désaccord ou le reproche : 哭什么 ? (pourquoi pleurer ?), 急什么 ? (inutile de se presser).",
+   "pattern": "verbe / adj. + 什么 (+ 啊)",
+   "examples": [
+    {
+     "zh": "你急什么？我们还有时间。",
+     "fr": "Pourquoi tu te presses ? Nous avons encore le temps."
+    },
+    {
+     "zh": "笑什么啊？有什么好笑的？",
+     "fr": "Qu'est-ce qui te fait rire ? Il n'y a rien de drôle."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Que veut dire 你怕什么？ ici : 你怕什么？他不会生气的。",
+     "options": [
+      "tu as très peur",
+      "il n'y a pas de raison d'avoir peur",
+      "de quoi as-tu peur exactement ?"
+     ],
+     "answer": 1,
+     "why": "X什么 exprime ici que la peur est injustifiée."
+    }
+   ]
+  }
+ ]
+}

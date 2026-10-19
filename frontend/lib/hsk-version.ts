@@ -22,7 +22,15 @@ export function quizLabel(key: string): string {
 }
 
 /** Everything whose content depends on the HSK version. */
-const VERSION_SCOPED_KEYS = [["quizzes"], ["srs-stats"], ["account-overview"], ["mastery"], ["drawings-gallery"]];
+const VERSION_SCOPED_KEYS = [
+  ["quizzes"],
+  ["srs-stats"],
+  ["account-overview"],
+  ["mastery"],
+  ["drawings-gallery"],
+  ["exercise-catalog"],
+  ["grammar"],
+];
 
 /** The user's HSK version (saved on the account) and a setter that refreshes the app. */
 export function useHskVersion() {

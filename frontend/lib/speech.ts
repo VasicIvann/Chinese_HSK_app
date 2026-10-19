@@ -127,3 +127,94 @@ export function useChineseSpeech() {
 
   return { supported, speak, stop, speakingKey };
 }
+
+// --------------------------------------------------------------------------- scripts (exercises)
+
+export type ScriptLine = { s: "m" | "f" | "n"; t: string };
+
+/** Pitch per speaker when the device has a single Chinese voice. */
+const PITCH = { m: 0.75, f: 1.2, n: 1 } as const;
+
+/** Two different Chinese voices (for 男 / 女) when the device has several. */
+export function pickDialogueVoices<T extends VoiceLike>(voices: readonly T[]): { m: T | null; f: T | null } {
+  const main = pickChineseVoice(voices);
+  if (!main) return { m: null, f: null };
+  const zh = voices.filter((v) => normalizeLang(v.lang) === normalizeLang(main.lang));
+  const male = zh.find((v) => /male|man|男|yunxi|yunyang|kangkang|li-mu|liang/i.test(v.name) && !/female/i.test(v.name));
+  const female = zh.find((v) => /female|woman|女|xiaoxiao|huihui|yaoyao|ting|mei|xiaoyi/i.test(v.name));
+  const other = zh.find((v) => v.voiceURI !== main.voiceURI);
+  if (male && female) return { m: male, f: female };
+  if (male) return { m: male, f: main.voiceURI === male.voiceURI ? other ?? main : main };
+  if (female) return { m: main.voiceURI === female.voiceURI ? other ?? main : main, f: female };
+  return { m: main, f: other ?? main };
+}
+
+/**
+ * Plays an exercise recording: each turn with its speaker's voice, the whole
+ * script `times` times (the HSK papers play everything twice), short pauses
+ * between turns and a longer one between repetitions.
+ */
+export function useScriptPlayer() {
+  const { supported } = useChineseSpeech();
+  const [playing, setPlaying] = useState(false);
+  const run = useRef(0);
+
+  useEffect(
+    () => () => {
+      run.current += 1;
+      if (isSupported()) window.speechSynthesis.cancel();
+    },
+    []
+  );
+
+  const stop = useCallback(() => {
+    run.current += 1;
+    if (isSupported()) window.speechSynthesis.cancel();
+    setPlaying(false);
+  }, []);
+
+  const play = useCallback(
+    (lines: ScriptLine[], { times = 2, rate = 0.85, onEnd }: { times?: number; rate?: number; onEnd?: () => void } = {}): string | null => {
+      if (!isSupported()) return "Ton navigateur ne sait pas lire l'audio. Essaie Chrome, Safari ou Edge.";
+      const synth = window.speechSynthesis;
+      const voices = synth.getVoices();
+      const main = pickChineseVoice(voices);
+      if (voices.length > 0 && !main) {
+        return "Aucune voix chinoise sur cet appareil. Ajoute la langue chinoise dans les réglages du système.";
+      }
+      const pair = pickDialogueVoices(voices);
+      const distinct = pair.m && pair.f && pair.m.voiceURI !== pair.f.voiceURI;
+      const queue: { line: ScriptLine; pause: number }[] = [];
+      for (let r = 0; r < times; r++) {
+        lines.forEach((line, i) => queue.push({ line, pause: i === lines.length - 1 ? 1800 : 450 }));
+      }
+      synth.cancel();
+      const token = ++run.current;
+      setPlaying(true);
+      const step = (i: number) => {
+        if (token !== run.current) return;
+        if (i >= queue.length) {
+          setPlaying(false);
+          onEnd?.();
+          return;
+        }
+        const { line, pause } = queue[i];
+        const u = new SpeechSynthesisUtterance(line.t);
+        const voice = line.s === "n" ? main : pair[line.s];
+        u.lang = voice?.lang ?? "zh-CN";
+        if (voice) u.voice = voice;
+        u.rate = rate;
+        u.pitch = distinct && line.s !== "n" ? 1 : PITCH[line.s];
+        const next = () => window.setTimeout(() => step(i + 1), pause);
+        u.onend = next;
+        u.onerror = next;
+        synth.speak(u);
+      };
+      step(0);
+      return null;
+    },
+    []
+  );
+
+  return { supported, play, stop, playing };
+}

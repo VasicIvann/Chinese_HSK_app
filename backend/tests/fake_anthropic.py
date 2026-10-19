@@ -8,7 +8,6 @@ works without hitting the network. Tests monkey-patch
 from __future__ import annotations
 
 import json
-from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -86,15 +85,43 @@ class FakeMessages:
             "strengths": ["Phrase simple et correcte."],
             "next_step_advice": "Essayez d'allonger en 2 phrases.",
         }
+        # HSK exercises: one valid short_mcq item, plus one broken item that must be dropped.
+        self.exercise_response: dict[str, Any] = {
+            "items": [
+                {
+                    "audio": "男：你喜欢喝茶吗？\n女：喜欢，我每天都喝。",
+                    "q": "女的每天喝什么？",
+                    "fr": "— Tu aimes le thé ? — Oui, j'en bois tous les jours.",
+                    "qfr": "Que boit la femme tous les jours ?",
+                    "options": ["茶", "水", "牛奶"],
+                    "ofr": ["du thé", "de l'eau", "du lait"],
+                    "answer": "A",
+                },
+                {"audio": "男：你好", "q": "?", "options": ["一", "二"], "answer": "C"},
+            ]
+        }
+        self.sentence_check_response: dict[str, Any] = {
+            "correct": True,
+            "uses_word": True,
+            "corrected": "我经常去图书馆。",
+            "pinyin": "wǒ jīngcháng qù túshūguǎn.",
+            "translation": "Je vais souvent à la bibliothèque.",
+            "explanation": "Phrase correcte et naturelle.",
+        }
         self.create_calls: list[dict[str, Any]] = []
         self.stream_calls: list[dict[str, Any]] = []
 
     def create(self, **kwargs: Any) -> FakeMessage:
         self.create_calls.append(kwargs)
         system_text = "".join(block.get("text", "") for block in kwargs.get("system", []))
-        response = (
-            self.example_response if "phrase d'exemple" in system_text else self.subject_response
-        )
+        if "concepteur d'épreuves" in system_text:
+            response = self.exercise_response
+        elif "用词造句" in system_text:
+            response = self.sentence_check_response
+        elif "phrase d'exemple" in system_text:
+            response = self.example_response
+        else:
+            response = self.subject_response
         text = json.dumps(response, ensure_ascii=False)
         return FakeMessage(content=[FakeTextBlock(text=text)])
 
