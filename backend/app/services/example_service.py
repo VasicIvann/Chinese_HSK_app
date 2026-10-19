@@ -7,19 +7,18 @@ from datetime import datetime
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Entry, Quiz, WordExample
+from app.models import Entry, WordExample
+from app.services.version_service import DEFAULT_VERSION, entry_level
 
 
-def get_entry_with_level(db: Session, entry_id: int) -> tuple[Entry, int | None] | None:
-    """Return the entry and the HSK level of its quiz, or None if it doesn't exist."""
-    row = db.execute(
-        select(Entry, Quiz.level)
-        .join(Quiz, Quiz.id == Entry.quiz_id)
-        .where(Entry.id == entry_id)
-    ).first()
-    if row is None:
+def get_entry_with_level(
+    db: Session, entry_id: int, version: str = DEFAULT_VERSION
+) -> tuple[Entry, int | None] | None:
+    """Return the entry and its HSK level in `version`, or None if it doesn't exist."""
+    entry = db.get(Entry, entry_id)
+    if entry is None:
         return None
-    return row[0], row[1]
+    return entry, entry_level(db, entry_id, version)
 
 
 def list_examples(db: Session, *, user_id: int, entry_id: int, limit: int = 50) -> list[WordExample]:

@@ -16,7 +16,7 @@ from fsrs import Card, Rating, Scheduler, State
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Entry, Quiz, ReviewLog, UserVocabMastery
+from app.models import Entry, Quiz, QuizEntry, ReviewLog, UserVocabMastery
 
 
 class RatingEnum(str, Enum):
@@ -205,12 +205,31 @@ def _fetch_mastery_for_quizzes(
 ) -> dict[int, UserVocabMastery]:
     stmt = (
         select(UserVocabMastery)
-        .join(Entry, UserVocabMastery.entry_id == Entry.id)
-        .join(Quiz, Entry.quiz_id == Quiz.id)
+        .join(QuizEntry, QuizEntry.entry_id == UserVocabMastery.entry_id)
+        .join(Quiz, QuizEntry.quiz_id == Quiz.id)
         .where(UserVocabMastery.user_id == user_id, Quiz.key.in_(quiz_keys))
     )
     rows = db.execute(stmt).scalars().all()
     return {row.entry_id: row for row in rows}
+
+
+def _vocab_for_quizzes(db: Session, quiz_keys: list[str]) -> list[tuple[Entry, int]]:
+    """Active words listed under the given quizzes, with the quiz each one came from
+    (a word appears once even if two of the quizzes list it)."""
+    stmt = (
+        select(Entry, QuizEntry.quiz_id)
+        .join(QuizEntry, QuizEntry.entry_id == Entry.id)
+        .join(Quiz, Quiz.id == QuizEntry.quiz_id)
+        .where(Quiz.key.in_(quiz_keys), Entry.is_active.is_(True))
+        .order_by(Entry.id, QuizEntry.quiz_id)
+    )
+    seen: set[int] = set()
+    vocab: list[tuple[Entry, int]] = []
+    for entry, quiz_id in db.execute(stmt).all():
+        if entry.id not in seen:
+            seen.add(entry.id)
+            vocab.append((entry, quiz_id))
+    return vocab
 
 
 def _is_new(record: UserVocabMastery | None) -> bool:
@@ -227,8 +246,9 @@ def select_due_entries(
     new_ratio: float = 0.30,
     only_new: bool = False,
     seed: Optional[int] = None,
-) -> list[Entry]:
-    """Pick the next entries to study across one or more quizzes.
+) -> list[tuple[Entry, int]]:
+    """Pick the next entries to study across one or more quizzes, each with the id
+    of the quiz (level) it was picked from.
 
     Default: biased toward due cards (FSRS due_at <= now), mixed with ~`new_ratio`
     never-seen words. With `only_new`, only words the user has never rated, shuffled.
@@ -237,15 +257,11 @@ def select_due_entries(
     if not keys or count <= 0:
         return []
 
-    stmt = (
-        select(Entry)
-        .join(Quiz)
-        .where(Quiz.key.in_(keys), Entry.is_active.is_(True))
-        .order_by(Entry.id)
-    )
-    vocab = list(db.execute(stmt).scalars().all())
-    if not vocab:
+    pairs = _vocab_for_quizzes(db, keys)
+    if not pairs:
         return []
+    quiz_of = {entry.id: quiz_id for entry, quiz_id in pairs}
+    vocab = [entry for entry, _ in pairs]
 
     mastery = _fetch_mastery_for_quizzes(db, user_id, keys)
     rng = random.Random(seed)
@@ -266,7 +282,7 @@ def select_due_entries(
 
     rng.shuffle(new_bucket)
     if only_new:
-        return new_bucket[:count]
+        return [(e, quiz_of[e.id]) for e in new_bucket[:count]]
 
     due_bucket.sort(
         key=lambda e: (
@@ -306,28 +322,30 @@ def select_due_entries(
     if remaining > 0:
         take(upcoming_bucket, remaining)
 
-    return selected[: min(count, len(selected))]
+    return [(e, quiz_of[e.id]) for e in selected[: min(count, len(selected))]]
 
 
 def get_due_count(
-    db: Session, user_id: int, quiz_keys: str | Sequence[str] | None = None
+    db: Session,
+    user_id: int,
+    quiz_keys: str | Sequence[str] | None = None,
+    version: str | None = None,
 ) -> dict[str, int]:
-    """Return a {due, new, upcoming} counts summary over the given quizzes (all if None)."""
+    """Return a {due, new, upcoming} counts summary over the given quizzes (all the
+    quizzes of `version` — or every quiz — if None)."""
     summary = {"due": 0, "new": 0, "upcoming": 0}
     now_naive = datetime.utcnow()
 
     keys = _normalize_quiz_keys(quiz_keys)
     if not keys:
-        keys = list(db.execute(select(Quiz.key)).scalars().all())
+        all_quizzes = select(Quiz.key)
+        if version is not None:
+            all_quizzes = all_quizzes.where(Quiz.version == version)
+        keys = list(db.execute(all_quizzes).scalars().all())
     if not keys:
         return summary
 
-    stmt = (
-        select(Entry.id)
-        .join(Quiz)
-        .where(Quiz.key.in_(keys), Entry.is_active.is_(True))
-    )
-    entry_ids = list(db.execute(stmt).scalars().all())
+    entry_ids = [entry.id for entry, _ in _vocab_for_quizzes(db, keys)]
     mastery = _fetch_mastery_for_quizzes(db, user_id, keys)
     for entry_id in entry_ids:
         record = mastery.get(entry_id)

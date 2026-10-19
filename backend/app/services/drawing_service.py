@@ -10,7 +10,8 @@ from datetime import datetime
 from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
 
-from app.models import Entry, Quiz, WordDrawing
+from app.models import Entry, Quiz, QuizEntry, WordDrawing
+from app.services.version_service import DEFAULT_VERSION
 
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 DATA_URL_PREFIX = "data:image/png;base64,"
@@ -94,7 +95,7 @@ def delete_drawing(db: Session, *, user_id: int, drawing_id: int) -> bool:
     return (result.rowcount or 0) > 0
 
 
-def gallery(db: Session, *, user_id: int, limit: int, offset: int) -> dict:
+def gallery(db: Session, *, user_id: int, limit: int, offset: int, version: str = DEFAULT_VERSION) -> dict:
     """Drawings grouped by word, most recently drawn word first, with a preview of
     the latest drawings of each word."""
     total_drawings, total_words = db.execute(
@@ -112,12 +113,10 @@ def gallery(db: Session, *, user_id: int, limit: int, offset: int) -> dict:
             Entry.hanzi,
             Entry.pinyin,
             Entry.translation,
-            Quiz.level,
         )
         .join(Entry, Entry.id == WordDrawing.entry_id)
-        .join(Quiz, Quiz.id == Entry.quiz_id)
         .where(WordDrawing.user_id == user_id)
-        .group_by(WordDrawing.entry_id, Entry.hanzi, Entry.pinyin, Entry.translation, Quiz.level)
+        .group_by(WordDrawing.entry_id, Entry.hanzi, Entry.pinyin, Entry.translation)
         .order_by(latest.desc(), WordDrawing.entry_id.desc())
         .limit(limit + 1)
         .offset(offset)
@@ -126,6 +125,16 @@ def gallery(db: Session, *, user_id: int, limit: int, offset: int) -> dict:
     groups = groups[:limit]
 
     previews: dict[int, list[WordDrawing]] = {g.entry_id: [] for g in groups}
+    # Level in the user's version, else in the other one.
+    levels: dict[int, int | None] = {}
+    if groups:
+        level_rows = db.execute(
+            select(QuizEntry.entry_id, Quiz.version, Quiz.level)
+            .join(Quiz, Quiz.id == QuizEntry.quiz_id)
+            .where(QuizEntry.entry_id.in_(list(previews)))
+        ).all()
+        for entry_id, quiz_version, level in sorted(level_rows, key=lambda r: r.version == version):
+            levels[entry_id] = level  # the user's version is applied last, so it wins
     if groups:
         rank = (
             func.row_number()
@@ -159,7 +168,7 @@ def gallery(db: Session, *, user_id: int, limit: int, offset: int) -> dict:
                 "hanzi": g.hanzi,
                 "pinyin": g.pinyin,
                 "translation": g.translation,
-                "hsk_level": g.level,
+                "hsk_level": levels.get(g.entry_id),
                 "count": int(g.count),
                 "latest_at": g.latest_at,
                 "drawings": [to_item(d) for d in previews[g.entry_id]],

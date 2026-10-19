@@ -13,6 +13,7 @@ class QuizPublic(BaseModel):
     title: str
     description: str | None = None
     level: int | None = None
+    version: str = "3.0"
 
 
 class EntryPublic(BaseModel):

@@ -21,7 +21,8 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.timezone import UTC, local_date, local_today
-from app.models import Entry, ExpressionAttempt, Quiz, ReviewLog, User, UserVocabMastery
+from app.models import ExpressionAttempt, ReviewLog, User, UserVocabMastery
+from app.services.version_service import DEFAULT_VERSION, version_entries, version_entry_ids
 
 
 MASTERED_CONFIDENCE_THRESHOLD = 0.9
@@ -63,14 +64,12 @@ def _rate(successes: int, total: int) -> float | None:
     return round(successes / total, 4) if total else None
 
 
-def _level_progress(db: Session, mastery_by_entry: dict[int, UserVocabMastery]) -> list[dict[str, Any]]:
-    rows = db.execute(
-        select(Entry.id, Quiz.key, Quiz.title, Quiz.level)
-        .join(Quiz, Quiz.id == Entry.quiz_id)
-        .where(Entry.is_active.is_(True))
-    ).all()
+def _level_progress(
+    db: Session, mastery_by_entry: dict[int, UserVocabMastery], version: str
+) -> list[dict[str, Any]]:
+    rows = db.execute(version_entries(version)).all()
     levels: dict[str, dict[str, Any]] = {}
-    for entry_id, key, title, level in rows:
+    for entry_id, _quiz_id, key, title, level in rows:
         item = levels.setdefault(
             key,
             {"quiz_key": key, "title": title, "level": level,
@@ -118,19 +117,22 @@ def get_overview(
     trend_days: int = 30,
     tz: ZoneInfo = UTC,
     now_utc: datetime | None = None,
+    version: str = DEFAULT_VERSION,
 ) -> dict[str, Any]:
+    """Word-level numbers (mastery split, levels, upcoming reviews) cover the words
+    of the user's HSK `version`; activity (heatmap, streak, success) covers everything."""
     now_naive = (now_utc or datetime.now(timezone.utc)).astimezone(timezone.utc).replace(tzinfo=None)
     today = local_today(tz, now_naive)
     heatmap_start = today - timedelta(days=heatmap_days - 1)
     trend_start = today - timedelta(days=trend_days - 1)
 
-    total_entries = int(db.execute(select(func.count(Entry.id)).where(Entry.is_active.is_(True))).scalar() or 0)
+    in_version = version_entry_ids(version).distinct().subquery()
+    total_entries = int(db.execute(select(func.count()).select_from(in_version)).scalar() or 0)
 
-    # Words removed from the syllabus are deactivated, not deleted: ignore their history here.
-    mastery_stmt = (
-        select(UserVocabMastery)
-        .join(Entry, Entry.id == UserVocabMastery.entry_id)
-        .where(UserVocabMastery.user_id == user.id, Entry.is_active.is_(True))
+    # Only the words of this version (a word may be in one version and not the other).
+    mastery_stmt = select(UserVocabMastery).where(
+        UserVocabMastery.user_id == user.id,
+        UserVocabMastery.entry_id.in_(select(in_version.c.entry_id)),
     )
     mastery_rows = list(db.execute(mastery_stmt).scalars().all())
 
@@ -139,7 +141,13 @@ def get_overview(
     )
     learning_count = len(mastery_rows) - mastered_count
     new_count = max(0, total_entries - len(mastery_rows))
-    total_reviews = sum(int(row.review_count or 0) for row in mastery_rows)
+    # Every review ever made, whatever the version.
+    total_reviews = int(
+        db.execute(
+            select(func.coalesce(func.sum(UserVocabMastery.review_count), 0)).where(UserVocabMastery.user_id == user.id)
+        ).scalar()
+        or 0
+    )
 
     mastery_by_entry = {row.entry_id: row for row in mastery_rows}
 
@@ -214,7 +222,7 @@ def get_overview(
     }
 
     streak = compute_streak(set(log_days), today)
-    level_progress = _level_progress(db, mastery_by_entry)
+    level_progress = _level_progress(db, mastery_by_entry, version)
     upcoming = _upcoming(mastery_rows, tz, now_naive, today)
 
     # Expression progression: one point per scored attempt over `trend_days`.
@@ -260,4 +268,5 @@ def get_overview(
         "streak": streak,
         "success_rate": success_rate,
         "upcoming": upcoming,
+        "hsk_version": version,
     }

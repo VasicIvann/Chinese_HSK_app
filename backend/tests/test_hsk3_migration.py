@@ -1,5 +1,7 @@
 """Migration 0005: switch to the HSK 3.0 lists (levels 1-5) without losing progress.
 
+(0007, which adds HSK 2.0 next to it, is covered in test_hsk_versions.py.)
+
 Runs the real Alembic migrations on a throwaway SQLite file that starts in the
 pre-0005 state (the old HSK 2.0 lists, a user with progress, an example and a
 review), then checks what the upgrade did.
@@ -120,7 +122,7 @@ def _active_counts(conn) -> dict[str, int]:
 
 
 def test_upgrade_switches_to_hsk3_and_keeps_progress(legacy_db) -> None:
-    command.upgrade(_alembic(legacy_db["url"]), "head")
+    command.upgrade(_alembic(legacy_db["url"]), "0005_hsk3_vocabulary")
     engine, ids = legacy_db["engine"], legacy_db["ids"]
 
     with engine.connect() as conn:
@@ -163,7 +165,7 @@ def test_upgrade_switches_to_hsk3_and_keeps_progress(legacy_db) -> None:
 
 def test_variant_forms_keep_their_progress(legacy_db) -> None:
     """面条 (old) is 面条儿 in the new syllabus: same entry, moved and renamed."""
-    command.upgrade(_alembic(legacy_db["url"]), "head")
+    command.upgrade(_alembic(legacy_db["url"]), "0005_hsk3_vocabulary")
     with legacy_db["engine"].connect() as conn:
         row = conn.execute(
             sa.text("SELECT hanzi, is_active FROM entries WHERE id = :i"), {"i": legacy_db["ids"]["面条"]}
@@ -172,7 +174,7 @@ def test_variant_forms_keep_their_progress(legacy_db) -> None:
 
 
 def test_running_the_sync_again_changes_nothing(legacy_db) -> None:
-    command.upgrade(_alembic(legacy_db["url"]), "head")
+    command.upgrade(_alembic(legacy_db["url"]), "0005_hsk3_vocabulary")
     engine = legacy_db["engine"]
     with engine.connect() as conn:
         before = conn.execute(sa.text("SELECT id, quiz_id, is_active FROM entries ORDER BY id")).all()
@@ -196,7 +198,18 @@ def test_fresh_database_gets_the_full_lists(tmp_path, monkeypatch) -> None:
         command.upgrade(_alembic(url), "head")
         engine = sa.create_engine(url)
         with engine.connect() as conn:
-            assert _active_counts(conn) == {"HSK1": 300, "HSK2": 200, "HSK3": 500, "HSK4": 1000, "HSK5": 1600}
+            listed = dict(
+                conn.execute(
+                    sa.text(
+                        "SELECT q.key, COUNT(*) FROM quiz_entries qe JOIN quizzes q ON q.id = qe.quiz_id "
+                        "GROUP BY q.key"
+                    )
+                ).all()
+            )
+            assert listed == {
+                "HSK1": 300, "HSK2": 200, "HSK3": 500, "HSK4": 1000, "HSK5": 1600,
+                "HSK1-2.0": 150, "HSK2-2.0": 151, "HSK3-2.0": 297, "HSK4-2.0": 598, "HSK5-2.0": 1300,
+            }
             assert conn.execute(sa.text("SELECT COUNT(*) FROM entries WHERE translation = ''")).scalar() == 0
         engine.dispose()
     finally:

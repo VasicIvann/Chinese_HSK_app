@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 import { Check, Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 
+import { HskVersionToggle } from "@/components/hsk-version-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getQuizzes, getStats, MAX_SESSION_SIZE } from "@/lib/api/endpoints";
 import type { QuizMode } from "@/lib/hooks/use-quiz-session";
+import { quizLabel, useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
 export type QuizStartParams = {
@@ -43,15 +45,20 @@ const MODES: { value: QuizMode; label: string; description: string }[] = [
 ];
 
 export function QuizSetup({ onStart, isLoading }: Props) {
-  const [selectedQuizzes, setSelectedQuizzes] = useState<string[]>([]);
+  const { version } = useHskVersion();
+  // Selection kept per version: switching back restores it.
+  const [selectionByVersion, setSelectionByVersion] = useState<Record<string, string[]>>({});
+  const selectedQuizzes = selectionByVersion[version] ?? [];
+  const setSelectedQuizzes = (update: (current: string[]) => string[]) =>
+    setSelectionByVersion((all) => ({ ...all, [version]: update(all[version] ?? []) }));
   const [countChoice, setCountChoice] = useState<CountChoice>(10);
   const [customCount, setCustomCount] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [mode, setMode] = useState<QuizMode>("auto-assess");
 
-  const quizzesQuery = useQuery({ queryKey: ["quizzes"], queryFn: getQuizzes });
+  const quizzesQuery = useQuery({ queryKey: ["quizzes", version], queryFn: () => getQuizzes(version) });
   const statsQuery = useQuery({
-    queryKey: ["srs-stats", ...selectedQuizzes],
+    queryKey: ["srs-stats", version, ...selectedQuizzes],
     queryFn: () => getStats(selectedQuizzes),
     enabled: !quizzesQuery.isLoading,
   });
@@ -113,11 +120,15 @@ export function QuizSetup({ onStart, isLoading }: Props) {
       )}
 
       <Card>
-        <CardHeader>
-          <CardTitle>Choisis tes niveaux</CardTitle>
-          <CardDescription>
-            Un ou plusieurs niveaux HSK : les mots sont mélangés dans la même session.
-          </CardDescription>
+        <CardHeader className="flex-row flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="flex min-w-0 flex-col gap-1.5">
+            <CardTitle>Choisis tes niveaux</CardTitle>
+            <CardDescription>
+              Un ou plusieurs niveaux HSK : les mots sont mélangés dans la même session.
+              <span className="block">{VERSION_INFO[version].hint}</span>
+            </CardDescription>
+          </div>
+          <HskVersionToggle />
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">
           {quizzesQuery.isLoading ? (
@@ -218,7 +229,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
           {available !== null && (
             <CardDescription>
               {available} mot{available > 1 ? "s" : ""} disponible{available > 1 ? "s" : ""}
-              {onlyNew ? " jamais vus" : ""} dans {selectedQuizzes.join(" + ")}.
+              {onlyNew ? " jamais vus" : ""} dans {selectedQuizzes.map(quizLabel).join(" + ")} ({VERSION_INFO[version].label}).
             </CardDescription>
           )}
         </CardHeader>

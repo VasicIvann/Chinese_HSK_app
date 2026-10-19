@@ -34,12 +34,19 @@ export type LoginRequest = {
   password: string;
 };
 
+export type HskVersion = "2.0" | "3.0";
+
 export type QuizPublic = {
   id: number;
   key: string;
   title: string;
   description: string | null;
   level: number | null;
+  version: HskVersion;
+};
+
+export type AccountSettings = {
+  hsk_version: HskVersion;
 };
 
 export type EntryPublic = {
@@ -234,6 +241,8 @@ export type AccountOverview = {
   streak: StreakSummary;
   success_rate: SuccessRate;
   upcoming: UpcomingReviews;
+  /** HSK version the word-level numbers are computed for. */
+  hsk_version: HskVersion;
 };
 
 export type WordExampleItem = {

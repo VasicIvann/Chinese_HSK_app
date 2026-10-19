@@ -6,11 +6,18 @@ import { QuizSetup } from "@/components/quiz/quiz-setup";
 
 const getQuizzes = vi.fn();
 const getStats = vi.fn();
+const settings = { hsk_version: "3.0" as "2.0" | "3.0" };
+const putAccountSettings = vi.fn(async (next: typeof settings) => {
+  settings.hsk_version = next.hsk_version;
+  return { ...settings };
+});
 
 vi.mock("@/lib/api/endpoints", () => ({
   MAX_SESSION_SIZE: 2000,
-  getQuizzes: () => getQuizzes(),
+  getQuizzes: (version?: string) => getQuizzes(version),
   getStats: (q: string[]) => getStats(q),
+  getAccountSettings: async () => ({ ...settings }),
+  putAccountSettings: (s: typeof settings) => putAccountSettings(s),
 }));
 
 // Stats per level: HSK1 = 150 words (20 seen), HSK2 = 150 (all new), HSK3 = 300 (all new).
@@ -34,13 +41,22 @@ const startButton = () => screen.getByRole("button", { name: /lancer la session/
 
 describe("QuizSetup", () => {
   beforeEach(() => {
-    getQuizzes.mockResolvedValue([
-      { id: 1, key: "HSK1", title: "HSK 1", description: null, level: 1 },
-      { id: 2, key: "HSK2", title: "HSK 2", description: null, level: 2 },
-      { id: 3, key: "HSK3", title: "HSK 3", description: null, level: 3 },
-    ]);
+    settings.hsk_version = "3.0";
+    putAccountSettings.mockClear();
+    getQuizzes.mockImplementation(async (version?: string) =>
+      version === "2.0"
+        ? [
+            { id: 11, key: "HSK1-2.0", title: "HSK 1", description: null, level: 1, version: "2.0" },
+            { id: 12, key: "HSK2-2.0", title: "HSK 2", description: null, level: 2, version: "2.0" },
+          ]
+        : [
+            { id: 1, key: "HSK1", title: "HSK 1", description: null, level: 1, version: "3.0" },
+            { id: 2, key: "HSK2", title: "HSK 2", description: null, level: 2, version: "3.0" },
+            { id: 3, key: "HSK3", title: "HSK 3", description: null, level: 3, version: "3.0" },
+          ]
+    );
     getStats.mockImplementation(async (keys: string[]) =>
-      (keys.length ? keys : Object.keys(STATS)).reduce(
+      (keys.length ? keys : Object.keys(STATS)).map((k) => k.replace("-2.0", "")).reduce(
         (acc, k) => ({
           due: acc.due + STATS[k].due,
           new: acc.new + STATS[k].new,
@@ -128,5 +144,28 @@ describe("QuizSetup", () => {
     renderSetup();
     await screen.findByRole("button", { name: "HSK 1" });
     expect(startButton()).toBeDisabled();
+  });
+
+  it("switches between HSK 3.0 and HSK 2.0 and saves the choice", async () => {
+    const onStart = renderSetup();
+    const v2 = await screen.findByRole("radio", { name: "HSK 2.0" });
+    expect(screen.getByRole("radio", { name: "HSK 3.0" })).toHaveAttribute("aria-checked", "true");
+    await screen.findByRole("button", { name: "HSK 3" });
+    fireEvent.click(screen.getByRole("button", { name: "HSK 1" }));
+
+    fireEvent.click(v2);
+    await waitFor(() => expect(putAccountSettings).toHaveBeenCalledWith({ hsk_version: "2.0" }));
+    expect(await screen.findByRole("radio", { name: "HSK 2.0" })).toHaveAttribute("aria-checked", "true");
+    await waitFor(() => expect(getQuizzes).toHaveBeenCalledWith("2.0"));
+    await waitFor(() => expect(screen.queryByRole("button", { name: "HSK 3" })).toBeNull());
+    expect(screen.getByText(/examens jusqu'au 7 novembre 2026/)).toBeInTheDocument();
+
+    // The 3.0 selection does not leak into 2.0.
+    expect(screen.getByRole("button", { name: "HSK 1" })).toHaveAttribute("aria-pressed", "false");
+    fireEvent.click(screen.getByRole("button", { name: "HSK 2" }));
+    await waitFor(() => expect(getStats).toHaveBeenLastCalledWith(["HSK2-2.0"]));
+    await waitFor(() => expect(startButton()).toBeEnabled());
+    fireEvent.click(startButton());
+    expect(onStart).toHaveBeenCalledWith(expect.objectContaining({ quizzes: ["HSK2-2.0"] }));
   });
 });

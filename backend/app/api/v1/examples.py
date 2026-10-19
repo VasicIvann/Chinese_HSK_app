@@ -10,6 +10,7 @@ from app.db.session import get_db
 from app.models import User
 from app.schemas import ExampleGenerateRequest, ExampleGenerateResponse, WordExampleItem
 from app.services import example_service, expression_service, llm_service
+from app.services.version_service import get_user_version
 
 
 QUOTA_KIND = "example_generation"
@@ -42,7 +43,7 @@ def post_generate_example(
     db: Session = Depends(get_db),
     user: User = Depends(enforce_quota(QUOTA_KIND)),
 ) -> ExampleGenerateResponse:
-    found = example_service.get_entry_with_level(db, payload.entry_id)
+    found = example_service.get_entry_with_level(db, payload.entry_id, get_user_version(db, user.id))
     if found is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Mot introuvable.")
     entry, level = found

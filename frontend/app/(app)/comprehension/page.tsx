@@ -13,6 +13,7 @@ import { ApiError } from "@/lib/api/client";
 import { getDueEntries, postRate } from "@/lib/api/endpoints";
 import type { DueEntry, MasterySnapshotResponse, RatingEnum } from "@/lib/api/types";
 import { useQuizSession } from "@/lib/hooks/use-quiz-session";
+import { quizLabel } from "@/lib/hsk-version";
 
 type Phase = "setup" | "loading" | "running" | "summary";
 
@@ -127,7 +128,7 @@ export default function ComprehensionPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
-          {config?.quizzes.join(" + ")}
+          {config?.quizzes.map(quizLabel).join(" + ")}
           {config?.onlyNew ? " · Nouveaux" : ""} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
           {session.state.questions.length}
         </p>

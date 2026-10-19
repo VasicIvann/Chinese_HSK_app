@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from typing import Literal
 
 from pydantic import BaseModel
 
@@ -92,3 +93,9 @@ class AccountOverview(BaseModel):
     streak: StreakSummary
     success_rate: SuccessRate
     upcoming: UpcomingReviews
+    # The HSK version the word-level numbers above are computed for.
+    hsk_version: str = "3.0"
+
+
+class AccountSettings(BaseModel):
+    hsk_version: Literal["2.0", "3.0"]

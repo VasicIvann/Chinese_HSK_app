@@ -6,12 +6,14 @@
 import { apiRequest, apiUrl } from "@/lib/api/client";
 import type {
   AccountOverview,
+  AccountSettings,
   DueEntry,
   EntryPublic,
   DrawingGallery,
   DrawingItem,
   ExampleGenerateResponse,
   ExpressionAttemptItem,
+  HskVersion,
   LoginRequest,
   MasteryItem,
   MasterySnapshotResponse,
@@ -51,8 +53,9 @@ export function getMe(token?: string) {
 
 // Quizzes
 
-export function getQuizzes() {
-  return apiRequest<QuizPublic[]>("/v1/quizzes");
+/** Quizzes (levels) of one HSK version; the user's saved version when omitted. */
+export function getQuizzes(version?: HskVersion) {
+  return apiRequest<QuizPublic[]>(version ? `/v1/quizzes?version=${version}` : "/v1/quizzes");
 }
 
 export function getQuizEntries(quizKey: string) {
@@ -164,6 +167,14 @@ export function getDrawingGallery(offset = 0, limit = 20) {
 }
 
 // Account
+
+export function getAccountSettings() {
+  return apiRequest<AccountSettings>("/v1/account/settings");
+}
+
+export function putAccountSettings(settings: AccountSettings) {
+  return apiRequest<AccountSettings>("/v1/account/settings", { method: "PUT", body: settings });
+}
 
 export function getAccountOverview() {
   return apiRequest<AccountOverview>("/v1/account/overview");

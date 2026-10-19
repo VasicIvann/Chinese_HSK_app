@@ -11,6 +11,7 @@ from app.models import User
 from app.schemas import DueEntry, MasterySnapshotResponse, RateRequest, StatsResponse
 from app.services.quiz_service import get_quiz_by_key
 from app.services.srs_service import get_due_count, rate_entry, select_due_entries
+from app.services.version_service import get_user_version
 
 
 router = APIRouter(prefix="/srs", tags=["srs"])
@@ -42,7 +43,7 @@ def post_rate(
     return MasterySnapshotResponse.model_validate(snapshot)
 
 
-MAX_SESSION_SIZE = 4000  # HSK 1-5 = 3,600 words
+MAX_SESSION_SIZE = 4000  # HSK 3.0 levels 1-5 = 3,600 words (2.0: 2,496)
 
 
 def _quiz_keys_or_404(db: Session, raw: list[str]) -> list[str]:
@@ -83,7 +84,7 @@ def get_due(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="Sélectionne au moins un quiz.",
         )
-    entries = select_due_entries(
+    picked = select_due_entries(
         db,
         user_id=user.id,
         quiz_keys=keys,
@@ -91,13 +92,14 @@ def get_due(
         new_ratio=new_ratio,
         only_new=only_new,
     )
-    return [DueEntry.model_validate(e) for e in entries]
+    # quiz_id = the level the word was picked from (a word can sit in a 2.0 and a 3.0 quiz).
+    return [DueEntry.model_validate(e).model_copy(update={"quiz_id": quiz_id}) for e, quiz_id in picked]
 
 
 @router.get(
     "/stats",
     response_model=StatsResponse,
-    summary="Counts of due / new / upcoming cards (optionally scoped to some quizzes).",
+    summary="Counts of due / new / upcoming cards (some quizzes, or all of the user's HSK version).",
 )
 def get_stats(
     quiz: list[str] | None = Query(
@@ -107,5 +109,5 @@ def get_stats(
     user: User = Depends(get_current_user),
 ) -> StatsResponse:
     keys = _quiz_keys_or_404(db, quiz) if quiz else None
-    summary = get_due_count(db, user_id=user.id, quiz_keys=keys)
+    summary = get_due_count(db, user_id=user.id, quiz_keys=keys, version=get_user_version(db, user.id))
     return StatsResponse(**summary)

@@ -10,6 +10,7 @@ from app.db.session import get_db
 from app.models import Entry, User
 from app.schemas.drawing import DrawingCreateRequest, DrawingGalleryResponse, DrawingItem
 from app.services import drawing_service
+from app.services.version_service import get_user_version
 
 router = APIRouter(prefix="/drawings", tags=["drawings"])
 
@@ -39,7 +40,11 @@ def drawings_gallery(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> DrawingGalleryResponse:
-    return DrawingGalleryResponse(**drawing_service.gallery(db, user_id=user.id, limit=limit, offset=offset))
+    return DrawingGalleryResponse(
+        **drawing_service.gallery(
+            db, user_id=user.id, limit=limit, offset=offset, version=get_user_version(db, user.id)
+        )
+    )
 
 
 @router.post(

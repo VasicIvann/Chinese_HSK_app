@@ -8,8 +8,9 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
 from app.db.session import get_db
-from app.models import Entry, Quiz, User, UserVocabMastery
+from app.models import Entry, Quiz, QuizEntry, User, UserVocabMastery
 from app.schemas import MasteryItem
+from app.services.version_service import get_user_version
 
 
 router = APIRouter(prefix="/mastery", tags=["mastery"])
@@ -18,7 +19,7 @@ router = APIRouter(prefix="/mastery", tags=["mastery"])
 @router.get(
     "",
     response_model=list[MasteryItem],
-    summary="List mastery records for the authenticated user, optionally per quiz.",
+    summary="Mastery records of the user's words in their HSK version, optionally per quiz.",
 )
 def list_mastery(
     quiz: str | None = Query(None, description="Optional quiz key filter."),
@@ -28,8 +29,13 @@ def list_mastery(
     stmt = (
         select(UserVocabMastery, Entry, Quiz)
         .join(Entry, UserVocabMastery.entry_id == Entry.id)
-        .join(Quiz, Entry.quiz_id == Quiz.id)
-        .where(UserVocabMastery.user_id == user.id, Entry.is_active.is_(True))
+        .join(QuizEntry, QuizEntry.entry_id == Entry.id)
+        .join(Quiz, QuizEntry.quiz_id == Quiz.id)
+        .where(
+            UserVocabMastery.user_id == user.id,
+            Entry.is_active.is_(True),
+            Quiz.version == get_user_version(db, user.id),
+        )
         .order_by(Quiz.level.asc(), Quiz.title.asc(), Entry.id.asc())
     )
     if quiz:

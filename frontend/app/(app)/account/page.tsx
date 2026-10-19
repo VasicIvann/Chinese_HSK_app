@@ -10,11 +10,13 @@ import { KpiTiles } from "@/components/dashboard/kpi-tiles";
 import { LevelProgress } from "@/components/dashboard/level-progress";
 import { ReviewForecast } from "@/components/dashboard/review-forecast";
 import { AttemptsList } from "@/components/expression/attempts-list";
+import { HskVersionToggle } from "@/components/hsk-version-toggle";
 import { MasterySections } from "@/components/mastery/mastery-sections";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DrawingsGallery } from "@/components/writing/drawings-gallery";
 import { getAccountOverview } from "@/lib/api/endpoints";
+import { VERSION_INFO } from "@/lib/hsk-version";
 
 export default function AccountPage() {
   const overviewQuery = useQuery({
@@ -74,11 +76,14 @@ export default function AccountPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tableau de bord</h1>
-        <p className="mt-1 text-muted-foreground">
-          Vue d&apos;ensemble de ta progression HSK.
-        </p>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tableau de bord</h1>
+          <p className="mt-1 text-muted-foreground">
+            Vue d&apos;ensemble de ta progression HSK. Niveaux et mots selon le {VERSION_INFO[overviewQuery.data.hsk_version ?? "3.0"].label}.
+          </p>
+        </div>
+        <HskVersionToggle />
       </div>
 
       <KpiTiles streak={streak} successRate={success_rate} upcoming={upcoming} />

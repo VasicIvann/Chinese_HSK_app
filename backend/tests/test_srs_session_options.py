@@ -10,6 +10,7 @@ from fastapi.testclient import TestClient
 
 from app.db.session import SessionLocal
 from app.models import Entry, Quiz
+from tests.conftest import link_entries_to_home_quiz
 
 
 def _register(client: TestClient, email: str) -> str:
@@ -43,6 +44,8 @@ def three_levels() -> dict[str, int]:
                 )
                 for i in range(size)
             )
+        session.flush()
+        link_entries_to_home_quiz(session)
         session.commit()
     return sizes
 

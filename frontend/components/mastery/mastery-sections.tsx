@@ -64,7 +64,7 @@ export function MasterySections() {
   const [activeBucket, setActiveBucket] = useState<Bucket>("mastered");
   const [quizFilter, setQuizFilter] = useState<string>("ALL");
 
-  const quizzesQuery = useQuery({ queryKey: ["quizzes"], queryFn: getQuizzes });
+  const quizzesQuery = useQuery({ queryKey: ["quizzes"], queryFn: () => getQuizzes() });
   const masteryQuery = useQuery({
     queryKey: ["mastery", quizFilter],
     queryFn: () => getMastery(quizFilter === "ALL" ? undefined : quizFilter),
@@ -174,7 +174,7 @@ export function MasterySections() {
                     key={item.entry_id}
                     className="border-b border-border last:border-0 hover:bg-accent/30"
                   >
-                    <td className="px-3 py-2 text-muted-foreground">{item.quiz_key}</td>
+                    <td className="px-3 py-2 text-muted-foreground">{item.quiz_title}</td>
                     <td className="hanzi px-3 py-2 text-lg">{item.hanzi}</td>
                     <td className="px-3 py-2 text-muted-foreground">{item.pinyin}</td>
                     <td className="px-3 py-2">{item.translation}</td>

@@ -10,7 +10,7 @@ from app.models.drawing import WordDrawing
 from app.models.example import WordExample
 from app.models.expression import ExpressionAttempt, UserDailyUsage
 from app.models.mastery import UserVocabMastery
-from app.models.quiz import Entry, Quiz
+from app.models.quiz import Entry, Quiz, QuizEntry
 from app.models.review import ReviewLog
 from app.models.user import User, UserSetting
 
@@ -18,6 +18,7 @@ __all__ = [
     "Entry",
     "ExpressionAttempt",
     "Quiz",
+    "QuizEntry",
     "ReviewLog",
     "User",
     "UserDailyUsage",
