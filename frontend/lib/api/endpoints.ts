@@ -62,7 +62,7 @@ export function getQuizEntries(quizKey: string) {
 // SRS
 
 /** Max questions per session accepted by the backend. */
-export const MAX_SESSION_SIZE = 2000;
+export const MAX_SESSION_SIZE = 4000;
 
 export function getDueEntries(
   quizzes: string[],

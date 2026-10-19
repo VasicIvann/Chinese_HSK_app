@@ -126,7 +126,12 @@ def get_overview(
 
     total_entries = int(db.execute(select(func.count(Entry.id)).where(Entry.is_active.is_(True))).scalar() or 0)
 
-    mastery_stmt = select(UserVocabMastery).where(UserVocabMastery.user_id == user.id)
+    # Words removed from the syllabus are deactivated, not deleted: ignore their history here.
+    mastery_stmt = (
+        select(UserVocabMastery)
+        .join(Entry, Entry.id == UserVocabMastery.entry_id)
+        .where(UserVocabMastery.user_id == user.id, Entry.is_active.is_(True))
+    )
     mastery_rows = list(db.execute(mastery_stmt).scalars().all())
 
     mastered_count = sum(

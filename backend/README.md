@@ -59,5 +59,6 @@ Future schema changes use `alembic revision --autogenerate` + `alembic upgrade h
 
 ## `data/`
 
-`hsk1.csv` / `hsk2.csv` / `hsk3.csv` are the source HSK 1–3 vocabulary datasets.
+`hsk3/hsk1.csv` … `hsk3/hsk5.csv` are the HSK 3.0 vocabulary lists (levels 1–5, official 2025 syllabus) — see `data/hsk3/README.md`; migration `0005_hsk3_vocabulary` syncs them into the database.
+`legacy-hsk2.0/` keeps the previous HSK 2.0 lists (levels 1–3) for reference.
 `expression_subjects.json` is the curated pool of writing prompts per level.

@@ -47,7 +47,7 @@ backend/    FastAPI service (Python 3.12)
     models/        SQLAlchemy ORM
     schemas/       Pydantic v2 request/response models
   alembic/         migrations (0001 baseline)
-  data/            HSK1-3 vocabulary CSVs + curated writing subjects
+  data/            HSK 3.0 vocabulary (levels 1-5, official 2025 syllabus) + writing subjects
   tests/           pytest (Anthropic fully mocked)
 
 frontend/   Next.js 16 app (TypeScript)

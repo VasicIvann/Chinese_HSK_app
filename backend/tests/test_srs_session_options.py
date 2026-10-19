@@ -91,7 +91,7 @@ def test_due_allows_sessions_above_100_words(client: TestClient, three_levels) -
 
 def test_due_rejects_count_above_limit(client: TestClient, three_levels) -> None:
     token = _register(client, "toomany@example.com")
-    res = client.get("/v1/srs/due?quiz=HSK1&count=2001", headers=_auth(token))
+    res = client.get("/v1/srs/due?quiz=HSK1&count=4001", headers=_auth(token))
     assert res.status_code == 422
 
 

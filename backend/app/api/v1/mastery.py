@@ -29,7 +29,7 @@ def list_mastery(
         select(UserVocabMastery, Entry, Quiz)
         .join(Entry, UserVocabMastery.entry_id == Entry.id)
         .join(Quiz, Entry.quiz_id == Quiz.id)
-        .where(UserVocabMastery.user_id == user.id)
+        .where(UserVocabMastery.user_id == user.id, Entry.is_active.is_(True))
         .order_by(Quiz.level.asc(), Quiz.title.asc(), Entry.id.asc())
     )
     if quiz:

@@ -42,7 +42,7 @@ def post_rate(
     return MasterySnapshotResponse.model_validate(snapshot)
 
 
-MAX_SESSION_SIZE = 2000
+MAX_SESSION_SIZE = 4000  # HSK 1-5 = 3,600 words
 
 
 def _quiz_keys_or_404(db: Session, raw: list[str]) -> list[str]:
