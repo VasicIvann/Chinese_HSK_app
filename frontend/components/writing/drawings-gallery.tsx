@@ -26,7 +26,7 @@ function WordRow({ word }: { word: DrawingWordGroup }) {
   return (
     <li className="flex flex-col gap-3 border-t border-border pt-4 first:border-t-0 first:pt-0 sm:flex-row sm:items-start">
       <div className="flex shrink-0 items-baseline gap-2 sm:w-40 sm:flex-col sm:gap-0.5">
-        <span className="hanzi text-3xl font-semibold">{word.hanzi}</span>
+        <span className="hanzi text-3xl font-normal">{word.hanzi}</span>
         <span className="text-sm">{word.pinyin}</span>
         <span className="truncate text-xs text-muted-foreground">
           {word.translation}

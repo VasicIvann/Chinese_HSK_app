@@ -61,7 +61,7 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
         className="flex flex-col items-center gap-6"
       >
         <div className="flex flex-col items-center gap-2">
-          <p className="hanzi text-6xl font-semibold tracking-wide sm:text-7xl">{entry.hanzi}</p>
+          <p className="hanzi text-6xl font-normal tracking-wide sm:text-7xl">{entry.hanzi}</p>
           <p className="text-sm text-muted-foreground">
             {mode === "auto-assess" ? "Auto-évaluation" : "Tape le pinyin"}
           </p>
