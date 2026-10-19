@@ -250,6 +250,35 @@ export type WordExampleItem = {
   created_at: string;
 };
 
+export type DrawingItem = {
+  id: number;
+  entry_id: number;
+  /** PNG data URL, usable directly as <img src>. */
+  image: string;
+  width: number;
+  height: number;
+  created_at: string;
+};
+
+export type DrawingWordGroup = {
+  entry_id: number;
+  hanzi: string;
+  pinyin: string;
+  translation: string;
+  hsk_level: number | null;
+  count: number;
+  latest_at: string;
+  /** The latest few drawings only (see `count` for the total). */
+  drawings: DrawingItem[];
+};
+
+export type DrawingGallery = {
+  total_drawings: number;
+  total_words: number;
+  words: DrawingWordGroup[];
+  has_more: boolean;
+};
+
 export type ExampleGenerateResponse = {
   example: WordExampleItem;
   quota_remaining: number;

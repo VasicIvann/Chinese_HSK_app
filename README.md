@@ -64,6 +64,7 @@ frontend/   Next.js 16 app (TypeScript)
 - **FSRS-driven comprehension quiz** — the scheduler picks cards that are due, mixing in new vocabulary. Two modes: self-assessment and pinyin input. Keyboard shortcuts (1–4), progressive hints (pinyin → full solution), instant card transitions.
 - **AI written-expression grading** — pick a curated subject, generate one with Claude, or write your own. Submit a short text in Chinese; Claude streams back a structured correction (score, corrected version, pinyin, translation, typed error list, strengths, next-step advice).
 - **Example sentences on demand** — during a quiz, one click asks Claude Haiku for a short HSK-level sentence using the current word, with pinyin, translation and a French explanation of the word. Examples are saved per user and can be browsed again on later reviews.
+- **Handwriting practice** — « S'entraîner à écrire » opens one 米字格 square per character (stylus-friendly: palm rejection, pen / eraser / undo / clear). Drawings are saved as PNG per user, shown again on later reviews and gathered by word on the account page.
 - **Closed feedback loop** — vocabulary Claude flags as misused is automatically re-queued into the FSRS review pile.
 - **Dashboard** — mastery distribution donut, 90-day activity heatmap, quiz & expression progression curves, and browsable lists of mastered / known / to-review words.
 - **Cross-device** — JWT auth, shared Postgres, PWA "add to home screen" on mobile.

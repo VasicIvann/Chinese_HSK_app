@@ -8,6 +8,8 @@ import type {
   AccountOverview,
   DueEntry,
   EntryPublic,
+  DrawingGallery,
+  DrawingItem,
   ExampleGenerateResponse,
   ExpressionAttemptItem,
   LoginRequest,
@@ -138,6 +140,27 @@ export function postGenerateExample(entryId: number) {
     method: "POST",
     body: { entry_id: entryId },
   });
+}
+
+// Handwriting practice
+
+export function getWordDrawings(entryId: number) {
+  return apiRequest<DrawingItem[]>(`/v1/drawings?entry_id=${entryId}`);
+}
+
+export function postWordDrawing(entryId: number, image: string) {
+  return apiRequest<DrawingItem>("/v1/drawings", {
+    method: "POST",
+    body: { entry_id: entryId, image },
+  });
+}
+
+export function deleteWordDrawing(drawingId: number) {
+  return apiRequest<void>(`/v1/drawings/${drawingId}`, { method: "DELETE" });
+}
+
+export function getDrawingGallery(offset = 0, limit = 20) {
+  return apiRequest<DrawingGallery>(`/v1/drawings/gallery?limit=${limit}&offset=${offset}`);
 }
 
 // Account

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import { ListenButton } from "@/components/listen-button";
 import { RatingButtons } from "@/components/quiz/rating-buttons";
-import { WordExamples } from "@/components/quiz/word-examples";
+import { WordStudyTools } from "@/components/quiz/word-study-tools";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { DueEntry, RatingEnum } from "@/lib/api/types";
@@ -182,7 +182,7 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
           <RatingButtons onRate={handleAutoRate} />
         </div>
 
-        <WordExamples key={entry.id} entry={entry} />
+        <WordStudyTools key={entry.id} entry={entry} />
       </motion.div>
     </AnimatePresence>
   );

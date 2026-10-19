@@ -13,6 +13,7 @@ import { AttemptsList } from "@/components/expression/attempts-list";
 import { MasterySections } from "@/components/mastery/mastery-sections";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { DrawingsGallery } from "@/components/writing/drawings-gallery";
 import { getAccountOverview } from "@/lib/api/endpoints";
 
 export default function AccountPage() {
@@ -215,6 +216,8 @@ export default function AccountPage() {
       </div>
 
       <MasterySections />
+
+      <DrawingsGallery />
 
       <AttemptsList limit={50} />
     </div>

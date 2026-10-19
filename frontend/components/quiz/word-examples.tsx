@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { History, Loader2, Sparkles } from "lucide-react";
-import { Fragment, useState } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 
 import { ListenButton } from "@/components/listen-button";
 import { Button } from "@/components/ui/button";
@@ -71,7 +71,20 @@ export function ExampleCard({ example, word }: { example: WordExampleItem; word:
  * "Générer un exemple" + "Voir les exemples précédents" for one quiz word.
  * Mount it with `key={entry.id}` so its local state resets on each new word.
  */
-export function WordExamples({ entry }: { entry: DueEntry }) {
+export function WordExamples({
+  entry,
+  actions,
+  secondaryActions,
+  children,
+}: {
+  entry: DueEntry;
+  /** Extra buttons shown right after "Générer un exemple". */
+  actions?: ReactNode;
+  /** Extra buttons shown after "Voir les exemples précédents". */
+  secondaryActions?: ReactNode;
+  /** Extra panels shown under the buttons (e.g. the writing pad). */
+  children?: ReactNode;
+}) {
   const queryClient = useQueryClient();
   const [latestId, setLatestId] = useState<number | null>(null);
   const [showHistory, setShowHistory] = useState(false);
@@ -121,6 +134,7 @@ export function WordExamples({ entry }: { entry: DueEntry }) {
           )}
           {generate.isPending ? "Génération…" : "Générer un exemple"}
         </Button>
+        {actions}
         {previous.length > 0 && (
           <Button
             type="button"
@@ -135,6 +149,7 @@ export function WordExamples({ entry }: { entry: DueEntry }) {
               : `Voir les exemples précédents (${previous.length})`}
           </Button>
         )}
+        {secondaryActions}
       </div>
 
       {errorMessage && (
@@ -142,6 +157,8 @@ export function WordExamples({ entry }: { entry: DueEntry }) {
           {errorMessage}
         </p>
       )}
+
+      {children}
 
       {latest && <ExampleCard example={latest} word={entry.hanzi} />}
 
