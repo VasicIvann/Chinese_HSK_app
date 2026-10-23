@@ -9,6 +9,7 @@ import { TrendChart } from "@/components/charts/trend-chart";
 import { KpiTiles } from "@/components/dashboard/kpi-tiles";
 import { LevelProgress } from "@/components/dashboard/level-progress";
 import { ReviewForecast } from "@/components/dashboard/review-forecast";
+import { StudyStatsSection } from "@/components/dashboard/study-stats";
 import { AttemptsList } from "@/components/expression/attempts-list";
 import { HskVersionToggle } from "@/components/hsk-version-toggle";
 import { MasterySections } from "@/components/mastery/mastery-sections";
@@ -219,6 +220,8 @@ export default function AccountPage() {
           </CardContent>
         </Card>
       </div>
+
+      <StudyStatsSection />
 
       <MasterySections />
 

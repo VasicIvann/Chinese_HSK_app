@@ -4,15 +4,16 @@ from __future__ import annotations
 
 from zoneinfo import ZoneInfo
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user
 from app.core.timezone import get_user_timezone
 from app.db.session import get_db
 from app.models import User
-from app.schemas.account import AccountOverview, AccountSettings, AccountSettingsUpdate
+from app.schemas.account import AccountOverview, AccountSettings, AccountSettingsUpdate, StudyStats
 from app.services.account_service import get_overview
+from app.services.stats_service import PERIODS, study_stats
 from app.services.version_service import (
     get_pinyin_locked,
     get_user_version,
@@ -45,6 +46,24 @@ def get_account_overview(
         version=get_user_version(db, user.id),
     )
     return AccountOverview.model_validate(payload)
+
+
+@router.get(
+    "/stats",
+    response_model=StudyStats,
+    summary="Study statistics over 7, 30 or 90 days: activity per tab, vocabulary growth, time and habits.",
+)
+def get_account_stats(
+    days: int = Query(30),
+    version: str | None = Query(None),
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+    tz: ZoneInfo = Depends(get_user_timezone),
+) -> StudyStats:
+    if days not in PERIODS:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, f"Période possible : {', '.join(map(str, PERIODS))} jours.")
+    version = version if version in ("2.0", "3.0") else get_user_version(db, user.id)
+    return StudyStats.model_validate(study_stats(db, user.id, version=version, days=days, tz=tz))
 
 
 def _settings(db: Session, user_id: int) -> AccountSettings:

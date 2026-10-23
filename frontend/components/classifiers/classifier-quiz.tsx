@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, RotateCcw, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { LETTERS } from "@/components/exercises/choices";
 import { ZhText } from "@/components/exercises/zh-text";
@@ -18,10 +18,12 @@ type Props = {
   onExit: () => void;
   onRestart: () => void;
   restarting?: boolean;
+  /** Called once, when the last question is answered (saved for the stats). */
+  onFinish?: (answers: { id: string; correct: boolean }[]) => void;
 };
 
 /** Runs a set of classifier questions: one at a time, checked on the spot, score at the end. */
-export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRestart, restarting }: Props) {
+export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRestart, restarting, onFinish }: Props) {
   const [index, setIndex] = useState(0);
   const [given, setGiven] = useState<Record<number, number>>({});
   const [showPinyin, setShowPinyin] = useState(defaultPinyin);
@@ -29,6 +31,13 @@ export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRest
   const current = questions[index];
   const picked = given[index];
   const score = questions.filter((q, i) => given[i] === q.answer).length;
+  const reported = useRef(false);
+
+  useEffect(() => {
+    if (!done || reported.current || questions.length === 0) return;
+    reported.current = true;
+    onFinish?.(questions.map((q, i) => ({ id: q.id, correct: given[i] === q.answer })));
+  }, [done, questions, given, onFinish]);
 
   const pick = useCallback(
     (i: number) => {

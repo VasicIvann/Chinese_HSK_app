@@ -24,7 +24,7 @@ import {
   type ClassifierQuiz as Quiz,
   type QuizMode,
 } from "@/lib/api/classifiers";
-import type { ExerciseLevel } from "@/lib/api/exercises";
+import { postExerciseResult, type ExerciseLevel } from "@/lib/api/exercises";
 import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
@@ -98,6 +98,12 @@ export function ClassifiersPage() {
           })
         }
         restarting={start.isPending}
+        onFinish={(answers) => {
+          const { mode, hanzi } = running.quiz;
+          const part = mode === "fill" && hanzi ? `fill-${hanzi}` : mode;
+          // Saved for the Account statistics; a failure only loses that data point.
+          postExerciseResult({ section: "classifiers", version, level, part, answers }).catch(() => undefined);
+        }}
       />
     );
   }
