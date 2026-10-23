@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Check, Play, Sparkles } from "lucide-react";
+import { Check, Lock, Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 import { HskVersionToggle } from "@/components/hsk-version-toggle";
@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getQuizzes, getStats, MAX_SESSION_SIZE } from "@/lib/api/endpoints";
 import type { QuizMode } from "@/lib/hooks/use-quiz-session";
-import { quizLabel, useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
+import { quizLabel, useHskVersion, usePinyinLock, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
 export type QuizStartParams = {
@@ -55,6 +55,9 @@ export function QuizSetup({ onStart, isLoading }: Props) {
   const [customCount, setCustomCount] = useState("");
   const [onlyNew, setOnlyNew] = useState(false);
   const [mode, setMode] = useState<QuizMode>("auto-assess");
+  const pinyinLock = usePinyinLock();
+  // Showing the pinyin would give the answer away when it has to be typed.
+  const lockApplies = mode === "auto-assess";
 
   const quizzesQuery = useQuery({ queryKey: ["quizzes", version], queryFn: () => getQuizzes(version) });
   const statsQuery = useQuery({
@@ -176,20 +179,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
                 Seulement des mots que tu n&apos;as jamais vus dans tes quiz précédents.
               </span>
             </span>
-            <span
-              aria-hidden
-              className={cn(
-                "relative h-7 w-12 shrink-0 rounded-full transition-colors",
-                onlyNew ? "bg-primary" : "bg-muted"
-              )}
-            >
-              <span
-                className={cn(
-                  "absolute top-1 h-5 w-5 rounded-full bg-background shadow transition-transform",
-                  onlyNew ? "translate-x-6" : "translate-x-1"
-                )}
-              />
-            </span>
+            <SwitchTrack on={onlyNew} />
           </button>
           {onlyNew && hasSelection && nothingLeft && (
             <p className="mt-3 text-sm text-destructive">
@@ -220,6 +210,29 @@ export function QuizSetup({ onStart, isLoading }: Props) {
               <p className="mt-1 text-sm text-muted-foreground">{m.description}</p>
             </button>
           ))}
+        </CardContent>
+        <CardContent className="border-t border-border pt-4">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={lockApplies && pinyinLock.locked}
+            disabled={!lockApplies}
+            onClick={pinyinLock.toggle}
+            className="flex w-full items-center justify-between gap-4 text-left disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <span>
+              <span className="flex items-center gap-2 font-semibold">
+                <Lock className="h-4 w-4 text-primary" />
+                Pinyin toujours affiché
+              </span>
+              <span className="mt-1 block text-sm text-muted-foreground">
+                {lockApplies
+                  ? "Le pinyin apparaît sous chaque mot dès le début de la carte. Réglage gardé sur ton compte."
+                  : "Indisponible en saisie pinyin : le pinyin affiché donnerait la réponse."}
+              </span>
+            </span>
+            <SwitchTrack on={lockApplies && pinyinLock.locked} />
+          </button>
         </CardContent>
       </Card>
 
@@ -307,6 +320,22 @@ export function QuizSetup({ onStart, isLoading }: Props) {
         </Button>
       </div>
     </motion.div>
+  );
+}
+
+function SwitchTrack({ on }: { on: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={cn("relative h-7 w-12 shrink-0 rounded-full transition-colors", on ? "bg-primary" : "bg-muted")}
+    >
+      <span
+        className={cn(
+          "absolute top-1 h-5 w-5 rounded-full bg-background shadow transition-transform",
+          on ? "translate-x-6" : "translate-x-1"
+        )}
+      />
+    </span>
   );
 }
 

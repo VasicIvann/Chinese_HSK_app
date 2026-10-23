@@ -137,12 +137,12 @@ def two_versions() -> dict[str, int]:
 
 def test_version_setting_defaults_to_3_and_persists(client: TestClient, two_versions) -> None:
     token = _register(client, "version-setting@example.com")
-    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "3.0"}
+    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "3.0", "pinyin_locked": False}
     assert [q["key"] for q in client.get("/v1/quizzes", headers=_auth(token)).json()] == ["HSK1"]
 
     res = client.put("/v1/account/settings", headers=_auth(token), json={"hsk_version": "2.0"})
-    assert res.status_code == 200 and res.json() == {"hsk_version": "2.0"}
-    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "2.0"}
+    assert res.status_code == 200 and res.json() == {"hsk_version": "2.0", "pinyin_locked": False}
+    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "2.0", "pinyin_locked": False}
     quizzes = client.get("/v1/quizzes", headers=_auth(token)).json()
     assert [(q["key"], q["version"]) for q in quizzes] == [("HSK1-2.0", "2.0")]
     assert len(client.get("/v1/quizzes?version=all", headers=_auth(token)).json()) == 2
@@ -189,6 +189,21 @@ def test_progress_is_shared_across_versions(client: TestClient, two_versions) ->
 
     client.put("/v1/account/settings", headers=_auth(token), json={"hsk_version": "3.0"})
     assert overview()["mastery"] == v3["mastery"]
+
+
+def test_pinyin_lock_is_saved_independently_of_the_version(client: TestClient, two_versions) -> None:
+    token = _register(client, "pinyin-lock@example.com")
+    res = client.put("/v1/account/settings", headers=_auth(token), json={"pinyin_locked": True})
+    assert res.status_code == 200 and res.json() == {"hsk_version": "3.0", "pinyin_locked": True}
+    # Changing the version alone keeps the lock, and the reverse.
+    client.put("/v1/account/settings", headers=_auth(token), json={"hsk_version": "2.0"})
+    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "2.0", "pinyin_locked": True}
+    client.put("/v1/account/settings", headers=_auth(token), json={"pinyin_locked": False})
+    assert client.get("/v1/account/settings", headers=_auth(token)).json() == {"hsk_version": "2.0", "pinyin_locked": False}
+    # Per user.
+    other = _register(client, "pinyin-lock-2@example.com")
+    assert client.get("/v1/account/settings", headers=_auth(other)).json()["pinyin_locked"] is False
+    assert client.put("/v1/account/settings", headers=_auth(token), json={"pinyin_locked": "maybe"}).status_code == 422
 
 
 def test_settings_require_auth(client: TestClient) -> None:

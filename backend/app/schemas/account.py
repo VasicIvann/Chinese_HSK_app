@@ -99,3 +99,12 @@ class AccountOverview(BaseModel):
 
 class AccountSettings(BaseModel):
     hsk_version: Literal["2.0", "3.0"]
+    # Vocabulary quiz (self-assessment mode): pinyin shown from the start of every card.
+    pinyin_locked: bool = False
+
+
+class AccountSettingsUpdate(BaseModel):
+    """Partial update: only the fields sent are changed."""
+
+    hsk_version: Literal["2.0", "3.0"] | None = None
+    pinyin_locked: bool | None = None

@@ -172,7 +172,8 @@ export function getAccountSettings() {
   return apiRequest<AccountSettings>("/v1/account/settings");
 }
 
-export function putAccountSettings(settings: AccountSettings) {
+/** Partial update: only the fields sent are changed. */
+export function putAccountSettings(settings: Partial<AccountSettings>) {
   return apiRequest<AccountSettings>("/v1/account/settings", { method: "PUT", body: settings });
 }
 

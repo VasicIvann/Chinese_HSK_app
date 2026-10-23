@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Eye, EyeOff, Lightbulb } from "lucide-react";
+import { Eye, EyeOff, Lightbulb, Lock, LockOpen } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { ListenButton } from "@/components/listen-button";
@@ -10,6 +10,7 @@ import { WordStudyTools } from "@/components/quiz/word-study-tools";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { DueEntry, RatingEnum } from "@/lib/api/types";
+import { usePinyinLock } from "@/lib/hsk-version";
 import type { QuizMode } from "@/lib/hooks/use-quiz-session";
 import { pinyinMatches } from "@/lib/pinyin";
 
@@ -24,6 +25,9 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
   const [hintVisible, setHintVisible] = useState(false);
   const [pinyinInput, setPinyinInput] = useState("");
   const [pinyinChecked, setPinyinChecked] = useState<null | { correct: boolean; value: string }>(null);
+  const pinyinLock = usePinyinLock();
+  // The lock only applies to self-assessment: in "type the pinyin" it would give the answer away.
+  const pinyinLocked = mode === "auto-assess" && pinyinLock.locked;
 
   // Reset transient state when the question changes.
   useEffect(() => {
@@ -48,7 +52,7 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
   };
 
   // In auto-assess mode, "show full solution" implies pinyin is also revealed.
-  const showPinyin = pinyinHintVisible || hintVisible;
+  const showPinyin = !pinyinLocked && (pinyinHintVisible || hintVisible);
 
   return (
     <AnimatePresence mode="wait">
@@ -62,6 +66,11 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
       >
         <div className="flex flex-col items-center gap-2">
           <p className="hanzi text-6xl font-normal tracking-wide sm:text-7xl">{entry.hanzi}</p>
+          {pinyinLocked && (
+            <p className="text-xl font-medium" data-testid="locked-pinyin">
+              {entry.pinyin}
+            </p>
+          )}
           <p className="text-sm text-muted-foreground">
             {mode === "auto-assess" ? "Auto-évaluation" : "Tape le pinyin"}
           </p>
@@ -113,17 +122,46 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
           {mode === "auto-assess" ? (
             <div className="flex flex-wrap items-center justify-center gap-2">
               <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => setPinyinHintVisible((v) => !v)}
-                disabled={hintVisible}
-                className="text-muted-foreground"
-              >
-                <Lightbulb className="mr-1 h-4 w-4" />
-                {pinyinHintVisible || hintVisible ? "Pinyin affiché" : "Indice pinyin"}
-              </Button>
+              {pinyinLocked ? (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => pinyinLock.setLocked(false)}
+                  aria-pressed
+                  title="Le pinyin reste affiché sur toutes les cartes. Clique pour le déverrouiller."
+                  className="text-primary"
+                >
+                  <Lock className="mr-1 h-4 w-4" />
+                  Pinyin verrouillé
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setPinyinHintVisible((v) => !v)}
+                    disabled={hintVisible}
+                    className="text-muted-foreground"
+                  >
+                    <Lightbulb className="mr-1 h-4 w-4" />
+                    {pinyinHintVisible || hintVisible ? "Pinyin affiché" : "Indice pinyin"}
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => pinyinLock.setLocked(true)}
+                    aria-pressed={false}
+                    aria-label="Toujours afficher le pinyin"
+                    title="Toujours afficher le pinyin"
+                    className="h-8 w-8 text-muted-foreground"
+                  >
+                    <LockOpen className="h-4 w-4" />
+                  </Button>
+                </>
+              )}
               <Button
                 type="button"
                 variant="ghost"

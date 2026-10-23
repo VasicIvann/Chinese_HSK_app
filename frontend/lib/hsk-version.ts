@@ -42,7 +42,11 @@ export function useHskVersion() {
     onMutate: async (version) => {
       await queryClient.cancelQueries({ queryKey: accountSettingsKey });
       const previous = queryClient.getQueryData<AccountSettings>(accountSettingsKey);
-      queryClient.setQueryData<AccountSettings>(accountSettingsKey, { hsk_version: version });
+      queryClient.setQueryData<AccountSettings>(accountSettingsKey, {
+        pinyin_locked: false,
+        ...previous,
+        hsk_version: version,
+      });
       return { previous };
     },
     onError: (_error, _version, context) => {
@@ -61,5 +65,39 @@ export function useHskVersion() {
       if (version !== (query.data?.hsk_version ?? DEFAULT_HSK_VERSION)) mutation.mutate(version);
     },
     isSaving: mutation.isPending,
+  };
+}
+
+/** "Pinyin toujours affiché" in the vocabulary quiz, saved on the account. */
+export function usePinyinLock() {
+  const queryClient = useQueryClient();
+  const query = useQuery({ queryKey: accountSettingsKey, queryFn: getAccountSettings, staleTime: 5 * 60_000 });
+
+  const mutation = useMutation({
+    mutationFn: (locked: boolean) => putAccountSettings({ pinyin_locked: locked }),
+    onMutate: async (locked) => {
+      await queryClient.cancelQueries({ queryKey: accountSettingsKey });
+      const previous = queryClient.getQueryData<AccountSettings>(accountSettingsKey);
+      queryClient.setQueryData<AccountSettings>(accountSettingsKey, {
+        hsk_version: DEFAULT_HSK_VERSION,
+        ...previous,
+        pinyin_locked: locked,
+      });
+      return { previous };
+    },
+    onError: (_error, _locked, context) => {
+      if (context?.previous) queryClient.setQueryData(accountSettingsKey, context.previous);
+      toast.error("Impossible d'enregistrer le réglage du pinyin. Vérifie ta connexion.");
+    },
+    onSuccess: (settings) => queryClient.setQueryData(accountSettingsKey, settings),
+  });
+
+  const locked = query.data?.pinyin_locked ?? false;
+  return {
+    locked,
+    setLocked: (next: boolean) => {
+      if (next !== locked) mutation.mutate(next);
+    },
+    toggle: () => mutation.mutate(!locked),
   };
 }

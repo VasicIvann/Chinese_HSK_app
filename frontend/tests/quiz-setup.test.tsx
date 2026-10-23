@@ -6,9 +6,9 @@ import { QuizSetup } from "@/components/quiz/quiz-setup";
 
 const getQuizzes = vi.fn();
 const getStats = vi.fn();
-const settings = { hsk_version: "3.0" as "2.0" | "3.0" };
-const putAccountSettings = vi.fn(async (next: typeof settings) => {
-  settings.hsk_version = next.hsk_version;
+const settings = { hsk_version: "3.0" as "2.0" | "3.0", pinyin_locked: false };
+const putAccountSettings = vi.fn(async (next: Partial<typeof settings>) => {
+  Object.assign(settings, next);
   return { ...settings };
 });
 
@@ -17,7 +17,7 @@ vi.mock("@/lib/api/endpoints", () => ({
   getQuizzes: (version?: string) => getQuizzes(version),
   getStats: (q: string[]) => getStats(q),
   getAccountSettings: async () => ({ ...settings }),
-  putAccountSettings: (s: typeof settings) => putAccountSettings(s),
+  putAccountSettings: (s: Partial<typeof settings>) => putAccountSettings(s),
 }));
 
 // Stats per level: HSK1 = 150 words (20 seen), HSK2 = 150 (all new), HSK3 = 300 (all new).
@@ -42,6 +42,7 @@ const startButton = () => screen.getByRole("button", { name: /lancer la session/
 describe("QuizSetup", () => {
   beforeEach(() => {
     settings.hsk_version = "3.0";
+    settings.pinyin_locked = false;
     putAccountSettings.mockClear();
     getQuizzes.mockImplementation(async (version?: string) =>
       version === "2.0"
@@ -167,5 +168,19 @@ describe("QuizSetup", () => {
     await waitFor(() => expect(startButton()).toBeEnabled());
     fireEvent.click(startButton());
     expect(onStart).toHaveBeenCalledWith(expect.objectContaining({ quizzes: ["HSK2-2.0"] }));
+  });
+
+  it("saves the pinyin lock on the account and greys it out in pinyin-typing mode", async () => {
+    renderSetup();
+    const lock = await screen.findByRole("switch", { name: /pinyin toujours affiché/i });
+    expect(lock).toHaveAttribute("aria-checked", "false");
+    fireEvent.click(lock);
+    await waitFor(() => expect(putAccountSettings).toHaveBeenCalledWith({ pinyin_locked: true }));
+    await waitFor(() => expect(lock).toHaveAttribute("aria-checked", "true"));
+
+    fireEvent.click(screen.getByRole("button", { name: /saisie pinyin/i }));
+    expect(lock).toBeDisabled();
+    expect(lock).toHaveAttribute("aria-checked", "false");
+    expect(screen.getByText(/donnerait la réponse/)).toBeInTheDocument();
   });
 });

@@ -11,9 +11,14 @@ from app.api.deps import get_current_user
 from app.core.timezone import get_user_timezone
 from app.db.session import get_db
 from app.models import User
-from app.schemas.account import AccountOverview, AccountSettings
+from app.schemas.account import AccountOverview, AccountSettings, AccountSettingsUpdate
 from app.services.account_service import get_overview
-from app.services.version_service import get_user_version, set_user_version
+from app.services.version_service import (
+    get_pinyin_locked,
+    get_user_version,
+    set_pinyin_locked,
+    set_user_version,
+)
 
 
 router = APIRouter(prefix="/account", tags=["account"])
@@ -42,22 +47,34 @@ def get_account_overview(
     return AccountOverview.model_validate(payload)
 
 
-@router.get("/settings", response_model=AccountSettings, summary="The user's study settings (HSK version).")
+def _settings(db: Session, user_id: int) -> AccountSettings:
+    return AccountSettings(hsk_version=get_user_version(db, user_id), pinyin_locked=get_pinyin_locked(db, user_id))
+
+
+@router.get(
+    "/settings",
+    response_model=AccountSettings,
+    summary="The user's study settings (HSK version, pinyin lock).",
+)
 def get_settings(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> AccountSettings:
-    return AccountSettings(hsk_version=get_user_version(db, user.id))
+    return _settings(db, user.id)
 
 
 @router.put(
     "/settings",
     response_model=AccountSettings,
-    summary="Change the user's study settings. Switching HSK version keeps all progress.",
+    summary="Change the user's study settings (only the fields sent). Switching HSK version keeps all progress.",
 )
 def put_settings(
-    payload: AccountSettings,
+    payload: AccountSettingsUpdate,
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> AccountSettings:
-    return AccountSettings(hsk_version=set_user_version(db, user.id, payload.hsk_version))
+    if payload.hsk_version is not None:
+        set_user_version(db, user.id, payload.hsk_version)
+    if payload.pinyin_locked is not None:
+        set_pinyin_locked(db, user.id, payload.pinyin_locked)
+    return _settings(db, user.id)

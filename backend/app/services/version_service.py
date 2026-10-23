@@ -17,6 +17,7 @@ from app.models import Entry, Quiz, QuizEntry, UserSetting
 HSK_VERSIONS = ("2.0", "3.0")
 DEFAULT_VERSION = "3.0"
 SETTING_KEY = "hsk_version"
+PINYIN_LOCK_KEY = "pinyin_locked"
 
 
 def get_user_version(db: Session, user_id: int) -> str:
@@ -29,17 +30,34 @@ def get_user_version(db: Session, user_id: int) -> str:
 def set_user_version(db: Session, user_id: int, version: str) -> str:
     if version not in HSK_VERSIONS:
         raise ValueError(f"Version HSK inconnue : {version}")
+    _put_setting(db, user_id, SETTING_KEY, version)
+    return version
+
+
+def get_pinyin_locked(db: Session, user_id: int) -> bool:
+    """Whether the vocabulary quiz shows the pinyin from the start of every card."""
+    value = db.execute(
+        select(UserSetting.value).where(UserSetting.user_id == user_id, UserSetting.key == PINYIN_LOCK_KEY)
+    ).scalar()
+    return value == "1"
+
+
+def set_pinyin_locked(db: Session, user_id: int, locked: bool) -> bool:
+    _put_setting(db, user_id, PINYIN_LOCK_KEY, "1" if locked else "0")
+    return locked
+
+
+def _put_setting(db: Session, user_id: int, key: str, value: str) -> None:
     row = db.execute(
-        select(UserSetting).where(UserSetting.user_id == user_id, UserSetting.key == SETTING_KEY)
+        select(UserSetting).where(UserSetting.user_id == user_id, UserSetting.key == key)
     ).scalar_one_or_none()
     now = datetime.utcnow()
     if row is None:
-        db.add(UserSetting(user_id=user_id, key=SETTING_KEY, value=version, created_at=now, updated_at=now))
+        db.add(UserSetting(user_id=user_id, key=key, value=value, created_at=now, updated_at=now))
     else:
-        row.value = version
+        row.value = value
         row.updated_at = now
     db.flush()
-    return version
 
 
 def version_entries(version: str) -> Select:

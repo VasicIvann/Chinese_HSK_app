@@ -47,6 +47,8 @@ export type QuizPublic = {
 
 export type AccountSettings = {
   hsk_version: HskVersion;
+  /** Vocabulary quiz (self-assessment): pinyin shown from the start of every card. */
+  pinyin_locked: boolean;
 };
 
 export type EntryPublic = {
