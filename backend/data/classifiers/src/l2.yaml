@@ -1,0 +1,252 @@
+# Classificateurs du niveau 2 (HSK 3.0). Voir ../README.md pour le format.
+
+- hanzi: 包
+  pinyin: bāo
+  kind: nominal
+  level: {"3.0": 2, "2.0": 3}
+  usage: "Les paquets et sachets : un paquet de thé, de biscuits, de cigarettes."
+  explanation: >-
+    包 compte ce qui est emballé : 一包茶, 一包糖, 一包烟. C'est aussi le nom « sac » (书包) et le
+    verbe « envelopper ».
+  nouns: ["茶|thé (en paquet)", "糖|bonbons, sucre", "烟|cigarettes"]
+  examples:
+    - ["我买了一包茶。", "J'ai acheté un paquet de thé."]
+    - ["桌子上有两包糖。", "Il y a deux paquets de bonbons sur la table."]
+  traps: >-
+    一包茶 = un paquet de thé (à acheter) ; 一杯茶 = une tasse de thé (à boire).
+  sentences:
+    - "我买了一{包}茶。 | 本 张 件 只 家 | J'ai acheté un paquet de thé."
+    - "这{包}东西是谁的？ | 本 张 杯 只 家 | À qui est ce paquet ?"
+    - "桌子上有两{包}糖。 | 本 张 件 只 家 | Il y a deux paquets de bonbons sur la table."
+    - "我给你带了一{包}吃的。 | 本 张 只 件 家 | Je t'ai apporté un paquet de choses à manger."
+
+- hanzi: 笔
+  pinyin: bǐ
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Une somme d'argent (一笔钱) ou une opération financière."
+  explanation: >-
+    笔 compte une somme d'argent considérée comme un tout : 一笔钱, 一大笔钱. C'est aussi le nom
+    « stylo, pinceau ».
+  nouns: ["钱|somme d'argent"]
+  examples:
+    - ["他花了一大笔钱。", "Il a dépensé une grosse somme."]
+    - ["这笔钱是我的。", "Cette somme est à moi."]
+  traps: >-
+    Pour compter les stylos eux-mêmes : 一支笔. Pour dire un prix : 三块钱 (et non 三笔钱).
+  sentences:
+    - "他花了一大{笔}钱。 | 本 张 件 只 家 | Il a dépensé une grosse somme d'argent."
+    - "这{笔}钱是我的。 | 本 件 只 张 家 | Cette somme est à moi."
+    - "公司给了他一{笔}钱。 | 本 件 口 只 家 | L'entreprise lui a donné une somme d'argent."
+
+- hanzi: 面
+  pinyin: miàn
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Les objets plats qu'on regarde de face : miroir, drapeau, mur."
+  explanation: >-
+    面 compte les surfaces planes et verticales : 一面镜子 (un miroir), 一面墙 (un mur),
+    一面旗子 (un drapeau). C'est aussi « face, côté » (前面, 外面).
+  nouns: ["镜子|miroir", "墙|mur", "旗子|drapeau"]
+  examples:
+    - ["房间里有一面大镜子。", "Il y a un grand miroir dans la chambre."]
+  traps: >-
+    Une table ou une feuille sont plates mais posées à plat : 一张桌子, 一张纸.
+  sentences:
+    - "房间里有一{面}大镜子。 | 本 件 只 杯 家 | Il y a un grand miroir dans la chambre. | extra=镜子"
+    - "这{面}墙是白色的。 | 本 件 只 杯 家 | Ce mur est blanc. | extra=墙"
+    - "学校门口有一{面}国旗。 | 本 件 只 杯 家 | Il y a un drapeau national devant l'école. | extra=国旗"
+
+- hanzi: 名
+  pinyin: míng
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Les personnes selon leur rôle (élève, médecin, ouvrier), ton neutre ou officiel ; le rang (第一名)."
+  explanation: >-
+    名 compte les personnes dans un registre plutôt formel : 一名学生, 一名医生, 三十名工人.
+    第一名 = la première place d'un classement.
+  nouns: ["学生|élève", "医生|médecin", "工人|ouvrier"]
+  examples:
+    - ["我们班有三十名学生。", "Notre classe compte trente élèves."]
+    - ["这次比赛他得了第一名。", "Il a fini premier à cette compétition."]
+  traps: >-
+    个 : neutre et courant. 位 : poli, respectueux (一位老师). 名 : formel, souvent pour une fonction.
+  sentences:
+    - "我们班有三十{名}学生。 | 本 张 只 件 家 | Notre classe compte trente élèves."
+    - "他是一{名}医生。 | 本 件 张 只 家 | Il est médecin."
+    - "这次比赛他得了第一{名}。 | 本 件 张 只 家 | Il a fini premier à cette compétition."
+    - "公司里有一百多{名}工人。 | 本 件 只 张 杯 | L'entreprise compte plus de cent ouvriers."
+
+- hanzi: 条
+  pinyin: tiáo
+  kind: nominal
+  level: {"3.0": 2, "2.0": 3}
+  usage: "Les choses longues et souples : poisson, rue, rivière, pantalon, jupe ; un message, une nouvelle."
+  explanation: >-
+    条 compte ce qui est long : 一条鱼, 一条路, 一条河, 一条裤子, 一条裙子, 一条狗. Par extension :
+    一条短信 (un SMS), 一条新闻 (une information).
+  nouns: ["鱼|poisson", "路|rue, route", "河|rivière", "裤子|pantalon", "裙子|jupe|件", "短信|SMS", "狗|chien"]
+  examples:
+    - ["这条路很长。", "Cette rue est très longue."]
+    - ["我买了两条鱼。", "J'ai acheté deux poissons."]
+  traps: >-
+    Les vêtements du haut : 件 (一件衬衫). Pour une jupe, on entend aussi 一件裙子.
+  sentences:
+    - "我买了两{条}鱼。 | 本 张 件 杯 家 | J'ai acheté deux poissons."
+    - "这{条}路很长。 | 本 张 件 杯 只 | Cette rue est très longue."
+    - "她穿了一{条}红裙子。 | 本 张 杯 家 口 | Elle porte une jupe rouge."
+    - "我家前面有一{条}河。 | 本 张 件 杯 只 | Il y a une rivière devant chez moi."
+    - "这{条}裤子太长了。 | 本 张 杯 家 口 | Ce pantalon est trop long."
+    - "我刚收到一{条}短信。 | 本 件 只 杯 家 | Je viens de recevoir un SMS."
+
+- hanzi: 头
+  pinyin: tóu
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Les gros animaux : vache, cochon, éléphant."
+  explanation: >-
+    头 compte le gros bétail et les grands animaux : 一头牛, 一头猪, 一头大象. C'est aussi le nom « tête ».
+  nouns: ["牛|vache, bœuf", "猪|cochon", "大象|éléphant|只"]
+  examples:
+    - ["他家有三头牛。", "Sa famille a trois vaches."]
+  traps: >-
+    Les petits animaux : 只 (一只猫). Pour l'éléphant, on entend aussi 一只大象.
+  sentences:
+    - "他家有三{头}牛。 | 本 张 件 杯 家 | Sa famille a trois vaches."
+    - "这{头}猪很大。 | 本 件 张 杯 家 | Ce cochon est très gros. | extra=猪"
+    - "动物园里有一{头}大象。 | 本 张 件 杯 家 | Il y a un éléphant au zoo. | extra=大象"
+
+- hanzi: 位
+  pinyin: wèi
+  kind: nominal
+  level: {"3.0": 2, "2.0": 3}
+  usage: "Les personnes, avec politesse et respect : un professeur, des invités, « Vous êtes combien ? »."
+  explanation: >-
+    位 est la façon polie de compter les gens : 一位老师, 两位客人, 这位先生. Au restaurant :
+    您几位？ (vous êtes combien ?).
+  nouns: ["老师|professeur", "客人|invité, client", "先生|monsieur"]
+  examples:
+    - ["这位是我们的新老师。", "Voici notre nouveau professeur."]
+    - ["请问，您几位？", "Vous êtes combien, s'il vous plaît ?"]
+  traps: >-
+    On ne l'utilise pas pour parler de soi (trop respectueux) : 我是一名老师 ou 我是老师.
+  sentences:
+    - "请问，您几{位}？ | 本 张 件 只 家 | Vous êtes combien, s'il vous plaît ?"
+    - "这{位}是我们的新老师。 | 本 张 件 只 杯 | Voici notre nouveau professeur."
+    - "今天家里来了两{位}客人。 | 本 张 只 件 杯 | Deux invités sont venus à la maison aujourd'hui."
+    - "那{位}先生是谁？ | 本 件 张 只 杯 | Qui est ce monsieur ?"
+
+- hanzi: 班
+  pinyin: bān
+  kind: nominal
+  level: {"3.0": 2, "2.0": 3}
+  usage: "Les départs d'un transport régulier : le prochain bus, le dernier train, un vol."
+  explanation: >-
+    班 compte les trajets programmés : 下一班车 (le prochain bus), 最后一班飞机 (le dernier vol).
+    C'est aussi le nom « classe » (我们班).
+  nouns: []
+  examples:
+    - ["我们坐下一班车吧。", "Prenons le prochain bus."]
+  traps: >-
+    Le véhicule lui-même : 一辆车, 一架飞机 (niveau 3).
+  sentences:
+    - "我们坐下一{班}车吧。 | 本 张 件 只 杯 | Prenons le prochain bus."
+    - "最后一{班}飞机是晚上十点。 | 本 张 件 只 杯 | Le dernier avion part à 22 heures."
+    - "这{班}火车几点到？ | 本 张 件 只 杯 | À quelle heure arrive ce train ?"
+
+- hanzi: 层
+  pinyin: céng
+  kind: nominal
+  level: {"3.0": 2, "2.0": 3}
+  usage: "Les étages d'un bâtiment ; une couche (de neige, de poussière)."
+  explanation: >-
+    层 compte les étages : 这个楼有二十层, 我住在五层 (= 五楼). Il compte aussi les couches :
+    一层雪.
+  nouns: ["楼|bâtiment (ses étages)", "雪|neige (une couche)"]
+  examples:
+    - ["我家住在五层。", "J'habite au cinquième étage."]
+    - ["地上有一层雪。", "Il y a une couche de neige par terre."]
+  traps: >-
+    En Chine, le rez-de-chaussée est le 一层 (一楼) : 三层 = notre « deuxième étage ».
+  sentences:
+    - "我家住在五{层}。 | 本 张 件 只 杯 | J'habite au cinquième étage."
+    - "这个楼有二十{层}。 | 本 张 件 只 杯 | Ce bâtiment a vingt étages."
+    - "他的办公室在第三{层}。 | 本 件 只 张 杯 | Son bureau est au troisième étage."
+    - "地上有一{层}雪。 | 本 件 只 杯 家 | Il y a une couche de neige par terre."
+
+- hanzi: 封
+  pinyin: fēng
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Les lettres et les e-mails."
+  explanation: >-
+    封 (« fermer, sceller ») compte ce qu'on envoie sous enveloppe : 一封信, et par extension
+    一封邮件 (un e-mail).
+  nouns: ["信|lettre", "邮件|e-mail"]
+  examples:
+    - ["我给妈妈写了一封信。", "J'ai écrit une lettre à ma mère."]
+  sentences:
+    - "我给妈妈写了一{封}信。 | 本 张 件 只 杯 | J'ai écrit une lettre à ma mère."
+    - "你收到我的那{封}邮件了吗？ | 本 张 件 只 杯 | As-tu reçu mon e-mail ?"
+    - "桌子上有两{封}信。 | 本 张 只 件 杯 | Il y a deux lettres sur la table."
+
+- hanzi: 次
+  pinyin: cì
+  kind: verbal
+  level: {"3.0": 2, "2.0": 2}
+  usage: "Le nombre de fois qu'une action se répète (去过两次, 第一次)."
+  explanation: >-
+    次 se place après le verbe pour compter les occurrences : 我来过中国两次. 第一次 = la première
+    fois. Devant un nom, il désigne un événement : 这次考试 (cet examen-ci).
+  nouns: []
+  examples:
+    - ["这是我第一次坐飞机。", "C'est la première fois que je prends l'avion."]
+    - ["他每个星期去三次医院。", "Il va à l'hôpital trois fois par semaine."]
+  traps: >-
+    次 compte les fois ; 遍 insiste sur « du début à la fin » (再说一遍). Souvent les deux sont possibles.
+  sentences:
+    - "我来过中国两{次}。 | 本 张 件 只 杯 | Je suis venu deux fois en Chine."
+    - "这是我第一{次}坐飞机。 | 本 张 件 只 杯 | C'est la première fois que je prends l'avion."
+    - "这{次}考试很难。 | 本 张 件 只 杯 | Cet examen-ci était difficile."
+    - "他每个星期去三{次}医院。 | 本 张 只 件 杯 | Il va à l'hôpital trois fois par semaine."
+    - "我给你打了好几{次}电话。 | 本 张 只 件 杯 | Je t'ai appelé plusieurs fois."
+
+- hanzi: 遍
+  pinyin: biàn
+  kind: verbal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Une fois du début à la fin (lire, écouter, répéter en entier) : 再说一遍."
+  explanation: >-
+    遍 compte une action faite entièrement, d'un bout à l'autre : 这本书我看了三遍 (je l'ai lu trois
+    fois en entier), 请再说一遍 (répétez, s'il vous plaît).
+  nouns: []
+  examples:
+    - ["请你再说一遍。", "Répétez, s'il vous plaît."]
+    - ["这本书我看了三遍。", "J'ai lu ce livre trois fois."]
+  traps: >-
+    去过两次 (et non 两遍) : aller quelque part n'a pas de « début à la fin ».
+  sentences:
+    - "请你再说一{遍}。 | 本 张 件 只 杯 | Répétez, s'il vous plaît."
+    - "这本书我看了三{遍}。 | 张 件 只 杯 家 | J'ai lu ce livre trois fois."
+    - "老师让我们把课文读两{遍}。 | 本 张 件 只 杯 | Le professeur nous a fait lire le texte deux fois."
+    - "这个电影太好看了，我想再看一{遍}。 | 本 张 件 只 杯 | Ce film est trop bien, je veux le revoir."
+
+- hanzi: 场
+  pinyin: chǎng
+  kind: nominal
+  level: {"3.0": 2, "2.0": null}
+  usage: "Les événements qui durent : séance de film, match, examen, spectacle, averse (一场雨)."
+  explanation: >-
+    场 compte ce qui se déroule dans le temps : 一场电影 (une séance), 一场比赛, 一场考试,
+    一场雨, 一场大病.
+  nouns: ["电影|film (séance)", "比赛|match", "雨|pluie (averse)"]
+  examples:
+    - ["昨天下了一场大雨。", "Hier, il a plu à verse."]
+    - ["这场比赛非常好看。", "Ce match était vraiment beau."]
+  traps: >-
+    Un film comme œuvre se compte avec 部 (一部电影, niveau 4) ; 场 = une projection.
+  sentences:
+    - "昨天下了一{场}大雨。 | 本 张 件 只 杯 | Hier, il a plu à verse."
+    - "我们一起去看一{场}电影吧。 | 本 张 件 只 杯 | Allons voir un film ensemble."
+    - "这{场}比赛非常好看。 | 本 张 件 只 杯 | Ce match était vraiment beau."
+    - "他生了一{场}大病。 | 本 张 件 只 杯 | Il a eu une grave maladie."

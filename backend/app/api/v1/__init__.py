@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.v1 import account, auth, drawings, examples, exercises, expression, mastery, quizzes, srs
+from app.api.v1 import account, auth, classifiers, drawings, examples, exercises, expression, mastery, quizzes, srs
 
 api_router = APIRouter(prefix="/v1")
 api_router.include_router(auth.router)
@@ -11,6 +11,7 @@ api_router.include_router(expression.router)
 api_router.include_router(examples.router)
 api_router.include_router(drawings.router)
 api_router.include_router(exercises.router)
+api_router.include_router(classifiers.router)
 api_router.include_router(account.router)
 
 __all__ = ["api_router"]

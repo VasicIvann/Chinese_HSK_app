@@ -521,3 +521,64 @@ def check_sentence(*, word: str, sentence: str, level: int) -> tuple[dict[str, A
         output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
     )
     return result, usage
+
+
+CLASSIFIER_SYSTEM_PROMPT = """Tu écris des phrases d'entraînement aux classificateurs (量词) pour des apprenants francophones du HSK.
+
+Chaque phrase est courte (6 à 20 caractères), naturelle, de la vie quotidienne, et contient UN trou : le classificateur, écrit entre accolades, par ex. « 我买了三{本}书。 ».
+Pour chaque phrase, donne 3 distracteurs : d'autres classificateurs de la liste fournie, CLAIREMENT FAUX dans cette phrase.
+- Jamais un distracteur qui serait aussi acceptable (ex. 个 pour des personnes ou à l'oral, 只/条 pour un chien, 次/回/遍/下 entre eux, 张/把 pour une chaise, un classificateur avec un nom sous-entendu comme « 看了一张 »).
+- Le classificateur à trouver et les distracteurs viennent UNIQUEMENT de la liste fournie.
+- N'utilise que le vocabulaire autorisé (des noms propres simples sont permis).
+- "fr" = traduction française naturelle de la phrase complète.
+
+Réponds UNIQUEMENT en JSON : {"items": [{"zh": "…{量词}…", "wrong": ["…", "…", "…"], "fr": "…"}]}"""
+
+
+def generate_classifier_sentences(
+    *,
+    version: str,
+    level: int,
+    classifiers: list[tuple[str, str]],
+    focus: str | None,
+    count: int,
+    vocabulary: list[str],
+    avoid: list[str],
+) -> tuple[list[dict[str, Any]], LLMUsage]:
+    """Ask Claude for `count` fill-in sentences (authoring JSON, validated by the caller)."""
+    client = _get_client()
+    listing = "\n".join(f"- {hz} : {usage}" for hz, usage in classifiers)
+    user_msg = f"Examen : HSK {version}, niveau {level}.\nClassificateurs autorisés :\n{listing}\n"
+    if focus:
+        user_msg += f"Toutes les phrases doivent avoir {focus} comme réponse.\n"
+    else:
+        user_msg += "Varie les classificateurs à trouver (au moins 6 différents).\n"
+    user_msg += f"Écris {count} phrases différentes.\n"
+    if avoid:
+        user_msg += "Déjà utilisées (ne pas répéter) :\n" + "\n".join(f"- {a}" for a in avoid[:40]) + "\n"
+    vocab_block = f"Vocabulaire autorisé (HSK {version}, niveaux 1 à {level}) :\n" + "、".join(vocabulary)
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=3000,
+            system=[
+                {"type": "text", "text": CLASSIFIER_SYSTEM_PROMPT},
+                {"type": "text", "text": vocab_block, "cache_control": {"type": "ephemeral"}},
+            ],
+            messages=[{"role": "user", "content": user_msg}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Le modèle n'a pas renvoyé de phrases exploitables.") from exc
+    items = payload.get("items") if isinstance(payload, dict) else None
+    if not isinstance(items, list):
+        raise RuntimeError("Le modèle n'a pas renvoyé de phrases exploitables.")
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return [i for i in items if isinstance(i, dict)], usage

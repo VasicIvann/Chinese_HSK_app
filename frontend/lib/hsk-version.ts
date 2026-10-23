@@ -30,6 +30,7 @@ const VERSION_SCOPED_KEYS = [
   ["drawings-gallery"],
   ["exercise-catalog"],
   ["grammar"],
+  ["classifiers"],
 ];
 
 /** The user's HSK version (saved on the account) and a setter that refreshes the app. */

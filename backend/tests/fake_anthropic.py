@@ -108,13 +108,26 @@ class FakeMessages:
             "translation": "Je vais souvent à la bibliothèque.",
             "explanation": "Phrase correcte et naturelle.",
         }
+        # Classifier sentences: two valid, then one with an unknown classifier, one with a
+        # duplicated wrong option and one with out-of-level characters (all three dropped).
+        self.classifier_response: dict[str, Any] = {
+            "items": [
+                {"zh": "我有一{本}新书。", "wrong": ["家", "杯", "件"], "fr": "J'ai un nouveau livre."},
+                {"zh": "他喝了两{杯}水。", "wrong": ["本", "家", "件"], "fr": "Il a bu deux verres d'eau."},
+                {"zh": "我有一{艘}船。", "wrong": ["本", "张", "件"], "fr": "J'ai un bateau."},
+                {"zh": "我买了一{本}书。", "wrong": ["家", "家", "件"], "fr": "J'ai acheté un livre."},
+                {"zh": "我看了一{本}鲲鹏饕餮书。", "wrong": ["家", "杯", "件"], "fr": "?"},
+            ]
+        }
         self.create_calls: list[dict[str, Any]] = []
         self.stream_calls: list[dict[str, Any]] = []
 
     def create(self, **kwargs: Any) -> FakeMessage:
         self.create_calls.append(kwargs)
         system_text = "".join(block.get("text", "") for block in kwargs.get("system", []))
-        if "concepteur d'épreuves" in system_text:
+        if "classificateurs (量词)" in system_text:
+            response = self.classifier_response
+        elif "concepteur d'épreuves" in system_text:
             response = self.exercise_response
         elif "用词造句" in system_text:
             response = self.sentence_check_response
