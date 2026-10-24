@@ -33,6 +33,8 @@ export type FillQuestion = {
   fr: string;
   classifier: string;
   explain: string;
+  /** Usage of the expected classifier with the classifier itself hidden (这～水果). */
+  hint: string;
   generated: boolean;
 };
 

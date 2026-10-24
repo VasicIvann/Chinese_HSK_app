@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { BookOpen, ChevronDown, ListChecks, PenLine, Search, Sparkles, Target } from "lucide-react";
+import { BookOpen, ChevronDown, Keyboard, ListChecks, PenLine, Search, Sparkles, Target } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
@@ -28,9 +28,10 @@ import { postExerciseResult, type ExerciseLevel } from "@/lib/api/exercises";
 import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
-type Tab = "fiches" | "fill" | "usage";
+type Tab = "fiches" | "fill" | "write" | "usage";
 type KindFilter = "all" | "nominal" | "verbal";
-type Running = { quiz: Quiz; title: string; request: () => Promise<Quiz> };
+/** `typed`: fill-in sentences answered by writing the classifier (no options). */
+type Running = { quiz: Quiz; title: string; typed: boolean; request: () => Promise<Quiz> };
 
 const KIND_LABEL: Record<ClassifierKind, string> = {
   nominal: "nominal",
@@ -68,14 +69,18 @@ export function ClassifiersPage() {
     onError: (error) => toast.error(errorText(error, "Impossible de charger les questions.")),
   });
 
-  const startQuiz = (mode: QuizMode, hanzi?: string) =>
+  const fillTitle = (typed: boolean, hanzi?: string) =>
+    `${typed ? "Écrire le classificateur" : "Phrases à compléter"}${hanzi ? ` · ${hanzi}` : ""}`;
+  const startQuiz = (mode: QuizMode, hanzi?: string, typed = false) =>
     start.mutate({
-      title: mode === "fill" ? (hanzi ? `Phrases avec ${hanzi}` : "Phrases à compléter") : "Quiz des usages",
+      title: mode === "fill" ? fillTitle(typed, hanzi) : "Quiz des usages",
+      typed: mode === "fill" && typed,
       request: () => getClassifierQuiz(mode, level, version, hanzi),
     });
-  const generate = (hanzi?: string) =>
+  const generate = (hanzi?: string, typed = false) =>
     start.mutate({
-      title: hanzi ? `Nouvelles phrases avec ${hanzi}` : "Nouvelles phrases",
+      title: `${fillTitle(typed, hanzi)} · nouvelles phrases`,
+      typed,
       request: () => generateClassifierSentences(level, version, hanzi),
     });
 
@@ -85,6 +90,7 @@ export function ClassifiersPage() {
         key={running.quiz.questions.map((q) => q.id).join()}
         title={`${running.title} · HSK ${level}`}
         questions={running.quiz.questions}
+        typed={running.typed}
         defaultPinyin={level < 3}
         onExit={() => {
           setRunning(null);
@@ -93,14 +99,16 @@ export function ClassifiersPage() {
         // A generated series is replayed from the pool (no new Claude call on "Nouvelle série").
         onRestart={() =>
           start.mutate({
-            title: running.title.replace("Nouvelles phrases", "Phrases"),
+            title: running.title.replace(" · nouvelles phrases", ""),
+            typed: running.typed,
             request: () => getClassifierQuiz(running.quiz.mode, level, version, running.quiz.hanzi ?? undefined),
           })
         }
         restarting={start.isPending}
         onFinish={(answers) => {
           const { mode, hanzi } = running.quiz;
-          const part = mode === "fill" && hanzi ? `fill-${hanzi}` : mode;
+          const base = mode === "fill" && running.typed ? "write" : mode;
+          const part = mode === "fill" && hanzi ? `${base}-${hanzi}` : base;
           // Saved for the Account statistics; a failure only loses that data point.
           postExerciseResult({ section: "classifiers", version, level, part, answers }).catch(() => undefined);
         }}
@@ -129,6 +137,7 @@ export function ClassifiersPage() {
           [
             ["fiches", "Fiches", "Fiches", BookOpen],
             ["fill", "Phrases à compléter", "Phrases", PenLine],
+            ["write", "Écrire le classificateur", "Écrire", Keyboard],
             ["usage", "Quiz des usages", "Usages", ListChecks],
           ] as const
         ).map(([value, label, short, Icon]) => (
@@ -163,6 +172,7 @@ export function ClassifiersPage() {
           level={level}
           busy={start.isPending}
           onPractice={(hz) => startQuiz("fill", hz)}
+          onWrite={(hz) => startQuiz("fill", hz, true)}
           onGenerate={(hz) => generate(hz)}
         />
       ) : tab === "fill" ? (
@@ -191,6 +201,32 @@ export function ClassifiersPage() {
             <p className="text-xs text-muted-foreground">
               « Plus de phrases » demande 10 nouvelles phrases à Claude ; elles s&apos;ajoutent à ta banque.
             </p>
+          </CardContent>
+        </Card>
+      ) : tab === "write" ? (
+        <Card>
+          <CardHeader>
+            <CardTitle>Écrire le classificateur</CardTitle>
+            <CardDescription>
+              Les mêmes phrases, mais sans propositions : écris toi-même le classificateur manquant en caractère chinois
+              (clavier chinois de ton appareil), puis découvre si c&apos;est juste. Un indice donne l&apos;usage en français si tu
+              bloques.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3">
+            <p className="text-sm text-muted-foreground">
+              {list.data?.sentences ?? 0} phrases disponibles · seule la réponse attendue est comptée juste
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button size="lg" onClick={() => startQuiz("fill", undefined, true)} disabled={start.isPending}>
+                <Keyboard className="h-4 w-4" />
+                Commencer (10 phrases)
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => generate(undefined, true)} disabled={start.isPending}>
+                <Sparkles className="h-4 w-4" />
+                Plus de phrases (Claude)
+              </Button>
+            </div>
           </CardContent>
         </Card>
       ) : (
@@ -230,12 +266,14 @@ function Fiches({
   level,
   busy,
   onPractice,
+  onWrite,
   onGenerate,
 }: {
   classifiers: Classifier[];
   level: ExerciseLevel;
   busy: boolean;
   onPractice: (hanzi: string) => void;
+  onWrite: (hanzi: string) => void;
   onGenerate: (hanzi: string) => void;
 }) {
   const [kind, setKind] = useState<KindFilter>("all");
@@ -295,6 +333,7 @@ function Fiches({
                 onToggle={() => setOpen(open === c.hanzi ? null : c.hanzi)}
                 busy={busy}
                 onPractice={() => onPractice(c.hanzi)}
+                onWrite={() => onWrite(c.hanzi)}
                 onGenerate={() => onGenerate(c.hanzi)}
               />
             ))}
@@ -312,6 +351,7 @@ function FicheCard({
   onToggle,
   busy,
   onPractice,
+  onWrite,
   onGenerate,
 }: {
   c: Classifier;
@@ -320,6 +360,7 @@ function FicheCard({
   onToggle: () => void;
   busy: boolean;
   onPractice: () => void;
+  onWrite: () => void;
   onGenerate: () => void;
 }) {
   const [showPinyin, setShowPinyin] = useState(level < 3);
@@ -396,6 +437,10 @@ function FicheCard({
             <Button onClick={onPractice} disabled={busy || c.sentence_count === 0}>
               <PenLine className="h-4 w-4" />
               S&apos;entraîner sur {c.hanzi} ({c.sentence_count} phrases)
+            </Button>
+            <Button variant="outline" onClick={onWrite} disabled={busy || c.sentence_count === 0}>
+              <Keyboard className="h-4 w-4" />
+              Sans choix
             </Button>
             <Button variant="outline" onClick={onGenerate} disabled={busy}>
               <Sparkles className="h-4 w-4" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, RotateCcw, X } from "lucide-react";
+import { Check, Lightbulb, RotateCcw, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { LETTERS } from "@/components/exercises/choices";
@@ -8,6 +8,7 @@ import { ZhText } from "@/components/exercises/zh-text";
 import { ListenButton } from "@/components/listen-button";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import type { ClassifierQuestion, FillQuestion, UsageQuestion } from "@/lib/api/classifiers";
 import { cn } from "@/lib/utils";
 
@@ -20,13 +21,20 @@ type Props = {
   restarting?: boolean;
   /** Called once, when the last question is answered (saved for the stats). */
   onFinish?: (answers: { id: string; correct: boolean }[]) => void;
+  /** Fill-in sentences without options: the classifier is typed in Chinese. */
+  typed?: boolean;
 };
 
+const HANZI_ONLY = /^[\u3400-\u9fff\uf900-\ufaff]+$/;
+
 /** Runs a set of classifier questions: one at a time, checked on the spot, score at the end. */
-export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRestart, restarting, onFinish }: Props) {
+export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRestart, restarting, onFinish, typed = false }: Props) {
   const [index, setIndex] = useState(0);
   const [given, setGiven] = useState<Record<number, number>>({});
   const [showPinyin, setShowPinyin] = useState(defaultPinyin);
+  // Typed mode: what was written for each question, and whether the hint was opened.
+  const [written, setWritten] = useState<Record<number, string>>({});
+  const [hinted, setHinted] = useState<Record<number, boolean>>({});
   const done = index >= questions.length;
   const current = questions[index];
   const picked = given[index];
@@ -47,18 +55,26 @@ export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRest
     [done, picked, index]
   );
   const next = useCallback(() => setIndex((i) => i + 1), []);
+  const write = (text: string) => {
+    if (done || picked !== undefined) return;
+    setWritten((w) => ({ ...w, [index]: text }));
+    // Strict: only the expected character is right (-1 = wrong, no option to point at).
+    setGiven((g) => ({ ...g, [index]: text === current.classifier ? current.answer : -1 }));
+  };
+  const typing = typed && current?.mode === "fill";
 
   // Keyboard: 1-4 / A-D to answer, Enter or → for the next question.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (done || e.target instanceof HTMLInputElement) return;
+      // Inputs handle their own keys; a focused button already reacts to Enter.
+      if (done || e.target instanceof HTMLInputElement || e.target instanceof HTMLButtonElement) return;
       const n = "1234".indexOf(e.key) >= 0 ? "1234".indexOf(e.key) : "abcd".indexOf(e.key.toLowerCase());
-      if (picked === undefined && n >= 0 && n < (current?.options.length ?? 0)) pick(n);
+      if (picked === undefined && n >= 0 && n < (current?.options.length ?? 0) && !typing) pick(n);
       else if (picked !== undefined && (e.key === "Enter" || e.key === "ArrowRight")) next();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [done, picked, current, pick, next]);
+  }, [done, picked, current, pick, next, typing]);
 
   return (
     <div className="flex flex-col gap-5">
@@ -97,6 +113,10 @@ export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRest
                   {given[i] === q.answer ? <Check className="mt-0.5 h-4 w-4 shrink-0" /> : <X className="mt-0.5 h-4 w-4 shrink-0" />}
                   <span>
                     <span className="hanzi font-medium text-foreground">{q.classifier}</span> · {summary(q)}
+                    {typed && given[i] !== q.answer && written[i] && (
+                      <span className="text-muted-foreground"> (tu as écrit <span className="hanzi">{written[i]}</span>)</span>
+                    )}
+                    {hinted[i] && <span className="text-muted-foreground"> · avec indice</span>}
                   </span>
                 </li>
               ))}
@@ -116,14 +136,26 @@ export function ClassifierQuiz({ title, questions, defaultPinyin, onExit, onRest
         <Card>
           <CardContent className="flex flex-col gap-5 pt-6">
             {current.mode === "fill" ? (
-              <FillPrompt q={current} picked={picked} showPinyin={showPinyin} />
+              <FillPrompt q={current} picked={picked} showPinyin={showPinyin} typed={typing} written={written[index]} />
             ) : (
               <UsagePrompt q={current} showPinyin={showPinyin} />
             )}
-            <Options q={current} picked={picked} showPinyin={showPinyin} onPick={pick} />
+            {typing && current.mode === "fill" ? (
+              picked === undefined && (
+                <TypedAnswer
+                  key={index}
+                  q={current}
+                  onSubmit={write}
+                  hintShown={!!hinted[index]}
+                  onHint={() => setHinted((h) => ({ ...h, [index]: true }))}
+                />
+              )
+            ) : (
+              <Options q={current} picked={picked} showPinyin={showPinyin} onPick={pick} />
+            )}
             {picked !== undefined && (
               <div className="flex flex-col gap-3">
-                <Feedback q={current} picked={picked} showPinyin={showPinyin} />
+                <Feedback q={current} picked={picked} showPinyin={showPinyin} written={typing ? written[index] : undefined} />
                 <Button onClick={next} autoFocus>
                   {index + 1 === questions.length ? "Voir mon score" : "Question suivante"}
                 </Button>
@@ -142,11 +174,26 @@ function summary(q: ClassifierQuestion): string {
   return q.kind === "cl_to_usage" ? q.options[q.answer] : q.prompt;
 }
 
-function FillPrompt({ q, picked, showPinyin }: { q: FillQuestion; picked: number | undefined; showPinyin: boolean }) {
+function FillPrompt({
+  q,
+  picked,
+  showPinyin,
+  typed,
+  written,
+}: {
+  q: FillQuestion;
+  picked: number | undefined;
+  showPinyin: boolean;
+  typed: boolean;
+  written?: string;
+}) {
   const filled = picked !== undefined;
+  const wrongWritten = typed && filled && picked !== q.answer ? written : undefined;
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-sm text-muted-foreground">Choisis le bon classificateur.</p>
+      <p className="text-sm text-muted-foreground">
+        {typed ? "Écris le classificateur manquant (en caractère chinois)." : "Choisis le bon classificateur."}
+      </p>
       <p className="text-2xl sm:text-3xl">
         <ZhText text={q.before} showPinyin={showPinyin} />
         <span
@@ -157,6 +204,7 @@ function FillPrompt({ q, picked, showPinyin }: { q: FillQuestion; picked: number
           )}
           aria-label={filled ? q.classifier : "trou à compléter"}
         >
+          {wrongWritten && <span className="hanzi mr-1 text-destructive line-through decoration-2">{wrongWritten}</span>}
           {filled ? <ZhText text={q.classifier} showPinyin={showPinyin} /> : "　"}
         </span>
         <ZhText text={q.after} showPinyin={showPinyin} />
@@ -249,7 +297,17 @@ function Options({
   );
 }
 
-function Feedback({ q, picked, showPinyin }: { q: ClassifierQuestion; picked: number; showPinyin: boolean }) {
+function Feedback({
+  q,
+  picked,
+  showPinyin,
+  written,
+}: {
+  q: ClassifierQuestion;
+  picked: number;
+  showPinyin: boolean;
+  written?: string;
+}) {
   const ok = picked === q.answer;
   return (
     <div
@@ -259,7 +317,13 @@ function Feedback({ q, picked, showPinyin }: { q: ClassifierQuestion; picked: nu
         ok ? "bg-emerald-500/10 text-emerald-900 dark:text-emerald-100" : "bg-destructive/10 text-foreground"
       )}
     >
-      <p className="font-semibold">{ok ? "Bonne réponse !" : `Mauvaise réponse : c'était ${q.classifier}.`}</p>
+      <p className="font-semibold">
+        {ok
+          ? "Bonne réponse !"
+          : written
+            ? `Mauvaise réponse : tu as écrit « ${written} », c'était ${q.classifier}.`
+            : `Mauvaise réponse : c'était ${q.classifier}.`}
+      </p>
       {q.mode === "fill" && (
         <div className="flex items-start justify-between gap-2">
           <div>
@@ -278,6 +342,81 @@ function Feedback({ q, picked, showPinyin }: { q: ClassifierQuestion; picked: nu
           q.explain
         )}
       </p>
+    </div>
+  );
+}
+
+function TypedAnswer({
+  q,
+  onSubmit,
+  hintShown,
+  onHint,
+}: {
+  q: FillQuestion;
+  onSubmit: (text: string) => void;
+  hintShown: boolean;
+  onHint: () => void;
+}) {
+  const [value, setValue] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const submit = () => {
+    const text = value.replace(/\s+/g, "");
+    if (!text) return;
+    if (!HANZI_ONLY.test(text)) {
+      setError("Écris le caractère chinois (clavier chinois / saisie pinyin de ton appareil).");
+      return;
+    }
+    onSubmit(text);
+  };
+  return (
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <Input
+          aria-label="Classificateur manquant"
+          lang="zh-CN"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+            setError(null);
+          }}
+          onKeyDown={(e) => {
+            // Enter also validates the character chosen in the IME: wait until it is done.
+            if (e.key === "Enter" && !e.nativeEvent.isComposing) {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          autoFocus
+          autoComplete="off"
+          autoCapitalize="none"
+          autoCorrect="off"
+          spellCheck={false}
+          maxLength={4}
+          className="hanzi h-14 w-28 text-center text-3xl"
+        />
+        <Button size="lg" onClick={submit} disabled={!value.trim()}>
+          Valider
+        </Button>
+        {!hintShown && (
+          <Button variant="ghost" size="sm" onClick={onHint} className="text-muted-foreground">
+            <Lightbulb className="h-4 w-4" />
+            Indice
+          </Button>
+        )}
+      </div>
+      {error && (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+      {hintShown && (
+        <p className="flex items-start gap-2 rounded-lg bg-muted p-3 text-sm">
+          <Lightbulb className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+          <span>
+            <span className="font-medium">Indice :</span> {q.hint}
+          </span>
+        </p>
+      )}
     </div>
   );
 }

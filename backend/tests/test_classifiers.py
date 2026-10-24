@@ -54,6 +54,7 @@ def test_fill_questions_are_well_formed(version: str, level: int) -> None:
             assert q["options"][q["answer"]] == q["classifier"]
             assert all(o in known for o in q["options"])
             assert q["before"] + q["classifier"] + q["after"] == q["sentence"]
+            assert q["hint"] and q["classifier"] not in q["hint"]
 
 
 def _fill(version: str, level: int, seed: int):

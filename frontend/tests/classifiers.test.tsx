@@ -62,6 +62,7 @@ const fill: ClassifierQuestion = {
   fr: "J'ai acheté trois livres.",
   classifier: "本",
   explain: "Les livres, cahiers, dictionnaires.",
+  hint: "Les livres, cahiers, dictionnaires.",
   generated: false,
 };
 const usage: ClassifierQuestion = {
@@ -107,6 +108,55 @@ describe("ClassifierQuiz", () => {
   });
 });
 
+describe("ClassifierQuiz, typed mode", () => {
+  const second: ClassifierQuestion = {
+    ...(fill as Extract<ClassifierQuestion, { mode: "fill" }>),
+    id: "张-01",
+    before: "请给我一",
+    after: "纸。",
+    sentence: "请给我一张纸。",
+    options: ["本", "张", "条", "件"],
+    answer: 1,
+    classifier: "张",
+    hint: "Les objets plats : papier, photo.",
+  };
+
+  it("checks the written character strictly, with an optional hint", () => {
+    const onFinish = vi.fn();
+    wrap(
+      <ClassifierQuiz title="Écrire" questions={[fill, second]} typed defaultPinyin={false} onExit={vi.fn()} onRestart={vi.fn()} onFinish={onFinish} />
+    );
+    expect(screen.getByText(/Écris le classificateur manquant/)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /^A/ })).not.toBeInTheDocument(); // no options
+
+    const input = screen.getByLabelText("Classificateur manquant");
+    // Latin letters are refused without counting the question.
+    fireEvent.change(input, { target: { value: "ben" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(screen.getByRole("alert")).toHaveTextContent("caractère chinois");
+    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "张" } });
+    fireEvent.click(screen.getByRole("button", { name: "Valider" }));
+    expect(screen.getByRole("status")).toHaveTextContent("tu as écrit « 张 », c'était 本.");
+    fireEvent.click(screen.getByRole("button", { name: /question suivante/i }));
+
+    fireEvent.click(screen.getByRole("button", { name: /Indice/ }));
+    expect(screen.getByText("Les objets plats : papier, photo.")).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText("Classificateur manquant"), { target: { value: " 张 " } });
+    fireEvent.keyDown(screen.getByLabelText("Classificateur manquant"), { key: "Enter" });
+    expect(screen.getByRole("status")).toHaveTextContent("Bonne réponse !");
+    fireEvent.click(screen.getByRole("button", { name: /voir mon score/i }));
+
+    expect(screen.getByText(/tu as écrit/)).toHaveTextContent("(tu as écrit 张)");
+    expect(screen.getByText(/avec indice/)).toBeInTheDocument();
+    expect(onFinish).toHaveBeenCalledWith([
+      { id: "本-01", correct: false },
+      { id: "张-01", correct: true },
+    ]);
+  });
+});
+
 describe("ClassifiersPage", () => {
   beforeEach(() => {
     getClassifierQuiz.mockReset().mockResolvedValue({ mode: "fill", version: "3.0", level: 1, hanzi: "本", questions: [fill] });
@@ -123,7 +173,7 @@ describe("ClassifiersPage", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /S'entraîner sur 本/ }));
     await waitFor(() => expect(getClassifierQuiz).toHaveBeenCalledWith("fill", 1, "3.0", "本"));
-    expect(await screen.findByText(/Phrases avec 本 · HSK 1/)).toBeInTheDocument();
+    expect(await screen.findByText(/Phrases à compléter · 本 · HSK 1/)).toBeInTheDocument();
   });
 
   it("filters verbal classifiers and starts the usage quiz", async () => {
@@ -132,7 +182,13 @@ describe("ClassifiersPage", () => {
     fireEvent.click(screen.getByRole("button", { name: "Verbaux" }));
     expect(screen.queryByText(/Les livres, cahiers/)).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("tab", { name: /Phrases à compléter/ }));
+    fireEvent.click(screen.getByRole("tab", { name: /Écrire le classificateur/ }));
+    fireEvent.click(screen.getByRole("button", { name: /Commencer \(10 phrases\)/ }));
+    await waitFor(() => expect(getClassifierQuiz).toHaveBeenCalledWith("fill", 1, "3.0", undefined));
+    expect(await screen.findByLabelText("Classificateur manquant")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Quitter" }));
+
+    fireEvent.click(await screen.findByRole("tab", { name: /Phrases à compléter/ }));
     fireEvent.click(screen.getByRole("button", { name: /Plus de phrases/ }));
     await waitFor(() => expect(generateClassifierSentences).toHaveBeenCalledWith(1, "3.0", undefined));
   });

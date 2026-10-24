@@ -140,6 +140,8 @@ def fill_question(sentence: dict[str, Any], version: str, level: int, rng: rando
         "fr": sentence.get("fr", ""),
         "classifier": sentence["answer"],
         "explain": answer["usage"],
+        # for the "write it yourself" mode: the usage without the classifier itself
+        "hint": masked_usage(answer),
         "generated": bool(sentence.get("generated")),
     }
 
