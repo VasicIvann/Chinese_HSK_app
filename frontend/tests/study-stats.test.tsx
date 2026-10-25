@@ -15,7 +15,7 @@ vi.mock("@/lib/api/endpoints", async (importOriginal) => ({
   getAccountSettings: async () => ({ hsk_version: "3.0", pinyin_locked: false }),
 }));
 
-const zero = { vocab: 0, listening: 0, writing: 0, grammar: 0, classifiers: 0, expression: 0, drawings: 0 };
+const zero = { vocab: 0, listening: 0, writing: 0, grammar: 0, classifiers: 0, tones: 0, expression: 0, drawings: 0 };
 
 function stats(days: number): StudyStats {
   const dates = Array.from({ length: days }, (_, i) => `2026-10-${String(18 - days + 1 + i).padStart(2, "0")}`);
@@ -73,7 +73,7 @@ describe("StudyStatsSection", () => {
       expect(screen.getByRole("figure", { name: label })).toBeInTheDocument();
     }
     expect(screen.queryByRole("figure", { name: "Grammaire par jour" })).not.toBeInTheDocument();
-    expect(screen.getByText(/Rien sur la période : Écriture HSK, Grammaire, Expression, Dessins/)).toBeInTheDocument();
+    expect(screen.getByText(/Rien sur la période : Écriture HSK, Grammaire, Tons, Expression, Dessins/)).toBeInTheDocument();
     expect(screen.getByText("+25")).toBeInTheDocument();
     expect(screen.getByText("325")).toBeInTheDocument();
     expect(screen.getAllByText("42 min")).toHaveLength(2); // total and per quiz day

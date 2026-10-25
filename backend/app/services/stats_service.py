@@ -5,6 +5,7 @@ Everything is bucketed by the user's local day / hour (timestamps are stored in 
 Units, kept separate on purpose (one small chart per tab):
 - vocabulary: cards answered (one row of review_log);
 - Écoute, Écriture HSK, Grammaire, Classificateurs: questions answered (sum of the sets' totals);
+- Tons: words answered (first attempts);
 - Expression: texts corrected; drawings: drawings saved.
 "Actions" (hours / weekdays) count one per card, question, text or drawing.
 """
@@ -24,8 +25,8 @@ from app.models import ExerciseResult, ExpressionAttempt, ReviewLog, UserVocabMa
 from app.services.version_service import version_entries, version_entry_ids
 
 PERIODS = (7, 30, 90)
-TABS = ("vocab", "listening", "writing", "grammar", "classifiers", "expression", "drawings")
-EXERCISE_TABS = ("listening", "writing", "grammar", "classifiers")
+TABS = ("vocab", "listening", "writing", "grammar", "classifiers", "tones", "expression", "drawings")
+EXERCISE_TABS = ("listening", "writing", "grammar", "classifiers", "tones")
 # A card left open for longer is counted as 2 minutes (the user was away).
 MAX_CARD_MS = 120_000
 

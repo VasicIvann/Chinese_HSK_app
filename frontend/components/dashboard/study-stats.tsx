@@ -29,6 +29,7 @@ export const TAB_INFO: Record<StatTab, { label: string; unit: string; one: strin
   writing: { label: "Écriture HSK", unit: "questions", one: "question" },
   grammar: { label: "Grammaire", unit: "questions", one: "question" },
   classifiers: { label: "Classificateurs", unit: "questions", one: "question" },
+  tones: { label: "Tons", unit: "mots", one: "mot" },
   expression: { label: "Expression", unit: "textes", one: "texte" },
   drawings: { label: "Dessins", unit: "dessins", one: "dessin" },
 };

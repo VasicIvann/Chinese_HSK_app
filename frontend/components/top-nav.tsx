@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { href: "/writing", label: "Écriture HSK" },
   { href: "/grammar", label: "Grammaire" },
   { href: "/classifiers", label: "Classificateurs" },
+  { href: "/tones", label: "Tons" },
   { href: "/expression", label: "Expression" },
   { href: "/account", label: "Compte" },
 ];

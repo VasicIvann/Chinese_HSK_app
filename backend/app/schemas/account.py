@@ -120,6 +120,7 @@ class TabActivityDay(BaseModel):
     writing: int  # questions answered (Écriture HSK)
     grammar: int  # questions answered (Grammaire)
     classifiers: int  # questions answered (Classificateurs)
+    tones: int  # words answered (Tons)
     expression: int  # texts corrected
     drawings: int  # drawings saved
 
@@ -130,6 +131,7 @@ class TabTotals(BaseModel):
     writing: int
     grammar: int
     classifiers: int
+    tones: int
     expression: int
     drawings: int
 

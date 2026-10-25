@@ -32,6 +32,7 @@ const VERSION_SCOPED_KEYS = [
   ["grammar"],
   ["classifiers"],
   ["study-stats"],
+  ["tone-words"],
 ];
 
 /** The user's HSK version (saved on the account) and a setter that refreshes the app. */

@@ -70,7 +70,7 @@ def test_stats_per_tab_words_and_time(client: TestClient, seed_quizzes) -> None:
     assert (oct17["vocab"], oct17["listening"], oct17["expression"], oct17["drawings"]) == (1, 10, 1, 1)
     assert day[date(2026, 10, 16)]["grammar"] == 3
     assert stats["totals"] == {
-        "vocab": 2, "listening": 10, "writing": 0, "grammar": 3, "classifiers": 10, "expression": 1, "drawings": 1,
+        "vocab": 2, "listening": 10, "writing": 0, "grammar": 3, "classifiers": 10, "tones": 0, "expression": 1, "drawings": 1,
     }
     assert stats["active_days"] == 3
 
@@ -109,5 +109,11 @@ def test_stats_endpoint(client: TestClient, seed_quizzes) -> None:
         json={"section": "classifiers", "level": 2, "part": "fill", "answers": [{"id": "本-01", "correct": True}]},
     )
     assert res.status_code == 201
+    res = client.post(
+        "/v1/exercises/results",
+        headers=headers,
+        json={"section": "tones", "level": 3, "part": "listen", "answers": [{"id": "12", "correct": False}, {"id": "13", "correct": True}]},
+    )
+    assert res.status_code == 201
     body = client.get("/v1/account/stats?days=7", headers=headers).json()
-    assert body["totals"]["classifiers"] == 1 and body["active_days"] == 1
+    assert body["totals"]["classifiers"] == 1 and body["totals"]["tones"] == 2 and body["active_days"] == 1

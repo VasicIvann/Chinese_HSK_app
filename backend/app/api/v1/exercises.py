@@ -35,7 +35,7 @@ class Answer(BaseModel):
 
 
 class ResultRequest(BaseModel):
-    section: Literal["listening", "writing", "grammar", "classifiers"]
+    section: Literal["listening", "writing", "grammar", "classifiers", "tones"]
     version: Version | None = None
     level: Level
     part: str = Field(min_length=1, max_length=32)

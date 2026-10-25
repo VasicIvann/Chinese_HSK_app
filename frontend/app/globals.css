@@ -19,6 +19,7 @@
   --viz-writing: #1baf7a;
   --viz-grammar: #eda100;
   --viz-classifiers: #e87ba4;
+  --viz-tones: #e34948;
   --viz-expression: #008300;
   --viz-drawings: #6250d6;
   --background: oklch(0.985 0.005 80);
@@ -63,6 +64,7 @@
   --viz-writing: #199e70;
   --viz-grammar: #c98500;
   --viz-classifiers: #d55181;
+  --viz-tones: #e66767;
   --viz-expression: #008300;
   --viz-drawings: #9085e9;
   --background: oklch(0.16 0.01 50);

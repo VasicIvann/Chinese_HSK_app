@@ -138,7 +138,7 @@ export function generateExerciseSet(section: Section, level: ExerciseLevel, part
 }
 
 export function postExerciseResult(body: {
-  section: Section | "grammar" | "classifiers";
+  section: Section | "grammar" | "classifiers" | "tones";
   version?: HskVersion;
   level: ExerciseLevel;
   part: string;

@@ -6,7 +6,7 @@ import type { HskVersion } from "@/lib/api/types";
 export const STAT_PERIODS = [7, 30, 90] as const;
 export type StatPeriod = (typeof STAT_PERIODS)[number];
 
-export const TABS = ["vocab", "listening", "writing", "grammar", "classifiers", "expression", "drawings"] as const;
+export const TABS = ["vocab", "listening", "writing", "grammar", "classifiers", "tones", "expression", "drawings"] as const;
 export type StatTab = (typeof TABS)[number];
 
 export type TabCounts = Record<StatTab, number>;
