@@ -6,6 +6,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.core.security import JWTError, decode_access_token
 from app.db.session import get_db
 from app.models import User
@@ -88,3 +89,15 @@ def enforce_quota(kind: str):
 
 
 __all__ = ["DAILY_QUOTAS", "bearer_scheme", "enforce_quota", "get_current_user"]
+
+
+def is_admin(user: User) -> bool:
+    """Admins are listed by e-mail in the ADMIN_EMAILS environment variable."""
+    return (user.email or "").strip().lower() in get_settings().admin_emails_set
+
+
+def require_admin(user: User = Depends(get_current_user)) -> User:
+    """Dependency for the read-only Admin endpoints: 403 for everybody else."""
+    if not is_admin(user):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Accès réservé à l'administrateur.")
+    return user

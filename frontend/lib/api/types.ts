@@ -15,6 +15,8 @@ export type UserPublic = {
   email: string;
   locale: string;
   created_at: string;
+  /** Listed in ADMIN_EMAILS on the server (read-only Admin page). */
+  is_admin?: boolean;
 };
 
 export type TokenResponse = {

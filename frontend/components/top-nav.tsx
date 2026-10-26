@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { useIsAdmin } from "@/lib/api/admin";
 import { useAuth } from "@/lib/auth/auth-context";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +27,9 @@ export function TopNav() {
   const router = useRouter();
   const { user, isAuthenticated, signOut } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
+  // The Admin link only for accounts the server lists as admins (the API checks it again).
+  const isAdmin = useIsAdmin();
+  const links = isAdmin ? [...NAV_LINKS, { href: "/admin", label: "Admin" }] : NAV_LINKS;
 
   const handleSignOut = () => {
     signOut();
@@ -41,12 +45,13 @@ export function TopNav() {
           className="flex shrink-0 items-center gap-2 whitespace-nowrap font-semibold tracking-tight"
         >
           <span className="hanzi text-2xl text-primary">学</span>
-          <span>HSK Trainer</span>
+          {/* Between lg and xl the 9 links need the room: logo character only. */}
+          <span className={cn(isAuthenticated && "lg:hidden xl:inline")}>HSK Trainer</span>
         </Link>
 
         {isAuthenticated && (
           <nav className="hidden items-center gap-1 lg:flex">
-            {NAV_LINKS.map((link) => {
+            {links.map((link) => {
               const active = pathname?.startsWith(link.href);
               return (
                 <Link
@@ -108,7 +113,7 @@ export function TopNav() {
       {isAuthenticated && mobileOpen && (
         <nav className="border-t border-border bg-background lg:hidden">
           <ul className="flex flex-col p-2">
-            {NAV_LINKS.map((link) => {
+            {links.map((link) => {
               const active = pathname?.startsWith(link.href);
               return (
                 <li key={link.href}>

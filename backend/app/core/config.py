@@ -36,6 +36,8 @@ class Settings(BaseSettings):
 
     CORS_ORIGINS: str = "http://localhost:3000"
     ALLOWED_REGISTRATION_EMAILS: str = ""
+    # Accounts allowed to open the read-only Admin page (comma-separated). Empty = nobody.
+    ADMIN_EMAILS: str = ""
 
     @field_validator("HSK_DATABASE_URL")
     @classmethod
@@ -50,6 +52,10 @@ class Settings(BaseSettings):
     @property
     def cors_origin_list(self) -> list[str]:
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
+
+    @property
+    def admin_emails_set(self) -> set[str]:
+        return {email.strip().lower() for email in (self.ADMIN_EMAILS or "").split(",") if email.strip()}
 
     @property
     def allowed_registration_emails_set(self) -> set[str]:

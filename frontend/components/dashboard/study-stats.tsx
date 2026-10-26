@@ -56,10 +56,19 @@ const longDate = (iso: unknown) =>
 const plural = (n: number, one: string, many: string) => `${n.toLocaleString("fr-FR")} ${n > 1 ? many : one}`;
 const minutesText = (m: number) => (m < 60 ? `${Math.round(m)} min` : `${Math.floor(m / 60)} h ${String(Math.round(m % 60)).padStart(2, "0")}`);
 
-export function StudyStatsSection() {
+type SectionProps = {
+  /** Another account's statistics (Admin page); the signed-in user's when omitted. */
+  load?: (days: StatPeriod) => Promise<StudyStats>;
+  queryKey?: readonly unknown[];
+};
+
+export function StudyStatsSection({ load, queryKey }: SectionProps = {}) {
   const { version } = useHskVersion();
   const [days, setDays] = useState<StatPeriod>(30);
-  const query = useQuery({ queryKey: ["study-stats", days, version], queryFn: () => getStudyStats(days, version) });
+  const query = useQuery({
+    queryKey: [...(queryKey ?? ["study-stats", version]), days],
+    queryFn: () => (load ? load(days) : getStudyStats(days, version)),
+  });
   const stats = query.data;
 
   return (

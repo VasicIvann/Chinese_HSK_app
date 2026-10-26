@@ -34,3 +34,6 @@ services:
         sync: false
       - key: ALLOWED_REGISTRATION_EMAILS
         sync: false
+      # E-mails allowed to open the read-only Admin page (comma-separated).
+      - key: ADMIN_EMAILS
+        sync: false

@@ -26,6 +26,8 @@ class UserPublic(BaseModel):
     email: EmailStr
     locale: str
     created_at: datetime
+    # Computed from ADMIN_EMAILS (never stored, never settable through the API).
+    is_admin: bool = False
 
 
 class TokenResponse(BaseModel):
