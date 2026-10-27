@@ -72,14 +72,15 @@ export const MAX_SESSION_SIZE = 4000;
 export function getDueEntries(
   quizzes: string[],
   count: number = 10,
-  options: { newRatio?: number; onlyNew?: boolean } = {}
+  options: { newRatio?: number; onlyNew?: boolean; onlySeen?: boolean } = {}
 ) {
-  const { newRatio = 0.3, onlyNew = false } = options;
+  const { newRatio = 0.3, onlyNew = false, onlySeen = false } = options;
   const params = new URLSearchParams();
   quizzes.forEach((q) => params.append("quiz", q));
   params.set("count", String(count));
   params.set("new_ratio", String(newRatio));
   if (onlyNew) params.set("only_new", "true");
+  if (onlySeen) params.set("only_seen", "true");
   return apiRequest<DueEntry[]>(`/v1/srs/due?${params.toString()}`);
 }
 

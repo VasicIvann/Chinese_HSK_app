@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Check, Lock, Play, Sparkles } from "lucide-react";
+import { Check, History, Layers, Lock, Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 import { HskVersionToggle } from "@/components/hsk-version-toggle";
@@ -15,12 +15,36 @@ import type { QuizMode } from "@/lib/hooks/use-quiz-session";
 import { quizLabel, useHskVersion, usePinyinLock, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
+/** Which words a session may use: everything, never-seen words only, or already-seen words only. */
+export type WordSet = "all" | "new" | "seen";
+
 export type QuizStartParams = {
   quizzes: string[];
   count: number;
   mode: QuizMode;
-  onlyNew: boolean;
+  words: WordSet;
 };
+
+const WORD_SETS: { value: WordSet; label: string; description: string; icon: typeof Layers }[] = [
+  {
+    value: "all",
+    label: "Tous les mots",
+    description: "Les mots à réviser en priorité, avec quelques nouveaux mots.",
+    icon: Layers,
+  },
+  {
+    value: "new",
+    label: "Nouveaux uniquement",
+    description: "Seulement des mots que tu n'as jamais vus dans tes quiz.",
+    icon: Sparkles,
+  },
+  {
+    value: "seen",
+    label: "Révision uniquement",
+    description: "Aucun nouveau mot : les mots déjà vus, ceux à réviser d'abord.",
+    icon: History,
+  },
+];
 
 type Props = {
   onStart: (params: QuizStartParams) => void;
@@ -53,7 +77,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
     setSelectionByVersion((all) => ({ ...all, [version]: update(all[version] ?? []) }));
   const [countChoice, setCountChoice] = useState<CountChoice>(10);
   const [customCount, setCustomCount] = useState("");
-  const [onlyNew, setOnlyNew] = useState(false);
+  const [words, setWords] = useState<WordSet>("all");
   const [mode, setMode] = useState<QuizMode>("auto-assess");
   const pinyinLock = usePinyinLock();
   // Showing the pinyin would give the answer away when it has to be typed.
@@ -79,7 +103,13 @@ export function QuizSetup({ onStart, isLoading }: Props) {
   const hasSelection = selectedQuizzes.length > 0;
   // Words the session can draw from with the current settings (null until stats load).
   const available =
-    hasSelection && stats ? (onlyNew ? stats.new : stats.due + stats.new + stats.upcoming) : null;
+    hasSelection && stats
+      ? words === "new"
+        ? stats.new
+        : words === "seen"
+          ? stats.due + stats.upcoming
+          : stats.due + stats.new + stats.upcoming
+      : null;
   const maxCount = available === null ? null : Math.min(available, MAX_SESSION_SIZE);
 
   const parsedCustom = /^\d+$/.test(customCount.trim()) ? Number(customCount.trim()) : NaN;
@@ -162,28 +192,49 @@ export function QuizSetup({ onStart, isLoading }: Props) {
       </Card>
 
       <Card>
-        <CardContent className="pt-6">
-          <button
-            type="button"
-            role="switch"
-            aria-checked={onlyNew}
-            onClick={() => setOnlyNew((v) => !v)}
-            className="flex w-full items-center justify-between gap-4 text-left"
-          >
-            <span>
-              <span className="flex items-center gap-2 font-semibold">
-                <Sparkles className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                Nouveaux mots uniquement
-              </span>
-              <span className="mt-1 block text-sm text-muted-foreground">
-                Seulement des mots que tu n&apos;as jamais vus dans tes quiz précédents.
-              </span>
-            </span>
-            <SwitchTrack on={onlyNew} />
-          </button>
-          {onlyNew && hasSelection && nothingLeft && (
+        <CardHeader>
+          <CardTitle>Mots</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div role="radiogroup" aria-label="Mots de la session" className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+            {WORD_SETS.map((w) => {
+              const Icon = w.icon;
+              const count = stats ? (w.value === "new" ? stats.new : w.value === "seen" ? stats.due + stats.upcoming : null) : null;
+              return (
+                <button
+                  key={w.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={words === w.value}
+                  onClick={() => setWords(w.value)}
+                  className={cn(
+                    "flex-1 rounded-lg border-2 p-4 text-left transition-colors",
+                    words === w.value ? "border-primary bg-accent/50" : "border-border hover:border-primary/50"
+                  )}
+                >
+                  <span className="flex items-center gap-2 font-semibold">
+                    <Icon className="h-4 w-4 text-primary" />
+                    {w.label}
+                  </span>
+                  <span className="mt-1 block text-sm text-muted-foreground">{w.description}</span>
+                  {hasSelection && count !== null && (
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      {count} mot{count > 1 ? "s" : ""}
+                      {w.value === "seen" && stats ? ` · ${stats.due} à réviser maintenant` : ""}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+          {words === "new" && hasSelection && nothingLeft && (
             <p className="mt-3 text-sm text-destructive">
-              Tu as déjà vu tous les mots de ces niveaux. Désactive ce mode ou ajoute un niveau.
+              Tu as déjà vu tous les mots de ces niveaux. Choisis un autre mode ou ajoute un niveau.
+            </p>
+          )}
+          {words === "seen" && hasSelection && nothingLeft && (
+            <p className="mt-3 text-sm text-destructive">
+              Tu n&apos;as encore vu aucun mot de ces niveaux : commence par « Tous les mots » ou « Nouveaux uniquement ».
             </p>
           )}
         </CardContent>
@@ -242,7 +293,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
           {available !== null && (
             <CardDescription>
               {available} mot{available > 1 ? "s" : ""} disponible{available > 1 ? "s" : ""}
-              {onlyNew ? " jamais vus" : ""} dans {selectedQuizzes.map(quizLabel).join(" + ")} ({VERSION_INFO[version].label}).
+              {words === "new" ? " jamais vus" : words === "seen" ? " déjà vus" : ""} dans {selectedQuizzes.map(quizLabel).join(" + ")} ({VERSION_INFO[version].label}).
             </CardDescription>
           )}
         </CardHeader>
@@ -308,7 +359,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
           onClick={() =>
             canStart &&
             finalCount !== null &&
-            onStart({ quizzes: selectedQuizzes, count: finalCount, mode, onlyNew })
+            onStart({ quizzes: selectedQuizzes, count: finalCount, mode, words })
           }
         >
           <Play className="h-5 w-5" />

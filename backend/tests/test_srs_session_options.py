@@ -150,3 +150,30 @@ def test_stats_over_several_levels(client: TestClient, three_levels) -> None:
 
     everything = client.get("/v1/srs/stats", headers=_auth(token)).json()
     assert sum(everything.values()) == sum(three_levels.values())
+
+
+def test_only_seen_serves_rated_words_due_first_and_never_a_new_one(client: TestClient, three_levels) -> None:
+    from app.models import UserVocabMastery
+
+    token = _register(client, "onlyseen@example.com")
+    words = client.get("/v1/srs/due?quiz=HSK1,HSK2&count=7", headers=_auth(token)).json()
+    rated = [e["id"] for e in words[:4]]
+    for entry_id in rated:
+        client.post("/v1/srs/rate", headers=_auth(token), json={"entry_id": entry_id, "rating": "good"})
+    # Make one of them overdue: it must come first.
+    with SessionLocal() as s:
+        row = s.query(UserVocabMastery).filter(UserVocabMastery.entry_id == rated[2]).one()
+        row.fsrs_due_at = datetime(2026, 1, 1)
+        s.commit()
+
+    res = client.get("/v1/srs/due?quiz=HSK1,HSK2&count=50&only_seen=true", headers=_auth(token))
+    assert res.status_code == 200
+    seen = [e["id"] for e in res.json()]
+    assert seen[0] == rated[2]  # due first
+    assert sorted(seen) == sorted(rated)  # every rated word, no new one
+    assert len(client.get("/v1/srs/due?quiz=HSK1,HSK2&count=2&only_seen=true", headers=_auth(token)).json()) == 2
+
+    # Nothing seen yet in HSK3: empty list.
+    assert client.get("/v1/srs/due?quiz=HSK3&only_seen=true", headers=_auth(token)).json() == []
+    both = client.get("/v1/srs/due?quiz=HSK1&only_seen=true&only_new=true", headers=_auth(token))
+    assert both.status_code == 422

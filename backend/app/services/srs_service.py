@@ -245,6 +245,7 @@ def select_due_entries(
     count: int,
     new_ratio: float = 0.30,
     only_new: bool = False,
+    only_seen: bool = False,
     seed: Optional[int] = None,
 ) -> list[tuple[Entry, int]]:
     """Pick the next entries to study across one or more quizzes, each with the id
@@ -252,6 +253,8 @@ def select_due_entries(
 
     Default: biased toward due cards (FSRS due_at <= now), mixed with ~`new_ratio`
     never-seen words. With `only_new`, only words the user has never rated, shuffled.
+    With `only_seen`, only words already rated: the due ones first (most overdue first),
+    then the others by next due date — never a new word.
     """
     keys = _normalize_quiz_keys(quiz_keys)
     if not keys or count <= 0:
@@ -292,6 +295,8 @@ def select_due_entries(
         )
     )
     upcoming_bucket.sort(key=lambda e: mastery[e.id].fsrs_due_at or now_naive)
+    if only_seen:
+        return [(e, quiz_of[e.id]) for e in (due_bucket + upcoming_bucket)[:count]]
 
     desired_new = max(1, int(round(count * new_ratio))) if new_bucket else 0
     desired_due = max(0, count - desired_new)

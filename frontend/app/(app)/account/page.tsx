@@ -5,6 +5,7 @@ import { BarChart3, BookOpen, Calendar, CalendarRange, Mail, Sparkles, Target, T
 
 import { ActivityHeatmap } from "@/components/charts/activity-heatmap";
 import { MasteryDonut } from "@/components/charts/mastery-donut";
+import { NewWordsChart } from "@/components/charts/new-words-chart";
 import { TrendChart } from "@/components/charts/trend-chart";
 import { KpiTiles } from "@/components/dashboard/kpi-tiles";
 import { LevelProgress } from "@/components/dashboard/level-progress";
@@ -17,13 +18,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Skeleton } from "@/components/ui/skeleton";
 import { DrawingsGallery } from "@/components/writing/drawings-gallery";
 import { getAccountOverview } from "@/lib/api/endpoints";
-import { VERSION_INFO } from "@/lib/hsk-version";
+import { getStudyStats } from "@/lib/api/stats";
+import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 
 export default function AccountPage() {
   const overviewQuery = useQuery({
     queryKey: ["account-overview"],
     queryFn: getAccountOverview,
   });
+  const { version } = useHskVersion();
+  // Same key as the 30-day view of the study statistics below: fetched once.
+  const stats30 = useQuery({ queryKey: ["study-stats", version, 30], queryFn: () => getStudyStats(30, version) });
 
   if (overviewQuery.isLoading) {
     return (
@@ -217,6 +222,23 @@ export default function AccountPage() {
               yDomain={[0, 100]}
               emptyMessage="Pas encore de production écrite."
             />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Nouveaux mots par jour</CardTitle>
+            <CardDescription>
+              Mots vus pour la première fois chaque jour (30 derniers jours, liste {VERSION_INFO[version].label}). Le pointillé
+              est ta moyenne : pour garder un rythme régulier, ni trop ni trop peu.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {stats30.data ? (
+              <NewWordsChart days={stats30.data.words.per_day} />
+            ) : (
+              <div className="h-48 animate-pulse rounded-md bg-muted/50" aria-hidden />
+            )}
           </CardContent>
         </Card>
       </div>

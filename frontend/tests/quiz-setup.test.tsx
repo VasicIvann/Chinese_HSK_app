@@ -81,7 +81,7 @@ describe("QuizSetup", () => {
       quizzes: ["HSK2", "HSK3"],
       count: 10,
       mode: "auto-assess",
-      onlyNew: false,
+      words: "all",
     });
   });
 
@@ -118,23 +118,45 @@ describe("QuizSetup", () => {
     expect(onStart).toHaveBeenCalledWith(expect.objectContaining({ count: 150 }));
   });
 
-  it("only-new mode counts never-seen words and passes the flag", async () => {
+  it("only-new mode counts never-seen words and passes the choice", async () => {
     const onStart = renderSetup();
     fireEvent.click(await screen.findByRole("button", { name: "HSK 1" }));
-    fireEvent.click(screen.getByRole("switch", { name: /nouveaux mots uniquement/i }));
+    fireEvent.click(screen.getByRole("radio", { name: /nouveaux uniquement/i }));
 
     fireEvent.click(await screen.findByRole("button", { name: "MAX (130)" }));
     fireEvent.click(startButton());
     expect(onStart).toHaveBeenCalledWith(
-      expect.objectContaining({ quizzes: ["HSK1"], count: 130, onlyNew: true })
+      expect.objectContaining({ quizzes: ["HSK1"], count: 130, words: "new" })
     );
+  });
+
+  it("revision-only mode counts already-seen words (due + upcoming) and never new ones", async () => {
+    const onStart = renderSetup();
+    fireEvent.click(await screen.findByRole("button", { name: "HSK 1" }));
+    const seen = screen.getByRole("radio", { name: /révision uniquement/i });
+    expect(await screen.findByText("20 mots · 5 à réviser maintenant")).toBeInTheDocument();
+    fireEvent.click(seen);
+    expect(seen).toHaveAttribute("aria-checked", "true");
+    expect(screen.getByRole("radio", { name: /nouveaux uniquement/i })).toHaveAttribute("aria-checked", "false");
+
+    fireEvent.click(await screen.findByRole("button", { name: "MAX (20)" }));
+    fireEvent.click(startButton());
+    expect(onStart).toHaveBeenCalledWith(expect.objectContaining({ count: 20, words: "seen" }));
+  });
+
+  it("blocks revision-only when nothing was seen yet", async () => {
+    renderSetup();
+    fireEvent.click(await screen.findByRole("button", { name: "HSK 2" }));
+    fireEvent.click(screen.getByRole("radio", { name: /révision uniquement/i }));
+    expect(await screen.findByText(/Tu n'as encore vu aucun mot de ces niveaux/)).toBeInTheDocument();
+    expect(startButton()).toBeDisabled();
   });
 
   it("blocks the start when every word was already seen in only-new mode", async () => {
     STATS.HSK1 = { due: 10, new: 0, upcoming: 140 };
     renderSetup();
     fireEvent.click(await screen.findByRole("button", { name: "HSK 1" }));
-    fireEvent.click(screen.getByRole("switch", { name: /nouveaux mots uniquement/i }));
+    fireEvent.click(screen.getByRole("radio", { name: /nouveaux uniquement/i }));
 
     expect(await screen.findByText(/déjà vu tous les mots/)).toBeInTheDocument();
     expect(startButton()).toBeDisabled();

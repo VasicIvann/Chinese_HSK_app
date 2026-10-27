@@ -60,12 +60,17 @@ export default function ComprehensionPage() {
     async (cfg: SessionConfig) => {
       setPhase("loading");
       try {
-        const entries = await getDueEntries(cfg.quizzes, cfg.count, { onlyNew: cfg.onlyNew });
+        const entries = await getDueEntries(cfg.quizzes, cfg.count, {
+          onlyNew: cfg.words === "new",
+          onlySeen: cfg.words === "seen",
+        });
         if (entries.length === 0) {
           toast.info(
-            cfg.onlyNew
+            cfg.words === "new"
               ? "Aucun nouveau mot dans ces niveaux : tu les as tous déjà vus."
-              : "Aucune carte à étudier pour ces niveaux."
+              : cfg.words === "seen"
+                ? "Aucun mot déjà vu dans ces niveaux : commence par de nouveaux mots."
+                : "Aucune carte à étudier pour ces niveaux."
           );
           setPhase("setup");
           return;
@@ -129,7 +134,7 @@ export default function ComprehensionPage() {
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
           {config?.quizzes.map(quizLabel).join(" + ")}
-          {config?.onlyNew ? " · Nouveaux" : ""} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
+          {config?.words === "new" ? " · Nouveaux" : config?.words === "seen" ? " · Révision" : ""} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
           {session.state.questions.length}
         </p>
         <Button variant="ghost" size="sm" onClick={handleRestart}>

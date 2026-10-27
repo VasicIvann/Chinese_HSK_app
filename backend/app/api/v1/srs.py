@@ -75,9 +75,15 @@ def get_due(
     count: int = Query(10, ge=1, le=MAX_SESSION_SIZE),
     new_ratio: float = Query(0.30, ge=0.0, le=1.0),
     only_new: bool = Query(False, description="Only words the user has never rated."),
+    only_seen: bool = Query(False, description="Only words already rated (revision): due ones first."),
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> list[DueEntry]:
+    if only_new and only_seen:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="Choisis « nouveaux uniquement » ou « révision uniquement », pas les deux.",
+        )
     keys = _quiz_keys_or_404(db, quiz)
     if not keys:
         raise HTTPException(
@@ -91,6 +97,7 @@ def get_due(
         count=count,
         new_ratio=new_ratio,
         only_new=only_new,
+        only_seen=only_seen,
     )
     # quiz_id = the level the word was picked from (a word can sit in a 2.0 and a 3.0 quiz).
     return [DueEntry.model_validate(e).model_copy(update={"quiz_id": quiz_id}) for e, quiz_id in picked]
