@@ -70,6 +70,11 @@ Render's free tier sleeps the service after 15 min of inactivity. To keep it awa
    - Method: GET
 3. Save.
 
+`/healthz` keeps Render awake **without touching the database**, so Neon can still
+suspend its compute after 5 min idle (free plan: 100 CU-hours a month). Never point a
+cron at `/healthz/db`: a DB ping every 10 min keeps Neon awake most of the day and uses
+up the whole monthly allowance.
+
 ---
 
 ## 2. Frontend — Vercel

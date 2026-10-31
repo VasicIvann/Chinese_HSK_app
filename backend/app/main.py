@@ -36,11 +36,17 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    @app.get("/healthz", tags=["meta"], summary="Liveness probe; also pings the database.")
+    @app.get("/healthz", tags=["meta"], summary="Liveness probe (does not touch the database).")
     def healthz() -> dict[str, str]:
-        # Touching the DB keeps Neon awake when the keep-warm cron pings this URL.
-        # Always 200: Render uses this path as its health check, and a slow Neon
-        # wake-up must not make a deploy fail. The DB state is reported in "db".
+        # Pinged by Render's health check and by the keep-warm cron (every 10 min).
+        # It must NOT query the database: Neon suspends its compute after 5 min idle,
+        # and a DB ping every 10 min kept it awake most of the day (≈100 CU-hours a
+        # month, the whole free allowance). Neon wakes up in < 1 s on the next real request.
+        return {"status": "ok"}
+
+    @app.get("/healthz/db", tags=["meta"], summary="Checks the database connection (wakes Neon up).")
+    def healthz_db() -> dict[str, str]:
+        # Manual checks only: never point a cron at this URL.
         try:
             with engine.connect() as conn:
                 conn.execute(text("SELECT 1"))
