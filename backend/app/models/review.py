@@ -27,6 +27,6 @@ class ReviewLog(Base):
     rating = Column(Integer, nullable=False)  # 1 again, 2 hard, 3 good, 4 easy
     was_new = Column(Boolean, nullable=False, default=False)  # first time the user rated it
     was_due = Column(Boolean, nullable=False, default=False)  # FSRS due date had passed
-    mode = Column(String(32), nullable=True)  # "auto-assess" | "pinyin-input"
+    mode = Column(String(32), nullable=True)  # "auto-assess" | "pinyin-input" | "hanzi-input"
     elapsed_ms = Column(Integer, nullable=True)  # time spent on the card
     reviewed_at = Column(DateTime, default=datetime.utcnow, nullable=False)  # naive UTC

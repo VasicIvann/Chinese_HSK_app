@@ -69,7 +69,7 @@ export type RateRequest = {
   entry_id: number;
   rating: RatingEnum;
   /** Optional context stored in the review history. */
-  mode?: "auto-assess" | "pinyin-input";
+  mode?: "auto-assess" | "pinyin-input" | "hanzi-input";
   elapsed_ms?: number;
 };
 

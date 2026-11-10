@@ -14,7 +14,7 @@ class RateRequest(BaseModel):
     entry_id: int = Field(ge=1)
     rating: RatingEnum
     # Optional context stored in the review history.
-    mode: Literal["auto-assess", "pinyin-input"] | None = None
+    mode: Literal["auto-assess", "pinyin-input", "hanzi-input"] | None = None
     elapsed_ms: int | None = Field(default=None, ge=0)
 
 

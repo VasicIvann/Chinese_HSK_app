@@ -66,6 +66,11 @@ const MODES: { value: QuizMode; label: string; description: string }[] = [
     label: "Saisie pinyin",
     description: "Tu tapes le pinyin avant de juger. Force la production active.",
   },
+  {
+    value: "hanzi-input",
+    label: "Saisie hanzi",
+    description: "Tu vois la traduction et tu écris le mot en caractères. Le sens inverse.",
+  },
 ];
 
 export function QuizSetup({ onStart, isLoading }: Props) {
@@ -81,7 +86,7 @@ export function QuizSetup({ onStart, isLoading }: Props) {
   const [mode, setMode] = useState<QuizMode>("auto-assess");
   const pinyinLock = usePinyinLock();
   // Showing the pinyin would give the answer away when it has to be typed.
-  const lockApplies = mode === "auto-assess";
+  const lockApplies = mode !== "pinyin-input";
 
   const quizzesQuery = useQuery({ queryKey: ["quizzes", version], queryFn: () => getQuizzes(version) });
   const statsQuery = useQuery({
@@ -278,7 +283,9 @@ export function QuizSetup({ onStart, isLoading }: Props) {
               </span>
               <span className="mt-1 block text-sm text-muted-foreground">
                 {lockApplies
-                  ? "Le pinyin apparaît sous chaque mot dès le début de la carte. Réglage gardé sur ton compte."
+                  ? mode === "hanzi-input"
+                    ? "Le pinyin apparaît sous la traduction dès le début de la carte. Réglage gardé sur ton compte."
+                    : "Le pinyin apparaît sous chaque mot dès le début de la carte. Réglage gardé sur ton compte."
                   : "Indisponible en saisie pinyin : le pinyin affiché donnerait la réponse."}
               </span>
             </span>

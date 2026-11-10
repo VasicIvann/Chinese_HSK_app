@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 
 import type { DueEntry, RatingEnum } from "@/lib/api/types";
 
-export type QuizMode = "auto-assess" | "pinyin-input";
+export type QuizMode = "auto-assess" | "pinyin-input" | "hanzi-input";
 
 export type HistoryItem = {
   entry: DueEntry;

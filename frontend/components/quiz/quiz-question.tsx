@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import type { DueEntry, RatingEnum } from "@/lib/api/types";
 import { usePinyinLock } from "@/lib/hsk-version";
 import type { QuizMode } from "@/lib/hooks/use-quiz-session";
-import { pinyinMatches } from "@/lib/pinyin";
+import { hanziMatches, pinyinMatches } from "@/lib/pinyin";
 
 type Props = {
   entry: DueEntry;
@@ -20,39 +20,90 @@ type Props = {
   onRate: (rating: RatingEnum, meta?: { userInput?: string; inputCorrect?: boolean }) => void;
 };
 
+const MODE_LABEL: Record<QuizMode, string> = {
+  "auto-assess": "Auto-évaluation",
+  "pinyin-input": "Tape le pinyin",
+  "hanzi-input": "Écris le mot en hanzi",
+};
+
 export function QuizQuestion({ entry, mode, onRate }: Props) {
   const [pinyinHintVisible, setPinyinHintVisible] = useState(false);
   const [hintVisible, setHintVisible] = useState(false);
-  const [pinyinInput, setPinyinInput] = useState("");
-  const [pinyinChecked, setPinyinChecked] = useState<null | { correct: boolean; value: string }>(null);
+  const [input, setInput] = useState("");
+  const [checked, setChecked] = useState<null | { correct: boolean; value: string }>(null);
   const pinyinLock = usePinyinLock();
-  // The lock only applies to self-assessment: in "type the pinyin" it would give the answer away.
-  const pinyinLocked = mode === "auto-assess" && pinyinLock.locked;
+  const typing = mode !== "auto-assess";
+  const hanziMode = mode === "hanzi-input";
+  // The lock would give the answer away when the pinyin itself has to be typed.
+  const pinyinLocked = mode !== "pinyin-input" && pinyinLock.locked;
+  // Hanzi mode: the characters (and everything that shows them: audio, examples,
+  // drawings) stay hidden until the answer is checked or the solution is shown.
+  const hanziRevealed = !hanziMode || !!checked || hintVisible;
 
   // Reset transient state when the question changes.
   useEffect(() => {
     setPinyinHintVisible(false);
     setHintVisible(false);
-    setPinyinInput("");
-    setPinyinChecked(null);
+    setInput("");
+    setChecked(null);
   }, [entry.id]);
 
   const handleCheck = () => {
-    const correct = pinyinMatches(pinyinInput, entry.pinyin);
-    setPinyinChecked({ correct, value: pinyinInput });
+    const correct = hanziMode ? hanziMatches(input, entry.hanzi) : pinyinMatches(input, entry.pinyin);
+    setChecked({ correct, value: input });
     setHintVisible(true);
   };
 
   const handleAutoRate = (rating: RatingEnum) => {
-    if (mode === "pinyin-input" && pinyinChecked) {
-      onRate(rating, { userInput: pinyinChecked.value, inputCorrect: pinyinChecked.correct });
+    if (typing && checked) {
+      onRate(rating, { userInput: checked.value, inputCorrect: checked.correct });
     } else {
       onRate(rating);
     }
   };
 
-  // In auto-assess mode, "show full solution" implies pinyin is also revealed.
+  // "Show the solution" implies the pinyin is also revealed.
   const showPinyin = !pinyinLocked && (pinyinHintVisible || hintVisible);
+  const pinyinHintButtons = pinyinLocked ? (
+    <Button
+      type="button"
+      variant="ghost"
+      size="sm"
+      onClick={() => pinyinLock.setLocked(false)}
+      aria-pressed
+      title="Le pinyin reste affiché sur toutes les cartes. Clique pour le déverrouiller."
+      className="text-primary"
+    >
+      <Lock className="mr-1 h-4 w-4" />
+      Pinyin verrouillé
+    </Button>
+  ) : (
+    <>
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        onClick={() => setPinyinHintVisible((v) => !v)}
+        disabled={hintVisible}
+        className="text-muted-foreground"
+      >
+        <Lightbulb className="mr-1 h-4 w-4" />
+        {pinyinHintVisible || hintVisible ? "Pinyin affiché" : "Indice pinyin"}
+      </Button>
+      <Button
+        type="button"
+        variant="ghost"
+        size="icon"
+        onClick={() => pinyinLock.setLocked(true)}
+        aria-pressed={false}
+        aria-label="Toujours afficher le pinyin"
+        title="Toujours afficher le pinyin"
+        className="h-8 w-8 text-muted-foreground"
+      >
+        <LockOpen className="h-4 w-4" />
+      </Button>
+    </>
+  );
 
   return (
     <AnimatePresence mode="wait">
@@ -64,130 +115,86 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className="flex flex-col items-center gap-6"
       >
-        <div className="flex flex-col items-center gap-2">
-          <p className="hanzi text-6xl font-normal tracking-wide sm:text-7xl">{entry.hanzi}</p>
+        <div className="flex flex-col items-center gap-2 text-center">
+          {hanziMode ? (
+            <>
+              <p className="text-3xl font-semibold sm:text-4xl" data-testid="prompt-translation">
+                {entry.translation}
+              </p>
+              {entry.alt_translations && entry.alt_translations !== entry.translation && (
+                <p className="max-w-md text-sm text-muted-foreground">{entry.alt_translations}</p>
+              )}
+            </>
+          ) : (
+            <p className="hanzi text-6xl font-normal tracking-wide sm:text-7xl">{entry.hanzi}</p>
+          )}
           {pinyinLocked && (
             <p className="text-xl font-medium" data-testid="locked-pinyin">
               {entry.pinyin}
             </p>
           )}
-          <p className="text-sm text-muted-foreground">
-            {mode === "auto-assess" ? "Auto-évaluation" : "Tape le pinyin"}
-          </p>
+          <p className="text-sm text-muted-foreground">{MODE_LABEL[mode]}</p>
         </div>
 
-        {mode === "pinyin-input" && (
+        {typing && (
           <div className="w-full max-w-md">
             <div className="flex items-center gap-2">
               <Input
-                value={pinyinInput}
-                onChange={(e) => setPinyinInput(e.target.value)}
-                placeholder="Ex. : ni hao"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={hanziMode ? "Ex. : 你好" : "Ex. : ni hao"}
+                aria-label={hanziMode ? "Ta réponse en hanzi" : "Ta réponse en pinyin"}
+                lang={hanziMode ? "zh-CN" : undefined}
+                className={hanziMode ? "hanzi text-lg" : undefined}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && !pinyinChecked) {
+                  // Enter also validates the IME candidate: only check once composition is over.
+                  if (e.key === "Enter" && !e.nativeEvent.isComposing && !checked) {
                     e.preventDefault();
-                    handleCheck();
+                    if (input.trim()) handleCheck();
                   }
                 }}
                 autoFocus
-                disabled={!!pinyinChecked}
+                disabled={!!checked}
                 inputMode="text"
                 autoCapitalize="none"
                 autoCorrect="off"
                 spellCheck={false}
               />
-              <Button
-                type="button"
-                onClick={handleCheck}
-                disabled={!pinyinInput.trim() || !!pinyinChecked}
-              >
+              <Button type="button" onClick={handleCheck} disabled={!input.trim() || !!checked}>
                 Vérifier
               </Button>
             </div>
-            {pinyinChecked && (
+            {checked && (
               <p
                 className={`mt-2 text-sm font-medium ${
-                  pinyinChecked.correct ? "text-emerald-600 dark:text-emerald-400" : "text-destructive"
+                  checked.correct ? "text-emerald-600 dark:text-emerald-400" : "text-destructive"
                 }`}
               >
-                {pinyinChecked.correct
+                {checked.correct
                   ? "Bonne réponse !"
-                  : `Pinyin attendu : ${entry.pinyin}`}
+                  : hanziMode
+                    ? `Mot attendu : ${entry.hanzi}`
+                    : `Pinyin attendu : ${entry.pinyin}`}
               </p>
             )}
           </div>
         )}
 
         <div className="flex flex-col items-center gap-3">
-          {mode === "auto-assess" ? (
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />
-              {pinyinLocked ? (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => pinyinLock.setLocked(false)}
-                  aria-pressed
-                  title="Le pinyin reste affiché sur toutes les cartes. Clique pour le déverrouiller."
-                  className="text-primary"
-                >
-                  <Lock className="mr-1 h-4 w-4" />
-                  Pinyin verrouillé
-                </Button>
-              ) : (
-                <>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setPinyinHintVisible((v) => !v)}
-                    disabled={hintVisible}
-                    className="text-muted-foreground"
-                  >
-                    <Lightbulb className="mr-1 h-4 w-4" />
-                    {pinyinHintVisible || hintVisible ? "Pinyin affiché" : "Indice pinyin"}
-                  </Button>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => pinyinLock.setLocked(true)}
-                    aria-pressed={false}
-                    aria-label="Toujours afficher le pinyin"
-                    title="Toujours afficher le pinyin"
-                    className="h-8 w-8 text-muted-foreground"
-                  >
-                    <LockOpen className="h-4 w-4" />
-                  </Button>
-                </>
-              )}
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => setHintVisible((v) => !v)}
-                className="text-muted-foreground"
-              >
-                {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
-                {hintVisible ? "Masquer la solution" : "Afficher la solution"}
-              </Button>
-            </div>
-          ) : (
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                onClick={() => setHintVisible((v) => !v)}
-                className="text-muted-foreground"
-              >
-                {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
-                {hintVisible ? "Masquer la solution" : "Afficher la solution"}
-              </Button>
-            </div>
-          )}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {hanziRevealed && <ListenButton text={entry.hanzi} label="Écouter" rate={0.8} />}
+            {mode !== "pinyin-input" && pinyinHintButtons}
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setHintVisible((v) => !v)}
+              className="text-muted-foreground"
+            >
+              {hintVisible ? <EyeOff className="mr-1 h-4 w-4" /> : <Eye className="mr-1 h-4 w-4" />}
+              {hintVisible ? "Masquer la solution" : "Afficher la solution"}
+            </Button>
+          </div>
 
           {(showPinyin || hintVisible) && (
             <motion.div
@@ -196,16 +203,17 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
               transition={{ duration: 0.15 }}
               className="text-center"
             >
-              {showPinyin && (
-                <p className="text-lg font-medium">{entry.pinyin}</p>
+              {hanziMode && hintVisible && (
+                <p className="hanzi text-5xl font-normal tracking-wide" data-testid="solution-hanzi">
+                  {entry.hanzi}
+                </p>
               )}
-              {hintVisible && (
+              {showPinyin && <p className="text-lg font-medium">{entry.pinyin}</p>}
+              {hintVisible && !hanziMode && (
                 <>
                   <p className="text-base text-muted-foreground">{entry.translation}</p>
                   {entry.alt_translations && (
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      {entry.alt_translations}
-                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">{entry.alt_translations}</p>
                   )}
                 </>
               )}
@@ -220,7 +228,7 @@ export function QuizQuestion({ entry, mode, onRate }: Props) {
           <RatingButtons onRate={handleAutoRate} />
         </div>
 
-        <WordStudyTools key={entry.id} entry={entry} />
+        {hanziRevealed && <WordStudyTools key={entry.id} entry={entry} />}
       </motion.div>
     </AnimatePresence>
   );
