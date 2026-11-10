@@ -101,7 +101,7 @@ def test_set_and_catalog_endpoints(client: TestClient, words) -> None:
 
     catalog = client.get("/v1/exercises/catalog?section=writing&level=3&version=3.0", headers=_auth(token)).json()
     w2 = next(p for p in catalog["parts"] if p["type"] == "make_sentence")
-    assert w2["word_counts"] == {"seen": 13, "weak": 3} and w2["available"] == 13
+    assert w2["word_counts"] == {"seen": 13, "weak": 3, "structures": 61, "structures_new": 61} and w2["available"] == 13
     assert next(p for p in catalog["parts"] if p["type"] == "char_pinyin")["word_counts"] is None
 
     seen_set = client.get("/v1/exercises/set?section=writing&level=3&part=W2&version=3.0", headers=_auth(token)).json()
@@ -162,3 +162,79 @@ def test_check_sentence_gives_a_model_only_when_wrong(client: TestClient, fake_a
     wrong = client.post("/v1/exercises/check-sentence", headers=_auth(token), json={**body, "sentence": "他认真。"}).json()
     assert wrong["correct"] is False
     assert wrong["model"] == "我们要认真学习。" and wrong["model_translation"] == "Nous devons étudier sérieusement."
+
+
+# --------------------------------------------------------------------------- grammar structures
+
+
+def test_structures_data_is_complete() -> None:
+    items = es.structures()
+    assert len(items) >= 55 and {s["level"] for s in items} == {2, 3}
+    ids = [s["id"] for s in items]
+    assert len(ids) == len(set(ids))
+    by_structure = {s["structure"]: s for s in items}
+    for expected in ("虽然……，但是……", "只有……，才……", "……把……", "……被……", "一……就……", "除了……以外，还／都……", "是……的"):
+        assert expected in by_structure, expected
+    assert all(s["meaning"] and s["pattern"] and s["example"]["zh"] for s in items)
+
+
+def _answer(user_id: int, results: dict[str, bool], when: datetime) -> None:
+    import json
+
+    from app.models import ExerciseResult
+
+    with SessionLocal() as s:
+        s.add(
+            ExerciseResult(
+                user_id=user_id, version="3.0", level=3, section="writing", part_key="W2",
+                score=sum(results.values()), total=len(results), created_at=when,
+                details=json.dumps([{"id": f"struct-{k}", "correct": v} for k, v in results.items()]),
+            )
+        )
+        s.commit()
+
+
+def test_structures_never_practised_first_then_failed_ones(client: TestClient, monkeypatch) -> None:
+    token, user_id = _register(client, "structures@example.com")
+    pool = [
+        {"id": f"s{i}", "level": 3, "point": "3-60", "structure": f"结构{i}……", "meaning": "m", "pattern": "p", "example": {"zh": "例", "fr": "ex"}}
+        for i in range(8)
+    ]
+    monkeypatch.setattr(es, "structures", lambda: pool)
+    # s0..s5 practised: s1, s3 failed the last time (s3 was right before, wrong after); s0 wrong then right.
+    _answer(user_id, {"s0": False, "s3": True}, datetime(2026, 11, 1))
+    _answer(user_id, {"s0": True, "s1": False, "s2": True, "s3": False, "s4": True, "s5": True}, datetime(2026, 11, 2))
+    with SessionLocal() as s:
+        assert es.structure_history(s, user_id) == {"s0": True, "s1": False, "s2": True, "s3": False, "s4": True, "s5": True}
+        for seed in range(10):
+            items = es.structure_items(s, user_id, 5, random.Random(seed))
+            ids = [i["id"] for i in items]
+            assert set(ids[:2]) == {"struct-s6", "struct-s7"}  # never practised
+            assert set(ids[2:4]) == {"struct-s1", "struct-s3"}  # failed last time
+            assert ids[4] in {"struct-s0", "struct-s2", "struct-s4", "struct-s5"}
+        first = es.structure_items(s, user_id, 5, random.Random(0))[0]
+    assert first["word"].startswith("结构") and first["meaning"] == "m" and first["kind"] == "structure"
+    assert first["history"] == "new" and first["pattern"] == "p"
+
+    res = client.get("/v1/exercises/set?section=writing&level=3&part=W2&version=3.0&words=structures", headers=_auth(token)).json()
+    part = res["parts"][0]
+    assert part["word_source"] == "structures" and len(part["items"]) == 5
+    catalog = client.get("/v1/exercises/catalog?section=writing&level=3&version=3.0", headers=_auth(token)).json()
+    w2 = next(p for p in catalog["parts"] if p["type"] == "make_sentence")
+    assert w2["word_counts"]["structures"] == 8 and w2["word_counts"]["structures_new"] == 2
+
+
+def test_check_structure(client: TestClient, fake_anthropic) -> None:
+    token, _ = _register(client, "check-structure@example.com")
+    body = {"level": 3, "structure": "虽然……，但是……", "meaning": "bien que…, pourtant…", "sentence": "虽然下雨，我们去了。"}
+    res = client.post("/v1/exercises/check-structure", headers=_auth(token), json=body)
+    assert res.status_code == 200
+    out = res.json()
+    assert out["correct"] is False and out["model"] == "虽然很累，但是我很高兴。"
+    call = fake_anthropic.messages.create_calls[-1]
+    assert "Structure imposée : 虽然……，但是…… (sens : bien que…, pourtant…)" in call["messages"][0]["content"]
+    assert "HSK 3" in call["system"][0]["text"]
+
+    fake_anthropic.messages.structure_check_response = {**fake_anthropic.messages.structure_check_response, "correct": True}
+    ok = client.post("/v1/exercises/check-structure", headers=_auth(token), json=body).json()
+    assert ok["correct"] is True and ok["model"] == ""

@@ -145,7 +145,9 @@ def pick(items: list[dict[str, Any]], questions: int, seen: dict[str, datetime],
 # "Écris une phrase avec le mot donné": the imposed word comes from the user's vocabulary,
 # not from the bank. "seen" = any word already rated; "weak" = one of the 50 lowest-scored
 # words of the "À revoir" bucket (confidence < 0.5, as on the Account page).
-WORD_SOURCES = ("seen", "weak")
+# "structures" = a grammar structure of HSK 2-3 (虽然……，但是……) instead of a word.
+WORD_SOURCES = ("seen", "weak", "structures")
+VOCAB_SOURCES = ("seen", "weak")
 WEAK_THRESHOLD = 0.5
 WEAK_POOL = 50
 SENTENCE_TYPE = "make_sentence"
@@ -193,6 +195,66 @@ def sentence_items(
     ]
 
 
+@lru_cache(maxsize=1)
+def structures() -> list[dict[str, Any]]:
+    """Grammar structures (built from data/exercises/src/structures.yaml)."""
+    path = DATA_DIR / "structures.json"
+    if not path.exists():
+        return []
+    return json.loads(path.read_text(encoding="utf-8"))["structures"]
+
+
+STRUCTURE_PREFIX = "struct-"
+
+
+def structure_history(db: Session, user_id: int) -> dict[str, bool]:
+    """Structure id -> was the LAST sentence written with it correct?"""
+    rows = db.execute(
+        select(ExerciseResult.details, ExerciseResult.created_at)
+        .where(ExerciseResult.user_id == user_id, ExerciseResult.section == "writing")
+        .order_by(ExerciseResult.created_at, ExerciseResult.id)
+    ).all()
+    last: dict[str, bool] = {}
+    for details, _ in rows:
+        try:
+            answers = json.loads(details or "[]")
+        except json.JSONDecodeError:
+            continue
+        for answer in answers:
+            item_id = str(answer.get("id", ""))
+            if item_id.startswith(STRUCTURE_PREFIX):
+                last[item_id[len(STRUCTURE_PREFIX):]] = bool(answer.get("correct"))
+    return last
+
+
+def structure_items(db: Session, user_id: int, count: int, rng: random.Random) -> list[dict[str, Any]]:
+    """Structures never practised first, then those failed the last time, then the others (random within each)."""
+    history = structure_history(db, user_id)
+    never = [s for s in structures() if s["id"] not in history]
+    failed = [s for s in structures() if history.get(s["id"]) is False]
+    passed = [s for s in structures() if history.get(s["id"]) is True]
+    for group in (never, failed, passed):
+        rng.shuffle(group)
+    chosen = (never + failed + passed)[:count]
+    return [
+        {
+            "id": f"{STRUCTURE_PREFIX}{s['id']}",
+            "type": SENTENCE_TYPE,
+            "kind": "structure",
+            "level": s["level"],
+            "word": s["structure"],
+            "meaning": s["meaning"],
+            # Shown only in the correction, when the sentence is wrong.
+            "pattern": s["pattern"],
+            "example": s["example"],
+            "grammar_point": s["point"],
+            "history": "new" if s["id"] not in history else ("failed" if history[s["id"]] is False else "passed"),
+            "source": "structures",
+        }
+        for s in chosen
+    ]
+
+
 def catalog(db: Session, user_id: int, version: str, level: int, section: str) -> list[dict[str, Any]]:
     results = db.execute(
         select(ExerciseResult)
@@ -210,7 +272,10 @@ def catalog(db: Session, user_id: int, version: str, level: int, section: str) -
         word_counts = None
         for item_type, _ in part_slots(part):
             if item_type == SENTENCE_TYPE:
-                word_counts = {s: len(sentence_words(db, user_id, version, level, s)) for s in WORD_SOURCES}
+                word_counts = {s: len(sentence_words(db, user_id, version, level, s)) for s in VOCAB_SOURCES}
+                history = structure_history(db, user_id)
+                word_counts["structures"] = len(structures())
+                word_counts["structures_new"] = sum(1 for s in structures() if s["id"] not in history)
                 available += word_counts["seen"]
             else:
                 available += sum(questions_in(i) for i in pool(db, user_id, version, level, item_type))
@@ -256,7 +321,10 @@ def build_set(
         items: list[dict[str, Any]] = []
         extra: dict[str, Any] = {}
         for item_type, count in slots:
-            if item_type == SENTENCE_TYPE:
+            if item_type == SENTENCE_TYPE and words == "structures":
+                items += structure_items(db, user_id, count, rng)
+                extra = {"word_source": words, "word_pool": len(structures())}
+            elif item_type == SENTENCE_TYPE:
                 chosen = sentence_items(db, user_id, version, level, words, count, rng)
                 items += chosen
                 extra = {"word_source": words, "word_pool": len(sentence_words(db, user_id, version, level, words))}

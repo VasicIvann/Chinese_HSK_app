@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { ApiError } from "@/lib/api/client";
 import {
   checkSentence,
+  checkStructure,
   type AudioLine,
   type CharPinyinItem,
   type ExerciseItem,
@@ -323,9 +324,13 @@ function MakeSentenceQuestion({
   const [check, setCheck] = useState<SentenceCheck | null>(null);
   const [selfCheck, setSelfCheck] = useState(false);
   const [hint, setHint] = useState(false);
+  const structure = item.kind === "structure";
   const wordPinyin = useMemo(() => item.pinyin || toPinyin(item.word), [item.pinyin, item.word]);
   const grade = useMutation({
-    mutationFn: () => checkSentence(level, item.word, value.trim(), item.translation),
+    mutationFn: () =>
+      structure
+        ? checkStructure(level, item.word, value.trim(), item.meaning)
+        : checkSentence(level, item.word, value.trim(), item.translation),
     retry: 0,
     onSuccess: (res) => {
       setCheck(res);
@@ -335,19 +340,26 @@ function MakeSentenceQuestion({
   });
   const error =
     grade.error instanceof ApiError ? grade.error.detail : grade.error ? "La correction a échoué." : null;
-  const meaning = item.translation;
+  const meaning = structure ? item.meaning : item.translation;
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col items-center gap-1 rounded-xl border border-border bg-card px-4 py-6">
-        <p className="text-sm text-muted-foreground">Écris une phrase avec :</p>
-        <p className="hanzi text-4xl">{item.word}</p>
-        {(showPinyin || hint || result) && <p className="text-sm text-muted-foreground">{wordPinyin}</p>}
+      <div className="flex flex-col items-center gap-1 rounded-xl border border-border bg-card px-4 py-6 text-center">
+        <p className="text-sm text-muted-foreground">
+          {structure ? "Écris une phrase avec la structure :" : "Écris une phrase avec :"}
+        </p>
+        <p className={cn("hanzi", structure ? "text-3xl sm:text-4xl" : "text-4xl")}>{item.word}</p>
+        {structure && item.history && item.history !== "passed" && (
+          <span className="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
+            {item.history === "new" ? "Jamais travaillée" : "Ratée la dernière fois"}
+          </span>
+        )}
+        {!structure && (showPinyin || hint || result) && <p className="text-sm text-muted-foreground">{wordPinyin}</p>}
         {(hint || result) && meaning && <p className="text-sm italic text-muted-foreground">{meaning}</p>}
         {!hint && !result && (
           <Button variant="ghost" size="sm" onClick={() => setHint(true)} className="mt-1 text-muted-foreground">
             <Lightbulb className="h-4 w-4" />
-            Indice : pinyin et sens
+            {structure ? "Indice : le sens" : "Indice : pinyin et sens"}
           </Button>
         )}
       </div>
@@ -405,6 +417,21 @@ function MakeSentenceQuestion({
               )}
               {check.translation && <p className="text-sm italic">{check.translation}</p>}
               {check.explanation && <p className="text-sm">{check.explanation}</p>}
+            </div>
+          )}
+          {structure && !result.correct && item.pattern && (
+            <div className="flex flex-col gap-1 rounded-lg border border-primary/30 bg-primary/5 p-4">
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">La structure</p>
+              <p className="hanzi text-base">{item.pattern}</p>
+              {item.example && (
+                <div className="mt-1 flex items-start justify-between gap-2">
+                  <div>
+                    <ZhText text={item.example.zh} showPinyin className="text-lg" />
+                    <p className="text-sm italic">{item.example.fr}</p>
+                  </div>
+                  <ListenButton text={item.example.zh} />
+                </div>
+              )}
             </div>
           )}
           {check && !check.correct && check.model && (

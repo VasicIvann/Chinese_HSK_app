@@ -124,3 +124,56 @@ describe("Écriture HSK page, part 2", () => {
     expect(localStorage.getItem("hsk.sentence-words")).toBe("seen");
   });
 });
+
+describe("grammar structure items", () => {
+  it("hint gives only the meaning; pattern and example appear in the correction when wrong", async () => {
+    const checkStructure = vi.spyOn(await import("@/lib/api/exercises"), "checkStructure");
+    checkStructure.mockResolvedValueOnce({
+      correct: false, uses_word: true, corrected: "虽然下雨，但是我们去了公园。", pinyin: "", translation: "",
+      explanation: "Il manque 但是 dans la deuxième partie.", model: "虽然很累，但是我很高兴。", model_pinyin: "", model_translation: "Bien que fatigué, je suis content.",
+    });
+    const structureSet: ExerciseSet = {
+      version: "3.0",
+      level: 3,
+      section: "writing",
+      part: "W2",
+      parts: [
+        {
+          ...W2,
+          word_source: "structures",
+          word_pool: 61,
+          items: [
+            {
+              id: "struct-suiran-danshi",
+              type: "make_sentence",
+              level: 2,
+              kind: "structure",
+              word: "虽然……，但是……",
+              meaning: "bien que…, pourtant…",
+              pattern: "虽然 + A，但是 / 可是 + B",
+              example: { zh: "虽然今天很累，但是我很高兴。", fr: "Bien que fatigué, je suis content." },
+              history: "new",
+              source: "structures",
+            },
+          ],
+        },
+      ],
+    };
+    wrap(<ExerciseRunner set={structureSet} onExit={vi.fn()} />);
+
+    expect(screen.getByText("Écris une phrase avec la structure :")).toBeInTheDocument();
+    expect(screen.getByText("Jamais travaillée")).toBeInTheDocument();
+    expect(screen.queryByText(/虽然 \+ A/)).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Indice : le sens" }));
+    expect(screen.getByText("bien que…, pourtant…")).toBeInTheDocument();
+    expect(screen.queryByText(/虽然 \+ A/)).not.toBeInTheDocument(); // the pattern stays hidden
+
+    fireEvent.change(screen.getByLabelText("Ta phrase"), { target: { value: "虽然下雨，我们去了公园。" } });
+    fireEvent.click(screen.getByRole("button", { name: /Faire corriger par Claude/ }));
+    expect(await screen.findByText("La structure")).toBeInTheDocument();
+    expect(screen.getByText("虽然 + A，但是 / 可是 + B")).toBeInTheDocument();
+    expect(screen.getByText("Phrase modèle (Claude)")).toBeInTheDocument();
+    expect(checkStructure).toHaveBeenCalledWith(3, "虽然……，但是……", "虽然下雨，我们去了公园。", "bien que…, pourtant…");
+    expect(checkSentence).not.toHaveBeenCalled();
+  });
+});

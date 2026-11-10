@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Ban, Clock, History, Loader2, Play, Sparkles, TriangleAlert, Trophy } from "lucide-react";
+import { Ban, BookOpen, Clock, History, Loader2, Play, Sparkles, TriangleAlert, Trophy } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -29,7 +29,8 @@ const WORDS_KEY = "hsk.sentence-words";
 function useSentenceWords(): [SentenceWords, (w: SentenceWords) => void] {
   const [words, setWordsState] = useState<SentenceWords>(() => {
     try {
-      return typeof window !== "undefined" && window.localStorage.getItem(WORDS_KEY) === "weak" ? "weak" : "seen";
+      const saved = typeof window !== "undefined" ? window.localStorage.getItem(WORDS_KEY) : null;
+      return saved === "weak" || saved === "structures" ? saved : "seen";
     } catch {
       return "seen";
     }
@@ -53,7 +54,19 @@ const WORD_SOURCES: { value: SentenceWords; label: string; description: string; 
     description: "Un mot au hasard parmi tes 50 mots « À revoir » au score le plus bas.",
     icon: TriangleAlert,
   },
+  {
+    value: "structures",
+    label: "Structures de grammaire",
+    description: "Une structure du HSK 2–3 (ex. 虽然……，但是……) : écris une phrase qui l'emploie.",
+    icon: BookOpen,
+  },
 ];
+
+const SOURCE_LABEL: Record<SentenceWords, string> = {
+  seen: "mots déjà vus",
+  weak: "mots à revoir",
+  structures: "structures de grammaire",
+};
 import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 
 const COPY: Record<Section, { title: string; intro: string; noun: string }> = {
@@ -92,7 +105,7 @@ export function PracticePage({ section }: { section: Section }) {
       }
       setActive({ set, part });
       if (set.quota_remaining !== undefined) toast.success(`Nouvelle série prête (encore ${set.quota_remaining} aujourd'hui).`);
-      const short = set.parts.find((p) => p.word_source && p.items.length < p.count);
+      const short = set.parts.find((p) => p.word_source && p.word_source !== "structures" && p.items.length < p.count);
       if (short) {
         toast.info(
           `Seulement ${short.items.length} mot${short.items.length > 1 ? "s" : ""} ${short.word_source === "weak" ? "à revoir" : "déjà vu" + (short.items.length > 1 ? "s" : "")} : la partie ${short.part.slice(1)} aura ${short.items.length} question${short.items.length > 1 ? "s" : ""}.`
@@ -161,7 +174,7 @@ export function PracticePage({ section }: { section: Section }) {
                   <CardDescription>
                     {`${totalQuestions} questions, toutes les parties à la suite, comme le jour de l'examen.`}
                     {parts.some((p) => p.word_counts) &&
-                      ` Phrases avec le mot donné : ${words === "weak" ? "mots à revoir" : "mots déjà vus"}.`}
+                      ` Partie 2 : ${SOURCE_LABEL[words]}.`}
                   </CardDescription>
                 </div>
                 <Button onClick={() => start.mutate({ part: "all", fresh: false })} disabled={start.isPending}>
@@ -235,7 +248,7 @@ function PartCard({
           </p>
         ) : counts ? (
           <div className="flex w-full flex-col gap-3">
-            <div role="radiogroup" aria-label="Mots imposés" className="grid gap-2 sm:grid-cols-2">
+            <div role="radiogroup" aria-label="Mots imposés" className="grid gap-2 sm:grid-cols-3">
               {WORD_SOURCES.map((s) => {
                 const Icon = s.icon;
                 const n = counts[s.value];
@@ -257,8 +270,9 @@ function PartCard({
                     </span>
                     <span className="mt-1 block text-sm text-muted-foreground">{s.description}</span>
                     <span className="mt-1 block text-xs text-muted-foreground">
-                      {n} mot{n > 1 ? "s" : ""}
-                      {s.value === "weak" && n > 0 && n < part.count ? ` · série de ${n}` : ""}
+                      {s.value === "structures"
+                        ? `${n} structures · ${counts.structures_new ?? n} jamais travaillée${(counts.structures_new ?? n) > 1 ? "s" : ""}`
+                        : `${n} mot${n > 1 ? "s" : ""}${s.value === "weak" && n > 0 && n < part.count ? ` · série de ${n}` : ""}`}
                     </span>
                   </button>
                 );
@@ -276,7 +290,11 @@ function PartCard({
                 {loading(false) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
                 S&apos;entraîner
               </Button>
-              <span className="text-xs text-muted-foreground">Claude corrige chaque phrase.</span>
+              <span className="text-xs text-muted-foreground">
+                {words === "structures"
+                  ? "D'abord les structures jamais travaillées, puis celles ratées la dernière fois. Claude corrige chaque phrase."
+                  : "Claude corrige chaque phrase."}
+              </span>
             </div>
           </div>
         ) : (

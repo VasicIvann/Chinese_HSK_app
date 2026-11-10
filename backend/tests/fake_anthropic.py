@@ -119,13 +119,20 @@ class FakeMessages:
                 {"zh": "我看了一{本}鲲鹏饕餮书。", "wrong": ["家", "杯", "件"], "fr": "?"},
             ]
         }
+        self.structure_check_response: dict[str, Any] = {
+            "correct": False, "uses_structure": True, "corrected": "虽然下雨，但是我们还是去了。", "pinyin": "", "translation": "",
+            "explanation": "Il manque 但是.", "model": "虽然很累，但是我很高兴。", "model_pinyin": "suīrán hěn lèi, dànshì wǒ hěn gāoxìng.",
+            "model_translation": "Bien que fatigué, je suis content.",
+        }
         self.create_calls: list[dict[str, Any]] = []
         self.stream_calls: list[dict[str, Any]] = []
 
     def create(self, **kwargs: Any) -> FakeMessage:
         self.create_calls.append(kwargs)
         system_text = "".join(block.get("text", "") for block in kwargs.get("system", []))
-        if "classificateurs (量词)" in system_text:
+        if "Structure imposée" in str(kwargs.get("messages")) or "EMPLOI DE LA STRUCTURE" in system_text:
+            response = self.structure_check_response
+        elif "classificateurs (量词)" in system_text:
             response = self.classifier_response
         elif "concepteur d'épreuves" in system_text:
             response = self.exercise_response

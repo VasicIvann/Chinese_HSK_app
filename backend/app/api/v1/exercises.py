@@ -57,6 +57,13 @@ class SentenceCheckRequest(BaseModel):
     meaning: str | None = Field(None, max_length=200)
 
 
+class StructureCheckRequest(BaseModel):
+    level: Level
+    structure: str = Field(min_length=1, max_length=40)
+    meaning: str | None = Field(None, max_length=200)
+    sentence: str = Field(min_length=1, max_length=160)
+
+
 def _llm_ready() -> None:
     if not llm_service.is_configured():
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, "API Anthropic non configurée côté serveur.")
@@ -85,8 +92,10 @@ def get_set(
     level: int = Query(..., ge=1, le=3),
     part: str = Query(..., max_length=8),
     version: Version | None = Query(None),
-    words: Literal["seen", "weak"] = Query(
-        "seen", description="Imposed-word part: any already-seen word, or one of the 50 weakest 'À revoir' words."
+    words: Literal["seen", "weak", "structures"] = Query(
+        "seen",
+        description="Imposed-word part: any already-seen word, one of the 50 weakest 'À revoir' words, "
+        "or a grammar structure of HSK 2-3.",
     ),
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
@@ -201,6 +210,30 @@ def post_check_sentence(
     try:
         result, usage = llm_service.check_sentence(
             word=payload.word, sentence=payload.sentence.strip(), level=payload.level, meaning=payload.meaning
+        )
+    except RuntimeError as exc:
+        raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(exc)) from exc
+    expression_service.increment_daily_usage(
+        db,
+        user_id=user.id,
+        kind="exercise_check",
+        count_delta=1,
+        tokens_input_delta=usage.input_tokens,
+        tokens_output_delta=usage.output_tokens,
+    )
+    return result
+
+
+@router.post("/exercises/check-structure", summary="Claude grades a sentence written with an imposed grammar structure.")
+def post_check_structure(
+    payload: StructureCheckRequest,
+    db: Session = Depends(get_db),
+    user: User = Depends(enforce_quota("exercise_check")),
+) -> dict[str, Any]:
+    _llm_ready()
+    try:
+        result, usage = llm_service.check_structure(
+            structure=payload.structure, meaning=payload.meaning, sentence=payload.sentence.strip(), level=payload.level
         )
     except RuntimeError as exc:
         raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(exc)) from exc

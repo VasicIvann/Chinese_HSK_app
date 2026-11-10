@@ -58,7 +58,7 @@
          "how": "Une phrase avec un trou ; seul le pinyin du trou est donné (ex. « 咱们（yě）打出租车吧。 » → 也)."},
         {"part": "W2", "numbers": "66-70", "type": "make_sentence", "count": 5, "pinyin": false,
          "title": "Écris une phrase avec le mot donné",
-         "how": "Un mot imposé, pris dans tes mots (déjà vus ou à revoir) : écris une phrase correcte qui l'utilise. Claude corrige ta phrase et, si elle est fausse, propose une phrase modèle."}
+         "how": "Un mot imposé, pris dans tes mots (déjà vus ou à revoir), ou une structure de grammaire du HSK 2–3 pour t'entraîner : écris une phrase correcte qui l'utilise. Claude corrige ta phrase et, si elle est fausse, propose une phrase modèle."}
       ]
     }
   },

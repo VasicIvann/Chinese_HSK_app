@@ -528,6 +528,56 @@ def check_sentence(*, word: str, sentence: str, level: int, meaning: str | None 
     return result, usage
 
 
+STRUCTURE_CHECK_PROMPT = """Tu corriges un entraînement à l'épreuve d'écriture du HSK 3 (nouveau format HSK 3.0) pour un apprenant francophone qui prépare l'examen.
+
+On lui a donné une structure grammaticale du programme officiel HSK (ex. « 虽然……，但是…… », « 把…… », « 只有……，才…… ») et il a écrit une phrase avec. Juge surtout l'EMPLOI DE LA STRUCTURE : bonne place des éléments, bon sens (ce que la structure exprime), phrase complète, grammaticale et naturelle, d'un niveau attendu au HSK 3.
+
+Réponds UNIQUEMENT en JSON :
+{"correct": true|false, "uses_structure": true|false, "corrected": "<la phrase corrigée (identique si correcte)>", "pinyin": "<pinyin de la phrase corrigée, tons en diacritiques>", "translation": "<traduction française de la phrase corrigée>", "explanation": "<en français, 2 à 4 phrases : si la structure est bien employée ou non et pourquoi (place des mots, sens, élément manquant) ; un conseil utile pour l'examen>", "model": "<si correct = false : une phrase modèle courte de niveau HSK 3 qui emploie la structure, sinon chaîne vide>", "model_pinyin": "<pinyin de la phrase modèle, ou vide>", "model_translation": "<traduction française de la phrase modèle, ou vide>"}
+
+- "correct" = la structure est présente, complète (toutes ses parties, ex. 虽然 ET 但是/可是), bien placée, employée avec son vrai sens, et la phrase est correcte.
+- Les variantes prévues par la structure sont acceptées (但是/可是, 才/就…), ainsi que l'omission d'une partie quand elle est vraiment facultative.
+- Sois exigeant sur la grammaire et l'emploi de la structure, indulgent sur la richesse : une phrase simple et juste est correcte.
+- Si la phrase n'est pas en chinois ou n'utilise pas la structure : correct = false, uses_structure = false."""
+
+
+def check_structure(*, structure: str, sentence: str, level: int, meaning: str | None = None) -> tuple[dict[str, Any], LLMUsage]:
+    client = _get_client()
+    line = f"Structure imposée : {structure}" + (f" (sens : {meaning})" if meaning else "")
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=800,
+            system=[{"type": "text", "text": STRUCTURE_CHECK_PROMPT, "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": "user", "content": f"Examen visé : HSK {level}\n{line}\nPhrase : {sentence}"}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("La correction a échoué.") from exc
+    correct = bool(payload.get("correct"))
+    model = str(payload.get("model") or "").strip() if not correct else ""
+    result = {
+        "correct": correct,
+        "uses_word": bool(payload.get("uses_structure", True)),
+        "corrected": str(payload.get("corrected") or sentence).strip(),
+        "pinyin": str(payload.get("pinyin") or "").strip(),
+        "translation": str(payload.get("translation") or "").strip(),
+        "explanation": str(payload.get("explanation") or "").strip(),
+        "model": model,
+        "model_pinyin": str(payload.get("model_pinyin") or "").strip() if model else "",
+        "model_translation": str(payload.get("model_translation") or "").strip() if model else "",
+    }
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return result, usage
+
+
 CLASSIFIER_SYSTEM_PROMPT = """Tu écris des phrases d'entraînement aux classificateurs (量词) pour des apprenants francophones du HSK.
 
 Chaque phrase est courte (6 à 20 caractères), naturelle, de la vie quotidienne, et contient UN trou : le classificateur, écrit entre accolades, par ex. « 我买了三{本}书。 ».

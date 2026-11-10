@@ -1,0 +1,797 @@
+{
+ "structures": [
+  {
+   "id": "dang-shihou",
+   "level": 2,
+   "code": "二21",
+   "point": "2-21",
+   "structure": "当……的时候",
+   "meaning": "quand…, au moment où…",
+   "pattern": "当 + proposition + 的时候，……",
+   "example": {
+    "zh": "当我回到家的时候，妈妈已经做好饭了。",
+    "fr": "Quand je suis rentré, maman avait déjà fait à manger."
+   }
+  },
+  {
+   "id": "zai-yiqian-yihou",
+   "level": 2,
+   "code": "二47",
+   "point": "2-47",
+   "structure": "在……以前／以后",
+   "meaning": "avant / après (un moment ou un événement)",
+   "pattern": "(在) + moment / événement + 以前 / 以后，……",
+   "example": {
+    "zh": "在吃饭以前，我们要先洗手。",
+    "fr": "Avant de manger, il faut se laver les mains."
+   }
+  },
+  {
+   "id": "dui",
+   "level": 2,
+   "code": "二25",
+   "point": "2-25",
+   "structure": "……对……很……",
+   "meaning": "être (gentil, sévère, intéressé…) envers quelqu'un ou quelque chose",
+   "pattern": "A + 对 + B + (很) + adj. / verbe",
+   "example": {
+    "zh": "老师对我们很好。",
+    "fr": "Le professeur est très gentil avec nous."
+   }
+  },
+  {
+   "id": "li",
+   "level": 2,
+   "code": "二27",
+   "point": "2-27",
+   "structure": "……离……很近／很远",
+   "meaning": "être près / loin de (distance entre deux lieux ou deux moments)",
+   "pattern": "A + 离 + B + (很) + 近 / 远",
+   "example": {
+    "zh": "我家离学校很近。",
+    "fr": "Chez moi, c'est tout près de l'école."
+   }
+  },
+  {
+   "id": "yuelaiyue",
+   "level": 2,
+   "code": "二44",
+   "point": "2-44",
+   "structure": "越来越……",
+   "meaning": "de plus en plus",
+   "pattern": "sujet + 越来越 + adj. / verbe de sentiment (+ 了)",
+   "example": {
+    "zh": "天气越来越冷了。",
+    "fr": "Il fait de plus en plus froid."
+   }
+  },
+  {
+   "id": "shenmede",
+   "level": 2,
+   "code": "二43",
+   "point": "2-43",
+   "structure": "……什么的",
+   "meaning": "…, etc. (à la fin d'une énumération)",
+   "pattern": "A、B + 什么的",
+   "example": {
+    "zh": "我买了苹果、香蕉什么的。",
+    "fr": "J'ai acheté des pommes, des bananes, etc."
+   }
+  },
+  {
+   "id": "de-zhuangtai",
+   "level": 2,
+   "code": "二51",
+   "point": "2-51",
+   "structure": "……得……",
+   "meaning": "dire comment on fait une action (bien, vite, tard…)",
+   "pattern": "verbe + 得 + (很 / 不) + adj. · (verbe) + objet + verbe + 得 + adj.",
+   "example": {
+    "zh": "他说汉语说得很好。",
+    "fr": "Il parle très bien chinois."
+   }
+  },
+  {
+   "id": "bi",
+   "level": 2,
+   "code": "二58",
+   "point": "2-58",
+   "structure": "……比……",
+   "meaning": "comparer deux choses (A est plus … que B)",
+   "pattern": "A + 比 + B + adj. (+ écart) · A + 比 + B + 更 / 还 + adj.",
+   "example": {
+    "zh": "今天比昨天冷一点儿。",
+    "fr": "Aujourd'hui, il fait un peu plus froid qu'hier."
+   }
+  },
+  {
+   "id": "buru",
+   "level": 2,
+   "code": "二58",
+   "point": "2-58",
+   "structure": "……不如……",
+   "meaning": "A n'est pas aussi … que B",
+   "pattern": "A + 不如 + B (+ adj.)",
+   "example": {
+    "zh": "坐公共汽车不如坐地铁快。",
+    "fr": "Le bus n'est pas aussi rapide que le métro."
+   }
+  },
+  {
+   "id": "gen-yiyang",
+   "level": 2,
+   "code": "二59",
+   "point": "2-59",
+   "structure": "……跟……一样",
+   "meaning": "être pareil, aussi … que",
+   "pattern": "A + 跟 + B + 一样 (+ adj.)",
+   "example": {
+    "zh": "我的手机跟你的一样。",
+    "fr": "Mon téléphone est le même que le tien."
+   }
+  },
+  {
+   "id": "you-name",
+   "level": 2,
+   "code": "二55",
+   "point": "2-55",
+   "structure": "……有……那么……",
+   "meaning": "A atteint le niveau de B (aussi … que)",
+   "pattern": "A + 有 + B + 那么 / 这么 + adj.",
+   "example": {
+    "zh": "弟弟已经有哥哥那么高了。",
+    "fr": "Le petit frère est déjà aussi grand que le grand frère."
+   }
+  },
+  {
+   "id": "shi-de",
+   "level": 2,
+   "code": "二60",
+   "point": "2-60",
+   "structure": "是……的",
+   "meaning": "insister sur quand, où, comment ou avec qui une action passée a été faite",
+   "pattern": "sujet + (是) + temps / lieu / manière + verbe + 的",
+   "example": {
+    "zh": "我是坐飞机来的。",
+    "fr": "Je suis venu en avion."
+   }
+  },
+  {
+   "id": "xian-zai",
+   "level": 2,
+   "code": "二62",
+   "point": "2-62",
+   "structure": "先……，再／然后……",
+   "meaning": "d'abord…, ensuite…",
+   "pattern": "先 + action 1，再 / 然后 + action 2",
+   "example": {
+    "zh": "我们先吃饭，然后去看电影。",
+    "fr": "D'abord on mange, ensuite on va voir un film."
+   }
+  },
+  {
+   "id": "budan-erqie",
+   "level": 2,
+   "code": "二63",
+   "point": "2-63",
+   "structure": "不但……，而且……",
+   "meaning": "non seulement…, mais en plus…",
+   "pattern": "(sujet) + 不但 + A，而且 + B",
+   "example": {
+    "zh": "她不但会说汉语，而且会写汉字。",
+    "fr": "Non seulement elle parle chinois, mais en plus elle sait écrire les caractères."
+   }
+  },
+  {
+   "id": "haishi-wen",
+   "level": 2,
+   "code": "二64",
+   "point": "2-64",
+   "structure": "……还是……？",
+   "meaning": "… ou … ? (question où l'on choisit entre deux possibilités)",
+   "pattern": "(是) + A，还是 + B ？",
+   "example": {
+    "zh": "你喝茶还是喝咖啡？",
+    "fr": "Tu bois du thé ou du café ?"
+   }
+  },
+  {
+   "id": "suiran-danshi",
+   "level": 2,
+   "code": "二65",
+   "point": "2-65",
+   "structure": "虽然……，但是……",
+   "meaning": "bien que…, pourtant…",
+   "pattern": "虽然 + A，但是 / 可是 + B",
+   "example": {
+    "zh": "虽然今天很累，但是我很高兴。",
+    "fr": "Bien que je sois fatigué aujourd'hui, je suis content."
+   }
+  },
+  {
+   "id": "ruguo-jiu",
+   "level": 2,
+   "code": "二66",
+   "point": "2-66",
+   "structure": "如果……，就……",
+   "meaning": "si… (hypothèse), alors…",
+   "pattern": "如果 + condition，(sujet) + 就 + conséquence",
+   "example": {
+    "zh": "如果明天下雨，我们就不去公园了。",
+    "fr": "S'il pleut demain, on n'ira pas au parc."
+   }
+  },
+  {
+   "id": "dehua",
+   "level": 2,
+   "code": "二66",
+   "point": "2-66",
+   "structure": "……的话，……",
+   "meaning": "si… (hypothèse, surtout à l'oral)",
+   "pattern": "condition + 的话，(就) + conséquence",
+   "example": {
+    "zh": "你累的话，就休息一下吧。",
+    "fr": "Si tu es fatigué, repose-toi un peu."
+   }
+  },
+  {
+   "id": "zhiyao-jiu",
+   "level": 2,
+   "code": "二67",
+   "point": "2-67",
+   "structure": "只要……，就……",
+   "meaning": "il suffit que… pour que…",
+   "pattern": "只要 + condition，就 + résultat",
+   "example": {
+    "zh": "只要你努力，就一定能学好。",
+    "fr": "Il suffit que tu fasses des efforts pour bien apprendre."
+   }
+  },
+  {
+   "id": "yinwei-suoyi",
+   "level": 2,
+   "code": "二68",
+   "point": "2-68",
+   "structure": "因为……，所以……",
+   "meaning": "parce que…, donc…",
+   "pattern": "因为 + cause，所以 + conséquence",
+   "example": {
+    "zh": "因为下雨，所以我们没出去。",
+    "fr": "Comme il pleuvait, nous ne sommes pas sortis."
+   }
+  },
+  {
+   "id": "yi-jiu",
+   "level": 2,
+   "code": "二69",
+   "point": "2-69",
+   "structure": "一……就……",
+   "meaning": "dès que…, aussitôt…",
+   "pattern": "一 + action 1，就 + action 2",
+   "example": {
+    "zh": "他一到家就睡觉了。",
+    "fr": "Dès qu'il est arrivé chez lui, il s'est couché."
+   }
+  },
+  {
+   "id": "you-you",
+   "level": 2,
+   "code": "二46",
+   "point": "2-46",
+   "structure": "又……又……",
+   "meaning": "à la fois … et …",
+   "pattern": "又 + adj. / verbe + 又 + adj. / verbe",
+   "example": {
+    "zh": "这个苹果又大又甜。",
+    "fr": "Cette pomme est à la fois grosse et sucrée."
+   }
+  },
+  {
+   "id": "haishi-ba",
+   "level": 2,
+   "code": "二45",
+   "point": "2-45",
+   "structure": "还是……吧",
+   "meaning": "plutôt…, mieux vaut… (pour conseiller)",
+   "pattern": "(sujet) + 还是 + verbe + 吧",
+   "example": {
+    "zh": "太晚了，你还是明天去吧。",
+    "fr": "Il est trop tard, vas-y plutôt demain."
+   }
+  },
+  {
+   "id": "cai",
+   "level": 2,
+   "code": "二20",
+   "point": "2-20",
+   "structure": "……才……",
+   "meaning": "seulement (à), pas avant : plus tard ou plus difficilement que prévu",
+   "pattern": "moment / condition + 才 + verbe",
+   "example": {
+    "zh": "他十点才起床。",
+    "fr": "Il ne s'est levé qu'à dix heures."
+   }
+  },
+  {
+   "id": "jiu-le",
+   "level": 2,
+   "code": "二20",
+   "point": "2-20",
+   "structure": "……就……了",
+   "meaning": "déjà : plus tôt ou plus vite que prévu",
+   "pattern": "moment + 就 + verbe + 了",
+   "example": {
+    "zh": "他六点就起床了。",
+    "fr": "Il s'est levé dès six heures."
+   }
+  },
+  {
+   "id": "kuaiyao-le",
+   "level": 2,
+   "code": "二81",
+   "point": "2-81",
+   "structure": "快要……了",
+   "meaning": "être sur le point de…, bientôt",
+   "pattern": "(sujet) + 快要 / 就要 / 要 + verbe + 了",
+   "example": {
+    "zh": "火车快要开了。",
+    "fr": "Le train va bientôt partir."
+   }
+  },
+  {
+   "id": "gai-le",
+   "level": 2,
+   "code": "二80",
+   "point": "2-80",
+   "structure": "该……了",
+   "meaning": "il est temps de…",
+   "pattern": "(sujet) + 该 + verbe + 了",
+   "example": {
+    "zh": "十二点了，该吃饭了。",
+    "fr": "Il est midi, c'est l'heure de manger."
+   }
+  },
+  {
+   "id": "guo",
+   "level": 2,
+   "code": "二71",
+   "point": "2-71",
+   "structure": "……过……",
+   "meaning": "avoir déjà fait (une expérience passée)",
+   "pattern": "verbe + 过 (+ objet) · 没 + verbe + 过",
+   "example": {
+    "zh": "我去过北京两次。",
+    "fr": "Je suis allé deux fois à Pékin."
+   }
+  },
+  {
+   "id": "zhe",
+   "level": 2,
+   "code": "二70",
+   "point": "2-70",
+   "structure": "……着……",
+   "meaning": "un état qui dure, ou faire une chose en en faisant une autre",
+   "pattern": "verbe + 着 · verbe 1 + 着 + verbe 2",
+   "example": {
+    "zh": "他笑着说：“没关系。”",
+    "fr": "Il a dit en souriant : « Ce n'est pas grave. »"
+   }
+  },
+  {
+   "id": "zicong",
+   "level": 3,
+   "code": "三21",
+   "point": "3-21",
+   "structure": "自从……以后，……",
+   "meaning": "depuis que…",
+   "pattern": "自从 + événement + (以后)，……",
+   "example": {
+    "zh": "自从来了中国以后，我每天都说汉语。",
+    "fr": "Depuis que je suis venu en Chine, je parle chinois tous les jours."
+   }
+  },
+  {
+   "id": "weile",
+   "level": 3,
+   "code": "三26",
+   "point": "3-26",
+   "structure": "为了……，……",
+   "meaning": "pour (un but), afin de…",
+   "pattern": "为了 + but，(sujet) + action",
+   "example": {
+    "zh": "为了学好汉语，他每天学习三个小时。",
+    "fr": "Pour bien apprendre le chinois, il étudie trois heures par jour."
+   }
+  },
+  {
+   "id": "ba",
+   "level": 3,
+   "code": "三54",
+   "point": "3-54",
+   "structure": "……把……",
+   "meaning": "faire quelque chose à un objet précis (le déplacer, le donner, le finir…)",
+   "pattern": "sujet + 把 + objet + verbe + 在 / 到 / 给 + … · sujet + 把 + objet + verbe + 完 / 好…",
+   "example": {
+    "zh": "请把书放在桌子上。",
+    "fr": "Pose le livre sur la table, s'il te plaît."
+   }
+  },
+  {
+   "id": "bei",
+   "level": 3,
+   "code": "三55",
+   "point": "3-55",
+   "structure": "……被……",
+   "meaning": "subir une action (forme passive, souvent pour un événement désagréable)",
+   "pattern": "objet + 被 / 叫 / 让 + agent + verbe + complément",
+   "example": {
+    "zh": "我的自行车被朋友借走了。",
+    "fr": "Mon vélo a été emprunté par un ami."
+   }
+  },
+  {
+   "id": "chule-yiwai",
+   "level": 3,
+   "code": "三38",
+   "point": "3-38",
+   "structure": "除了……以外，还／都……",
+   "meaning": "à part…, en plus de… / sauf…",
+   "pattern": "除了 + X + 以外，还 / 也 + … (en plus) · 除了 + X + 以外，都 + … (sauf)",
+   "example": {
+    "zh": "除了汉语以外，我还会说法语。",
+    "fr": "En plus du chinois, je parle aussi français."
+   }
+  },
+  {
+   "id": "anzhao",
+   "level": 3,
+   "code": "三29",
+   "point": "3-29",
+   "structure": "按照……",
+   "meaning": "selon, conformément à",
+   "pattern": "按照 + règle / plan / parole + verbe",
+   "example": {
+    "zh": "请按照老师说的做。",
+    "fr": "Fais comme le professeur l'a dit."
+   }
+  },
+  {
+   "id": "xiang-xuexi",
+   "level": 3,
+   "code": "三24",
+   "point": "3-24",
+   "structure": "向……学习",
+   "meaning": "apprendre de quelqu'un, prendre exemple sur lui",
+   "pattern": "向 + personne + 学习 / 问 / 借…",
+   "example": {
+    "zh": "我们应该向他学习。",
+    "fr": "Nous devrions prendre exemple sur lui."
+   }
+  },
+  {
+   "id": "dui-laishuo",
+   "level": 3,
+   "code": "三40",
+   "point": "3-40",
+   "structure": "对……来说",
+   "meaning": "pour (quelqu'un), du point de vue de",
+   "pattern": "对 + personne + 来说，……",
+   "example": {
+    "zh": "对我来说，汉字最难。",
+    "fr": "Pour moi, les caractères sont le plus difficile."
+   }
+  },
+  {
+   "id": "cong-qi",
+   "level": 3,
+   "code": "三39",
+   "point": "3-39",
+   "structure": "从……起",
+   "meaning": "à partir de (un moment)",
+   "pattern": "从 + moment + 起，……",
+   "example": {
+    "zh": "从明天起，我每天早上跑步。",
+    "fr": "À partir de demain, je cours tous les matins."
+   }
+  },
+  {
+   "id": "yue-yue",
+   "level": 3,
+   "code": "三42",
+   "point": "3-42",
+   "structure": "越……越……",
+   "meaning": "plus…, plus…",
+   "pattern": "(sujet) + 越 + A，(sujet) + 越 + B",
+   "example": {
+    "zh": "雨越下越大。",
+    "fr": "Plus il pleut, plus la pluie est forte."
+   }
+  },
+  {
+   "id": "yi-ye-bu",
+   "level": 3,
+   "code": "三41",
+   "point": "3-41",
+   "structure": "一……也不／也没……",
+   "meaning": "pas un seul…, pas même un…",
+   "pattern": "一 + spécificatif + (nom) + 也 / 都 + 不 / 没 + verbe",
+   "example": {
+    "zh": "我一个人也不认识。",
+    "fr": "Je ne connais personne (pas une seule personne)."
+   }
+  },
+  {
+   "id": "yidianr-ye-bu",
+   "level": 3,
+   "code": "三75",
+   "point": "3-75",
+   "structure": "一点儿也不……",
+   "meaning": "pas du tout",
+   "pattern": "一点儿 + 也 / 都 + 不 / 没 + adj. / verbe",
+   "example": {
+    "zh": "这个菜一点儿也不好吃。",
+    "fr": "Ce plat n'est pas bon du tout."
+   }
+  },
+  {
+   "id": "nandao",
+   "level": 3,
+   "code": "三76",
+   "point": "3-76",
+   "structure": "难道……吗？",
+   "meaning": "question rhétorique : ne… quand même pas… ? (étonnement, reproche)",
+   "pattern": "难道 + proposition + 吗？",
+   "example": {
+    "zh": "难道你不知道吗？",
+    "fr": "Tu ne le savais quand même pas ?"
+   }
+  },
+  {
+   "id": "bushi-ma",
+   "level": 3,
+   "code": "三76",
+   "point": "3-76",
+   "structure": "不是……吗？",
+   "meaning": "n'est-ce pas que… ? (rappeler une évidence, avec surprise)",
+   "pattern": "(sujet) + 不是 + proposition + 吗？",
+   "example": {
+    "zh": "你不是说今天来吗？",
+    "fr": "Tu n'avais pas dit que tu venais aujourd'hui ?"
+   }
+  },
+  {
+   "id": "dou-le",
+   "level": 3,
+   "code": "三79",
+   "point": "3-79",
+   "structure": "都……了",
+   "meaning": "déjà (souligne qu'il est tard ou que c'est beaucoup)",
+   "pattern": "都 + moment / quantité + 了",
+   "example": {
+    "zh": "都十一点了，快睡吧。",
+    "fr": "Il est déjà onze heures, va vite dormir."
+   }
+  },
+  {
+   "id": "yihuir",
+   "level": 3,
+   "code": "三61",
+   "point": "3-61",
+   "structure": "一会儿……，一会儿……",
+   "meaning": "tantôt…, tantôt…",
+   "pattern": "一会儿 + A，一会儿 + B",
+   "example": {
+    "zh": "天气一会儿冷，一会儿热。",
+    "fr": "Il fait tantôt froid, tantôt chaud."
+   }
+  },
+  {
+   "id": "yifangmian",
+   "level": 3,
+   "code": "三62",
+   "point": "3-62",
+   "structure": "一方面……，另一方面……",
+   "meaning": "d'une part…, d'autre part…",
+   "pattern": "一方面 + A，另一方面 + B",
+   "example": {
+    "zh": "我来中国，一方面是为了学习，另一方面是为了工作。",
+    "fr": "Je suis venu en Chine d'une part pour étudier, d'autre part pour travailler."
+   }
+  },
+  {
+   "id": "shouxian-ranhou",
+   "level": 3,
+   "code": "三64",
+   "point": "3-64",
+   "structure": "首先……，然后……",
+   "meaning": "d'abord…, puis… (les étapes dans l'ordre)",
+   "pattern": "首先 + A，然后 + B，(最后 + C)",
+   "example": {
+    "zh": "首先打开书，然后读一下课文。",
+    "fr": "D'abord ouvrez le livre, puis lisez le texte."
+   }
+  },
+  {
+   "id": "bujin-erqie",
+   "level": 3,
+   "code": "三66",
+   "point": "3-66",
+   "structure": "不仅……，而且／还……",
+   "meaning": "non seulement…, mais aussi…",
+   "pattern": "不仅 / 不光 + A，而且 / 还 + B",
+   "example": {
+    "zh": "这家饭店不仅菜好吃，而且很便宜。",
+    "fr": "Ce restaurant n'est pas seulement bon, il est aussi pas cher."
+   }
+  },
+  {
+   "id": "bingqie",
+   "level": 3,
+   "code": "三65",
+   "point": "3-65",
+   "structure": "……，并且……",
+   "meaning": "et de plus, et en plus (ajouter une deuxième action ou qualité)",
+   "pattern": "A，并且 + B",
+   "example": {
+    "zh": "他找到了新工作，并且很喜欢这个工作。",
+    "fr": "Il a trouvé un nouveau travail, et en plus il l'aime beaucoup."
+   }
+  },
+  {
+   "id": "bushi-jiushi",
+   "level": 3,
+   "code": "三67",
+   "point": "3-67",
+   "structure": "不是……，就是……",
+   "meaning": "soit…, soit… (c'est forcément l'un des deux)",
+   "pattern": "不是 + A，就是 + B",
+   "example": {
+    "zh": "周末他不是在家看书，就是去打球。",
+    "fr": "Le week-end, soit il lit à la maison, soit il va jouer au ballon."
+   }
+  },
+  {
+   "id": "x-shi-x",
+   "level": 3,
+   "code": "三68",
+   "point": "3-68",
+   "structure": "……是……，就是……",
+   "meaning": "c'est vrai que…, mais… (concéder un point puis nuancer)",
+   "pattern": "X + 是 + X，就是 / 不过 + …",
+   "example": {
+    "zh": "这件衣服好看是好看，就是太贵了。",
+    "fr": "Ce vêtement est joli, c'est vrai, mais il est trop cher."
+   }
+  },
+  {
+   "id": "yaoshi-jiu",
+   "level": 3,
+   "code": "三69",
+   "point": "3-69",
+   "structure": "要是……，就……",
+   "meaning": "si… (hypothèse, surtout à l'oral), alors…",
+   "pattern": "要是 + condition，(sujet) + 就 + conséquence",
+   "example": {
+    "zh": "要是你有时间，就来我家玩吧。",
+    "fr": "Si tu as le temps, viens donc chez moi."
+   }
+  },
+  {
+   "id": "zhiyou-cai",
+   "level": 3,
+   "code": "三70",
+   "point": "3-70",
+   "structure": "只有……，才……",
+   "meaning": "seulement si…, ce n'est qu'à condition que…",
+   "pattern": "只有 + condition (unique)，才 + résultat",
+   "example": {
+    "zh": "只有多练习，才能说好汉语。",
+    "fr": "Ce n'est qu'en pratiquant beaucoup qu'on parle bien chinois."
+   }
+  },
+  {
+   "id": "youyu-yinci",
+   "level": 3,
+   "code": "三71",
+   "point": "3-71",
+   "structure": "由于……，因此……",
+   "meaning": "en raison de…, par conséquent… (cause, plutôt à l'écrit)",
+   "pattern": "由于 + cause，所以 / 因此 + conséquence",
+   "example": {
+    "zh": "由于天气不好，因此我们没去公园。",
+    "fr": "En raison du mauvais temps, nous ne sommes pas allés au parc."
+   }
+  },
+  {
+   "id": "rang-jianyu",
+   "level": 3,
+   "code": "三57",
+   "point": "3-57",
+   "structure": "……让……",
+   "meaning": "faire faire, laisser faire ou demander à quelqu'un de faire quelque chose",
+   "pattern": "sujet + 让 / 叫 / 请 + personne + verbe (+ objet)",
+   "example": {
+    "zh": "妈妈让我早点儿回家。",
+    "fr": "Maman m'a demandé de rentrer un peu plus tôt."
+   }
+  },
+  {
+   "id": "kanqilai",
+   "level": 3,
+   "code": "三35",
+   "point": "3-35",
+   "structure": "看起来……",
+   "meaning": "avoir l'air de, sembler",
+   "pattern": "sujet + 看起来 + adj. / proposition",
+   "example": {
+    "zh": "你看起来很累。",
+    "fr": "Tu as l'air très fatigué."
+   }
+  },
+  {
+   "id": "conglai",
+   "level": 3,
+   "code": "三14",
+   "point": "3-14",
+   "structure": "从来不／从来没……过",
+   "meaning": "ne… jamais",
+   "pattern": "从来 + 不 + verbe (habitude) · 从来 + 没 + verbe + 过 (expérience)",
+   "example": {
+    "zh": "我从来没吃过北京烤鸭。",
+    "fr": "Je n'ai jamais mangé de canard laqué de Pékin."
+   }
+  },
+  {
+   "id": "de-liao",
+   "level": 3,
+   "code": "三48",
+   "point": "3-48",
+   "structure": "……得了／不了",
+   "meaning": "pouvoir / ne pas pouvoir faire quelque chose (capacité, possibilité)",
+   "pattern": "verbe + 得了 / 不了 · verbe + 得 / 不 + résultat (完、懂、到…)",
+   "example": {
+    "zh": "这么多菜，我一个人吃不了。",
+    "fr": "Autant de plats, je ne peux pas tout manger seul."
+   }
+  },
+  {
+   "id": "jile",
+   "level": 3,
+   "code": "三49",
+   "point": "3-49",
+   "structure": "……极了",
+   "meaning": "extrêmement (exclamatif)",
+   "pattern": "adj. / verbe de sentiment + 极了 / 死了 / 得很",
+   "example": {
+    "zh": "今天热极了。",
+    "fr": "Il fait extrêmement chaud aujourd'hui."
+   }
+  },
+  {
+   "id": "bu-a-bu-b",
+   "level": 3,
+   "code": "三34",
+   "point": "3-34",
+   "structure": "不……不……",
+   "meaning": "ni trop… ni trop… (juste comme il faut)",
+   "pattern": "不 + adj. 1 + 不 + adj. 2 (deux contraires)",
+   "example": {
+    "zh": "这件衣服不大不小，正好。",
+    "fr": "Ce vêtement n'est ni trop grand ni trop petit, il est parfait."
+   }
+  },
+  {
+   "id": "le-jiu",
+   "level": 3,
+   "code": "三73",
+   "point": "3-73",
+   "structure": "……了……就……",
+   "meaning": "après avoir fait…, (aussitôt)…",
+   "pattern": "verbe 1 + 了 + objet，(就) + verbe 2",
+   "example": {
+    "zh": "我下了课就去找你。",
+    "fr": "Je viens te voir dès que j'ai fini les cours."
+   }
+  }
+ ]
+}

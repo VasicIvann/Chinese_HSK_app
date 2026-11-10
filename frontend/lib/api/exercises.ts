@@ -60,10 +60,22 @@ export type MakeSentenceItem = Base & {
   source?: SentenceWords;
   reference?: string;
   fr?: string;
+  /** Grammar-structure items: `word` is the structure (虽然……，但是……). */
+  kind?: "structure";
+  /** The hint: what the structure expresses (no pattern). */
+  meaning?: string;
+  /** Shown in the correction only when the sentence is wrong. */
+  pattern?: string;
+  example?: { zh: string; fr: string };
+  grammar_point?: string;
+  history?: "new" | "failed" | "passed";
 };
 
-/** Where the imposed words come from: any already-seen word, or the 50 weakest "À revoir" words. */
-export type SentenceWords = "seen" | "weak";
+/**
+ * What is imposed: any already-seen word, one of the 50 weakest "À revoir" words,
+ * or a grammar structure of HSK 2-3.
+ */
+export type SentenceWords = "seen" | "weak" | "structures";
 
 export type ExerciseItem =
   | PicChoiceItem
@@ -89,7 +101,7 @@ export type PartInfo = {
 export type CatalogPart = PartInfo & {
   available: number;
   /** Imposed-word part only: words offered by each source. */
-  word_counts?: Record<SentenceWords, number> | null;
+  word_counts?: (Record<SentenceWords, number> & { structures_new?: number }) | null;
   attempts: number;
   last: { score: number; total: number; at: string } | null;
   best: { score: number; total: number } | null;
@@ -181,6 +193,13 @@ export function checkSentence(level: ExerciseLevel, word: string, sentence: stri
   return apiRequest<SentenceCheck>("/v1/exercises/check-sentence", {
     method: "POST",
     body: { level, word, sentence, ...(meaning ? { meaning } : {}) },
+  });
+}
+
+export function checkStructure(level: ExerciseLevel, structure: string, sentence: string, meaning?: string) {
+  return apiRequest<SentenceCheck>("/v1/exercises/check-structure", {
+    method: "POST",
+    body: { level, structure, sentence, ...(meaning ? { meaning } : {}) },
   });
 }
 
