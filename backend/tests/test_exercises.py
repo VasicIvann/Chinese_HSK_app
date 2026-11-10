@@ -181,7 +181,7 @@ def test_generate_keeps_valid_items_and_adds_them_to_the_pool(client: TestClient
     body = res.json()
     items = body["parts"][0]["items"]
     assert len(items) == 1 and items[0]["generated"] and items[0]["id"].startswith("gen-")
-    assert body["quota_remaining"] == 19
+    assert body["quota_remaining"] == 14
 
     # The prompt names the part, the level and carries the level's vocabulary.
     call = fake_anthropic.messages.create_calls[0]

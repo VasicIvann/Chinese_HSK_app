@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
-from app.api.deps import DAILY_QUOTAS, enforce_quota, get_current_user
+from app.api.deps import enforce_quota, get_current_user, quota_remaining
 from app.db.session import get_db
 from app.models import User
 from app.schemas import ExampleGenerateRequest, ExampleGenerateResponse, WordExampleItem
@@ -91,5 +91,5 @@ def post_generate_example(
 
     return ExampleGenerateResponse(
         example=WordExampleItem.model_validate(row),
-        quota_remaining=max(0, DAILY_QUOTAS[QUOTA_KIND] - int(updated.count or 0)),
+        quota_remaining=quota_remaining(user, QUOTA_KIND, updated.count),
     )

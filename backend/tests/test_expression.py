@@ -85,7 +85,7 @@ def test_generate_subject_calls_claude_and_decrements_quota(
     assert res.status_code == 200, res.text
     data = res.json()
     assert data["subject"]
-    assert data["quota_remaining"] == 49  # 50 - 1
+    assert data["quota_remaining"] == 14  # 15 - 1
     assert len(fake_anthropic.messages.create_calls) == 1
 
 
@@ -200,15 +200,15 @@ def test_correct_503_when_anthropic_not_configured(
 def test_quota_endpoint_reflects_usage(client: TestClient, fake_anthropic: FakeAnthropic) -> None:
     token = _register(client)
     initial = client.get("/v1/expression/quota", headers=_auth(token)).json()
-    assert initial["correction"]["remaining"] == 20
-    assert initial["subject_generation"]["remaining"] == 50
+    assert initial["correction"]["remaining"] == 15
+    assert initial["subject_generation"]["remaining"] == 15
 
     client.post(
         "/v1/expression/subjects/generate", headers=_auth(token), json={"level": 1}
     )
     after = client.get("/v1/expression/quota", headers=_auth(token)).json()
     assert after["subject_generation"]["count"] == 1
-    assert after["subject_generation"]["remaining"] == 49
+    assert after["subject_generation"]["remaining"] == 14
 
 
 def test_attempts_requires_auth(client: TestClient) -> None:

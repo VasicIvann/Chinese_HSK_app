@@ -66,7 +66,7 @@ def test_generate_saves_and_lists_example(
     assert body["example"]["hsk_level"] == 1
     assert body["example"]["general_meaning"]
     assert body["example"]["decomposition"].startswith("爱 contient 心")
-    assert body["quota_remaining"] == 99
+    assert body["quota_remaining"] == 14
 
     # The prompt carries the word and its HSK level.
     user_msg = fake_anthropic.messages.create_calls[0]["messages"][0]["content"]

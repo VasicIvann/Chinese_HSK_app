@@ -17,13 +17,27 @@ from app.services.expression_service import get_daily_usage
 bearer_scheme = HTTPBearer(auto_error=True)
 
 
-DAILY_QUOTAS: dict[str, int] = {
-    "expression_correction": 20,
-    "subject_generation": 50,
-    "example_generation": 100,
-    "exercise_generation": 20,
-    "exercise_check": 100,
-}
+# Same daily limit for every kind of Claude call; admins (ADMIN_EMAILS) get a higher one.
+DAILY_QUOTA = 15
+ADMIN_DAILY_QUOTA = 100
+QUOTA_KINDS = (
+    "expression_correction",  # Expression: text correction
+    "subject_generation",  # Expression: new subject
+    "example_generation",  # Comprehension: generated example sentence
+    "exercise_generation",  # Listening / Writing new set + Classifiers "more sentences"
+    "exercise_check",  # Writing: sentence with an imposed word or structure
+)
+
+
+def daily_quota(user: User, kind: str) -> int:
+    """Today's limit for `kind` for this user (0 = unlimited, for unknown kinds)."""
+    if kind not in QUOTA_KINDS:
+        return 0
+    return ADMIN_DAILY_QUOTA if is_admin(user) else DAILY_QUOTA
+
+
+def quota_remaining(user: User, kind: str, used: int | None) -> int:
+    return max(0, daily_quota(user, kind) - int(used or 0))
 
 
 def get_current_user(
@@ -71,7 +85,7 @@ def enforce_quota(kind: str):
         user: User = Depends(get_current_user),
         db: Session = Depends(get_db),
     ) -> User:
-        limit = DAILY_QUOTAS.get(kind, 0)
+        limit = daily_quota(user, kind)
         if limit <= 0:
             return user
         usage = get_daily_usage(db, user.id, kind)
@@ -88,7 +102,16 @@ def enforce_quota(kind: str):
     return _check
 
 
-__all__ = ["DAILY_QUOTAS", "bearer_scheme", "enforce_quota", "get_current_user"]
+__all__ = [
+    "ADMIN_DAILY_QUOTA",
+    "DAILY_QUOTA",
+    "QUOTA_KINDS",
+    "bearer_scheme",
+    "daily_quota",
+    "enforce_quota",
+    "get_current_user",
+    "quota_remaining",
+]
 
 
 def is_admin(user: User) -> bool:

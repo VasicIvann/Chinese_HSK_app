@@ -139,7 +139,7 @@ def test_generate_keeps_valid_sentences_for_the_user(client: TestClient, fake_an
     body = res.json()
     assert [q["classifier"] for q in body["questions"]] == ["本", "杯"]
     assert all(q["generated"] and q["id"].startswith("gen-") for q in body["questions"])
-    assert body["quota_remaining"] == 19
+    assert body["quota_remaining"] == 14
 
     prompt = fake_anthropic.messages.create_calls[0]
     assert "本 :" in prompt["messages"][0]["content"] and "张 :" not in prompt["messages"][0]["content"]

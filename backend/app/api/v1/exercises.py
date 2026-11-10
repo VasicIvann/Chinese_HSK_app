@@ -10,7 +10,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from app.api.deps import DAILY_QUOTAS, enforce_quota, get_current_user
+from app.api.deps import enforce_quota, get_current_user, quota_remaining
 from app.db.session import get_db
 from app.models import User
 from app.services import exercise_service, expression_service, grammar_service, llm_service
@@ -206,7 +206,7 @@ def post_generate(
         "section": payload.section,
         "part": payload.part,
         "parts": [{**part, "items": items}],
-        "quota_remaining": max(0, DAILY_QUOTAS["exercise_generation"] - int(updated.count or 0)),
+        "quota_remaining": quota_remaining(user, "exercise_generation", updated.count),
     }
 
 

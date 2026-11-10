@@ -42,7 +42,7 @@ export default function ExpressionPage() {
     queryFn: getQuota,
   });
 
-  const remainingCorrections = quotaQuery.data?.correction.remaining ?? 20;
+  const remainingCorrections = quotaQuery.data?.correction.remaining ?? 15;
 
   const submit = useCallback(() => {
     if (!subject) {

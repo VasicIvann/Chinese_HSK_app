@@ -113,3 +113,20 @@ def test_admin_endpoints_are_read_only(client: TestClient, admin_env) -> None:
     token, user = _register(client, "i@i.com")
     for method in ("post", "put", "patch", "delete"):
         assert getattr(client, method)("/v1/admin/users", headers=_auth(token)).status_code == 405
+
+
+def test_daily_quotas_are_15_and_100_for_admins(client: TestClient, admin_env) -> None:
+    from app.api.deps import QUOTA_KINDS, daily_quota
+    from app.models import User
+
+    admin_token, _ = _register(client, "i@i.com")
+    token, _ = _register(client, "someone@example.com")
+    for kind in QUOTA_KINDS:
+        assert daily_quota(User(email="someone@example.com"), kind) == 15
+        assert daily_quota(User(email="I@i.com"), kind) == 100
+    assert daily_quota(User(email="i@i.com"), "unknown") == 0
+
+    mine = client.get("/v1/expression/quota", headers=_auth(admin_token)).json()
+    theirs = client.get("/v1/expression/quota", headers=_auth(token)).json()
+    assert mine["correction"]["limit"] == mine["subject_generation"]["limit"] == 100
+    assert theirs["correction"]["limit"] == theirs["subject_generation"]["limit"] == 15

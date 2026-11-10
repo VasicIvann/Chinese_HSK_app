@@ -10,7 +10,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from app.api.deps import DAILY_QUOTAS, enforce_quota, get_current_user
+from app.api.deps import enforce_quota, get_current_user, quota_remaining
 from app.api.v1.exercises import _llm_ready, _version
 from app.db.session import get_db
 from app.models import User
@@ -122,5 +122,5 @@ def post_generate(
         "level": payload.level,
         "hanzi": payload.hanzi,
         "questions": [classifier_service.fill_question(s, version, payload.level, rng) for s in saved],
-        "quota_remaining": max(0, DAILY_QUOTAS["exercise_generation"] - int(updated.count or 0)),
+        "quota_remaining": quota_remaining(user, "exercise_generation", updated.count),
     }
