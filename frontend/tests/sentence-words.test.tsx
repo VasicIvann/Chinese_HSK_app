@@ -10,6 +10,7 @@ const checkSentence = vi.fn();
 const getExerciseSet = vi.fn();
 const getCatalog = vi.fn();
 const postExerciseResult = vi.fn();
+const skipSentenceItem = vi.fn();
 
 vi.mock("@/lib/api/exercises", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/api/exercises")>()),
@@ -17,6 +18,7 @@ vi.mock("@/lib/api/exercises", async (importOriginal) => ({
   getExerciseSet: (...a: unknown[]) => getExerciseSet(...a),
   getCatalog: (...a: unknown[]) => getCatalog(...a),
   postExerciseResult: (...a: unknown[]) => postExerciseResult(...a),
+  skipSentenceItem: (...a: unknown[]) => skipSentenceItem(...a),
 }));
 vi.mock("@/lib/api/endpoints", async (importOriginal) => ({
   ...(await importOriginal<typeof import("@/lib/api/endpoints")>()),
@@ -175,5 +177,58 @@ describe("grammar structure items", () => {
     expect(screen.getByText("Phrase modèle (Claude)")).toBeInTheDocument();
     expect(checkStructure).toHaveBeenCalledWith(3, "虽然……，但是……", "虽然下雨，我们去了公园。", "bien que…, pourtant…");
     expect(checkSentence).not.toHaveBeenCalled();
+  });
+});
+
+describe("skip", () => {
+  it("replaces the word in place, excludes the series' items, and never scores the skipped one", async () => {
+    skipSentenceItem.mockReset().mockResolvedValue({
+      item: { id: "word-9", type: "make_sentence", level: 3, word: "高兴", pinyin: "gāoxìng", translation: "content", source: "weak" },
+    });
+    wrap(
+      <ExerciseRunner
+        set={set([
+          { id: "word-1", word: "认真", pinyin: "rènzhēn", translation: "sérieux" },
+          { id: "word-2", word: "安静", pinyin: "ānjìng", translation: "calme" },
+        ])}
+        onExit={vi.fn()}
+      />
+    );
+    expect(screen.getByText("认真")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Passer : autre mot/ }));
+    expect(await screen.findByText("高兴")).toBeInTheDocument();
+    expect(screen.queryByText("认真")).not.toBeInTheDocument();
+    expect(skipSentenceItem).toHaveBeenCalledWith({
+      version: "3.0",
+      level: 3,
+      words: "weak",
+      skipped: "word-1",
+      exclude: ["word-1", "word-2"],
+    });
+    expect(screen.getByText("1 / 2")).toBeInTheDocument(); // still question 1 of 2
+
+    // Second skip: the first skipped word stays excluded.
+    skipSentenceItem.mockResolvedValueOnce({
+      item: { id: "word-10", type: "make_sentence", level: 3, word: "简单", pinyin: "jiǎndān", translation: "simple", source: "weak" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Passer : autre mot/ }));
+    expect(await screen.findByText("简单")).toBeInTheDocument();
+    expect(skipSentenceItem).toHaveBeenLastCalledWith(expect.objectContaining({ skipped: "word-9", exclude: ["word-1", "word-9", "word-2"] }));
+  });
+
+  it("says when there is nothing left, and offers no skip once answered", async () => {
+    const { ApiError } = await import("@/lib/api/client");
+    const { toast } = await import("sonner");
+    skipSentenceItem.mockReset().mockRejectedValue(new ApiError(404, "Plus d'autre structure disponible pour cette série."));
+    checkSentence.mockResolvedValue({ correct: true, uses_word: true, corrected: "", pinyin: "", translation: "", explanation: "ok" });
+    wrap(<ExerciseRunner set={set([{ id: "word-1", word: "认真", pinyin: "rènzhēn", translation: "sérieux" }])} onExit={vi.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: /Passer/ }));
+    await waitFor(() => expect(toast.error).toHaveBeenCalledWith("Plus d'autre structure disponible pour cette série."));
+    expect(screen.getByText("认真")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Ta phrase"), { target: { value: "他很认真。" } });
+    fireEvent.click(screen.getByRole("button", { name: /Faire corriger par Claude/ }));
+    await screen.findByText("ok");
+    expect(screen.queryByRole("button", { name: /Passer/ })).not.toBeInTheDocument();
   });
 });

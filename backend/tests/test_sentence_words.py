@@ -238,3 +238,60 @@ def test_check_structure(client: TestClient, fake_anthropic) -> None:
     fake_anthropic.messages.structure_check_response = {**fake_anthropic.messages.structure_check_response, "correct": True}
     ok = client.post("/v1/exercises/check-structure", headers=_auth(token), json=body).json()
     assert ok["correct"] is True and ok["model"] == ""
+
+
+# --------------------------------------------------------------------------- skip
+
+
+def test_skip_a_word_draws_another_one_and_changes_nothing(client: TestClient, words) -> None:
+    token, user_id = _register(client, "skip-word@example.com")
+    _seen(user_id, {e: 0.7 for e in words["L1"][:7]})
+    series = [f"word-{e}" for e in words["L1"][:5]]
+    res = client.post(
+        "/v1/exercises/skip",
+        headers=_auth(token),
+        json={"version": "3.0", "level": 3, "words": "seen", "skipped": series[0], "exclude": series},
+    )
+    assert res.status_code == 200
+    assert res.json()["item"]["id"] in {f"word-{e}" for e in words["L1"][5:7]}
+    # Nothing recorded for a word.
+    stats = client.get("/v1/account/stats?days=7", headers=_auth(token)).json()
+    assert stats["totals"]["writing"] == 0
+    # No other word left.
+    everything = [f"word-{e}" for e in words["L1"][:7]]
+    res = client.post(
+        "/v1/exercises/skip",
+        headers=_auth(token),
+        json={"version": "3.0", "level": 3, "words": "seen", "skipped": everything[0], "exclude": everything},
+    )
+    assert res.status_code == 404 and "Plus d'autre mot" in res.json()["detail"]
+
+
+def test_skip_a_structure_marks_it_mastered_without_scoring(client: TestClient, monkeypatch) -> None:
+    token, user_id = _register(client, "skip-structure@example.com")
+    pool = [
+        {"id": f"s{i}", "level": 3, "point": "3-60", "structure": f"结构{i}……", "meaning": "m", "pattern": "p", "example": {"zh": "例", "fr": "ex"}}
+        for i in range(4)
+    ]
+    monkeypatch.setattr(es, "structures", lambda: pool)
+    res = client.post(
+        "/v1/exercises/skip",
+        headers=_auth(token),
+        json={"version": "3.0", "level": 3, "words": "structures", "skipped": "struct-s0", "exclude": ["struct-s0", "struct-s1"]},
+    )
+    assert res.status_code == 200
+    assert res.json()["item"]["id"] in {"struct-s2", "struct-s3"}  # never practised, not in the series
+    with SessionLocal() as s:
+        assert es.structure_history(s, user_id) == {"s0": True}  # mastered: last priority
+        ranked = [i["id"] for i in es.structure_items(s, user_id, 4, random.Random(0))]
+    assert ranked[-1] == "struct-s0"
+    # Not a score: the W2 card and the stats ignore it.
+    catalog = client.get("/v1/exercises/catalog?section=writing&level=3&version=3.0", headers=_auth(token)).json()
+    w2 = next(p for p in catalog["parts"] if p["type"] == "make_sentence")
+    assert w2["attempts"] == 0 and w2["word_counts"]["structures_new"] == 3
+    assert client.get("/v1/account/stats?days=7", headers=_auth(token)).json()["totals"]["writing"] == 0
+
+    bad = client.post(
+        "/v1/exercises/skip", headers=_auth(token), json={"level": 3, "words": "structures", "skipped": "struct-nope"}
+    )
+    assert bad.status_code == 404

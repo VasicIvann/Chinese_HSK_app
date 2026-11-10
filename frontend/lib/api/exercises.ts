@@ -196,6 +196,17 @@ export function checkSentence(level: ExerciseLevel, word: string, sentence: stri
   });
 }
 
+/** Imposed-word part: replace the current word / structure (a skipped structure counts as mastered). */
+export function skipSentenceItem(body: {
+  version: HskVersion;
+  level: ExerciseLevel;
+  words: SentenceWords;
+  skipped: string;
+  exclude: string[];
+}) {
+  return apiRequest<{ item: MakeSentenceItem }>("/v1/exercises/skip", { method: "POST", body });
+}
+
 export function checkStructure(level: ExerciseLevel, structure: string, sentence: string, meaning?: string) {
   return apiRequest<SentenceCheck>("/v1/exercises/check-structure", {
     method: "POST",

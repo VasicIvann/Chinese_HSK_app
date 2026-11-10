@@ -1,14 +1,17 @@
 "use client";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ArrowRight, Check, RotateCcw, X } from "lucide-react";
+import { ArrowRight, Check, Loader2, RotateCcw, SkipForward, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 
 import { QuestionView, type QuestionResult } from "@/components/exercises/questions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ApiError } from "@/lib/api/client";
 import {
   postExerciseResult,
+  skipSentenceItem,
   type ExerciseItem,
   type ExerciseLevel,
   type ExerciseSet,
@@ -41,7 +44,7 @@ export function flattenSet(set: ExerciseSet): Question[] {
 
 /** Runs a practice set question by question, then shows and saves the score. */
 export function ExerciseRunner({
-  set,
+  set: initialSet,
   onExit,
   onRestart,
 }: {
@@ -50,6 +53,9 @@ export function ExerciseRunner({
   onRestart?: () => void;
 }) {
   const queryClient = useQueryClient();
+  // Local copy: a skipped word / structure is replaced in place.
+  const [set, setSet] = useState(initialSet);
+  const [skipped, setSkipped] = useState<string[]>([]);
   const questions = useMemo(() => flattenSet(set), [set]);
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<Record<string, QuestionResult>>({});
@@ -79,6 +85,25 @@ export function ExerciseRunner({
     onSettled: () => queryClient.invalidateQueries({ queryKey: ["exercise-catalog"] }),
   });
 
+  const skip = useMutation({
+    mutationFn: (item: ExerciseItem & { type: "make_sentence" }) =>
+      skipSentenceItem({
+        version: set.version,
+        level: set.level as ExerciseLevel,
+        words: item.source!,
+        skipped: item.id,
+        exclude: [...skipped, ...set.parts.flatMap((p) => p.items.map((i) => i.id))],
+      }),
+    retry: 0,
+    onSuccess: ({ item: next }, old) => {
+      setSkipped((s) => [...s, old.id]);
+      setSet((s) => ({
+        ...s,
+        parts: s.parts.map((p) => ({ ...p, items: p.items.map((i) => (i.id === old.id ? next : i)) })),
+      }));
+    },
+    onError: (error) => toast.error(error instanceof ApiError && error.detail ? error.detail : "Impossible de changer."),
+  });
   if (questions.length === 0) {
     return (
       <Card>
@@ -102,6 +127,9 @@ export function ExerciseRunner({
     setFinished(true);
     save.mutate();
   };
+
+  const skippable =
+    question.item.type === "make_sentence" && !!question.item.source && !result ? question.item : null;
 
   if (finished) {
     return <Summary set={set} questions={questions} results={results} onExit={onExit} onRestart={onRestart} saving={save.isPending} />;
@@ -145,6 +173,24 @@ export function ExerciseRunner({
         result={result}
         onAnswer={(r) => setResults((all) => ({ ...all, [question.key]: r }))}
       />
+
+      {skippable && (
+        <Button
+          variant="ghost"
+          size="sm"
+          className="self-center text-muted-foreground"
+          onClick={() => skip.mutate(skippable)}
+          disabled={skip.isPending}
+          title={
+            skippable.kind === "structure"
+              ? "Tu sais déjà l'utiliser : elle passe en dernière priorité, sans compter dans le score."
+              : "Un autre mot à la place, sans compter dans le score."
+          }
+        >
+          {skip.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <SkipForward className="h-4 w-4" />}
+          {skippable.kind === "structure" ? "Passer : je connais, autre structure" : "Passer : autre mot"}
+        </Button>
+      )}
 
       {result && (
         <Button size="lg" onClick={() => (index + 1 < questions.length ? setIndex(index + 1) : finish())} autoFocus>

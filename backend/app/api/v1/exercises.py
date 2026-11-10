@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import random
 from typing import Any, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -55,6 +56,15 @@ class SentenceCheckRequest(BaseModel):
     sentence: str = Field(min_length=1, max_length=120)
     # Meaning of the imposed word (from the word list), so Claude judges the intended sense.
     meaning: str | None = Field(None, max_length=200)
+
+
+class SkipRequest(BaseModel):
+    version: Version | None = None
+    level: Level
+    words: Literal["seen", "weak", "structures"]
+    skipped: str = Field(min_length=1, max_length=64)
+    # Items already in the series (and earlier skips): never drawn again.
+    exclude: list[str] = Field(default_factory=list, max_length=200)
 
 
 class StructureCheckRequest(BaseModel):
@@ -222,6 +232,31 @@ def post_check_sentence(
         tokens_output_delta=usage.output_tokens,
     )
     return result
+
+
+@router.post(
+    "/exercises/skip",
+    summary="Imposed-word part: replace the current word / structure by another one.",
+)
+def post_skip(
+    payload: SkipRequest,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+) -> dict[str, Any]:
+    version = _version(db, user, payload.version)
+    if payload.words == "structures":
+        known = {f"{exercise_service.STRUCTURE_PREFIX}{s['id']}" for s in exercise_service.structures()}
+        if payload.skipped not in known:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "Structure inconnue.")
+        # Skipped because it is already mastered: last priority from now on.
+        exercise_service.mark_structure_known(db, user.id, version, payload.level, payload.skipped)
+    item = exercise_service.replacement_item(
+        db, user.id, version, payload.level, payload.words, {payload.skipped, *payload.exclude}, random.Random()
+    )
+    if item is None:
+        what = "structure" if payload.words == "structures" else "mot"
+        raise HTTPException(status.HTTP_404_NOT_FOUND, f"Plus d'autre {what} disponible pour cette série.")
+    return {"item": item}
 
 
 @router.post("/exercises/check-structure", summary="Claude grades a sentence written with an imposed grammar structure.")

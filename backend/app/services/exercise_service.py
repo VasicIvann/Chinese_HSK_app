@@ -255,6 +255,46 @@ def structure_items(db: Session, user_id: int, count: int, rng: random.Random) -
     ]
 
 
+SKIP_PART = "W2-skip"
+
+
+def mark_structure_known(db: Session, user_id: int, version: str, level: int, item_id: str) -> None:
+    """A structure skipped because the learner already masters it: recorded as right (last
+    priority from now on), in a row of its own with total 0 so it never counts in a score."""
+    db.add(
+        ExerciseResult(
+            user_id=user_id,
+            version=version,
+            level=level,
+            section="writing",
+            part_key=SKIP_PART,
+            score=0,
+            total=0,
+            details=json.dumps([{"id": item_id, "correct": True, "skipped": True}]),
+            created_at=datetime.utcnow(),
+        )
+    )
+    db.flush()
+
+
+def replacement_item(
+    db: Session,
+    user_id: int,
+    version: str,
+    level: int,
+    words: str,
+    exclude: set[str],
+    rng: random.Random,
+) -> dict[str, Any] | None:
+    """Another word / structure for the imposed-word part, none of `exclude` (the series' items)."""
+    if words == "structures":
+        ranked = structure_items(db, user_id, len(structures()), rng)  # already in priority order
+        return next((i for i in ranked if i["id"] not in exclude), None)
+    candidates = sentence_items(db, user_id, version, level, words, 10_000, rng)
+    candidates = [i for i in candidates if i["id"] not in exclude]
+    return rng.choice(candidates) if candidates else None
+
+
 def catalog(db: Session, user_id: int, version: str, level: int, section: str) -> list[dict[str, Any]]:
     results = db.execute(
         select(ExerciseResult)
