@@ -483,23 +483,23 @@ def generate_exercises(
 SENTENCE_CHECK_PROMPT = """Tu corriges la partie « 用词造句 » (écrire une phrase avec le mot donné) du HSK pour un apprenant francophone.
 
 On te donne le niveau, le mot imposé et la phrase de l'apprenant. Réponds UNIQUEMENT en JSON :
-{"correct": true|false, "uses_word": true|false, "corrected": "<la phrase corrigée (identique si correcte)>", "pinyin": "<pinyin de la phrase corrigée, tons en diacritiques>", "translation": "<traduction française de la phrase corrigée>", "explanation": "<en français, 1 à 3 phrases : ce qui va, ce qui ne va pas>"}
+{"correct": true|false, "uses_word": true|false, "corrected": "<la phrase corrigée (identique si correcte)>", "pinyin": "<pinyin de la phrase corrigée, tons en diacritiques>", "translation": "<traduction française de la phrase corrigée>", "explanation": "<en français, 1 à 3 phrases : ce qui va, ce qui ne va pas>", "model": "<si correct = false : une phrase modèle, sinon chaîne vide>", "model_pinyin": "<pinyin de la phrase modèle, ou vide>", "model_translation": "<traduction française de la phrase modèle, ou vide>"}
 
 - "correct" = phrase grammaticale, naturelle, complète, qui utilise le mot imposé avec un sens correct.
 - Sois exigeant sur la grammaire, indulgent sur la richesse : une phrase simple et juste est correcte.
-- Si la phrase n'est pas en chinois ou n'utilise pas le mot : correct = false."""
+- Si la phrase n'est pas en chinois ou n'utilise pas le mot : correct = false.
+- "model" (seulement si correct = false) : une phrase courte et naturelle, du niveau HSK indiqué, qui utilise le mot imposé dans son sens donné ; une autre phrase que la correction si celle-ci s'éloigne trop de ce qu'il fallait faire."""
 
 
-def check_sentence(*, word: str, sentence: str, level: int) -> tuple[dict[str, Any], LLMUsage]:
+def check_sentence(*, word: str, sentence: str, level: int, meaning: str | None = None) -> tuple[dict[str, Any], LLMUsage]:
     client = _get_client()
+    word_line = f"Mot imposé : {word}" + (f" (sens : {meaning})" if meaning else "")
     try:
         message = client.messages.create(
             model=get_model_id(),
-            max_tokens=500,
+            max_tokens=700,
             system=[{"type": "text", "text": SENTENCE_CHECK_PROMPT, "cache_control": {"type": "ephemeral"}}],
-            messages=[
-                {"role": "user", "content": f"Niveau : HSK {level}\nMot imposé : {word}\nPhrase : {sentence}"}
-            ],
+            messages=[{"role": "user", "content": f"Niveau : HSK {level}\n{word_line}\nPhrase : {sentence}"}],
         )
     except APIError as exc:
         raise RuntimeError(f"Anthropic API error: {exc}") from exc
@@ -516,6 +516,11 @@ def check_sentence(*, word: str, sentence: str, level: int) -> tuple[dict[str, A
         "translation": str(payload.get("translation") or "").strip(),
         "explanation": str(payload.get("explanation") or "").strip(),
     }
+    # The model sentence is only wanted when the learner's sentence is wrong.
+    model = str(payload.get("model") or "").strip() if not result["correct"] else ""
+    result["model"] = model
+    result["model_pinyin"] = str(payload.get("model_pinyin") or "").strip() if model else ""
+    result["model_translation"] = str(payload.get("model_translation") or "").strip() if model else ""
     usage = LLMUsage(
         input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
         output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),

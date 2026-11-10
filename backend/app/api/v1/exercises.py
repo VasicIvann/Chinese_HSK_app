@@ -53,6 +53,8 @@ class SentenceCheckRequest(BaseModel):
     level: Level
     word: str = Field(min_length=1, max_length=16)
     sentence: str = Field(min_length=1, max_length=120)
+    # Meaning of the imposed word (from the word list), so Claude judges the intended sense.
+    meaning: str | None = Field(None, max_length=200)
 
 
 def _llm_ready() -> None:
@@ -83,12 +85,15 @@ def get_set(
     level: int = Query(..., ge=1, le=3),
     part: str = Query(..., max_length=8),
     version: Version | None = Query(None),
+    words: Literal["seen", "weak"] = Query(
+        "seen", description="Imposed-word part: any already-seen word, or one of the 50 weakest 'À revoir' words."
+    ),
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> dict[str, Any]:
     version = _version(db, user, version)
     try:
-        return exercise_service.build_set(db, user.id, version, level, section, part)
+        return exercise_service.build_set(db, user.id, version, level, section, part, words=words)
     except KeyError:
         raise HTTPException(status.HTTP_404_NOT_FOUND, f"Partie introuvable : {part}.") from None
 
@@ -121,6 +126,10 @@ def post_generate(
     part = exercise_service.find_part(version, payload.level, payload.section, payload.part)
     if part is None or not exercise_service.part_slots(part):
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Partie introuvable.")
+    if any(t == exercise_service.SENTENCE_TYPE for t, _ in exercise_service.part_slots(part)):
+        raise HTTPException(
+            status.HTTP_400_BAD_REQUEST, "Pour cette partie, les mots viennent de ton vocabulaire : rien à générer."
+        )
     _llm_ready()
 
     items: list[dict[str, Any]] = []
@@ -191,7 +200,7 @@ def post_check_sentence(
     _llm_ready()
     try:
         result, usage = llm_service.check_sentence(
-            word=payload.word, sentence=payload.sentence.strip(), level=payload.level
+            word=payload.word, sentence=payload.sentence.strip(), level=payload.level, meaning=payload.meaning
         )
     except RuntimeError as exc:
         raise HTTPException(status.HTTP_502_BAD_GATEWAY, str(exc)) from exc

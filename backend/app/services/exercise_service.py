@@ -24,8 +24,9 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import ExerciseResult, GeneratedExercise
+from app.models import Entry, ExerciseResult, GeneratedExercise, UserVocabMastery
 from app.services.exercise_schema import chinese_texts
+from app.services.version_service import version_entries
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "exercises"
 SECTIONS = ("listening", "writing")
@@ -139,6 +140,59 @@ def pick(items: list[dict[str, Any]], questions: int, seen: dict[str, datetime],
 # --------------------------------------------------------------------------- catalog and sets
 
 
+# --------------------------------------------------------------------------- make_sentence: the user's own words
+
+# "Écris une phrase avec le mot donné": the imposed word comes from the user's vocabulary,
+# not from the bank. "seen" = any word already rated; "weak" = one of the 50 lowest-scored
+# words of the "À revoir" bucket (confidence < 0.5, as on the Account page).
+WORD_SOURCES = ("seen", "weak")
+WEAK_THRESHOLD = 0.5
+WEAK_POOL = 50
+SENTENCE_TYPE = "make_sentence"
+
+
+def sentence_words(db: Session, user_id: int, version: str, level: int, source: str) -> list[dict[str, Any]]:
+    """Candidate words for the imposed-word part: already-seen words of levels 1..level."""
+    ve = version_entries(version).subquery()
+    rows = db.execute(
+        select(Entry, UserVocabMastery.confidence_score, ve.c.level)
+        .join(UserVocabMastery, UserVocabMastery.entry_id == Entry.id)
+        .join(ve, ve.c.entry_id == Entry.id)
+        .where(UserVocabMastery.user_id == user_id, ve.c.level <= level)
+    ).all()
+    words = {}
+    for entry, confidence, word_level in rows:
+        words[entry.id] = {
+            "entry": entry,
+            "confidence": float(confidence or 0.0),
+            "level": int(word_level),
+        }
+    out = list(words.values())
+    if source == "weak":
+        out = sorted((w for w in out if w["confidence"] < WEAK_THRESHOLD), key=lambda w: (w["confidence"], w["entry"].id))
+        out = out[:WEAK_POOL]
+    return out
+
+
+def sentence_items(
+    db: Session, user_id: int, version: str, level: int, source: str, count: int, rng: random.Random
+) -> list[dict[str, Any]]:
+    candidates = sentence_words(db, user_id, version, level, source)
+    chosen = rng.sample(candidates, min(count, len(candidates)))
+    return [
+        {
+            "id": f"word-{w['entry'].id}",
+            "type": SENTENCE_TYPE,
+            "level": w["level"],
+            "word": re.sub(r"\d+$", "", w["entry"].hanzi).strip(),
+            "pinyin": w["entry"].pinyin,
+            "translation": w["entry"].translation,
+            "source": source,
+        }
+        for w in chosen
+    ]
+
+
 def catalog(db: Session, user_id: int, version: str, level: int, section: str) -> list[dict[str, Any]]:
     results = db.execute(
         select(ExerciseResult)
@@ -153,13 +207,20 @@ def catalog(db: Session, user_id: int, version: str, level: int, section: str) -
     out = []
     for part in parts(version, level, section):
         available = 0
+        word_counts = None
         for item_type, _ in part_slots(part):
-            available += sum(questions_in(i) for i in pool(db, user_id, version, level, item_type))
+            if item_type == SENTENCE_TYPE:
+                word_counts = {s: len(sentence_words(db, user_id, version, level, s)) for s in WORD_SOURCES}
+                available += word_counts["seen"]
+            else:
+                available += sum(questions_in(i) for i in pool(db, user_id, version, level, item_type))
         mine = [r for r in results if r.part_key == part["part"]]
         out.append(
             {
                 **part,
                 "available": available,
+                # Imposed-word part: how many words each source offers ({"seen": n, "weak": m}).
+                "word_counts": word_counts,
                 "attempts": len(mine),
                 "last": {"score": mine[0].score, "total": mine[0].total, "at": mine[0].created_at} if mine else None,
                 "best": max(({"score": r.score, "total": r.total} for r in mine), key=lambda x: x["score"] / max(1, x["total"]), default=None),
@@ -169,9 +230,19 @@ def catalog(db: Session, user_id: int, version: str, level: int, section: str) -
 
 
 def build_set(
-    db: Session, user_id: int, version: str, level: int, section: str, part_key: str, seed: int | None = None
+    db: Session,
+    user_id: int,
+    version: str,
+    level: int,
+    section: str,
+    part_key: str,
+    seed: int | None = None,
+    words: str = "seen",
 ) -> dict[str, Any]:
-    """A practice set for one part, or the whole section (`part_key="all"`)."""
+    """A practice set for one part, or the whole section (`part_key="all"`).
+
+    `words` picks the imposed words of the make-sentence part: "seen" or "weak".
+    """
     chosen_parts = parts(version, level, section) if part_key == "all" else [find_part(version, level, section, part_key)]
     if not chosen_parts or chosen_parts[0] is None:
         raise KeyError(part_key)
@@ -183,9 +254,17 @@ def build_set(
         if not slots:
             continue
         items: list[dict[str, Any]] = []
+        extra: dict[str, Any] = {}
         for item_type, count in slots:
-            items += pick(pool(db, user_id, version, level, item_type), count, seen, rng)
-        out.append({**part, "items": items})
+            if item_type == SENTENCE_TYPE:
+                chosen = sentence_items(db, user_id, version, level, words, count, rng)
+                items += chosen
+                extra = {"word_source": words, "word_pool": len(sentence_words(db, user_id, version, level, words))}
+            else:
+                items += pick(pool(db, user_id, version, level, item_type), count, seen, rng)
+        if not items:
+            continue
+        out.append({**part, **extra, "items": items})
     return {"version": version, "level": level, "section": section, "part": part_key, "parts": out}
 
 

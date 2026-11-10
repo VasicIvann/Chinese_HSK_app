@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Ban, Clock, Loader2, Play, Sparkles, Trophy } from "lucide-react";
+import { Ban, Clock, History, Loader2, Play, Sparkles, TriangleAlert, Trophy } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -19,7 +19,41 @@ import {
   type CatalogPart,
   type ExerciseSet,
   type Section,
+  type SentenceWords,
 } from "@/lib/api/exercises";
+import { cn } from "@/lib/utils";
+
+const WORDS_KEY = "hsk.sentence-words";
+
+/** Source of the imposed words (remembered on this device). */
+function useSentenceWords(): [SentenceWords, (w: SentenceWords) => void] {
+  const [words, setWordsState] = useState<SentenceWords>(() => {
+    try {
+      return typeof window !== "undefined" && window.localStorage.getItem(WORDS_KEY) === "weak" ? "weak" : "seen";
+    } catch {
+      return "seen";
+    }
+  });
+  const setWords = (next: SentenceWords) => {
+    setWordsState(next);
+    try {
+      window.localStorage.setItem(WORDS_KEY, next);
+    } catch {
+      // private mode: the choice just isn't remembered
+    }
+  };
+  return [words, setWords];
+}
+
+const WORD_SOURCES: { value: SentenceWords; label: string; description: string; icon: typeof History }[] = [
+  { value: "seen", label: "Mots déjà vus", description: "Un mot au hasard parmi ceux que tu as déjà vus (HSK 1 à 3).", icon: History },
+  {
+    value: "weak",
+    label: "Mots à revoir",
+    description: "Un mot au hasard parmi tes 50 mots « À revoir » au score le plus bas.",
+    icon: TriangleAlert,
+  },
+];
 import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 
 const COPY: Record<Section, { title: string; intro: string; noun: string }> = {
@@ -39,6 +73,7 @@ export function PracticePage({ section }: { section: Section }) {
   const { version } = useHskVersion();
   const [level, setLevel] = useExerciseLevel();
   const [active, setActive] = useState<{ set: ExerciseSet; part: string } | null>(null);
+  const [words, setWords] = useSentenceWords();
   const copy = COPY[section];
 
   const catalog = useQuery({
@@ -48,11 +83,21 @@ export function PracticePage({ section }: { section: Section }) {
 
   const start = useMutation({
     mutationFn: ({ part, fresh }: { part: string; fresh: boolean }) =>
-      fresh ? generateExerciseSet(section, level, part, version) : getExerciseSet(section, level, part, version),
+      fresh ? generateExerciseSet(section, level, part, version) : getExerciseSet(section, level, part, version, words),
     retry: 0,
     onSuccess: (set, { part }) => {
+      if (set.parts.length === 0) {
+        toast.error("Aucune question disponible pour ce choix.");
+        return;
+      }
       setActive({ set, part });
       if (set.quota_remaining !== undefined) toast.success(`Nouvelle série prête (encore ${set.quota_remaining} aujourd'hui).`);
+      const short = set.parts.find((p) => p.word_source && p.items.length < p.count);
+      if (short) {
+        toast.info(
+          `Seulement ${short.items.length} mot${short.items.length > 1 ? "s" : ""} ${short.word_source === "weak" ? "à revoir" : "déjà vu" + (short.items.length > 1 ? "s" : "")} : la partie ${short.part.slice(1)} aura ${short.items.length} question${short.items.length > 1 ? "s" : ""}.`
+        );
+      }
     },
     onError: (error) =>
       toast.error(error instanceof ApiError && error.detail ? error.detail : "Impossible de charger la série."),
@@ -70,7 +115,9 @@ export function PracticePage({ section }: { section: Section }) {
   }
 
   const parts = catalog.data?.parts ?? [];
-  const playable = parts.filter((p) => p.type !== "unavailable" && p.available > 0);
+  const playable = parts.filter(
+    (p) => p.type !== "unavailable" && (p.word_counts ? p.word_counts[words] > 0 : p.available > 0)
+  );
   const totalQuestions = playable.reduce((n, p) => n + p.count, 0);
 
   return (
@@ -112,7 +159,9 @@ export function PracticePage({ section }: { section: Section }) {
                 <div className="flex flex-col gap-1.5">
                   <CardTitle>Faire toute {copy.noun}</CardTitle>
                   <CardDescription>
-                    {totalQuestions} questions, toutes les parties à la suite, comme le jour de l&apos;examen.
+                    {`${totalQuestions} questions, toutes les parties à la suite, comme le jour de l'examen.`}
+                    {parts.some((p) => p.word_counts) &&
+                      ` Phrases avec le mot donné : ${words === "weak" ? "mots à revoir" : "mots déjà vus"}.`}
                   </CardDescription>
                 </div>
                 <Button onClick={() => start.mutate({ part: "all", fresh: false })} disabled={start.isPending}>
@@ -129,6 +178,8 @@ export function PracticePage({ section }: { section: Section }) {
                 part={part}
                 busy={start.isPending ? start.variables : undefined}
                 onStart={(fresh) => start.mutate({ part: part.part, fresh })}
+                words={words}
+                onWords={setWords}
               />
             ))}
           </div>
@@ -142,12 +193,17 @@ function PartCard({
   part,
   busy,
   onStart,
+  words,
+  onWords,
 }: {
   part: CatalogPart;
   busy?: { part: string; fresh: boolean };
   onStart: (fresh: boolean) => void;
+  words: SentenceWords;
+  onWords: (w: SentenceWords) => void;
 }) {
   const unavailable = part.type === "unavailable";
+  const counts = part.word_counts;
   const loading = (fresh: boolean) => busy?.part === part.part && busy.fresh === fresh;
   return (
     <Card>
@@ -177,6 +233,52 @@ function PartCard({
           <p className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             <Ban className="h-4 w-4" /> Non reproduite
           </p>
+        ) : counts ? (
+          <div className="flex w-full flex-col gap-3">
+            <div role="radiogroup" aria-label="Mots imposés" className="grid gap-2 sm:grid-cols-2">
+              {WORD_SOURCES.map((s) => {
+                const Icon = s.icon;
+                const n = counts[s.value];
+                return (
+                  <button
+                    key={s.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={words === s.value}
+                    onClick={() => onWords(s.value)}
+                    className={cn(
+                      "rounded-lg border-2 p-3 text-left transition-colors",
+                      words === s.value ? "border-primary bg-accent/50" : "border-border hover:border-primary/50"
+                    )}
+                  >
+                    <span className="flex items-center gap-2 font-semibold">
+                      <Icon className="h-4 w-4 text-primary" />
+                      {s.label}
+                    </span>
+                    <span className="mt-1 block text-sm text-muted-foreground">{s.description}</span>
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      {n} mot{n > 1 ? "s" : ""}
+                      {s.value === "weak" && n > 0 && n < part.count ? ` · série de ${n}` : ""}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+            {counts[words] === 0 && (
+              <p className="text-sm text-destructive">
+                {words === "weak"
+                  ? "Aucun mot « À revoir » (score sous 0,5) dans tes mots des HSK 1 à 3. Choisis « Mots déjà vus »."
+                  : "Tu n'as encore vu aucun mot des HSK 1 à 3 : fais d'abord quelques quiz dans Compréhension."}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-2">
+              <Button onClick={() => onStart(false)} disabled={!!busy || counts[words] === 0}>
+                {loading(false) ? <Loader2 className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
+                S&apos;entraîner
+              </Button>
+              <span className="text-xs text-muted-foreground">Claude corrige chaque phrase.</span>
+            </div>
+          </div>
         ) : (
           <>
             <Button onClick={() => onStart(false)} disabled={!!busy || part.available === 0}>

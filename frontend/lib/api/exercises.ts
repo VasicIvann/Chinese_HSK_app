@@ -48,7 +48,22 @@ export type CharPinyinItem = Base & {
   fr: string;
 };
 export type ReorderItem = Base & { type: "reorder"; words: string[]; answers: string[]; fr: string };
-export type MakeSentenceItem = Base & { type: "make_sentence"; word: string; reference: string; fr: string };
+/**
+ * Imposed word. Words now come from the learner's vocabulary (pinyin + translation, no model
+ * sentence: Claude writes one when the sentence is wrong); bank items had reference + fr.
+ */
+export type MakeSentenceItem = Base & {
+  type: "make_sentence";
+  word: string;
+  pinyin?: string;
+  translation?: string;
+  source?: SentenceWords;
+  reference?: string;
+  fr?: string;
+};
+
+/** Where the imposed words come from: any already-seen word, or the 50 weakest "À revoir" words. */
+export type SentenceWords = "seen" | "weak";
 
 export type ExerciseItem =
   | PicChoiceItem
@@ -73,6 +88,8 @@ export type PartInfo = {
 
 export type CatalogPart = PartInfo & {
   available: number;
+  /** Imposed-word part only: words offered by each source. */
+  word_counts?: Record<SentenceWords, number> | null;
   attempts: number;
   last: { score: number; total: number; at: string } | null;
   best: { score: number; total: number } | null;
@@ -85,7 +102,7 @@ export type ExerciseSet = {
   level: number;
   section: Section;
   part: string;
-  parts: (PartInfo & { items: ExerciseItem[] })[];
+  parts: (PartInfo & { items: ExerciseItem[]; word_source?: SentenceWords; word_pool?: number })[];
   quota_remaining?: number;
 };
 
@@ -96,6 +113,10 @@ export type SentenceCheck = {
   pinyin: string;
   translation: string;
   explanation: string;
+  /** Only when the sentence is wrong: a model sentence written by Claude. */
+  model?: string;
+  model_pinyin?: string;
+  model_translation?: string;
 };
 
 export type GrammarExample = { zh: string; fr: string };
@@ -124,9 +145,15 @@ export function getCatalog(section: Section, level: ExerciseLevel, version: HskV
   return apiRequest<Catalog>(`/v1/exercises/catalog?section=${section}&level=${level}&version=${version}`);
 }
 
-export function getExerciseSet(section: Section, level: ExerciseLevel, part: string, version: HskVersion) {
+export function getExerciseSet(
+  section: Section,
+  level: ExerciseLevel,
+  part: string,
+  version: HskVersion,
+  words: SentenceWords = "seen"
+) {
   return apiRequest<ExerciseSet>(
-    `/v1/exercises/set?section=${section}&level=${level}&part=${encodeURIComponent(part)}&version=${version}`
+    `/v1/exercises/set?section=${section}&level=${level}&part=${encodeURIComponent(part)}&version=${version}&words=${words}`
   );
 }
 
@@ -150,10 +177,10 @@ export function postExerciseResult(body: {
   });
 }
 
-export function checkSentence(level: ExerciseLevel, word: string, sentence: string) {
+export function checkSentence(level: ExerciseLevel, word: string, sentence: string, meaning?: string) {
   return apiRequest<SentenceCheck>("/v1/exercises/check-sentence", {
     method: "POST",
-    body: { level, word, sentence },
+    body: { level, word, sentence, ...(meaning ? { meaning } : {}) },
   });
 }
 

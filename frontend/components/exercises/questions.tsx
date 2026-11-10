@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import { Check, Delete, Loader2, Sparkles, X } from "lucide-react";
+import { Check, Delete, Lightbulb, Loader2, Sparkles, X } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import { AudioPanel } from "@/components/exercises/audio-panel";
@@ -322,9 +322,10 @@ function MakeSentenceQuestion({
   const [value, setValue] = useState("");
   const [check, setCheck] = useState<SentenceCheck | null>(null);
   const [selfCheck, setSelfCheck] = useState(false);
-  const wordPinyin = useMemo(() => toPinyin(item.word), [item.word]);
+  const [hint, setHint] = useState(false);
+  const wordPinyin = useMemo(() => item.pinyin || toPinyin(item.word), [item.pinyin, item.word]);
   const grade = useMutation({
-    mutationFn: () => checkSentence(level, item.word, value.trim()),
+    mutationFn: () => checkSentence(level, item.word, value.trim(), item.translation),
     retry: 0,
     onSuccess: (res) => {
       setCheck(res);
@@ -334,13 +335,21 @@ function MakeSentenceQuestion({
   });
   const error =
     grade.error instanceof ApiError ? grade.error.detail : grade.error ? "La correction a échoué." : null;
+  const meaning = item.translation;
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col items-center gap-1 rounded-xl border border-border bg-card px-4 py-6">
         <p className="text-sm text-muted-foreground">Écris une phrase avec :</p>
         <p className="hanzi text-4xl">{item.word}</p>
-        {showPinyin && <p className="text-sm text-muted-foreground">{wordPinyin}</p>}
+        {(showPinyin || hint || result) && <p className="text-sm text-muted-foreground">{wordPinyin}</p>}
+        {(hint || result) && meaning && <p className="text-sm italic text-muted-foreground">{meaning}</p>}
+        {!hint && !result && (
+          <Button variant="ghost" size="sm" onClick={() => setHint(true)} className="mt-1 text-muted-foreground">
+            <Lightbulb className="h-4 w-4" />
+            Indice : pinyin et sens
+          </Button>
+        )}
       </div>
       <textarea
         value={value}
@@ -361,9 +370,17 @@ function MakeSentenceQuestion({
       )}
       {!result && selfCheck && (
         <div className="flex flex-col gap-3 rounded-lg border border-border bg-muted/40 p-4">
-          {error && <p className="text-sm text-destructive">{error} Compare toi-même avec la phrase modèle :</p>}
-          <ZhText text={item.reference} showPinyin className="text-lg" />
-          <p className="text-sm italic">{item.fr}</p>
+          {error && (
+            <p className="text-sm text-destructive">
+              {error} {item.reference ? "Compare toi-même avec la phrase modèle :" : "Juge toi-même ta phrase :"}
+            </p>
+          )}
+          {item.reference && (
+            <>
+              <ZhText text={item.reference} showPinyin className="text-lg" />
+              <p className="text-sm italic">{item.fr}</p>
+            </>
+          )}
           <div className="grid grid-cols-2 gap-2">
             <Button type="button" variant="outline" onClick={() => onAnswer({ correct: true, given: value.trim() })}>
               Ma phrase est juste
@@ -390,14 +407,27 @@ function MakeSentenceQuestion({
               {check.explanation && <p className="text-sm">{check.explanation}</p>}
             </div>
           )}
-          <div className="flex items-start justify-between gap-2 rounded-lg border border-border bg-card p-4">
-            <div>
-              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Phrase modèle</p>
-              <ZhText text={item.reference} showPinyin className="text-lg" />
-              <p className="text-sm italic">{item.fr}</p>
+          {check && !check.correct && check.model && (
+            <div className="flex items-start justify-between gap-2 rounded-lg border border-border bg-card p-4">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Phrase modèle (Claude)</p>
+                <p className="hanzi text-lg">{check.model}</p>
+                {check.model_pinyin && <p className="text-sm text-muted-foreground">{check.model_pinyin}</p>}
+                {check.model_translation && <p className="text-sm italic">{check.model_translation}</p>}
+              </div>
+              <ListenButton text={check.model} />
             </div>
-            <ListenButton text={item.reference} />
-          </div>
+          )}
+          {item.reference && (
+            <div className="flex items-start justify-between gap-2 rounded-lg border border-border bg-card p-4">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Phrase modèle</p>
+                <ZhText text={item.reference} showPinyin className="text-lg" />
+                <p className="text-sm italic">{item.fr}</p>
+              </div>
+              <ListenButton text={item.reference} />
+            </div>
+          )}
         </>
       )}
     </div>
