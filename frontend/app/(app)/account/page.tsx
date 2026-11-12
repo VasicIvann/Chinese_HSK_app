@@ -1,22 +1,34 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, Calendar, Mail, Sparkles, TrendingUp, UserCircle } from "lucide-react";
+import { BarChart3, BookOpen, Calendar, CalendarRange, Mail, Sparkles, Target, TrendingUp, UserCircle } from "lucide-react";
 
 import { ActivityHeatmap } from "@/components/charts/activity-heatmap";
 import { MasteryDonut } from "@/components/charts/mastery-donut";
+import { NewWordsChart } from "@/components/charts/new-words-chart";
 import { TrendChart } from "@/components/charts/trend-chart";
+import { KpiTiles } from "@/components/dashboard/kpi-tiles";
+import { LevelProgress } from "@/components/dashboard/level-progress";
+import { ReviewForecast } from "@/components/dashboard/review-forecast";
+import { StudyStatsSection } from "@/components/dashboard/study-stats";
 import { AttemptsList } from "@/components/expression/attempts-list";
+import { HskVersionToggle } from "@/components/hsk-version-toggle";
 import { MasterySections } from "@/components/mastery/mastery-sections";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { DrawingsGallery } from "@/components/writing/drawings-gallery";
 import { getAccountOverview } from "@/lib/api/endpoints";
+import { getStudyStats } from "@/lib/api/stats";
+import { useHskVersion, VERSION_INFO } from "@/lib/hsk-version";
 
 export default function AccountPage() {
   const overviewQuery = useQuery({
     queryKey: ["account-overview"],
     queryFn: getAccountOverview,
   });
+  const { version } = useHskVersion();
+  // Same key as the 30-day view of the study statistics below: fetched once.
+  const stats30 = useQuery({ queryKey: ["study-stats", version, 30], queryFn: () => getStudyStats(30, version) });
 
   if (overviewQuery.isLoading) {
     return (
@@ -40,8 +52,21 @@ export default function AccountPage() {
     );
   }
 
-  const { profile, mastery, activity_heatmap, quiz_progression, expression_progression } =
-    overviewQuery.data;
+  const {
+    profile,
+    mastery,
+    activity_heatmap,
+    quiz_progression,
+    expression_progression,
+    level_progress,
+    streak,
+    success_rate,
+    upcoming,
+  } = overviewQuery.data;
+
+  const successTrend = success_rate.daily
+    .filter((d) => d.rate !== null)
+    .map((d) => ({ date: d.date, value: Math.round((d.rate ?? 0) * 100) }));
 
   const quizTrend = quiz_progression.map((p) => ({ date: p.date, value: p.avg_rating }));
   const exprTrend = expression_progression.map((p) => ({
@@ -57,11 +82,44 @@ export default function AccountPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tableau de bord</h1>
-        <p className="mt-1 text-muted-foreground">
-          Vue d&apos;ensemble de ta progression HSK.
-        </p>
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tableau de bord</h1>
+          <p className="mt-1 text-muted-foreground">
+            Vue d&apos;ensemble de ta progression HSK. Niveaux et mots selon le {VERSION_INFO[overviewQuery.data.hsk_version ?? "3.0"].label}.
+          </p>
+        </div>
+        <HskVersionToggle />
+      </div>
+
+      <KpiTiles streak={streak} successRate={success_rate} upcoming={upcoming} />
+
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-primary" />
+              Progression par niveau
+            </CardTitle>
+            <CardDescription>Part des mots de chaque niveau HSK maîtrisés, en cours et nouveaux.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <LevelProgress levels={level_progress} />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <CalendarRange className="h-5 w-5 text-primary" />
+              Révisions à venir
+            </CardTitle>
+            <CardDescription>Mots que l&apos;algorithme te redonnera chaque jour.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ReviewForecast upcoming={upcoming} />
+          </CardContent>
+        </Card>
       </div>
 
       <Card>
@@ -117,6 +175,26 @@ export default function AccountPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Target className="h-5 w-5 text-primary" />
+              Taux de réussite
+            </CardTitle>
+            <CardDescription>
+              Part de réponses « Juste » ou « Je connais », par jour (30 derniers jours).
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TrendChart
+              data={successTrend}
+              yDomain={[0, 100]}
+              unit="%"
+              emptyMessage="Fais un quiz : ton taux de réussite s'affichera ici."
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
             <CardTitle>Progression des quiz</CardTitle>
             <CardDescription>
               Note moyenne par jour (1 = Faux, 4 = Je connais).
@@ -146,9 +224,30 @@ export default function AccountPage() {
             />
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Nouveaux mots par jour</CardTitle>
+            <CardDescription>
+              Mots vus pour la première fois chaque jour (30 derniers jours, liste {VERSION_INFO[version].label}). Le pointillé
+              est ta moyenne : pour garder un rythme régulier, ni trop ni trop peu.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {stats30.data ? (
+              <NewWordsChart days={stats30.data.words.per_day} />
+            ) : (
+              <div className="h-48 animate-pulse rounded-md bg-muted/50" aria-hidden />
+            )}
+          </CardContent>
+        </Card>
       </div>
 
+      <StudyStatsSection />
+
       <MasterySections />
+
+      <DrawingsGallery />
 
       <AttemptsList limit={50} />
     </div>

@@ -8,7 +8,6 @@ works without hitting the network. Tests monkey-patch
 from __future__ import annotations
 
 import json
-from contextlib import contextmanager
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -62,7 +61,16 @@ class FakeMessages:
         *,
         subject_response: dict[str, Any] | None = None,
         correction_response: dict[str, Any] | None = None,
+        example_response: dict[str, Any] | None = None,
     ) -> None:
+        self.example_response = example_response or {
+            "sentence": "我爱我的家。",
+            "pinyin": "wǒ ài wǒ de jiā.",
+            "translation": "J'aime ma famille.",
+            "meaning_in_sentence": "爱 exprime ici l'affection pour sa famille.",
+            "general_meaning": "爱 signifie aimer ; très courant dès le HSK 1.",
+            "decomposition": "爱 contient 心 (cœur), qui porte l'idée d'affection.",
+        }
         self.subject_response = subject_response or {
             "subject": "Décrivez votre week-end idéal.",
             "keywords": ["周末", "去", "玩", "和"],
@@ -77,12 +85,64 @@ class FakeMessages:
             "strengths": ["Phrase simple et correcte."],
             "next_step_advice": "Essayez d'allonger en 2 phrases.",
         }
+        # HSK exercises: one valid short_mcq item, plus one broken item that must be dropped.
+        self.exercise_response: dict[str, Any] = {
+            "items": [
+                {
+                    "audio": "男：你喜欢喝茶吗？\n女：喜欢，我每天都喝。",
+                    "q": "女的每天喝什么？",
+                    "fr": "— Tu aimes le thé ? — Oui, j'en bois tous les jours.",
+                    "qfr": "Que boit la femme tous les jours ?",
+                    "options": ["茶", "水", "牛奶"],
+                    "ofr": ["du thé", "de l'eau", "du lait"],
+                    "answer": "A",
+                },
+                {"audio": "男：你好", "q": "?", "options": ["一", "二"], "answer": "C"},
+            ]
+        }
+        self.sentence_check_response: dict[str, Any] = {
+            "correct": True,
+            "uses_word": True,
+            "corrected": "我经常去图书馆。",
+            "pinyin": "wǒ jīngcháng qù túshūguǎn.",
+            "translation": "Je vais souvent à la bibliothèque.",
+            "explanation": "Phrase correcte et naturelle.",
+        }
+        # Classifier sentences: two valid, then one with an unknown classifier, one with a
+        # duplicated wrong option and one with out-of-level characters (all three dropped).
+        self.classifier_response: dict[str, Any] = {
+            "items": [
+                {"zh": "我有一{本}新书。", "wrong": ["家", "杯", "件"], "fr": "J'ai un nouveau livre."},
+                {"zh": "他喝了两{杯}水。", "wrong": ["本", "家", "件"], "fr": "Il a bu deux verres d'eau."},
+                {"zh": "我有一{艘}船。", "wrong": ["本", "张", "件"], "fr": "J'ai un bateau."},
+                {"zh": "我买了一{本}书。", "wrong": ["家", "家", "件"], "fr": "J'ai acheté un livre."},
+                {"zh": "我看了一{本}鲲鹏饕餮书。", "wrong": ["家", "杯", "件"], "fr": "?"},
+            ]
+        }
+        self.structure_check_response: dict[str, Any] = {
+            "correct": False, "uses_structure": True, "corrected": "虽然下雨，但是我们还是去了。", "pinyin": "", "translation": "",
+            "explanation": "Il manque 但是.", "model": "虽然很累，但是我很高兴。", "model_pinyin": "suīrán hěn lèi, dànshì wǒ hěn gāoxìng.",
+            "model_translation": "Bien que fatigué, je suis content.",
+        }
         self.create_calls: list[dict[str, Any]] = []
         self.stream_calls: list[dict[str, Any]] = []
 
     def create(self, **kwargs: Any) -> FakeMessage:
         self.create_calls.append(kwargs)
-        text = json.dumps(self.subject_response, ensure_ascii=False)
+        system_text = "".join(block.get("text", "") for block in kwargs.get("system", []))
+        if "Structure imposée" in str(kwargs.get("messages")) or "EMPLOI DE LA STRUCTURE" in system_text:
+            response = self.structure_check_response
+        elif "classificateurs (量词)" in system_text:
+            response = self.classifier_response
+        elif "concepteur d'épreuves" in system_text:
+            response = self.exercise_response
+        elif "用词造句" in system_text:
+            response = self.sentence_check_response
+        elif "phrase d'exemple" in system_text:
+            response = self.example_response
+        else:
+            response = self.subject_response
+        text = json.dumps(response, ensure_ascii=False)
         return FakeMessage(content=[FakeTextBlock(text=text)])
 
     def stream(self, **kwargs: Any) -> FakeStream:
@@ -97,10 +157,12 @@ class FakeAnthropic:
         *,
         subject_response: dict[str, Any] | None = None,
         correction_response: dict[str, Any] | None = None,
+        example_response: dict[str, Any] | None = None,
     ) -> None:
         self.messages = FakeMessages(
             subject_response=subject_response,
             correction_response=correction_response,
+            example_response=example_response,
         )
 
 

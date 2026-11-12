@@ -15,6 +15,8 @@ export type UserPublic = {
   email: string;
   locale: string;
   created_at: string;
+  /** Listed in ADMIN_EMAILS on the server (read-only Admin page). */
+  is_admin?: boolean;
 };
 
 export type TokenResponse = {
@@ -34,12 +36,21 @@ export type LoginRequest = {
   password: string;
 };
 
+export type HskVersion = "2.0" | "3.0";
+
 export type QuizPublic = {
   id: number;
   key: string;
   title: string;
   description: string | null;
   level: number | null;
+  version: HskVersion;
+};
+
+export type AccountSettings = {
+  hsk_version: HskVersion;
+  /** Vocabulary quiz (self-assessment): pinyin shown from the start of every card. */
+  pinyin_locked: boolean;
 };
 
 export type EntryPublic = {
@@ -57,6 +68,9 @@ export type RatingEnum = "again" | "hard" | "good" | "easy";
 export type RateRequest = {
   entry_id: number;
   rating: RatingEnum;
+  /** Optional context stored in the review history. */
+  mode?: "auto-assess" | "pinyin-input" | "hanzi-input";
+  elapsed_ms?: number;
 };
 
 export type MasterySnapshotResponse = {
@@ -183,10 +197,102 @@ export type ProfileSummary = {
   total_expressions: number;
 };
 
+export type LevelProgress = {
+  quiz_key: string;
+  title: string;
+  level: number | null;
+  total: number;
+  mastered: number;
+  learning: number;
+  new: number;
+};
+
+export type StreakSummary = {
+  current: number;
+  best: number;
+  studied_today: boolean;
+};
+
+export type SuccessRate = {
+  /** 0..1, null without reviews in the window. */
+  last_7_days: number | null;
+  last_30_days: number | null;
+  reviews_7_days: number;
+  reviews_30_days: number;
+  daily: { date: string; rate: number | null; count: number }[];
+  /** First day recorded in the review history. */
+  tracking_since: string | null;
+};
+
+export type UpcomingReviews = {
+  due_now: number;
+  /** Includes overdue. */
+  due_today: number;
+  due_tomorrow: number;
+  /** Cumulative over 7 days, includes overdue. */
+  due_next_7_days: number;
+  /** Day 0 includes overdue. */
+  forecast: { date: string; count: number }[];
+};
+
 export type AccountOverview = {
   profile: ProfileSummary;
   mastery: MasteryDistribution;
   activity_heatmap: ActivityCell[];
   quiz_progression: QuizDailyPoint[];
   expression_progression: ExpressionScorePoint[];
+  level_progress: LevelProgress[];
+  streak: StreakSummary;
+  success_rate: SuccessRate;
+  upcoming: UpcomingReviews;
+  /** HSK version the word-level numbers are computed for. */
+  hsk_version: HskVersion;
+};
+
+export type WordExampleItem = {
+  id: number;
+  entry_id: number;
+  hsk_level: number | null;
+  sentence: string;
+  pinyin: string;
+  translation: string;
+  meaning_in_sentence: string;
+  general_meaning: string;
+  /** Empty for examples generated before this field existed. */
+  decomposition: string;
+  created_at: string;
+};
+
+export type DrawingItem = {
+  id: number;
+  entry_id: number;
+  /** PNG data URL, usable directly as <img src>. */
+  image: string;
+  width: number;
+  height: number;
+  created_at: string;
+};
+
+export type DrawingWordGroup = {
+  entry_id: number;
+  hanzi: string;
+  pinyin: string;
+  translation: string;
+  hsk_level: number | null;
+  count: number;
+  latest_at: string;
+  /** The latest few drawings only (see `count` for the total). */
+  drawings: DrawingItem[];
+};
+
+export type DrawingGallery = {
+  total_drawings: number;
+  total_words: number;
+  words: DrawingWordGroup[];
+  has_more: boolean;
+};
+
+export type ExampleGenerateResponse = {
+  example: WordExampleItem;
+  quota_remaining: number;
 };

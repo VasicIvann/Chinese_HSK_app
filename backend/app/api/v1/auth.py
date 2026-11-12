@@ -5,7 +5,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.api.deps import get_current_user
+from app.api.deps import get_current_user, is_admin
 from app.core.security import create_access_token
 from app.db.session import get_db
 from app.models import User
@@ -20,6 +20,10 @@ from app.services.auth_service import (
 
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+
+def public_user(user: User) -> UserPublic:
+    return UserPublic.model_validate(user).model_copy(update={"is_admin": is_admin(user)})
 
 
 @router.post(
@@ -42,7 +46,7 @@ def register(payload: RegisterRequest, db: Session = Depends(get_db)) -> TokenRe
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=str(exc)) from exc
 
     token = create_access_token(subject=user.id)
-    return TokenResponse(access_token=token, user=UserPublic.model_validate(user))
+    return TokenResponse(access_token=token, user=public_user(user))
 
 
 @router.post(
@@ -60,7 +64,7 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse
         ) from exc
 
     token = create_access_token(subject=user.id)
-    return TokenResponse(access_token=token, user=UserPublic.model_validate(user))
+    return TokenResponse(access_token=token, user=public_user(user))
 
 
 @router.get(
@@ -69,4 +73,4 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse
     summary="Return the authenticated user's profile.",
 )
 def me(current_user: User = Depends(get_current_user)) -> UserPublic:
-    return UserPublic.model_validate(current_user)
+    return public_user(current_user)

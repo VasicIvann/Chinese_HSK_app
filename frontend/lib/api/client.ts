@@ -5,9 +5,12 @@
  * `npm run gen:api` script. The runtime here is intentionally minimal:
  * - Adds the JSON content-type
  * - Attaches the Bearer token from localStorage when available
+ * - Sends the browser time zone (X-Timezone) so "today" follows the user's clock
+ * - On 401 for an authenticated call, signals the auth context to sign out
  * - Throws an `ApiError` with the parsed detail on non-2xx responses
  */
 
+import { browserTimeZone, notifyUnauthorized } from "@/lib/auth/session-events";
 import { getStoredToken } from "@/lib/auth/storage";
 
 const DEFAULT_BASE_URL =
@@ -47,10 +50,16 @@ export async function apiRequest<TResponse>(
   if (body !== undefined) {
     headers["Content-Type"] = "application/json";
   }
+  const timeZone = browserTimeZone();
+  if (timeZone) {
+    headers["X-Timezone"] = timeZone;
+  }
+  let sentToken = false;
   if (withAuth) {
     const bearer = token ?? (typeof window !== "undefined" ? getStoredToken() : null);
     if (bearer) {
       headers["Authorization"] = `Bearer ${bearer}`;
+      sentToken = true;
     }
   }
 
@@ -62,6 +71,9 @@ export async function apiRequest<TResponse>(
   });
 
   if (!res.ok) {
+    if (res.status === 401 && sentToken) {
+      notifyUnauthorized();
+    }
     let detail = "";
     try {
       const payload = await res.json();

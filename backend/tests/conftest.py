@@ -24,7 +24,7 @@ from app.core.config import get_settings  # noqa: E402
 from app.db.base import Base, register_models  # noqa: E402
 from app.db.session import engine  # noqa: E402
 from app.main import app  # noqa: E402
-from app.models import Entry, Quiz  # noqa: E402
+from app.models import Entry, Quiz, QuizEntry  # noqa: E402
 
 
 get_settings.cache_clear()
@@ -51,6 +51,14 @@ def _truncate_between_tests() -> Iterator[None]:
 @pytest.fixture()
 def client() -> TestClient:
     return TestClient(app)
+
+
+def link_entries_to_home_quiz(session) -> None:
+    """List every entry under its `quiz_id` (what the migrations do for real data)."""
+    linked = {(q, e) for q, e in session.query(QuizEntry.quiz_id, QuizEntry.entry_id)}
+    for entry in session.query(Entry):
+        if (entry.quiz_id, entry.id) not in linked:
+            session.add(QuizEntry(quiz_id=entry.quiz_id, entry_id=entry.id))
 
 
 @pytest.fixture()
@@ -84,4 +92,6 @@ def seed_quizzes() -> None:
                 ),
             ]
         )
+        session.flush()
+        link_entries_to_home_quiz(session)
         session.commit()

@@ -6,6 +6,7 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.core.security import JWTError, decode_access_token
 from app.db.session import get_db
 from app.models import User
@@ -16,10 +17,27 @@ from app.services.expression_service import get_daily_usage
 bearer_scheme = HTTPBearer(auto_error=True)
 
 
-DAILY_QUOTAS: dict[str, int] = {
-    "expression_correction": 20,
-    "subject_generation": 50,
-}
+# Same daily limit for every kind of Claude call; admins (ADMIN_EMAILS) get a higher one.
+DAILY_QUOTA = 15
+ADMIN_DAILY_QUOTA = 100
+QUOTA_KINDS = (
+    "expression_correction",  # Expression: text correction
+    "subject_generation",  # Expression: new subject
+    "example_generation",  # Comprehension: generated example sentence
+    "exercise_generation",  # Listening / Writing new set + Classifiers "more sentences"
+    "exercise_check",  # Writing: sentence with an imposed word or structure
+)
+
+
+def daily_quota(user: User, kind: str) -> int:
+    """Today's limit for `kind` for this user (0 = unlimited, for unknown kinds)."""
+    if kind not in QUOTA_KINDS:
+        return 0
+    return ADMIN_DAILY_QUOTA if is_admin(user) else DAILY_QUOTA
+
+
+def quota_remaining(user: User, kind: str, used: int | None) -> int:
+    return max(0, daily_quota(user, kind) - int(used or 0))
 
 
 def get_current_user(
@@ -67,7 +85,7 @@ def enforce_quota(kind: str):
         user: User = Depends(get_current_user),
         db: Session = Depends(get_db),
     ) -> User:
-        limit = DAILY_QUOTAS.get(kind, 0)
+        limit = daily_quota(user, kind)
         if limit <= 0:
             return user
         usage = get_daily_usage(db, user.id, kind)
@@ -84,4 +102,25 @@ def enforce_quota(kind: str):
     return _check
 
 
-__all__ = ["DAILY_QUOTAS", "bearer_scheme", "enforce_quota", "get_current_user"]
+__all__ = [
+    "ADMIN_DAILY_QUOTA",
+    "DAILY_QUOTA",
+    "QUOTA_KINDS",
+    "bearer_scheme",
+    "daily_quota",
+    "enforce_quota",
+    "get_current_user",
+    "quota_remaining",
+]
+
+
+def is_admin(user: User) -> bool:
+    """Admins are listed by e-mail in the ADMIN_EMAILS environment variable."""
+    return (user.email or "").strip().lower() in get_settings().admin_emails_set
+
+
+def require_admin(user: User = Depends(get_current_user)) -> User:
+    """Dependency for the read-only Admin endpoints: 403 for everybody else."""
+    if not is_admin(user):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Accès réservé à l'administrateur.")
+    return user

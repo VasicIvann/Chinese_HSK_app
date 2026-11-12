@@ -1,0 +1,315 @@
+# Classificateurs du niveau 3 (HSK 3.0). Voir ../README.md pour le format.
+
+- hanzi: 把
+  pinyin: bǎ
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Les objets qu'on prend par une poignée : chaise, parapluie, clé, couteau."
+  explanation: >-
+    把 (« saisir ») compte ce qui a un manche ou une poignée : 一把椅子, 一把伞, 一把钥匙, 一把刀.
+  nouns: ["椅子|chaise|张", "伞|parapluie", "钥匙|clé", "刀|couteau"]
+  examples:
+    - ["外面下雨了，带一把伞吧。", "Il pleut dehors, prends un parapluie."]
+    - ["教室里有三十把椅子。", "Il y a trente chaises dans la salle."]
+  traps: >-
+    把 est aussi la particule de la phrase en 把 (把门关上). Une table : 张 ; une chaise : 把.
+  sentences:
+    - "教室里有三十{把}椅子。 | 本 条 件 杯 辆 | Il y a trente chaises dans la salle."
+    - "外面下雨了，带一{把}伞吧。 | 本 张 件 杯 双 | Il pleut dehors, prends un parapluie."
+    - "这{把}椅子是谁的？ | 本 条 件 杯 辆 | À qui est cette chaise ?"
+    - "我买了一{把}新伞。 | 本 张 件 杯 双 | J'ai acheté un nouveau parapluie."
+
+- hanzi: 段
+  pinyin: duàn
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Une portion : de temps (一段时间), de chemin (一段路), de texte ou de paroles."
+  explanation: >-
+    段 compte un morceau de quelque chose qui s'étend : 一段时间 (un certain temps), 一段路
+    (un bout de chemin), 一段话 (un passage, quelques paroles).
+  nouns: ["时间|temps (une période)", "路|chemin (un bout)", "话|paroles (un passage)|句"]
+  examples:
+    - ["我在北京住过一段时间。", "J'ai vécu un certain temps à Pékin."]
+    - ["这段时间我很忙。", "Ces temps-ci, je suis très occupé."]
+  traps: >-
+    一段路 = un bout de chemin ; 一条路 = une route. 一句话 = une phrase ; 一段话 = un passage.
+  sentences:
+    - "我在北京住过一{段}时间。 | 本 张 件 辆 双 | J'ai vécu un certain temps à Pékin."
+    - "从这儿到车站还有一{段}路。 | 本 张 件 辆 双 | D'ici à la gare, il reste un bout de chemin."
+    - "请读一下这{段}话。 | 本 张 件 辆 双 | Lis ce passage, s'il te plaît."
+    - "这{段}时间我很忙。 | 本 张 件 辆 双 | Ces temps-ci, je suis très occupé."
+
+- hanzi: 节
+  pinyin: jié
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les cours (一节课) ; les sections, les wagons."
+  explanation: >-
+    节 compte les séances de cours : 我今天有四节课. Il compte aussi les parties d'un tout
+    découpé : 一节车厢 (un wagon). C'est aussi « fête » (春节).
+  nouns: ["课|cours (une séance)"]
+  examples:
+    - ["我今天上午有两节课。", "J'ai deux cours ce matin."]
+  traps: >-
+    Une matière qu'on étudie se compte avec 门 (一门课, niveau 4) ; 节 = une séance.
+  sentences:
+    - "我今天上午有两{节}课。 | 本 张 件 辆 双 | J'ai deux cours ce matin."
+    - "一{节}课四十五分钟。 | 本 张 件 辆 双 | Un cours dure quarante-cinq minutes."
+    - "下一{节}是数学课。 | 本 张 件 辆 双 | Le prochain cours est un cours de maths."
+
+- hanzi: 句
+  pinyin: jù
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Les phrases et les paroles : 一句话, 几句汉语."
+  explanation: >-
+    句 compte les phrases : 这句话是什么意思？, 我只会说几句汉语. 一句话也没说 = ne pas dire un mot.
+  nouns: ["话|parole, phrase|段"]
+  examples:
+    - ["这句话是什么意思？", "Que veut dire cette phrase ?"]
+    - ["他一句话也没说。", "Il n'a pas dit un mot."]
+  sentences:
+    - "我只会说几{句}汉语。 | 本 张 件 辆 双 | Je ne sais dire que quelques phrases de chinois."
+    - "这{句}话是什么意思？ | 本 张 件 辆 双 | Que veut dire cette phrase ?"
+    - "他一{句}话也没说。 | 本 张 件 辆 双 | Il n'a pas dit un mot."
+    - "我想跟你说几{句}话。 | 本 张 只 辆 双 | Je voudrais te dire quelques mots."
+
+- hanzi: 辆
+  pinyin: liàng
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Les véhicules à roues : voiture, vélo, bus, taxi."
+  explanation: >-
+    辆 compte les véhicules terrestres : 一辆车, 一辆自行车, 一辆出租车, 一辆公共汽车.
+  nouns: ["车|voiture", "自行车|vélo", "出租车|taxi", "汽车|automobile", "公共汽车|bus"]
+  examples:
+    - ["我爸爸买了一辆新车。", "Mon père a acheté une nouvelle voiture."]
+  traps: >-
+    Un avion : 一架飞机. Le prochain bus (un départ) : 下一班车.
+  sentences:
+    - "我爸爸买了一{辆}新车。 | 本 张 件 双 把 | Mon père a acheté une nouvelle voiture."
+    - "门口有两{辆}出租车。 | 本 张 件 双 杯 | Il y a deux taxis devant l'entrée."
+    - "这{辆}自行车是谁的？ | 本 张 件 双 杯 | À qui est ce vélo ?"
+    - "我们家有一{辆}汽车。 | 本 张 只 双 杯 | Nous avons une voiture."
+
+- hanzi: 声
+  pinyin: shēng
+  kind: verbal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Un son, un cri, une parole brève : 叫了一声, 说一声 (prévenir)."
+  explanation: >-
+    声 compte les sons qu'on émet : 他大叫了一声 (il a poussé un cri). 跟我说一声 = préviens-moi.
+  nouns: []
+  examples:
+    - ["你走的时候跟我说一声。", "Préviens-moi quand tu pars."]
+  sentences:
+    - "你走的时候跟我说一{声}。 | 本 张 件 辆 双 | Préviens-moi quand tu pars."
+    - "他大叫了一{声}。 | 本 张 件 辆 双 | Il a poussé un cri."
+    - "外面有人叫了我两{声}。 | 本 张 件 辆 双 | Quelqu'un dehors m'a appelé deux fois."
+
+- hanzi: 双
+  pinyin: shuāng
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Une paire d'objets utilisés ensemble : chaussures, chaussettes, baguettes, yeux, mains."
+  explanation: >-
+    双 compte ce qui va par deux : 一双鞋, 一双袜子, 一双筷子, 一双眼睛, 一双手.
+  nouns: ["鞋|chaussures", "袜子|chaussettes", "筷子|baguettes", "眼睛|yeux|只"]
+  examples:
+    - ["我想买一双新鞋。", "Je voudrais acheter une nouvelle paire de chaussures."]
+  traps: >-
+    Une seule chaussure : 一只鞋. Deux personnes formant un couple : 一对.
+  sentences:
+    - "我想买一{双}新鞋。 | 本 张 件 辆 杯 | Je voudrais acheter une nouvelle paire de chaussures."
+    - "请给我一{双}筷子。 | 本 张 件 辆 杯 | Une paire de baguettes, s'il vous plaît."
+    - "她有一{双}大眼睛。 | 本 张 件 辆 杯 | Elle a de grands yeux."
+    - "这{双}鞋多少钱？ | 本 张 件 辆 杯 | Combien coûte cette paire de chaussures ?"
+
+- hanzi: 张
+  pinyin: zhāng
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Les objets plats ou à surface plane : papier, photo, billet, carte, table, lit."
+  explanation: >-
+    张 (« étendre ») compte ce qui est plat : 一张纸, 一张照片, 一张票, 一张地图, et les meubles à
+    surface plane : 一张桌子, 一张床.
+  nouns: ["纸|papier", "照片|photo", "票|billet", "桌子|table", "床|lit", "地图|carte (géographique)"]
+  examples:
+    - ["请给我一张纸。", "Donne-moi une feuille de papier."]
+    - ["我买了两张电影票。", "J'ai acheté deux places de cinéma."]
+  traps: >-
+    Une chaise se compte plutôt avec 把, un livre avec 本.
+  sentences:
+    - "请给我一{张}纸。 | 本 条 件 辆 双 | Donne-moi une feuille de papier."
+    - "我买了两{张}电影票。 | 本 条 件 辆 双 | J'ai acheté deux places de cinéma."
+    - "这{张}照片是在北京照的。 | 本 条 件 辆 双 | Cette photo a été prise à Pékin."
+    - "房间里只有一{张}床。 | 本 条 件 辆 双 | Il n'y a qu'un lit dans la chambre."
+    - "我们要一{张}大桌子。 | 本 条 件 辆 双 | Nous voudrions une grande table."
+
+- hanzi: 种
+  pinyin: zhǒng
+  kind: nominal
+  level: {"3.0": 3, "2.0": 3}
+  usage: "Une sorte, un type : 这种水果, 三种颜色."
+  explanation: >-
+    种 classe plutôt qu'il ne compte : 这种水果 (ce type de fruit), 三种颜色 (trois couleurs),
+    哪种？ (quel genre ?). Il va avec presque tous les noms.
+  nouns: ["颜色|couleur", "水果|fruit (sorte)", "语言|langue"]
+  examples:
+    - ["你喜欢哪种颜色？", "Quelle couleur préfères-tu ?"]
+  traps: >-
+    一种鱼 = une espèce de poisson ; 一条鱼 = un poisson.
+  sentences:
+    - "这{种}水果很好吃。 | 本 张 件 辆 双 | Ce type de fruit est délicieux."
+    - "我会说三{种}语言。 | 本 张 件 辆 双 | Je parle trois langues."
+    - "你喜欢哪{种}颜色？ | 本 张 件 辆 双 | Quelle couleur préfères-tu ?"
+    - "这{种}天气不能出去玩。 | 本 张 件 辆 双 | Avec ce temps, on ne peut pas sortir jouer."
+
+- hanzi: 起
+  pinyin: qǐ
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les événements et incidents : un accident (一起事故), une affaire."
+  explanation: >-
+    起 compte les faits qui « surviennent » : 一起交通事故 (un accident de la route). C'est aussi le
+    verbe « se lever » (起床).
+  nouns: ["事故|accident"]
+  examples:
+    - ["这里发生了一起事故。", "Un accident s'est produit ici."]
+  sentences:
+    - "这里发生了一{起}事故。 | 本 张 件 辆 双 | Un accident s'est produit ici."
+    - "这{起}事故是怎么发生的？ | 本 张 件 辆 双 | Comment cet accident s'est-il produit ?"
+
+- hanzi: 行
+  pinyin: háng
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les lignes d'un texte, les rangées : 一行字."
+  explanation: >-
+    行 (prononcé háng) compte les lignes : 两行字 (deux lignes de caractères), 第三行 (la troisième
+    ligne).
+  nouns: ["字|caractères (une ligne)"]
+  examples:
+    - ["请看第三行字。", "Regarde la troisième ligne."]
+  traps: >-
+    Ne pas confondre avec 行 xíng « ça va, d'accord ».
+  sentences:
+    - "请看第三{行}字。 | 件 辆 双 杯 家 | Regarde la troisième ligne."
+    - "黑板上写着两{行}字。 | 件 辆 双 杯 只 | Deux lignes de caractères sont écrites au tableau."
+    - "这一{行}字我不认识。 | 件 辆 双 杯 只 | Je ne sais pas lire cette ligne de caractères."
+
+- hanzi: 架
+  pinyin: jià
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les avions, les pianos et les machines montées sur un cadre."
+  explanation: >-
+    架 (« cadre, support ») compte les avions (一架飞机) et certains gros instruments (一架钢琴).
+  nouns: ["飞机|avion", "钢琴|piano"]
+  examples:
+    - ["天上有一架飞机。", "Il y a un avion dans le ciel."]
+  traps: >-
+    Un vol à prendre : 一班飞机 ; l'appareil lui-même : 一架飞机.
+  sentences:
+    - "天上有一{架}飞机。 | 本 张 件 双 杯 | Il y a un avion dans le ciel."
+    - "那{架}飞机飞得很高。 | 本 张 件 双 杯 | Cet avion vole très haut."
+    - "她家有一{架}钢琴。 | 本 张 件 双 杯 | Elle a un piano chez elle. | extra=钢琴"
+
+- hanzi: 群
+  pinyin: qún
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Un groupe, une foule, un troupeau : 一群人, 一群孩子, 一群鸟."
+  explanation: >-
+    群 compte un ensemble de personnes ou d'animaux réunis : 一群学生, 一群孩子, 一群鸟, 一群羊.
+  nouns: ["孩子|enfants (un groupe)", "鸟|oiseaux (une volée)", "羊|moutons (un troupeau)"]
+  examples:
+    - ["公园里有一群孩子在玩。", "Un groupe d'enfants joue dans le parc."]
+  sentences:
+    - "公园里有一{群}孩子在玩。 | 本 张 件 辆 杯 | Un groupe d'enfants joue dans le parc."
+    - "一{群}鸟从天上飞过。 | 本 张 件 辆 杯 | Une volée d'oiseaux passe dans le ciel."
+    - "门口站着一{群}人。 | 本 张 件 辆 杯 | Un groupe de gens se tient à l'entrée."
+
+- hanzi: 束
+  pinyin: shù
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Un bouquet, un faisceau : 一束花, 一束光."
+  explanation: >-
+    束 (« lier ») compte ce qui est réuni en botte : 一束花 (un bouquet de fleurs), 一束光
+    (un rayon de lumière).
+  nouns: ["花|fleurs (un bouquet)|把"]
+  examples:
+    - ["我送给妈妈一束花。", "J'ai offert un bouquet de fleurs à ma mère."]
+  sentences:
+    - "我送给妈妈一{束}花。 | 本 张 件 辆 杯 | J'ai offert un bouquet de fleurs à ma mère."
+    - "这{束}花真漂亮！ | 本 张 件 辆 杯 | Ce bouquet est vraiment beau !"
+
+- hanzi: 台
+  pinyin: tái
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les machines et appareils : ordinateur, télévision, climatiseur, réfrigérateur."
+  explanation: >-
+    台 compte les appareils : 一台电脑, 一台电视, 一台空调, 一台冰箱.
+  nouns: ["电脑|ordinateur", "电视|télévision", "空调|climatiseur", "冰箱|réfrigérateur"]
+  examples:
+    - ["我买了一台新电脑。", "J'ai acheté un nouvel ordinateur."]
+  traps: >-
+    On entend aussi 一个电脑 à l'oral ; 台 est la forme attendue.
+  sentences:
+    - "我买了一{台}新电脑。 | 本 张 件 辆 双 | J'ai acheté un nouvel ordinateur."
+    - "家里有两{台}电视。 | 本 张 件 辆 双 | Il y a deux télévisions à la maison."
+    - "这{台}空调太旧了。 | 本 张 件 辆 双 | Ce climatiseur est trop vieux."
+    - "我们需要一{台}新冰箱。 | 本 张 件 辆 双 | Nous avons besoin d'un nouveau réfrigérateur."
+
+- hanzi: 支
+  pinyin: zhī
+  kind: nominal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les objets longs et fins (stylos, crayons) ; une chanson, une équipe."
+  explanation: >-
+    支 compte les objets fins comme des bâtons : 一支笔, 一支铅笔, 一支烟. Aussi : 一支歌
+    (une chanson), 一支球队 (une équipe).
+  nouns: ["笔|stylo", "铅笔|crayon", "歌|chanson"]
+  examples:
+    - ["我借你一支笔。", "Je te prête un stylo."]
+  traps: >-
+    Ne pas confondre avec 只 zhī (animaux), qui se prononce pareil.
+  sentences:
+    - "我借你一{支}笔。 | 本 张 件 辆 双 | Je te prête un stylo."
+    - "他唱了一{支}歌。 | 本 张 件 辆 双 | Il a chanté une chanson."
+    - "桌子上有三{支}铅笔。 | 本 张 件 辆 双 | Il y a trois crayons sur la table."
+
+- hanzi: 顿
+  pinyin: dùn
+  kind: verbal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Les repas (吃一顿饭) ; une réprimande (说了他一顿)."
+  explanation: >-
+    顿 compte les repas : 一天吃三顿饭, 我请你吃一顿饭. Il compte aussi une série de reproches ou
+    de coups : 被妈妈说了一顿 (se faire gronder).
+  nouns: ["饭|repas"]
+  examples:
+    - ["今天我请你吃一顿饭。", "Aujourd'hui, je t'invite à manger."]
+  sentences:
+    - "我们一天吃三{顿}饭。 | 本 张 件 辆 双 | Nous mangeons trois repas par jour."
+    - "今天我请你吃一{顿}饭。 | 本 张 件 辆 双 | Aujourd'hui, je t'invite à manger."
+    - "这{顿}饭真好吃。 | 本 张 件 辆 双 | Ce repas était vraiment bon."
+    - "他被妈妈说了一{顿}。 | 本 张 件 辆 双 | Il s'est fait gronder par sa mère."
+
+- hanzi: 眼
+  pinyin: yǎn
+  kind: verbal
+  level: {"3.0": 3, "2.0": null}
+  usage: "Un coup d'œil : 看一眼."
+  explanation: >-
+    眼 compte les regards : 看了我一眼 (il m'a jeté un regard), 你帮我看一眼 (jette un œil pour moi).
+    C'est aussi le nom « œil » (眼睛).
+  nouns: []
+  examples:
+    - ["他看了我一眼。", "Il m'a jeté un regard."]
+  sentences:
+    - "他看了我一{眼}。 | 本 张 件 辆 双 | Il m'a jeté un regard."
+    - "你帮我看一{眼}，我的手机在不在桌子上？ | 本 张 件 辆 双 | Jette un œil pour moi : mon téléphone est-il sur la table ?"
+    - "她看了那件衣服一{眼}就喜欢上了。 | 本 张 辆 双 杯 | Elle a jeté un regard à ce vêtement et l'a tout de suite adoré."

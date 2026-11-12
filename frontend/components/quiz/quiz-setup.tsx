@@ -2,23 +2,58 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Check, History, Layers, Lock, Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 
+import { HskVersionToggle } from "@/components/hsk-version-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getQuizzes, getStats } from "@/lib/api/endpoints";
+import { getQuizzes, getStats, MAX_SESSION_SIZE } from "@/lib/api/endpoints";
 import type { QuizMode } from "@/lib/hooks/use-quiz-session";
+import { quizLabel, useHskVersion, usePinyinLock, VERSION_INFO } from "@/lib/hsk-version";
 import { cn } from "@/lib/utils";
 
+/** Which words a session may use: everything, never-seen words only, or already-seen words only. */
+export type WordSet = "all" | "new" | "seen";
+
+export type QuizStartParams = {
+  quizzes: string[];
+  count: number;
+  mode: QuizMode;
+  words: WordSet;
+};
+
+const WORD_SETS: { value: WordSet; label: string; description: string; icon: typeof Layers }[] = [
+  {
+    value: "all",
+    label: "Tous les mots",
+    description: "Les mots à réviser en priorité, avec quelques nouveaux mots.",
+    icon: Layers,
+  },
+  {
+    value: "new",
+    label: "Nouveaux uniquement",
+    description: "Seulement des mots que tu n'as jamais vus dans tes quiz.",
+    icon: Sparkles,
+  },
+  {
+    value: "seen",
+    label: "Révision uniquement",
+    description: "Aucun nouveau mot : les mots déjà vus, ceux à réviser d'abord.",
+    icon: History,
+  },
+];
+
 type Props = {
-  onStart: (params: { quiz: string; count: number; mode: QuizMode }) => void;
+  onStart: (params: QuizStartParams) => void;
   isLoading?: boolean;
 };
 
-const COUNT_OPTIONS = [5, 10, 15, 20];
+const COUNT_OPTIONS = [10, 20, 50];
+
+type CountChoice = number | "max" | "custom";
 
 const MODES: { value: QuizMode; label: string; description: string }[] = [
   {
@@ -31,19 +66,72 @@ const MODES: { value: QuizMode; label: string; description: string }[] = [
     label: "Saisie pinyin",
     description: "Tu tapes le pinyin avant de juger. Force la production active.",
   },
+  {
+    value: "hanzi-input",
+    label: "Saisie hanzi",
+    description: "Tu vois la traduction et tu écris le mot en caractères. Le sens inverse.",
+  },
 ];
 
 export function QuizSetup({ onStart, isLoading }: Props) {
-  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null);
-  const [count, setCount] = useState(10);
+  const { version } = useHskVersion();
+  // Selection kept per version: switching back restores it.
+  const [selectionByVersion, setSelectionByVersion] = useState<Record<string, string[]>>({});
+  const selectedQuizzes = selectionByVersion[version] ?? [];
+  const setSelectedQuizzes = (update: (current: string[]) => string[]) =>
+    setSelectionByVersion((all) => ({ ...all, [version]: update(all[version] ?? []) }));
+  const [countChoice, setCountChoice] = useState<CountChoice>(10);
+  const [customCount, setCustomCount] = useState("");
+  const [words, setWords] = useState<WordSet>("all");
   const [mode, setMode] = useState<QuizMode>("auto-assess");
+  const pinyinLock = usePinyinLock();
+  // Showing the pinyin would give the answer away when it has to be typed.
+  const lockApplies = mode !== "pinyin-input";
 
-  const quizzesQuery = useQuery({ queryKey: ["quizzes"], queryFn: getQuizzes });
+  const quizzesQuery = useQuery({ queryKey: ["quizzes", version], queryFn: () => getQuizzes(version) });
   const statsQuery = useQuery({
-    queryKey: ["srs-stats", selectedQuiz ?? "all"],
-    queryFn: () => getStats(selectedQuiz ?? undefined),
+    queryKey: ["srs-stats", version, ...selectedQuizzes],
+    queryFn: () => getStats(selectedQuizzes),
     enabled: !quizzesQuery.isLoading,
   });
+
+  const toggleQuiz = (key: string) => {
+    const order = quizzesQuery.data?.map((q) => q.key) ?? [];
+    setSelectedQuizzes((current) =>
+      current.includes(key)
+        ? current.filter((k) => k !== key)
+        : [...current, key].sort((a, b) => order.indexOf(a) - order.indexOf(b))
+    );
+  };
+
+  const stats = statsQuery.data;
+  const hasSelection = selectedQuizzes.length > 0;
+  // Words the session can draw from with the current settings (null until stats load).
+  const available =
+    hasSelection && stats
+      ? words === "new"
+        ? stats.new
+        : words === "seen"
+          ? stats.due + stats.upcoming
+          : stats.due + stats.new + stats.upcoming
+      : null;
+  const maxCount = available === null ? null : Math.min(available, MAX_SESSION_SIZE);
+
+  const parsedCustom = /^\d+$/.test(customCount.trim()) ? Number(customCount.trim()) : NaN;
+  const requested =
+    countChoice === "max"
+      ? maxCount
+      : countChoice === "custom"
+        ? Number.isFinite(parsedCustom) && parsedCustom >= 1
+          ? Math.min(parsedCustom, MAX_SESSION_SIZE)
+          : null
+        : countChoice;
+  const finalCount = requested !== null && maxCount !== null ? Math.min(requested, maxCount) : requested;
+
+  const customInvalid = countChoice === "custom" && customCount.trim() !== "" && requested === null;
+  const nothingLeft = available === 0;
+  const canStart =
+    hasSelection && !isLoading && finalCount !== null && finalCount >= 1 && !nothingLeft;
 
   return (
     <motion.div
@@ -70,9 +158,15 @@ export function QuizSetup({ onStart, isLoading }: Props) {
       )}
 
       <Card>
-        <CardHeader>
-          <CardTitle>Choisis ton quiz</CardTitle>
-          <CardDescription>Le niveau HSK que tu veux travailler.</CardDescription>
+        <CardHeader className="flex-row flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="flex min-w-0 flex-col gap-1.5">
+            <CardTitle>Choisis tes niveaux</CardTitle>
+            <CardDescription>
+              Un ou plusieurs niveaux HSK : les mots sont mélangés dans la même session.
+              <span className="block">{VERSION_INFO[version].hint}</span>
+            </CardDescription>
+          </div>
+          <HskVersionToggle />
         </CardHeader>
         <CardContent className="flex flex-wrap gap-2">
           {quizzesQuery.isLoading ? (
@@ -82,17 +176,71 @@ export function QuizSetup({ onStart, isLoading }: Props) {
               <Skeleton className="h-11 w-24" />
             </>
           ) : (
-            quizzesQuery.data?.map((quiz) => (
-              <Button
-                key={quiz.key}
-                type="button"
-                variant={selectedQuiz === quiz.key ? "default" : "outline"}
-                size="lg"
-                onClick={() => setSelectedQuiz(quiz.key)}
-              >
-                {quiz.title}
-              </Button>
-            ))
+            quizzesQuery.data?.map((quiz) => {
+              const active = selectedQuizzes.includes(quiz.key);
+              return (
+                <Button
+                  key={quiz.key}
+                  type="button"
+                  variant={active ? "default" : "outline"}
+                  size="lg"
+                  aria-pressed={active}
+                  onClick={() => toggleQuiz(quiz.key)}
+                >
+                  {active && <Check className="h-4 w-4" />}
+                  {quiz.title}
+                </Button>
+              );
+            })
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Mots</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div role="radiogroup" aria-label="Mots de la session" className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+            {WORD_SETS.map((w) => {
+              const Icon = w.icon;
+              const count = stats ? (w.value === "new" ? stats.new : w.value === "seen" ? stats.due + stats.upcoming : null) : null;
+              return (
+                <button
+                  key={w.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={words === w.value}
+                  onClick={() => setWords(w.value)}
+                  className={cn(
+                    "flex-1 rounded-lg border-2 p-4 text-left transition-colors",
+                    words === w.value ? "border-primary bg-accent/50" : "border-border hover:border-primary/50"
+                  )}
+                >
+                  <span className="flex items-center gap-2 font-semibold">
+                    <Icon className="h-4 w-4 text-primary" />
+                    {w.label}
+                  </span>
+                  <span className="mt-1 block text-sm text-muted-foreground">{w.description}</span>
+                  {hasSelection && count !== null && (
+                    <span className="mt-1 block text-xs text-muted-foreground">
+                      {count} mot{count > 1 ? "s" : ""}
+                      {w.value === "seen" && stats ? ` · ${stats.due} à réviser maintenant` : ""}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+          {words === "new" && hasSelection && nothingLeft && (
+            <p className="mt-3 text-sm text-destructive">
+              Tu as déjà vu tous les mots de ces niveaux. Choisis un autre mode ou ajoute un niveau.
+            </p>
+          )}
+          {words === "seen" && hasSelection && nothingLeft && (
+            <p className="mt-3 text-sm text-destructive">
+              Tu n&apos;as encore vu aucun mot de ces niveaux : commence par « Tous les mots » ou « Nouveaux uniquement ».
+            </p>
           )}
         </CardContent>
       </Card>
@@ -119,24 +267,94 @@ export function QuizSetup({ onStart, isLoading }: Props) {
             </button>
           ))}
         </CardContent>
+        <CardContent className="border-t border-border pt-4">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={lockApplies && pinyinLock.locked}
+            disabled={!lockApplies}
+            onClick={pinyinLock.toggle}
+            className="flex w-full items-center justify-between gap-4 text-left disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <span>
+              <span className="flex items-center gap-2 font-semibold">
+                <Lock className="h-4 w-4 text-primary" />
+                Pinyin toujours affiché
+              </span>
+              <span className="mt-1 block text-sm text-muted-foreground">
+                {lockApplies
+                  ? mode === "hanzi-input"
+                    ? "Le pinyin apparaît sous la traduction dès le début de la carte. Réglage gardé sur ton compte."
+                    : "Le pinyin apparaît sous chaque mot dès le début de la carte. Réglage gardé sur ton compte."
+                  : "Indisponible en saisie pinyin : le pinyin affiché donnerait la réponse."}
+              </span>
+            </span>
+            <SwitchTrack on={lockApplies && pinyinLock.locked} />
+          </button>
+        </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
           <CardTitle>Nombre de questions</CardTitle>
+          {available !== null && (
+            <CardDescription>
+              {available} mot{available > 1 ? "s" : ""} disponible{available > 1 ? "s" : ""}
+              {words === "new" ? " jamais vus" : words === "seen" ? " déjà vus" : ""} dans {selectedQuizzes.map(quizLabel).join(" + ")} ({VERSION_INFO[version].label}).
+            </CardDescription>
+          )}
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-2">
-          {COUNT_OPTIONS.map((opt) => (
+        <CardContent className="flex flex-col gap-3">
+          <div className="flex flex-wrap gap-2">
+            {COUNT_OPTIONS.map((opt) => (
+              <Button
+                key={opt}
+                type="button"
+                variant={countChoice === opt ? "default" : "outline"}
+                onClick={() => setCountChoice(opt)}
+                size="lg"
+              >
+                {opt}
+              </Button>
+            ))}
             <Button
-              key={opt}
               type="button"
-              variant={count === opt ? "default" : "outline"}
-              onClick={() => setCount(opt)}
+              variant={countChoice === "max" ? "default" : "outline"}
+              onClick={() => setCountChoice("max")}
               size="lg"
+              disabled={!hasSelection}
             >
-              {opt}
+              MAX{maxCount !== null ? ` (${maxCount})` : ""}
             </Button>
-          ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <Input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              placeholder="Autre nombre (ex. 27)"
+              aria-label="Nombre de questions personnalisé"
+              value={customCount}
+              onFocus={() => setCountChoice("custom")}
+              onChange={(e) => {
+                setCustomCount(e.target.value.replace(/[^0-9]/g, ""));
+                setCountChoice("custom");
+              }}
+              className={cn(
+                "max-w-56",
+                countChoice === "custom" && "border-primary",
+                customInvalid && "border-destructive"
+              )}
+            />
+          </div>
+          {countChoice === "custom" &&
+            requested !== null &&
+            maxCount !== null &&
+            requested > maxCount && (
+              <p className="text-sm text-muted-foreground">
+                Seulement {maxCount} mots disponibles : la session en aura {maxCount}.
+              </p>
+            )}
         </CardContent>
       </Card>
 
@@ -144,14 +362,38 @@ export function QuizSetup({ onStart, isLoading }: Props) {
         <Button
           size="xl"
           className="w-full"
-          disabled={!selectedQuiz || isLoading}
-          onClick={() => selectedQuiz && onStart({ quiz: selectedQuiz, count, mode })}
+          disabled={!canStart}
+          onClick={() =>
+            canStart &&
+            finalCount !== null &&
+            onStart({ quizzes: selectedQuizzes, count: finalCount, mode, words })
+          }
         >
           <Play className="h-5 w-5" />
-          {isLoading ? "Préparation…" : "Lancer la session"}
+          {isLoading
+            ? "Préparation…"
+            : finalCount !== null && hasSelection
+              ? `Lancer la session (${finalCount})`
+              : "Lancer la session"}
         </Button>
       </div>
     </motion.div>
+  );
+}
+
+function SwitchTrack({ on }: { on: boolean }) {
+  return (
+    <span
+      aria-hidden
+      className={cn("relative h-7 w-12 shrink-0 rounded-full transition-colors", on ? "bg-primary" : "bg-muted")}
+    >
+      <span
+        className={cn(
+          "absolute top-1 h-5 w-5 rounded-full bg-background shadow transition-transform",
+          on ? "translate-x-6" : "translate-x-1"
+        )}
+      />
+    </span>
   );
 }
 

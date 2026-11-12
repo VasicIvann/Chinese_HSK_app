@@ -25,6 +25,8 @@ export type StreamHandlers<T> = {
   signal?: AbortSignal;
 };
 
+import { notifyUnauthorized } from "@/lib/auth/session-events";
+
 export async function streamSse<T = unknown>(
   url: string,
   init: RequestInit,
@@ -49,6 +51,9 @@ export async function streamSse<T = unknown>(
   }
 
   if (!response.ok || !response.body) {
+    if (response.status === 401 && headers.has("Authorization")) {
+      notifyUnauthorized();
+    }
     let detail = "";
     try {
       const json = await response.json();

@@ -6,9 +6,14 @@
 import { apiRequest, apiUrl } from "@/lib/api/client";
 import type {
   AccountOverview,
+  AccountSettings,
   DueEntry,
   EntryPublic,
+  DrawingGallery,
+  DrawingItem,
+  ExampleGenerateResponse,
   ExpressionAttemptItem,
+  HskVersion,
   LoginRequest,
   MasteryItem,
   MasterySnapshotResponse,
@@ -21,6 +26,7 @@ import type {
   SubjectItem,
   TokenResponse,
   UserPublic,
+  WordExampleItem,
 } from "@/lib/api/types";
 
 // Auth
@@ -47,8 +53,9 @@ export function getMe(token?: string) {
 
 // Quizzes
 
-export function getQuizzes() {
-  return apiRequest<QuizPublic[]>("/v1/quizzes");
+/** Quizzes (levels) of one HSK version; the user's saved version when omitted. */
+export function getQuizzes(version?: HskVersion) {
+  return apiRequest<QuizPublic[]>(version ? `/v1/quizzes?version=${version}` : "/v1/quizzes");
 }
 
 export function getQuizEntries(quizKey: string) {
@@ -59,16 +66,21 @@ export function getQuizEntries(quizKey: string) {
 
 // SRS
 
+/** Max questions per session accepted by the backend. */
+export const MAX_SESSION_SIZE = 4000;
+
 export function getDueEntries(
-  quiz: string,
+  quizzes: string[],
   count: number = 10,
-  newRatio: number = 0.3
+  options: { newRatio?: number; onlyNew?: boolean; onlySeen?: boolean } = {}
 ) {
-  const params = new URLSearchParams({
-    quiz,
-    count: String(count),
-    new_ratio: String(newRatio),
-  });
+  const { newRatio = 0.3, onlyNew = false, onlySeen = false } = options;
+  const params = new URLSearchParams();
+  quizzes.forEach((q) => params.append("quiz", q));
+  params.set("count", String(count));
+  params.set("new_ratio", String(newRatio));
+  if (onlyNew) params.set("only_new", "true");
+  if (onlySeen) params.set("only_seen", "true");
   return apiRequest<DueEntry[]>(`/v1/srs/due?${params.toString()}`);
 }
 
@@ -79,9 +91,11 @@ export function postRate(body: RateRequest) {
   });
 }
 
-export function getStats(quiz?: string) {
-  const qs = quiz ? `?quiz=${encodeURIComponent(quiz)}` : "";
-  return apiRequest<StatsResponse>(`/v1/srs/stats${qs}`);
+export function getStats(quizzes: string[] = []) {
+  const params = new URLSearchParams();
+  quizzes.forEach((q) => params.append("quiz", q));
+  const qs = params.toString();
+  return apiRequest<StatsResponse>(`/v1/srs/stats${qs ? `?${qs}` : ""}`);
 }
 
 // Mastery
@@ -119,7 +133,50 @@ export function expressionCorrectUrl() {
   return apiUrl("/v1/expression/correct");
 }
 
+// Vocabulary examples
+
+export function getWordExamples(entryId: number) {
+  return apiRequest<WordExampleItem[]>(`/v1/examples?entry_id=${entryId}`);
+}
+
+export function postGenerateExample(entryId: number) {
+  return apiRequest<ExampleGenerateResponse>("/v1/examples", {
+    method: "POST",
+    body: { entry_id: entryId },
+  });
+}
+
+// Handwriting practice
+
+export function getWordDrawings(entryId: number) {
+  return apiRequest<DrawingItem[]>(`/v1/drawings?entry_id=${entryId}`);
+}
+
+export function postWordDrawing(entryId: number, image: string) {
+  return apiRequest<DrawingItem>("/v1/drawings", {
+    method: "POST",
+    body: { entry_id: entryId, image },
+  });
+}
+
+export function deleteWordDrawing(drawingId: number) {
+  return apiRequest<void>(`/v1/drawings/${drawingId}`, { method: "DELETE" });
+}
+
+export function getDrawingGallery(offset = 0, limit = 20) {
+  return apiRequest<DrawingGallery>(`/v1/drawings/gallery?limit=${limit}&offset=${offset}`);
+}
+
 // Account
+
+export function getAccountSettings() {
+  return apiRequest<AccountSettings>("/v1/account/settings");
+}
+
+/** Partial update: only the fields sent are changed. */
+export function putAccountSettings(settings: Partial<AccountSettings>) {
+  return apiRequest<AccountSettings>("/v1/account/settings", { method: "PUT", body: settings });
+}
 
 export function getAccountOverview() {
   return apiRequest<AccountOverview>("/v1/account/overview");

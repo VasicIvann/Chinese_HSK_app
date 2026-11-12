@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 
-from app.api.deps import DAILY_QUOTAS, enforce_quota, get_current_user
+from app.api.deps import daily_quota, enforce_quota, get_current_user, quota_remaining
 from app.db.session import SessionLocal, get_db
 from app.models import User
 from app.schemas import (
@@ -87,7 +87,7 @@ def post_generate_subject(
     return SubjectGenerateResponse(
         subject=subject_text,
         keywords=keywords,
-        quota_remaining=max(0, DAILY_QUOTAS["subject_generation"] - int(updated.count or 0)),
+        quota_remaining=quota_remaining(user, "subject_generation", updated.count),
     )
 
 
@@ -114,8 +114,8 @@ def get_quota(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
 ) -> QuotaResponse:
-    correction_limit = DAILY_QUOTAS["expression_correction"]
-    generation_limit = DAILY_QUOTAS["subject_generation"]
+    correction_limit = daily_quota(user, "expression_correction")
+    generation_limit = daily_quota(user, "subject_generation")
 
     correction_usage = expression_service.get_daily_usage(db, user.id, "expression_correction")
     generation_usage = expression_service.get_daily_usage(db, user.id, "subject_generation")
@@ -141,7 +141,7 @@ def _sse(event: str, data: dict) -> bytes:
 
 
 def _stream_correction_response(
-    *, user_id: int, level: int, subject: str, user_text: str
+    *, user_id: int, limit: int, level: int, subject: str, user_text: str
 ) -> Iterator[bytes]:
     """SSE generator. Opens its own DB session to outlive the request scope.
 
@@ -152,7 +152,7 @@ def _stream_correction_response(
         # Race-safe re-check: the dependency already gated on quota but this
         # protects against concurrent requests slipping past the same window.
         usage = expression_service.get_daily_usage(db, user_id, "expression_correction")
-        if int(usage.count or 0) >= DAILY_QUOTAS["expression_correction"]:
+        if int(usage.count or 0) >= limit:
             yield _sse("error", {"message": "Quota quotidien atteint."})
             db.commit()
             return
@@ -263,6 +263,7 @@ def post_correct(
     return StreamingResponse(
         _stream_correction_response(
             user_id=user.id,
+            limit=daily_quota(user, "expression_correction"),
             level=payload.level,
             subject=payload.subject,
             user_text=payload.user_text,

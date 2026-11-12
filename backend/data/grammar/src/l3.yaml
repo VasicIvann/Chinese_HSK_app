@@ -1,0 +1,1081 @@
+# HSK 3 grammar points (official numbers 130-210), explained in French.
+# In each quiz question the right answer is written FIRST: the build shuffles the options.
+
+130:
+  title: "Préfixes : 第-、老-、小-"
+  explanation: |-
+    第 + nombre forme les ordinaux (第一). 老 / 小 + nom de famille servent d'appellations familières : 老王 (pour quelqu'un de plus âgé), 小李 (pour quelqu'un de plus jeune). 老 se retrouve aussi dans 老师、老虎.
+  pattern: "第 + nombre · 老 / 小 + nom de famille"
+  examples:
+    - ["老王，你今天怎么来这么早？", "Lao Wang, pourquoi tu es venu si tôt aujourd'hui ?"]
+    - ["小李是我们公司最年轻的同事。", "Xiao Li est la plus jeune collègue de notre entreprise."]
+  quiz:
+    - q: 他比我小十岁，我叫他（　）张。
+      options: ["小", "老", "第"]
+      why: Pour quelqu'un de plus jeune, on dit 小 + nom.
+
+131:
+  title: "Suffixes : -儿、-家、-们、-头、-子"
+  explanation: |-
+    儿 (oral du Nord) : 一点儿、玩儿 · 家 = spécialiste : 画家 (peintre), 作家 · 们 = pluriel des personnes · 头 et 子 forment des noms : 石头 (pierre), 桌子、孩子.
+  pattern: "radical + 儿 / 家 / 们 / 头 / 子"
+  examples:
+    - ["他是一位有名的画家。", "C'est un peintre célèbre."]
+    - ["同学们，请安静！", "Les élèves, silence s'il vous plaît !"]
+  quiz:
+    - q: 他画画画得特别好，是一位画（　）。
+      options: ["家", "子", "们"]
+      why: 家 désigne le spécialiste d'un domaine.
+
+132:
+  title: "敢 : oser"
+  explanation: |-
+    敢 + verbe = oser faire. Négation fréquente : 不敢 (ne pas oser).
+  pattern: "sujet + (不) 敢 + verbe"
+  examples:
+    - ["我不敢一个人晚上出去。", "Je n'ose pas sortir seul le soir."]
+    - ["你敢吃这么辣的菜吗？", "Tu oses manger un plat aussi épicé ?"]
+  quiz:
+    - q: 她很怕狗，不（　）走近。
+      options: ["敢", "会", "该"]
+      why: "« Elle n'ose pas s'approcher » : 不敢."
+
+133:
+  title: "需要 : avoir besoin de"
+  explanation: |-
+    需要 + nom ou verbe = avoir besoin de, il faut : 我需要你的帮助 · 你需要休息. Négation : 不需要.
+  pattern: "需要 + nom / verbe"
+  examples:
+    - ["这件事需要两个人一起做。", "Il faut être deux pour faire ça."]
+    - ["你不需要带护照。", "Tu n'as pas besoin d'emporter ton passeport."]
+  quiz:
+    - q: 你病了，（　）好好儿休息。
+      options: ["需要", "敢", "愿意"]
+      why: Un besoin → 需要.
+
+134:
+  title: "Verbes séparables verbe-objet : 帮忙、见面、睡觉、结婚…"
+  explanation: |-
+    Ces verbes sont formés d'un verbe et d'un objet ; ils ne prennent pas d'objet direct. Ce qui s'ajoute se place AU MILIEU : 帮我的忙、见过一次面、睡了八个小时觉. La personne s'introduit avec 跟 / 和 : 跟他见面 (et non 见面他).
+  pattern: "跟 + personne + 见面 · 帮 + personne + 的忙 · V + 了 / 过 + durée + O"
+  examples:
+    - ["我明天跟朋友见面。", "Demain, je vois un ami."]
+    - ["你能帮我一个忙吗？", "Tu peux me rendre un service ?"]
+    - ["他们结婚三年了。", "Ils sont mariés depuis trois ans."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我想跟他见面。", "我想见面他。", "我想见他面跟。"]
+      why: "见面 ne prend pas d'objet : la personne vient avec 跟."
+    - q: 昨天我只睡了五个小时（　）。
+      options: ["觉", "睡觉", "了"]
+      why: "La durée se met entre 睡 et 觉 : 睡了五个小时觉."
+
+135:
+  title: "Verbes séparables verbe-résultat : 打开、看见、离开、完成"
+  explanation: |-
+    Verbe + résultat formant un mot ; on peut insérer 得 / 不 pour le potentiel : 看得见 (pouvoir voir), 打不开 (ne pas arriver à ouvrir).
+  pattern: "V + 得 / 不 + résultat"
+  examples:
+    - ["门打不开，你帮我看看。", "La porte ne s'ouvre pas, regarde pour moi."]
+    - ["你看得见前面的字吗？", "Tu arrives à voir les caractères devant ?"]
+  quiz:
+    - q: 字太小了，我看不（　）。
+      options: ["见", "开", "完"]
+      why: "« Je n'arrive pas à voir » : 看不见."
+
+136:
+  title: "Emploi non interrogatif des mots interrogatifs"
+  explanation: |-
+    (1) Sens universel : interrogatif + 都 / 也 : 谁都知道 (tout le monde sait), 什么都不想吃 (rien ne me fait envie). (2) Répété : 你想吃什么就吃什么 (mange ce que tu veux). (3) Sens indéfini : 我想吃点儿什么 (quelque chose).
+  pattern: "interrogatif + 都 / 也 · ……什么，就……什么"
+  examples:
+    - ["这个问题谁都会回答。", "Tout le monde sait répondre à cette question."]
+    - ["你想去哪儿，我们就去哪儿。", "On va où tu veux."]
+  quiz:
+    - q: 我今天很累，哪儿（　）不想去。
+      options: ["也", "就", "还"]
+      why: "« Nulle part » : 哪儿也 / 都 + négation."
+
+137:
+  title: "各、各位、各种、每、任何"
+  explanation: |-
+    各 = chaque, divers (各国) · 各位 = vous tous (poli) · 各种 = toutes sortes de · 每 + spécificatif = chaque (souvent avec 都) · 任何 = n'importe quel (souvent avec 都 / 也).
+  pattern: "每 + spécificatif + nom + 都 · 任何 + nom + 都 / 也"
+  examples:
+    - ["各位朋友，欢迎你们！", "Chers amis, bienvenue à vous tous !"]
+    - ["这里有各种水果。", "Il y a toutes sortes de fruits ici."]
+  quiz:
+    - q: （　）个学生都要参加考试。
+      options: ["每", "各种", "任何的"]
+      why: "« Chaque élève » : 每个学生 + 都."
+
+138:
+  title: "Spécificatifs (3) : 把、张、只、双、台、种…"
+  explanation: |-
+    把 : objet à poignée (chaise, parapluie) · 张 : objet plat (table, papier, billet) · 只 : animal, une main / un pied · 双 : paire · 台 : machine · 种 : sorte · 支 : stylo · 群 : groupe · 束 : bouquet · 架 : avion · 行 : ligne.
+  pattern: "nombre + spécificatif + nom"
+  examples:
+    - ["我买了一双鞋。", "J'ai acheté une paire de chaussures."]
+    - ["桌子上有两张票。", "Il y a deux billets sur la table."]
+  quiz:
+    - q: 外面下雨，带一（　）伞吧。
+      options: ["把", "张", "双"]
+      why: "Un parapluie (objet à poignée) : 把."
+    - q: 他养了三（　）猫。
+      options: ["只", "条", "台"]
+      why: "Pour les animaux comme le chat : 只."
+
+139:
+  title: "Spécificatifs verbaux (2) : 顿、口、眼"
+  explanation: |-
+    顿 : un repas, une réprimande (吃一顿饭) · 口 : une bouchée, une gorgée (喝一口水) · 眼 : un regard (看了一眼).
+  pattern: "verbe + nombre + 顿 / 口 / 眼"
+  examples:
+    - ["我们一起吃顿饭吧。", "Prenons un repas ensemble."]
+    - ["他看了我一眼。", "Il m'a jeté un regard."]
+  quiz:
+    - q: 你尝一（　），很好吃。
+      options: ["口", "眼", "顿"]
+      why: "Goûter une bouchée : 一口."
+
+140:
+  title: "Redoublement du spécificatif : AA"
+  explanation: |-
+    Un spécificatif redoublé signifie « chaque, tous sans exception » : 个个 (chacun), 天天 (tous les jours), 件件 (chaque pièce). Souvent suivi de 都.
+  pattern: "spécificatif redoublé + 都"
+  examples:
+    - ["这些苹果个个都很甜。", "Ces pommes sont toutes très sucrées."]
+    - ["他天天都锻炼身体。", "Il fait du sport tous les jours."]
+  quiz:
+    - q: 他们班的学生（　）都很努力。
+      options: ["个个", "各个个", "个每"]
+      why: "« Chacun » : spécificatif redoublé 个个."
+
+141:
+  title: "Degré (3) : 比较、更加、还、相当"
+  explanation: |-
+    比较 = assez, plutôt · 更加 = encore plus (écrit) · 还 = assez, passablement (还可以 = ça va) · 相当 = assez, considérablement.
+  pattern: "比较 / 相当 / 更加 + adj. · 还 + adj. (modéré)"
+  examples:
+    - ["今天比较冷。", "Il fait plutôt froid aujourd'hui."]
+    - ["这家店的菜还不错。", "La cuisine de ce restaurant n'est pas mal."]
+  quiz:
+    - q: 这次考试（　）难，很多人没考好。
+      options: ["相当", "还", "比较不"]
+      why: "« Assez / considérablement difficile » : 相当难."
+
+142:
+  title: "Portée (2) : 光、仅、仅仅、就、至少"
+  explanation: |-
+    光 / 仅 / 仅仅 / 就 = seulement (就 oral) : 就他一个人来了 · 至少 = au moins.
+  pattern: "光 / 仅仅 / 就 + verbe / nombre · 至少 + nombre"
+  examples:
+    - ["从这儿到机场至少要一个小时。", "D'ici à l'aéroport, il faut au moins une heure."]
+    - ["光看书不够，还要多练习。", "Lire seulement ne suffit pas, il faut aussi pratiquer."]
+  quiz:
+    - q: 这件衣服（　）要三百块，太贵了。
+      options: ["至少", "仅仅不", "光是了"]
+      why: "« Au moins trois cents yuans » : 至少."
+
+143:
+  title: "Temps (3) : 本来、才、曾经、从来、赶紧、立刻、终于…"
+  explanation: |-
+    本来 = au départ · 才 = venir juste de · 曾经 = autrefois, avoir déjà · 从来 + négation = jamais · 赶紧 / 赶快 / 立刻 / 连忙 = vite, aussitôt · 始终 = du début à la fin · 早已 = depuis longtemps déjà.
+  pattern: "从来 + 不 / 没…… · 本来……，后来……"
+  examples:
+    - ["我本来想去，后来下雨了。", "Au départ je voulais y aller, puis il s'est mis à pleuvoir."]
+    - ["他从来不喝酒。", "Il ne boit jamais d'alcool."]
+  quiz:
+    - q: 我（　）没去过那儿。
+      options: ["从来", "赶紧", "本来"]
+      why: "« Jamais » : 从来 + 没 / 不."
+    - q: 快下雨了，我们（　）回家吧。
+      options: ["赶紧", "曾经", "始终"]
+      why: "« Vite, sans tarder » : 赶紧."
+
+144:
+  title: "Fréquence (3) : 通常、往往、总、总是"
+  explanation: |-
+    通常 = habituellement · 往往 = souvent (pour une tendance constatée, dans des circonstances données) · 总 / 总是 = toujours.
+  pattern: "通常 / 往往 / 总是 + verbe"
+  examples:
+    - ["我通常七点起床。", "D'habitude je me lève à sept heures."]
+    - ["他总是迟到。", "Il est toujours en retard."]
+  quiz:
+    - q: 他（　）忘记带钥匙，真让人头疼。
+      options: ["总是", "通常不", "往往了"]
+      why: "« Toujours » (avec reproche) : 总是."
+
+145:
+  title: "再 (2) : puis, ensuite (après une condition)"
+  explanation: |-
+    再 indique qu'une action aura lieu APRÈS une autre (souvent future) : 吃了饭再走 (pars après avoir mangé), 等他来了再说 (on verra quand il sera là).
+  pattern: "V1 + (了) + ……，再 + V2"
+  examples:
+    - ["你先休息一下，再写作业。", "Repose-toi d'abord un peu, ensuite fais tes devoirs."]
+    - ["等雨停了再走吧。", "Attends que la pluie s'arrête pour partir."]
+  quiz:
+    - q: 你想好了（　）回答。
+      options: ["再", "又", "才是"]
+      why: Une action future après une autre → 再.
+
+146:
+  title: "Manière : 互相、尽量、亲自、相互"
+  explanation: |-
+    互相 / 相互 = mutuellement, l'un l'autre · 尽量 = autant que possible · 亲自 = en personne.
+  pattern: "互相 / 尽量 / 亲自 + verbe"
+  examples:
+    - ["同学们应该互相帮助。", "Les camarades doivent s'entraider."]
+    - ["我会尽量早点儿到。", "J'essaierai d'arriver le plus tôt possible."]
+  quiz:
+    - q: 这件事很重要，经理（　）来了。
+      options: ["亲自", "互相", "尽量"]
+      why: "« En personne » : 亲自."
+
+147:
+  title: "大概、恐怕 : probablement, je crains que"
+  explanation: |-
+    大概 = probablement, environ (estimation neutre) · 恐怕 = je crains que, il est probable que (estimation plutôt négative).
+  pattern: "大概 / 恐怕 + verbe / quantité"
+  examples:
+    - ["他大概八点到。", "Il arrivera probablement vers huit heures."]
+    - ["恐怕今天来不及了。", "Je crains qu'on n'ait pas le temps aujourd'hui."]
+  quiz:
+    - q: 雨这么大，比赛（　）不能进行了。
+      options: ["恐怕", "大家", "亲自"]
+      why: "Une crainte (estimation négative) : 恐怕."
+
+148:
+  title: "Adverbes de ton : 当然、到底、其实、终于、只好、千万…"
+  explanation: |-
+    当然 = bien sûr · 到底 = enfin (question pressante) · 其实 = en fait · 终于 = enfin (après attente) · 只好 = n'avoir d'autre choix que · 千万 = surtout (ne pas) · 简直 = carrément · 确实 = vraiment · 难道 = se pourrait-il que · 白 = pour rien · 果然 = comme prévu · 根本 = absolument (pas) · 反正 = de toute façon · 绝对 = absolument.
+  pattern: "sujet + adverbe + verbe"
+  examples:
+    - ["我等了一个小时，他终于来了。", "J'ai attendu une heure, il est enfin arrivé."]
+    - ["没有车了，我们只好走路回家。", "Il n'y avait plus de bus, nous avons dû rentrer à pied."]
+    - ["你千万别告诉他。", "Surtout, ne le lui dis pas."]
+  quiz:
+    - q: 我找了很久，（　）找到了我的手机。
+      options: ["终于", "千万", "到底"]
+      why: Après une longue recherche → 终于 (enfin).
+    - q: 他看起来很年轻，（　）他已经五十岁了。
+      options: ["其实", "当然", "只好"]
+      why: "« En fait » (contraste avec l'apparence) : 其实."
+
+149:
+  title: "由 (1) : à partir de, par"
+  explanation: |-
+    由 = de, à partir de (registre écrit, proche de 从) : 由这儿出发 (partir d'ici).
+  pattern: "由 + lieu / moment + verbe"
+  examples:
+    - ["我们由北京出发。", "Nous partons de Pékin."]
+    - ["会议由九点开始。", "La réunion commence à partir de neuf heures."]
+  quiz:
+    - q: 火车（　）上海开往北京。
+      options: ["由", "对", "为"]
+      why: "Le point de départ (écrit) : 由."
+
+150:
+  title: "自从 : depuis que"
+  explanation: |-
+    自从 + moment / événement passé (+ 以后) = depuis que, à partir du moment où.
+  pattern: "自从 + événement + (以后)，……"
+  examples:
+    - ["自从来了中国，我每天都说汉语。", "Depuis que je suis en Chine, je parle chinois tous les jours."]
+    - ["自从他搬家以后，我们很少见面。", "Depuis qu'il a déménagé, nous nous voyons rarement."]
+  quiz:
+    - q: （　）开始跑步，他的身体越来越好了。
+      options: ["自从", "为了", "除了"]
+      why: "« Depuis qu'il court » : 自从……"
+
+151:
+  title: "朝 : en direction de, face à"
+  explanation: |-
+    朝 + direction / personne + verbe : orientation du mouvement ou du regard : 朝前看、朝我笑.
+  pattern: "朝 + direction + verbe"
+  examples:
+    - ["他朝我走过来。", "Il s'est dirigé vers moi."]
+    - ["我的房间朝南。", "Ma chambre est orientée au sud."]
+  quiz:
+    - q: 她（　）我笑了笑。
+      options: ["朝", "由", "被"]
+      why: "Diriger son sourire vers quelqu'un : 朝."
+
+152:
+  title: "为 (2) : pour (au profit de)"
+  explanation: |-
+    为 + personne + verbe = faire quelque chose pour quelqu'un, à son service : 为大家服务.
+  pattern: "为 + bénéficiaire + verbe"
+  examples:
+    - ["妈妈为我们做了很多事。", "Maman a fait beaucoup de choses pour nous."]
+    - ["我们为你准备了一个礼物。", "Nous t'avons préparé un cadeau."]
+  quiz:
+    - q: 老师每天都（　）学生们准备作业。
+      options: ["为", "朝", "由于"]
+      why: "Au profit de quelqu'un : 为."
+
+153:
+  title: "向 (2) : à, auprès de (destinataire)"
+  explanation: |-
+    向 + personne + verbe : demander, apprendre, présenter quelque chose À quelqu'un : 向老师问问题、向他学习.
+  pattern: "向 + personne + 问 / 学习 / 介绍 / 借…"
+  examples:
+    - ["我们应该向他学习。", "Nous devrions prendre exemple sur lui."]
+    - ["我向朋友借了一本书。", "J'ai emprunté un livre à un ami."]
+  quiz:
+    - q: 有问题可以（　）老师问。
+      options: ["向", "由", "朝着了"]
+      why: "Demander À quelqu'un : 向 + personne + 问."
+
+154:
+  title: "由于 / 因为 : à cause de, en raison de"
+  explanation: |-
+    由于 / 因为 + nom (préposition) = à cause de : 由于天气的原因 (pour des raisons météo). 由于 est plus écrit.
+  pattern: "由于 / 因为 + nom / proposition，……"
+  examples:
+    - ["由于下雨，比赛推迟了。", "En raison de la pluie, le match a été reporté."]
+    - ["因为他的帮助，我很快就找到了工作。", "Grâce à son aide, j'ai vite trouvé du travail."]
+  quiz:
+    - q: （　）天气不好，飞机不能起飞。
+      options: ["由于", "为了", "自从"]
+      why: "La cause : 由于."
+
+155:
+  title: "为了 : afin de, pour"
+  explanation: |-
+    为了 + but, en tête de phrase : 为了学好汉语，他每天练习. À distinguer de 因为 (cause).
+  pattern: "为了 + but，sujet + action"
+  examples:
+    - ["为了身体健康，我每天跑步。", "Pour être en bonne santé, je cours tous les jours."]
+    - ["为了不迟到，他六点就起床了。", "Pour ne pas être en retard, il s'est levé dès six heures."]
+  quiz:
+    - q: （　）准备考试，她每天晚上都去图书馆。
+      options: ["为了", "因为", "由于"]
+      why: Un but → 为了.
+
+156:
+  title: "把、被、叫、让 : agent et patient"
+  explanation: |-
+    把 + objet + verbe + complément : ce qu'on fait de l'objet (我把书放在桌子上). 被 / 叫 / 让 + agent + verbe : le passif (书被他拿走了). Voir aussi les points sur les phrases en 把 et le passif.
+  pattern: "S + 把 + O + V + autre · O + 被 / 叫 / 让 + agent + V + autre"
+  examples:
+    - ["我把作业写完了。", "J'ai fini mes devoirs."]
+    - ["我的自行车被人骑走了。", "Mon vélo a été pris par quelqu'un."]
+  quiz:
+    - q: 请（　）门关上。
+      options: ["把", "被", "向"]
+      why: "On agit sur l'objet (la porte) : 把 + 门 + 关上."
+
+157:
+  title: "除了 : excepté / en plus de"
+  explanation: |-
+    除了……以外，都…… = à part…, tous… (exclusion). 除了……以外，还 / 也…… = en plus de…, aussi… (ajout).
+  pattern: "除了 + X + (以外)，都 / 还 / 也……"
+  examples:
+    - ["除了他以外，我们都去了。", "À part lui, nous y sommes tous allés."]
+    - ["除了汉语，我还学英语。", "En plus du chinois, j'apprends aussi l'anglais."]
+  quiz:
+    - q: 除了苹果，我（　）喜欢吃香蕉。
+      options: ["还", "都不", "就"]
+      why: "Ajout : 除了……还……"
+
+158:
+  title: "按 / 按照 : selon, d'après"
+  explanation: |-
+    按照 + règle / plan + verbe = faire selon, conformément à : 按照老师说的做.
+  pattern: "按（照）+ nom + verbe"
+  examples:
+    - ["请按照顺序进来。", "Entrez dans l'ordre, s'il vous plaît."]
+    - ["我们按时间出发。", "Nous partons à l'heure prévue."]
+  quiz:
+    - q: （　）医生说的，每天吃三次药。
+      options: ["按照", "除了", "由于"]
+      why: "« Selon ce que dit le médecin » : 按照."
+
+159:
+  title: "Conjonctions (2) : 并且、不仅、另外、要是、因此、只有…"
+  explanation: |-
+    并且 = et de plus · 不仅 / 不光 = non seulement · 另外 = par ailleurs · 要是 = si (oral) · 因此 = par conséquent · 由于 = étant donné que · 只有 = seulement si.
+  pattern: "不仅……，而且 / 还…… · 要是……，就…… · ……，因此……"
+  examples:
+    - ["要是明天不下雨，我们就去公园。", "S'il ne pleut pas demain, on ira au parc."]
+    - ["他很努力，因此成绩很好。", "Il travaille dur, c'est pourquoi ses résultats sont bons."]
+  quiz:
+    - q: 他每天练习，（　）进步很快。
+      options: ["因此", "要是", "另外的"]
+      why: Une conséquence → 因此.
+
+160:
+  title: "Onomatopée : 哈哈"
+  explanation: |-
+    哈哈 imite le rire. Les onomatopées peuvent être employées seules ou avant un verbe : 他哈哈大笑.
+  pattern: "哈哈 + (地) + 笑"
+  examples:
+    - ["听了这个故事，大家都哈哈大笑。", "En entendant cette histoire, tout le monde a éclaté de rire."]
+    - ["哈哈，你说得真有意思！", "Ha ha, c'est drôle ce que tu dis !"]
+  quiz:
+    - q: 他听了以后（　）大笑。
+      options: ["哈哈", "喂", "啊吧"]
+      why: "L'onomatopée du rire : 哈哈."
+
+161:
+  title: "Groupes (2) : préposition + nom, position, pivot, apposition"
+  explanation: |-
+    (1) Préposition + nom : 在学校、对他. (2) Groupe de position : 桌子上、三天以后. (3) Groupe pivot : 请他来 (le 他 est objet de 请 et sujet de 来). (4) Apposition : 我们大家、首都北京.
+  pattern: "介词 + 名 · 名 + 方位词 · V1 + O/S + V2"
+  examples:
+    - ["我请他明天来我家。", "Je l'ai invité à venir chez moi demain."]
+    - ["我们大家都同意。", "Nous sommes tous d'accord."]
+  quiz:
+    - q: Dans 妈妈让我买菜, qui achète les légumes ?
+      options: ["我", "妈妈", "妈妈和我"]
+      why: "Structure pivot : 我 est l'objet de 让 et le sujet de 买."
+
+162:
+  title: "Redoublement nombre + spécificatif : 一个一个"
+  explanation: |-
+    一 + spécificatif + 一 + spécificatif = un par un : 一个一个地进来 (entrer un par un), 一天一天 (jour après jour).
+  pattern: "一 + spécificatif + 一 + spécificatif + (地) + verbe"
+  examples:
+    - ["请大家一个一个地说。", "Parlez chacun votre tour, s'il vous plaît."]
+    - ["天气一天一天地暖和起来了。", "Il fait de plus en plus doux de jour en jour."]
+  quiz:
+    - q: 学生们（　）地走进了教室。
+      options: ["一个一个", "个个一", "一一个"]
+      why: "« Un par un » : 一个一个."
+
+163:
+  title: "不A不B : ni… ni… (juste milieu)"
+  explanation: |-
+    不 + A + 不 + B, avec deux adjectifs contraires, signifie « ni trop… ni trop… », juste comme il faut : 不大不小、不冷不热.
+  pattern: "不 + adj. 1 + 不 + adj. 2 (contraires)"
+  examples:
+    - ["这件衣服不大不小，正合适。", "Ce vêtement n'est ni trop grand ni trop petit, il est parfait."]
+    - ["今天的天气不冷不热。", "Aujourd'hui il ne fait ni froid ni chaud."]
+  quiz:
+    - q: 这个房间（　），我很喜欢。
+      options: ["不大不小", "不大很小", "又不大小"]
+      why: "« Ni trop grand ni trop petit » : 不大不小."
+
+164:
+  title: "看起来 : avoir l'air"
+  explanation: |-
+    看起来 = à le voir, il semble que : 他看起来很累 (il a l'air fatigué).
+  pattern: "sujet + 看起来 + adj. / proposition"
+  examples:
+    - ["这个菜看起来很好吃。", "Ce plat a l'air délicieux."]
+    - ["你看起来不太高兴。", "Tu n'as pas l'air très content."]
+  quiz:
+    - q: 他（　）只有二十岁，其实已经三十了。
+      options: ["看起来", "看上来", "看过去"]
+      why: "« Il a l'air d'avoir vingt ans » : 看起来."
+
+165:
+  title: "看上去 : sembler (à l'œil)"
+  explanation: |-
+    看上去 = à première vue, d'apparence ; très proche de 看起来 mais limité à ce qu'on voit.
+  pattern: "sujet + 看上去 + adj."
+  examples:
+    - ["她看上去很年轻。", "Elle a l'air très jeune."]
+    - ["这个箱子看上去很重。", "Cette valise a l'air lourde."]
+  quiz:
+    - q: 这件衣服（　）很贵，其实很便宜。
+      options: ["看上去", "看下去", "看出来了"]
+      why: D'apparence → 看上去.
+
+166:
+  title: "有的是 : il y en a plein"
+  explanation: |-
+    有的是 + nom = avoir en abondance : 我有的是时间 (j'ai tout mon temps).
+  pattern: "sujet + 有的是 + nom"
+  examples:
+    - ["别着急，我们有的是时间。", "Pas de panique, on a tout notre temps."]
+    - ["这儿有的是饭馆。", "Ici, les restaurants ne manquent pas."]
+  quiz:
+    - q: 你想看书吗？我家（　）书。
+      options: ["有的是", "有的", "是有的"]
+      why: "« Plein de livres » : 有的是书."
+
+167:
+  title: "除了……（以外），……还 / 也 / 都……"
+  explanation: |-
+    Avec 还 / 也 : ajout (en plus de) ; avec 都 : exclusion (à part, tous…).
+  pattern: "除了 + X + 以外，还 / 也 + … · 除了 + X + 以外，都 + …"
+  examples:
+    - ["除了小王以外，大家都来了。", "À part Xiao Wang, tout le monde est venu."]
+    - ["除了游泳，他也喜欢跑步。", "En plus de la natation, il aime aussi la course."]
+  quiz:
+    - q: 除了星期天，我每天（　）要上班。
+      options: ["都", "还", "也不"]
+      why: "Exclusion : à part le dimanche, tous les jours → 都."
+
+168:
+  title: "从……起 : à partir de"
+  explanation: |-
+    从 + moment + 起 = à partir de ce moment : 从明天起 (à partir de demain).
+  pattern: "从 + moment + 起，……"
+  examples:
+    - ["从下个月起，我要早点儿起床。", "À partir du mois prochain, je vais me lever plus tôt."]
+    - ["从今天起，我不喝咖啡了。", "À partir d'aujourd'hui, je ne bois plus de café."]
+  quiz:
+    - q: 从明天（　），商店九点开门。
+      options: ["起", "上", "后来"]
+      why: "« À partir de demain » : 从明天起."
+
+169:
+  title: "对……来说 : pour…, du point de vue de…"
+  explanation: |-
+    对 + personne + 来说 = pour quelqu'un, de son point de vue : 对我来说，汉字很难.
+  pattern: "对 + personne + 来说，……"
+  examples:
+    - ["对我来说，学汉语很有意思。", "Pour moi, apprendre le chinois est très intéressant."]
+    - ["对孩子来说，这本书有点儿难。", "Pour un enfant, ce livre est un peu difficile."]
+  quiz:
+    - q: （　）外国人来说，汉字很难写。
+      options: ["对", "为", "向"]
+      why: "« Pour les étrangers » : 对……来说."
+
+170:
+  title: "一……也 / 都 + 不 / 没…… : pas un seul"
+  explanation: |-
+    一 + spécificatif + nom + 也 / 都 + négation = pas un seul : 一个人也没有 (il n'y a personne), 一点儿也不累 (pas du tout fatigué).
+  pattern: "一 + spécificatif + (nom) + 也 / 都 + 不 / 没 + verbe"
+  examples:
+    - ["教室里一个人也没有。", "Il n'y a personne dans la salle de classe."]
+    - ["我一句汉语都不会说。", "Je ne sais pas dire une seule phrase en chinois."]
+  quiz:
+    - q: 今天我一口饭（　）没吃。
+      options: ["也", "就", "还是"]
+      why: "« Pas une bouchée » : 一口饭也没吃."
+
+171:
+  title: "越……越…… : plus…, plus…"
+  explanation: |-
+    越 + A + 越 + B = plus A, plus B : 越说越快 (il parle de plus en plus vite), 越看越喜欢.
+  pattern: "(sujet) + 越 + A，(sujet) + 越 + B"
+  examples:
+    - ["这个电影越看越有意思。", "Plus on regarde ce film, plus il est intéressant."]
+    - ["雨越下越大。", "Il pleut de plus en plus fort."]
+  quiz:
+    - q: 汉语（　）学越有意思。
+      options: ["越", "更", "很"]
+      why: "« Plus on l'apprend, plus c'est intéressant » : 越……越……"
+
+172:
+  title: "Verbe ou adjectif comme sujet"
+  explanation: |-
+    Un verbe, un groupe verbal ou un adjectif peut être le sujet : 学习汉语很有意思 (apprendre le chinois est intéressant), 健康最重要.
+  pattern: "groupe verbal / adjectif + prédicat"
+  examples:
+    - ["运动对身体很好。", "Faire du sport est très bon pour la santé."]
+    - ["认真最重要。", "Le sérieux est ce qu'il y a de plus important."]
+  quiz:
+    - q: Quel est le sujet de 每天跑步很累 ?
+      options: ["每天跑步", "每天", "很累"]
+      why: Le groupe verbal 每天跑步 est sujet.
+
+173:
+  title: "Verbe, adjectif ou proposition comme objet"
+  explanation: |-
+    Certains verbes (喜欢、觉得、知道、希望、开始…) prennent pour objet un verbe ou une proposition : 我喜欢游泳 · 我知道他明天来.
+  pattern: "喜欢 / 觉得 / 希望 / 知道 + verbe / proposition"
+  examples:
+    - ["我希望你早点儿回来。", "J'espère que tu rentreras tôt."]
+    - ["我觉得这个办法很好。", "Je trouve que c'est une très bonne méthode."]
+  quiz:
+    - q: Dans 我希望明天不下雨, quel est l'objet de 希望 ?
+      options: ["明天不下雨", "明天", "下雨"]
+      why: La proposition entière est l'objet du verbe 希望.
+
+174:
+  title: "Verbe ou proposition comme déterminant"
+  explanation: |-
+    Un verbe ou une proposition + 的 peut déterminer un nom : 我买的书 (le livre que j'ai acheté), 来的人 (les gens qui viennent). C'est l'équivalent de la relative française, placé AVANT le nom.
+  pattern: "verbe / proposition + 的 + nom"
+  examples:
+    - ["这是我昨天买的衣服。", "C'est le vêtement que j'ai acheté hier."]
+    - ["坐在前边的人是我哥哥。", "La personne assise devant est mon grand frère."]
+  quiz:
+    - q: Comment dit-on « le film que tu as vu » ?
+      options: ["你看的电影", "电影你看的", "看你的电影"]
+      why: La « relative » (你看) + 的 se place devant le nom.
+
+175:
+  title: "Complément de résultat (2) : 到、住、走"
+  explanation: |-
+    到 = atteindre le but (找到、买到、看到) · 住 = fixer (记住、拿住) · 走 = partir, emporter (拿走、带走).
+  pattern: "verbe + 到 / 住 / 走"
+  examples:
+    - ["我终于找到工作了。", "J'ai enfin trouvé du travail."]
+    - ["请记住我的电话号码。", "Retiens bien mon numéro de téléphone."]
+    - ["谁把我的书拿走了？", "Qui a pris mon livre ?"]
+  quiz:
+    - q: 你要的书我买（　）了。
+      options: ["到", "住", "开"]
+      why: "Réussir à acheter : 买到."
+    - q: 这个词很重要，你要记（　）。
+      options: ["住", "走", "到了"]
+      why: "« Retenir » : 记住."
+
+176:
+  title: "Complément de direction composé : 出来、回去、起来…"
+  explanation: |-
+    Verbe + (上 / 下 / 进 / 出 / 回 / 过 / 起) + (来 / 去) : 走出来 (sortir en marchant vers ici), 跑回去 (repartir en courant), 站起来 (se lever). L'objet de lieu se place avant 来 / 去 : 走进教室来.
+  pattern: "verbe + 进 / 出 / 回 / 上 / 下 / 过 / 起 + 来 / 去"
+  examples:
+    - ["他从房间里走出来了。", "Il est sorti de la chambre."]
+    - ["老师进来了，大家站了起来。", "Le professeur est entré, tout le monde s'est levé."]
+  quiz:
+    - q: 你在楼下等我，我马上走（　）。
+      options: ["下来", "上去", "进去"]
+      why: "Je descends vers toi qui es en bas : 走下来."
+
+177:
+  title: "Complément potentiel (1) : V得 / 不 + résultat ; V得 / 不了"
+  explanation: |-
+    得 / 不 inséré entre le verbe et son résultat dit si l'action est possible : 听得懂 (pouvoir comprendre), 买不到 (ne pas pouvoir trouver à acheter). V + 得了 / 不了 = pouvoir / ne pas pouvoir faire.
+  pattern: "V + 得 / 不 + résultat · V + 得了 / 不了"
+  examples:
+    - ["老师说得太快，我听不懂。", "Le professeur parle trop vite, je ne comprends pas."]
+    - ["这么多菜，我吃不了。", "Tant de plats, je ne pourrai pas tout manger."]
+  quiz:
+    - q: 黑板上的字你看（　）清楚吗？
+      options: ["得", "的", "地"]
+      why: "Potentiel : 看得清楚."
+    - q: 明天我有事，去（　）了。
+      options: ["不", "没", "别"]
+      why: "« Je ne pourrai pas y aller » : 去不了."
+
+178:
+  title: "Complément de degré : 得很、极了、死了"
+  explanation: |-
+    Après un adjectif ou un verbe de sentiment : 好得很 (très bien), 好极了 (extrêmement bien), 累死了 (mort de fatigue, oral).
+  pattern: "adj. + 得很 / 极了 / 死了"
+  examples:
+    - ["今天热死了！", "Il fait une chaleur terrible aujourd'hui !"]
+    - ["这个主意好极了。", "Cette idée est excellente."]
+  quiz:
+    - q: 听到这个消息，她高兴（　）了。
+      options: ["极", "很", "非常"]
+      why: "« Extrêmement contente » : 高兴极了."
+
+179:
+  title: "Nombre de fois (3) avec un objet"
+  explanation: |-
+    Si l'objet est un nom de chose, le nombre de fois se met avant : 看了两遍电影 ; si c'est un pronom, après lui : 我找过他三次.
+  pattern: "V + 了/过 + nombre + 次 + nom · V + 了/过 + pronom + nombre + 次"
+  examples:
+    - ["我去过两次长城。", "Je suis allé deux fois à la Grande Muraille."]
+    - ["我给他打了三次电话。", "Je l'ai appelé trois fois."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我见过他一次。", "我见过一次他。", "我一次见过他。"]
+      why: "Avec un pronom, le nombre de fois se met après : 见过他一次."
+
+180:
+  title: "Durée de l'action : verbe + durée"
+  explanation: |-
+    La durée se place après le verbe : 我学了两年汉语. Avec un objet, on répète le verbe : 我学汉语学了两年, ou durée + 的 + objet : 学了两年的汉语.
+  pattern: "V + 了 + durée (+ 的) + O · V + O + V + 了 + durée"
+  examples:
+    - ["我等了你半个小时。", "Je t'ai attendu une demi-heure."]
+    - ["他看电视看了三个小时。", "Il a regardé la télé pendant trois heures."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我睡了八个小时。", "我八个小时睡了。", "我睡八个小时了了。"]
+      why: La durée se place après le verbe.
+
+181:
+  title: "Temps écoulé depuis une action : verbe + 了 + durée + 了"
+  explanation: |-
+    Avec les verbes ponctuels (来、毕业、结婚…), la durée après le verbe indique le temps écoulé DEPUIS l'action : 他来中国三年了 (il est en Chine depuis trois ans).
+  pattern: "V (+ O) + durée + 了"
+  examples:
+    - ["我来北京两个月了。", "Cela fait deux mois que je suis à Pékin."]
+    - ["他们结婚十年了。", "Ils sont mariés depuis dix ans."]
+  quiz:
+    - q: 他大学毕业已经五年（　）。
+      options: ["了", "过", "着"]
+      why: "Temps écoulé depuis : V + durée + 了."
+
+182:
+  title: "Phrase à prédicat sujet-prédicat"
+  explanation: |-
+    Le prédicat est lui-même une petite phrase : 他身体很好 (lui, sa santé est bonne), 这本书内容很有意思.
+  pattern: "grand sujet + (petit sujet + prédicat)"
+  examples:
+    - ["我妈妈身体很健康。", "Ma mère est en très bonne santé."]
+    - ["这家饭店菜很好吃。", "Dans ce restaurant, les plats sont délicieux."]
+  quiz:
+    - q: Dans 他工作很忙, quel est le prédicat ?
+      options: ["工作很忙", "很忙", "他工作"]
+      why: Le prédicat est la petite phrase 工作很忙.
+
+183:
+  title: "La phrase en 把 (1) : agir sur l'objet"
+  explanation: |-
+    S + 把 + objet défini + verbe + quelque chose : on dit ce qu'il advient de l'objet. Le verbe ne peut pas être seul : il faut un complément (lieu, résultat, direction, deuxième objet…). Négation et modaux AVANT 把 : 我没把书带来.
+  pattern: "S + 把 + O + V + 在 / 到 + lieu · S + 把 + O + V + 给 + qqn · S + 把 + O + V + résultat"
+  examples:
+    - ["请把书放在桌子上。", "Pose le livre sur la table, s'il te plaît."]
+    - ["我把钱给他了。", "Je lui ai donné l'argent."]
+    - ["他把房间打扫干净了。", "Il a fait le ménage dans la chambre."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我把作业做完了。", "我把作业做。", "我做完把作业了。"]
+      why: Après 把 + objet, le verbe a besoin d'un complément (完).
+    - q: "Comment nier : « Je n'ai pas apporté le livre » ?"
+      options: ["我没把书带来。", "我把书没带来。", "我把书不带来。"]
+      why: La négation se place avant 把.
+
+184:
+  title: "Le passif (1) : 被 / 叫 / 让"
+  explanation: |-
+    Objet + 被 / 叫 / 让 + agent + verbe + complément : le sujet subit l'action, souvent désagréable. Avec 被, l'agent peut être omis (我的手机被偷了) ; avec 叫 / 让, il est obligatoire.
+  pattern: "O + 被 / 叫 / 让 + agent + V + autre"
+  examples:
+    - ["我的蛋糕被弟弟吃了。", "Mon gâteau a été mangé par mon petit frère."]
+    - ["衣服让雨打湿了。", "Les vêtements ont été trempés par la pluie."]
+  quiz:
+    - q: 我的自行车（　）朋友借走了。
+      options: ["被", "把", "向"]
+      why: Le sujet (le vélo) subit l'action → passif en 被.
+
+185:
+  title: "Verbes en série (2) : manière et but"
+  explanation: |-
+    (1) Le premier verbe donne la manière : 坐飞机去 (y aller en avion). (2) Le second donne le but : 去商店买东西 (aller au magasin pour acheter).
+  pattern: "V1 (manière) + V2 · V1 + V2 (but)"
+  examples:
+    - ["我们打车去机场吧。", "Allons à l'aéroport en taxi."]
+    - ["他去银行取钱。", "Il va à la banque pour retirer de l'argent."]
+  quiz:
+    - q: Quelle phrase dit « Il va au parc pour courir » ?
+      options: ["他去公园跑步。", "他跑步去公园。", "他公园跑步去。"]
+      why: "Lieu de destination puis but : 去公园 + 跑步."
+
+186:
+  title: "Phrase pivot : faire faire (叫、让、请、派)"
+  explanation: |-
+    S + 叫 / 让 / 请 / 派 + personne + verbe : la personne est à la fois objet du premier verbe et sujet du second : 妈妈让我买菜 (maman me fait acheter des légumes).
+  pattern: "S + 让 / 叫 / 请 / 派 + personne + V + O"
+  examples:
+    - ["老师让我们回答问题。", "Le professeur nous a demandé de répondre aux questions."]
+    - ["我想请你吃饭。", "Je voudrais t'inviter à manger."]
+  quiz:
+    - q: 医生（　）我多休息。
+      options: ["让", "被", "把"]
+      why: "« Le médecin me dit de me reposer » : 让 + personne + verbe."
+
+187:
+  title: "Comparaison (4) : avec 得, 不比, écart"
+  explanation: |-
+    (1) A 比 B + V + 得 + adj. : 他比我跑得快. (2) A 不比 B + adj. : A n'est pas plus … que B (à peu près pareil). (3) A + V + 得 + 比 + B + adj. : 他跑得比我快. (4) A 比 B + 多 / 少 / 早 / 晚 + V + quantité : 他比我早来了十分钟.
+  pattern: "A比B+V得+adj. · A+V得+比B+adj. · A比B早/晚+V+quantité"
+  examples:
+    - ["他说汉语说得比我好。", "Il parle chinois mieux que moi."]
+    - ["我比他晚到了半个小时。", "Je suis arrivé une demi-heure après lui."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["她跑得比我快。", "她跑比我得快。", "她比我跑快得。"]
+      why: V + 得 + 比 + B + adj.
+
+188:
+  title: "Répétition du verbe : S + V + O + V + complément"
+  explanation: |-
+    Quand le verbe a un objet ET un complément (durée, degré…), on répète le verbe : 他看书看了一下午 · 她做饭做得很好.
+  pattern: "S + V + O + V + 得 / 了 + complément"
+  examples:
+    - ["他打球打得很好。", "Il joue très bien au ballon."]
+    - ["我写作业写了两个小时。", "J'ai fait mes devoirs pendant deux heures."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["他唱歌唱得很好听。", "他唱歌得很好听。", "他唱得歌很好听。"]
+      why: Avec un objet, on répète le verbe avant 得.
+
+189:
+  title: "Coordination : (也)……，也……"
+  explanation: |-
+    也…… répété relie deux faits parallèles : 他也会唱歌，也会跳舞.
+  pattern: "(sujet) + 也……，也……"
+  examples:
+    - ["我也想去，他也想去。", "Moi aussi je veux y aller, et lui aussi."]
+    - ["这儿也有山，也有水。", "Ici, il y a des montagnes et aussi de l'eau."]
+  quiz:
+    - q: 她会说汉语，（　）会说英语。
+      options: ["也", "就", "才"]
+      why: Deux faits parallèles → 也.
+
+190:
+  title: "一会儿……，一会儿…… : tantôt…, tantôt…"
+  explanation: |-
+    Deux actions ou états qui alternent rapidement : 他一会儿看书，一会儿看手机.
+  pattern: "一会儿 + A，一会儿 + B"
+  examples:
+    - ["天气一会儿晴，一会儿下雨。", "Le temps est tantôt ensoleillé, tantôt pluvieux."]
+    - ["孩子一会儿哭，一会儿笑。", "L'enfant pleure, puis rit."]
+  quiz:
+    - q: 他一会儿说要去，（　）说不去。
+      options: ["一会儿", "一边", "一下"]
+      why: "Alternance : 一会儿……一会儿……"
+
+191:
+  title: "一方面……，另一方面…… : d'une part…, d'autre part…"
+  explanation: |-
+    Présente deux aspects d'une même question.
+  pattern: "一方面 + A，另一方面 + B"
+  examples:
+    - ["我来中国，一方面是学汉语，另一方面是了解中国文化。", "Je suis venu en Chine d'une part pour apprendre le chinois, d'autre part pour connaître la culture chinoise."]
+    - ["一方面工作很忙，另一方面我也想多陪家人。", "D'un côté le travail est prenant, de l'autre je veux passer plus de temps en famille."]
+  quiz:
+    - q: 一方面我想去，（　）我又没有时间。
+      options: ["另一方面", "一边", "另外的"]
+      why: "一方面…… se complète par 另一方面……"
+
+192:
+  title: "又……，又…… : à la fois"
+  explanation: |-
+    又 + A，又 + B relie deux actions ou caractéristiques simultanées : 他又会唱，又会跳.
+  pattern: "又 + A，又 + B"
+  examples:
+    - ["她又会做饭，又会画画儿。", "Elle sait à la fois cuisiner et dessiner."]
+    - ["这家饭馆又干净，又便宜。", "Ce restaurant est à la fois propre et bon marché."]
+  quiz:
+    - q: 这个孩子又聪明，（　）可爱。
+      options: ["又", "也是", "还是"]
+      why: "又……又…… : à la fois…"
+
+193:
+  title: "首先……，然后…… : d'abord…, ensuite…"
+  explanation: |-
+    Pour ordonner des étapes : 首先 (tout d'abord), 然后 (ensuite), 最后 (enfin).
+  pattern: "首先 + A，然后 + B，最后 + C"
+  examples:
+    - ["首先洗手，然后吃饭。", "D'abord on se lave les mains, ensuite on mange."]
+    - ["首先我要谢谢大家，然后给大家介绍一下。", "Tout d'abord je voudrais vous remercier, ensuite je vais faire les présentations."]
+  quiz:
+    - q: 首先打开电脑，（　）输入密码。
+      options: ["然后", "但是", "因为"]
+      why: Étape suivante → 然后.
+
+194:
+  title: "……，并且…… : et de plus"
+  explanation: |-
+    并且 ajoute une information au même niveau ou plus forte (registre un peu soutenu).
+  pattern: "A，并且 + B"
+  examples:
+    - ["他很聪明，并且很努力。", "Il est intelligent, et de plus très travailleur."]
+    - ["我们讨论了这个问题，并且做了决定。", "Nous avons discuté de la question et pris une décision."]
+  quiz:
+    - q: 这件衣服很漂亮，（　）不贵。
+      options: ["并且", "但是", "只有"]
+      why: Ajout d'une qualité → 并且.
+
+195:
+  title: "不仅 / 不光……，还 / 而且…… : non seulement…, mais aussi…"
+  explanation: |-
+    Variante de 不但……而且…… : 不仅 / 不光 dans la première proposition, 还 / 而且 / 也 dans la seconde.
+  pattern: "不仅 / 不光 + A，还 / 而且 + B"
+  examples:
+    - ["他不仅会说汉语，还会写汉字。", "Non seulement il parle chinois, mais il sait aussi écrire les caractères."]
+    - ["这里不光风景美，而且人也很热情。", "Ici, non seulement le paysage est beau, mais les gens sont aussi chaleureux."]
+  quiz:
+    - q: 她不仅学习好，（　）喜欢帮助别人。
+      options: ["还", "但", "就是"]
+      why: "不仅…… se complète par 还 / 而且."
+
+196:
+  title: "不是……，就是…… : soit…, soit…"
+  explanation: |-
+    L'une des deux possibilités est forcément vraie : 他不是在图书馆，就是在教室.
+  pattern: "不是 + A，就是 + B"
+  examples:
+    - ["周末我不是看书，就是看电影。", "Le week-end, soit je lis, soit je regarde un film."]
+    - ["这几天不是刮风，就是下雨。", "Ces jours-ci, soit il y a du vent, soit il pleut."]
+  quiz:
+    - q: 他不是在家，（　）在公司。
+      options: ["就是", "还是", "而是了"]
+      why: "« Soit…, soit… » : 不是……就是……"
+
+197:
+  title: "……X 是 X，就是 / 不过…… : …, c'est vrai, mais…"
+  explanation: |-
+    On reprend un adjectif ou un verbe pour concéder, puis on oppose : 好是好，就是太贵了 (c'est bien, mais trop cher).
+  pattern: "X + 是 + X，就是 / 不过 / 可是 + ……"
+  examples:
+    - ["这件衣服漂亮是漂亮，就是有点儿贵。", "Ce vêtement est joli, certes, mais un peu cher."]
+    - ["去是去，不过我要晚一点儿到。", "Je viens, oui, mais j'arriverai un peu plus tard."]
+  quiz:
+    - q: 这个房子大是大，（　）离公司太远了。
+      options: ["就是", "所以", "因为"]
+      why: "Concession puis restriction : X是X，就是……"
+
+198:
+  title: "要是……，就…… : si (oral)"
+  explanation: |-
+    要是 = si, plus oral que 如果 ; la conséquence avec 就.
+  pattern: "要是 + condition，(sujet) + 就 + conséquence"
+  examples:
+    - ["要是你明天有空，就来我家吧。", "Si tu es libre demain, viens chez moi."]
+    - ["要是下雨，我们就不去了。", "S'il pleut, on n'y va pas."]
+  quiz:
+    - q: （　）你不喜欢，就别买了。
+      options: ["要是", "虽然", "因此"]
+      why: Une condition (oral) → 要是.
+
+199:
+  title: "只有……，才…… : seulement si…"
+  explanation: |-
+    Condition nécessaire et unique : 只有努力，才能成功 (ce n'est qu'en travaillant qu'on réussit). Ne pas confondre avec 只要……就…… (il suffit que).
+  pattern: "只有 + condition，才 + résultat"
+  examples:
+    - ["只有多练习，才能说好汉语。", "Ce n'est qu'en pratiquant beaucoup qu'on parle bien chinois."]
+    - ["只有你去，他才会去。", "Il n'ira que si tu y vas."]
+  quiz:
+    - q: 只有每天复习，（　）能记住这些生词。
+      options: ["才", "就", "都"]
+      why: "只有…… va avec 才……"
+
+200:
+  title: "(由于)……，所以 / 因此…… : cause et conséquence"
+  explanation: |-
+    由于 (écrit) introduit la cause ; 所以 / 因此 la conséquence. 由于 se combine aussi bien avec 所以 qu'avec 因此 (因为 ne va pas avec 因此).
+  pattern: "由于 + cause，所以 / 因此 + conséquence"
+  examples:
+    - ["由于路上堵车，所以他迟到了。", "À cause des embouteillages, il est arrivé en retard."]
+    - ["他每天锻炼，因此身体很好。", "Il fait du sport tous les jours, c'est pourquoi il est en bonne santé."]
+  quiz:
+    - q: 由于天气不好，（　）比赛推迟了。
+      options: ["所以", "但是", "虽然"]
+      why: "由于…… va avec 所以 / 因此."
+
+201:
+  title: "为了……，…… : afin de"
+  explanation: |-
+    为了 + but en tête de phrase, puis l'action réalisée pour l'atteindre.
+  pattern: "为了 + but，sujet + action"
+  examples:
+    - ["为了学好汉语，他来到了中国。", "Pour bien apprendre le chinois, il est venu en Chine."]
+    - ["为了不迟到，我坐了出租车。", "Pour ne pas être en retard, j'ai pris un taxi."]
+  quiz:
+    - q: （　）身体健康，我每天都吃水果。
+      options: ["为了", "因为", "只有"]
+      why: Un but → 为了.
+
+202:
+  title: "……了……（就）…… : dès que (résultat)"
+  explanation: |-
+    V1 + 了 + (就) + V2 : la seconde action suit immédiatement la première : 他吃了饭就走了 · 我下了班就回家.
+  pattern: "V1 + 了 + O，(就) + V2"
+  examples:
+    - ["我到了机场就给你打电话。", "Je t'appelle dès que j'arrive à l'aéroport."]
+    - ["他下了课就去打球了。", "Après le cours, il est aussitôt allé jouer au ballon."]
+  quiz:
+    - q: 你吃（　）药就睡觉吧。
+      options: ["了", "过", "着"]
+      why: "V1 + 了 + objet + 就 + V2."
+
+203:
+  title: "Nombres approximatifs (2) : 大概、左右、前后, nombres voisins"
+  explanation: |-
+    大概 / 大约 + nombre = environ · nombre + 左右 = environ · moment + 前后 = aux alentours de (fête, date) · deux nombres voisins : 三四个 (trois ou quatre) · 几 = quelques : 几个人.
+  pattern: "大概 + nombre · nombre + 左右 · 三四个"
+  examples:
+    - ["我们大概十点到。", "Nous arriverons vers dix heures."]
+    - ["他四十岁左右。", "Il a environ quarante ans."]
+    - ["我等了五六分钟。", "J'ai attendu cinq ou six minutes."]
+  quiz:
+    - q: 从这儿到学校要二十分钟（　）。
+      options: ["左右", "大概", "几"]
+      why: Après le nombre, « environ » se dit 左右.
+
+204:
+  title: "一点儿也不…… : pas du tout"
+  explanation: |-
+    一点儿也 / 都 + 不 / 没 + adjectif / verbe = pas du tout : 一点儿也不累.
+  pattern: "一点儿 + 也 / 都 + 不 / 没 + adj. / verbe"
+  examples:
+    - ["这个菜一点儿也不辣。", "Ce plat n'est pas du tout épicé."]
+    - ["我一点儿都不想去。", "Je n'ai pas du tout envie d'y aller."]
+  quiz:
+    - q: 今天一点儿（　）不冷。
+      options: ["也", "就", "还要"]
+      why: "« Pas du tout » : 一点儿也不……"
+
+205:
+  title: "Question rhétorique : 不是……吗？ / 难道……吗？"
+  explanation: |-
+    La forme interrogative sert à affirmer avec force : 你不是说要来吗？(Tu n'avais pas dit que tu viendrais ? = tu l'avais dit !) · 难道你不知道吗？(Ne me dis pas que tu ne le sais pas !).
+  pattern: "不是……吗？ · 难道……吗？"
+  examples:
+    - ["你不是喜欢吃饺子吗？", "Tu n'aimes pas les jiaozi ? (je croyais que si)"]
+    - ["难道你忘了吗？", "Ne me dis pas que tu as oublié !"]
+  quiz:
+    - q: 你（　）去过北京吗？怎么说不知道？
+      options: ["不是", "是不", "没是"]
+      why: "Question rhétorique : 不是……吗 ?"
+
+206:
+  title: "Mettre en relief avec 是"
+  explanation: |-
+    是 accentué devant le prédicat confirme avec force : 他是很聪明 (il EST vraiment intelligent), 我是去过 (j'y suis bien allé).
+  pattern: "sujet + 是 (accentué) + prédicat"
+  examples:
+    - ["这个电影是很好看，你应该去看。", "Ce film est vraiment bien, tu devrais aller le voir."]
+    - ["我是不知道，不是不想告诉你。", "Je ne le sais vraiment pas, ce n'est pas que je ne veuille pas te le dire."]
+  quiz:
+    - q: Dans 他是很努力, que fait 是 ?
+      options: ["il renforce l'affirmation", "il relie deux noms", "il marque le passé"]
+      why: Devant un prédicat adjectival, 是 accentué insiste.
+
+207:
+  title: "La question par l'intonation"
+  explanation: |-
+    À l'oral, une phrase affirmative prononcée avec une intonation montante devient une question (souvent pour s'étonner) : 你不去？
+  pattern: "phrase affirmative + ？ (intonation montante)"
+  examples:
+    - ["你明天走？", "Tu pars demain ?"]
+    - ["他是你哥哥？", "C'est ton grand frère ?"]
+  quiz:
+    - q: Comment exprimer l'étonnement « Tu ne viens pas ?! » ?
+      options: ["你不来？", "你不来吗吧。", "你不来呢吗？"]
+      why: L'intonation montante suffit à faire une question.
+
+208:
+  title: "都……了 : déjà… (insistance)"
+  explanation: |-
+    都 + moment / quantité + 了 souligne que c'est déjà beaucoup ou déjà tard : 都十二点了，快睡吧 !
+  pattern: "都 + moment / quantité + 了"
+  examples:
+    - ["都十点了，他怎么还没来？", "Il est déjà dix heures, pourquoi n'est-il pas encore là ?"]
+    - ["你都二十岁了，应该自己做饭了。", "Tu as déjà vingt ans, tu devrais cuisiner toi-même."]
+  quiz:
+    - q: （　）八点了，你还不起床！
+      options: ["都", "才", "就"]
+      why: "Insistance sur l'heure tardive : 都……了."
+
+209:
+  title: "X 就 X（点儿）吧 : tant pis, va pour"
+  explanation: |-
+    On accepte une situation pas idéale : 贵就贵点儿吧 (c'est un peu cher, tant pis), 走就走吧 (bon, partons).
+  pattern: "X + 就 + X + (点儿) + 吧"
+  examples:
+    - ["远就远点儿吧，房子大就行。", "Tant pis si c'est un peu loin, du moment que c'est grand."]
+    - ["买就买吧，反正不贵。", "Bon, achetons-le, de toute façon ce n'est pas cher."]
+  quiz:
+    - q: 这件衣服有点儿大，大（　）大点儿吧。
+      options: ["就", "是", "才"]
+      why: "Acceptation : X就X吧."
+
+210:
+  title: "X 什么（啊） : pourquoi donc… (reproche)"
+  explanation: |-
+    Verbe / adjectif + 什么 (+ 啊) exprime le désaccord ou le reproche : 哭什么 ? (pourquoi pleurer ?), 急什么 ? (inutile de se presser).
+  pattern: "verbe / adj. + 什么 (+ 啊)"
+  examples:
+    - ["你急什么？我们还有时间。", "Pourquoi tu te presses ? Nous avons encore le temps."]
+    - ["笑什么啊？有什么好笑的？", "Qu'est-ce qui te fait rire ? Il n'y a rien de drôle."]
+  quiz:
+    - q: "Que veut dire 你怕什么？ ici : 你怕什么？他不会生气的。"
+      options: ["il n'y a pas de raison d'avoir peur", "de quoi as-tu peur exactement ?", "tu as très peur"]
+      why: "X什么 exprime ici que la peur est injustifiée."

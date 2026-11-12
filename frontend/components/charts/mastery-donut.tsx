@@ -8,11 +8,13 @@ type Props = {
   data: MasteryDistribution;
 };
 
-const COLORS = {
-  mastered: "var(--color-primary)",
-  learning: "oklch(0.65 0.15 60)", // amber
-  new: "oklch(0.72 0.04 60)",       // muted
+// Same ordinal ramp as the per-level progress bars (see globals.css).
+export const MASTERY_COLORS = {
+  mastered: "var(--mastery-mastered)",
+  learning: "var(--mastery-learning)",
+  new: "var(--mastery-new)",
 };
+const COLORS = MASTERY_COLORS;
 
 export function MasteryDonut({ data }: Props) {
   const chartData = [

@@ -43,3 +43,10 @@ export function pinyinMatches(userInput: string, expected: string): boolean {
   const right = normalizePinyin(expected);
   return left.length > 0 && left === right;
 }
+
+/** Typed characters vs the expected word: spaces and punctuation (IME leftovers) are ignored. */
+export function hanziMatches(userInput: string, expected: string): boolean {
+  const clean = (s: string) => s.normalize("NFKC").replace(/[\s\p{P}\p{S}]/gu, "");
+  const left = clean(userInput);
+  return left.length > 0 && left === clean(expected);
+}

@@ -4,6 +4,11 @@ from app.schemas.auth import (
     TokenResponse,
     UserPublic,
 )
+from app.schemas.example import (
+    ExampleGenerateRequest,
+    ExampleGenerateResponse,
+    WordExampleItem,
+)
 from app.schemas.expression import (
     CorrectionPayload,
     CorrectRequest,
@@ -30,6 +35,8 @@ __all__ = [
     "CorrectionPayload",
     "DueEntry",
     "EntryPublic",
+    "ExampleGenerateRequest",
+    "ExampleGenerateResponse",
     "ExpressionAttemptItem",
     "ExpressionErrorItem",
     "HSKLevel",
@@ -47,4 +54,5 @@ __all__ = [
     "SubjectItem",
     "TokenResponse",
     "UserPublic",
+    "WordExampleItem",
 ]

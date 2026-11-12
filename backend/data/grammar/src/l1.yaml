@@ -1,0 +1,737 @@
+# HSK 1 grammar points (official numbers 1-48), explained in French.
+# In each quiz question the right answer is written FIRST: the build shuffles the options.
+
+1:
+  title: "Les mots de position : 上、下、里、外、前、后…"
+  explanation: |-
+    Pour dire où se trouve quelque chose, le chinois place le mot de position APRÈS le nom : 桌子上 = « sur la table » (mot à mot « table-dessus »).
+    Les formes courtes (上、里…) s'accrochent à un nom ; les formes en 边 (上边、里边、左边…) peuvent aussi s'employer seules : 他在外边。
+    Avec 在 : 在 + lieu + mot de position.
+  pattern: "在 + nom + 上/下/里/外/前/后…    ·    nom + 左边/右边/东边…"
+  examples:
+    - ["书在桌子上。", "Le livre est sur la table."]
+    - ["猫在椅子下边。", "Le chat est sous la chaise."]
+    - ["学校在医院的东边。", "L'école est à l'est de l'hôpital."]
+  quiz:
+    - q: 你的手机在书包（　）。
+      options: ["里", "里面的", "中"]
+      why: "« Dans le cartable » : 书包里. Le mot de position se met après le nom."
+    - q: 他在哪儿？—— 他在（　）。
+      options: ["外边", "外", "上"]
+      why: Employée seule (sans nom devant), la forme longue en 边 est nécessaire.
+
+2:
+  title: "会 et 能 : savoir / pouvoir"
+  explanation: |-
+    会 = savoir faire, après un apprentissage (une langue, nager, conduire). 能 = être capable ou avoir la possibilité de faire, selon les circonstances.
+    Les deux se placent devant le verbe ; à la forme négative : 不会、不能.
+  pattern: "sujet + 会 / 能 + verbe"
+  examples:
+    - ["我会说汉语。", "Je sais parler chinois."]
+    - ["明天我不能来。", "Demain je ne pourrai pas venir."]
+    - ["你会做饭吗？", "Tu sais cuisiner ?"]
+  quiz:
+    - q: 我（　）游泳，我学了两年了。
+      options: ["会", "能", "想"]
+      why: Nager est une compétence apprise → 会.
+    - q: 我今天很忙，不（　）去看电影。
+      options: ["能", "会", "是"]
+      why: Il s'agit d'une possibilité (je n'ai pas le temps), pas d'un savoir-faire → 不能.
+
+3:
+  title: "想 et 要 : vouloir"
+  explanation: |-
+    想 + verbe = avoir envie de, penser faire (souhait). 要 + verbe = vouloir, avoir l'intention ferme de, et aussi « devoir ».
+    À la négation, on dit plutôt 不想 (« je n'ai pas envie »). 不要 signifie « ne… pas ! » (interdiction).
+  pattern: "sujet + 想 / 要 + verbe (+ complément)"
+  examples:
+    - ["我想喝茶。", "J'ai envie de boire du thé."]
+    - ["我要去商店买东西。", "Je vais (je veux) aller au magasin faire des courses."]
+    - ["我不想看电视。", "Je n'ai pas envie de regarder la télé."]
+  quiz:
+    - q: 今天太累了，我不（　）出去。
+      options: ["想", "要", "会"]
+      why: "« Je n'ai pas envie de sortir » : 不想. 不要 serait une interdiction."
+    - q: 你（　）喝什么？—— 我要一杯水。
+      options: ["要", "会", "能"]
+      why: Pour commander ou demander ce qu'on veut, on emploie 要.
+
+4:
+  title: "Les mots interrogatifs : 谁、什么、哪儿、几、多少…"
+  explanation: |-
+    En chinois, le mot interrogatif reste À LA PLACE de l'information demandée : on ne change pas l'ordre des mots.
+    你是谁？(Tu es qui ?) · 你去哪儿？(Tu vas où ?) · 几 pour un petit nombre (moins de 10 en général), 多少 pour un nombre quelconque.
+    Une phrase avec un mot interrogatif ne prend PAS 吗.
+  pattern: "他是谁？ · 这是什么？ · 你去哪儿？ · 几个？ · 多少钱？ · 怎么去？"
+  examples:
+    - ["你叫什么名字？", "Comment t'appelles-tu ?"]
+    - ["你家有几口人？", "Combien êtes-vous dans ta famille ?"]
+    - ["这个苹果多少钱？", "Combien coûte cette pomme ?"]
+  quiz:
+    - q: 你去（　）？—— 我去学校。
+      options: ["哪儿", "什么", "谁"]
+      why: La réponse est un lieu → 哪儿.
+    - q: 你是哪国人？
+      options: ["我是法国人。", "我是法国人吗？", "我是哪国人。"]
+      why: On répond en remplaçant le mot interrogatif par l'information ; pas de 吗.
+
+5:
+  title: "Les pronoms personnels"
+  explanation: |-
+    我 je · 你 tu · 您 vous (politesse) · 他 il · 她 elle. Le pluriel se forme avec 们 : 我们、你们、他们、她们. 您 n'a pas de pluriel en 们.
+    Les pronoms ne changent pas de forme : 我 est à la fois « je », « me », « moi ».
+  pattern: "我 / 你 / 您 / 他 / 她 + 们"
+  examples:
+    - ["我们是学生。", "Nous sommes étudiants."]
+    - ["老师，您好！", "Bonjour, professeur !"]
+    - ["他喜欢她。", "Il l'aime bien (elle)."]
+  quiz:
+    - q: 王老师，（　）好！
+      options: ["您", "你们", "他"]
+      why: On salue un professeur poliment avec 您.
+    - q: 我和小明都是学生，（　）在一个学校。
+      options: ["我们", "他们", "你们"]
+      why: « Xiao Ming et moi » = nous → 我们.
+
+6:
+  title: "Les démonstratifs : 这、那、这儿、那儿…"
+  explanation: |-
+    这 = ce…-ci (proche), 那 = ce…-là (loin). Devant un nom, on ajoute en général un spécificatif : 这个人、那本书.
+    这儿 / 这里 = ici ; 那儿 / 那里 = là-bas. 这些 / 那些 = ces… (pluriel). 别的 = autre(s) ; 有的 = certains.
+  pattern: "这 / 那 + (nombre) + spécificatif + nom"
+  examples:
+    - ["这个人是我的老师。", "Cette personne est mon professeur."]
+    - ["那些书是谁的？", "À qui sont ces livres-là ?"]
+    - ["我们在这儿等你。", "Nous t'attendons ici."]
+  quiz:
+    - q: （　）本书是我的。
+      options: ["这", "这儿", "这里"]
+      why: Devant spécificatif + nom (本书), on emploie 这. 这儿 signifie « ici ».
+    - q: 我的家在（　），很近。
+      options: ["这儿", "这", "这个"]
+      why: « Ici » = 这儿 / 这里.
+
+7:
+  title: "Les nombres : 一 à 百, 二 et 两, 半"
+  explanation: |-
+    Les nombres se construisent comme des multiplications et additions : 十一 (11), 二十 (20), 二十五 (25), 一百 (100).
+    二 sert pour compter et dans les nombres (第二、十二) ; devant un spécificatif, on dit 两 : 两个人、两本书.
+    半 = demi : 半个小时 (une demi-heure), 三点半 (trois heures et demie).
+  pattern: "两 + spécificatif + nom  ·  nombre + 点 + 半"
+  examples:
+    - ["我有两个弟弟。", "J'ai deux petits frères."]
+    - ["现在是十二点半。", "Il est midi et demi."]
+    - ["我们班有二十八个学生。", "Notre classe compte vingt-huit élèves."]
+  quiz:
+    - q: 我买了（　）个苹果。
+      options: ["两", "二", "第二"]
+      why: Devant un spécificatif (个), « deux » se dit 两.
+    - q: 一个小时的一半是多少分钟？
+      options: ["三十分钟", "五十分钟", "二十分钟"]
+      why: 半个小时 = trente minutes.
+
+8:
+  title: "Les spécificatifs (量词) : 个、本、杯、块…"
+  explanation: |-
+    Entre un nombre (ou 这 / 那) et un nom, le chinois met obligatoirement un spécificatif : 一个人, 三本书.
+    个 est le plus général ; 本 pour les livres, 杯 pour une tasse / un verre de…, 家 pour les entreprises et magasins, 口 pour les membres d'une famille, 块 pour les morceaux et l'argent (yuan), 页 pour les pages.
+  pattern: "nombre + spécificatif + nom"
+  examples:
+    - ["我想喝一杯茶。", "Je voudrais boire une tasse de thé."]
+    - ["我家有四口人。", "Nous sommes quatre dans ma famille."]
+    - ["这本书三十块钱。", "Ce livre coûte trente yuans."]
+  quiz:
+    - q: 我昨天看了一（　）书。
+      options: ["本", "杯", "口"]
+      why: 本 est le spécificatif des livres.
+    - q: 你家有几（　）人？
+      options: ["口", "本", "块"]
+      why: "Pour compter les membres d'une famille : 口."
+
+9:
+  title: "Les adverbes de degré : 很、太、非常、真、最"
+  explanation: |-
+    Ils se placent devant un adjectif ou un verbe de sentiment. 很 = très (souvent presque neutre devant un adjectif) ; 非常 = extrêmement ; 真 = vraiment ; 最 = le plus.
+    太 = trop, souvent avec 了 à la fin : 太贵了 ! Et 不太 = pas très.
+  pattern: "很 / 非常 / 真 / 最 + adjectif   ·   太 + adjectif + 了"
+  examples:
+    - ["今天很热。", "Il fait très chaud aujourd'hui."]
+    - ["这件衣服太贵了！", "Ce vêtement est trop cher !"]
+    - ["我最喜欢吃饺子。", "Ce que je préfère, ce sont les jiaozi."]
+  quiz:
+    - q: 这个菜（　）好吃了！
+      options: ["太", "很", "最"]
+      why: "La structure 太……了 exprime « trop / tellement… ! »."
+    - q: 在我们家，我哥哥（　）高。
+      options: ["最", "太", "真"]
+      why: "Comparaison avec tous les autres → le plus grand : 最."
+
+10:
+  title: "都、一起、一块儿 : tous / ensemble"
+  explanation: |-
+    都 = tous, tout ; il se place APRÈS le sujet (qui est pluriel) et devant le verbe : 我们都是学生.
+    一起 / 一块儿 = ensemble ; souvent avec 跟 / 和 : 我跟他一起去.
+  pattern: "sujet pluriel + 都 + verbe  ·  A + 跟/和 + B + 一起 + verbe"
+  examples:
+    - ["我们都喜欢喝茶。", "Nous aimons tous le thé."]
+    - ["明天我们一起去吧。", "Allons-y ensemble demain."]
+    - ["他和朋友一块儿吃饭。", "Il mange avec un ami."]
+  quiz:
+    - q: 他们（　）是中国人。
+      options: ["都", "一起", "很"]
+      why: "« Ils sont TOUS chinois » : 都 après le sujet pluriel."
+    - q: 我和妈妈（　）去商店。
+      options: ["一起", "都", "再"]
+      why: "« Avec maman, ensemble » : 和……一起."
+
+11:
+  title: "Adverbes de temps : 马上、先、有时、在、正、正在"
+  explanation: |-
+    马上 = tout de suite · 先 = d'abord · 有时 = parfois. 在 / 正 / 正在 + verbe = être en train de (voir aussi le point sur l'aspect progressif).
+    Ces adverbes se mettent après le sujet, devant le verbe.
+  pattern: "sujet + 马上 / 先 / 有时 / 正在 + verbe"
+  examples:
+    - ["你等一下，我马上来。", "Attends un peu, j'arrive tout de suite."]
+    - ["我们先吃饭，再去看电影。", "Mangeons d'abord, puis allons voir un film."]
+    - ["他正在打电话。", "Il est en train de téléphoner."]
+  quiz:
+    - q: 别急，我（　）就到。
+      options: ["马上", "有时", "先"]
+      why: "« J'arrive tout de suite » : 马上."
+    - q: 妈妈（　）做饭，你别去厨房。
+      options: ["正在", "马上", "有时"]
+      why: L'action est en cours → 正在.
+
+12:
+  title: "Fréquence et répétition : 常、常常、再"
+  explanation: |-
+    常 / 常常 = souvent ; négation : 不常. 再 = de nouveau, encore une fois, pour une action FUTURE (再见 = au revoir, « se revoir »).
+  pattern: "sujet + 常常 + verbe  ·  再 + verbe (futur)"
+  examples:
+    - ["我常常去那家饭店。", "Je vais souvent dans ce restaurant."]
+    - ["请再说一遍。", "Répétez une fois, s'il vous plaît."]
+    - ["明天再来吧。", "Reviens demain."]
+  quiz:
+    - q: 这个电影很好看，我想（　）看一次。
+      options: ["再", "常常", "先"]
+      why: Une répétition à venir → 再.
+    - q: 他（　）来我家玩儿，我们是好朋友。
+      options: ["常常", "再", "马上"]
+      why: Une habitude → 常常.
+
+13:
+  title: "也 et 还 : aussi, encore"
+  explanation: |-
+    也 = aussi ; il se place après le sujet, devant le verbe (jamais en fin de phrase) : 我也是学生.
+    还 = encore, en plus ; il ajoute une information : 我买了苹果，还买了香蕉.
+  pattern: "sujet + 也 + verbe  ·  ……，还 + verbe"
+  examples:
+    - ["他是老师，我也是老师。", "Il est professeur, moi aussi."]
+    - ["我会说汉语，还会说英语。", "Je parle chinois, et aussi anglais."]
+  quiz:
+    - q: 你喝茶，我（　）喝茶。
+      options: ["也", "还", "都"]
+      why: "« Moi aussi » : 也 juste avant le verbe."
+    - q: Où placer 也 ? 我 ___ 喜欢 ___ 看书 ___。
+      options: ["我也喜欢看书。", "我喜欢也看书。", "我喜欢看书也。"]
+      why: 也 se met toujours devant le verbe.
+
+14:
+  title: "La négation : 不、没、没有、别"
+  explanation: |-
+    不 nie le présent, le futur, les habitudes et les adjectifs : 我不去 · 他不高.
+    没 / 没有 nie une action passée ou accomplie (« ne pas avoir fait ») et la possession : 我没去 · 我没有钱. Avec 没, on ne met pas 了.
+    别 = « ne… pas ! » (interdiction, conseil) : 别说了！
+  pattern: "不 + verbe/adjectif  ·  没(有) + verbe  ·  别 + verbe"
+  examples:
+    - ["我明天不去学校。", "Demain je ne vais pas à l'école."]
+    - ["昨天我没去学校。", "Hier je ne suis pas allé à l'école."]
+    - ["别看电视了，快睡觉！", "Arrête de regarder la télé, va vite dormir !"]
+  quiz:
+    - q: 昨天下雨，我（　）出去。
+      options: ["没", "不", "别"]
+      why: Action passée qui n'a pas eu lieu → 没.
+    - q: 我（　）喜欢喝咖啡。
+      options: ["不", "没", "别"]
+      why: Un goût, une habitude → 不.
+
+15:
+  title: "从 : depuis, à partir de"
+  explanation: |-
+    从 introduit le point de départ dans le temps ou l'espace ; souvent avec 到 (jusqu'à) : 从……到…….
+  pattern: "从 + lieu / moment (+ 到 + lieu / moment) + verbe"
+  examples:
+    - ["我从北京来。", "Je viens de Pékin."]
+    - ["我们从八点到十二点上课。", "Nous avons cours de 8 h à midi."]
+  quiz:
+    - q: 他（　）中国来，是中国人。
+      options: ["从", "在", "跟"]
+      why: "Le point de départ (« venir DE Chine ») : 从."
+    - q: 商店从九点（　）晚上十点开门。
+      options: ["到", "从", "在"]
+      why: "从……到…… = de… à…."
+
+16:
+  title: "在 : à, dans (lieu de l'action)"
+  explanation: |-
+    在 + lieu se place DEVANT le verbe pour dire où se passe l'action : 我在学校学习. 在 peut aussi être le verbe principal : 他在家 (il est à la maison).
+  pattern: "sujet + 在 + lieu + verbe"
+  examples:
+    - ["我在医院工作。", "Je travaille à l'hôpital."]
+    - ["我们在饭店吃饭。", "Nous mangeons au restaurant."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我在学校学习汉语。", "我学习汉语在学校。", "在学校我学习汉语在。"]
+      why: Le lieu (在 + lieu) se met avant le verbe.
+
+17:
+  title: "跟 / 和 : avec (préposition)"
+  explanation: |-
+    跟 ou 和 + personne, devant le verbe : faire quelque chose avec quelqu'un. Souvent suivi de 一起.
+  pattern: "sujet + 跟 / 和 + personne + (一起) + verbe"
+  examples:
+    - ["我跟朋友一起去旅游。", "Je pars en voyage avec un ami."]
+    - ["你想和谁说话？", "Avec qui veux-tu parler ?"]
+  quiz:
+    - q: 我想（　）你一起去。
+      options: ["跟", "在", "从"]
+      why: "« Avec toi » : 跟你."
+
+18:
+  title: "比 : plus… que (comparaison simple)"
+  explanation: |-
+    A 比 B + adjectif = A est plus … que B. On ne met PAS 很 / 非常 devant l'adjectif dans cette structure.
+    Voir aussi le point « comparaison 1 ».
+  pattern: "A + 比 + B + adjectif"
+  examples:
+    - ["哥哥比我高。", "Mon grand frère est plus grand que moi."]
+    - ["今天比昨天冷。", "Il fait plus froid qu'hier."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["这本书比那本书贵。", "这本书比那本书很贵。", "这本书贵比那本书。"]
+      why: Après 比 + B, l'adjectif est employé seul, sans 很.
+
+19:
+  title: "Les conjonctions 和、跟、还是"
+  explanation: |-
+    和 / 跟 relient deux noms : 我和你 (toi et moi) ; ils ne relient pas deux phrases.
+    还是 = ou bien, dans une QUESTION de choix : 你喝茶还是喝咖啡？
+  pattern: "nom + 和 / 跟 + nom  ·  A 还是 B ？"
+  examples:
+    - ["我爸爸和我妈妈都是医生。", "Mon père et ma mère sont tous deux médecins."]
+    - ["你今天去还是明天去？", "Tu y vas aujourd'hui ou demain ?"]
+  quiz:
+    - q: 你要米饭（　）面条？
+      options: ["还是", "和", "跟"]
+      why: Question de choix → 还是.
+    - q: 我（　）他都是学生。
+      options: ["和", "还是", "也"]
+      why: "Relier deux noms (« lui et moi ») : 和."
+
+20:
+  title: "的 et 地 : particules de structure"
+  explanation: |-
+    的 relie un déterminant à un nom : 我的书 (mon livre), 漂亮的衣服 (un joli vêtement). Entre un pronom et un proche, on l'omet souvent : 我妈妈.
+    地 relie un adverbe (souvent un adjectif) à un verbe : 慢慢地走 (marcher lentement).
+  pattern: "déterminant + 的 + nom  ·  adjectif + 地 + verbe"
+  examples:
+    - ["这是我的手机。", "C'est mon téléphone."]
+    - ["他高兴地说：“谢谢！”", "Il dit joyeusement : « Merci ! »"]
+  quiz:
+    - q: 这是老师（　）书。
+      options: ["的", "地", "了"]
+      why: "« Le livre DU professeur » : 的 devant le nom."
+
+21:
+  title: "了 (1) après le verbe : action accomplie"
+  explanation: |-
+    了 juste après le verbe indique que l'action est accomplie : 我买了一本书. Il s'emploie surtout quand l'objet est précisé (nombre, spécificatif).
+    Négation : 没 + verbe, SANS 了 : 我没买.
+  pattern: "verbe + 了 + (nombre + spécificatif) + objet"
+  examples:
+    - ["我昨天看了一个电影。", "Hier j'ai vu un film."]
+    - ["他喝了两杯水。", "Il a bu deux verres d'eau."]
+  quiz:
+    - q: Comment dit-on « Je n'ai pas acheté » ?
+      options: ["我没买。", "我没买了。", "我不买了。"]
+      why: Avec 没, on ne met jamais 了.
+
+22:
+  title: "Les particules finales : 吧、了、吗、呢"
+  explanation: |-
+    吗 transforme une affirmation en question oui/non. 呢 : « et… ? » (你呢？) ou action en cours. 吧 : suggestion (我们走吧) ou supposition (你是学生吧？).
+    了 en fin de phrase : changement de situation (下雨了 = il s'est mis à pleuvoir).
+  pattern: "phrase + 吗？ / 呢？ / 吧。 / 了。"
+  examples:
+    - ["你是老师吗？", "Es-tu professeur ?"]
+    - ["我很好，你呢？", "Je vais bien, et toi ?"]
+    - ["我们一起去吧！", "Allons-y ensemble !"]
+  quiz:
+    - q: 我喜欢喝茶，你（　）？
+      options: ["呢", "吗", "吧"]
+      why: "« Et toi ? » : 你呢 ?"
+    - q: 太晚了，我们回家（　）。
+      options: ["吧", "吗", "呢"]
+      why: Une suggestion → 吧.
+
+23:
+  title: "Le groupe nombre + spécificatif"
+  explanation: |-
+    Un nombre ne se met pas directement devant un nom : il faut un spécificatif. Le groupe « nombre + spécificatif » peut aussi s'employer seul quand le nom est connu : 我要两个.
+  pattern: "nombre + spécificatif (+ nom)"
+  examples:
+    - ["我要三个苹果。", "Je voudrais trois pommes."]
+    - ["苹果多少钱一个？", "Combien coûte une pomme ?"]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我有一个哥哥。", "我有一哥哥。", "我有哥哥一个。"]
+      why: Nombre + spécificatif + nom, dans cet ordre.
+
+24:
+  title: "Le sujet"
+  explanation: |-
+    Le sujet vient en tête de phrase : un nom, un pronom ou un groupe nominal. Il peut être omis quand il est évident (réponses courtes, consignes).
+  pattern: "sujet + verbe (+ objet)"
+  examples:
+    - ["我是学生。", "Je suis étudiant."]
+    - ["我的妈妈是医生。", "Ma mère est médecin."]
+  quiz:
+    - q: Dans « 我的朋友喜欢唱歌。 », quel est le sujet ?
+      options: ["我的朋友", "喜欢", "唱歌"]
+      why: "Le sujet est le groupe nominal en tête : 我的朋友."
+
+25:
+  title: "Le prédicat : verbe ou adjectif"
+  explanation: |-
+    Le cœur de la phrase est un verbe (我学习) ou un ADJECTIF employé seul, sans 是 : 我很忙 (je suis occupé). Devant l'adjectif, on met souvent 很.
+  pattern: "sujet + verbe  ·  sujet + (很) + adjectif"
+  examples:
+    - ["他很高。", "Il est grand."]
+    - ["我学习汉语。", "J'étudie le chinois."]
+  quiz:
+    - q: Comment dit-on « Je suis très occupé » ?
+      options: ["我很忙。", "我是很忙。", "我是忙。"]
+      why: Un adjectif sert directement de prédicat, sans 是.
+
+26:
+  title: "L'objet (complément d'objet)"
+  explanation: |-
+    L'objet se place APRÈS le verbe : 我喝茶 (je bois du thé). C'est un nom, un pronom ou un groupe nominal.
+  pattern: "sujet + verbe + objet"
+  examples:
+    - ["我喜欢你。", "Je t'aime bien."]
+    - ["他买了一本汉语书。", "Il a acheté un livre de chinois."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我看电视。", "我电视看。", "电视我看看。"]
+      why: "Ordre normal : sujet + verbe + objet."
+
+27:
+  title: "Le déterminant (定语) devant le nom"
+  explanation: |-
+    Tout ce qui précise un nom se met DEVANT lui, souvent avec 的 : un nom (妈妈的手机), un adjectif (漂亮的衣服), un groupe nombre + spécificatif (三本书).
+    Un adjectif d'une syllabe peut se coller au nom sans 的 : 好人、新书.
+  pattern: "déterminant + (的) + nom"
+  examples:
+    - ["这是我朋友的电脑。", "C'est l'ordinateur de mon ami."]
+    - ["她买了一件漂亮的衣服。", "Elle a acheté un joli vêtement."]
+  quiz:
+    - q: Comment dit-on « un livre très intéressant » ?
+      options: ["一本很有意思的书", "一本书很有意思的", "很有意思一本书"]
+      why: Le déterminant (很有意思的) se place devant le nom.
+
+28:
+  title: "Le complément circonstanciel (状语) devant le verbe"
+  explanation: |-
+    Les adverbes, les mots de temps et de lieu se placent devant le verbe (après le sujet) : 我明天在家休息.
+    Le temps peut aussi venir en tête de phrase : 明天我在家休息. En revanche, jamais à la fin comme en français.
+  pattern: "sujet + temps + lieu + verbe   ou   temps + sujet + lieu + verbe"
+  examples:
+    - ["我每天早上七点起床。", "Je me lève à sept heures tous les matins."]
+    - ["他们在饭店吃饭。", "Ils mangent au restaurant."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["我明天在学校看书。", "我看书在学校明天。", "我在学校看书明天。"]
+      why: Temps puis lieu, AVANT le verbe.
+
+29:
+  title: "Phrase à prédicat verbal"
+  explanation: |-
+    La phrase la plus courante : sujet + verbe + (objet). Le verbe ne change jamais de forme (pas de conjugaison) : le temps est donné par les mots de temps et les particules.
+  pattern: "sujet + verbe + objet"
+  examples:
+    - ["我昨天去商店。", "Hier, je suis allé au magasin."]
+    - ["他明天去商店。", "Demain, il ira au magasin."]
+  quiz:
+    - q: Dans « 我明天去北京 », qu'est-ce qui indique le futur ?
+      options: ["明天", "去", "我"]
+      why: Le verbe 去 ne change pas ; c'est le mot de temps 明天 qui situe l'action.
+
+30:
+  title: "Phrase à prédicat adjectival"
+  explanation: |-
+    Un adjectif peut être le prédicat, sans 是 : 天气很好. Sans adverbe, l'adjectif seul exprime souvent une comparaison implicite (这个大，那个小) ; d'où le 很 « neutre ».
+  pattern: "sujet + 很 / 不 / 非常… + adjectif"
+  examples:
+    - ["这个苹果很大。", "Cette pomme est grosse."]
+    - ["今天不冷。", "Il ne fait pas froid aujourd'hui."]
+  quiz:
+    - q: Quelle phrase est correcte ?
+      options: ["他的房间很干净。", "他的房间是干净。", "他的房间是很干净。"]
+      why: L'adjectif sert de prédicat sans 是.
+
+31:
+  title: "Phrase sans sujet"
+  explanation: |-
+    Certaines phrases n'ont pas de sujet : météo et phénomènes (下雨了), consignes et souhaits (请坐、请进), interjections (谢谢！).
+  pattern: "verbe (+ objet)"
+  examples:
+    - ["下雪了。", "Il neige."]
+    - ["请喝茶。", "Prenez du thé, je vous en prie."]
+  quiz:
+    - q: Comment dit-on « Il pleut » ?
+      options: ["下雨了。", "天下雨是。", "它下雨。"]
+      why: "La météo s'exprime sans sujet : 下雨了."
+
+32:
+  title: "La phrase déclarative"
+  explanation: |-
+    Elle affirme ou nie un fait et se termine par un point (。). Ordre de base : sujet + (temps / lieu) + verbe + objet.
+  pattern: "sujet + verbe + objet。"
+  examples:
+    - ["我是法国人。", "Je suis français."]
+    - ["他不喜欢喝咖啡。", "Il n'aime pas le café."]
+  quiz:
+    - q: Quelle phrase est une phrase déclarative ?
+      options: ["我叫大卫。", "你叫什么名字？", "请坐！"]
+      why: Elle énonce un fait et finit par un point.
+
+33:
+  title: "Les quatre types de questions"
+  explanation: |-
+    (1) Oui / non avec 吗 : 你是学生吗？ (2) Avec un mot interrogatif : 你去哪儿？ (3) Question de choix avec 还是 : 你去还是我去？ (4) Forme affirmative + négative : 你去不去？
+    Les types (2), (3) et (4) ne prennent jamais 吗.
+  pattern: "……吗？ · 谁/什么/哪儿…？ · A还是B？ · V不V？"
+  examples:
+    - ["你喜欢喝茶吗？", "Tu aimes le thé ?"]
+    - ["你喝茶还是喝咖啡？", "Tu bois du thé ou du café ?"]
+    - ["你喝不喝茶？", "Tu bois du thé ou pas ?"]
+  quiz:
+    - q: Quelle question est INCORRECTE ?
+      options: ["你去不去吗？", "你去不去？", "你去吗？"]
+      why: "La forme V不V est déjà une question : on n'ajoute pas 吗."
+    - q: 你是老师（　）学生？
+      options: ["还是", "吗", "呢"]
+      why: Choix entre deux possibilités → 还是.
+
+34:
+  title: "La phrase impérative"
+  explanation: |-
+    Pour demander ou conseiller : 请 + verbe (poli) ; pour interdire : 别 / 不要 + verbe. On adoucit avec 吧 : 你来吧.
+  pattern: "请 + verbe  ·  别 / 不要 + verbe  ·  verbe + 吧"
+  examples:
+    - ["请进！", "Entrez, je vous prie !"]
+    - ["别说话！", "Ne parle pas !"]
+    - ["你休息一下吧。", "Repose-toi un peu."]
+  quiz:
+    - q: Comment dit-on poliment « Asseyez-vous » ?
+      options: ["请坐。", "别坐。", "坐吗？"]
+      why: 请 + verbe = invitation polie.
+
+35:
+  title: "La phrase exclamative"
+  explanation: |-
+    On exprime l'émotion avec 太……了、真…… ou 好…… et un point d'exclamation : 太好了！· 真漂亮！
+  pattern: "太 + adj. + 了！ · 真 + adj.！"
+  examples:
+    - ["太好了！", "Super !"]
+    - ["这儿真漂亮！", "C'est vraiment beau ici !"]
+  quiz:
+    - q: Quelle phrase est une exclamation ?
+      options: ["这个菜太好吃了！", "这个菜好吃吗？", "这个菜不好吃。"]
+      why: 太……了 avec « ! » exprime l'exclamation.
+
+36:
+  title: "La phrase avec 是"
+  explanation: |-
+    是 relie deux noms : identité ou catégorie (他是老师), description (这本书是新的), ou existence dans un lieu (前边是学校 = devant, c'est l'école).
+    Négation : 不是. On n'utilise pas 是 devant un adjectif seul.
+  pattern: "A + 是 + B  ·  lieu + 是 + nom"
+  examples:
+    - ["我是中国人。", "Je suis chinois."]
+    - ["学校旁边是医院。", "À côté de l'école, il y a l'hôpital."]
+  quiz:
+    - q: 他（　）我的哥哥。
+      options: ["是", "很", "在"]
+      why: Identité entre deux noms → 是.
+
+37:
+  title: "La phrase avec 有 (1) : avoir, il y a"
+  explanation: |-
+    有 = avoir (possession) : 我有一个妹妹 ; et « il y a » (existence) : 桌子上有一本书 (lieu + 有 + chose).
+    Négation : 没有 (jamais 不有).
+  pattern: "A + 有 + B  ·  lieu + 有 + (nombre) + nom"
+  examples:
+    - ["我有两个姐姐。", "J'ai deux grandes sœurs."]
+    - ["教室里有很多学生。", "Il y a beaucoup d'élèves dans la classe."]
+  quiz:
+    - q: 我（　）有钱。
+      options: ["没", "不", "别"]
+      why: La négation de 有 est toujours 没有.
+    - q: 桌子上（　）一个杯子。
+      options: ["有", "是", "在"]
+      why: "« Il y a… sur la table » : lieu + 有."
+
+38:
+  title: "Comparaison (1) : A 比 B + adj., A 没有 B + adj."
+  explanation: |-
+    A 比 B + adjectif = A est plus … que B. Pour dire « moins » : A 没有 B + adjectif (A n'est pas aussi … que B).
+  pattern: "A + 比 + B + adj.  ·  A + 没有 + B + adj."
+  examples:
+    - ["我比我弟弟高。", "Je suis plus grand que mon petit frère."]
+    - ["今天没有昨天热。", "Il fait moins chaud qu'hier."]
+  quiz:
+    - q: Comment dire « Le thé est moins cher que le café » ?
+      options: ["茶没有咖啡贵。", "茶比咖啡不贵。", "茶不比咖啡贵很。"]
+      why: A 没有 B + adjectif = A est moins … que B.
+
+39:
+  title: "Phrases coordonnées : 一边……一边……, ……也……"
+  explanation: |-
+    Deux propositions juxtaposées, avec ou sans mot de liaison. 一边 + verbe 1，一边 + verbe 2 = faire deux choses en même temps. 也 relie deux faits semblables.
+  pattern: "一边 + V1，一边 + V2  ·  A……，B 也……"
+  examples:
+    - ["他一边吃饭，一边看电视。", "Il mange en regardant la télé."]
+    - ["我喜欢唱歌，我朋友也喜欢唱歌。", "J'aime chanter, mon ami aussi."]
+  quiz:
+    - q: 她一边听音乐，（　）做作业。
+      options: ["一边", "也", "还是"]
+      why: "一边……一边…… : deux actions simultanées."
+
+40:
+  title: "了 (2) en fin de phrase : changement"
+  explanation: |-
+    了 à la fin de la phrase signale un changement ou une nouvelle situation : 下雨了 (il s'est mis à pleuvoir), 我二十岁了 (j'ai maintenant vingt ans), 我不去了 (finalement je n'y vais plus).
+  pattern: "phrase + 了"
+  examples:
+    - ["天冷了。", "Il commence à faire froid."]
+    - ["我饿了。", "J'ai faim (maintenant)."]
+  quiz:
+    - q: "« Je n'y vais plus » (j'ai changé d'avis) :"
+      options: ["我不去了。", "我没去。", "我不去。"]
+      why: 了 final marque le changement de décision.
+
+41:
+  title: "了 (1) : l'aspect accompli"
+  explanation: |-
+    Verbe + 了 = l'action a été réalisée. Ce n'est pas un « passé » : 了 peut aussi s'employer pour une action future accomplie (明天下了课我去找你 = demain, après le cours…).
+    Négation : 没 + verbe (sans 了).
+  pattern: "verbe + 了 (+ objet précisé)"
+  examples:
+    - ["我吃了早饭。", "J'ai pris mon petit-déjeuner."]
+    - ["他买了三个苹果。", "Il a acheté trois pommes."]
+  quiz:
+    - q: 你吃饭了吗？—— 还没（　）。
+      options: ["吃", "吃了", "吃过了"]
+      why: Avec 没, le verbe est employé sans 了.
+
+42:
+  title: "L'aspect progressif : 在 / 正在 + verbe (+ 呢)"
+  explanation: |-
+    Pour une action en cours : 在 / 正 / 正在 + verbe, souvent renforcé par 呢 en fin de phrase. 呢 seul peut aussi suffire : 他看书呢.
+    Négation : 没（在）+ verbe.
+  pattern: "(正)在 + verbe (+ 呢)  ·  verbe + objet + 呢"
+  examples:
+    - ["我在做饭呢。", "Je suis en train de faire à manger."]
+    - ["他正在睡觉。", "Il est en train de dormir."]
+  quiz:
+    - q: 你在做什么呢？
+      options: ["我在看书呢。", "我看了书呢。", "我看书在呢。"]
+      why: 在 + verbe (+ 呢) décrit l'action en cours.
+
+43:
+  title: "Dire un prix"
+  explanation: |-
+    À l'oral : 块 (yuan), 毛 (dixième) ; à l'écrit : 元. On dit le prix puis souvent 钱 : 五块钱. Pour demander : 多少钱？
+  pattern: "nombre + 块 (+ 钱)  ·  ……多少钱？"
+  examples:
+    - ["这个杯子多少钱？—— 十五块。", "Combien coûte cette tasse ? — Quinze yuans."]
+    - ["一共一百元。", "Cent yuans en tout."]
+  quiz:
+    - q: Comment demander le prix ?
+      options: ["这个多少钱？", "这个几钱？", "这个钱多少？"]
+      why: On demande 多少钱 ? 几 ne convient pas pour l'argent.
+
+44:
+  title: "Dates et heures"
+  explanation: |-
+    Du plus grand au plus petit : année + mois + jour + jour de la semaine : 2026年12月13号，星期日. L'année se lit chiffre par chiffre : 二〇二六年.
+    Heures : 点 (heure), 分 (minute), 半 (et demie), 刻 (quart) : 八点半、九点十分.
+  pattern: "……年……月……号/日，星期…  ·  ……点……分"
+  examples:
+    - ["今天是十月十九号，星期一。", "Aujourd'hui, c'est lundi 19 octobre."]
+    - ["我们下午三点半见。", "On se voit à trois heures et demie de l'après-midi."]
+  quiz:
+    - q: Comment dit-on « le 8 mars » ?
+      options: ["三月八号", "八号三月", "八月三号"]
+      why: "Le mois avant le jour : 三月八号."
+    - q: 现在几点？（9 h 30）
+      options: ["九点半", "半九点", "九半点"]
+      why: "« Neuf heures et demie » : 九点半."
+
+45:
+  title: "Poser une question avec 吗"
+  explanation: |-
+    On ajoute 吗 à la fin d'une phrase affirmative pour en faire une question fermée (oui / non). L'ordre des mots ne change pas.
+    Réponse : on reprend le verbe (是 / 不是, 去 / 不去…).
+  pattern: "phrase affirmative + 吗？"
+  examples:
+    - ["你是学生吗？—— 是。", "Es-tu étudiant ? — Oui."]
+    - ["你喜欢吃饺子吗？—— 不喜欢。", "Tu aimes les jiaozi ? — Non."]
+  quiz:
+    - q: Comment répondre « oui » à 你明天去吗？
+      options: ["去。", "吗。", "对吗。"]
+      why: On répond en reprenant le verbe de la question.
+
+46:
+  title: "Questions avec 多、多少、几、哪、哪儿、什么、谁、怎么"
+  explanation: |-
+    Le mot interrogatif prend la place de la réponse. 怎么 + verbe = comment (manière) : 怎么去？ 多 + adjectif = à quel point : 多大？(quel âge ?).
+  pattern: "多大 · 多少 · 几 · 哪个 · 哪儿 · 什么 · 谁 · 怎么 + verbe"
+  examples:
+    - ["你怎么去机场？—— 坐出租车。", "Comment vas-tu à l'aéroport ? — En taxi."]
+    - ["你女儿多大了？", "Quel âge a ta fille ?"]
+  quiz:
+    - q: 你（　）去学校？—— 我坐公交车去。
+      options: ["怎么", "什么", "哪儿"]
+      why: La réponse indique la manière → 怎么 + verbe.
+
+47:
+  title: "Questions avec 还是"
+  explanation: |-
+    还是 propose un choix dans une question : A 还是 B ? Pas de 吗. Dans une phrase affirmative, « ou » se dit 或者 (niveau 2).
+  pattern: "A + 还是 + B ？"
+  examples:
+    - ["你喝茶还是喝水？", "Tu bois du thé ou de l'eau ?"]
+    - ["我们今天去还是明天去？", "On y va aujourd'hui ou demain ?"]
+  quiz:
+    - q: 你是中国人（　）日本人？
+      options: ["还是", "和", "吗"]
+      why: Question de choix → 还是.
+
+48:
+  title: "Questions affirmatif + négatif (V不V)"
+  explanation: |-
+    On répète le verbe ou l'adjectif sous ses formes affirmative et négative : 你去不去？· 好不好？ Pour un verbe à deux syllabes : 喜欢不喜欢 ou 喜不喜欢. Pas de 吗.
+    Avec 有 : 有没有？
+  pattern: "V + 不 + V ？  ·  有没有……？"
+  examples:
+    - ["你明天来不来？", "Tu viens demain ou pas ?"]
+    - ["这儿有没有银行？", "Est-ce qu'il y a une banque ici ?"]
+  quiz:
+    - q: 你有（　）有中文书？
+      options: ["没", "不", "吗"]
+      why: La forme de 有 est 有没有.
+    - q: Quelle question est correcte ?
+      options: ["这个菜好吃不好吃？", "这个菜好吃不好吃吗？", "这个菜好吃吗不好吃？"]
+      why: La forme A不A ne prend pas 吗.

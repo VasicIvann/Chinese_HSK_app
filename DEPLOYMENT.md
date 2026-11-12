@@ -70,6 +70,11 @@ Render's free tier sleeps the service after 15 min of inactivity. To keep it awa
    - Method: GET
 3. Save.
 
+`/healthz` keeps Render awake **without touching the database**, so Neon can still
+suspend its compute after 5 min idle (free plan: 100 CU-hours a month). Never point a
+cron at `/healthz/db`: a DB ping every 10 min keeps Neon awake most of the day and uses
+up the whole monthly allowance.
+
 ---
 
 ## 2. Frontend — Vercel
@@ -116,6 +121,8 @@ Push to `main` → **both** platforms auto-deploy:
 
 - Vercel: ~1 min, zero-downtime
 - Render: ~3 min, ~30 s swap downtime
+
+Database migrations run automatically: the Render start command is `alembic upgrade head && uvicorn ...`, so a new migration is applied before the new instance serves traffic. If it fails, the deploy fails and the previous version stays live — check the deploy logs.
 
 GitHub Actions also runs the test suites on every push/PR (`.github/workflows/tests.yml`).
 

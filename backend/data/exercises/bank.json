@@ -1,0 +1,9544 @@
+{
+ "counts": {
+  "L1 pic_answer": 15,
+  "L1 pic_choice": 15,
+  "L1 pic_judge": 15,
+  "L1 pic_match": 3,
+  "L1 short_mcq": 15,
+  "L1 word_match": 3,
+  "L2 char_pinyin": 15,
+  "L2 long_mcq": 15,
+  "L2 pic_choice": 15,
+  "L2 pic_judge": 25,
+  "L2 pic_match": 6,
+  "L2 short_mcq": 30,
+  "L3 char_pinyin": 20,
+  "L3 long_mcq": 25,
+  "L3 make_sentence": 15,
+  "L3 passage_judge": 25,
+  "L3 passage_mcq": 25,
+  "L3 pic_match": 6,
+  "L3 reorder": 15,
+  "L3 short_mcq": 30
+ },
+ "items": [
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "三个苹果。"
+    }
+   ],
+   "fr": "Trois pommes.",
+   "options": [
+    "Deux pommes sur une assiette",
+    "Trois pommes sur une table",
+    "Trois oranges dans un panier"
+   ],
+   "answer": 1,
+   "id": "1-pic_choice-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我在看书。"
+    }
+   ],
+   "fr": "Je lis (un livre).",
+   "options": [
+    "Une fille qui lit un livre",
+    "Une fille qui dort",
+    "Une fille qui regarde la télévision"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "她在打电话。"
+    }
+   ],
+   "fr": "Elle est au téléphone.",
+   "options": [
+    "Une femme qui parle au téléphone",
+    "Une femme qui mange du riz",
+    "Une femme qui écrit une lettre"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "今天很热。"
+    }
+   ],
+   "fr": "Il fait très chaud aujourd'hui.",
+   "options": [
+    "Une rue couverte de neige",
+    "Un homme en tee-shirt qui s'essuie le front sous un grand soleil",
+    "Des gens sous des parapluies"
+   ],
+   "answer": 1,
+   "id": "1-pic_choice-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "猫在桌子上。"
+    }
+   ],
+   "fr": "Le chat est sur la table.",
+   "options": [
+    "Un chat qui dort sous une chaise",
+    "Un chat assis sur une table",
+    "Un chien couché sur une table"
+   ],
+   "answer": 1,
+   "id": "1-pic_choice-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他是医生。"
+    }
+   ],
+   "fr": "Il est médecin.",
+   "options": [
+    "Un homme en blouse blanche avec un stéthoscope",
+    "Un professeur devant un tableau",
+    "Un chauffeur dans son taxi"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们坐飞机去中国。"
+    }
+   ],
+   "fr": "Nous allons en Chine en avion.",
+   "options": [
+    "Un train dans une gare",
+    "Une famille dans un taxi",
+    "Un avion dans le ciel"
+   ],
+   "answer": 2,
+   "id": "1-pic_choice-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "下雨了。"
+    }
+   ],
+   "fr": "Il pleut.",
+   "options": [
+    "Une rue sous la pluie, des gens avec des parapluies",
+    "Des enfants qui jouent dans la neige",
+    "Un ciel bleu et un grand soleil"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他在睡觉。"
+    }
+   ],
+   "fr": "Il dort.",
+   "options": [
+    "Un homme qui dort dans son lit",
+    "Un homme qui boit un café",
+    "Un homme qui lit dans un fauteuil"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我想喝茶。"
+    }
+   ],
+   "fr": "Je voudrais boire du thé.",
+   "options": [
+    "Une tasse de thé chaud",
+    "Une bouteille d'eau",
+    "Un bol de riz"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这是我的狗。"
+    }
+   ],
+   "fr": "C'est mon chien.",
+   "options": [
+    "Une fille qui caresse un chat",
+    "Un homme qui donne à manger à un oiseau",
+    "Un garçon qui tient un chien en laisse"
+   ],
+   "answer": 2,
+   "id": "1-pic_choice-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我女儿七岁了。"
+    }
+   ],
+   "fr": "Ma fille a sept ans.",
+   "options": [
+    "Un bébé dans les bras de sa mère",
+    "Une grand-mère devant un gâteau d'anniversaire",
+    "Une fillette devant un gâteau avec sept bougies"
+   ],
+   "answer": 2,
+   "id": "1-pic_choice-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我买了一些水果。"
+    }
+   ],
+   "fr": "J'ai acheté des fruits.",
+   "options": [
+    "Une femme qui essaie un manteau",
+    "Un panier plein de fruits",
+    "Un homme qui achète des livres"
+   ],
+   "answer": 1,
+   "id": "1-pic_choice-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "现在三点。"
+    }
+   ],
+   "fr": "Il est trois heures.",
+   "options": [
+    "Une horloge qui indique trois heures",
+    "Une horloge qui indique huit heures",
+    "Une horloge qui indique midi"
+   ],
+   "answer": 0,
+   "id": "1-pic_choice-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们在学校学习汉语。"
+    }
+   ],
+   "fr": "Nous étudions le chinois à l'école.",
+   "options": [
+    "Un médecin et une patiente à l'hôpital",
+    "Une famille au restaurant",
+    "Des élèves en classe devant des caractères chinois au tableau"
+   ],
+   "answer": 2,
+   "id": "1-pic_choice-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "今天天气怎么样？"
+    }
+   ],
+   "fr": "Quel temps fait-il aujourd'hui ?",
+   "options": [
+    "Une famille à table",
+    "Un ciel bleu avec un grand soleil",
+    "Une horloge qui indique huit heures"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你家有几口人？"
+    }
+   ],
+   "fr": "Combien êtes-vous dans ta famille ?",
+   "options": [
+    "Un bol de nouilles",
+    "Une photo d'une famille de quatre personnes",
+    "Un taxi dans la rue"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-002",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你想吃什么？"
+    }
+   ],
+   "fr": "Qu'est-ce que tu veux manger ?",
+   "options": [
+    "Une voiture rouge",
+    "Une assiette de raviolis chinois (jiaozi)",
+    "Un calendrier"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "现在几点？"
+    }
+   ],
+   "fr": "Quelle heure est-il ?",
+   "options": [
+    "Une tasse de thé",
+    "Une horloge qui indique sept heures",
+    "Un chat qui dort"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你的手机在哪儿？"
+    }
+   ],
+   "fr": "Où est ton téléphone ?",
+   "options": [
+    "Un homme qui court",
+    "Un gâteau d'anniversaire",
+    "Un téléphone posé sur le lit"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-005",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你今年多大？"
+    }
+   ],
+   "fr": "Quel âge as-tu cette année ?",
+   "options": [
+    "Un magasin de vêtements",
+    "Une rue sous la pluie",
+    "Un gâteau avec huit bougies"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你在做什么？"
+    }
+   ],
+   "fr": "Qu'est-ce que tu fais ?",
+   "options": [
+    "Un billet de cent yuans",
+    "Un ciel nuageux",
+    "Une femme qui fait la cuisine"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个多少钱？"
+    }
+   ],
+   "fr": "Combien coûte celui-ci ?",
+   "options": [
+    "Un chien qui dort",
+    "Un lit défait",
+    "Une étiquette de prix « 20 元 »"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "明天星期几？"
+    }
+   ],
+   "fr": "Quel jour de la semaine sommes-nous demain ?",
+   "options": [
+    "Un calendrier avec le samedi entouré",
+    "Un bol de riz",
+    "Une valise"
+   ],
+   "answer": 0,
+   "id": "1-pic_answer-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你妈妈做什么工作？"
+    }
+   ],
+   "fr": "Que fait ta mère comme travail ?",
+   "options": [
+    "Un arbre dans un parc",
+    "Une assiette de légumes",
+    "Une femme médecin dans un hôpital"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你住在哪儿？"
+    }
+   ],
+   "fr": "Où habites-tu ?",
+   "options": [
+    "Un immeuble à côté d'une école",
+    "Une horloge",
+    "Un verre de lait"
+   ],
+   "answer": 0,
+   "id": "1-pic_answer-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你要喝什么？"
+    }
+   ],
+   "fr": "Qu'est-ce que tu veux boire ?",
+   "options": [
+    "Un livre ouvert",
+    "Une voiture blanche",
+    "Un verre de lait"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-012",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你哥哥在哪儿工作？"
+    }
+   ],
+   "fr": "Où travaille ton grand frère ?",
+   "options": [
+    "Une assiette de jiaozi",
+    "Un homme assis à son bureau dans une entreprise",
+    "Une fleur rouge"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-013",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你几点起床？"
+    }
+   ],
+   "fr": "À quelle heure te lèves-tu ?",
+   "options": [
+    "Un supermarché",
+    "Un réveil qui sonne à six heures",
+    "Un chat noir"
+   ],
+   "answer": 1,
+   "id": "1-pic_answer-014",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_answer",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你怎么去学校？"
+    }
+   ],
+   "fr": "Comment vas-tu à l'école ?",
+   "options": [
+    "Un bol de soupe",
+    "Un ordinateur portable",
+    "Un enfant qui monte dans un bus scolaire"
+   ],
+   "answer": 2,
+   "id": "1-pic_answer-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "电视"
+    }
+   ],
+   "fr": "La télévision.",
+   "picture": "Une télévision allumée dans un salon",
+   "answer": true,
+   "id": "1-pic_judge-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "苹果"
+    }
+   ],
+   "fr": "Des pommes.",
+   "picture": "Trois bananes sur une table",
+   "answer": false,
+   "id": "1-pic_judge-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "打电话"
+    }
+   ],
+   "fr": "Téléphoner.",
+   "picture": "Un homme qui parle au téléphone",
+   "answer": true,
+   "id": "1-pic_judge-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "下雨"
+    }
+   ],
+   "fr": "Il pleut.",
+   "picture": "Un ciel bleu sans aucun nuage",
+   "answer": false,
+   "id": "1-pic_judge-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "看书"
+    }
+   ],
+   "fr": "Lire (un livre).",
+   "picture": "Une fille qui lit un livre",
+   "answer": true,
+   "id": "1-pic_judge-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "椅子"
+    }
+   ],
+   "fr": "Une chaise.",
+   "picture": "Une table en bois",
+   "answer": false,
+   "id": "1-pic_judge-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "出租车"
+    }
+   ],
+   "fr": "Un taxi.",
+   "picture": "Un taxi jaune dans la rue",
+   "answer": true,
+   "id": "1-pic_judge-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "睡觉"
+    }
+   ],
+   "fr": "Dormir.",
+   "picture": "Un enfant qui mange une pomme",
+   "answer": false,
+   "id": "1-pic_judge-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "米饭"
+    }
+   ],
+   "fr": "Du riz (cuit).",
+   "picture": "Un bol de riz blanc avec des baguettes",
+   "answer": true,
+   "id": "1-pic_judge-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "喝水"
+    }
+   ],
+   "fr": "Boire de l'eau.",
+   "picture": "Un homme qui boit un verre d'eau",
+   "answer": true,
+   "id": "1-pic_judge-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "猫"
+    }
+   ],
+   "fr": "Un chat.",
+   "picture": "Un chien qui court dans un jardin",
+   "answer": false,
+   "id": "1-pic_judge-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "飞机"
+    }
+   ],
+   "fr": "Un avion.",
+   "picture": "Un avion dans le ciel",
+   "answer": true,
+   "id": "1-pic_judge-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "很冷"
+    }
+   ],
+   "fr": "Il fait très froid.",
+   "picture": "Une plage en plein soleil",
+   "answer": false,
+   "id": "1-pic_judge-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "医生"
+    }
+   ],
+   "fr": "Un médecin.",
+   "picture": "Une institutrice qui écrit au tableau",
+   "answer": false,
+   "id": "1-pic_judge-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 1,
+   "audio": [
+    {
+     "s": "n",
+     "t": "写字"
+    }
+   ],
+   "fr": "Écrire (des caractères).",
+   "picture": "Un garçon qui écrit des caractères chinois dans un cahier",
+   "answer": true,
+   "id": "1-pic_judge-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 1,
+   "options": [
+    "Un chat qui dort sur une chaise",
+    "Une fille qui regarde la télévision",
+    "Une femme qui monte dans un taxi",
+    "Une femme qui achète des fruits au marché",
+    "Un homme qui boit du thé",
+    "Un homme et une femme qui se serrent la main"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "猫在哪儿？"
+      },
+      {
+       "s": "f",
+       "t": "在那个椅子上睡觉。"
+      }
+     ],
+     "fr": "— Où est le chat ? — Il dort sur cette chaise-là.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你在做什么？"
+      },
+      {
+       "s": "f",
+       "t": "我在看电视。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu fais ? — Je regarde la télé.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "先生，去医院。"
+      },
+      {
+       "s": "m",
+       "t": "好的，请坐。"
+      }
+     ],
+     "fr": "— Monsieur, à l'hôpital s'il vous plaît. — Bien, asseyez-vous.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这些苹果多少钱？"
+      },
+      {
+       "s": "m",
+       "t": "十块钱。"
+      }
+     ],
+     "fr": "— Combien coûtent ces pommes ? — Dix yuans.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你好！我叫王明。"
+      },
+      {
+       "s": "f",
+       "t": "认识你，我很高兴。"
+      }
+     ],
+     "fr": "— Bonjour ! Je m'appelle Wang Ming. — Ravie de te connaître.",
+     "answer": 5
+    }
+   ],
+   "id": "1-pic_match-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 1,
+   "options": [
+    "Un médecin qui parle à une patiente à l'hôpital",
+    "Un homme qui offre un vêtement à une femme",
+    "Un homme qui lit dans un fauteuil",
+    "Une femme qui fait cuire du riz",
+    "Des élèves dans une salle de classe",
+    "Un avion qui décolle"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "医生，我明天能回家吗？"
+      },
+      {
+       "s": "m",
+       "t": "能，明天下午回家。"
+      }
+     ],
+     "fr": "— Docteur, est-ce que je pourrai rentrer chez moi demain ? — Oui, demain après-midi.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你几点的飞机？"
+      },
+      {
+       "s": "f",
+       "t": "下午三点的。"
+      }
+     ],
+     "fr": "— Ton avion est à quelle heure ? — À trois heures de l'après-midi.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "现在我们读书。"
+      },
+      {
+       "s": "m",
+       "t": "好的，老师。"
+      }
+     ],
+     "fr": "— Maintenant, nous lisons. — D'accord, professeur.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你看，这是什么？"
+      },
+      {
+       "s": "f",
+       "t": "衣服！谢谢你，我很喜欢。"
+      }
+     ],
+     "fr": "— Regarde, qu'est-ce que c'est ? — Un vêtement ! Merci, il me plaît beaucoup.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "我在做米饭。"
+      },
+      {
+       "s": "m",
+       "t": "太好了！"
+      }
+     ],
+     "fr": "— Je fais cuire du riz. — Super !",
+     "answer": 3
+    }
+   ],
+   "id": "1-pic_match-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 1,
+   "options": [
+    "Une femme qui achète une chaise dans un magasin",
+    "Un homme et une femme qui regardent un petit chien",
+    "Un homme qui écrit son nom sur une feuille",
+    "Un homme qui a très chaud et boit de l'eau",
+    "Deux amies qui boivent du thé",
+    "Une petite fille qui dit au revoir à son père devant l'école"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你喝水吗？"
+      },
+      {
+       "s": "m",
+       "t": "喝，今天太热了。"
+      }
+     ],
+     "fr": "— Tu bois de l'eau ? — Oui, il fait trop chaud aujourd'hui.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "女儿，再见！"
+      },
+      {
+       "s": "f",
+       "t": "爸爸再见！"
+      }
+     ],
+     "fr": "— Au revoir, ma fille ! — Au revoir, papa !",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "请写你的名字。"
+      },
+      {
+       "s": "m",
+       "t": "好。"
+      }
+     ],
+     "fr": "— Écrivez votre nom, s'il vous plaît. — D'accord.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "那是你的狗吗？"
+      },
+      {
+       "s": "f",
+       "t": "是，是我的狗。"
+      }
+     ],
+     "fr": "— C'est ton chien ? — Oui, c'est mon chien.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这个椅子多少钱？"
+      },
+      {
+       "s": "m",
+       "t": "八十块。"
+      }
+     ],
+     "fr": "— Combien coûte cette chaise ? — Quatre-vingts yuans.",
+     "answer": 0
+    }
+   ],
+   "id": "1-pic_match-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "word_match",
+   "level": 1,
+   "options": [
+    "很",
+    "喜欢",
+    "非常",
+    "好听",
+    "学习",
+    "热"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "她唱歌好听吗？"
+      },
+      {
+       "s": "m",
+       "t": "好听。"
+      }
+     ],
+     "fr": "— Elle chante bien ? — Oui, très bien.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你吃米饭吗？"
+      },
+      {
+       "s": "f",
+       "t": "吃，我喜欢吃米饭。"
+      }
+     ],
+     "fr": "— Tu manges du riz ? — Oui, j'aime le riz.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你好！"
+      },
+      {
+       "s": "f",
+       "t": "你好，很高兴认识你。"
+      }
+     ],
+     "fr": "— Bonjour ! — Bonjour, très heureuse de te connaître.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你在做什么？"
+      },
+      {
+       "s": "m",
+       "t": "我在学习汉语。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu fais ? — J'étudie le chinois.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "今天天气怎么样？"
+      },
+      {
+       "s": "f",
+       "t": "太热了。"
+      }
+     ],
+     "fr": "— Quel temps fait-il aujourd'hui ? — Il fait trop chaud.",
+     "answer": 5
+    }
+   ],
+   "id": "1-word_match-001",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "word_match",
+   "level": 1,
+   "options": [
+    "电脑",
+    "医院",
+    "回家",
+    "朋友",
+    "便宜",
+    "早上"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你几点起床？"
+      },
+      {
+       "s": "m",
+       "t": "早上六点。"
+      }
+     ],
+     "fr": "— À quelle heure te lèves-tu ? — À six heures du matin.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你去哪儿？"
+      },
+      {
+       "s": "f",
+       "t": "我去医院看病。"
+      }
+     ],
+     "fr": "— Où vas-tu ? — Je vais à l'hôpital voir le médecin.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这是谁的电脑？"
+      },
+      {
+       "s": "m",
+       "t": "是我的。"
+      }
+     ],
+     "fr": "— À qui est cet ordinateur ? — À moi.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这件衣服多少钱？"
+      },
+      {
+       "s": "m",
+       "t": "五十块，很便宜。"
+      }
+     ],
+     "fr": "— Combien coûte ce vêtement ? — Cinquante yuans, c'est très bon marché.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "她是谁？"
+      },
+      {
+       "s": "f",
+       "t": "她是我的好朋友。"
+      }
+     ],
+     "fr": "— Qui est-ce ? — C'est ma meilleure amie.",
+     "answer": 3
+    }
+   ],
+   "id": "1-word_match-002",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "word_match",
+   "level": 1,
+   "options": [
+    "星期天",
+    "下雨",
+    "手机",
+    "饺子",
+    "漂亮",
+    "火车"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "外边下雨了吗？"
+      },
+      {
+       "s": "m",
+       "t": "下雨了。"
+      }
+     ],
+     "fr": "— Il pleut dehors ? — Oui, il pleut.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "明天星期几？"
+      },
+      {
+       "s": "f",
+       "t": "明天星期天。"
+      }
+     ],
+     "fr": "— Demain, c'est quel jour ? — Demain, c'est dimanche.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你坐火车去吗？"
+      },
+      {
+       "s": "f",
+       "t": "不，我坐飞机去。"
+      }
+     ],
+     "fr": "— Tu y vas en train ? — Non, j'y vais en avion.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "我的手机呢？"
+      },
+      {
+       "s": "m",
+       "t": "在桌子上。"
+      }
+     ],
+     "fr": "— Où est mon téléphone ? — Sur la table.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你想吃什么？"
+      },
+      {
+       "s": "f",
+       "t": "我想吃饺子。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu veux manger ? — Je veux manger des jiaozi.",
+     "answer": 3
+    }
+   ],
+   "id": "1-word_match-003",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "下午我去商店，我想买一些水果。"
+    }
+   ],
+   "question": "她下午去哪儿？",
+   "fr": "Cet après-midi, je vais au magasin, je voudrais acheter des fruits.",
+   "question_fr": "Où va-t-elle cet après-midi ?",
+   "options": [
+    "商店",
+    "学校",
+    "医院"
+   ],
+   "options_fr": [
+    "au magasin",
+    "à l'école",
+    "à l'hôpital"
+   ],
+   "answer": 0,
+   "id": "1-short_mcq-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "我是学生，我在中国学习汉语。"
+    }
+   ],
+   "question": "他在中国做什么？",
+   "fr": "Je suis étudiant, j'étudie le chinois en Chine.",
+   "question_fr": "Que fait-il en Chine ?",
+   "options": [
+    "工作",
+    "学习汉语",
+    "看朋友"
+   ],
+   "options_fr": [
+    "il travaille",
+    "il étudie le chinois",
+    "il rend visite à des amis"
+   ],
+   "answer": 1,
+   "id": "1-short_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "我儿子八岁了。"
+    }
+   ],
+   "question": "她儿子多大？",
+   "fr": "Mon fils a huit ans.",
+   "question_fr": "Quel âge a son fils ?",
+   "options": [
+    "六岁",
+    "七岁",
+    "八岁"
+   ],
+   "options_fr": [
+    "six ans",
+    "sept ans",
+    "huit ans"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "明天星期六，我想去看电影。"
+    }
+   ],
+   "question": "他明天想做什么？",
+   "fr": "Demain c'est samedi, je voudrais aller voir un film.",
+   "question_fr": "Que veut-il faire demain ?",
+   "options": [
+    "买衣服",
+    "看电影",
+    "去医院"
+   ],
+   "options_fr": [
+    "acheter des vêtements",
+    "voir un film",
+    "aller à l'hôpital"
+   ],
+   "answer": 1,
+   "id": "1-short_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "今天天气不好，很冷。"
+    }
+   ],
+   "question": "今天天气怎么样？",
+   "fr": "Il ne fait pas beau aujourd'hui, il fait très froid.",
+   "question_fr": "Quel temps fait-il aujourd'hui ?",
+   "options": [
+    "下雨了",
+    "很热",
+    "很冷"
+   ],
+   "options_fr": [
+    "il pleut",
+    "très chaud",
+    "très froid"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "现在是上午十点。"
+    }
+   ],
+   "question": "现在几点？",
+   "fr": "Il est maintenant dix heures du matin.",
+   "question_fr": "Quelle heure est-il ?",
+   "options": [
+    "十点",
+    "十一点",
+    "九点"
+   ],
+   "options_fr": [
+    "dix heures",
+    "onze heures",
+    "neuf heures"
+   ],
+   "answer": 0,
+   "id": "1-short_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "我坐出租车去医院。"
+    }
+   ],
+   "question": "她去哪儿？",
+   "fr": "Je vais à l'hôpital en taxi.",
+   "question_fr": "Où va-t-elle ?",
+   "options": [
+    "学校",
+    "医院",
+    "饭店"
+   ],
+   "options_fr": [
+    "à l'école",
+    "à l'hôpital",
+    "au restaurant"
+   ],
+   "answer": 1,
+   "id": "1-short_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这个杯子是我女儿的。"
+    }
+   ],
+   "question": "杯子是谁的？",
+   "fr": "Cette tasse est à ma fille.",
+   "question_fr": "À qui est la tasse ?",
+   "options": [
+    "他儿子的",
+    "他朋友的",
+    "他女儿的"
+   ],
+   "options_fr": [
+    "à son fils",
+    "à son ami",
+    "à sa fille"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "我昨天买了三本书。"
+    }
+   ],
+   "question": "她买了什么？",
+   "fr": "Hier, j'ai acheté trois livres.",
+   "question_fr": "Qu'a-t-elle acheté ?",
+   "options": [
+    "书",
+    "衣服",
+    "杯子"
+   ],
+   "options_fr": [
+    "des livres",
+    "des vêtements",
+    "des tasses"
+   ],
+   "answer": 0,
+   "id": "1-short_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "我很喜欢喝茶，不喜欢喝水。"
+    }
+   ],
+   "question": "他喜欢喝什么？",
+   "fr": "J'aime beaucoup boire du thé, je n'aime pas boire de l'eau.",
+   "question_fr": "Qu'aime-t-il boire ?",
+   "options": [
+    "水",
+    "都不喜欢",
+    "茶"
+   ],
+   "options_fr": [
+    "de l'eau",
+    "il n'aime rien",
+    "du thé"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "王先生是我们的汉语老师。"
+    }
+   ],
+   "question": "王先生是做什么的？",
+   "fr": "M. Wang est notre professeur de chinois.",
+   "question_fr": "Que fait M. Wang ?",
+   "options": [
+    "医生",
+    "老师",
+    "学生"
+   ],
+   "options_fr": [
+    "médecin",
+    "professeur",
+    "étudiant"
+   ],
+   "answer": 1,
+   "id": "1-short_mcq-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "我住在学校里。"
+    }
+   ],
+   "question": "他住在哪儿？",
+   "fr": "J'habite dans l'école.",
+   "question_fr": "Où habite-t-il ?",
+   "options": [
+    "饭店",
+    "朋友家",
+    "学校里"
+   ],
+   "options_fr": [
+    "à l'hôtel",
+    "chez un ami",
+    "dans l'école"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "那个桌子太大了，我不想买。"
+    }
+   ],
+   "question": "那个桌子怎么样？",
+   "fr": "Cette table est trop grande, je ne veux pas l'acheter.",
+   "question_fr": "Comment est cette table ?",
+   "options": [
+    "太大了",
+    "太小了",
+    "很漂亮"
+   ],
+   "options_fr": [
+    "trop grande",
+    "trop petite",
+    "très jolie"
+   ],
+   "answer": 0,
+   "id": "1-short_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "m",
+     "t": "明天我和同学去看电影。"
+    }
+   ],
+   "question": "他和谁去看电影？",
+   "fr": "Demain, je vais voir un film avec un camarade de classe.",
+   "question_fr": "Avec qui va-t-il voir un film ?",
+   "options": [
+    "老师",
+    "同学",
+    "爸爸"
+   ],
+   "options_fr": [
+    "son professeur",
+    "un camarade",
+    "son père"
+   ],
+   "answer": 1,
+   "id": "1-short_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 1,
+   "audio": [
+    {
+     "s": "f",
+     "t": "今天下雨，我不去商店了。"
+    }
+   ],
+   "question": "她今天去商店吗？",
+   "fr": "Il pleut aujourd'hui, je ne vais plus au magasin.",
+   "question_fr": "Va-t-elle au magasin aujourd'hui ?",
+   "options": [
+    "去",
+    "下午去",
+    "不去"
+   ],
+   "options_fr": [
+    "oui",
+    "l'après-midi",
+    "non"
+   ],
+   "answer": 2,
+   "id": "1-short_mcq-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我每天坐地铁去上班。"
+    }
+   ],
+   "fr": "Je vais au travail en métro tous les jours.",
+   "options": [
+    "Une femme qui conduit sa voiture",
+    "Des gens debout dans une rame de métro",
+    "Un homme qui va au travail à vélo"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-001",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "她穿着一件红色的衣服。"
+    }
+   ],
+   "fr": "Elle porte un vêtement rouge.",
+   "options": [
+    "Une femme en manteau rouge",
+    "Une femme en manteau bleu",
+    "Un homme en chemise rouge"
+   ],
+   "answer": 0,
+   "id": "2-pic_choice-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我的书包在床上。"
+    }
+   ],
+   "fr": "Mon cartable est sur le lit.",
+   "options": [
+    "Un cartable sous une table",
+    "Un sac de sport sur une chaise",
+    "Un cartable posé sur un lit"
+   ],
+   "answer": 2,
+   "id": "2-pic_choice-003",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "爷爷每天早上都去跑步。"
+    }
+   ],
+   "fr": "Grand-père va courir tous les matins.",
+   "options": [
+    "Un grand-père qui court le matin",
+    "Une jeune femme qui court",
+    "Un grand-père qui lit dans son lit"
+   ],
+   "answer": 0,
+   "id": "2-pic_choice-004",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "弟弟在洗手间洗手。"
+    }
+   ],
+   "fr": "Mon petit frère se lave les mains aux toilettes.",
+   "options": [
+    "Un garçon qui boit un verre d'eau",
+    "Un garçon qui prend une douche",
+    "Un petit garçon qui se lave les mains au lavabo"
+   ],
+   "answer": 2,
+   "id": "2-pic_choice-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "下午我们一起去踢足球吧。"
+    }
+   ],
+   "fr": "Allons jouer au foot ensemble cet après-midi.",
+   "options": [
+    "Des garçons qui jouent au football",
+    "Des filles qui jouent au basket",
+    "Des enfants qui nagent"
+   ],
+   "answer": 0,
+   "id": "2-pic_choice-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "外面下雪了。"
+    }
+   ],
+   "fr": "Il neige dehors.",
+   "options": [
+    "Un jardin ensoleillé",
+    "Une rue couverte de neige",
+    "Une rue sous la pluie"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "妈妈正在给孩子们做饭。"
+    }
+   ],
+   "fr": "Maman est en train de préparer à manger pour les enfants.",
+   "options": [
+    "Une mère qui fait les courses",
+    "Une mère qui prépare le repas pour ses enfants",
+    "Une mère qui lit une histoire à ses enfants"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "桌子上有一杯奶茶。"
+    }
+   ],
+   "fr": "Il y a un thé au lait sur la table.",
+   "options": [
+    "Un verre de jus d'orange",
+    "Une tasse de café sur un bureau",
+    "Un verre de thé au lait sur une table"
+   ],
+   "answer": 2,
+   "id": "2-pic_choice-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他头疼，要去医院。"
+    }
+   ],
+   "fr": "Il a mal à la tête, il doit aller à l'hôpital.",
+   "options": [
+    "Un homme qui court dans un parc",
+    "Un homme qui se tient la tête, l'air malade",
+    "Un homme qui rit avec des amis"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-010",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们坐飞机去旅游。"
+    }
+   ],
+   "fr": "Nous partons en voyage en avion.",
+   "options": [
+    "Une famille qui part en voiture",
+    "Une famille avec des valises dans un aéroport",
+    "Une famille qui monte dans un train"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "小狗在门口睡觉。"
+    }
+   ],
+   "fr": "Le petit chien dort devant la porte.",
+   "options": [
+    "Un petit chien qui dort devant la porte",
+    "Un chat qui dort sur le lit",
+    "Un petit chien qui court dans un parc"
+   ],
+   "answer": 0,
+   "id": "2-pic_choice-012",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我妹妹很喜欢画画。"
+    }
+   ],
+   "fr": "Ma petite sœur adore dessiner.",
+   "options": [
+    "Une fillette qui chante",
+    "Une fillette qui dessine",
+    "Une fillette qui danse"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-013",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他在网上买东西。"
+    }
+   ],
+   "fr": "Il fait des achats en ligne.",
+   "options": [
+    "Un homme qui vend des fruits",
+    "Un homme qui fait des achats sur son ordinateur",
+    "Un homme qui pousse un chariot au supermarché"
+   ],
+   "answer": 1,
+   "id": "2-pic_choice-014",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_choice",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "你看，天上有一只鸟。"
+    }
+   ],
+   "fr": "Regarde, il y a un oiseau dans le ciel.",
+   "options": [
+    "Un chat sur un toit",
+    "Un avion dans le ciel",
+    "Un oiseau qui vole dans le ciel"
+   ],
+   "answer": 2,
+   "id": "2-pic_choice-015",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我每天早上都跑步。"
+    }
+   ],
+   "fr": "Je cours tous les matins.",
+   "picture": "Un homme qui court le matin",
+   "answer": true,
+   "id": "2-pic_judge-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "她正在打篮球呢。"
+    }
+   ],
+   "fr": "Elle est en train de jouer au basket.",
+   "picture": "Une femme qui nage dans une piscine",
+   "answer": false,
+   "id": "2-pic_judge-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "弟弟生病了，在家休息。"
+    }
+   ],
+   "fr": "Mon petit frère est malade, il se repose à la maison.",
+   "picture": "Un garçon malade, couché avec un thermomètre dans la bouche",
+   "answer": true,
+   "id": "2-pic_judge-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们一起唱歌吧。"
+    }
+   ],
+   "fr": "Chantons ensemble.",
+   "picture": "Des amis qui chantent ensemble",
+   "answer": true,
+   "id": "2-pic_judge-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这是我的新手表。"
+    }
+   ],
+   "fr": "C'est ma nouvelle montre.",
+   "picture": "Un téléphone portable neuf dans sa boîte",
+   "answer": false,
+   "id": "2-pic_judge-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "下雪了，外面很冷。"
+    }
+   ],
+   "fr": "Il neige, il fait très froid dehors.",
+   "picture": "Des enfants qui jouent dans la neige",
+   "answer": true,
+   "id": "2-pic_judge-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我给你介绍一下，这是我妻子。"
+    }
+   ],
+   "fr": "Je te présente : voici ma femme.",
+   "picture": "Un homme qui présente sa femme à un ami",
+   "answer": true,
+   "id": "2-pic_judge-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他在机场等朋友。"
+    }
+   ],
+   "fr": "Il attend un ami à l'aéroport.",
+   "picture": "Un homme qui attend sur le quai d'une gare",
+   "answer": false,
+   "id": "2-pic_judge-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我很喜欢吃鱼。"
+    }
+   ],
+   "fr": "J'aime beaucoup le poisson.",
+   "picture": "Une assiette de poisson",
+   "answer": true,
+   "id": "2-pic_judge-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "她的眼睛很大，很漂亮。"
+    }
+   ],
+   "fr": "Elle a de grands yeux, très jolis.",
+   "picture": "Une petite fille aux grands yeux",
+   "answer": true,
+   "id": "2-pic_judge-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们坐公共汽车去吧。"
+    }
+   ],
+   "fr": "Allons-y en bus.",
+   "picture": "Des gens qui montent dans un avion",
+   "answer": false,
+   "id": "2-pic_judge-011",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "妈妈在洗衣服。"
+    }
+   ],
+   "fr": "Maman lave du linge.",
+   "picture": "Une femme qui lave des vêtements",
+   "answer": true,
+   "id": "2-pic_judge-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个西瓜很大。"
+    }
+   ],
+   "fr": "Cette pastèque est très grosse.",
+   "picture": "Une petite pomme rouge",
+   "answer": false,
+   "id": "2-pic_judge-013",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他每天都看报纸。"
+    }
+   ],
+   "fr": "Il lit le journal tous les jours.",
+   "picture": "Un homme qui lit le journal",
+   "answer": true,
+   "id": "2-pic_judge-014",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "姐姐在跳舞。"
+    }
+   ],
+   "fr": "Ma grande sœur danse.",
+   "picture": "Une jeune femme qui joue du piano",
+   "answer": false,
+   "id": "2-pic_judge-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "门开着。"
+    }
+   ],
+   "fr": "La porte est ouverte.",
+   "picture": "Une porte ouverte",
+   "answer": true,
+   "id": "2-pic_judge-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他笑了。"
+    }
+   ],
+   "fr": "Il a souri.",
+   "picture": "Un homme qui pleure",
+   "answer": false,
+   "id": "2-pic_judge-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们在教室里考试。"
+    }
+   ],
+   "fr": "Nous passons un examen dans la salle de classe.",
+   "picture": "Des élèves qui passent un examen en classe",
+   "answer": true,
+   "id": "2-pic_judge-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "爸爸在喝咖啡。"
+    }
+   ],
+   "fr": "Papa boit un café.",
+   "picture": "Un homme qui mange une pomme",
+   "answer": false,
+   "id": "2-pic_judge-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这件衣服太贵了。"
+    }
+   ],
+   "fr": "Ce vêtement est trop cher.",
+   "picture": "Une femme surprise devant l'étiquette de prix d'un vêtement",
+   "answer": true,
+   "id": "2-pic_judge-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "生日快乐！"
+    }
+   ],
+   "fr": "Joyeux anniversaire !",
+   "picture": "Un enfant qui souffle les bougies d'un gâteau",
+   "answer": true,
+   "id": "2-pic_judge-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "他游泳游得很好。"
+    }
+   ],
+   "fr": "Il nage très bien.",
+   "picture": "Un homme qui nage",
+   "answer": true,
+   "id": "2-pic_judge-022",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "路上车很多。"
+    }
+   ],
+   "fr": "Il y a beaucoup de voitures sur la route.",
+   "picture": "Une route vide, la nuit",
+   "answer": false,
+   "id": "2-pic_judge-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们在宾馆的房间里。"
+    }
+   ],
+   "fr": "Nous sommes dans une chambre d'hôtel.",
+   "picture": "Deux personnes dans une chambre d'hôtel",
+   "answer": true,
+   "id": "2-pic_judge-024",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "pic_judge",
+   "level": 2,
+   "audio": [
+    {
+     "s": "n",
+     "t": "她每天走路去公司。"
+    }
+   ],
+   "fr": "Elle va au bureau à pied tous les jours.",
+   "picture": "Une femme qui va au travail à vélo",
+   "answer": false,
+   "id": "2-pic_judge-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Un garçon qui nage",
+    "Un homme qui regarde sa montre à l'aéroport",
+    "Un serveur qui apporte deux cafés",
+    "Une femme qui prend un médicament avec un verre d'eau",
+    "Une fille qui souffle les bougies de son gâteau",
+    "Deux hommes qui courent dans un parc"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "您好，这是您的两杯咖啡。"
+      },
+      {
+       "s": "f",
+       "t": "谢谢！"
+      }
+     ],
+     "fr": "— Bonjour, voici vos deux cafés. — Merci !",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "飞机几点到？"
+      },
+      {
+       "s": "f",
+       "t": "还有十分钟，我们再等一下。"
+      }
+     ],
+     "fr": "— L'avion arrive à quelle heure ? — Dans dix minutes, attendons encore un peu.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "今天是我女儿的生日。"
+      },
+      {
+       "s": "f",
+       "t": "生日快乐！"
+      }
+     ],
+     "fr": "— Aujourd'hui, c'est l'anniversaire de ma fille. — Joyeux anniversaire !",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你每天都去跑步吗？"
+      },
+      {
+       "s": "m",
+       "t": "是的，跑步对身体好。"
+      }
+     ],
+     "fr": "— Tu vas courir tous les jours ? — Oui, la course, c'est bon pour la santé.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你身体怎么样？"
+      },
+      {
+       "s": "f",
+       "t": "还是不太好，医生让我每天吃药。"
+      }
+     ],
+     "fr": "— Comment va ta santé ? — Toujours pas très bien, le médecin me fait prendre des médicaments tous les jours.",
+     "answer": 3
+    }
+   ],
+   "id": "2-pic_match-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Une femme qui fait cuire des œufs",
+    "Un homme qui lit le journal",
+    "Une petite fille qui joue avec un chien",
+    "Une femme qui essaie un vêtement dans un magasin",
+    "Un homme qui achète des billets au guichet",
+    "Un garçon qui révise ses cours à son bureau"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "您好，我要两张明天的票。"
+      },
+      {
+       "s": "m",
+       "t": "好的，两百块。"
+      }
+     ],
+     "fr": "— Bonjour, je voudrais deux billets pour demain. — Très bien, deux cents yuans.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "这件衣服你穿着很漂亮。"
+      },
+      {
+       "s": "f",
+       "t": "是吗？那我买了。"
+      }
+     ],
+     "fr": "— Ce vêtement te va très bien. — Ah oui ? Alors je le prends.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "我们今天吃什么？"
+      },
+      {
+       "s": "f",
+       "t": "吃鸡蛋和米饭。"
+      }
+     ],
+     "fr": "— Qu'est-ce qu'on mange aujourd'hui ? — Des œufs et du riz.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你在做什么呢？"
+      },
+      {
+       "s": "m",
+       "t": "我在准备明天的考试。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu fais ? — Je prépare l'examen de demain.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你看，她和小狗玩得很高兴。"
+      },
+      {
+       "s": "m",
+       "t": "她非常喜欢狗。"
+      }
+     ],
+     "fr": "— Regarde, elle s'amuse bien avec le petit chien. — Elle adore les chiens.",
+     "answer": 2
+    }
+   ],
+   "id": "2-pic_match-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Une famille qui mange du poisson ensemble",
+    "Un homme qui écrit au tableau",
+    "Un garçon qui dort pendant le cours",
+    "Une femme qui monte dans un taxi avec une valise",
+    "Un homme qui téléphone dans un bureau",
+    "Une femme qui montre le chemin à un homme"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "请问，火车站离这儿远吗？"
+      },
+      {
+       "s": "f",
+       "t": "不远，往右边走十分钟就到了。"
+      }
+     ],
+     "fr": "— Excusez-moi, la gare est loin d'ici ? — Non, allez à droite, vous y êtes en dix minutes.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "今天我们都在家，一起吃鱼吧。"
+      },
+      {
+       "s": "m",
+       "t": "好，我最喜欢吃鱼。"
+      }
+     ],
+     "fr": "— Aujourd'hui, nous sommes tous à la maison, mangeons du poisson ensemble. — D'accord, c'est ce que je préfère.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "您去哪儿？"
+      },
+      {
+       "s": "f",
+       "t": "去机场，我要坐下午的飞机。"
+      }
+     ],
+     "fr": "— Vous allez où ? — À l'aéroport, je prends l'avion cet après-midi.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "喂，是王先生吗？"
+      },
+      {
+       "s": "f",
+       "t": "是我，请问你是谁？"
+      }
+     ],
+     "fr": "— Allô, c'est M. Wang ? — Oui, c'est moi. Qui est à l'appareil, s'il vous plaît ?",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你怎么上课的时候睡觉？"
+      },
+      {
+       "s": "m",
+       "t": "对不起，老师，我昨天晚上工作到十二点。"
+      }
+     ],
+     "fr": "— Pourquoi tu dors en cours ? — Pardon, professeur, hier soir j'ai travaillé jusqu'à minuit.",
+     "answer": 2
+    }
+   ],
+   "id": "2-pic_match-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Un médecin qui examine les yeux d'un enfant",
+    "Une fille qui lit sous une lampe",
+    "Un homme qui offre un cadeau à une femme",
+    "Une femme qui lave des fruits",
+    "Deux amis qui jouent au basket",
+    "Une femme qui chante sur une scène"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这些苹果洗了吗？"
+      },
+      {
+       "s": "m",
+       "t": "还没洗，你洗一下吧。"
+      }
+     ],
+     "fr": "— Ces pommes sont lavées ? — Pas encore, lave-les, s'il te plaît.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "下午一起去打篮球吧？"
+      },
+      {
+       "s": "f",
+       "t": "好，几点？"
+      }
+     ],
+     "fr": "— On va jouer au basket cet après-midi ? — D'accord, à quelle heure ?",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "明天是你的生日，这是我送你的。"
+      },
+      {
+       "s": "f",
+       "t": "谢谢你，我很喜欢！"
+      }
+     ],
+     "fr": "— Demain, c'est ton anniversaire, c'est pour toi. — Merci, ça me plaît beaucoup !",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你的眼睛怎么了？"
+      },
+      {
+       "s": "m",
+       "t": "我每天看手机，眼睛很累。"
+      }
+     ],
+     "fr": "— Qu'est-ce qu'ils ont, tes yeux ? — Je regarde mon téléphone tous les jours, j'ai les yeux fatigués.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你唱歌真好听！"
+      },
+      {
+       "s": "f",
+       "t": "谢谢。"
+      }
+     ],
+     "fr": "— Ta chanson est vraiment belle ! — Merci.",
+     "answer": 5
+    }
+   ],
+   "id": "2-pic_match-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Un garçon qui regarde la date sur un calendrier",
+    "Une femme qui prépare sa valise",
+    "Deux collègues qui se disent bonjour au bureau",
+    "Une femme qui vend des légumes au marché",
+    "Un homme qui nage dans la mer",
+    "Un homme qui court pour attraper le bus"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你喜欢游泳吗？"
+      },
+      {
+       "s": "m",
+       "t": "喜欢，我每个星期都去游泳。"
+      }
+     ],
+     "fr": "— Tu aimes nager ? — Oui, je vais nager toutes les semaines.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "快！车来了！"
+      },
+      {
+       "s": "f",
+       "t": "等等我！"
+      }
+     ],
+     "fr": "— Vite ! Le bus arrive ! — Attends-moi !",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "明天去旅游，你准备好了吗？"
+      },
+      {
+       "s": "f",
+       "t": "还没有，我正在准备呢。"
+      }
+     ],
+     "fr": "— On part en voyage demain, tu es prête ? — Pas encore, je suis en train de me préparer.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "今天几号？"
+      },
+      {
+       "s": "m",
+       "t": "今天十月九号，星期三。"
+      }
+     ],
+     "fr": "— On est le combien aujourd'hui ? — Le 9 octobre, un mercredi.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "早上好！"
+      },
+      {
+       "s": "f",
+       "t": "早上好，你也来公司了！"
+      }
+     ],
+     "fr": "— Bonjour ! — Bonjour, toi aussi tu es déjà au bureau !",
+     "answer": 2
+    }
+   ],
+   "id": "2-pic_match-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 2,
+   "options": [
+    "Un garçon qui laisse sa place à une vieille dame dans le bus",
+    "Deux enfants qui rient devant la télévision",
+    "Une femme qui regarde l'heure, en retard",
+    "Une fille qui montre son nouveau téléphone à son père",
+    "Une classe qui écoute le professeur",
+    "Un homme qui achète du lait et des œufs"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你买什么？"
+      },
+      {
+       "s": "m",
+       "t": "我买牛奶和鸡蛋。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu achètes ? — Du lait et des œufs.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "已经八点了！"
+      },
+      {
+       "s": "m",
+       "t": "快走吧，你九点上班。"
+      }
+     ],
+     "fr": "— Il est déjà huit heures ! — Pars vite, tu commences à neuf heures.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "爸爸，你看，这是我的新手机。"
+      },
+      {
+       "s": "m",
+       "t": "真漂亮！"
+      }
+     ],
+     "fr": "— Papa, regarde, c'est mon nouveau téléphone. — Il est vraiment beau !",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "您好，您坐这儿吧。"
+      },
+      {
+       "s": "f",
+       "t": "谢谢你！"
+      }
+     ],
+     "fr": "— Bonjour, asseyez-vous ici. — Merci beaucoup !",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你们笑什么呢？"
+      },
+      {
+       "s": "m",
+       "t": "这个电视真有意思！"
+      }
+     ],
+     "fr": "— Pourquoi vous riez ? — Cette émission est vraiment drôle !",
+     "answer": 1
+    }
+   ],
+   "id": "2-pic_match-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你什么时候去旅游？"
+    },
+    {
+     "s": "f",
+     "t": "下个星期。"
+    }
+   ],
+   "question": "女的什么时候去旅游？",
+   "fr": "— Quand pars-tu en voyage ? — La semaine prochaine.",
+   "question_fr": "Quand la femme part-elle en voyage ?",
+   "options": [
+    "明天",
+    "下个星期",
+    "这个星期"
+   ],
+   "options_fr": [
+    "demain",
+    "la semaine prochaine",
+    "cette semaine"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这件衣服多少钱？"
+    },
+    {
+     "s": "m",
+     "t": "三百块。"
+    }
+   ],
+   "question": "衣服多少钱？",
+   "fr": "— Combien coûte ce vêtement ? — Trois cents yuans.",
+   "question_fr": "Combien coûte le vêtement ?",
+   "options": [
+    "三十块",
+    "三千块",
+    "三百块"
+   ],
+   "options_fr": [
+    "30 yuans",
+    "3 000 yuans",
+    "300 yuans"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你怎么还没睡觉？"
+    },
+    {
+     "s": "f",
+     "t": "我在准备明天的考试。"
+    }
+   ],
+   "question": "女的在做什么？",
+   "fr": "— Pourquoi tu ne dors pas encore ? — Je prépare l'examen de demain.",
+   "question_fr": "Que fait la femme ?",
+   "options": [
+    "打电话",
+    "看电视",
+    "准备考试"
+   ],
+   "options_fr": [
+    "elle téléphone",
+    "elle regarde la télé",
+    "elle prépare un examen"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你喜欢什么运动？"
+    },
+    {
+     "s": "m",
+     "t": "我最喜欢踢足球。"
+    }
+   ],
+   "question": "男的喜欢什么运动？",
+   "fr": "— Quel sport aimes-tu ? — Ce que je préfère, c'est le football.",
+   "question_fr": "Quel sport l'homme aime-t-il ?",
+   "options": [
+    "踢足球",
+    "游泳",
+    "跑步"
+   ],
+   "options_fr": [
+    "le football",
+    "la natation",
+    "la course"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你的眼睛怎么了？"
+    },
+    {
+     "s": "f",
+     "t": "我看了一天电脑，很累。"
+    }
+   ],
+   "question": "女的怎么了？",
+   "fr": "— Qu'est-ce qu'ils ont, tes yeux ? — J'ai passé la journée devant l'ordinateur, ils sont fatigués.",
+   "question_fr": "Qu'est-ce qu'elle a ?",
+   "options": [
+    "生病了",
+    "眼睛累了",
+    "很忙"
+   ],
+   "options_fr": [
+    "elle est malade",
+    "les yeux fatigués",
+    "elle est très occupée"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "今天是我的生日。"
+    },
+    {
+     "s": "m",
+     "t": "是吗？生日快乐！"
+    }
+   ],
+   "question": "今天是谁的生日？",
+   "fr": "— Aujourd'hui, c'est mon anniversaire. — Ah oui ? Joyeux anniversaire !",
+   "question_fr": "C'est l'anniversaire de qui aujourd'hui ?",
+   "options": [
+    "女的",
+    "男的",
+    "女的妈妈"
+   ],
+   "options_fr": [
+    "de la femme",
+    "de l'homme",
+    "de la mère de la femme"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你妹妹在做什么？"
+    },
+    {
+     "s": "f",
+     "t": "她在房间里看书呢。"
+    }
+   ],
+   "question": "妹妹在哪儿？",
+   "fr": "— Que fait ta petite sœur ? — Elle lit dans sa chambre.",
+   "question_fr": "Où est la petite sœur ?",
+   "options": [
+    "房间里",
+    "学校",
+    "商店"
+   ],
+   "options_fr": [
+    "dans sa chambre",
+    "à l'école",
+    "au magasin"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你每天怎么去公司？"
+    },
+    {
+     "s": "m",
+     "t": "我坐出租车去，很快。"
+    }
+   ],
+   "question": "男的怎么去公司？",
+   "fr": "— Comment vas-tu au bureau tous les jours ? — En taxi, c'est rapide.",
+   "question_fr": "Comment l'homme va-t-il au bureau ?",
+   "options": [
+    "走路",
+    "坐出租车",
+    "跑步"
+   ],
+   "options_fr": [
+    "à pied",
+    "en taxi",
+    "en courant"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "咖啡还是茶？"
+    },
+    {
+     "s": "f",
+     "t": "茶吧，谢谢。"
+    }
+   ],
+   "question": "女的要喝什么？",
+   "fr": "— Café ou thé ? — Du thé, merci.",
+   "question_fr": "Que veut boire la femme ?",
+   "options": [
+    "茶",
+    "咖啡",
+    "水"
+   ],
+   "options_fr": [
+    "du thé",
+    "du café",
+    "de l'eau"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你认识那个人吗？"
+    },
+    {
+     "s": "m",
+     "t": "认识，他是我同学。"
+    }
+   ],
+   "question": "那个人是谁？",
+   "fr": "— Tu connais cette personne ? — Oui, c'est un camarade de classe.",
+   "question_fr": "Qui est cette personne ?",
+   "options": [
+    "他哥哥",
+    "他同学",
+    "他老师"
+   ],
+   "options_fr": [
+    "son grand frère",
+    "son camarade de classe",
+    "son professeur"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你家离公司远吗？"
+    },
+    {
+     "s": "f",
+     "t": "不远，走路十分钟就到了。"
+    }
+   ],
+   "question": "女的家离公司怎么样？",
+   "fr": "— Ta maison est loin du bureau ? — Non, j'y suis en dix minutes à pied.",
+   "question_fr": "Sa maison est-elle loin du bureau ?",
+   "options": [
+    "不知道",
+    "很远",
+    "不远"
+   ],
+   "options_fr": [
+    "on ne sait pas",
+    "très loin",
+    "pas loin"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "我们几点去机场？"
+    },
+    {
+     "s": "m",
+     "t": "飞机两点，我们十二点去吧。"
+    }
+   ],
+   "question": "他们几点去机场？",
+   "fr": "— On part à l'aéroport à quelle heure ? — L'avion est à deux heures, partons à midi.",
+   "question_fr": "À quelle heure partent-ils à l'aéroport ?",
+   "options": [
+    "两点",
+    "十二点",
+    "十点"
+   ],
+   "options_fr": [
+    "à deux heures",
+    "à midi",
+    "à dix heures"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你看见我的手机了吗？"
+    },
+    {
+     "s": "f",
+     "t": "在桌子上，电脑旁边。"
+    }
+   ],
+   "question": "手机在哪儿？",
+   "fr": "— Tu as vu mon téléphone ? — Sur la table, à côté de l'ordinateur.",
+   "question_fr": "Où est le téléphone ?",
+   "options": [
+    "电脑旁边",
+    "门旁边",
+    "椅子上"
+   ],
+   "options_fr": [
+    "à côté de l'ordinateur",
+    "à côté de la porte",
+    "sur la chaise"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "外面下雨了吗？"
+    },
+    {
+     "s": "m",
+     "t": "没有，但是很冷。"
+    }
+   ],
+   "question": "外面天气怎么样？",
+   "fr": "— Il pleut dehors ? — Non, mais il fait très froid.",
+   "question_fr": "Quel temps fait-il dehors ?",
+   "options": [
+    "下雨了",
+    "很冷",
+    "很热"
+   ],
+   "options_fr": [
+    "il pleut",
+    "il fait très froid",
+    "il fait très chaud"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你是第一次来中国吗？"
+    },
+    {
+     "s": "f",
+     "t": "不是，我去年来过。"
+    }
+   ],
+   "question": "女的去年来过中国吗？",
+   "fr": "— C'est la première fois que tu viens en Chine ? — Non, je suis venue l'année dernière.",
+   "question_fr": "Est-elle déjà venue en Chine l'année dernière ?",
+   "options": [
+    "没来过",
+    "不知道",
+    "来过"
+   ],
+   "options_fr": [
+    "non",
+    "on ne sait pas",
+    "oui"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这些水果是你买的吗？"
+    },
+    {
+     "s": "m",
+     "t": "不是，是我妻子买的。"
+    }
+   ],
+   "question": "水果是谁买的？",
+   "fr": "— C'est toi qui as acheté ces fruits ? — Non, c'est ma femme.",
+   "question_fr": "Qui a acheté les fruits ?",
+   "options": [
+    "男的",
+    "女的",
+    "他妻子"
+   ],
+   "options_fr": [
+    "l'homme",
+    "la femme qui parle",
+    "sa femme"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "中午一起去饭店吧？"
+    },
+    {
+     "s": "f",
+     "t": "对不起，我今天很忙。"
+    }
+   ],
+   "question": "女的为什么不去？",
+   "fr": "— On va au restaurant ensemble ce midi ? — Désolée, je suis très occupée aujourd'hui.",
+   "question_fr": "Pourquoi la femme n'y va-t-elle pas ?",
+   "options": [
+    "很忙",
+    "不喜欢饭店",
+    "生病了"
+   ],
+   "options_fr": [
+    "elle est très occupée",
+    "elle n'aime pas les restaurants",
+    "elle est malade"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你哥哥做什么工作？"
+    },
+    {
+     "s": "m",
+     "t": "他是医生，在医院工作。"
+    }
+   ],
+   "question": "他哥哥在哪儿工作？",
+   "fr": "— Que fait ton grand frère ? — Il est médecin, il travaille à l'hôpital.",
+   "question_fr": "Où travaille son grand frère ?",
+   "options": [
+    "公司",
+    "学校",
+    "医院"
+   ],
+   "options_fr": [
+    "dans une entreprise",
+    "à l'école",
+    "à l'hôpital"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "请问，教室在哪儿？"
+    },
+    {
+     "s": "f",
+     "t": "你往左边走，第一个就是。"
+    }
+   ],
+   "question": "教室在哪儿？",
+   "fr": "— Excusez-moi, où est la salle de classe ? — Allez à gauche, c'est la première.",
+   "question_fr": "Où est la salle de classe ?",
+   "options": [
+    "左边",
+    "前面",
+    "右边"
+   ],
+   "options_fr": [
+    "à gauche",
+    "devant",
+    "à droite"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的汉语说得很好！"
+    },
+    {
+     "s": "m",
+     "t": "谢谢，我学了三年了。"
+    }
+   ],
+   "question": "男的学了多长时间汉语？",
+   "fr": "— Tu parles très bien chinois ! — Merci, ça fait trois ans que j'apprends.",
+   "question_fr": "Depuis combien de temps apprend-il le chinois ?",
+   "options": [
+    "三年",
+    "一年",
+    "两年"
+   ],
+   "options_fr": [
+    "trois ans",
+    "un an",
+    "deux ans"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这儿离机场太远了，我们坐出租车吧。"
+    },
+    {
+     "s": "f",
+     "t": "好的。"
+    }
+   ],
+   "question": "他们怎么去机场？",
+   "fr": "— L'aéroport est trop loin d'ici, prenons un taxi. — D'accord.",
+   "question_fr": "Comment vont-ils à l'aéroport ?",
+   "options": [
+    "坐出租车",
+    "坐飞机",
+    "走路"
+   ],
+   "options_fr": [
+    "en taxi",
+    "en avion",
+    "à pied"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "您要什么？"
+    },
+    {
+     "s": "m",
+     "t": "我要一杯牛奶和两个鸡蛋。"
+    }
+   ],
+   "question": "男的要几个鸡蛋？",
+   "fr": "— Que désirez-vous ? — Un verre de lait et deux œufs.",
+   "question_fr": "Combien d'œufs veut l'homme ?",
+   "options": [
+    "三个",
+    "一个",
+    "两个"
+   ],
+   "options_fr": [
+    "trois",
+    "un",
+    "deux"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-022",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你昨天晚上为什么没来？"
+    },
+    {
+     "s": "f",
+     "t": "我生病了。"
+    }
+   ],
+   "question": "女的昨天晚上怎么了？",
+   "fr": "— Pourquoi tu n'es pas venue hier soir ? — J'étais malade.",
+   "question_fr": "Qu'est-il arrivé à la femme hier soir ?",
+   "options": [
+    "很忙",
+    "生病了",
+    "工作"
+   ],
+   "options_fr": [
+    "elle était occupée",
+    "elle était malade",
+    "elle travaillait"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这两件衣服，你觉得哪件好看？"
+    },
+    {
+     "s": "m",
+     "t": "右边那件，很漂亮。"
+    }
+   ],
+   "question": "男的觉得哪件好看？",
+   "fr": "— Entre ces deux vêtements, lequel trouves-tu le plus joli ? — Celui de droite, il est très beau.",
+   "question_fr": "Lequel l'homme trouve-t-il joli ?",
+   "options": [
+    "都不好看",
+    "左边的",
+    "右边的"
+   ],
+   "options_fr": [
+    "aucun",
+    "celui de gauche",
+    "celui de droite"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-024",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你每天几点起床？"
+    },
+    {
+     "s": "f",
+     "t": "六点，我要七点去跑步。"
+    }
+   ],
+   "question": "女的几点去跑步？",
+   "fr": "— À quelle heure te lèves-tu ? — À six heures, je vais courir à sept heures.",
+   "question_fr": "À quelle heure va-t-elle courir ?",
+   "options": [
+    "六点",
+    "八点",
+    "七点"
+   ],
+   "options_fr": [
+    "à six heures",
+    "à huit heures",
+    "à sept heures"
+   ],
+   "answer": 2,
+   "id": "2-short_mcq-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "明天的考试你准备好了吗？"
+    },
+    {
+     "s": "m",
+     "t": "还没有，我今天晚上再看看书。"
+    }
+   ],
+   "question": "男的今天晚上要做什么？",
+   "fr": "— Tu es prêt pour l'examen de demain ? — Pas encore, je relis mes livres ce soir.",
+   "question_fr": "Que va faire l'homme ce soir ?",
+   "options": [
+    "看书",
+    "看电视",
+    "考试"
+   ],
+   "options_fr": [
+    "lire ses livres",
+    "regarder la télé",
+    "passer l'examen"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-026",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这是你新买的手表吗？"
+    },
+    {
+     "s": "f",
+     "t": "不是，是我丈夫送给我的。"
+    }
+   ],
+   "question": "手表是谁送的？",
+   "fr": "— C'est une montre que tu viens d'acheter ? — Non, c'est un cadeau de mon mari.",
+   "question_fr": "Qui a offert la montre ?",
+   "options": [
+    "她朋友",
+    "她丈夫",
+    "她妈妈"
+   ],
+   "options_fr": [
+    "une amie",
+    "son mari",
+    "sa mère"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-027",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你知道小王去哪儿了吗？"
+    },
+    {
+     "s": "m",
+     "t": "他回家了，他今天身体不好。"
+    }
+   ],
+   "question": "小王为什么回家？",
+   "fr": "— Tu sais où est passé Xiao Wang ? — Il est rentré chez lui, il ne se sent pas bien aujourd'hui.",
+   "question_fr": "Pourquoi Xiao Wang est-il rentré ?",
+   "options": [
+    "去旅游",
+    "身体不好",
+    "很忙"
+   ],
+   "options_fr": [
+    "il part en voyage",
+    "il ne se sent pas bien",
+    "il est très occupé"
+   ],
+   "answer": 1,
+   "id": "2-short_mcq-028",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "您好，我想找李老师。"
+    },
+    {
+     "s": "f",
+     "t": "他在教室里上课呢。"
+    }
+   ],
+   "question": "李老师在做什么？",
+   "fr": "— Bonjour, je cherche le professeur Li. — Il fait cours en classe.",
+   "question_fr": "Que fait le professeur Li ?",
+   "options": [
+    "上课",
+    "考试",
+    "休息"
+   ],
+   "options_fr": [
+    "il fait cours",
+    "il passe un examen",
+    "il se repose"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-029",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "今天下雪了，路上车很慢。"
+    },
+    {
+     "s": "m",
+     "t": "那我们现在就走吧。"
+    }
+   ],
+   "question": "今天天气怎么样？",
+   "fr": "— Il a neigé aujourd'hui, les voitures roulent lentement. — Alors partons tout de suite.",
+   "question_fr": "Quel temps fait-il aujourd'hui ?",
+   "options": [
+    "下雪了",
+    "下雨了",
+    "晴天"
+   ],
+   "options_fr": [
+    "il a neigé",
+    "il a plu",
+    "il fait beau"
+   ],
+   "answer": 0,
+   "id": "2-short_mcq-030",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你好，你是新来的学生吗？"
+    },
+    {
+     "s": "f",
+     "t": "是，我叫王丽，昨天来的。"
+    },
+    {
+     "s": "m",
+     "t": "我叫大卫。你住在哪儿？"
+    },
+    {
+     "s": "f",
+     "t": "我住在学校旁边的宾馆。"
+    }
+   ],
+   "question": "王丽住在哪儿？",
+   "fr": "— Bonjour, tu es une nouvelle étudiante ? — Oui, je m'appelle Wang Li, je suis arrivée hier. — Moi, c'est David. Où habites-tu ? — À l'hôtel à côté de l'école.",
+   "question_fr": "Où habite Wang Li ?",
+   "options": [
+    "宾馆",
+    "朋友家",
+    "学校里"
+   ],
+   "options_fr": [
+    "à l'hôtel",
+    "chez une amie",
+    "dans l'école"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-001",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "明天你有时间吗？"
+    },
+    {
+     "s": "m",
+     "t": "有，你想做什么？"
+    },
+    {
+     "s": "f",
+     "t": "我们去看电影吧。"
+    },
+    {
+     "s": "m",
+     "t": "好，几点？"
+    },
+    {
+     "s": "f",
+     "t": "下午三点。"
+    }
+   ],
+   "question": "他们明天几点去看电影？",
+   "fr": "— Tu as du temps demain ? — Oui, qu'est-ce que tu veux faire ? — Allons voir un film. — D'accord, à quelle heure ? — À trois heures de l'après-midi.",
+   "question_fr": "À quelle heure vont-ils voir le film demain ?",
+   "options": [
+    "三点",
+    "四点",
+    "两点"
+   ],
+   "options_fr": [
+    "à trois heures",
+    "à quatre heures",
+    "à deux heures"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你怎么了？"
+    },
+    {
+     "s": "f",
+     "t": "我生病了，很累。"
+    },
+    {
+     "s": "m",
+     "t": "去医院看看吧。"
+    },
+    {
+     "s": "f",
+     "t": "我已经去过了，医生让我休息两天。"
+    }
+   ],
+   "question": "医生让女的做什么？",
+   "fr": "— Qu'est-ce que tu as ? — Je suis malade, très fatiguée. — Va voir un médecin. — J'y suis déjà allée, il m'a dit de me reposer deux jours.",
+   "question_fr": "Que lui a demandé le médecin ?",
+   "options": [
+    "跑步",
+    "吃药",
+    "休息"
+   ],
+   "options_fr": [
+    "aller courir",
+    "prendre des médicaments",
+    "se reposer"
+   ],
+   "answer": 2,
+   "id": "2-long_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这个手机多少钱？"
+    },
+    {
+     "s": "m",
+     "t": "两千八。"
+    },
+    {
+     "s": "f",
+     "t": "太贵了，便宜一点儿吧。"
+    },
+    {
+     "s": "m",
+     "t": "两千五，不能再便宜了。"
+    }
+   ],
+   "question": "手机最便宜多少钱？",
+   "fr": "— Combien coûte ce téléphone ? — 2 800. — C'est trop cher, faites-moi un prix. — 2 500, je ne peux pas descendre plus bas.",
+   "question_fr": "Quel est le prix le plus bas du téléphone ?",
+   "options": [
+    "两千八",
+    "两千",
+    "两千五"
+   ],
+   "options_fr": [
+    "2 800",
+    "2 000",
+    "2 500"
+   ],
+   "answer": 2,
+   "id": "2-long_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你在看什么书？"
+    },
+    {
+     "s": "f",
+     "t": "一本汉语书。"
+    },
+    {
+     "s": "m",
+     "t": "有意思吗？"
+    },
+    {
+     "s": "f",
+     "t": "很有意思，我每天晚上都看。"
+    }
+   ],
+   "question": "女的什么时候看书？",
+   "fr": "— Qu'est-ce que tu lis ? — Un livre en chinois. — C'est intéressant ? — Très, je le lis tous les soirs.",
+   "question_fr": "Quand la femme lit-elle ?",
+   "options": [
+    "每天晚上",
+    "星期天",
+    "每天早上"
+   ],
+   "options_fr": [
+    "tous les soirs",
+    "le dimanche",
+    "tous les matins"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "喂，你到哪儿了？"
+    },
+    {
+     "s": "m",
+     "t": "我在路上，还有十分钟。"
+    },
+    {
+     "s": "f",
+     "t": "电影七点开始，你快一点儿。"
+    },
+    {
+     "s": "m",
+     "t": "好的，我知道了。"
+    }
+   ],
+   "question": "电影几点开始？",
+   "fr": "— Allô, tu es où ? — En route, encore dix minutes. — Le film commence à sept heures, dépêche-toi. — D'accord, compris.",
+   "question_fr": "À quelle heure commence le film ?",
+   "options": [
+    "六点",
+    "七点十分",
+    "七点"
+   ],
+   "options_fr": [
+    "à six heures",
+    "à sept heures dix",
+    "à sept heures"
+   ],
+   "answer": 2,
+   "id": "2-long_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你会游泳吗？"
+    },
+    {
+     "s": "f",
+     "t": "会，我游得很好。"
+    },
+    {
+     "s": "m",
+     "t": "那星期六我们一起去游泳吧。"
+    },
+    {
+     "s": "f",
+     "t": "好，你几点来找我？"
+    },
+    {
+     "s": "m",
+     "t": "上午九点。"
+    }
+   ],
+   "question": "他们星期几去游泳？",
+   "fr": "— Tu sais nager ? — Oui, je nage très bien. — Alors allons nager ensemble samedi. — D'accord, tu passes me chercher à quelle heure ? — À neuf heures du matin.",
+   "question_fr": "Quel jour vont-ils nager ?",
+   "options": [
+    "星期五",
+    "星期天",
+    "星期六"
+   ],
+   "options_fr": [
+    "vendredi",
+    "dimanche",
+    "samedi"
+   ],
+   "answer": 2,
+   "id": "2-long_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你妻子做什么工作？"
+    },
+    {
+     "s": "m",
+     "t": "她是老师。"
+    },
+    {
+     "s": "f",
+     "t": "她是哪个学校的老师？"
+    },
+    {
+     "s": "m",
+     "t": "就是我们旁边的那个学校。"
+    }
+   ],
+   "question": "他妻子做什么工作？",
+   "fr": "— Que fait ta femme ? — Elle est professeure. — Dans quelle école ? — L'école juste à côté de chez nous.",
+   "question_fr": "Que fait sa femme ?",
+   "options": [
+    "服务员",
+    "老师",
+    "医生"
+   ],
+   "options_fr": [
+    "serveuse",
+    "professeure",
+    "médecin"
+   ],
+   "answer": 1,
+   "id": "2-long_mcq-008",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "今天晚上你想吃什么？"
+    },
+    {
+     "s": "f",
+     "t": "我想吃面条。"
+    },
+    {
+     "s": "m",
+     "t": "家里没有面条了，我们去饭店吃吧。"
+    },
+    {
+     "s": "f",
+     "t": "好的，我们走吧。"
+    }
+   ],
+   "question": "他们今天晚上在哪儿吃？",
+   "fr": "— Qu'est-ce que tu veux manger ce soir ? — Des nouilles. — Il n'y en a plus à la maison, allons au restaurant. — D'accord, on y va.",
+   "question_fr": "Où mangent-ils ce soir ?",
+   "options": [
+    "朋友家",
+    "饭店",
+    "家里"
+   ],
+   "options_fr": [
+    "chez des amis",
+    "au restaurant",
+    "à la maison"
+   ],
+   "answer": 1,
+   "id": "2-long_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的新房间怎么样？"
+    },
+    {
+     "s": "m",
+     "t": "很好，也很大。"
+    },
+    {
+     "s": "f",
+     "t": "离公司远吗？"
+    },
+    {
+     "s": "m",
+     "t": "不远，走路二十分钟。"
+    }
+   ],
+   "question": "男的走路去公司要多长时间？",
+   "fr": "— Comment est ton nouvel appartement ? — Très bien, et grand. — C'est loin du bureau ? — Non, vingt minutes à pied.",
+   "question_fr": "Combien de temps lui faut-il pour aller au bureau à pied ?",
+   "options": [
+    "十分钟",
+    "三十分钟",
+    "二十分钟"
+   ],
+   "options_fr": [
+    "dix minutes",
+    "trente minutes",
+    "vingt minutes"
+   ],
+   "answer": 2,
+   "id": "2-long_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "服务员，我们要两杯咖啡。"
+    },
+    {
+     "s": "f",
+     "t": "好的，还要别的吗？"
+    },
+    {
+     "s": "m",
+     "t": "不要了，谢谢。"
+    },
+    {
+     "s": "f",
+     "t": "好的，请等一下。"
+    }
+   ],
+   "question": "男的要了什么？",
+   "fr": "— Garçon, deux cafés s'il vous plaît. — Très bien, autre chose ? — Non, merci. — D'accord, un instant.",
+   "question_fr": "Qu'a commandé l'homme ?",
+   "options": [
+    "两杯咖啡",
+    "两杯茶",
+    "一杯牛奶"
+   ],
+   "options_fr": [
+    "deux cafés",
+    "deux thés",
+    "un verre de lait"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-011",
+   "versions": [
+    "2.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你什么时候开始学习汉语的？"
+    },
+    {
+     "s": "m",
+     "t": "去年九月。"
+    },
+    {
+     "s": "f",
+     "t": "你说得非常好！"
+    },
+    {
+     "s": "m",
+     "t": "谢谢，我每天都学习两个小时。"
+    }
+   ],
+   "question": "男的每天学习多长时间？",
+   "fr": "— Quand as-tu commencé à apprendre le chinois ? — En septembre de l'année dernière. — Tu le parles très bien ! — Merci, j'étudie deux heures tous les jours.",
+   "question_fr": "Combien de temps étudie-t-il chaque jour ?",
+   "options": [
+    "两个小时",
+    "三个小时",
+    "一个小时"
+   ],
+   "options_fr": [
+    "deux heures",
+    "trois heures",
+    "une heure"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "请问，这儿离火车站远吗？"
+    },
+    {
+     "s": "f",
+     "t": "很远，你坐出租车去吧。"
+    },
+    {
+     "s": "m",
+     "t": "坐出租车要多长时间？"
+    },
+    {
+     "s": "f",
+     "t": "二十分钟就到了。"
+    }
+   ],
+   "question": "男的要去哪儿？",
+   "fr": "— Excusez-moi, la gare est loin d'ici ? — Très loin, prenez un taxi. — Il faut combien de temps en taxi ? — Vingt minutes.",
+   "question_fr": "Où l'homme veut-il aller ?",
+   "options": [
+    "火车站",
+    "医院",
+    "机场"
+   ],
+   "options_fr": [
+    "à la gare",
+    "à l'hôpital",
+    "à l'aéroport"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你看，外面下雪了。"
+    },
+    {
+     "s": "m",
+     "t": "真漂亮！"
+    },
+    {
+     "s": "f",
+     "t": "我们出去玩吧。"
+    },
+    {
+     "s": "m",
+     "t": "太冷了，我不想出去。"
+    }
+   ],
+   "question": "男的为什么不想出去？",
+   "fr": "— Regarde, il neige dehors. — C'est magnifique ! — Allons jouer dehors. — Il fait trop froid, je n'ai pas envie de sortir.",
+   "question_fr": "Pourquoi l'homme ne veut-il pas sortir ?",
+   "options": [
+    "太冷了",
+    "很累",
+    "生病了"
+   ],
+   "options_fr": [
+    "il fait trop froid",
+    "il est fatigué",
+    "il est malade"
+   ],
+   "answer": 0,
+   "id": "2-long_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 2,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你妹妹多大了？"
+    },
+    {
+     "s": "f",
+     "t": "十八岁，她还是学生。"
+    },
+    {
+     "s": "m",
+     "t": "她喜欢做什么？"
+    },
+    {
+     "s": "f",
+     "t": "她非常喜欢唱歌和跳舞。"
+    }
+   ],
+   "question": "她妹妹喜欢做什么？",
+   "fr": "— Quel âge a ta petite sœur ? — Dix-huit ans, elle est encore étudiante. — Qu'est-ce qu'elle aime faire ? — Elle adore chanter et danser.",
+   "question_fr": "Qu'aime faire sa petite sœur ?",
+   "options": [
+    "踢足球",
+    "唱歌跳舞",
+    "游泳"
+   ],
+   "options_fr": [
+    "jouer au football",
+    "chanter et danser",
+    "nager"
+   ],
+   "answer": 1,
+   "id": "2-long_mcq-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我不喝咖啡，我喝",
+   "pinyin": "chá",
+   "after": "。",
+   "answer": "茶",
+   "fr": "Je ne bois pas de café, je bois du thé.",
+   "id": "2-char_pinyin-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "今天天气很",
+   "pinyin": "lěng",
+   "after": "，多穿一点儿衣服。",
+   "answer": "冷",
+   "fr": "Il fait très froid aujourd'hui, mets des vêtements plus chauds.",
+   "id": "2-char_pinyin-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我",
+   "pinyin": "mǎi",
+   "after": "了一本新书。",
+   "answer": "买",
+   "fr": "J'ai acheté un nouveau livre.",
+   "id": "2-char_pinyin-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "你的",
+   "pinyin": "diàn",
+   "after": "话是多少？",
+   "answer": "电",
+   "fr": "Quel est ton numéro de téléphone ?",
+   "id": "2-char_pinyin-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我每天早上七",
+   "pinyin": "diǎn",
+   "after": "起床。",
+   "answer": "点",
+   "fr": "Je me lève à sept heures tous les matins.",
+   "id": "2-char_pinyin-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "这个苹果很好",
+   "pinyin": "chī",
+   "after": "。",
+   "answer": "吃",
+   "fr": "Cette pomme est très bonne.",
+   "id": "2-char_pinyin-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "你",
+   "pinyin": "huì",
+   "after": "说汉语吗？",
+   "answer": "会",
+   "fr": "Tu sais parler chinois ?",
+   "id": "2-char_pinyin-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我们一起去",
+   "pinyin": "kàn",
+   "after": "电影吧。",
+   "answer": "看",
+   "fr": "Allons voir un film ensemble.",
+   "id": "2-char_pinyin-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "他是我的好",
+   "pinyin": "péng",
+   "after": "友。",
+   "answer": "朋",
+   "fr": "C'est mon meilleur ami.",
+   "id": "2-char_pinyin-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "外面下",
+   "pinyin": "yǔ",
+   "after": "了。",
+   "answer": "雨",
+   "fr": "Il pleut dehors.",
+   "id": "2-char_pinyin-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我",
+   "pinyin": "xǐ",
+   "after": "欢踢足球。",
+   "answer": "喜",
+   "fr": "J'aime jouer au football.",
+   "id": "2-char_pinyin-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "请你",
+   "pinyin": "děng",
+   "after": "一下。",
+   "answer": "等",
+   "fr": "Attends un instant, s'il te plaît.",
+   "id": "2-char_pinyin-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "我家离学校很",
+   "pinyin": "jìn",
+   "after": "。",
+   "answer": "近",
+   "fr": "Ma maison est tout près de l'école.",
+   "id": "2-char_pinyin-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "她每天",
+   "pinyin": "zǒu",
+   "after": "路去上班。",
+   "answer": "走",
+   "fr": "Elle va au travail à pied tous les jours.",
+   "id": "2-char_pinyin-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 2,
+   "before": "你的",
+   "pinyin": "shǒu",
+   "after": "机在桌子上。",
+   "answer": "手",
+   "fr": "Ton téléphone est sur la table.",
+   "id": "2-char_pinyin-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Un homme qui cherche quelque chose dans son sac devant une porte",
+    "Une femme qui prend des photos d'un paysage",
+    "Une femme qui range des vêtements dans une valise",
+    "Un garçon qui fait ses devoirs, aidé par sa mère",
+    "Un homme qui fait la vaisselle",
+    "Deux personnes qui font du sport dans un parc"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "周末你一般做什么？"
+      },
+      {
+       "s": "m",
+       "t": "我经常和朋友一起去公园锻炼身体。"
+      }
+     ],
+     "fr": "— Que fais-tu en général le week-end ? — Je vais souvent faire du sport au parc avec des amis.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "妈妈，这个题我不会做。"
+      },
+      {
+       "s": "f",
+       "t": "没关系，我们一起看看。"
+      }
+     ],
+     "fr": "— Maman, je n'arrive pas à faire cet exercice. — Ce n'est pas grave, regardons-le ensemble.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你在找什么？"
+      },
+      {
+       "s": "m",
+       "t": "我的护照，我不记得放在哪儿了。"
+      }
+     ],
+     "fr": "— Qu'est-ce que tu cherches ? — Mon passeport, je ne sais plus où je l'ai mis.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这儿真漂亮，我要多照几张照片。"
+      },
+      {
+       "s": "m",
+       "t": "好，我在这儿等你。"
+      }
+     ],
+     "fr": "— C'est vraiment beau ici, je vais prendre quelques photos de plus. — D'accord, je t'attends ici.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "箱子里的衣服太多了，放不下了。"
+      },
+      {
+       "s": "m",
+       "t": "那就少带几件吧。"
+      }
+     ],
+     "fr": "— Il y a trop de vêtements dans la valise, ça ne rentre plus. — Alors emporte-en moins.",
+     "answer": 2
+    }
+   ],
+   "id": "3-pic_match-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Un homme en costume qui regarde sa montre sous la pluie",
+    "Un homme qui accueille une nouvelle collègue au bureau",
+    "Une femme qui paie un chauffeur de taxi",
+    "Un homme qui arrose des fleurs dans son jardin",
+    "Un homme qui attend devant un ascenseur",
+    "Un enfant qui pleure, sa mère le console"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "别哭了，孩子，妈妈在这儿呢。"
+      },
+      {
+       "s": "m",
+       "t": "我找不到我的小狗了。"
+      }
+     ],
+     "fr": "— Ne pleure plus, mon enfant, maman est là. — Je ne trouve plus mon petit chien.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "欢迎你来我们公司！"
+      },
+      {
+       "s": "f",
+       "t": "谢谢经理，我会努力工作的。"
+      }
+     ],
+     "fr": "— Bienvenue dans notre entreprise ! — Merci, monsieur le directeur, je vais travailler dur.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这些花真漂亮，是你种的吗？"
+      },
+      {
+       "s": "m",
+       "t": "是的，我每天都照顾它们。"
+      }
+     ],
+     "fr": "— Ces fleurs sont magnifiques, c'est toi qui les as plantées ? — Oui, je m'en occupe tous les jours.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "给你五十。"
+      },
+      {
+       "s": "m",
+       "t": "找您十八块。"
+      }
+     ],
+     "fr": "— Voici cinquante yuans. — Je vous rends dix-huit yuans.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "电梯坏了吗？"
+      },
+      {
+       "s": "f",
+       "t": "是的，我们只能走上去了。"
+      }
+     ],
+     "fr": "— L'ascenseur est en panne ? — Oui, il va falloir monter à pied.",
+     "answer": 4
+    }
+   ],
+   "id": "3-pic_match-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Deux amis qui regardent un match à la télévision",
+    "Un homme qui fait le ménage dans sa chambre",
+    "Une étudiante qui rend des livres à la bibliothèque",
+    "Une fille qui fait du vélo",
+    "Une femme qui a de la fièvre, couchée dans son lit",
+    "Un homme qui regarde le menu dans un restaurant"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这几本书我看完了，现在还给你们。"
+      },
+      {
+       "s": "m",
+       "t": "好的，请放在这儿。"
+      }
+     ],
+     "fr": "— J'ai fini ces livres, je vous les rends. — Très bien, posez-les ici.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "我好像发烧了。"
+      },
+      {
+       "s": "m",
+       "t": "那你今天别去上班了，在家休息吧。"
+      }
+     ],
+     "fr": "— J'ai l'impression d'avoir de la fièvre. — Alors ne va pas travailler aujourd'hui, repose-toi à la maison.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "请问，有菜单吗？"
+      },
+      {
+       "s": "f",
+       "t": "有，您看一下。"
+      }
+     ],
+     "fr": "— Excusez-moi, vous avez une carte ? — Oui, tenez.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "比赛开始了，快来看！"
+      },
+      {
+       "s": "f",
+       "t": "来了来了，现在几比几？"
+      }
+     ],
+     "fr": "— Le match a commencé, viens vite ! — J'arrive, j'arrive ! C'est combien à combien ?",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "你的房间真干净！"
+      },
+      {
+       "s": "m",
+       "t": "我昨天打扫了一下午。"
+      }
+     ],
+     "fr": "— Ta chambre est vraiment propre ! — J'ai fait le ménage tout l'après-midi hier.",
+     "answer": 1
+    }
+   ],
+   "id": "3-pic_match-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Une femme qui essaie une jupe devant un miroir",
+    "Une hôtesse qui parle à un passager dans un avion",
+    "Une femme qui écrit au tableau devant des élèves",
+    "Une grand-mère qui raconte une histoire à des enfants",
+    "Un couple qui choisit un réfrigérateur dans un magasin",
+    "Un garçon qui joue à un jeu vidéo"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这条裙子我穿着怎么样？"
+      },
+      {
+       "s": "m",
+       "t": "很漂亮，就买这条吧。"
+      }
+     ],
+     "fr": "— Comment me va cette jupe ? — Très bien, prends celle-là.",
+     "answer": 0
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "先生，飞机马上就要起飞了，请关上手机。"
+      },
+      {
+       "s": "m",
+       "t": "好的。"
+      }
+     ],
+     "fr": "— Monsieur, l'avion va décoller, veuillez éteindre votre téléphone. — D'accord.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "奶奶，再讲一个故事吧！"
+      },
+      {
+       "s": "f",
+       "t": "好，这是最后一个。"
+      }
+     ],
+     "fr": "— Mamie, raconte encore une histoire ! — D'accord, mais c'est la dernière.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "别玩游戏了，快去写作业！"
+      },
+      {
+       "s": "m",
+       "t": "再玩五分钟就去。"
+      }
+     ],
+     "fr": "— Arrête de jouer, va vite faire tes devoirs ! — Encore cinq minutes et j'y vais.",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "这个冰箱怎么样？"
+      },
+      {
+       "s": "f",
+       "t": "太大了，家里放不下。"
+      }
+     ],
+     "fr": "— Que penses-tu de ce frigo ? — Il est trop grand, il ne rentrera pas chez nous.",
+     "answer": 4
+    }
+   ],
+   "id": "3-pic_match-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Un homme qui offre un gâteau à une collègue",
+    "Un homme qui court sous la pluie sans parapluie",
+    "Une femme qui donne à manger à un petit chat",
+    "Un médecin qui examine la jambe d'une patiente",
+    "Une femme qui demande son chemin, un plan à la main",
+    "Deux personnes qui font la queue à la banque"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "怎么突然下雨了？我没带伞！"
+      },
+      {
+       "s": "f",
+       "t": "快跑吧，前面有一个超市。"
+      }
+     ],
+     "fr": "— Pourquoi il se met à pleuvoir d'un coup ? Je n'ai pas de parapluie ! — Cours, il y a un supermarché devant.",
+     "answer": 1
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "医生，我的腿很疼。"
+      },
+      {
+       "s": "m",
+       "t": "我检查一下。"
+      }
+     ],
+     "fr": "— Docteur, j'ai très mal à la jambe. — Je vais regarder.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "请问，去图书馆怎么走？"
+      },
+      {
+       "s": "m",
+       "t": "你看地图，就在银行的东边。"
+      }
+     ],
+     "fr": "— Excusez-moi, comment va-t-on à la bibliothèque ? — Regardez le plan, c'est juste à l'est de la banque.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "f",
+       "t": "这只小猫饿了，我给它一点儿吃的。"
+      },
+      {
+       "s": "m",
+       "t": "它真可爱。"
+      }
+     ],
+     "fr": "— Ce petit chat a faim, je vais lui donner un peu à manger. — Il est vraiment mignon.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "今天是你的生日，这是我们给你买的蛋糕。"
+      },
+      {
+       "s": "f",
+       "t": "太谢谢你们了！"
+      }
+     ],
+     "fr": "— C'est ton anniversaire aujourd'hui, voici le gâteau qu'on t'a acheté. — Merci beaucoup !",
+     "answer": 0
+    }
+   ],
+   "id": "3-pic_match-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "pic_match",
+   "level": 3,
+   "options": [
+    "Une femme qui fait connaissance avec son nouveau voisin dans l'escalier",
+    "Une femme chez le coiffeur",
+    "Un homme qui lave sa voiture",
+    "Un groupe d'amis arrivé au sommet d'une montagne",
+    "Une étudiante qui sort d'un examen de mathématiques",
+    "Un homme qui achète un billet de train au guichet"
+   ],
+   "items": [
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "天气这么好，我去洗一下车。"
+      },
+      {
+       "s": "f",
+       "t": "好，洗完了我们出去玩儿。"
+      }
+     ],
+     "fr": "— Il fait si beau, je vais laver la voiture. — D'accord, une fois que c'est fait, on sort se promener.",
+     "answer": 2
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "我们终于爬到山上了！"
+      },
+      {
+       "s": "f",
+       "t": "太累了，我们休息一下吧。"
+      }
+     ],
+     "fr": "— On est enfin arrivés en haut de la montagne ! — Je suis épuisée, faisons une pause.",
+     "answer": 3
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "请问，还有明天早上的火车票吗？"
+      },
+      {
+       "s": "f",
+       "t": "有，八点的，您要几张？"
+      }
+     ],
+     "fr": "— Excusez-moi, il reste des billets de train pour demain matin ? — Oui, à huit heures, combien en voulez-vous ?",
+     "answer": 5
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "这次数学考试难吗？"
+      },
+      {
+       "s": "f",
+       "t": "不太难，我觉得我考得还可以。"
+      }
+     ],
+     "fr": "— L'examen de maths était difficile ? — Pas trop, je pense m'en être pas mal sortie.",
+     "answer": 4
+    },
+    {
+     "audio": [
+      {
+       "s": "m",
+       "t": "你好，我是新搬来的，住在你楼上。"
+      },
+      {
+       "s": "f",
+       "t": "你好，欢迎欢迎！"
+      }
+     ],
+     "fr": "— Bonjour, je viens d'emménager, j'habite au-dessus de chez vous. — Bonjour, bienvenue !",
+     "answer": 0
+    }
+   ],
+   "id": "3-pic_match-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "为了身体健康，我每天早上都去公园跑步。"
+    }
+   ],
+   "fr": "Pour être en bonne santé, je vais courir au parc tous les matins.",
+   "statement": "他每天晚上跑步。",
+   "statement_fr": "Il court tous les soirs.",
+   "answer": false,
+   "id": "3-passage_judge-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们公司离我家很近，我每天走路去上班，只要十分钟。"
+    }
+   ],
+   "fr": "Mon entreprise est tout près de chez moi, j'y vais à pied tous les jours, il ne faut que dix minutes.",
+   "statement": "他家离公司不远。",
+   "statement_fr": "Il habite près de son entreprise.",
+   "answer": true,
+   "id": "3-passage_judge-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "今天的会议很重要，经理让大家都早点儿来。"
+    }
+   ],
+   "fr": "La réunion d'aujourd'hui est très importante, le directeur a demandé à tout le monde de venir un peu plus tôt.",
+   "statement": "今天的会议不太重要。",
+   "statement_fr": "La réunion d'aujourd'hui n'est pas très importante.",
+   "answer": false,
+   "id": "3-passage_judge-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我妹妹特别喜欢小动物，她家里有两只猫和一只狗。"
+    }
+   ],
+   "fr": "Ma petite sœur adore les petits animaux, elle a deux chats et un chien chez elle.",
+   "statement": "他妹妹家里有三只动物。",
+   "statement_fr": "Sa petite sœur a trois animaux chez elle.",
+   "answer": true,
+   "id": "3-passage_judge-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这家饭馆的菜很好吃，也不贵，所以每天来这儿吃饭的人很多。"
+    }
+   ],
+   "fr": "Les plats de ce restaurant sont très bons et pas chers, c'est pourquoi il y a beaucoup de monde tous les jours.",
+   "statement": "这家饭馆的菜很贵。",
+   "statement_fr": "Les plats de ce restaurant sont très chers.",
+   "answer": false,
+   "id": "3-passage_judge-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我上个月去了一次北方，那里比南方冷多了。"
+    }
+   ],
+   "fr": "Le mois dernier, je suis allé dans le Nord, il y fait bien plus froid que dans le Sud.",
+   "statement": "北方比南方冷。",
+   "statement_fr": "Il fait plus froid dans le Nord que dans le Sud.",
+   "answer": true,
+   "id": "3-passage_judge-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "小王感冒了，今天没来上课。"
+    }
+   ],
+   "fr": "Xiao Wang a attrapé un rhume, il n'est pas venu en cours aujourd'hui.",
+   "statement": "小王今天去上课了。",
+   "statement_fr": "Xiao Wang est allé en cours aujourd'hui.",
+   "answer": false,
+   "id": "3-passage_judge-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "先生，您的护照忘在这儿了，请拿好。"
+    }
+   ],
+   "fr": "Monsieur, vous avez oublié votre passeport ici, prenez-le bien.",
+   "statement": "那位先生忘了拿护照。",
+   "statement_fr": "Ce monsieur a oublié de prendre son passeport.",
+   "answer": true,
+   "id": "3-passage_judge-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我以前不喜欢吃香蕉，但是现在我每天都吃一个。"
+    }
+   ],
+   "fr": "Avant, je n'aimais pas les bananes, mais maintenant j'en mange une tous les jours.",
+   "statement": "他现在每天都吃香蕉。",
+   "statement_fr": "Maintenant, il mange une banane tous les jours.",
+   "answer": true,
+   "id": "3-passage_judge-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个城市的地铁很方便，去哪儿都很快。"
+    }
+   ],
+   "fr": "Le métro de cette ville est très pratique, on va vite partout.",
+   "statement": "在这个城市坐地铁很不方便。",
+   "statement_fr": "Dans cette ville, prendre le métro n'est pas pratique du tout.",
+   "answer": false,
+   "id": "3-passage_judge-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我和丈夫是在大学认识的，我们已经结婚十年了。"
+    }
+   ],
+   "fr": "Mon mari et moi nous sommes rencontrés à l'université, nous sommes mariés depuis dix ans.",
+   "statement": "他们结婚十年了。",
+   "statement_fr": "Ils sont mariés depuis dix ans.",
+   "answer": true,
+   "id": "3-passage_judge-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这次数学考试我只考了六十分，我要更努力地学习。"
+    }
+   ],
+   "fr": "À cet examen de maths, je n'ai eu que soixante points, je dois travailler encore plus dur.",
+   "statement": "他这次考得很好。",
+   "statement_fr": "Il a très bien réussi cette fois.",
+   "answer": false,
+   "id": "3-passage_judge-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "外面刮风了，你出去的时候多穿件衣服。"
+    }
+   ],
+   "fr": "Il y a du vent dehors, mets un vêtement de plus quand tu sors.",
+   "statement": "现在外面在刮风。",
+   "statement_fr": "En ce moment, il y a du vent dehors.",
+   "answer": true,
+   "id": "3-passage_judge-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我的电脑坏了，我想明天拿去检查一下。"
+    }
+   ],
+   "fr": "Mon ordinateur est en panne, je vais le faire vérifier demain.",
+   "statement": "他的电脑有问题。",
+   "statement_fr": "Son ordinateur a un problème.",
+   "answer": true,
+   "id": "3-passage_judge-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "王老师上课很认真，同学们都很喜欢他。"
+    }
+   ],
+   "fr": "Le professeur Wang fait cours très sérieusement, tous les élèves l'aiment beaucoup.",
+   "statement": "同学们不喜欢王老师。",
+   "statement_fr": "Les élèves n'aiment pas le professeur Wang.",
+   "answer": false,
+   "id": "3-passage_judge-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个周末我打算在家休息，哪儿也不去。"
+    }
+   ],
+   "fr": "Ce week-end, je compte me reposer à la maison, je n'irai nulle part.",
+   "statement": "他周末要出去玩儿。",
+   "statement_fr": "Il va sortir s'amuser ce week-end.",
+   "answer": false,
+   "id": "3-passage_judge-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我已经习惯了这里的天气，夏天不太热，冬天也不太冷。"
+    }
+   ],
+   "fr": "Je me suis habitué au climat d'ici : l'été n'est pas trop chaud et l'hiver pas trop froid.",
+   "statement": "他还不习惯这里的天气。",
+   "statement_fr": "Il n'est pas encore habitué au climat d'ici.",
+   "answer": false,
+   "id": "3-passage_judge-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "请大家注意，我们的飞机还有二十分钟就要起飞了。"
+    }
+   ],
+   "fr": "Votre attention s'il vous plaît, notre avion décolle dans vingt minutes.",
+   "statement": "飞机马上就要起飞了。",
+   "statement_fr": "L'avion va bientôt décoller.",
+   "answer": true,
+   "id": "3-passage_judge-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我的邻居是一位老奶奶，她对我非常热情。"
+    }
+   ],
+   "fr": "Ma voisine est une vieille dame, elle est très chaleureuse avec moi.",
+   "statement": "他的邻居很年轻。",
+   "statement_fr": "Son voisin est très jeune.",
+   "answer": false,
+   "id": "3-passage_judge-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "去年我去中国留学，在那儿学了一年汉语。"
+    }
+   ],
+   "fr": "L'année dernière, je suis parti étudier en Chine, j'y ai appris le chinois pendant un an.",
+   "statement": "他在中国学习过汉语。",
+   "statement_fr": "Il a déjà étudié le chinois en Chine.",
+   "answer": true,
+   "id": "3-passage_judge-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我很少看电视，我更喜欢看书和听音乐。"
+    }
+   ],
+   "fr": "Je regarde rarement la télévision, je préfère lire et écouter de la musique.",
+   "statement": "他非常喜欢看电视。",
+   "statement_fr": "Il adore regarder la télévision.",
+   "answer": false,
+   "id": "3-passage_judge-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这件衬衫很好看，可是太大了，有没有小一点儿的？"
+    }
+   ],
+   "fr": "Cette chemise est jolie, mais elle est trop grande, vous en avez une un peu plus petite ?",
+   "statement": "他想要小一点儿的衬衫。",
+   "statement_fr": "Il veut une chemise un peu plus petite.",
+   "answer": true,
+   "id": "3-passage_judge-022",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "今天是星期天，银行不开门，你明天再去吧。"
+    }
+   ],
+   "fr": "Aujourd'hui, c'est dimanche, la banque est fermée, vas-y demain.",
+   "statement": "银行今天不开门。",
+   "statement_fr": "La banque est fermée aujourd'hui.",
+   "answer": true,
+   "id": "3-passage_judge-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们坐了八个小时的船才到那个小城市。"
+    }
+   ],
+   "fr": "Nous avons pris le bateau pendant huit heures avant d'arriver dans cette petite ville.",
+   "statement": "他们是坐飞机去的。",
+   "statement_fr": "Ils y sont allés en avion.",
+   "answer": false,
+   "id": "3-passage_judge-024",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_judge",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我女儿今年上三年级，她最喜欢的是体育课。"
+    }
+   ],
+   "fr": "Ma fille est en troisième année cette année, son cours préféré, c'est le sport.",
+   "statement": "他女儿喜欢上体育课。",
+   "statement_fr": "Sa fille aime le cours de sport.",
+   "answer": true,
+   "id": "3-passage_judge-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "喂，你好，请问张经理在吗？"
+    },
+    {
+     "s": "f",
+     "t": "他正在开会，您一个小时以后再打来吧。"
+    }
+   ],
+   "question": "张经理现在在做什么？",
+   "fr": "— Allô, bonjour, le directeur Zhang est-il là ? — Il est en réunion, rappelez dans une heure.",
+   "question_fr": "Que fait le directeur Zhang en ce moment ?",
+   "options": [
+    "打电话",
+    "休息",
+    "开会"
+   ],
+   "options_fr": [
+    "il téléphone",
+    "il se repose",
+    "il est en réunion"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的自行车呢？"
+    },
+    {
+     "s": "m",
+     "t": "借给我同事了，他明天还我。"
+    }
+   ],
+   "question": "自行车现在在哪儿？",
+   "fr": "— Où est ton vélo ? — Je l'ai prêté à un collègue, il me le rend demain.",
+   "question_fr": "Où est le vélo en ce moment ?",
+   "options": [
+    "他家里",
+    "同事那儿",
+    "商店"
+   ],
+   "options_fr": [
+    "chez lui",
+    "chez son collègue",
+    "au magasin"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这个周末我们去爬山吧。"
+    },
+    {
+     "s": "f",
+     "t": "我也很想去，可是周末我要照顾奶奶。"
+    }
+   ],
+   "question": "女的周末要做什么？",
+   "fr": "— Allons faire de la montagne ce week-end. — J'aimerais bien, mais ce week-end je dois m'occuper de ma grand-mère.",
+   "question_fr": "Que doit faire la femme ce week-end ?",
+   "options": [
+    "照顾奶奶",
+    "上班",
+    "爬山"
+   ],
+   "options_fr": [
+    "s'occuper de sa grand-mère",
+    "travailler",
+    "faire de la montagne"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你怎么一直在打电话？"
+    },
+    {
+     "s": "m",
+     "t": "我的信用卡找不到了，我在问银行。"
+    }
+   ],
+   "question": "男的什么找不到了？",
+   "fr": "— Pourquoi tu es tout le temps au téléphone ? — Je ne trouve plus ma carte bancaire, j'appelle la banque.",
+   "question_fr": "Qu'est-ce que l'homme ne trouve plus ?",
+   "options": [
+    "手机",
+    "信用卡",
+    "护照"
+   ],
+   "options_fr": [
+    "son téléphone",
+    "sa carte bancaire",
+    "son passeport"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你看起来很累。"
+    },
+    {
+     "s": "f",
+     "t": "是啊，我昨天晚上一点才睡。"
+    }
+   ],
+   "question": "女的为什么很累？",
+   "fr": "— Tu as l'air très fatiguée. — Oui, je ne me suis couchée qu'à une heure du matin.",
+   "question_fr": "Pourquoi la femme est-elle fatiguée ?",
+   "options": [
+    "工作太多",
+    "生病了",
+    "睡得太晚"
+   ],
+   "options_fr": [
+    "elle a trop de travail",
+    "elle est malade",
+    "elle s'est couchée trop tard"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这条裤子有点儿长，有短一点儿的吗？"
+    },
+    {
+     "s": "m",
+     "t": "有，您等一下，我去给您拿。"
+    }
+   ],
+   "question": "女的觉得裤子怎么样？",
+   "fr": "— Ce pantalon est un peu long, vous en avez un plus court ? — Oui, attendez un instant, je vais vous le chercher.",
+   "question_fr": "Que pense la femme du pantalon ?",
+   "options": [
+    "太短了",
+    "颜色不好",
+    "有点儿长"
+   ],
+   "options_fr": [
+    "trop court",
+    "la couleur ne va pas",
+    "un peu long"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你会骑自行车吗？"
+    },
+    {
+     "s": "f",
+     "t": "会，我小时候就学会了。"
+    }
+   ],
+   "question": "女的什么时候学会骑自行车的？",
+   "fr": "— Tu sais faire du vélo ? — Oui, j'ai appris quand j'étais petite.",
+   "question_fr": "Quand la femme a-t-elle appris à faire du vélo ?",
+   "options": [
+    "上大学的时候",
+    "去年",
+    "小时候"
+   ],
+   "options_fr": [
+    "à l'université",
+    "l'année dernière",
+    "quand elle était petite"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你明天几点的飞机？"
+    },
+    {
+     "s": "m",
+     "t": "上午十点的，但是我八点就要到机场。"
+    }
+   ],
+   "question": "男的几点要到机场？",
+   "fr": "— Ton avion est à quelle heure demain ? — À dix heures, mais je dois être à l'aéroport à huit heures.",
+   "question_fr": "À quelle heure l'homme doit-il être à l'aéroport ?",
+   "options": [
+    "十二点",
+    "十点",
+    "八点"
+   ],
+   "options_fr": [
+    "à midi",
+    "à dix heures",
+    "à huit heures"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "我们一起打车去吧？"
+    },
+    {
+     "s": "f",
+     "t": "不用了，这儿离地铁站很近，坐地铁更快。"
+    }
+   ],
+   "question": "女的想怎么去？",
+   "fr": "— On prend un taxi ensemble ? — Pas besoin, la station de métro est tout près, c'est plus rapide en métro.",
+   "question_fr": "Comment la femme veut-elle y aller ?",
+   "options": [
+    "打车",
+    "坐地铁",
+    "走路"
+   ],
+   "options_fr": [
+    "en taxi",
+    "en métro",
+    "à pied"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的汉语水平提高得真快！"
+    },
+    {
+     "s": "m",
+     "t": "谢谢，我经常和中国朋友聊天。"
+    }
+   ],
+   "question": "男的为什么汉语提高得快？",
+   "fr": "— Ton niveau de chinois progresse vraiment vite ! — Merci, je discute souvent avec des amis chinois.",
+   "question_fr": "Pourquoi son chinois progresse-t-il vite ?",
+   "options": [
+    "每天上课",
+    "经常和中国朋友聊天",
+    "看中国电影"
+   ],
+   "options_fr": [
+    "il a cours tous les jours",
+    "il discute souvent avec des amis chinois",
+    "il regarde des films chinois"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这个菜有点儿甜。"
+    },
+    {
+     "s": "f",
+     "t": "我觉得很好吃啊。"
+    }
+   ],
+   "question": "男的觉得这个菜怎么样？",
+   "fr": "— Ce plat est un peu sucré. — Moi, je le trouve très bon.",
+   "question_fr": "Que pense l'homme de ce plat ?",
+   "options": [
+    "有点儿甜",
+    "不新鲜",
+    "很好吃"
+   ],
+   "options_fr": [
+    "un peu sucré",
+    "pas frais",
+    "très bon"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "电影几点开始？"
+    },
+    {
+     "s": "m",
+     "t": "七点半，我们还有二十分钟。"
+    }
+   ],
+   "question": "现在可能几点？",
+   "fr": "— Le film commence à quelle heure ? — À sept heures et demie, il nous reste vingt minutes.",
+   "question_fr": "Quelle heure est-il probablement ?",
+   "options": [
+    "七点五十",
+    "七点十分",
+    "七点半"
+   ],
+   "options_fr": [
+    "huit heures moins dix",
+    "sept heures dix",
+    "sept heures et demie"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你认识那个穿蓝裙子的女孩儿吗？"
+    },
+    {
+     "s": "f",
+     "t": "认识，她是我的邻居。"
+    }
+   ],
+   "question": "那个女孩儿是谁？",
+   "fr": "— Tu connais la fille en jupe bleue ? — Oui, c'est ma voisine.",
+   "question_fr": "Qui est cette fille ?",
+   "options": [
+    "她的同学",
+    "她的邻居",
+    "她的妹妹"
+   ],
+   "options_fr": [
+    "sa camarade de classe",
+    "sa voisine",
+    "sa petite sœur"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你搬家了？"
+    },
+    {
+     "s": "m",
+     "t": "对，新家离公司近多了。"
+    }
+   ],
+   "question": "男的的新家怎么样？",
+   "fr": "— Tu as déménagé ? — Oui, mon nouveau logement est bien plus près du bureau.",
+   "question_fr": "Comment est son nouveau logement ?",
+   "options": [
+    "很大",
+    "很便宜",
+    "离公司近"
+   ],
+   "options_fr": [
+    "très grand",
+    "très bon marché",
+    "près du bureau"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你哭什么？"
+    },
+    {
+     "s": "f",
+     "t": "这个电影太让人难过了。"
+    }
+   ],
+   "question": "女的为什么哭？",
+   "fr": "— Pourquoi tu pleures ? — Ce film est vraiment trop triste.",
+   "question_fr": "Pourquoi la femme pleure-t-elle ?",
+   "options": [
+    "电影让人难过",
+    "考试没考好",
+    "她生病了"
+   ],
+   "options_fr": [
+    "le film est triste",
+    "elle a raté un examen",
+    "elle est malade"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你怎么还没走？"
+    },
+    {
+     "s": "m",
+     "t": "外面雨太大了，我等一会儿再走。"
+    }
+   ],
+   "question": "男的为什么还没走？",
+   "fr": "— Pourquoi tu n'es pas encore parti ? — Il pleut trop fort dehors, j'attends un peu avant de partir.",
+   "question_fr": "Pourquoi l'homme n'est-il pas encore parti ?",
+   "options": [
+    "雨太大",
+    "工作没做完",
+    "等朋友"
+   ],
+   "options_fr": [
+    "il pleut trop fort",
+    "il n'a pas fini son travail",
+    "il attend un ami"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你知道附近哪儿有银行吗？"
+    },
+    {
+     "s": "f",
+     "t": "往前走，在超市旁边。"
+    }
+   ],
+   "question": "男的要去哪儿？",
+   "fr": "— Tu sais où il y a une banque près d'ici ? — Va tout droit, c'est à côté du supermarché.",
+   "question_fr": "Où l'homme veut-il aller ?",
+   "options": [
+    "银行",
+    "超市",
+    "医院"
+   ],
+   "options_fr": [
+    "à la banque",
+    "au supermarché",
+    "à l'hôpital"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的手机怎么关机了？"
+    },
+    {
+     "s": "m",
+     "t": "没电了，我昨天忘记了。"
+    }
+   ],
+   "question": "男的手机怎么了？",
+   "fr": "— Pourquoi ton téléphone est éteint ? — Il n'a plus de batterie, j'ai oublié hier.",
+   "question_fr": "Qu'est-il arrivé au téléphone de l'homme ?",
+   "options": [
+    "被借走了",
+    "坏了",
+    "没电了"
+   ],
+   "options_fr": [
+    "quelqu'un l'a emprunté",
+    "il est en panne",
+    "il n'a plus de batterie"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这个箱子我一个人拿不动。"
+    },
+    {
+     "s": "f",
+     "t": "我来帮你。"
+    }
+   ],
+   "question": "女的要做什么？",
+   "fr": "— Je n'arrive pas à porter cette valise tout seul. — Je vais t'aider.",
+   "question_fr": "Que va faire la femme ?",
+   "options": [
+    "打开箱子",
+    "买箱子",
+    "帮男的拿箱子"
+   ],
+   "options_fr": [
+    "ouvrir la valise",
+    "acheter une valise",
+    "l'aider à porter la valise"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "明天的会议几点开始？"
+    },
+    {
+     "s": "m",
+     "t": "九点，你别迟到。"
+    }
+   ],
+   "question": "明天的会议几点开始？",
+   "fr": "— La réunion de demain commence à quelle heure ? — À neuf heures, ne sois pas en retard.",
+   "question_fr": "À quelle heure commence la réunion de demain ?",
+   "options": [
+    "九点",
+    "八点",
+    "十点"
+   ],
+   "options_fr": [
+    "à neuf heures",
+    "à huit heures",
+    "à dix heures"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你喜欢什么季节？"
+    },
+    {
+     "s": "f",
+     "t": "秋天，不冷也不热。"
+    }
+   ],
+   "question": "女的喜欢什么季节？",
+   "fr": "— Quelle saison aimes-tu ? — L'automne : il ne fait ni froid ni chaud.",
+   "question_fr": "Quelle saison la femme aime-t-elle ?",
+   "options": [
+    "夏天",
+    "秋天",
+    "春天"
+   ],
+   "options_fr": [
+    "l'été",
+    "l'automne",
+    "le printemps"
+   ],
+   "answer": 1,
+   "id": "3-short_mcq-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你今天怎么这么高兴？"
+    },
+    {
+     "s": "m",
+     "t": "我的成绩出来了，比上次好多了。"
+    }
+   ],
+   "question": "男的为什么高兴？",
+   "fr": "— Pourquoi tu es si content aujourd'hui ? — Mes résultats sont sortis, ils sont bien meilleurs que la dernière fois.",
+   "question_fr": "Pourquoi l'homme est-il content ?",
+   "options": [
+    "成绩提高了",
+    "要去旅游",
+    "找到工作了"
+   ],
+   "options_fr": [
+    "ses résultats se sont améliorés",
+    "il part en voyage",
+    "il a trouvé du travail"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-022",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你把我的笔记本放哪儿了？"
+    },
+    {
+     "s": "f",
+     "t": "在你的书包里。"
+    }
+   ],
+   "question": "笔记本在哪儿？",
+   "fr": "— Où as-tu mis mon cahier ? — Dans ton cartable.",
+   "question_fr": "Où est le cahier ?",
+   "options": [
+    "书包里",
+    "床上",
+    "桌子上"
+   ],
+   "options_fr": [
+    "dans le cartable",
+    "sur le lit",
+    "sur la table"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "小李，你的中文说得这么好，在中国住了很多年吧？"
+    },
+    {
+     "s": "m",
+     "t": "没有，我才来了一年。"
+    }
+   ],
+   "question": "小李在中国住了多长时间？",
+   "fr": "— Xiao Li, tu parles si bien chinois, tu as dû vivre en Chine pendant des années ? — Non, je ne suis là que depuis un an.",
+   "question_fr": "Depuis combien de temps Xiao Li vit-il en Chine ?",
+   "options": [
+    "两年",
+    "很多年",
+    "一年"
+   ],
+   "options_fr": [
+    "deux ans",
+    "de nombreuses années",
+    "un an"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-024",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "外面太冷了，我不想出去。"
+    },
+    {
+     "s": "f",
+     "t": "那我们在家看电影吧。"
+    }
+   ],
+   "question": "他们可能会做什么？",
+   "fr": "— Il fait trop froid dehors, je n'ai pas envie de sortir. — Alors regardons un film à la maison.",
+   "question_fr": "Que vont-ils probablement faire ?",
+   "options": [
+    "在家看电影",
+    "出去玩儿",
+    "去公园"
+   ],
+   "options_fr": [
+    "regarder un film à la maison",
+    "sortir s'amuser",
+    "aller au parc"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你在找什么？"
+    },
+    {
+     "s": "m",
+     "t": "我的护照，明天就要用了。"
+    }
+   ],
+   "question": "男的在找什么？",
+   "fr": "— Qu'est-ce que tu cherches ? — Mon passeport, j'en ai besoin dès demain.",
+   "question_fr": "Que cherche l'homme ?",
+   "options": [
+    "护照",
+    "手机",
+    "信用卡"
+   ],
+   "options_fr": [
+    "son passeport",
+    "son téléphone",
+    "sa carte bancaire"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-026",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你觉得这个城市怎么样？"
+    },
+    {
+     "s": "f",
+     "t": "很漂亮，就是夏天太热了。"
+    }
+   ],
+   "question": "女的觉得这个城市的夏天怎么样？",
+   "fr": "— Comment trouves-tu cette ville ? — Très belle, seulement l'été est trop chaud.",
+   "question_fr": "Que pense la femme de l'été dans cette ville ?",
+   "options": [
+    "太热了",
+    "很舒服",
+    "常常下雨"
+   ],
+   "options_fr": [
+    "trop chaud",
+    "très agréable",
+    "il pleut souvent"
+   ],
+   "answer": 0,
+   "id": "3-short_mcq-027",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你周末一般做什么？"
+    },
+    {
+     "s": "m",
+     "t": "我一般在家打扫房间、洗衣服。"
+    }
+   ],
+   "question": "男的周末一般做什么？",
+   "fr": "— Que fais-tu en général le week-end ? — En général, je fais le ménage et la lessive à la maison.",
+   "question_fr": "Que fait l'homme en général le week-end ?",
+   "options": [
+    "去图书馆",
+    "去爬山",
+    "打扫房间"
+   ],
+   "options_fr": [
+    "il va à la bibliothèque",
+    "de la montagne",
+    "le ménage"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-028",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "图书馆几点关门？"
+    },
+    {
+     "s": "f",
+     "t": "晚上十点，但是周末九点就关门了。"
+    }
+   ],
+   "question": "周末图书馆几点关门？",
+   "fr": "— À quelle heure ferme la bibliothèque ? — À dix heures du soir, mais le week-end elle ferme dès neuf heures.",
+   "question_fr": "À quelle heure ferme la bibliothèque le week-end ?",
+   "options": [
+    "十一点",
+    "十点",
+    "九点"
+   ],
+   "options_fr": [
+    "à onze heures",
+    "à dix heures",
+    "à neuf heures"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-029",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "short_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你妹妹长得真像你。"
+    },
+    {
+     "s": "m",
+     "t": "很多人都这么说。"
+    }
+   ],
+   "question": "女的觉得男的和妹妹怎么样？",
+   "fr": "— Ta petite sœur te ressemble vraiment. — Beaucoup de gens le disent.",
+   "question_fr": "Que pense la femme de l'homme et de sa sœur ?",
+   "options": [
+    "都很高",
+    "都很聪明",
+    "长得很像"
+   ],
+   "options_fr": [
+    "ils sont tous les deux grands",
+    "ils sont tous les deux intelligents",
+    "ils se ressemblent beaucoup"
+   ],
+   "answer": 2,
+   "id": "3-short_mcq-030",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你好，我想借这本书。"
+    },
+    {
+     "s": "m",
+     "t": "可以，你要借多长时间？"
+    },
+    {
+     "s": "f",
+     "t": "两个星期可以吗？"
+    },
+    {
+     "s": "m",
+     "t": "没问题，但是最多只能借一个月。"
+    }
+   ],
+   "question": "这本书最多能借多长时间？",
+   "fr": "— Bonjour, je voudrais emprunter ce livre. — Bien sûr, pour combien de temps ? — Deux semaines, c'est possible ? — Pas de problème, mais on ne peut pas l'emprunter plus d'un mois.",
+   "question_fr": "Pendant combien de temps au maximum peut-on emprunter ce livre ?",
+   "options": [
+    "两个星期",
+    "一个月",
+    "一个星期"
+   ],
+   "options_fr": [
+    "deux semaines",
+    "un mois",
+    "une semaine"
+   ],
+   "answer": 1,
+   "id": "3-long_mcq-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你怎么来晚了？"
+    },
+    {
+     "s": "f",
+     "t": "路上车太多了。"
+    },
+    {
+     "s": "m",
+     "t": "你为什么不坐地铁？"
+    },
+    {
+     "s": "f",
+     "t": "我家附近没有地铁站。"
+    }
+   ],
+   "question": "女的为什么来晚了？",
+   "fr": "— Pourquoi tu arrives en retard ? — Il y avait trop de voitures sur la route. — Pourquoi tu ne prends pas le métro ? — Il n'y a pas de station près de chez moi.",
+   "question_fr": "Pourquoi la femme est-elle en retard ?",
+   "options": [
+    "起床晚了",
+    "走错路了",
+    "路上车很多"
+   ],
+   "options_fr": [
+    "elle s'est levée tard",
+    "elle s'est trompée de chemin",
+    "il y avait beaucoup de circulation"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "这个周末你有什么打算？"
+    },
+    {
+     "s": "m",
+     "t": "我想去看看我爷爷奶奶。"
+    },
+    {
+     "s": "f",
+     "t": "他们住在哪儿？"
+    },
+    {
+     "s": "m",
+     "t": "住在城市南边的一个小地方，开车要两个小时。"
+    }
+   ],
+   "question": "男的周末要去做什么？",
+   "fr": "— Qu'as-tu prévu ce week-end ? — Je voudrais aller voir mes grands-parents. — Où habitent-ils ? — Dans un petit endroit au sud de la ville, à deux heures de voiture.",
+   "question_fr": "Que va faire l'homme ce week-end ?",
+   "options": [
+    "看爷爷奶奶",
+    "学开车",
+    "去南方旅游"
+   ],
+   "options_fr": [
+    "voir ses grands-parents",
+    "apprendre à conduire",
+    "voyager dans le Sud"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你学汉语多长时间了？"
+    },
+    {
+     "s": "f",
+     "t": "差不多一年了。"
+    },
+    {
+     "s": "m",
+     "t": "你觉得难吗？"
+    },
+    {
+     "s": "f",
+     "t": "说不难，写字比较难。"
+    }
+   ],
+   "question": "女的觉得什么比较难？",
+   "fr": "— Depuis combien de temps apprends-tu le chinois ? — Presque un an. — Tu trouves ça difficile ? — Parler, non, mais écrire les caractères, c'est assez difficile.",
+   "question_fr": "Qu'est-ce que la femme trouve assez difficile ?",
+   "options": [
+    "听汉语",
+    "说汉语",
+    "写字"
+   ],
+   "options_fr": [
+    "comprendre le chinois oral",
+    "parler chinois",
+    "écrire les caractères"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "先生，您想吃点儿什么？"
+    },
+    {
+     "s": "m",
+     "t": "有什么好吃的？"
+    },
+    {
+     "s": "f",
+     "t": "我们这儿的鱼很有名。"
+    },
+    {
+     "s": "m",
+     "t": "好，那就来一条鱼吧。"
+    }
+   ],
+   "question": "他们最可能在哪儿？",
+   "fr": "— Monsieur, que désirez-vous manger ? — Qu'est-ce qui est bon ? — Notre poisson est très réputé. — Bien, alors un poisson.",
+   "question_fr": "Où sont-ils le plus probablement ?",
+   "options": [
+    "商店",
+    "医院",
+    "饭店"
+   ],
+   "options_fr": [
+    "dans un magasin",
+    "à l'hôpital",
+    "au restaurant"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "喂，你到机场了吗？"
+    },
+    {
+     "s": "f",
+     "t": "到了，可是飞机十点才能起飞。"
+    },
+    {
+     "s": "m",
+     "t": "那你先在机场吃点儿东西吧。"
+    },
+    {
+     "s": "f",
+     "t": "好的。"
+    }
+   ],
+   "question": "飞机几点起飞？",
+   "fr": "— Allô, tu es arrivée à l'aéroport ? — Oui, mais l'avion ne pourra décoller qu'à dix heures. — Alors mange quelque chose à l'aéroport en attendant. — D'accord.",
+   "question_fr": "À quelle heure l'avion décolle-t-il ?",
+   "options": [
+    "十点",
+    "十一点",
+    "九点"
+   ],
+   "options_fr": [
+    "à dix heures",
+    "à onze heures",
+    "à neuf heures"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你看，这是我新买的裙子，漂亮吗？"
+    },
+    {
+     "s": "m",
+     "t": "很漂亮，多少钱？"
+    },
+    {
+     "s": "f",
+     "t": "三百多块。"
+    },
+    {
+     "s": "m",
+     "t": "有点儿贵，不过颜色很好看。"
+    }
+   ],
+   "question": "男的觉得裙子怎么样？",
+   "fr": "— Regarde, c'est la jupe que je viens d'acheter, elle est jolie ? — Très jolie, elle a coûté combien ? — Un peu plus de trois cents yuans. — Un peu chère, mais la couleur est très belle.",
+   "question_fr": "Que pense l'homme de la jupe ?",
+   "options": [
+    "太短了",
+    "颜色好看",
+    "太便宜了"
+   ],
+   "options_fr": [
+    "elle est trop courte",
+    "la couleur est belle",
+    "elle est trop bon marché"
+   ],
+   "answer": 1,
+   "id": "3-long_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "明天你去小王家吗？他过生日。"
+    },
+    {
+     "s": "f",
+     "t": "去，你呢？"
+    },
+    {
+     "s": "m",
+     "t": "我也去，我们一起去吧。"
+    },
+    {
+     "s": "f",
+     "t": "好，我们给他买个蛋糕吧。"
+    }
+   ],
+   "question": "他们明天要去哪儿？",
+   "fr": "— Tu vas chez Xiao Wang demain ? C'est son anniversaire. — Oui, et toi ? — Moi aussi, allons-y ensemble. — D'accord, achetons-lui un gâteau.",
+   "question_fr": "Où vont-ils demain ?",
+   "options": [
+    "公司",
+    "蛋糕店",
+    "小王家"
+   ],
+   "options_fr": [
+    "au bureau",
+    "à la pâtisserie",
+    "chez Xiao Wang"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你最近怎么瘦了？"
+    },
+    {
+     "s": "m",
+     "t": "我每天下班以后都去锻炼身体。"
+    },
+    {
+     "s": "f",
+     "t": "每天去多长时间？"
+    },
+    {
+     "s": "m",
+     "t": "一个小时。"
+    }
+   ],
+   "question": "男的为什么瘦了？",
+   "fr": "— Pourquoi tu as maigri ces derniers temps ? — Je fais du sport tous les jours après le travail. — Combien de temps par jour ? — Une heure.",
+   "question_fr": "Pourquoi l'homme a-t-il maigri ?",
+   "options": [
+    "工作太忙",
+    "生病了",
+    "每天锻炼"
+   ],
+   "options_fr": [
+    "il a trop de travail",
+    "il est malade",
+    "il fait du sport tous les jours"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "这儿的环境真不错。"
+    },
+    {
+     "s": "f",
+     "t": "是啊，又安静又干净。"
+    },
+    {
+     "s": "m",
+     "t": "房子多少钱一个月？"
+    },
+    {
+     "s": "f",
+     "t": "两千五。"
+    }
+   ],
+   "question": "男的觉得这儿怎么样？",
+   "fr": "— L'environnement est vraiment agréable ici. — Oui, c'est calme et propre. — Le logement coûte combien par mois ? — Deux mille cinq cents.",
+   "question_fr": "Que pense l'homme de cet endroit ?",
+   "options": [
+    "环境不错",
+    "不太安静",
+    "太贵了"
+   ],
+   "options_fr": [
+    "l'environnement est agréable",
+    "ce n'est pas très calme",
+    "c'est trop cher"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "明天就要考试了，你复习好了吗？"
+    },
+    {
+     "s": "m",
+     "t": "还没有，数学还有很多题不会。"
+    },
+    {
+     "s": "f",
+     "t": "我数学还可以，我帮你吧。"
+    },
+    {
+     "s": "m",
+     "t": "太好了，谢谢你！"
+    }
+   ],
+   "question": "女的要做什么？",
+   "fr": "— L'examen est demain, tu as fini de réviser ? — Pas encore, il y a plein d'exercices de maths que je ne sais pas faire. — Je me débrouille en maths, je vais t'aider. — Génial, merci !",
+   "question_fr": "Que va faire la femme ?",
+   "options": [
+    "帮男的复习数学",
+    "借给男的书",
+    "和男的一起考试"
+   ],
+   "options_fr": [
+    "l'aider à réviser les maths",
+    "lui prêter des livres",
+    "passer l'examen avec lui"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你的行李箱真大！"
+    },
+    {
+     "s": "f",
+     "t": "是啊，我要去南方玩儿一个月。"
+    },
+    {
+     "s": "m",
+     "t": "一个月？那么长时间！"
+    },
+    {
+     "s": "f",
+     "t": "对，我请了一个月的假。"
+    }
+   ],
+   "question": "女的要去南方多长时间？",
+   "fr": "— Ta valise est vraiment grande ! — Oui, je pars un mois dans le Sud. — Un mois ? Si longtemps ! — Oui, j'ai pris un mois de congé.",
+   "question_fr": "Combien de temps la femme part-elle dans le Sud ?",
+   "options": [
+    "一个月",
+    "两个月",
+    "一个星期"
+   ],
+   "options_fr": [
+    "un mois",
+    "deux mois",
+    "une semaine"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你女儿几年级了？"
+    },
+    {
+     "s": "m",
+     "t": "三年级了，她学习特别认真。"
+    },
+    {
+     "s": "f",
+     "t": "她喜欢什么课？"
+    },
+    {
+     "s": "m",
+     "t": "她最喜欢音乐课。"
+    }
+   ],
+   "question": "他女儿最喜欢什么课？",
+   "fr": "— Ta fille est en quelle année ? — En troisième année, elle travaille très sérieusement. — Quel cours préfère-t-elle ? — La musique.",
+   "question_fr": "Quel est le cours préféré de sa fille ?",
+   "options": [
+    "数学课",
+    "体育课",
+    "音乐课"
+   ],
+   "options_fr": [
+    "les maths",
+    "le sport",
+    "la musique"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你怎么不吃了？"
+    },
+    {
+     "s": "f",
+     "t": "我已经吃饱了。"
+    },
+    {
+     "s": "m",
+     "t": "再吃一点儿吧，你今天没吃早饭。"
+    },
+    {
+     "s": "f",
+     "t": "真的吃不下了。"
+    }
+   ],
+   "question": "女的为什么不吃了？",
+   "fr": "— Pourquoi tu ne manges plus ? — J'ai déjà assez mangé. — Mange encore un peu, tu n'as pas pris de petit-déjeuner aujourd'hui. — Vraiment, je ne peux plus rien avaler.",
+   "question_fr": "Pourquoi la femme ne mange-t-elle plus ?",
+   "options": [
+    "吃饱了",
+    "生病了",
+    "不好吃"
+   ],
+   "options_fr": [
+    "elle n'a plus faim",
+    "elle est malade",
+    "ce n'est pas bon"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你这次去中国，去了哪些地方？"
+    },
+    {
+     "s": "m",
+     "t": "我去了三个城市。"
+    },
+    {
+     "s": "f",
+     "t": "哪个城市你最喜欢？"
+    },
+    {
+     "s": "m",
+     "t": "我最喜欢最后去的那个，那儿的人非常热情。"
+    }
+   ],
+   "question": "男的去了几个城市？",
+   "fr": "— Pendant ce voyage en Chine, où es-tu allé ? — Dans trois villes. — Laquelle as-tu préférée ? — La dernière, les gens y sont très chaleureux.",
+   "question_fr": "Combien de villes l'homme a-t-il visitées ?",
+   "options": [
+    "两个",
+    "三个",
+    "四个"
+   ],
+   "options_fr": [
+    "deux",
+    "trois",
+    "quatre"
+   ],
+   "answer": 1,
+   "id": "3-long_mcq-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "请问，这件衬衫有大一点儿的吗？"
+    },
+    {
+     "s": "f",
+     "t": "有，您穿多大的？"
+    },
+    {
+     "s": "m",
+     "t": "我也不太清楚。"
+    },
+    {
+     "s": "f",
+     "t": "您先试试这件吧。"
+    }
+   ],
+   "question": "男的想要什么样的衬衫？",
+   "fr": "— Excusez-moi, vous avez cette chemise en plus grand ? — Oui, quelle taille faites-vous ? — Je ne sais pas trop. — Essayez d'abord celle-ci.",
+   "question_fr": "Quelle chemise l'homme veut-il ?",
+   "options": [
+    "大一点儿的",
+    "便宜一点儿的",
+    "新一点儿的"
+   ],
+   "options_fr": [
+    "une un peu plus grande",
+    "une un peu moins chère",
+    "une plus neuve"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你在中国习惯吗？"
+    },
+    {
+     "s": "m",
+     "t": "以前不太习惯，现在好多了。"
+    },
+    {
+     "s": "f",
+     "t": "你最不习惯什么？"
+    },
+    {
+     "s": "m",
+     "t": "天气，这儿冬天太冷了。"
+    }
+   ],
+   "question": "男的最不习惯什么？",
+   "fr": "— Tu t'es habitué à la Chine ? — Au début pas trop, maintenant ça va beaucoup mieux. — Qu'est-ce qui est le plus difficile ? — Le climat, l'hiver ici est trop froid.",
+   "question_fr": "À quoi l'homme a-t-il le plus de mal à s'habituer ?",
+   "options": [
+    "天气",
+    "吃的",
+    "说汉语"
+   ],
+   "options_fr": [
+    "au climat",
+    "à la nourriture",
+    "à parler chinois"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "我的手机找不到了，你给我打个电话吧。"
+    },
+    {
+     "s": "f",
+     "t": "好，你听，在你的书包里。"
+    },
+    {
+     "s": "m",
+     "t": "太好了，谢谢！"
+    },
+    {
+     "s": "f",
+     "t": "不客气。"
+    }
+   ],
+   "question": "男的手机在哪儿？",
+   "fr": "— Je ne trouve plus mon téléphone, appelle-moi s'il te plaît. — D'accord, écoute : il est dans ton cartable. — Super, merci ! — De rien.",
+   "question_fr": "Où est le téléphone de l'homme ?",
+   "options": [
+    "书包里",
+    "女的那儿",
+    "桌子上"
+   ],
+   "options_fr": [
+    "dans son cartable",
+    "chez la femme",
+    "sur la table"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你的腿怎么了？"
+    },
+    {
+     "s": "m",
+     "t": "昨天踢足球，现在还很疼。"
+    },
+    {
+     "s": "f",
+     "t": "去医院检查一下吧。"
+    },
+    {
+     "s": "m",
+     "t": "好，我下午就去。"
+    }
+   ],
+   "question": "男的下午要去哪儿？",
+   "fr": "— Qu'est-ce que tu as à la jambe ? — J'ai joué au foot hier, elle me fait encore très mal. — Va te faire examiner à l'hôpital. — D'accord, j'y vais cet après-midi.",
+   "question_fr": "Où l'homme va-t-il cet après-midi ?",
+   "options": [
+    "医院",
+    "公司",
+    "学校"
+   ],
+   "options_fr": [
+    "à l'hôpital",
+    "au bureau",
+    "à l'école"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你认识新来的经理吗？"
+    },
+    {
+     "s": "f",
+     "t": "认识，他以前是我的同事。"
+    },
+    {
+     "s": "m",
+     "t": "他这个人怎么样？"
+    },
+    {
+     "s": "f",
+     "t": "工作很认真，也很关心别人。"
+    }
+   ],
+   "question": "女的觉得新经理怎么样？",
+   "fr": "— Tu connais le nouveau directeur ? — Oui, c'était mon collègue avant. — Il est comment ? — Très sérieux dans son travail, et attentionné envers les autres.",
+   "question_fr": "Que pense la femme du nouveau directeur ?",
+   "options": [
+    "很认真",
+    "不太热情",
+    "很年轻"
+   ],
+   "options_fr": [
+    "très sérieux",
+    "pas très chaleureux",
+    "très jeune"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "今天我们去哪儿吃饭？"
+    },
+    {
+     "s": "m",
+     "t": "去学校旁边那家新开的饭馆吧。"
+    },
+    {
+     "s": "f",
+     "t": "那儿的菜好吃吗？"
+    },
+    {
+     "s": "m",
+     "t": "听同学说很不错。"
+    }
+   ],
+   "question": "男的为什么想去那家饭馆？",
+   "fr": "— Où va-t-on manger aujourd'hui ? — Dans le nouveau restaurant à côté de l'école. — C'est bon là-bas ? — D'après des camarades, c'est très bien.",
+   "question_fr": "Pourquoi l'homme veut-il aller dans ce restaurant ?",
+   "options": [
+    "离家近",
+    "很便宜",
+    "同学说不错"
+   ],
+   "options_fr": [
+    "c'est près de chez lui",
+    "c'est très bon marché",
+    "ses camarades disent que c'est bien"
+   ],
+   "answer": 2,
+   "id": "3-long_mcq-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你每天几点下班？"
+    },
+    {
+     "s": "f",
+     "t": "一般是六点，但是最近工作多，常常八点才下班。"
+    },
+    {
+     "s": "m",
+     "t": "那你要注意身体。"
+    },
+    {
+     "s": "f",
+     "t": "谢谢，我会的。"
+    }
+   ],
+   "question": "女的最近一般几点下班？",
+   "fr": "— À quelle heure finis-tu le travail ? — En général à six heures, mais ces temps-ci j'ai beaucoup de travail, je finis souvent à huit heures. — Alors fais attention à ta santé. — Merci, promis.",
+   "question_fr": "À quelle heure finit-elle le travail ces temps-ci ?",
+   "options": [
+    "八点",
+    "六点",
+    "七点"
+   ],
+   "options_fr": [
+    "à huit heures",
+    "à six heures",
+    "à sept heures"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-022",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "我想送我妈妈一个生日礼物，你觉得送什么好？"
+    },
+    {
+     "s": "m",
+     "t": "送花吧。"
+    },
+    {
+     "s": "f",
+     "t": "她不太喜欢花。"
+    },
+    {
+     "s": "m",
+     "t": "那就送她一件衣服吧。"
+    }
+   ],
+   "question": "女的想给谁买礼物？",
+   "fr": "— Je voudrais offrir un cadeau d'anniversaire à ma mère, qu'est-ce que je pourrais lui offrir ? — Des fleurs. — Elle n'aime pas trop les fleurs. — Alors un vêtement.",
+   "question_fr": "À qui la femme veut-elle offrir un cadeau ?",
+   "options": [
+    "她妈妈",
+    "她奶奶",
+    "她朋友"
+   ],
+   "options_fr": [
+    "à sa mère",
+    "à sa grand-mère",
+    "à une amie"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "m",
+     "t": "你打算什么时候结婚？"
+    },
+    {
+     "s": "f",
+     "t": "明年春天。"
+    },
+    {
+     "s": "m",
+     "t": "在哪儿结婚？"
+    },
+    {
+     "s": "f",
+     "t": "还没决定，可能在南方。"
+    }
+   ],
+   "question": "女的打算什么时候结婚？",
+   "fr": "— Quand comptes-tu te marier ? — Au printemps prochain. — Où ça ? — Ce n'est pas encore décidé, peut-être dans le Sud.",
+   "question_fr": "Quand la femme compte-t-elle se marier ?",
+   "options": [
+    "明年春天",
+    "还没决定",
+    "今年秋天"
+   ],
+   "options_fr": [
+    "au printemps prochain",
+    "ce n'est pas décidé",
+    "cet automne"
+   ],
+   "answer": 0,
+   "id": "3-long_mcq-024",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "long_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "f",
+     "t": "你听，外面的声音是什么？"
+    },
+    {
+     "s": "m",
+     "t": "好像是下雨了。"
+    },
+    {
+     "s": "f",
+     "t": "不是，是有人在唱歌。"
+    },
+    {
+     "s": "m",
+     "t": "这么晚了还唱歌！"
+    }
+   ],
+   "question": "外面的声音是什么？",
+   "fr": "— Écoute, c'est quoi ce bruit dehors ? — On dirait qu'il pleut. — Non, c'est quelqu'un qui chante. — Chanter à une heure pareille !",
+   "question_fr": "Qu'est-ce que le bruit dehors ?",
+   "options": [
+    "下雨",
+    "有人唱歌",
+    "刮风"
+   ],
+   "options_fr": [
+    "il pleut",
+    "quelqu'un chante",
+    "il y a du vent"
+   ],
+   "answer": 1,
+   "id": "3-long_mcq-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我老家在北方，冬天很冷，但是夏天很凉快，所以很多人夏天来这儿玩儿。"
+    }
+   ],
+   "question": "他老家夏天怎么样？",
+   "fr": "Ma ville natale est dans le Nord : l'hiver est très froid, mais l'été est frais, c'est pourquoi beaucoup de gens viennent ici en été.",
+   "question_fr": "Comment est l'été dans sa ville natale ?",
+   "options": [
+    "常常下雨",
+    "很热",
+    "很凉快"
+   ],
+   "options_fr": [
+    "il pleut souvent",
+    "très chaud",
+    "frais"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-001",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "同学们，明天我们去动物园，早上八点在学校门口见面，大家别迟到。"
+    }
+   ],
+   "question": "他们明天几点见面？",
+   "fr": "Les enfants, demain nous allons au zoo, rendez-vous à huit heures devant l'école, ne soyez pas en retard.",
+   "question_fr": "À quelle heure se retrouvent-ils demain ?",
+   "options": [
+    "八点",
+    "九点",
+    "七点"
+   ],
+   "options_fr": [
+    "à huit heures",
+    "à neuf heures",
+    "à sept heures"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我每天坐地铁上班，虽然路上要一个小时，但是我可以在地铁上看书，所以我不觉得累。"
+    }
+   ],
+   "question": "他在地铁上做什么？",
+   "fr": "Je vais au travail en métro tous les jours ; même si le trajet dure une heure, je peux lire dans le métro, donc je ne trouve pas ça fatigant.",
+   "question_fr": "Que fait-il dans le métro ?",
+   "options": [
+    "看书",
+    "打电话",
+    "睡觉"
+   ],
+   "options_fr": [
+    "il lit",
+    "il téléphone",
+    "il dort"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们家有四口人：爸爸、妈妈、哥哥和我。哥哥在银行工作，我还是大学生。"
+    }
+   ],
+   "question": "说话人现在做什么？",
+   "fr": "Nous sommes quatre dans ma famille : papa, maman, mon grand frère et moi. Mon frère travaille dans une banque, moi je suis encore étudiant.",
+   "question_fr": "Que fait la personne qui parle ?",
+   "options": [
+    "做老师",
+    "在银行工作",
+    "上大学"
+   ],
+   "options_fr": [
+    "elle est professeure",
+    "elle travaille dans une banque",
+    "elle est à l'université"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "很多人喜欢在网上买东西，因为又方便又便宜。但是我更喜欢去商店，因为可以先试一下。"
+    }
+   ],
+   "question": "说话人为什么喜欢去商店买东西？",
+   "fr": "Beaucoup de gens aiment acheter en ligne, parce que c'est pratique et pas cher. Mais moi, je préfère aller en magasin, parce qu'on peut essayer avant.",
+   "question_fr": "Pourquoi la personne préfère-t-elle acheter en magasin ?",
+   "options": [
+    "更便宜",
+    "可以先试",
+    "更方便"
+   ],
+   "options_fr": [
+    "c'est moins cher",
+    "on peut essayer avant",
+    "c'est plus pratique"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我的同事小王非常喜欢运动，他每个周末都去打网球，有时候还去游泳。"
+    }
+   ],
+   "question": "小王周末一般做什么？",
+   "fr": "Mon collègue Xiao Wang adore le sport : tous les week-ends il joue au tennis, et parfois il va aussi nager.",
+   "question_fr": "Que fait Xiao Wang en général le week-end ?",
+   "options": [
+    "踢足球",
+    "爬山",
+    "打网球"
+   ],
+   "options_fr": [
+    "il joue au football",
+    "il fait de la montagne",
+    "il joue au tennis"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "欢迎大家来到我们的城市。今天上午我们先去公园，中午在附近吃饭，下午去图书馆。"
+    }
+   ],
+   "question": "他们中午做什么？",
+   "fr": "Bienvenue à tous dans notre ville. Ce matin, nous allons d'abord au parc, à midi nous mangeons dans le quartier, et l'après-midi nous allons à la bibliothèque.",
+   "question_fr": "Que font-ils à midi ?",
+   "options": [
+    "去公园",
+    "吃饭",
+    "去图书馆"
+   ],
+   "options_fr": [
+    "ils vont au parc",
+    "ils mangent",
+    "ils vont à la bibliothèque"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "以前我不太会做饭。来中国以后，我每天自己做饭，现在已经做得很好了。"
+    }
+   ],
+   "question": "说话人现在做饭做得怎么样？",
+   "fr": "Avant, je ne savais pas vraiment cuisiner. Depuis que je suis en Chine, je cuisine moi-même tous les jours, et maintenant je cuisine très bien.",
+   "question_fr": "Comment la personne cuisine-t-elle maintenant ?",
+   "options": [
+    "不会做",
+    "不太好",
+    "很好"
+   ],
+   "options_fr": [
+    "elle ne sait pas cuisiner",
+    "pas très bien",
+    "très bien"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这家店的面条很有名，每天中午都有很多人在门口等。我觉得等半个小时也没关系，因为真的很好吃。"
+    }
+   ],
+   "question": "这家店为什么人多？",
+   "fr": "Les nouilles de ce restaurant sont très célèbres, il y a beaucoup de monde qui attend devant tous les midis. Attendre une demi-heure ne me dérange pas, c'est vraiment délicieux.",
+   "question_fr": "Pourquoi y a-t-il beaucoup de monde dans ce restaurant ?",
+   "options": [
+    "面条很有名",
+    "离公司近",
+    "很便宜"
+   ],
+   "options_fr": [
+    "ses nouilles sont célèbres",
+    "c'est près du bureau",
+    "c'est très bon marché"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我女儿今年六岁，她特别喜欢画画儿，每天放学回家都要画一个小时。"
+    }
+   ],
+   "question": "女儿每天放学以后做什么？",
+   "fr": "Ma fille a six ans, elle adore dessiner : tous les jours en rentrant de l'école, elle dessine pendant une heure.",
+   "question_fr": "Que fait sa fille tous les jours après l'école ?",
+   "options": [
+    "画画儿",
+    "唱歌",
+    "看电视"
+   ],
+   "options_fr": [
+    "elle dessine",
+    "elle chante",
+    "elle regarde la télé"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "明天会下大雨，而且会很冷，大家出门的时候别忘了带伞，多穿点儿衣服。"
+    }
+   ],
+   "question": "明天天气怎么样？",
+   "fr": "Demain, il va beaucoup pleuvoir et il fera froid ; en sortant, n'oubliez pas votre parapluie et couvrez-vous bien.",
+   "question_fr": "Quel temps fera-t-il demain ?",
+   "options": [
+    "晴天",
+    "很热",
+    "下大雨"
+   ],
+   "options_fr": [
+    "beau temps",
+    "très chaud",
+    "forte pluie"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我在这家公司工作三年了。同事们对我都很好，工作也很有意思，所以我不想换工作。"
+    }
+   ],
+   "question": "说话人为什么不想换工作？",
+   "fr": "Je travaille dans cette entreprise depuis trois ans. Mes collègues sont tous très gentils avec moi et le travail est intéressant, donc je ne veux pas changer de travail.",
+   "question_fr": "Pourquoi la personne ne veut-elle pas changer de travail ?",
+   "options": [
+    "公司很大",
+    "离家很近",
+    "同事都很好"
+   ],
+   "options_fr": [
+    "l'entreprise est grande",
+    "c'est près de chez elle",
+    "ses collègues sont très gentils"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我上个月搬家了。新家离公司很远，但是房子比以前大，旁边还有一个大公园。"
+    }
+   ],
+   "question": "新家怎么样？",
+   "fr": "J'ai déménagé le mois dernier. Le nouveau logement est loin du bureau, mais il est plus grand qu'avant, et il y a un grand parc à côté.",
+   "question_fr": "Comment est le nouveau logement ?",
+   "options": [
+    "离公司很近",
+    "很便宜",
+    "比以前大"
+   ],
+   "options_fr": [
+    "tout près du bureau",
+    "très bon marché",
+    "plus grand qu'avant"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "今天是我和我爱人结婚十年的日子，我们打算晚上去一家很有名的饭馆吃饭。"
+    }
+   ],
+   "question": "他们为什么晚上去饭馆？",
+   "fr": "Aujourd'hui, cela fait dix ans que mon conjoint et moi sommes mariés, nous comptons dîner ce soir dans un restaurant très réputé.",
+   "question_fr": "Pourquoi vont-ils au restaurant ce soir ?",
+   "options": [
+    "朋友请客",
+    "过生日",
+    "结婚十年"
+   ],
+   "options_fr": [
+    "un ami les invite",
+    "c'est un anniversaire",
+    "ils fêtent leurs dix ans de mariage"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "学习一种语言，最重要的是多听多说。不要害怕说错，说错了也没关系。"
+    }
+   ],
+   "question": "说话人觉得学语言最重要的是什么？",
+   "fr": "Pour apprendre une langue, le plus important est d'écouter et de parler beaucoup. N'ayez pas peur de faire des erreurs, ce n'est pas grave.",
+   "question_fr": "Selon la personne, qu'est-ce qui est le plus important pour apprendre une langue ?",
+   "options": [
+    "多听多说",
+    "多写汉字",
+    "多看书"
+   ],
+   "options_fr": [
+    "écouter et parler beaucoup",
+    "écrire beaucoup de caractères",
+    "lire beaucoup"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-015",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我的手机用了五年了，常常没电，所以我打算这个周末去买一个新的。"
+    }
+   ],
+   "question": "说话人周末打算做什么？",
+   "fr": "J'ai mon téléphone depuis cinq ans, il n'a souvent plus de batterie, alors je compte en acheter un nouveau ce week-end.",
+   "question_fr": "Que compte faire la personne ce week-end ?",
+   "options": [
+    "找工作",
+    "去旅游",
+    "买新手机"
+   ],
+   "options_fr": [
+    "chercher du travail",
+    "partir en voyage",
+    "acheter un nouveau téléphone"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我小时候身体不太好，经常生病。后来我开始每天跑步，现在身体好多了。"
+    }
+   ],
+   "question": "说话人的身体为什么好多了？",
+   "fr": "Petit, j'avais une santé fragile, j'étais souvent malade. Ensuite j'ai commencé à courir tous les jours, et maintenant je vais beaucoup mieux.",
+   "question_fr": "Pourquoi la personne est-elle en bien meilleure santé ?",
+   "options": [
+    "吃药",
+    "多休息",
+    "每天跑步"
+   ],
+   "options_fr": [
+    "elle prend des médicaments",
+    "elle se repose davantage",
+    "elle court tous les jours"
+   ],
+   "answer": 2,
+   "id": "3-passage_mcq-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个图书馆的书很多，环境也很安静，所以周末的时候很多学生来这儿学习。"
+    }
+   ],
+   "question": "学生们为什么来这个图书馆？",
+   "fr": "Cette bibliothèque a beaucoup de livres et l'ambiance est très calme, c'est pourquoi beaucoup d'étudiants viennent y travailler le week-end.",
+   "question_fr": "Pourquoi les étudiants viennent-ils dans cette bibliothèque ?",
+   "options": [
+    "可以上网",
+    "书多，也很安静",
+    "离家很近"
+   ],
+   "options_fr": [
+    "on peut aller sur Internet",
+    "beaucoup de livres et du calme",
+    "c'est près de chez eux"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我爷爷今年八十岁了，可是他身体很健康，每天早上都去公园锻炼，还常常帮奶奶做饭。"
+    }
+   ],
+   "question": "关于爷爷，可以知道什么？",
+   "fr": "Mon grand-père a quatre-vingts ans, mais il est en très bonne santé : il fait de l'exercice au parc tous les matins et aide souvent ma grand-mère à cuisiner.",
+   "question_fr": "Que sait-on du grand-père ?",
+   "options": [
+    "身体很好",
+    "不会做饭",
+    "很少出门"
+   ],
+   "options_fr": [
+    "il est en bonne santé",
+    "il ne sait pas cuisiner",
+    "il sort rarement"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "现在越来越多的年轻人喜欢点外卖，因为工作太忙了，没有时间做饭。"
+    }
+   ],
+   "question": "年轻人为什么喜欢点外卖？",
+   "fr": "De plus en plus de jeunes aiment se faire livrer des repas, parce qu'ils ont trop de travail et pas le temps de cuisiner.",
+   "question_fr": "Pourquoi les jeunes aiment-ils se faire livrer ?",
+   "options": [
+    "外卖很便宜",
+    "没有时间做饭",
+    "外卖很好吃"
+   ],
+   "options_fr": [
+    "c'est très bon marché",
+    "ils n'ont pas le temps de cuisiner",
+    "c'est très bon"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我们学校每年秋天都有运动会，今年我参加了跑步比赛，得了第二名。"
+    }
+   ],
+   "question": "说话人在比赛中怎么样？",
+   "fr": "Notre école organise une fête du sport chaque automne ; cette année, j'ai participé à la course et je suis arrivé deuxième.",
+   "question_fr": "Comment la personne s'est-elle classée ?",
+   "options": [
+    "没参加",
+    "第二名",
+    "第一名"
+   ],
+   "options_fr": [
+    "elle n'a pas participé",
+    "deuxième",
+    "premier"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-021",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我住的小区很漂亮，有很多树和花，晚上很多老人在里面跳舞。"
+    }
+   ],
+   "question": "晚上小区里的老人做什么？",
+   "fr": "La résidence où j'habite est très belle, il y a beaucoup d'arbres et de fleurs, et le soir beaucoup de personnes âgées y dansent.",
+   "question_fr": "Que font les personnes âgées le soir dans la résidence ?",
+   "options": [
+    "跳舞",
+    "唱歌",
+    "打球"
+   ],
+   "options_fr": [
+    "elles dansent",
+    "elles chantent",
+    "elles jouent au ballon"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-022",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "我是去年来中国留学的，刚来的时候一句汉语也不会说，现在我已经可以和中国朋友聊天儿了。"
+    }
+   ],
+   "question": "说话人刚来中国的时候怎么样？",
+   "fr": "Je suis venu étudier en Chine l'année dernière ; en arrivant, je ne savais pas dire une phrase de chinois, maintenant je peux déjà discuter avec des amis chinois.",
+   "question_fr": "Comment était la personne à son arrivée en Chine ?",
+   "options": [
+    "很会说汉语",
+    "不会说汉语",
+    "没有朋友"
+   ],
+   "options_fr": [
+    "elle parlait très bien chinois",
+    "elle ne parlait pas chinois",
+    "elle n'avait pas d'amis"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-023",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "这个电影我看过两遍了，故事很有意思，我还想再看一遍。"
+    }
+   ],
+   "question": "说话人看过几遍这个电影？",
+   "fr": "J'ai déjà vu ce film deux fois, l'histoire est très intéressante, j'ai envie de le revoir encore une fois.",
+   "question_fr": "Combien de fois la personne a-t-elle vu ce film ?",
+   "options": [
+    "一遍",
+    "两遍",
+    "三遍"
+   ],
+   "options_fr": [
+    "une fois",
+    "deux fois",
+    "trois fois"
+   ],
+   "answer": 1,
+   "id": "3-passage_mcq-024",
+   "versions": [
+    "3.0"
+   ]
+  },
+  {
+   "type": "passage_mcq",
+   "level": 3,
+   "audio": [
+    {
+     "s": "n",
+     "t": "坐高铁去那个城市只要两个小时，比坐飞机还方便，所以我一般坐高铁去。"
+    }
+   ],
+   "question": "说话人一般怎么去那个城市？",
+   "fr": "En TGV, on rejoint cette ville en deux heures seulement, c'est encore plus pratique que l'avion, donc en général j'y vais en TGV.",
+   "question_fr": "Comment la personne va-t-elle en général dans cette ville ?",
+   "options": [
+    "坐高铁",
+    "坐飞机",
+    "开车"
+   ],
+   "options_fr": [
+    "en train à grande vitesse",
+    "en avion",
+    "en voiture"
+   ],
+   "answer": 0,
+   "id": "3-passage_mcq-025",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "一张",
+    "桌子上",
+    "地图",
+    "有"
+   ],
+   "answers": [
+    "桌子上有一张地图。"
+   ],
+   "fr": "Il y a une carte sur la table.",
+   "id": "3-reorder-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "把",
+    "关上",
+    "门",
+    "请"
+   ],
+   "answers": [
+    "请把门关上。"
+   ],
+   "fr": "Ferme la porte, s'il te plaît.",
+   "id": "3-reorder-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "比",
+    "哥哥",
+    "我",
+    "高"
+   ],
+   "answers": [
+    "哥哥比我高。",
+    "我比哥哥高。"
+   ],
+   "fr": "Mon grand frère est plus grand que moi.",
+   "id": "3-reorder-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "已经",
+    "了",
+    "完成",
+    "作业",
+    "我"
+   ],
+   "answers": [
+    "我已经完成作业了。",
+    "作业我已经完成了。"
+   ],
+   "fr": "J'ai déjà fini mes devoirs.",
+   "id": "3-reorder-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "去过",
+    "中国",
+    "你",
+    "吗"
+   ],
+   "answers": [
+    "你去过中国吗？"
+   ],
+   "fr": "Es-tu déjà allé en Chine ?",
+   "id": "3-reorder-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "越来越",
+    "冷",
+    "天气",
+    "了"
+   ],
+   "answers": [
+    "天气越来越冷了。"
+   ],
+   "fr": "Il fait de plus en plus froid.",
+   "id": "3-reorder-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "被",
+    "弟弟",
+    "我的",
+    "蛋糕",
+    "吃了"
+   ],
+   "answers": [
+    "我的蛋糕被弟弟吃了。"
+   ],
+   "fr": "Mon gâteau a été mangé par mon petit frère.",
+   "id": "3-reorder-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "打扫",
+    "得",
+    "干净",
+    "很",
+    "房间"
+   ],
+   "answers": [
+    "房间打扫得很干净。"
+   ],
+   "fr": "La chambre a été très bien nettoyée.",
+   "id": "3-reorder-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "一边",
+    "一边",
+    "唱歌",
+    "他",
+    "跳舞"
+   ],
+   "answers": [
+    "他一边唱歌一边跳舞。",
+    "他一边跳舞一边唱歌。"
+   ],
+   "fr": "Il chante tout en dansant.",
+   "id": "3-reorder-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "对",
+    "感兴趣",
+    "历史",
+    "很",
+    "我"
+   ],
+   "answers": [
+    "我对历史很感兴趣。"
+   ],
+   "fr": "Je m'intéresse beaucoup à l'histoire.",
+   "id": "3-reorder-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "放在",
+    "把",
+    "我",
+    "冰箱里",
+    "牛奶"
+   ],
+   "answers": [
+    "我把牛奶放在冰箱里。"
+   ],
+   "fr": "J'ai mis le lait dans le frigo.",
+   "id": "3-reorder-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "只有",
+    "男学生",
+    "我们班",
+    "一个"
+   ],
+   "answers": [
+    "我们班只有一个男学生。"
+   ],
+   "fr": "Dans notre classe, il n'y a qu'un seul garçon.",
+   "id": "3-reorder-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "准备",
+    "了",
+    "吗",
+    "明天的考试",
+    "你",
+    "好"
+   ],
+   "answers": [
+    "明天的考试你准备好了吗？",
+    "你准备好明天的考试了吗？"
+   ],
+   "fr": "Tu es prêt pour l'examen de demain ?",
+   "id": "3-reorder-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "地铁站",
+    "附近",
+    "吗",
+    "有",
+    "这儿"
+   ],
+   "answers": [
+    "这儿附近有地铁站吗？"
+   ],
+   "fr": "Y a-t-il une station de métro près d'ici ?",
+   "id": "3-reorder-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "reorder",
+   "level": 3,
+   "words": [
+    "让",
+    "很",
+    "故事",
+    "这个",
+    "我",
+    "难过"
+   ],
+   "answers": [
+    "这个故事让我很难过。"
+   ],
+   "fr": "Cette histoire me rend très triste.",
+   "id": "3-reorder-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我",
+   "pinyin": "jué",
+   "after": "得这个问题很简单。",
+   "answer": "觉",
+   "fr": "Je trouve que cette question est très simple.",
+   "id": "3-char_pinyin-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我们明天一起去爬",
+   "pinyin": "shān",
+   "after": "，好吗？",
+   "answer": "山",
+   "fr": "Si on allait faire de la montagne ensemble demain ?",
+   "id": "3-char_pinyin-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "你",
+   "pinyin": "zuì",
+   "after": "近工作忙吗？",
+   "answer": "最",
+   "fr": "Tu es occupé au travail ces temps-ci ?",
+   "id": "3-char_pinyin-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "她每天都",
+   "pinyin": "kāi",
+   "after": "车去上班。",
+   "answer": "开",
+   "fr": "Elle va au travail en voiture tous les jours.",
+   "id": "3-char_pinyin-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "这个问题太",
+   "pinyin": "nán",
+   "after": "了，我不会。",
+   "answer": "难",
+   "fr": "Cette question est trop difficile, je ne sais pas y répondre.",
+   "id": "3-char_pinyin-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我的生日是十二",
+   "pinyin": "yuè",
+   "after": "八号。",
+   "answer": "月",
+   "fr": "Mon anniversaire est le 8 décembre.",
+   "id": "3-char_pinyin-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "请你",
+   "pinyin": "guān",
+   "after": "上门。",
+   "answer": "关",
+   "fr": "Ferme la porte, s'il te plaît.",
+   "id": "3-char_pinyin-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "你喜欢喝",
+   "pinyin": "kā",
+   "after": "啡吗？",
+   "answer": "咖",
+   "fr": "Tu aimes le café ?",
+   "id": "3-char_pinyin-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "他",
+   "pinyin": "gāng",
+   "after": "才给你打电话了。",
+   "answer": "刚",
+   "fr": "Il vient de t'appeler.",
+   "id": "3-char_pinyin-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我们",
+   "pinyin": "xiān",
+   "after": "吃饭，然后去看电影。",
+   "answer": "先",
+   "fr": "On mange d'abord, puis on va voir un film.",
+   "id": "3-char_pinyin-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "这件事情我已经忘",
+   "pinyin": "jì",
+   "after": "了。",
+   "answer": "记",
+   "fr": "J'ai déjà oublié cette histoire.",
+   "id": "3-char_pinyin-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "冬天来了，天气越来越",
+   "pinyin": "lěng",
+   "after": "。",
+   "answer": "冷",
+   "fr": "L'hiver est arrivé, il fait de plus en plus froid.",
+   "id": "3-char_pinyin-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "他的汉语",
+   "pinyin": "shuǐ",
+   "after": "平提高得很快。",
+   "answer": "水",
+   "fr": "Son niveau de chinois progresse très vite.",
+   "id": "3-char_pinyin-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我在",
+   "pinyin": "tú",
+   "after": "书馆看书。",
+   "answer": "图",
+   "fr": "Je lis à la bibliothèque.",
+   "id": "3-char_pinyin-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "明天你",
+   "pinyin": "néng",
+   "after": "来参加会议吗？",
+   "answer": "能",
+   "fr": "Peux-tu venir à la réunion demain ?",
+   "id": "3-char_pinyin-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "你的房间真",
+   "pinyin": "gān",
+   "after": "净！",
+   "answer": "干",
+   "fr": "Ta chambre est vraiment propre !",
+   "id": "3-char_pinyin-016",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "我",
+   "pinyin": "xiǎng",
+   "after": "去中国留学。",
+   "answer": "想",
+   "fr": "Je voudrais aller étudier en Chine.",
+   "id": "3-char_pinyin-017",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "爸爸每天都看",
+   "pinyin": "xīn",
+   "after": "闻。",
+   "answer": "新",
+   "fr": "Papa regarde les informations tous les jours.",
+   "id": "3-char_pinyin-018",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "别着",
+   "pinyin": "jí",
+   "after": "，我们还有时间。",
+   "answer": "急",
+   "fr": "Pas de panique, nous avons encore le temps.",
+   "id": "3-char_pinyin-019",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "char_pinyin",
+   "level": 3,
+   "before": "这家商店的东西很",
+   "pinyin": "pián",
+   "after": "宜。",
+   "answer": "便",
+   "fr": "Les articles de ce magasin sont très bon marché.",
+   "id": "3-char_pinyin-020",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "经常",
+   "reference": "我经常和朋友一起去爬山。",
+   "fr": "Je fais souvent de la montagne avec des amis.",
+   "id": "3-make_sentence-001",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "打算",
+   "reference": "这个周末你打算做什么？",
+   "fr": "Qu'as-tu prévu de faire ce week-end ?",
+   "id": "3-make_sentence-002",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "突然",
+   "reference": "外面突然下雨了。",
+   "fr": "Il s'est soudain mis à pleuvoir dehors.",
+   "id": "3-make_sentence-003",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "习惯",
+   "reference": "我已经习惯了这里的天气。",
+   "fr": "Je me suis déjà habitué au climat d'ici.",
+   "id": "3-make_sentence-004",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "一边",
+   "reference": "他一边吃饭一边看电视。",
+   "fr": "Il mange en regardant la télévision.",
+   "id": "3-make_sentence-005",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "被",
+   "reference": "我的自行车被朋友借走了。",
+   "fr": "Mon vélo a été emprunté par un ami.",
+   "id": "3-make_sentence-006",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "害怕",
+   "reference": "我妹妹很害怕狗。",
+   "fr": "Ma petite sœur a très peur des chiens.",
+   "id": "3-make_sentence-007",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "地图",
+   "reference": "我们看一下地图吧。",
+   "fr": "Regardons le plan.",
+   "id": "3-make_sentence-008",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "越来越",
+   "reference": "天气越来越热了。",
+   "fr": "Il fait de plus en plus chaud.",
+   "id": "3-make_sentence-009",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "担心",
+   "reference": "别担心，我马上就到。",
+   "fr": "Ne t'inquiète pas, j'arrive tout de suite.",
+   "id": "3-make_sentence-010",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "礼物",
+   "reference": "这是我送给你的生日礼物。",
+   "fr": "C'est le cadeau d'anniversaire que je t'offre.",
+   "id": "3-make_sentence-011",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "帮助",
+   "reference": "谢谢你的帮助。",
+   "fr": "Merci pour ton aide.",
+   "id": "3-make_sentence-012",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "安静",
+   "reference": "图书馆里很安静。",
+   "fr": "Il fait très calme dans la bibliothèque.",
+   "id": "3-make_sentence-013",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "终于",
+   "reference": "我终于找到工作了。",
+   "fr": "J'ai enfin trouvé du travail.",
+   "id": "3-make_sentence-014",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  },
+  {
+   "type": "make_sentence",
+   "level": 3,
+   "word": "照顾",
+   "reference": "妈妈在医院照顾奶奶。",
+   "fr": "Maman s'occupe de grand-mère à l'hôpital.",
+   "id": "3-make_sentence-015",
+   "versions": [
+    "2.0",
+    "3.0"
+   ]
+  }
+ ]
+}

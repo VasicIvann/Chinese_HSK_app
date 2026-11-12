@@ -7,11 +7,17 @@ import { useState } from "react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { useIsAdmin } from "@/lib/api/admin";
 import { useAuth } from "@/lib/auth/auth-context";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "/comprehension", label: "Compréhension" },
+  { href: "/listening", label: "Écoute" },
+  { href: "/writing", label: "Écriture HSK" },
+  { href: "/grammar", label: "Grammaire" },
+  { href: "/classifiers", label: "Classificateurs" },
+  { href: "/tones", label: "Tons" },
   { href: "/expression", label: "Expression" },
   { href: "/account", label: "Compte" },
 ];
@@ -21,6 +27,9 @@ export function TopNav() {
   const router = useRouter();
   const { user, isAuthenticated, signOut } = useAuth();
   const [mobileOpen, setMobileOpen] = useState(false);
+  // The Admin link only for accounts the server lists as admins (the API checks it again).
+  const isAdmin = useIsAdmin();
+  const links = isAdmin ? [...NAV_LINKS, { href: "/admin", label: "Admin" }] : NAV_LINKS;
 
   const handleSignOut = () => {
     signOut();
@@ -33,22 +42,23 @@ export function TopNav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href={isAuthenticated ? "/comprehension" : "/"}
-          className="flex items-center gap-2 font-semibold tracking-tight"
+          className="flex shrink-0 items-center gap-2 whitespace-nowrap font-semibold tracking-tight"
         >
           <span className="hanzi text-2xl text-primary">学</span>
-          <span>HSK Trainer</span>
+          {/* Between lg and xl the 9 links need the room: logo character only. */}
+          <span className={cn(isAuthenticated && "lg:hidden xl:inline")}>HSK Trainer</span>
         </Link>
 
         {isAuthenticated && (
-          <nav className="hidden items-center gap-1 md:flex">
-            {NAV_LINKS.map((link) => {
+          <nav className="hidden items-center gap-1 lg:flex">
+            {links.map((link) => {
               const active = pathname?.startsWith(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-medium transition-colors xl:px-3",
                     active
                       ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
@@ -65,7 +75,7 @@ export function TopNav() {
           <ThemeToggle />
           {isAuthenticated ? (
             <>
-              <span className="hidden text-sm text-muted-foreground md:inline">
+              <span className="hidden text-sm text-muted-foreground 2xl:inline">
                 {user?.email}
               </span>
               <Button
@@ -73,7 +83,7 @@ export function TopNav() {
                 size="icon"
                 aria-label="Se déconnecter"
                 onClick={handleSignOut}
-                className="hidden md:inline-flex"
+                className="hidden lg:inline-flex"
               >
                 <LogOut className="h-5 w-5" />
               </Button>
@@ -82,7 +92,7 @@ export function TopNav() {
                 size="icon"
                 aria-label="Menu"
                 onClick={() => setMobileOpen((v) => !v)}
-                className="md:hidden"
+                className="lg:hidden"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
@@ -101,9 +111,9 @@ export function TopNav() {
       </div>
 
       {isAuthenticated && mobileOpen && (
-        <nav className="border-t border-border bg-background md:hidden">
+        <nav className="border-t border-border bg-background lg:hidden">
           <ul className="flex flex-col p-2">
-            {NAV_LINKS.map((link) => {
+            {links.map((link) => {
               const active = pathname?.startsWith(link.href);
               return (
                 <li key={link.href}>

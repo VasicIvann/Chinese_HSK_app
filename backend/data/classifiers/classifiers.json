@@ -1,0 +1,5166 @@
+{
+ "classifiers": [
+  {
+   "hanzi": "个",
+   "pinyin": "gè",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Le classificateur général : personnes, beaucoup d'objets, lieux, durées, idées.",
+   "explanation": "个 est de loin le plus fréquent. On l'emploie pour les personnes (一个人), de nombreux objets (一个苹果、一个杯子), les lieux (一个国家、一个地方), certaines durées (一个星期、一个月) et les choses abstraites (一个问题、一个办法). Il se prononce souvent au ton neutre : 一个 yí ge.",
+   "traps": "Quand un classificateur précis existe, l'examen l'attend : 一本书 et non 一个书, 一件衣服, 一辆车. Avec 月 : 一个月 = un mois, mais 一月 = janvier. Avec 年 et 天, pas de classificateur : 一年, 三天.",
+   "nouns": [
+    {
+     "zh": "人",
+     "fr": "personne",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "朋友",
+     "fr": "ami",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "苹果",
+     "fr": "pomme",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "问题",
+     "fr": "question",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "星期",
+     "fr": "semaine",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "地方",
+     "fr": "endroit",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "国家",
+     "fr": "pays",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "字",
+     "fr": "caractère",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我有一个好朋友。",
+     "fr": "J'ai un bon ami."
+    },
+    {
+     "zh": "这个问题很难。",
+     "fr": "Cette question est difficile."
+    },
+    {
+     "zh": "我学了三个月汉语。",
+     "fr": "J'ai étudié le chinois pendant trois mois."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "个-01",
+     "zh": "我有两{个}哥哥。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "J'ai deux grands frères.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "个-02",
+     "zh": "这{个}问题很难。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "杯",
+      "只",
+      "件",
+      "张"
+     ],
+     "fr": "Cette question est difficile.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "个-03",
+     "zh": "你想吃几{个}苹果？",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "件",
+      "杯",
+      "张",
+      "口"
+     ],
+     "fr": "Combien de pommes veux-tu manger ?",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "个-04",
+     "zh": "那{个}人是我的老师。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "只"
+     ],
+     "fr": "Cette personne-là est mon professeur.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "个-05",
+     "zh": "我有三{个}朋友。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "杯",
+      "块",
+      "家",
+      "张"
+     ],
+     "fr": "J'ai trois amis.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "个-06",
+     "zh": "一{个}星期有七天。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "张",
+      "杯",
+      "件",
+      "只"
+     ],
+     "fr": "Une semaine a sept jours.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "个-07",
+     "zh": "我在中国学了一{个}月汉语。",
+     "answer": "个",
+     "wrong": [
+      "本",
+      "张",
+      "杯",
+      "件",
+      "只"
+     ],
+     "fr": "J'ai étudié le chinois un mois en Chine.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "本",
+   "pinyin": "běn",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Les livres, cahiers, dictionnaires, magazines : tout ce qui est relié.",
+   "explanation": "本 compte ce qui a des pages reliées : un livre (一本书), un cahier (一本本子), un dictionnaire (一本词典), un magazine (一本杂志).",
+   "traps": "Une feuille, une photo, un billet sont plats mais pas reliés : 一张纸, 一张照片. Les pages d'un livre se comptent avec 页 : 这本书有三百页.",
+   "nouns": [
+    {
+     "zh": "书",
+     "fr": "livre",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "词典",
+     "fr": "dictionnaire",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "本子",
+     "fr": "cahier",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "杂志",
+     "fr": "magazine",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这本书很有意思。",
+     "fr": "Ce livre est très intéressant."
+    },
+    {
+     "zh": "我买了两本中文书。",
+     "fr": "J'ai acheté deux livres de chinois."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "本-01",
+     "zh": "我买了三{本}书。",
+     "answer": "本",
+     "wrong": [
+      "张",
+      "条",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "J'ai acheté trois livres.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "本-02",
+     "zh": "这{本}书是谁的？",
+     "answer": "本",
+     "wrong": [
+      "张",
+      "口",
+      "杯",
+      "只",
+      "家"
+     ],
+     "fr": "À qui est ce livre ?",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "本-03",
+     "zh": "桌子上有两{本}词典。",
+     "answer": "本",
+     "wrong": [
+      "只",
+      "件",
+      "杯",
+      "口",
+      "家"
+     ],
+     "fr": "Il y a deux dictionnaires sur la table.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "本-04",
+     "zh": "这{本}书是我的。",
+     "answer": "本",
+     "wrong": [
+      "杯",
+      "块",
+      "家",
+      "张",
+      "只"
+     ],
+     "fr": "Ce livre est à moi.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "本-05",
+     "zh": "我想看那{本}书。",
+     "answer": "本",
+     "wrong": [
+      "件",
+      "杯",
+      "只",
+      "口",
+      "家"
+     ],
+     "fr": "Je veux lire ce livre-là.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "本-06",
+     "zh": "你有几{本}中文书？",
+     "answer": "本",
+     "wrong": [
+      "张",
+      "家",
+      "口",
+      "杯",
+      "只"
+     ],
+     "fr": "Combien de livres de chinois as-tu ?",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "家",
+   "pinyin": "jiā",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Les établissements : magasins, restaurants, hôtels, hôpitaux, entreprises, banques.",
+   "explanation": "家 compte les lieux où l'on vend, sert ou travaille : 一家商店, 一家饭店, 一家医院, 一家公司, 一家银行. C'est aussi le nom « maison, famille ».",
+   "traps": "Les membres d'une famille se comptent avec 口 : 我家有三口人 (nous sommes trois à la maison).",
+   "nouns": [
+    {
+     "zh": "商店",
+     "fr": "magasin",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "饭店",
+     "fr": "restaurant, hôtel",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "医院",
+     "fr": "hôpital",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "公司",
+     "fr": "entreprise",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "银行",
+     "fr": "banque",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "超市",
+     "fr": "supermarché",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这家饭店的菜很好吃。",
+     "fr": "Les plats de ce restaurant sont très bons."
+    },
+    {
+     "zh": "我爸爸在一家公司工作。",
+     "fr": "Mon père travaille dans une entreprise."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "家-01",
+     "zh": "这{家}饭店的菜很好吃。",
+     "answer": "家",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Les plats de ce restaurant sont très bons.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "家-02",
+     "zh": "我妈妈在一{家}医院工作。",
+     "answer": "家",
+     "wrong": [
+      "本",
+      "口",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Ma mère travaille dans un hôpital.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "家-03",
+     "zh": "学校旁边有两{家}商店。",
+     "answer": "家",
+     "wrong": [
+      "本",
+      "件",
+      "杯",
+      "只",
+      "口"
+     ],
+     "fr": "Il y a deux magasins à côté de l'école.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "家-04",
+     "zh": "我在这{家}饭店吃饭。",
+     "answer": "家",
+     "wrong": [
+      "本",
+      "杯",
+      "块",
+      "张",
+      "只"
+     ],
+     "fr": "Je mange dans ce restaurant.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "家-05",
+     "zh": "那{家}公司很大。",
+     "answer": "家",
+     "wrong": [
+      "本",
+      "口",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Cette entreprise est très grande.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "家-06",
+     "zh": "这里有几{家}银行？",
+     "answer": "家",
+     "wrong": [
+      "张",
+      "本",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Combien de banques y a-t-il ici ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "件",
+   "pinyin": "jiàn",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 2
+   },
+   "usage": "Les vêtements du haut (veste, chemise, pull), les affaires (事), les cadeaux, les bagages.",
+   "explanation": "件 compte les vêtements qui couvrent le haut du corps (一件衣服、一件衬衫、一件毛衣) et les « choses » au sens d'affaires : 一件事 (une affaire, quelque chose à faire), 一件礼物, 一件行李.",
+   "traps": "Pantalons et jupes sont longs : 一条裤子, 一条裙子. Les chaussures vont par paire : 一双鞋.",
+   "nouns": [
+    {
+     "zh": "衣服",
+     "fr": "vêtement",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "事",
+     "fr": "affaire, chose",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "礼物",
+     "fr": "cadeau",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "衬衫",
+     "fr": "chemise",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "毛衣",
+     "fr": "pull",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "行李",
+     "fr": "bagage",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这件衣服很漂亮。",
+     "fr": "Ce vêtement est très joli."
+    },
+    {
+     "zh": "我有一件事想问你。",
+     "fr": "J'ai quelque chose à te demander."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "件-01",
+     "zh": "这{件}衣服多少钱？",
+     "answer": "件",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Combien coûte ce vêtement ?",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "件-02",
+     "zh": "我有一{件}事要告诉你。",
+     "answer": "件",
+     "wrong": [
+      "本",
+      "只",
+      "杯",
+      "张",
+      "家"
+     ],
+     "fr": "J'ai une chose à te dire.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "件-03",
+     "zh": "妈妈给我买了两{件}衣服。",
+     "answer": "件",
+     "wrong": [
+      "本",
+      "口",
+      "块",
+      "杯",
+      "家"
+     ],
+     "fr": "Maman m'a acheté deux vêtements.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "件-04",
+     "zh": "这是我送你的一{件}礼物。",
+     "answer": "件",
+     "wrong": [
+      "本",
+      "杯",
+      "口",
+      "张",
+      "家"
+     ],
+     "fr": "C'est un cadeau que je t'offre.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "件-05",
+     "zh": "今天很冷，你多穿一{件}衣服吧。",
+     "answer": "件",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Il fait froid aujourd'hui, mets un vêtement de plus.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "口",
+   "pinyin": "kǒu",
+   "kind": "both",
+   "levels": {
+    "3.0": 1,
+    "2.0": 3
+   },
+   "usage": "Le nombre de personnes d'une famille (三口人) ; et une bouchée, une gorgée (吃一口).",
+   "explanation": "Avec 人, 口 sert à dire combien de personnes vivent dans un foyer : 我家有四口人. Comme classificateur verbal (niveau 3), il compte les bouchées ou les gorgées : 吃一口, 喝了一口水.",
+   "traps": "口 ne compte les personnes que pour une famille. Trois personnes en général : 三个人.",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "我家有四口人。",
+     "fr": "Nous sommes quatre dans ma famille."
+    },
+    {
+     "zh": "你吃一口吧！",
+     "fr": "Goûtes-en une bouchée !"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "口-01",
+     "zh": "我家有五{口}人。",
+     "answer": "口",
+     "wrong": [
+      "本",
+      "只",
+      "件",
+      "张",
+      "杯"
+     ],
+     "fr": "Nous sommes cinq dans ma famille.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "口-02",
+     "zh": "你家有几{口}人？",
+     "answer": "口",
+     "wrong": [
+      "张",
+      "本",
+      "杯",
+      "只",
+      "件"
+     ],
+     "fr": "Combien êtes-vous dans ta famille ?",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "口-03",
+     "zh": "他喝了一{口}水。",
+     "answer": "口",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "Il a bu une gorgée d'eau.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "口-04",
+     "zh": "这个菜很好吃，你吃一{口}吧。",
+     "answer": "口",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce plat est délicieux, goûtes-en une bouchée.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "块",
+   "pinyin": "kuài",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Les morceaux (gâteau, pain, viande), les montres ; à l'oral, le yuan (三块钱).",
+   "explanation": "块 compte un morceau de quelque chose de solide (一块蛋糕、一块面包、一块肉) et quelques objets comme les montres (一块手表). À l'oral, c'est l'unité de monnaie : 十块钱 = 10 yuans (= 十元).",
+   "traps": "Une feuille de papier n'est pas un « morceau » : 一张纸. À l'écrit, on dit 元 pour la monnaie.",
+   "nouns": [
+    {
+     "zh": "钱",
+     "fr": "argent (yuans)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "蛋糕",
+     "fr": "gâteau",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "面包",
+     "fr": "pain",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "手表",
+     "fr": "montre",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "肉",
+     "fr": "viande",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这个多少钱？三十块。",
+     "fr": "Ça coûte combien ? Trente yuans."
+    },
+    {
+     "zh": "我吃了一块蛋糕。",
+     "fr": "J'ai mangé une part de gâteau."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "块-01",
+     "zh": "这个苹果三{块}钱。",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Cette pomme coûte trois yuans.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "块-02",
+     "zh": "我吃了两{块}面包。",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "J'ai mangé deux morceaux de pain.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "块-03",
+     "zh": "他送给我一{块}手表。",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "张",
+      "口",
+      "杯",
+      "家"
+     ],
+     "fr": "Il m'a offert une montre.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "块-04",
+     "zh": "这个杯子三十{块}钱。",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "家",
+      "杯",
+      "张",
+      "只"
+     ],
+     "fr": "Cette tasse coûte trente yuans.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "块-05",
+     "zh": "这件衣服一百{块}。",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce vêtement coûte cent yuans.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "块-06",
+     "zh": "你要几{块}蛋糕？",
+     "answer": "块",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Combien de parts de gâteau veux-tu ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "只",
+   "pinyin": "zhī",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 3
+   },
+   "usage": "La plupart des animaux (chat, chien, oiseau) ; un élément d'une paire (une main, une chaussure).",
+   "explanation": "只 compte les petits et moyens animaux (一只猫、一只狗、一只鸟、一只熊猫) et un seul élément de ce qui va par deux : 一只手, 一只鞋, 一只眼睛.",
+   "traps": "Ne pas confondre avec 只 zhǐ « seulement ». Les animaux longs (poisson, serpent) : 条. Pour un chien, on entend aussi 一条狗. La paire entière : 一双手, 一双鞋.",
+   "nouns": [
+    {
+     "zh": "猫",
+     "fr": "chat",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "狗",
+     "fr": "chien",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "鸟",
+     "fr": "oiseau",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "手",
+     "fr": "main",
+     "also": [
+      "双"
+     ],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "熊猫",
+     "fr": "panda",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "鸡",
+     "fr": "poulet",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我家有一只猫。",
+     "fr": "J'ai un chat."
+    },
+    {
+     "zh": "他一只手拿着书。",
+     "fr": "Il tient un livre d'une main."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "只-01",
+     "zh": "我家有两{只}猫。",
+     "answer": "只",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "J'ai deux chats.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "只-02",
+     "zh": "那{只}小狗很可爱。",
+     "answer": "只",
+     "wrong": [
+      "本",
+      "件",
+      "杯",
+      "张",
+      "家"
+     ],
+     "fr": "Ce petit chien est très mignon.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "只-03",
+     "zh": "树上有三{只}鸟。",
+     "answer": "只",
+     "wrong": [
+      "本",
+      "件",
+      "家",
+      "张",
+      "杯"
+     ],
+     "fr": "Il y a trois oiseaux dans l'arbre.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "只-04",
+     "zh": "他一{只}手拿着手机。",
+     "answer": "只",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Il tient son téléphone d'une main.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "只-05",
+     "zh": "动物园里有几{只}熊猫？",
+     "answer": "只",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "家"
+     ],
+     "fr": "Combien de pandas y a-t-il au zoo ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "杯",
+   "pinyin": "bēi",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Ce qu'on boit dans un verre ou une tasse : eau, thé, café, lait.",
+   "explanation": "杯 compte le contenu d'un verre ou d'une tasse : 一杯水, 一杯茶, 一杯咖啡, 一杯牛奶. Même logique avec d'autres récipients : 一碗饭 (un bol de riz), 一瓶水 (une bouteille d'eau).",
+   "traps": "L'objet « tasse » se dit 杯子 et se compte avec 个 : 一个杯子. 一杯 = le contenu.",
+   "nouns": [
+    {
+     "zh": "水",
+     "fr": "eau",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "茶",
+     "fr": "thé",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "咖啡",
+     "fr": "café",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "牛奶",
+     "fr": "lait",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我想喝一杯咖啡。",
+     "fr": "Je voudrais boire un café."
+    },
+    {
+     "zh": "他每天喝三杯水。",
+     "fr": "Il boit trois verres d'eau par jour."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "杯-01",
+     "zh": "我想喝一{杯}茶。",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "Je voudrais boire une tasse de thé.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "杯-02",
+     "zh": "他每天早上喝一{杯}牛奶。",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "只",
+      "家"
+     ],
+     "fr": "Il boit un verre de lait chaque matin.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "杯-03",
+     "zh": "他喝了三{杯}茶。",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "家",
+      "块",
+      "张",
+      "只"
+     ],
+     "fr": "Il a bu trois tasses de thé.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "杯-04",
+     "zh": "请给我两{杯}水。",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "家"
+     ],
+     "fr": "Deux verres d'eau, s'il vous plaît.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "杯-05",
+     "zh": "你要几{杯}咖啡？",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "只",
+      "家"
+     ],
+     "fr": "Combien de cafés veux-tu ?",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "杯-06",
+     "zh": "桌子上有一{杯}水。",
+     "answer": "杯",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "张",
+      "家"
+     ],
+     "fr": "Il y a un verre d'eau sur la table.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "页",
+   "pinyin": "yè",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": null
+   },
+   "usage": "Les pages d'un livre ou d'un cahier (第十页 = page 10).",
+   "explanation": "页 compte les pages : 这本书有三百页. Avec 第, il indique un numéro de page : 请看第二十页.",
+   "traps": "",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "请看第二十页。",
+     "fr": "Regardez la page vingt."
+    },
+    {
+     "zh": "这本书有三百页。",
+     "fr": "Ce livre a trois cents pages."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "页-01",
+     "zh": "请打开书，看第十{页}。",
+     "answer": "页",
+     "wrong": [
+      "件",
+      "只",
+      "杯",
+      "家",
+      "口"
+     ],
+     "fr": "Ouvrez le livre à la page dix.",
+     "levels": {
+      "3.0": 1,
+      "2.0": null
+     }
+    },
+    {
+     "id": "页-02",
+     "zh": "这本书有两百多{页}。",
+     "answer": "页",
+     "wrong": [
+      "件",
+      "只",
+      "口",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce livre a plus de deux cents pages.",
+     "levels": {
+      "3.0": 1,
+      "2.0": null
+     }
+    },
+    {
+     "id": "页-03",
+     "zh": "我今天看了三十{页}书。",
+     "answer": "页",
+     "wrong": [
+      "件",
+      "只",
+      "杯",
+      "家",
+      "口"
+     ],
+     "fr": "J'ai lu trente pages aujourd'hui.",
+     "levels": {
+      "3.0": 1,
+      "2.0": null
+     }
+    },
+    {
+     "id": "页-04",
+     "zh": "作业在第五{页}。",
+     "answer": "页",
+     "wrong": [
+      "件",
+      "只",
+      "口",
+      "杯",
+      "家"
+     ],
+     "fr": "Les devoirs sont à la page cinq.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "间",
+   "pinyin": "jiān",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 2
+   },
+   "usage": "Les pièces d'un logement ou d'un bâtiment : chambre, salle de classe, bureau.",
+   "explanation": "间 compte les pièces : 一间房间, 一间教室, 一间办公室. Il ne compte pas les bâtiments entiers.",
+   "traps": "On entend aussi 一个房间. Un bâtiment se compte avec 座 ou 栋 (niveaux supérieurs).",
+   "nouns": [
+    {
+     "zh": "房间",
+     "fr": "chambre, pièce",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "教室",
+     "fr": "salle de classe",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "办公室",
+     "fr": "bureau",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这间教室很大。",
+     "fr": "Cette salle de classe est très grande."
+    },
+    {
+     "zh": "我住在一间小房间里。",
+     "fr": "J'habite dans une petite chambre."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "间-01",
+     "zh": "这{间}教室很大。",
+     "answer": "间",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "件"
+     ],
+     "fr": "Cette salle de classe est très grande.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "间-02",
+     "zh": "我住在一{间}小房间里。",
+     "answer": "间",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "只"
+     ],
+     "fr": "J'habite dans une petite chambre.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "间-03",
+     "zh": "这{间}办公室是王老师的。",
+     "answer": "间",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "张"
+     ],
+     "fr": "Ce bureau est celui du professeur Wang.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "间-04",
+     "zh": "学校有二十{间}教室。",
+     "answer": "间",
+     "wrong": [
+      "本",
+      "件",
+      "杯",
+      "只",
+      "张"
+     ],
+     "fr": "L'école a vingt salles de classe.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "对",
+   "pinyin": "duì",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 2
+   },
+   "usage": "Une paire de personnes qui vont ensemble : un couple, deux amis inséparables.",
+   "explanation": "对 compte deux personnes (ou deux choses) formant un ensemble : 一对夫妻 (un couple marié), 一对好朋友. C'est aussi l'adjectif « juste, correct ».",
+   "traps": "Les objets qu'on utilise par deux (chaussures, baguettes) se comptent plutôt avec 双 : 一双鞋.",
+   "nouns": [
+    {
+     "zh": "夫妻",
+     "fr": "couple marié",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "好朋友",
+     "fr": "amis inséparables",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他们是一对好朋友。",
+     "fr": "Ils sont inséparables."
+    },
+    {
+     "zh": "那对夫妻每天一起跑步。",
+     "fr": "Ce couple court ensemble tous les jours."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "对-01",
+     "zh": "他们是一{对}好朋友。",
+     "answer": "对",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Ils sont inséparables.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "对-02",
+     "zh": "那{对}夫妻每天一起跑步。",
+     "answer": "对",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce couple court ensemble tous les jours.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "对-03",
+     "zh": "门口站着一{对}老人。",
+     "answer": "对",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Un couple de personnes âgées se tient à l'entrée.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "回",
+   "pinyin": "huí",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Le nombre de fois qu'une action a lieu (à l'oral, comme 次).",
+   "explanation": "回 se place après le verbe pour compter les fois : 我去过两回北京. 第一回 = la première fois. C'est aussi le verbe « revenir » (回家).",
+   "traps": "回 et 次 sont presque toujours interchangeables ; 次 est plus courant à l'écrit.",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "我去过两回北京。",
+     "fr": "Je suis allé deux fois à Pékin."
+    },
+    {
+     "zh": "这是我第一回来中国。",
+     "fr": "C'est la première fois que je viens en Chine."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "回-01",
+     "zh": "我去过三{回}上海。",
+     "answer": "回",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Je suis allé trois fois à Shanghai.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "回-02",
+     "zh": "这个电影我看过两{回}。",
+     "answer": "回",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "J'ai vu ce film deux fois.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "回-03",
+     "zh": "他来过我家一{回}。",
+     "answer": "回",
+     "wrong": [
+      "本",
+      "口",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Il est venu chez moi une fois.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "回-04",
+     "zh": "这是我第一{回}吃中国菜。",
+     "answer": "回",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "件"
+     ],
+     "fr": "C'est la première fois que je mange chinois.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "下",
+   "pinyin": "xià",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 1,
+    "2.0": 1
+   },
+   "usage": "Une action brève (等一下 = attendre un instant) ; un nombre de coups (敲了三下).",
+   "explanation": "Verbe + 一下 indique une action courte ou adoucit une demande : 请等一下, 你看一下, 我介绍一下. Avec d'autres nombres, 下 compte des gestes répétés : 敲了三下门 (frapper trois coups).",
+   "traps": "Pour compter des occurrences en général (aller deux fois à Pékin), on utilise 次 ou 回.",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "请等一下。",
+     "fr": "Attendez un instant, s'il vous plaît."
+    },
+    {
+     "zh": "我来介绍一下。",
+     "fr": "Je vais faire les présentations."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "下-01",
+     "zh": "请等一{下}，我马上来。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Attendez un instant, j'arrive tout de suite.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "下-02",
+     "zh": "你过来看一{下}这张照片。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "件",
+      "杯",
+      "家",
+      "口"
+     ],
+     "fr": "Viens jeter un œil à cette photo.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "下-03",
+     "zh": "你坐一{下}。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "家",
+      "块",
+      "杯",
+      "张"
+     ],
+     "fr": "Assieds-toi un instant.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "id": "下-04",
+     "zh": "我想休息一{下}。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "只"
+     ],
+     "fr": "Je voudrais me reposer un peu.",
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "下-05",
+     "zh": "我来介绍一{下}，这是我朋友。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "杯",
+      "件"
+     ],
+     "fr": "Je fais les présentations : voici mon ami.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "下-06",
+     "zh": "你再试一{下}。",
+     "answer": "下",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Essaie encore une fois.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "包",
+   "pinyin": "bāo",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 3
+   },
+   "usage": "Les paquets et sachets : un paquet de thé, de biscuits, de cigarettes.",
+   "explanation": "包 compte ce qui est emballé : 一包茶, 一包糖, 一包烟. C'est aussi le nom « sac » (书包) et le verbe « envelopper ».",
+   "traps": "一包茶 = un paquet de thé (à acheter) ; 一杯茶 = une tasse de thé (à boire).",
+   "nouns": [
+    {
+     "zh": "茶",
+     "fr": "thé (en paquet)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "糖",
+     "fr": "bonbons, sucre",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "烟",
+     "fr": "cigarettes",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我买了一包茶。",
+     "fr": "J'ai acheté un paquet de thé."
+    },
+    {
+     "zh": "桌子上有两包糖。",
+     "fr": "Il y a deux paquets de bonbons sur la table."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "包-01",
+     "zh": "我买了一{包}茶。",
+     "answer": "包",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "J'ai acheté un paquet de thé.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "包-02",
+     "zh": "这{包}东西是谁的？",
+     "answer": "包",
+     "wrong": [
+      "本",
+      "张",
+      "杯",
+      "只",
+      "家"
+     ],
+     "fr": "À qui est ce paquet ?",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "包-03",
+     "zh": "桌子上有两{包}糖。",
+     "answer": "包",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "Il y a deux paquets de bonbons sur la table.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "包-04",
+     "zh": "我给你带了一{包}吃的。",
+     "answer": "包",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "家"
+     ],
+     "fr": "Je t'ai apporté un paquet de choses à manger.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "笔",
+   "pinyin": "bǐ",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Une somme d'argent (一笔钱) ou une opération financière.",
+   "explanation": "笔 compte une somme d'argent considérée comme un tout : 一笔钱, 一大笔钱. C'est aussi le nom « stylo, pinceau ».",
+   "traps": "Pour compter les stylos eux-mêmes : 一支笔. Pour dire un prix : 三块钱 (et non 三笔钱).",
+   "nouns": [
+    {
+     "zh": "钱",
+     "fr": "somme d'argent",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他花了一大笔钱。",
+     "fr": "Il a dépensé une grosse somme."
+    },
+    {
+     "zh": "这笔钱是我的。",
+     "fr": "Cette somme est à moi."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "笔-01",
+     "zh": "他花了一大{笔}钱。",
+     "answer": "笔",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "Il a dépensé une grosse somme d'argent.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "笔-02",
+     "zh": "这{笔}钱是我的。",
+     "answer": "笔",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "张",
+      "家"
+     ],
+     "fr": "Cette somme est à moi.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "笔-03",
+     "zh": "公司给了他一{笔}钱。",
+     "answer": "笔",
+     "wrong": [
+      "本",
+      "件",
+      "口",
+      "只",
+      "家"
+     ],
+     "fr": "L'entreprise lui a donné une somme d'argent.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "面",
+   "pinyin": "miàn",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Les objets plats qu'on regarde de face : miroir, drapeau, mur.",
+   "explanation": "面 compte les surfaces planes et verticales : 一面镜子 (un miroir), 一面墙 (un mur), 一面旗子 (un drapeau). C'est aussi « face, côté » (前面, 外面).",
+   "traps": "Une table ou une feuille sont plates mais posées à plat : 一张桌子, 一张纸.",
+   "nouns": [
+    {
+     "zh": "镜子",
+     "fr": "miroir",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "墙",
+     "fr": "mur",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "旗子",
+     "fr": "drapeau",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "房间里有一面大镜子。",
+     "fr": "Il y a un grand miroir dans la chambre."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "面-01",
+     "zh": "房间里有一{面}大镜子。",
+     "answer": "面",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Il y a un grand miroir dans la chambre.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "面-02",
+     "zh": "这{面}墙是白色的。",
+     "answer": "面",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce mur est blanc.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "面-03",
+     "zh": "学校门口有一{面}国旗。",
+     "answer": "面",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Il y a un drapeau national devant l'école.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "名",
+   "pinyin": "míng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Les personnes selon leur rôle (élève, médecin, ouvrier), ton neutre ou officiel ; le rang (第一名).",
+   "explanation": "名 compte les personnes dans un registre plutôt formel : 一名学生, 一名医生, 三十名工人. 第一名 = la première place d'un classement.",
+   "traps": "个 : neutre et courant. 位 : poli, respectueux (一位老师). 名 : formel, souvent pour une fonction.",
+   "nouns": [
+    {
+     "zh": "学生",
+     "fr": "élève",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "医生",
+     "fr": "médecin",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "工人",
+     "fr": "ouvrier",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我们班有三十名学生。",
+     "fr": "Notre classe compte trente élèves."
+    },
+    {
+     "zh": "这次比赛他得了第一名。",
+     "fr": "Il a fini premier à cette compétition."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "名-01",
+     "zh": "我们班有三十{名}学生。",
+     "answer": "名",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "家"
+     ],
+     "fr": "Notre classe compte trente élèves.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "名-02",
+     "zh": "他是一{名}医生。",
+     "answer": "名",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "只",
+      "家"
+     ],
+     "fr": "Il est médecin.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "名-03",
+     "zh": "这次比赛他得了第一{名}。",
+     "answer": "名",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "只",
+      "家"
+     ],
+     "fr": "Il a fini premier à cette compétition.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "名-04",
+     "zh": "公司里有一百多{名}工人。",
+     "answer": "名",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "张",
+      "杯"
+     ],
+     "fr": "L'entreprise compte plus de cent ouvriers.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "条",
+   "pinyin": "tiáo",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 3
+   },
+   "usage": "Les choses longues et souples : poisson, rue, rivière, pantalon, jupe ; un message, une nouvelle.",
+   "explanation": "条 compte ce qui est long : 一条鱼, 一条路, 一条河, 一条裤子, 一条裙子, 一条狗. Par extension : 一条短信 (un SMS), 一条新闻 (une information).",
+   "traps": "Les vêtements du haut : 件 (一件衬衫). Pour une jupe, on entend aussi 一件裙子.",
+   "nouns": [
+    {
+     "zh": "鱼",
+     "fr": "poisson",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "路",
+     "fr": "rue, route",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "河",
+     "fr": "rivière",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "裤子",
+     "fr": "pantalon",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "裙子",
+     "fr": "jupe",
+     "also": [
+      "件"
+     ],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "短信",
+     "fr": "SMS",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "狗",
+     "fr": "chien",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这条路很长。",
+     "fr": "Cette rue est très longue."
+    },
+    {
+     "zh": "我买了两条鱼。",
+     "fr": "J'ai acheté deux poissons."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "条-01",
+     "zh": "我买了两{条}鱼。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "家"
+     ],
+     "fr": "J'ai acheté deux poissons.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "条-02",
+     "zh": "这{条}路很长。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Cette rue est très longue.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "条-03",
+     "zh": "她穿了一{条}红裙子。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "张",
+      "杯",
+      "家",
+      "口"
+     ],
+     "fr": "Elle porte une jupe rouge.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "条-04",
+     "zh": "我家前面有一{条}河。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "只"
+     ],
+     "fr": "Il y a une rivière devant chez moi.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "条-05",
+     "zh": "这{条}裤子太长了。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "张",
+      "杯",
+      "家",
+      "口"
+     ],
+     "fr": "Ce pantalon est trop long.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "条-06",
+     "zh": "我刚收到一{条}短信。",
+     "answer": "条",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Je viens de recevoir un SMS.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "头",
+   "pinyin": "tóu",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Les gros animaux : vache, cochon, éléphant.",
+   "explanation": "头 compte le gros bétail et les grands animaux : 一头牛, 一头猪, 一头大象. C'est aussi le nom « tête ».",
+   "traps": "Les petits animaux : 只 (一只猫). Pour l'éléphant, on entend aussi 一只大象.",
+   "nouns": [
+    {
+     "zh": "牛",
+     "fr": "vache, bœuf",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "猪",
+     "fr": "cochon",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "大象",
+     "fr": "éléphant",
+     "also": [
+      "只"
+     ],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "他家有三头牛。",
+     "fr": "Sa famille a trois vaches."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "头-01",
+     "zh": "他家有三{头}牛。",
+     "answer": "头",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "家"
+     ],
+     "fr": "Sa famille a trois vaches.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "头-02",
+     "zh": "这{头}猪很大。",
+     "answer": "头",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "杯",
+      "家"
+     ],
+     "fr": "Ce cochon est très gros.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "头-03",
+     "zh": "动物园里有一{头}大象。",
+     "answer": "头",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "家"
+     ],
+     "fr": "Il y a un éléphant au zoo.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "位",
+   "pinyin": "wèi",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 3
+   },
+   "usage": "Les personnes, avec politesse et respect : un professeur, des invités, « Vous êtes combien ? ».",
+   "explanation": "位 est la façon polie de compter les gens : 一位老师, 两位客人, 这位先生. Au restaurant : 您几位？ (vous êtes combien ?).",
+   "traps": "On ne l'utilise pas pour parler de soi (trop respectueux) : 我是一名老师 ou 我是老师.",
+   "nouns": [
+    {
+     "zh": "老师",
+     "fr": "professeur",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "客人",
+     "fr": "invité, client",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "先生",
+     "fr": "monsieur",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这位是我们的新老师。",
+     "fr": "Voici notre nouveau professeur."
+    },
+    {
+     "zh": "请问，您几位？",
+     "fr": "Vous êtes combien, s'il vous plaît ?"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "位-01",
+     "zh": "请问，您几{位}？",
+     "answer": "位",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "家"
+     ],
+     "fr": "Vous êtes combien, s'il vous plaît ?",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "位-02",
+     "zh": "这{位}是我们的新老师。",
+     "answer": "位",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Voici notre nouveau professeur.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "位-03",
+     "zh": "今天家里来了两{位}客人。",
+     "answer": "位",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Deux invités sont venus à la maison aujourd'hui.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "位-04",
+     "zh": "那{位}先生是谁？",
+     "answer": "位",
+     "wrong": [
+      "本",
+      "件",
+      "张",
+      "只",
+      "杯"
+     ],
+     "fr": "Qui est ce monsieur ?",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "班",
+   "pinyin": "bān",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 3
+   },
+   "usage": "Les départs d'un transport régulier : le prochain bus, le dernier train, un vol.",
+   "explanation": "班 compte les trajets programmés : 下一班车 (le prochain bus), 最后一班飞机 (le dernier vol). C'est aussi le nom « classe » (我们班).",
+   "traps": "Le véhicule lui-même : 一辆车, 一架飞机 (niveau 3).",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "我们坐下一班车吧。",
+     "fr": "Prenons le prochain bus."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "班-01",
+     "zh": "我们坐下一{班}车吧。",
+     "answer": "班",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Prenons le prochain bus.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "班-02",
+     "zh": "最后一{班}飞机是晚上十点。",
+     "answer": "班",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Le dernier avion part à 22 heures.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "班-03",
+     "zh": "这{班}火车几点到？",
+     "answer": "班",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "À quelle heure arrive ce train ?",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "层",
+   "pinyin": "céng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 3
+   },
+   "usage": "Les étages d'un bâtiment ; une couche (de neige, de poussière).",
+   "explanation": "层 compte les étages : 这个楼有二十层, 我住在五层 (= 五楼). Il compte aussi les couches : 一层雪.",
+   "traps": "En Chine, le rez-de-chaussée est le 一层 (一楼) : 三层 = notre « deuxième étage ».",
+   "nouns": [
+    {
+     "zh": "楼",
+     "fr": "bâtiment (ses étages)",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "雪",
+     "fr": "neige (une couche)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我家住在五层。",
+     "fr": "J'habite au cinquième étage."
+    },
+    {
+     "zh": "地上有一层雪。",
+     "fr": "Il y a une couche de neige par terre."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "层-01",
+     "zh": "我家住在五{层}。",
+     "answer": "层",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "J'habite au cinquième étage.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "层-02",
+     "zh": "这个楼有二十{层}。",
+     "answer": "层",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Ce bâtiment a vingt étages.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "层-03",
+     "zh": "他的办公室在第三{层}。",
+     "answer": "层",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "张",
+      "杯"
+     ],
+     "fr": "Son bureau est au troisième étage.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "层-04",
+     "zh": "地上有一{层}雪。",
+     "answer": "层",
+     "wrong": [
+      "本",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "Il y a une couche de neige par terre.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "封",
+   "pinyin": "fēng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Les lettres et les e-mails.",
+   "explanation": "封 (« fermer, sceller ») compte ce qu'on envoie sous enveloppe : 一封信, et par extension 一封邮件 (un e-mail).",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "信",
+     "fr": "lettre",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "邮件",
+     "fr": "e-mail",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我给妈妈写了一封信。",
+     "fr": "J'ai écrit une lettre à ma mère."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "封-01",
+     "zh": "我给妈妈写了一{封}信。",
+     "answer": "封",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "J'ai écrit une lettre à ma mère.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "封-02",
+     "zh": "你收到我的那{封}邮件了吗？",
+     "answer": "封",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "As-tu reçu mon e-mail ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "封-03",
+     "zh": "桌子上有两{封}信。",
+     "answer": "封",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Il y a deux lettres sur la table.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "次",
+   "pinyin": "cì",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 2,
+    "2.0": 2
+   },
+   "usage": "Le nombre de fois qu'une action se répète (去过两次, 第一次).",
+   "explanation": "次 se place après le verbe pour compter les occurrences : 我来过中国两次. 第一次 = la première fois. Devant un nom, il désigne un événement : 这次考试 (cet examen-ci).",
+   "traps": "次 compte les fois ; 遍 insiste sur « du début à la fin » (再说一遍). Souvent les deux sont possibles.",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "这是我第一次坐飞机。",
+     "fr": "C'est la première fois que je prends l'avion."
+    },
+    {
+     "zh": "他每个星期去三次医院。",
+     "fr": "Il va à l'hôpital trois fois par semaine."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "次-01",
+     "zh": "我来过中国两{次}。",
+     "answer": "次",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Je suis venu deux fois en Chine.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "次-02",
+     "zh": "这是我第一{次}坐飞机。",
+     "answer": "次",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "C'est la première fois que je prends l'avion.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "次-03",
+     "zh": "这{次}考试很难。",
+     "answer": "次",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Cet examen-ci était difficile.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "次-04",
+     "zh": "他每个星期去三{次}医院。",
+     "answer": "次",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Il va à l'hôpital trois fois par semaine.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "id": "次-05",
+     "zh": "我给你打了好几{次}电话。",
+     "answer": "次",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "件",
+      "杯"
+     ],
+     "fr": "Je t'ai appelé plusieurs fois.",
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "遍",
+   "pinyin": "biàn",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Une fois du début à la fin (lire, écouter, répéter en entier) : 再说一遍.",
+   "explanation": "遍 compte une action faite entièrement, d'un bout à l'autre : 这本书我看了三遍 (je l'ai lu trois fois en entier), 请再说一遍 (répétez, s'il vous plaît).",
+   "traps": "去过两次 (et non 两遍) : aller quelque part n'a pas de « début à la fin ».",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "请你再说一遍。",
+     "fr": "Répétez, s'il vous plaît."
+    },
+    {
+     "zh": "这本书我看了三遍。",
+     "fr": "J'ai lu ce livre trois fois."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "遍-01",
+     "zh": "请你再说一{遍}。",
+     "answer": "遍",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Répétez, s'il vous plaît.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "遍-02",
+     "zh": "这本书我看了三{遍}。",
+     "answer": "遍",
+     "wrong": [
+      "张",
+      "件",
+      "只",
+      "杯",
+      "家"
+     ],
+     "fr": "J'ai lu ce livre trois fois.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "遍-03",
+     "zh": "老师让我们把课文读两{遍}。",
+     "answer": "遍",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Le professeur nous a fait lire le texte deux fois.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "遍-04",
+     "zh": "这个电影太好看了，我想再看一{遍}。",
+     "answer": "遍",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Ce film est trop bien, je veux le revoir.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "场",
+   "pinyin": "chǎng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 2,
+    "2.0": null
+   },
+   "usage": "Les événements qui durent : séance de film, match, examen, spectacle, averse (一场雨).",
+   "explanation": "场 compte ce qui se déroule dans le temps : 一场电影 (une séance), 一场比赛, 一场考试, 一场雨, 一场大病.",
+   "traps": "Un film comme œuvre se compte avec 部 (一部电影, niveau 4) ; 场 = une projection.",
+   "nouns": [
+    {
+     "zh": "电影",
+     "fr": "film (séance)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "比赛",
+     "fr": "match",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "雨",
+     "fr": "pluie (averse)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "昨天下了一场大雨。",
+     "fr": "Hier, il a plu à verse."
+    },
+    {
+     "zh": "这场比赛非常好看。",
+     "fr": "Ce match était vraiment beau."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "场-01",
+     "zh": "昨天下了一{场}大雨。",
+     "answer": "场",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Hier, il a plu à verse.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "场-02",
+     "zh": "我们一起去看一{场}电影吧。",
+     "answer": "场",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Allons voir un film ensemble.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    },
+    {
+     "id": "场-03",
+     "zh": "这{场}比赛非常好看。",
+     "answer": "场",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Ce match était vraiment beau.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "场-04",
+     "zh": "他生了一{场}大病。",
+     "answer": "场",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "只",
+      "杯"
+     ],
+     "fr": "Il a eu une grave maladie.",
+     "levels": {
+      "3.0": 2,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "把",
+   "pinyin": "bǎ",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Les objets qu'on prend par une poignée : chaise, parapluie, clé, couteau.",
+   "explanation": "把 (« saisir ») compte ce qui a un manche ou une poignée : 一把椅子, 一把伞, 一把钥匙, 一把刀.",
+   "traps": "把 est aussi la particule de la phrase en 把 (把门关上). Une table : 张 ; une chaise : 把.",
+   "nouns": [
+    {
+     "zh": "椅子",
+     "fr": "chaise",
+     "also": [
+      "张"
+     ],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "伞",
+     "fr": "parapluie",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "钥匙",
+     "fr": "clé",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "刀",
+     "fr": "couteau",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "外面下雨了，带一把伞吧。",
+     "fr": "Il pleut dehors, prends un parapluie."
+    },
+    {
+     "zh": "教室里有三十把椅子。",
+     "fr": "Il y a trente chaises dans la salle."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "把-01",
+     "zh": "教室里有三十{把}椅子。",
+     "answer": "把",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "杯",
+      "辆"
+     ],
+     "fr": "Il y a trente chaises dans la salle.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "把-02",
+     "zh": "外面下雨了，带一{把}伞吧。",
+     "answer": "把",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "双"
+     ],
+     "fr": "Il pleut dehors, prends un parapluie.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "把-03",
+     "zh": "这{把}椅子是谁的？",
+     "answer": "把",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "杯",
+      "辆"
+     ],
+     "fr": "À qui est cette chaise ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "把-04",
+     "zh": "我买了一{把}新伞。",
+     "answer": "把",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "杯",
+      "双"
+     ],
+     "fr": "J'ai acheté un nouveau parapluie.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "段",
+   "pinyin": "duàn",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Une portion : de temps (一段时间), de chemin (一段路), de texte ou de paroles.",
+   "explanation": "段 compte un morceau de quelque chose qui s'étend : 一段时间 (un certain temps), 一段路 (un bout de chemin), 一段话 (un passage, quelques paroles).",
+   "traps": "一段路 = un bout de chemin ; 一条路 = une route. 一句话 = une phrase ; 一段话 = un passage.",
+   "nouns": [
+    {
+     "zh": "时间",
+     "fr": "temps (une période)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "路",
+     "fr": "chemin (un bout)",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "话",
+     "fr": "paroles (un passage)",
+     "also": [
+      "句"
+     ],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我在北京住过一段时间。",
+     "fr": "J'ai vécu un certain temps à Pékin."
+    },
+    {
+     "zh": "这段时间我很忙。",
+     "fr": "Ces temps-ci, je suis très occupé."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "段-01",
+     "zh": "我在北京住过一{段}时间。",
+     "answer": "段",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "J'ai vécu un certain temps à Pékin.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "段-02",
+     "zh": "从这儿到车站还有一{段}路。",
+     "answer": "段",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "D'ici à la gare, il reste un bout de chemin.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "段-03",
+     "zh": "请读一下这{段}话。",
+     "answer": "段",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Lis ce passage, s'il te plaît.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "段-04",
+     "zh": "这{段}时间我很忙。",
+     "answer": "段",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Ces temps-ci, je suis très occupé.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "节",
+   "pinyin": "jié",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les cours (一节课) ; les sections, les wagons.",
+   "explanation": "节 compte les séances de cours : 我今天有四节课. Il compte aussi les parties d'un tout découpé : 一节车厢 (un wagon). C'est aussi « fête » (春节).",
+   "traps": "Une matière qu'on étudie se compte avec 门 (一门课, niveau 4) ; 节 = une séance.",
+   "nouns": [
+    {
+     "zh": "课",
+     "fr": "cours (une séance)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我今天上午有两节课。",
+     "fr": "J'ai deux cours ce matin."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "节-01",
+     "zh": "我今天上午有两{节}课。",
+     "answer": "节",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "J'ai deux cours ce matin.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "节-02",
+     "zh": "一{节}课四十五分钟。",
+     "answer": "节",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Un cours dure quarante-cinq minutes.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "节-03",
+     "zh": "下一{节}是数学课。",
+     "answer": "节",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Le prochain cours est un cours de maths.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "句",
+   "pinyin": "jù",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Les phrases et les paroles : 一句话, 几句汉语.",
+   "explanation": "句 compte les phrases : 这句话是什么意思？, 我只会说几句汉语. 一句话也没说 = ne pas dire un mot.",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "话",
+     "fr": "parole, phrase",
+     "also": [
+      "段"
+     ],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这句话是什么意思？",
+     "fr": "Que veut dire cette phrase ?"
+    },
+    {
+     "zh": "他一句话也没说。",
+     "fr": "Il n'a pas dit un mot."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "句-01",
+     "zh": "我只会说几{句}汉语。",
+     "answer": "句",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Je ne sais dire que quelques phrases de chinois.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "句-02",
+     "zh": "这{句}话是什么意思？",
+     "answer": "句",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Que veut dire cette phrase ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "句-03",
+     "zh": "他一{句}话也没说。",
+     "answer": "句",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il n'a pas dit un mot.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "句-04",
+     "zh": "我想跟你说几{句}话。",
+     "answer": "句",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "辆",
+      "双"
+     ],
+     "fr": "Je voudrais te dire quelques mots.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "辆",
+   "pinyin": "liàng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Les véhicules à roues : voiture, vélo, bus, taxi.",
+   "explanation": "辆 compte les véhicules terrestres : 一辆车, 一辆自行车, 一辆出租车, 一辆公共汽车.",
+   "traps": "Un avion : 一架飞机. Le prochain bus (un départ) : 下一班车.",
+   "nouns": [
+    {
+     "zh": "车",
+     "fr": "voiture",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "自行车",
+     "fr": "vélo",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "出租车",
+     "fr": "taxi",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "汽车",
+     "fr": "automobile",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "公共汽车",
+     "fr": "bus",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我爸爸买了一辆新车。",
+     "fr": "Mon père a acheté une nouvelle voiture."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "辆-01",
+     "zh": "我爸爸买了一{辆}新车。",
+     "answer": "辆",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "把"
+     ],
+     "fr": "Mon père a acheté une nouvelle voiture.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "辆-02",
+     "zh": "门口有两{辆}出租车。",
+     "answer": "辆",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "杯"
+     ],
+     "fr": "Il y a deux taxis devant l'entrée.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "辆-03",
+     "zh": "这{辆}自行车是谁的？",
+     "answer": "辆",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "杯"
+     ],
+     "fr": "À qui est ce vélo ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "辆-04",
+     "zh": "我们家有一{辆}汽车。",
+     "answer": "辆",
+     "wrong": [
+      "本",
+      "张",
+      "只",
+      "双",
+      "杯"
+     ],
+     "fr": "Nous avons une voiture.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "声",
+   "pinyin": "shēng",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Un son, un cri, une parole brève : 叫了一声, 说一声 (prévenir).",
+   "explanation": "声 compte les sons qu'on émet : 他大叫了一声 (il a poussé un cri). 跟我说一声 = préviens-moi.",
+   "traps": "",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "你走的时候跟我说一声。",
+     "fr": "Préviens-moi quand tu pars."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "声-01",
+     "zh": "你走的时候跟我说一{声}。",
+     "answer": "声",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Préviens-moi quand tu pars.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "声-02",
+     "zh": "他大叫了一{声}。",
+     "answer": "声",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il a poussé un cri.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "声-03",
+     "zh": "外面有人叫了我两{声}。",
+     "answer": "声",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Quelqu'un dehors m'a appelé deux fois.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "双",
+   "pinyin": "shuāng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Une paire d'objets utilisés ensemble : chaussures, chaussettes, baguettes, yeux, mains.",
+   "explanation": "双 compte ce qui va par deux : 一双鞋, 一双袜子, 一双筷子, 一双眼睛, 一双手.",
+   "traps": "Une seule chaussure : 一只鞋. Deux personnes formant un couple : 一对.",
+   "nouns": [
+    {
+     "zh": "鞋",
+     "fr": "chaussures",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "袜子",
+     "fr": "chaussettes",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    },
+    {
+     "zh": "筷子",
+     "fr": "baguettes",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "眼睛",
+     "fr": "yeux",
+     "also": [
+      "只"
+     ],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我想买一双新鞋。",
+     "fr": "Je voudrais acheter une nouvelle paire de chaussures."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "双-01",
+     "zh": "我想买一{双}新鞋。",
+     "answer": "双",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Je voudrais acheter une nouvelle paire de chaussures.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "双-02",
+     "zh": "请给我一{双}筷子。",
+     "answer": "双",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Une paire de baguettes, s'il vous plaît.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "双-03",
+     "zh": "她有一{双}大眼睛。",
+     "answer": "双",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Elle a de grands yeux.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "双-04",
+     "zh": "这{双}鞋多少钱？",
+     "answer": "双",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Combien coûte cette paire de chaussures ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "张",
+   "pinyin": "zhāng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Les objets plats ou à surface plane : papier, photo, billet, carte, table, lit.",
+   "explanation": "张 (« étendre ») compte ce qui est plat : 一张纸, 一张照片, 一张票, 一张地图, et les meubles à surface plane : 一张桌子, 一张床.",
+   "traps": "Une chaise se compte plutôt avec 把, un livre avec 本.",
+   "nouns": [
+    {
+     "zh": "纸",
+     "fr": "papier",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "照片",
+     "fr": "photo",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "票",
+     "fr": "billet",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "桌子",
+     "fr": "table",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "床",
+     "fr": "lit",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "地图",
+     "fr": "carte (géographique)",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "请给我一张纸。",
+     "fr": "Donne-moi une feuille de papier."
+    },
+    {
+     "zh": "我买了两张电影票。",
+     "fr": "J'ai acheté deux places de cinéma."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "张-01",
+     "zh": "请给我一{张}纸。",
+     "answer": "张",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Donne-moi une feuille de papier.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "张-02",
+     "zh": "我买了两{张}电影票。",
+     "answer": "张",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "J'ai acheté deux places de cinéma.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "张-03",
+     "zh": "这{张}照片是在北京照的。",
+     "answer": "张",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Cette photo a été prise à Pékin.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "张-04",
+     "zh": "房间里只有一{张}床。",
+     "answer": "张",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il n'y a qu'un lit dans la chambre.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "张-05",
+     "zh": "我们要一{张}大桌子。",
+     "answer": "张",
+     "wrong": [
+      "本",
+      "条",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Nous voudrions une grande table.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "种",
+   "pinyin": "zhǒng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": 3
+   },
+   "usage": "Une sorte, un type : 这种水果, 三种颜色.",
+   "explanation": "种 classe plutôt qu'il ne compte : 这种水果 (ce type de fruit), 三种颜色 (trois couleurs), 哪种？ (quel genre ?). Il va avec presque tous les noms.",
+   "traps": "一种鱼 = une espèce de poisson ; 一条鱼 = un poisson.",
+   "nouns": [
+    {
+     "zh": "颜色",
+     "fr": "couleur",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "水果",
+     "fr": "fruit (sorte)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "语言",
+     "fr": "langue",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "你喜欢哪种颜色？",
+     "fr": "Quelle couleur préfères-tu ?"
+    }
+   ],
+   "sentences": [
+    {
+     "id": "种-01",
+     "zh": "这{种}水果很好吃。",
+     "answer": "种",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Ce type de fruit est délicieux.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "种-02",
+     "zh": "我会说三{种}语言。",
+     "answer": "种",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Je parle trois langues.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "种-03",
+     "zh": "你喜欢哪{种}颜色？",
+     "answer": "种",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Quelle couleur préfères-tu ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "id": "种-04",
+     "zh": "这{种}天气不能出去玩。",
+     "answer": "种",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Avec ce temps, on ne peut pas sortir jouer.",
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "起",
+   "pinyin": "qǐ",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les événements et incidents : un accident (一起事故), une affaire.",
+   "explanation": "起 compte les faits qui « surviennent » : 一起交通事故 (un accident de la route). C'est aussi le verbe « se lever » (起床).",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "事故",
+     "fr": "accident",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "这里发生了一起事故。",
+     "fr": "Un accident s'est produit ici."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "起-01",
+     "zh": "这里发生了一{起}事故。",
+     "answer": "起",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Un accident s'est produit ici.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "起-02",
+     "zh": "这{起}事故是怎么发生的？",
+     "answer": "起",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Comment cet accident s'est-il produit ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "行",
+   "pinyin": "háng",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les lignes d'un texte, les rangées : 一行字.",
+   "explanation": "行 (prononcé háng) compte les lignes : 两行字 (deux lignes de caractères), 第三行 (la troisième ligne).",
+   "traps": "Ne pas confondre avec 行 xíng « ça va, d'accord ».",
+   "nouns": [
+    {
+     "zh": "字",
+     "fr": "caractères (une ligne)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "请看第三行字。",
+     "fr": "Regarde la troisième ligne."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "行-01",
+     "zh": "请看第三{行}字。",
+     "answer": "行",
+     "wrong": [
+      "件",
+      "辆",
+      "双",
+      "杯",
+      "家"
+     ],
+     "fr": "Regarde la troisième ligne.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "行-02",
+     "zh": "黑板上写着两{行}字。",
+     "answer": "行",
+     "wrong": [
+      "件",
+      "辆",
+      "双",
+      "杯",
+      "只"
+     ],
+     "fr": "Deux lignes de caractères sont écrites au tableau.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "行-03",
+     "zh": "这一{行}字我不认识。",
+     "answer": "行",
+     "wrong": [
+      "件",
+      "辆",
+      "双",
+      "杯",
+      "只"
+     ],
+     "fr": "Je ne sais pas lire cette ligne de caractères.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "架",
+   "pinyin": "jià",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les avions, les pianos et les machines montées sur un cadre.",
+   "explanation": "架 (« cadre, support ») compte les avions (一架飞机) et certains gros instruments (一架钢琴).",
+   "traps": "Un vol à prendre : 一班飞机 ; l'appareil lui-même : 一架飞机.",
+   "nouns": [
+    {
+     "zh": "飞机",
+     "fr": "avion",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "钢琴",
+     "fr": "piano",
+     "also": [],
+     "levels": {
+      "3.0": null,
+      "2.0": null
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "天上有一架飞机。",
+     "fr": "Il y a un avion dans le ciel."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "架-01",
+     "zh": "天上有一{架}飞机。",
+     "answer": "架",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "杯"
+     ],
+     "fr": "Il y a un avion dans le ciel.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "架-02",
+     "zh": "那{架}飞机飞得很高。",
+     "answer": "架",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "杯"
+     ],
+     "fr": "Cet avion vole très haut.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "架-03",
+     "zh": "她家有一{架}钢琴。",
+     "answer": "架",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "双",
+      "杯"
+     ],
+     "fr": "Elle a un piano chez elle.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "群",
+   "pinyin": "qún",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Un groupe, une foule, un troupeau : 一群人, 一群孩子, 一群鸟.",
+   "explanation": "群 compte un ensemble de personnes ou d'animaux réunis : 一群学生, 一群孩子, 一群鸟, 一群羊.",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "孩子",
+     "fr": "enfants (un groupe)",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "鸟",
+     "fr": "oiseaux (une volée)",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "羊",
+     "fr": "moutons (un troupeau)",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "公园里有一群孩子在玩。",
+     "fr": "Un groupe d'enfants joue dans le parc."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "群-01",
+     "zh": "公园里有一{群}孩子在玩。",
+     "answer": "群",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Un groupe d'enfants joue dans le parc.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "群-02",
+     "zh": "一{群}鸟从天上飞过。",
+     "answer": "群",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Une volée d'oiseaux passe dans le ciel.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "群-03",
+     "zh": "门口站着一{群}人。",
+     "answer": "群",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Un groupe de gens se tient à l'entrée.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "束",
+   "pinyin": "shù",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Un bouquet, un faisceau : 一束花, 一束光.",
+   "explanation": "束 (« lier ») compte ce qui est réuni en botte : 一束花 (un bouquet de fleurs), 一束光 (un rayon de lumière).",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "花",
+     "fr": "fleurs (un bouquet)",
+     "also": [
+      "把"
+     ],
+     "levels": {
+      "3.0": 2,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我送给妈妈一束花。",
+     "fr": "J'ai offert un bouquet de fleurs à ma mère."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "束-01",
+     "zh": "我送给妈妈一{束}花。",
+     "answer": "束",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "J'ai offert un bouquet de fleurs à ma mère.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "束-02",
+     "zh": "这{束}花真漂亮！",
+     "answer": "束",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "杯"
+     ],
+     "fr": "Ce bouquet est vraiment beau !",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "台",
+   "pinyin": "tái",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les machines et appareils : ordinateur, télévision, climatiseur, réfrigérateur.",
+   "explanation": "台 compte les appareils : 一台电脑, 一台电视, 一台空调, 一台冰箱.",
+   "traps": "On entend aussi 一个电脑 à l'oral ; 台 est la forme attendue.",
+   "nouns": [
+    {
+     "zh": "电脑",
+     "fr": "ordinateur",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "电视",
+     "fr": "télévision",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    },
+    {
+     "zh": "空调",
+     "fr": "climatiseur",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    },
+    {
+     "zh": "冰箱",
+     "fr": "réfrigérateur",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 3
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我买了一台新电脑。",
+     "fr": "J'ai acheté un nouvel ordinateur."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "台-01",
+     "zh": "我买了一{台}新电脑。",
+     "answer": "台",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "J'ai acheté un nouvel ordinateur.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "台-02",
+     "zh": "家里有两{台}电视。",
+     "answer": "台",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il y a deux télévisions à la maison.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "台-03",
+     "zh": "这{台}空调太旧了。",
+     "answer": "台",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Ce climatiseur est trop vieux.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "台-04",
+     "zh": "我们需要一{台}新冰箱。",
+     "answer": "台",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Nous avons besoin d'un nouveau réfrigérateur.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "支",
+   "pinyin": "zhī",
+   "kind": "nominal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les objets longs et fins (stylos, crayons) ; une chanson, une équipe.",
+   "explanation": "支 compte les objets fins comme des bâtons : 一支笔, 一支铅笔, 一支烟. Aussi : 一支歌 (une chanson), 一支球队 (une équipe).",
+   "traps": "Ne pas confondre avec 只 zhī (animaux), qui se prononce pareil.",
+   "nouns": [
+    {
+     "zh": "笔",
+     "fr": "stylo",
+     "also": [],
+     "levels": {
+      "3.0": 2,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "铅笔",
+     "fr": "crayon",
+     "also": [],
+     "levels": {
+      "3.0": 3,
+      "2.0": 2
+     }
+    },
+    {
+     "zh": "歌",
+     "fr": "chanson",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 2
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "我借你一支笔。",
+     "fr": "Je te prête un stylo."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "支-01",
+     "zh": "我借你一{支}笔。",
+     "answer": "支",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Je te prête un stylo.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "支-02",
+     "zh": "他唱了一{支}歌。",
+     "answer": "支",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il a chanté une chanson.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "支-03",
+     "zh": "桌子上有三{支}铅笔。",
+     "answer": "支",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il y a trois crayons sur la table.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "顿",
+   "pinyin": "dùn",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Les repas (吃一顿饭) ; une réprimande (说了他一顿).",
+   "explanation": "顿 compte les repas : 一天吃三顿饭, 我请你吃一顿饭. Il compte aussi une série de reproches ou de coups : 被妈妈说了一顿 (se faire gronder).",
+   "traps": "",
+   "nouns": [
+    {
+     "zh": "饭",
+     "fr": "repas",
+     "also": [],
+     "levels": {
+      "3.0": 1,
+      "2.0": 1
+     }
+    }
+   ],
+   "examples": [
+    {
+     "zh": "今天我请你吃一顿饭。",
+     "fr": "Aujourd'hui, je t'invite à manger."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "顿-01",
+     "zh": "我们一天吃三{顿}饭。",
+     "answer": "顿",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Nous mangeons trois repas par jour.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "顿-02",
+     "zh": "今天我请你吃一{顿}饭。",
+     "answer": "顿",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Aujourd'hui, je t'invite à manger.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "顿-03",
+     "zh": "这{顿}饭真好吃。",
+     "answer": "顿",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Ce repas était vraiment bon.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "顿-04",
+     "zh": "他被妈妈说了一{顿}。",
+     "answer": "顿",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il s'est fait gronder par sa mère.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  },
+  {
+   "hanzi": "眼",
+   "pinyin": "yǎn",
+   "kind": "verbal",
+   "levels": {
+    "3.0": 3,
+    "2.0": null
+   },
+   "usage": "Un coup d'œil : 看一眼.",
+   "explanation": "眼 compte les regards : 看了我一眼 (il m'a jeté un regard), 你帮我看一眼 (jette un œil pour moi). C'est aussi le nom « œil » (眼睛).",
+   "traps": "",
+   "nouns": [],
+   "examples": [
+    {
+     "zh": "他看了我一眼。",
+     "fr": "Il m'a jeté un regard."
+    }
+   ],
+   "sentences": [
+    {
+     "id": "眼-01",
+     "zh": "他看了我一{眼}。",
+     "answer": "眼",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Il m'a jeté un regard.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "眼-02",
+     "zh": "你帮我看一{眼}，我的手机在不在桌子上？",
+     "answer": "眼",
+     "wrong": [
+      "本",
+      "张",
+      "件",
+      "辆",
+      "双"
+     ],
+     "fr": "Jette un œil pour moi : mon téléphone est-il sur la table ?",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    },
+    {
+     "id": "眼-03",
+     "zh": "她看了那件衣服一{眼}就喜欢上了。",
+     "answer": "眼",
+     "wrong": [
+      "本",
+      "张",
+      "辆",
+      "双",
+      "杯"
+     ],
+     "fr": "Elle a jeté un regard à ce vêtement et l'a tout de suite adoré.",
+     "levels": {
+      "3.0": 3,
+      "2.0": null
+     }
+    }
+   ]
+  }
+ ]
+}

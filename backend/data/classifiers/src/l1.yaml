@@ -1,0 +1,277 @@
+# Classificateurs du niveau 1 (HSK 3.0). Voir ../README.md pour le format.
+# sentences : "phrase avec {réponse} | distracteurs faux (3 à 6) | traduction [| lv=N] [| extra=mot,mot]"
+
+- hanzi: 个
+  pinyin: gè
+  kind: nominal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Le classificateur général : personnes, beaucoup d'objets, lieux, durées, idées."
+  explanation: >-
+    个 est de loin le plus fréquent. On l'emploie pour les personnes (一个人), de nombreux objets
+    (一个苹果、一个杯子), les lieux (一个国家、一个地方), certaines durées (一个星期、一个月) et les
+    choses abstraites (一个问题、一个办法). Il se prononce souvent au ton neutre : 一个 yí ge.
+  nouns: ["人|personne", "朋友|ami", "苹果|pomme", "问题|question", "星期|semaine", "地方|endroit", "国家|pays", "字|caractère"]
+  examples:
+    - ["我有一个好朋友。", "J'ai un bon ami."]
+    - ["这个问题很难。", "Cette question est difficile."]
+    - ["我学了三个月汉语。", "J'ai étudié le chinois pendant trois mois."]
+  traps: >-
+    Quand un classificateur précis existe, l'examen l'attend : 一本书 et non 一个书, 一件衣服, 一辆车.
+    Avec 月 : 一个月 = un mois, mais 一月 = janvier. Avec 年 et 天, pas de classificateur : 一年, 三天.
+  sentences:
+    - "我有两{个}哥哥。 | 本 张 件 杯 只 | J'ai deux grands frères."
+    - "这{个}问题很难。 | 本 杯 只 件 张 | Cette question est difficile."
+    - "你想吃几{个}苹果？ | 本 件 杯 张 口 | Combien de pommes veux-tu manger ?"
+    - "那{个}人是我的老师。 | 本 件 张 杯 只 | Cette personne-là est mon professeur."
+    - "我有三{个}朋友。 | 本 杯 块 家 张 | J'ai trois amis."
+    - "一{个}星期有七天。 | 本 张 杯 件 只 | Une semaine a sept jours."
+    - "我在中国学了一{个}月汉语。 | 本 张 杯 件 只 | J'ai étudié le chinois un mois en Chine."
+
+- hanzi: 本
+  pinyin: běn
+  kind: nominal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Les livres, cahiers, dictionnaires, magazines : tout ce qui est relié."
+  explanation: >-
+    本 compte ce qui a des pages reliées : un livre (一本书), un cahier (一本本子), un dictionnaire
+    (一本词典), un magazine (一本杂志).
+  nouns: ["书|livre", "词典|dictionnaire", "本子|cahier", "杂志|magazine"]
+  examples:
+    - ["这本书很有意思。", "Ce livre est très intéressant."]
+    - ["我买了两本中文书。", "J'ai acheté deux livres de chinois."]
+  traps: >-
+    Une feuille, une photo, un billet sont plats mais pas reliés : 一张纸, 一张照片.
+    Les pages d'un livre se comptent avec 页 : 这本书有三百页.
+  sentences:
+    - "我买了三{本}书。 | 张 条 件 杯 只 | J'ai acheté trois livres."
+    - "这{本}书是谁的？ | 张 口 杯 只 家 | À qui est ce livre ?"
+    - "桌子上有两{本}词典。 | 只 件 杯 口 家 | Il y a deux dictionnaires sur la table."
+    - "这{本}书是我的。 | 杯 块 家 张 只 | Ce livre est à moi."
+    - "我想看那{本}书。 | 件 杯 只 口 家 | Je veux lire ce livre-là."
+    - "你有几{本}中文书？ | 张 家 口 杯 只 | Combien de livres de chinois as-tu ?"
+
+- hanzi: 家
+  pinyin: jiā
+  kind: nominal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Les établissements : magasins, restaurants, hôtels, hôpitaux, entreprises, banques."
+  explanation: >-
+    家 compte les lieux où l'on vend, sert ou travaille : 一家商店, 一家饭店, 一家医院, 一家公司,
+    一家银行. C'est aussi le nom « maison, famille ».
+  nouns: ["商店|magasin", "饭店|restaurant, hôtel", "医院|hôpital", "公司|entreprise", "银行|banque", "超市|supermarché"]
+  examples:
+    - ["这家饭店的菜很好吃。", "Les plats de ce restaurant sont très bons."]
+    - ["我爸爸在一家公司工作。", "Mon père travaille dans une entreprise."]
+  traps: >-
+    Les membres d'une famille se comptent avec 口 : 我家有三口人 (nous sommes trois à la maison).
+  sentences:
+    - "这{家}饭店的菜很好吃。 | 本 张 件 杯 只 | Les plats de ce restaurant sont très bons."
+    - "我妈妈在一{家}医院工作。 | 本 口 只 件 杯 | Ma mère travaille dans un hôpital."
+    - "学校旁边有两{家}商店。 | 本 件 杯 只 口 | Il y a deux magasins à côté de l'école."
+    - "我在这{家}饭店吃饭。 | 本 杯 块 张 只 | Je mange dans ce restaurant."
+    - "那{家}公司很大。 | 本 口 件 杯 只 | Cette entreprise est très grande."
+    - "这里有几{家}银行？ | 张 本 只 件 杯 | Combien de banques y a-t-il ici ?"
+
+- hanzi: 件
+  pinyin: jiàn
+  kind: nominal
+  level: {"3.0": 1, "2.0": 2}
+  usage: "Les vêtements du haut (veste, chemise, pull), les affaires (事), les cadeaux, les bagages."
+  explanation: >-
+    件 compte les vêtements qui couvrent le haut du corps (一件衣服、一件衬衫、一件毛衣) et les
+    « choses » au sens d'affaires : 一件事 (une affaire, quelque chose à faire), 一件礼物, 一件行李.
+  nouns: ["衣服|vêtement", "事|affaire, chose", "礼物|cadeau", "衬衫|chemise", "毛衣|pull", "行李|bagage"]
+  examples:
+    - ["这件衣服很漂亮。", "Ce vêtement est très joli."]
+    - ["我有一件事想问你。", "J'ai quelque chose à te demander."]
+  traps: >-
+    Pantalons et jupes sont longs : 一条裤子, 一条裙子. Les chaussures vont par paire : 一双鞋.
+  sentences:
+    - "这{件}衣服多少钱？ | 本 张 只 杯 家 | Combien coûte ce vêtement ?"
+    - "我有一{件}事要告诉你。 | 本 只 杯 张 家 | J'ai une chose à te dire."
+    - "妈妈给我买了两{件}衣服。 | 本 口 块 杯 家 | Maman m'a acheté deux vêtements."
+    - "这是我送你的一{件}礼物。 | 本 杯 口 张 家 | C'est un cadeau que je t'offre."
+    - "今天很冷，你多穿一{件}衣服吧。 | 本 张 只 杯 家 | Il fait froid aujourd'hui, mets un vêtement de plus."
+
+- hanzi: 口
+  pinyin: kǒu
+  kind: both
+  level: {"3.0": 1, "2.0": 3}
+  usage: "Le nombre de personnes d'une famille (三口人) ; et une bouchée, une gorgée (吃一口)."
+  explanation: >-
+    Avec 人, 口 sert à dire combien de personnes vivent dans un foyer : 我家有四口人.
+    Comme classificateur verbal (niveau 3), il compte les bouchées ou les gorgées : 吃一口, 喝了一口水.
+  nouns: []
+  examples:
+    - ["我家有四口人。", "Nous sommes quatre dans ma famille."]
+    - ["你吃一口吧！", "Goûtes-en une bouchée !"]
+  traps: >-
+    口 ne compte les personnes que pour une famille. Trois personnes en général : 三个人.
+  sentences:
+    - "我家有五{口}人。 | 本 只 件 张 杯 | Nous sommes cinq dans ma famille."
+    - "你家有几{口}人？ | 张 本 杯 只 件 | Combien êtes-vous dans ta famille ?"
+    - "他喝了一{口}水。 | 本 张 件 只 家 | Il a bu une gorgée d'eau. | lv=3"
+    - "这个菜很好吃，你吃一{口}吧。 | 本 张 件 杯 家 | Ce plat est délicieux, goûtes-en une bouchée. | lv=3"
+
+- hanzi: 块
+  pinyin: kuài
+  kind: nominal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Les morceaux (gâteau, pain, viande), les montres ; à l'oral, le yuan (三块钱)."
+  explanation: >-
+    块 compte un morceau de quelque chose de solide (一块蛋糕、一块面包、一块肉) et quelques objets
+    comme les montres (一块手表). À l'oral, c'est l'unité de monnaie : 十块钱 = 10 yuans (= 十元).
+  nouns: ["钱|argent (yuans)", "蛋糕|gâteau", "面包|pain", "手表|montre", "肉|viande"]
+  examples:
+    - ["这个多少钱？三十块。", "Ça coûte combien ? Trente yuans."]
+    - ["我吃了一块蛋糕。", "J'ai mangé une part de gâteau."]
+  traps: >-
+    Une feuille de papier n'est pas un « morceau » : 一张纸. À l'écrit, on dit 元 pour la monnaie.
+  sentences:
+    - "这个苹果三{块}钱。 | 本 张 件 杯 只 | Cette pomme coûte trois yuans."
+    - "我吃了两{块}面包。 | 本 件 只 杯 家 | J'ai mangé deux morceaux de pain."
+    - "他送给我一{块}手表。 | 本 张 口 杯 家 | Il m'a offert une montre."
+    - "这个杯子三十{块}钱。 | 本 家 杯 张 只 | Cette tasse coûte trente yuans."
+    - "这件衣服一百{块}。 | 本 张 只 杯 家 | Ce vêtement coûte cent yuans."
+    - "你要几{块}蛋糕？ | 本 件 张 杯 家 | Combien de parts de gâteau veux-tu ?"
+
+- hanzi: 只
+  pinyin: zhī
+  kind: nominal
+  level: {"3.0": 1, "2.0": 3}
+  usage: "La plupart des animaux (chat, chien, oiseau) ; un élément d'une paire (une main, une chaussure)."
+  explanation: >-
+    只 compte les petits et moyens animaux (一只猫、一只狗、一只鸟、一只熊猫) et un seul élément de
+    ce qui va par deux : 一只手, 一只鞋, 一只眼睛.
+  nouns: ["猫|chat", "狗|chien", "鸟|oiseau", "手|main|双", "熊猫|panda", "鸡|poulet"]
+  examples:
+    - ["我家有一只猫。", "J'ai un chat."]
+    - ["他一只手拿着书。", "Il tient un livre d'une main."]
+  traps: >-
+    Ne pas confondre avec 只 zhǐ « seulement ». Les animaux longs (poisson, serpent) : 条.
+    Pour un chien, on entend aussi 一条狗. La paire entière : 一双手, 一双鞋.
+  sentences:
+    - "我家有两{只}猫。 | 本 件 张 杯 家 | J'ai deux chats."
+    - "那{只}小狗很可爱。 | 本 件 杯 张 家 | Ce petit chien est très mignon."
+    - "树上有三{只}鸟。 | 本 件 家 张 杯 | Il y a trois oiseaux dans l'arbre."
+    - "他一{只}手拿着手机。 | 本 件 张 杯 家 | Il tient son téléphone d'une main."
+    - "动物园里有几{只}熊猫？ | 本 张 件 杯 家 | Combien de pandas y a-t-il au zoo ?"
+
+- hanzi: 杯
+  pinyin: bēi
+  kind: nominal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Ce qu'on boit dans un verre ou une tasse : eau, thé, café, lait."
+  explanation: >-
+    杯 compte le contenu d'un verre ou d'une tasse : 一杯水, 一杯茶, 一杯咖啡, 一杯牛奶.
+    Même logique avec d'autres récipients : 一碗饭 (un bol de riz), 一瓶水 (une bouteille d'eau).
+  nouns: ["水|eau", "茶|thé", "咖啡|café", "牛奶|lait"]
+  examples:
+    - ["我想喝一杯咖啡。", "Je voudrais boire un café."]
+    - ["他每天喝三杯水。", "Il boit trois verres d'eau par jour."]
+  traps: >-
+    L'objet « tasse » se dit 杯子 et se compte avec 个 : 一个杯子. 一杯 = le contenu.
+  sentences:
+    - "我想喝一{杯}茶。 | 本 张 件 只 家 | Je voudrais boire une tasse de thé."
+    - "他每天早上喝一{杯}牛奶。 | 本 件 张 只 家 | Il boit un verre de lait chaque matin."
+    - "他喝了三{杯}茶。 | 本 家 块 张 只 | Il a bu trois tasses de thé."
+    - "请给我两{杯}水。 | 本 张 只 件 家 | Deux verres d'eau, s'il vous plaît."
+    - "你要几{杯}咖啡？ | 本 件 张 只 家 | Combien de cafés veux-tu ?"
+    - "桌子上有一{杯}水。 | 本 件 只 张 家 | Il y a un verre d'eau sur la table."
+
+- hanzi: 页
+  pinyin: yè
+  kind: nominal
+  level: {"3.0": 1, "2.0": null}
+  usage: "Les pages d'un livre ou d'un cahier (第十页 = page 10)."
+  explanation: >-
+    页 compte les pages : 这本书有三百页. Avec 第, il indique un numéro de page : 请看第二十页.
+  nouns: []
+  examples:
+    - ["请看第二十页。", "Regardez la page vingt."]
+    - ["这本书有三百页。", "Ce livre a trois cents pages."]
+  sentences:
+    - "请打开书，看第十{页}。 | 件 只 杯 家 口 | Ouvrez le livre à la page dix."
+    - "这本书有两百多{页}。 | 件 只 口 杯 家 | Ce livre a plus de deux cents pages."
+    - "我今天看了三十{页}书。 | 件 只 杯 家 口 | J'ai lu trente pages aujourd'hui."
+    - "作业在第五{页}。 | 件 只 口 杯 家 | Les devoirs sont à la page cinq."
+
+- hanzi: 间
+  pinyin: jiān
+  kind: nominal
+  level: {"3.0": 1, "2.0": 2}
+  usage: "Les pièces d'un logement ou d'un bâtiment : chambre, salle de classe, bureau."
+  explanation: >-
+    间 compte les pièces : 一间房间, 一间教室, 一间办公室. Il ne compte pas les bâtiments entiers.
+  nouns: ["房间|chambre, pièce", "教室|salle de classe", "办公室|bureau"]
+  examples:
+    - ["这间教室很大。", "Cette salle de classe est très grande."]
+    - ["我住在一间小房间里。", "J'habite dans une petite chambre."]
+  traps: >-
+    On entend aussi 一个房间. Un bâtiment se compte avec 座 ou 栋 (niveaux supérieurs).
+  sentences:
+    - "这{间}教室很大。 | 本 张 只 杯 件 | Cette salle de classe est très grande."
+    - "我住在一{间}小房间里。 | 本 件 张 杯 只 | J'habite dans une petite chambre."
+    - "这{间}办公室是王老师的。 | 本 件 只 杯 张 | Ce bureau est celui du professeur Wang."
+    - "学校有二十{间}教室。 | 本 件 杯 只 张 | L'école a vingt salles de classe."
+
+- hanzi: 对
+  pinyin: duì
+  kind: nominal
+  level: {"3.0": 1, "2.0": 2}
+  usage: "Une paire de personnes qui vont ensemble : un couple, deux amis inséparables."
+  explanation: >-
+    对 compte deux personnes (ou deux choses) formant un ensemble : 一对夫妻 (un couple marié),
+    一对好朋友. C'est aussi l'adjectif « juste, correct ».
+  nouns: ["夫妻|couple marié", "好朋友|amis inséparables"]
+  examples:
+    - ["他们是一对好朋友。", "Ils sont inséparables."]
+    - ["那对夫妻每天一起跑步。", "Ce couple court ensemble tous les jours."]
+  traps: >-
+    Les objets qu'on utilise par deux (chaussures, baguettes) se comptent plutôt avec 双 : 一双鞋.
+  sentences:
+    - "他们是一{对}好朋友。 | 本 件 张 杯 家 | Ils sont inséparables."
+    - "那{对}夫妻每天一起跑步。 | 本 件 张 杯 家 | Ce couple court ensemble tous les jours."
+    - "门口站着一{对}老人。 | 本 件 张 杯 家 | Un couple de personnes âgées se tient à l'entrée."
+
+- hanzi: 回
+  pinyin: huí
+  kind: verbal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Le nombre de fois qu'une action a lieu (à l'oral, comme 次)."
+  explanation: >-
+    回 se place après le verbe pour compter les fois : 我去过两回北京. 第一回 = la première fois.
+    C'est aussi le verbe « revenir » (回家).
+  nouns: []
+  examples:
+    - ["我去过两回北京。", "Je suis allé deux fois à Pékin."]
+    - ["这是我第一回来中国。", "C'est la première fois que je viens en Chine."]
+  traps: >-
+    回 et 次 sont presque toujours interchangeables ; 次 est plus courant à l'écrit.
+  sentences:
+    - "我去过三{回}上海。 | 本 张 件 杯 只 | Je suis allé trois fois à Shanghai."
+    - "这个电影我看过两{回}。 | 本 张 件 杯 只 | J'ai vu ce film deux fois."
+    - "他来过我家一{回}。 | 本 口 件 杯 只 | Il est venu chez moi une fois."
+    - "这是我第一{回}吃中国菜。 | 本 张 只 杯 件 | C'est la première fois que je mange chinois."
+
+- hanzi: 下
+  pinyin: xià
+  kind: verbal
+  level: {"3.0": 1, "2.0": 1}
+  usage: "Une action brève (等一下 = attendre un instant) ; un nombre de coups (敲了三下)."
+  explanation: >-
+    Verbe + 一下 indique une action courte ou adoucit une demande : 请等一下, 你看一下, 我介绍一下.
+    Avec d'autres nombres, 下 compte des gestes répétés : 敲了三下门 (frapper trois coups).
+  nouns: []
+  examples:
+    - ["请等一下。", "Attendez un instant, s'il vous plaît."]
+    - ["我来介绍一下。", "Je vais faire les présentations."]
+  traps: >-
+    Pour compter des occurrences en général (aller deux fois à Pékin), on utilise 次 ou 回.
+  sentences:
+    - "请等一{下}，我马上来。 | 本 张 件 杯 只 | Attendez un instant, j'arrive tout de suite."
+    - "你过来看一{下}这张照片。 | 本 件 杯 家 口 | Viens jeter un œil à cette photo."
+    - "你坐一{下}。 | 本 家 块 杯 张 | Assieds-toi un instant."
+    - "我想休息一{下}。 | 本 件 张 杯 只 | Je voudrais me reposer un peu."
+    - "我来介绍一{下}，这是我朋友。 | 本 张 只 杯 件 | Je fais les présentations : voici mon ami."
+    - "你再试一{下}。 | 本 张 件 杯 只 | Essaie encore une fois."

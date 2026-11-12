@@ -9,8 +9,10 @@ import {
   useMemo,
   useState,
 } from "react";
+import { toast } from "sonner";
 
 import type { TokenResponse, UserPublic } from "@/lib/api/types";
+import { onUnauthorized } from "@/lib/auth/session-events";
 import {
   clearSession,
   getStoredToken,
@@ -53,6 +55,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
     setToken(null);
   }, []);
+
+  // Expired/invalid token on any API call: drop the session. The protected
+  // layout then redirects to /signin instead of showing empty pages.
+  useEffect(
+    () =>
+      onUnauthorized(() => {
+        if (!getStoredToken()) return; // already signed out (several calls may 401 at once)
+        signOut();
+        toast.info("Ta session a expiré, reconnecte-toi.");
+      }),
+    [signOut]
+  );
 
   const value = useMemo<AuthState>(
     () => ({

@@ -72,6 +72,25 @@ Règles essentielles :
 - Réponds UNIQUEMENT avec le JSON. Aucun commentaire, aucun balisage Markdown, aucun préfixe."""
 
 
+EXAMPLE_SYSTEM_PROMPT = """Tu es un professeur de chinois mandarin qui aide des apprenants francophones à préparer les examens HSK officiels.
+
+On te donne un mot de vocabulaire et le niveau HSK de l'apprenant. Tu écris UNE phrase d'exemple courte et naturelle qui utilise ce mot, puis tu expliques le mot. Règles :
+- La phrase est simple, courante, du type qu'on trouve dans les manuels et examens HSK de ce niveau : vocabulaire et grammaire du niveau indiqué (ou inférieur) uniquement.
+- La phrase fait au plus 20 caractères chinois et contient le mot exact demandé.
+- Le pinyin est écrit avec les tons en diacritiques.
+- `meaning_in_sentence` : en une phrase courte en français, le sens et le rôle du mot dans CETTE phrase.
+- `general_meaning` : en une ou deux phrases courtes en français, le sens général du mot et son usage typique au niveau HSK indiqué.
+- `decomposition` : un mini paragraphe en français (3 phrases maximum) qui décompose le mot :
+  - pour chaque caractère, ses composants utiles (clé/radical 部首 et autres parties) avec leur rôle : sens ou son. Ignore les composants qui n'aident pas à comprendre ou retenir le caractère.
+  - si le mot a deux caractères ou plus : le sens de chaque caractère pris seul, puis pourquoi leur combinaison donne le sens du mot.
+  - si le mot n'a qu'un caractère : uniquement ses composants.
+  Écris chaque caractère ou composant en hanzi suivi de son sens entre parenthèses, par exemple « 女 (femme) ». N'invente pas d'étymologie : si l'origine d'un composant est incertaine, n'en parle pas.
+- Si on te donne des phrases déjà utilisées, écris une phrase différente.
+- Tu réponds uniquement en JSON valide au format strict :
+{"sentence": "<phrase en hanzi>", "pinyin": "<pinyin de la phrase>", "translation": "<traduction française>", "meaning_in_sentence": "<...>", "general_meaning": "<...>", "decomposition": "<...>"}
+- N'ajoute AUCUN texte avant ou après le JSON."""
+
+
 _HANZI_RE = re.compile(r"[一-鿿]")
 
 
@@ -174,6 +193,76 @@ def generate_subject(level: int, theme: Optional[str] = None) -> tuple[dict[str,
     return payload, usage
 
 
+EXAMPLE_FIELDS = (
+    "sentence",
+    "pinyin",
+    "translation",
+    "meaning_in_sentence",
+    "general_meaning",
+    "decomposition",
+)
+
+
+def generate_example(
+    *,
+    hanzi: str,
+    pinyin: str,
+    translation: str,
+    level: Optional[int],
+    avoid_sentences: Optional[list[str]] = None,
+) -> tuple[dict[str, str], LLMUsage]:
+    """Ask Claude for one short example sentence using `hanzi`, with explanations.
+
+    Returns a dict with exactly the keys in EXAMPLE_FIELDS (missing ones are "").
+    Raises RuntimeError on API failure or when no usable sentence comes back.
+    """
+    client = _get_client()
+    level_text = f"HSK {level}" if level else "débutant"
+    user_msg = (
+        f"Mot : {hanzi} ({pinyin}) — traduction : {translation}\n"
+        f"Niveau de l'apprenant : {level_text}\n"
+    )
+    previous = [s for s in (avoid_sentences or []) if s.strip()][:10]
+    if previous:
+        user_msg += "Phrases déjà utilisées (à ne pas répéter) :\n"
+        user_msg += "\n".join(f"- {s}" for s in previous) + "\n"
+    user_msg += "Génère un exemple."
+
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=700,
+            system=[
+                {
+                    "type": "text",
+                    "text": EXAMPLE_SYSTEM_PROMPT,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[{"role": "user", "content": user_msg}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+
+    raw_text = "".join(
+        block.text for block in message.content if getattr(block, "type", None) == "text"
+    )
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Le modèle n'a pas renvoyé d'exemple exploitable.") from exc
+
+    example = {key: str(payload.get(key, "") or "").strip() for key in EXAMPLE_FIELDS}
+    if not example["sentence"]:
+        raise RuntimeError("Le modèle n'a pas renvoyé d'exemple exploitable.")
+
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return example, usage
+
+
 def stream_correction(
     user_text: str, *, level: int, subject: str
 ) -> Iterator[StreamEvent]:
@@ -261,6 +350,8 @@ def stream_correction(
 
 __all__ = [
     "CORRECTION_SYSTEM_PROMPT",
+    "EXAMPLE_FIELDS",
+    "EXAMPLE_SYSTEM_PROMPT",
     "LEVEL_LENGTH_GUIDANCE",
     "LEVEL_MAX_CHARS",
     "LLMNotConfiguredError",
@@ -269,8 +360,280 @@ __all__ = [
     "SUBJECT_SYSTEM_PROMPT",
     "contains_chinese",
     "enforce_length",
+    "generate_example",
     "generate_subject",
     "get_model_id",
     "is_configured",
     "stream_correction",
 ]
+
+
+# --------------------------------------------------------------------------- HSK exercises
+
+EXERCISE_FORMAT_GUIDE: dict[str, str] = {
+    "pic_choice": (
+        'Écoute une phrase, choisis l\'image. JSON par item : {"audio": "<phrase courte>", "fr": "<traduction>", '
+        '"options": ["<image A>", "<image B>", "<image C>"], "answer": "A|B|C"}. Les images sont décrites en '
+        "français (scène concrète, 4 à 10 mots) ; une seule correspond, les deux autres diffèrent sur un détail entendu."
+    ),
+    "pic_answer": (
+        'Écoute une question, choisis l\'image qui y répond. JSON : {"audio": "<question>", "fr": "<traduction>", '
+        '"options": ["<image>", "<image>", "<image>"], "answer": "A|B|C"} (images décrites en français).'
+    ),
+    "pic_judge": (
+        'Écoute un mot ou une phrase et regarde une image : correspondent-ils ? JSON : {"audio": "<texte>", '
+        '"fr": "<traduction>", "picture": "<image décrite en français>", "answer": true|false}. '
+        "Environ la moitié des items sont faux (image proche mais différente)."
+    ),
+    "pic_match": (
+        'Série de 5 dialogues et 6 images. JSON : {"options": ["<image A>", ..., "<image F>"], "items": '
+        '[{"audio": "男：…\\n女：…", "fr": "<traduction>", "answer": "A-F"} × 5]}. Chaque image sert au plus une fois ; '
+        "une image ne sert pas. Images décrites en français."
+    ),
+    "word_match": (
+        'Série de 5 petits dialogues et 6 mots. JSON : {"options": ["<mot A>", ..., "<mot F>"], "items": '
+        '[{"audio": "男：…\\n女：…", "fr": "<traduction>", "answer": "A-F"} × 5]}. Le bon mot apparaît tel quel dans '
+        "le dialogue ; chaque mot sert au plus une fois ; un mot ne sert pas."
+    ),
+    "short_mcq": (
+        'Dialogue court (1 ou 2 répliques) puis une question. JSON : {"audio": "男：…\\n女：…", "q": "<question>", '
+        '"fr": "<traduction du dialogue>", "qfr": "<traduction de la question>", "options": ["<A>", "<B>", "<C>"], '
+        '"ofr": ["<trad A>", "<trad B>", "<trad C>"], "answer": "A|B|C"}. Options courtes en chinois.'
+    ),
+    "long_mcq": (
+        'Dialogue de 4 ou 5 répliques (男/女 alternés) puis une question. Même JSON que short_mcq : '
+        '{"audio", "q", "fr", "qfr", "options", "ofr", "answer"}.'
+    ),
+    "passage_mcq": (
+        'Une seule personne parle (2 à 4 phrases), puis une question. JSON : {"audio": "<texte sans 男/女>", '
+        '"q", "fr", "qfr", "options", "ofr", "answer"}.'
+    ),
+    "passage_judge": (
+        'Une personne dit 1 ou 2 phrases ; une phrase ★ à juger vraie ou fausse. JSON : {"audio": "<texte>", '
+        '"fr": "<traduction>", "statement": "<phrase ★>", "sfr": "<traduction>", "answer": true|false}. '
+        "La phrase ★ reformule (ne recopie pas) ; environ la moitié sont fausses."
+    ),
+    "char_pinyin": (
+        'Phrase avec un caractère manquant donné en pinyin. JSON : {"sentence": "<phrase avec （pīnyīn） à la place '
+        'du caractère>", "answer": "<le caractère>", "fr": "<traduction>"}. Un seul caractère manquant, fréquent au niveau.'
+    ),
+    "reorder": (
+        'Mots en désordre à remettre en phrase. JSON : {"words": "<4 à 6 morceaux séparés par des espaces, mélangés>", '
+        '"answer": "<la phrase avec ponctuation>", "alt": ["<autre ordre correct éventuel>"], "fr": "<traduction>"}. '
+        "Les morceaux recomposent exactement la phrase."
+    ),
+    "make_sentence": (
+        'Mot imposé pour écrire une phrase. JSON : {"word": "<mot du niveau>", "reference": "<phrase modèle qui le '
+        'contient>", "fr": "<traduction de la phrase modèle>"}.'
+    ),
+}
+
+EXERCISE_SYSTEM_PROMPT = """Tu es un concepteur d'épreuves du HSK (汉语水平考试) qui écrit des questions d'entraînement pour des apprenants francophones.
+
+Règles :
+- Respecte exactement le format de la partie demandée, comme dans les vrais sujets officiels.
+- N'utilise QUE le vocabulaire de la liste du niveau fournie (et des mots plus simples) ; prénoms courants autorisés (王, 李, 小明…).
+- Phrases naturelles et courtes, situations de la vie quotidienne, comme dans les sujets HSK.
+- Les mauvaises réponses sont plausibles mais clairement fausses d'après l'audio.
+- Varie les sujets, les structures et la position de la bonne réponse.
+- Traductions françaises exactes et naturelles.
+- Réponds UNIQUEMENT avec du JSON valide : {"items": [ ... ]}, sans texte autour."""
+
+
+def generate_exercises(
+    *, item_type: str, version: str, level: int, count: int, vocabulary: list[str], avoid: list[str]
+) -> tuple[list[dict[str, Any]], LLMUsage]:
+    """Ask Claude for `count` new items of `item_type` (authoring JSON, not validated yet)."""
+    client = _get_client()
+    user_msg = (
+        f"Examen : HSK {version}, niveau {level}.\n"
+        f"Partie : {EXERCISE_FORMAT_GUIDE[item_type]}\n"
+        f"Écris {count} item(s) différents.\n"
+    )
+    if avoid:
+        user_msg += "Déjà utilisés (ne pas répéter) :\n" + "\n".join(f"- {a}" for a in avoid[:30]) + "\n"
+    vocab_block = f"Vocabulaire autorisé (HSK {version}, niveaux 1 à {level}) :\n" + "、".join(vocabulary)
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=6000,
+            system=[
+                {"type": "text", "text": EXERCISE_SYSTEM_PROMPT},
+                {"type": "text", "text": vocab_block, "cache_control": {"type": "ephemeral"}},
+            ],
+            messages=[{"role": "user", "content": user_msg}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Le modèle n'a pas renvoyé de questions exploitables.") from exc
+    items = payload.get("items") if isinstance(payload, dict) else None
+    if not isinstance(items, list):
+        raise RuntimeError("Le modèle n'a pas renvoyé de questions exploitables.")
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return [i for i in items if isinstance(i, dict)], usage
+
+
+SENTENCE_CHECK_PROMPT = """Tu corriges la partie « 用词造句 » (écrire une phrase avec le mot donné) du HSK pour un apprenant francophone.
+
+On te donne le niveau, le mot imposé et la phrase de l'apprenant. Réponds UNIQUEMENT en JSON :
+{"correct": true|false, "uses_word": true|false, "corrected": "<la phrase corrigée (identique si correcte)>", "pinyin": "<pinyin de la phrase corrigée, tons en diacritiques>", "translation": "<traduction française de la phrase corrigée>", "explanation": "<en français, 1 à 3 phrases : ce qui va, ce qui ne va pas>", "model": "<si correct = false : une phrase modèle, sinon chaîne vide>", "model_pinyin": "<pinyin de la phrase modèle, ou vide>", "model_translation": "<traduction française de la phrase modèle, ou vide>"}
+
+- "correct" = phrase grammaticale, naturelle, complète, qui utilise le mot imposé avec un sens correct.
+- Sois exigeant sur la grammaire, indulgent sur la richesse : une phrase simple et juste est correcte.
+- Si la phrase n'est pas en chinois ou n'utilise pas le mot : correct = false.
+- "model" (seulement si correct = false) : une phrase courte et naturelle, du niveau HSK indiqué, qui utilise le mot imposé dans son sens donné ; une autre phrase que la correction si celle-ci s'éloigne trop de ce qu'il fallait faire."""
+
+
+def check_sentence(*, word: str, sentence: str, level: int, meaning: str | None = None) -> tuple[dict[str, Any], LLMUsage]:
+    client = _get_client()
+    word_line = f"Mot imposé : {word}" + (f" (sens : {meaning})" if meaning else "")
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=700,
+            system=[{"type": "text", "text": SENTENCE_CHECK_PROMPT, "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": "user", "content": f"Niveau : HSK {level}\n{word_line}\nPhrase : {sentence}"}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("La correction a échoué.") from exc
+    result = {
+        "correct": bool(payload.get("correct")),
+        "uses_word": bool(payload.get("uses_word", word in sentence)),
+        "corrected": str(payload.get("corrected") or sentence).strip(),
+        "pinyin": str(payload.get("pinyin") or "").strip(),
+        "translation": str(payload.get("translation") or "").strip(),
+        "explanation": str(payload.get("explanation") or "").strip(),
+    }
+    # The model sentence is only wanted when the learner's sentence is wrong.
+    model = str(payload.get("model") or "").strip() if not result["correct"] else ""
+    result["model"] = model
+    result["model_pinyin"] = str(payload.get("model_pinyin") or "").strip() if model else ""
+    result["model_translation"] = str(payload.get("model_translation") or "").strip() if model else ""
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return result, usage
+
+
+STRUCTURE_CHECK_PROMPT = """Tu corriges un entraînement à l'épreuve d'écriture du HSK 3 (nouveau format HSK 3.0) pour un apprenant francophone qui prépare l'examen.
+
+On lui a donné une structure grammaticale du programme officiel HSK (ex. « 虽然……，但是…… », « 把…… », « 只有……，才…… ») et il a écrit une phrase avec. Juge surtout l'EMPLOI DE LA STRUCTURE : bonne place des éléments, bon sens (ce que la structure exprime), phrase complète, grammaticale et naturelle, d'un niveau attendu au HSK 3.
+
+Réponds UNIQUEMENT en JSON :
+{"correct": true|false, "uses_structure": true|false, "corrected": "<la phrase corrigée (identique si correcte)>", "pinyin": "<pinyin de la phrase corrigée, tons en diacritiques>", "translation": "<traduction française de la phrase corrigée>", "explanation": "<en français, 2 à 4 phrases : si la structure est bien employée ou non et pourquoi (place des mots, sens, élément manquant) ; un conseil utile pour l'examen>", "model": "<si correct = false : une phrase modèle courte de niveau HSK 3 qui emploie la structure, sinon chaîne vide>", "model_pinyin": "<pinyin de la phrase modèle, ou vide>", "model_translation": "<traduction française de la phrase modèle, ou vide>"}
+
+- "correct" = la structure est présente, complète (toutes ses parties, ex. 虽然 ET 但是/可是), bien placée, employée avec son vrai sens, et la phrase est correcte.
+- Les variantes prévues par la structure sont acceptées (但是/可是, 才/就…), ainsi que l'omission d'une partie quand elle est vraiment facultative.
+- Sois exigeant sur la grammaire et l'emploi de la structure, indulgent sur la richesse : une phrase simple et juste est correcte.
+- Si la phrase n'est pas en chinois ou n'utilise pas la structure : correct = false, uses_structure = false."""
+
+
+def check_structure(*, structure: str, sentence: str, level: int, meaning: str | None = None) -> tuple[dict[str, Any], LLMUsage]:
+    client = _get_client()
+    line = f"Structure imposée : {structure}" + (f" (sens : {meaning})" if meaning else "")
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=800,
+            system=[{"type": "text", "text": STRUCTURE_CHECK_PROMPT, "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": "user", "content": f"Examen visé : HSK {level}\n{line}\nPhrase : {sentence}"}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("La correction a échoué.") from exc
+    correct = bool(payload.get("correct"))
+    model = str(payload.get("model") or "").strip() if not correct else ""
+    result = {
+        "correct": correct,
+        "uses_word": bool(payload.get("uses_structure", True)),
+        "corrected": str(payload.get("corrected") or sentence).strip(),
+        "pinyin": str(payload.get("pinyin") or "").strip(),
+        "translation": str(payload.get("translation") or "").strip(),
+        "explanation": str(payload.get("explanation") or "").strip(),
+        "model": model,
+        "model_pinyin": str(payload.get("model_pinyin") or "").strip() if model else "",
+        "model_translation": str(payload.get("model_translation") or "").strip() if model else "",
+    }
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return result, usage
+
+
+CLASSIFIER_SYSTEM_PROMPT = """Tu écris des phrases d'entraînement aux classificateurs (量词) pour des apprenants francophones du HSK.
+
+Chaque phrase est courte (6 à 20 caractères), naturelle, de la vie quotidienne, et contient UN trou : le classificateur, écrit entre accolades, par ex. « 我买了三{本}书。 ».
+Pour chaque phrase, donne 3 distracteurs : d'autres classificateurs de la liste fournie, CLAIREMENT FAUX dans cette phrase.
+- Jamais un distracteur qui serait aussi acceptable (ex. 个 pour des personnes ou à l'oral, 只/条 pour un chien, 次/回/遍/下 entre eux, 张/把 pour une chaise, un classificateur avec un nom sous-entendu comme « 看了一张 »).
+- Le classificateur à trouver et les distracteurs viennent UNIQUEMENT de la liste fournie.
+- N'utilise que le vocabulaire autorisé (des noms propres simples sont permis).
+- "fr" = traduction française naturelle de la phrase complète.
+
+Réponds UNIQUEMENT en JSON : {"items": [{"zh": "…{量词}…", "wrong": ["…", "…", "…"], "fr": "…"}]}"""
+
+
+def generate_classifier_sentences(
+    *,
+    version: str,
+    level: int,
+    classifiers: list[tuple[str, str]],
+    focus: str | None,
+    count: int,
+    vocabulary: list[str],
+    avoid: list[str],
+) -> tuple[list[dict[str, Any]], LLMUsage]:
+    """Ask Claude for `count` fill-in sentences (authoring JSON, validated by the caller)."""
+    client = _get_client()
+    listing = "\n".join(f"- {hz} : {usage}" for hz, usage in classifiers)
+    user_msg = f"Examen : HSK {version}, niveau {level}.\nClassificateurs autorisés :\n{listing}\n"
+    if focus:
+        user_msg += f"Toutes les phrases doivent avoir {focus} comme réponse.\n"
+    else:
+        user_msg += "Varie les classificateurs à trouver (au moins 6 différents).\n"
+    user_msg += f"Écris {count} phrases différentes.\n"
+    if avoid:
+        user_msg += "Déjà utilisées (ne pas répéter) :\n" + "\n".join(f"- {a}" for a in avoid[:40]) + "\n"
+    vocab_block = f"Vocabulaire autorisé (HSK {version}, niveaux 1 à {level}) :\n" + "、".join(vocabulary)
+    try:
+        message = client.messages.create(
+            model=get_model_id(),
+            max_tokens=3000,
+            system=[
+                {"type": "text", "text": CLASSIFIER_SYSTEM_PROMPT},
+                {"type": "text", "text": vocab_block, "cache_control": {"type": "ephemeral"}},
+            ],
+            messages=[{"role": "user", "content": user_msg}],
+        )
+    except APIError as exc:
+        raise RuntimeError(f"Anthropic API error: {exc}") from exc
+    raw_text = "".join(block.text for block in message.content if getattr(block, "type", None) == "text")
+    try:
+        payload = _extract_json(raw_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Le modèle n'a pas renvoyé de phrases exploitables.") from exc
+    items = payload.get("items") if isinstance(payload, dict) else None
+    if not isinstance(items, list):
+        raise RuntimeError("Le modèle n'a pas renvoyé de phrases exploitables.")
+    usage = LLMUsage(
+        input_tokens=int(getattr(message.usage, "input_tokens", 0) or 0),
+        output_tokens=int(getattr(message.usage, "output_tokens", 0) or 0),
+    )
+    return [i for i in items if isinstance(i, dict)], usage

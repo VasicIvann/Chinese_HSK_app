@@ -2,24 +2,28 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { QuizQuestion } from "@/components/quiz/quiz-question";
-import { QuizSetup } from "@/components/quiz/quiz-setup";
+import { QuizSetup, type QuizStartParams } from "@/components/quiz/quiz-setup";
 import { QuizSummary } from "@/components/quiz/quiz-summary";
 import { Button } from "@/components/ui/button";
 import { ApiError } from "@/lib/api/client";
 import { getDueEntries, postRate } from "@/lib/api/endpoints";
 import type { DueEntry, MasterySnapshotResponse, RatingEnum } from "@/lib/api/types";
-import { useQuizSession, type QuizMode } from "@/lib/hooks/use-quiz-session";
+import { useQuizSession } from "@/lib/hooks/use-quiz-session";
+import { quizLabel } from "@/lib/hsk-version";
 
 type Phase = "setup" | "loading" | "running" | "summary";
 
-type SessionConfig = {
-  quiz: string;
-  count: number;
-  mode: QuizMode;
+type SessionConfig = QuizStartParams;
+
+type RateVars = {
+  entryId: number;
+  rating: RatingEnum;
+  mode?: SessionConfig["mode"];
+  elapsedMs?: number;
 };
 
 export default function ComprehensionPage() {
@@ -31,8 +35,8 @@ export default function ComprehensionPage() {
   const session = useQuizSession(questions);
 
   const rateMutation = useMutation({
-    mutationFn: ({ entryId, rating }: { entryId: number; rating: RatingEnum }) =>
-      postRate({ entry_id: entryId, rating }),
+    mutationFn: ({ entryId, rating, mode, elapsedMs }: RateVars) =>
+      postRate({ entry_id: entryId, rating, mode, elapsed_ms: elapsedMs }),
     onSuccess: (snapshot: MasterySnapshotResponse) => {
       session.attachSnapshot(snapshot.entry_id, {
         nextReviewAt: snapshot.next_review_at,
@@ -41,6 +45,7 @@ export default function ComprehensionPage() {
       // Invalidate cached stats so the next setup screen shows fresh counts.
       queryClient.invalidateQueries({ queryKey: ["srs-stats"] });
       queryClient.invalidateQueries({ queryKey: ["mastery"] });
+      queryClient.invalidateQueries({ queryKey: ["account-overview"] });
     },
     onError: (error: unknown) => {
       const detail = error instanceof ApiError ? error.detail : "Erreur réseau";
@@ -55,9 +60,18 @@ export default function ComprehensionPage() {
     async (cfg: SessionConfig) => {
       setPhase("loading");
       try {
-        const entries = await getDueEntries(cfg.quiz, cfg.count);
+        const entries = await getDueEntries(cfg.quizzes, cfg.count, {
+          onlyNew: cfg.words === "new",
+          onlySeen: cfg.words === "seen",
+        });
         if (entries.length === 0) {
-          toast.info("Aucune carte à étudier pour ce quiz.");
+          toast.info(
+            cfg.words === "new"
+              ? "Aucun nouveau mot dans ces niveaux : tu les as tous déjà vus."
+              : cfg.words === "seen"
+                ? "Aucun mot déjà vu dans ces niveaux : commence par de nouveaux mots."
+                : "Aucune carte à étudier pour ces niveaux."
+          );
           setPhase("setup");
           return;
         }
@@ -74,18 +88,30 @@ export default function ComprehensionPage() {
     [session]
   );
 
+  // When the current card appeared, to record the time spent on it.
+  const shownAt = useRef<number>(0);
+  const currentEntryId = session.currentEntry?.id;
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [currentEntryId]);
+
   const handleRate = useCallback(
     (rating: RatingEnum, meta?: { userInput?: string; inputCorrect?: boolean }) => {
       const entry = session.currentEntry;
       if (!entry) return;
       session.recordRating(rating, meta);
-      rateMutation.mutate({ entryId: entry.id, rating });
+      rateMutation.mutate({
+        entryId: entry.id,
+        rating,
+        mode: config?.mode,
+        elapsedMs: shownAt.current ? Math.max(0, Date.now() - shownAt.current) : undefined,
+      });
       // Once the last question is answered, switch to summary.
       if (session.state.currentIndex + 1 >= session.state.questions.length) {
         setPhase("summary");
       }
     },
-    [session, rateMutation]
+    [session, rateMutation, config]
   );
 
   const handleRestart = useCallback(() => {
@@ -107,7 +133,8 @@ export default function ComprehensionPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
-          {config?.quiz} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
+          {config?.quizzes.map(quizLabel).join(" + ")}
+          {config?.words === "new" ? " · Nouveaux" : config?.words === "seen" ? " · Révision" : ""} · Question {Math.min(session.state.currentIndex + 1, session.state.questions.length)} /{" "}
           {session.state.questions.length}
         </p>
         <Button variant="ghost" size="sm" onClick={handleRestart}>

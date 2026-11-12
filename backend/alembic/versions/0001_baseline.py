@@ -24,6 +24,11 @@ depends_on = None
 
 
 def upgrade() -> None:
+    # A database that already holds the schema but was never stamped: record the
+    # baseline without re-running the DDL (same effect as `alembic stamp`).
+    if sa.inspect(op.get_bind()).has_table("users"):
+        return
+
     op.create_table(
         "quizzes",
         sa.Column("id", sa.Integer(), primary_key=True, index=True),

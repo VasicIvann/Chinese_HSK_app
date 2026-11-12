@@ -41,7 +41,29 @@ def test_get_entries_unknown_quiz_returns_404(client: TestClient, seed_quizzes: 
     assert res.status_code == 404
 
 
-def test_healthz_does_not_require_auth(client: TestClient) -> None:
+def test_healthz_does_not_require_auth_nor_the_database(client: TestClient, monkeypatch) -> None:
+    """Pinged every 10 min by the keep-warm cron: must never wake Neon up."""
+    import app.main as main
+
+    class NoDatabase:
+        def connect(self):
+            raise AssertionError("/healthz must not touch the database")
+
+    monkeypatch.setattr(main, "engine", NoDatabase())
     res = client.get("/healthz")
     assert res.status_code == 200
     assert res.json() == {"status": "ok"}
+
+
+def test_healthz_db_checks_the_database(client: TestClient, monkeypatch) -> None:
+    assert client.get("/healthz/db").json() == {"status": "ok", "db": "ok"}
+    import app.main as main
+
+    class BrokenEngine:
+        def connect(self):
+            raise RuntimeError("db down")
+
+    monkeypatch.setattr(main, "engine", BrokenEngine())
+    res = client.get("/healthz/db")
+    assert res.status_code == 200
+    assert res.json() == {"status": "ok", "db": "error"}
